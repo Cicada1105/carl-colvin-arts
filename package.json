@@ -1,0 +1,38 @@
+{
+  "name": "carl-colvin-arts",
+  "version": "1.0.0",
+  "description": "Portfolio for Carl Colvin Arts",
+  "main": "index.js",
+  "dependencies": {
+    "less": "^3.10.3",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"npm run-script compile;npm run-script build; node ./dist/index.js",
+    "compile":"./node_modules/less/bin/lessc ./src/style/index.less ./dist/index.css",
+    "build":"./node_modules/typescript/bin/tsc ./src/scripts/index.ts --outDir ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cicada1105/carl-colvin-arts.git"
+  },
+  "keywords": [
+    "Oboe",
+    "Music",
+    "Reeds",
+    "Reedmaking",
+    "Poetry",
+    "Poems",
+    "Performance",
+    "Editing",
+    "Writing"
+  ],
+  "author": "Josh Colvin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cicada1105/carl-colvin-arts/issues"
+  },
+  "homepage": "https://github.com/Cicada1105/carl-colvin-arts#readme"
+}
