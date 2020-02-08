@@ -1,3 +1,19 @@
+html,
 body {
-  background-color: "aqua";
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+html #bgCanvas,
+body #bgCanvas {
+  width: inherit;
+  height: inherit;
+}
+html #active,
+body #active {
+  background-color: #f2f2f2;
+}
+html ul li:hover,
+body ul li:hover {
+  background-color: #f2f2f2;
 }

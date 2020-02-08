@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start":"npm run-script compile;npm run-script build; node ./dist/index.js",
     "compile":"./node_modules/less/bin/lessc ./src/style/index.less ./dist/index.css",
-    "build":"./node_modules/typescript/bin/tsc ./src/scripts/index.ts --outDir ./dist"
+    "build":"./node_modules/typescript/bin/tsc"
   },
   "repository": {
     "type": "git",
