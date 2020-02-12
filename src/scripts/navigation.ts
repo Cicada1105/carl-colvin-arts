@@ -1,5 +1,4 @@
 const createNavigation = ():void => {
-  console.log("createNavigation Running");
 	const navigation:object[] = [
     {
       name:"About",
@@ -37,7 +36,6 @@ const createNavigation = ():void => {
 	]
 	let pathName = window.location.pathname;
 	let pathArray = pathName.split("/");
-	console.log(pathArray[6]);
 }
 
 export { createNavigation }

@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.createGradient = void 0;
 
 const createGradient = () => {
-  console.log("createGradient Running");
   const cvsEl = document.createElement("canvas");
   cvsEl.setAttribute("id", "bgCanvas");
   document.body.appendChild(cvsEl);
@@ -31,7 +30,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.createNavigation = void 0;
 
 const createNavigation = () => {
-  console.log("createNavigation Running");
   const navigation = [{
     name: "About",
     subdirectories: []
@@ -59,7 +57,6 @@ const createNavigation = () => {
   }];
   let pathName = window.location.pathname;
   let pathArray = pathName.split("/");
-  console.log(pathArray[6]);
 };
 
 exports.createNavigation = createNavigation;
@@ -79,6 +76,7 @@ var _navigation = require("./navigation");
 const init = () => {
   (0, _gradient.createGradient)();
   (0, _navigation.createNavigation)();
+  alert("It's working");
 };
 
 exports.init = init;

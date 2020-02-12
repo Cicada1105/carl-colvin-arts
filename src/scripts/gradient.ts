@@ -1,5 +1,4 @@
 const createGradient = ():void => {
-  console.log("createGradient Running");
 	const cvsEl = document.createElement("canvas");
 	cvsEl.setAttribute("id","bgCanvas");
   document.body.appendChild(cvsEl);
