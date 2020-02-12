@@ -3,16 +3,21 @@
   "version": "1.0.0",
   "description": "Portfolio for Carl Colvin Arts",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "less": "^3.10.3",
     "typescript": "^3.7.5"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"npm run-script compile;npm run-script build; node ./dist/index.js",
-    "compile":"./node_modules/less/bin/lessc ./src/style/index.less ./dist/index.css",
-    "build":"./node_modules/typescript/bin/tsc"
+    "start": "npm run-script compile;npm run-script transpile; npm run-script build; npm run-script dev",
+    "compile": "./node_modules/less/bin/lessc ./src/style/index.less ./dist/index.css",
+    "transpile": "./node_modules/typescript/bin/tsc",
+    "build": "./node_modules/.bin/babel ./lib/es6 --ignore ./lib/declarations --out-dir ./lib/es5/",
+    "dev":"browserify ./lib/es5/ --outfile ./dist/index.js --standalone begin"
   },
   "repository": {
     "type": "git",
