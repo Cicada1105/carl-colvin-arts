@@ -1,11 +1,26 @@
+.static,
+html #header,
+body #header,
+html #footer,
+body #footer {
+  background-color: #0c090a;
+  font-size: 1.5rem;
+  position: fixed;
+  filter: opacity(70%);
+  z-index: 1;
+  width: 100%;
+  height: 6vh;
+}
 html,
 body {
+  font-family: "Oswald";
   width: 100%;
   height: 100%;
   margin: 0;
 }
 html #bgCanvas,
 body #bgCanvas {
+  z-index: 0;
   width: inherit;
   height: inherit;
 }
@@ -13,7 +28,62 @@ html #active,
 body #active {
   background-color: #f2f2f2;
 }
-html ul li:hover,
-body ul li:hover {
+html #header,
+body #header {
+  top: 0%;
+}
+html #header ul[id="navigation"],
+body #header ul[id="navigation"] {
+  position: relative;
+  padding-right: 5%;
+  margin-top: 0%;
+  width: 25%;
+  float: right;
+  height: 100%;
+}
+html #header ul[id="navigation"] li,
+body #header ul[id="navigation"] li {
+  text-decoration: none;
+  padding: 2.75% 5% 3.25% 4%;
+  font-size: 1.1rem;
+  position: inherit;
+  color: #f0edee;
+  display: inline;
+  top: 10%;
+}
+html #header ul[id="navigation"] li:hover,
+body #header ul[id="navigation"] li:hover {
   background-color: #f2f2f2;
+  cursor: pointer;
+  color: black;
+}
+html #footer,
+body #footer {
+  bottom: 0%;
+}
+html #footer #social,
+body #footer #social {
+  position: relative;
+  padding-right: 2.5vw;
+  float: right;
+  width: 20vw;
+  height: 100%;
+}
+html #footer #social .socialImg,
+body #footer #social .socialImg {
+  position: inherit;
+  float: right;
+  margin-top: 3%;
+  margin-right: 4%;
+  height: 28px;
+}
+html #footer #social .socialImg:hover,
+body #footer #social .socialImg:hover {
+  cursor: pointer;
+}
+@media only screen and (max-width: 670px) {
+  html #footer #social img[alt="instagram"],
+  body #footer #social img[alt="instagram"] {
+    display: block;
+  }
 }

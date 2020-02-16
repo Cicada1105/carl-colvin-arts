@@ -1,11 +1,12 @@
 // imports
-import { createGradient as gradient } from './gradient'
-import { createNavigation as navigation } from './navigation'
+import { createGradient as gradient } from './gradient/index'
+import { createHeader as header } from './header/index'
+import { createFooter as footer } from './footer/index'
 
 const init = ():void => {
   gradient();
-  navigation();
-  alert("It's working");
+  header();
+  footer();
 }
 
 export { init }
