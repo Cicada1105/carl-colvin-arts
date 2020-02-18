@@ -24,10 +24,6 @@ body #bgCanvas {
   width: inherit;
   height: inherit;
 }
-html #active,
-body #active {
-  background-color: #f2f2f2;
-}
 html #header,
 body #header {
   top: 0%;
@@ -35,21 +31,30 @@ body #header {
 html #header ul[id="navigation"],
 body #header ul[id="navigation"] {
   position: relative;
-  padding-right: 5%;
+  padding: 0px;
   margin-top: 0%;
-  width: 25%;
-  float: right;
+  width: inherit;
   height: 100%;
 }
 html #header ul[id="navigation"] li,
 body #header ul[id="navigation"] li {
   text-decoration: none;
-  padding: 2.75% 5% 3.25% 4%;
+  padding: 0.65% 1.5% 0.85% 1.5%;
   font-size: 1.1rem;
   position: inherit;
   color: #f0edee;
   display: inline;
-  top: 10%;
+  float: right;
+  top: 0%;
+}
+html #header ul[id="navigation"] .active,
+body #header ul[id="navigation"] .active {
+  background-color: #f2f2f2;
+  color: black;
+}
+html #header ul[id="navigation"] #homeLink,
+body #header ul[id="navigation"] #homeLink {
+  float: left;
 }
 html #header ul[id="navigation"] li:hover,
 body #header ul[id="navigation"] li:hover {

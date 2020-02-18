@@ -3,7 +3,11 @@ interface ImageInterface {
 	path:string;
 	link:string;
 }
-const imagePath = "./resources/media_imgs";
+
+// Use during development
+const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs";
+// Use during production
+// const imagePath = "./resources/media_imgs";
 
 // Data holding info about social media links
 const data:ImageInterface[] = [
