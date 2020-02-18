@@ -20,28 +20,33 @@ html, body {
     width:inherit;
     height:inherit;
   }
-  // Active is the id of the navigation referring to the current page
-  #active {
-    background-color:@activeColor;
-  }
  #header {
   &:extend(.static);
   top:0%;
   ul[id = "navigation"] {
     position:relative;
-    padding-right:5%;
+    padding:0px;
     margin-top:0%;
-    width:25%;
-    float:right;
+    width:inherit;
     height:100%;
     li {
       text-decoration:none;
-      padding:2.75% 5% 3.25% 4%;
+      padding:0.65% 1.5% 0.85% 1.5%;
       font-size:1.1rem;
       position:inherit;
       color:@textColor;
       display:inline;
-      top:10%;
+      float:right;
+      top:0%;
+    }
+    // Active is the id of the navigation referring to the current page
+    .active {
+      background-color:@activeColor;
+      color:black;
+    }
+    // Home link has separate float than rest of navigation
+    #homeLink {
+      float:left;
     }
     // Include hover affect on navigation
     li:hover {

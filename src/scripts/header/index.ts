@@ -39,14 +39,19 @@ const createNavigation = ():any => {
     // Check if current file matches a link (equivalent => 0)
     if (currPath.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
-      currLi.setAttribute("id","active");
+      currLi.setAttribute("class","active");
     }
 
+    // Check if home page: index.html
+    if (link.name.localeCompare("Carl Colvin Arts") == 0) {
+      // Add id to home page
+      currLi.setAttribute("id","homeLink");
+    }
     // Store path of current link to use in event listener
-    let linkPath:string = link.path
+    let linkPath:string = link.path;
     // Add event listener for when link is clicked on
     currLi.addEventListener("click",() => {
-      window.open(linkPath,"_blank");
+      window.open(linkPath,"_self");
     })
     // Store current subdirectories to loop through
     /*directories = link.subdirectories;

@@ -4,47 +4,57 @@ interface ILink {
   subdirectories: ILink[] | null;
 }
 
+// Use during development
+const rootDir:string = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/";
+// Use during production
+// const rootDir:string = "./";
+
 const links:Array<ILink> = [
   {
+    name:"Carl Colvin Arts",
+    path:rootDir + "index.html",
+    subdirectories: []
+  },
+  {
     name:"About",
-    path:"pgs/about.html",
-    subdirectories:[]
+    path:rootDir + "pgs/about.html",
+    subdirectories: []
   },
   {
     name:"Services",
-    path:"pgs/services/services_home.html",
+    path:rootDir + "pgs/services/services.html",
     subdirectories:[
       {
         name:"Reedmaking",
-        path:"pgs/services/reedmaking.html",
-        subdirectories:[]
+        path:rootDir + "pgs/services/reedmaking.html",
+        subdirectories: []
       },
       {
         name:"Editing",
-        path:"pgs/services/editing.html",
-        subdirectories:[]
+        path:rootDir + "pgs/services/editing.html",
+        subdirectories: []
       },
       {
         name:"Writing",
-        path:"pgs/services/writing.html",
-        subdirectories:[]
+        path:rootDir + "pgs/services/writing.html",
+        subdirectories: []
       },
       {
         name:"Performance",
-        path:"pgs/services/performance.html",
-        subdirectories:[]
+        path:rootDir + "pgs/services/performance.html",
+        subdirectories: []
       },
     ]
   },
   {
     name:"Listen",
-    path:"pgs/listen.html",
-    subdirectories:[]
+    path:rootDir + "pgs/listen.html",
+    subdirectories: []
   },
   {
     name:"Contact",
-    path:"pgs/contact.html",
-    subdirectories:[]
+    path:rootDir + "pgs/contact.html",
+    subdirectories: []
   }
 ]
 

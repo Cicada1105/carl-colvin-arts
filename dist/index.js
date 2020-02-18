@@ -5,7 +5,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.data = void 0;
-const imagePath = "./resources/media_imgs"; // Data holding info about social media links
+// Use during development
+const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs"; // Use during production
+// const imagePath = "./resources/media_imgs";
+// Data holding info about social media links
 
 const data = [{
   name: "instagram",
@@ -103,37 +106,45 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.links = void 0;
+// Use during development
+const rootDir = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/"; // Use during production
+// const rootDir:string = "./";
+
 const links = [{
+  name: "Carl Colvin Arts",
+  path: rootDir + "index.html",
+  subdirectories: []
+}, {
   name: "About",
-  path: "pgs/about.html",
+  path: rootDir + "pgs/about.html",
   subdirectories: []
 }, {
   name: "Services",
-  path: "pgs/services/services_home.html",
+  path: rootDir + "pgs/services/services.html",
   subdirectories: [{
     name: "Reedmaking",
-    path: "pgs/services/reedmaking.html",
+    path: rootDir + "pgs/services/reedmaking.html",
     subdirectories: []
   }, {
     name: "Editing",
-    path: "pgs/services/editing.html",
+    path: rootDir + "pgs/services/editing.html",
     subdirectories: []
   }, {
     name: "Writing",
-    path: "pgs/services/writing.html",
+    path: rootDir + "pgs/services/writing.html",
     subdirectories: []
   }, {
     name: "Performance",
-    path: "pgs/services/performance.html",
+    path: rootDir + "pgs/services/performance.html",
     subdirectories: []
   }]
 }, {
   name: "Listen",
-  path: "pgs/listen.html",
+  path: rootDir + "pgs/listen.html",
   subdirectories: []
 }, {
   name: "Contact",
-  path: "pgs/contact.html",
+  path: rootDir + "pgs/contact.html",
   subdirectories: []
 }];
 exports.links = links;
@@ -187,14 +198,20 @@ const createNavigation = () => {
 
     if (currPath.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
-      currLi.setAttribute("id", "active");
+      currLi.setAttribute("class", "active");
+    } // Check if home page: index.html
+
+
+    if (link.name.localeCompare("Carl Colvin Arts") == 0) {
+      // Add id to home page
+      currLi.setAttribute("id", "homeLink");
     } // Store path of current link to use in event listener
 
 
     let linkPath = link.path; // Add event listener for when link is clicked on
 
     currLi.addEventListener("click", () => {
-      window.open(linkPath, "_blank");
+      window.open(linkPath, "_self");
     }); // Store current subdirectories to loop through
 
     /*directories = link.subdirectories;
