@@ -1,10 +1,22 @@
+<<<<<<< HEAD
 // Import image interface
 import { IImageLink } from '../global/interfaces'
+=======
+interface ImageInterface {
+	name:string;
+	path:string;
+	link:string;
+}
+>>>>>>> d059214a6136458e41404eee42c501a56b10346c
 
 // Use during development
 const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs";
 // Use during production
+<<<<<<< HEAD
 // const imagePath = "/resources/media_imgs";
+=======
+// const imagePath = "./resources/media_imgs";
+>>>>>>> d059214a6136458e41404eee42c501a56b10346c
 
 // Data holding info about social media links
 const data:IImageLink[] = [

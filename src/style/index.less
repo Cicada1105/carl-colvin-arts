@@ -20,6 +20,7 @@ html, body {
     height:inherit;
     z-index:0;
   }
+<<<<<<< HEAD
   [id = 'bgImage'] {
     position:fixed;
     width:inherit;
@@ -62,6 +63,41 @@ html, body {
          cursor:pointer;
          color:black;
       }
+=======
+ #header {
+  &:extend(.static);
+  top:0%;
+  ul[id = "navigation"] {
+    position:relative;
+    padding:0px;
+    margin-top:0%;
+    width:inherit;
+    height:100%;
+    li {
+      text-decoration:none;
+      padding:0.65% 1.5% 0.85% 1.5%;
+      font-size:1.1rem;
+      position:inherit;
+      color:@textColor;
+      display:inline;
+      float:right;
+      top:0%;
+    }
+    // Active is the id of the navigation referring to the current page
+    .active {
+      background-color:@activeColor;
+      color:black;
+    }
+    // Home link has separate float than rest of navigation
+    #homeLink {
+      float:left;
+    }
+    // Include hover affect on navigation
+    li:hover {
+       background-color:@activeColor;
+       cursor:pointer;
+       color:black;
+>>>>>>> d059214a6136458e41404eee42c501a56b10346c
     }
  }
  #footer {

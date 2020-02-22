@@ -41,6 +41,15 @@ const createNavigation = ():any => {
     if (currPath.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
       currLi.setAttribute("class","active");
+<<<<<<< HEAD
+    }
+
+    // Check if home page: index.html
+    if (link.name.localeCompare("Carl Colvin Arts") == 0) {
+      // Add id to home page
+      currLi.setAttribute("id","homeLink");
+=======
+>>>>>>> d059214a6136458e41404eee42c501a56b10346c
     }
 
     // Check if home page: index.html
@@ -48,8 +57,8 @@ const createNavigation = ():any => {
       // Add id to home page
       currLi.setAttribute("id","homeLink");
     }
-
     // Store path of current link to use in event listener
+<<<<<<< HEAD
     let linkPath:string = link.link;
 
     // Add event listener for when link is clicked on
@@ -57,6 +66,13 @@ const createNavigation = ():any => {
       window.open(linkPath,"_self");
     });
     
+=======
+    let linkPath:string = link.path;
+    // Add event listener for when link is clicked on
+    currLi.addEventListener("click",() => {
+      window.open(linkPath,"_self");
+    })
+>>>>>>> d059214a6136458e41404eee42c501a56b10346c
     // Store current subdirectories to loop through
     /*directories = link.subdirectories;
     // Current link could either have null subdirectories or an array of ILink objects
