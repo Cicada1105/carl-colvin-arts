@@ -24,7 +24,6 @@ body #bgCanvas {
   height: inherit;
   z-index: 0;
 }
-<<<<<<< HEAD
 html [id='bgImage'],
 body [id='bgImage'] {
   position: fixed;
@@ -34,8 +33,6 @@ body [id='bgImage'] {
   z-index: 1;
   top: 0%;
 }
-=======
->>>>>>> d059214a6136458e41404eee42c501a56b10346c
 html #header,
 body #header {
   top: 0%;

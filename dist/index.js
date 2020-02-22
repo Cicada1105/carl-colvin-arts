@@ -5,7 +5,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.data = void 0;
-<<<<<<< HEAD
 // Use for development
 const imgPath = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/music_imgs/'; // Each page will hold a different image fade
 //	 Define associative array
@@ -102,11 +101,7 @@ exports.data = void 0;
 // Use during development
 const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs"; // Use during production
 // const imagePath = "/resources/media_imgs";
-=======
-// Use during development
-const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs"; // Use during production
 // const imagePath = "./resources/media_imgs";
->>>>>>> d059214a6136458e41404eee42c501a56b10346c
 // Data holding info about social media links
 
 const data = [{
@@ -231,7 +226,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.links = void 0;
 // Use during development
 const rootDir = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/"; // Use during production
-<<<<<<< HEAD
 // const rootDir:string = "/";
 
 const links = [{
@@ -260,53 +254,15 @@ const links = [{
   }, {
     name: "Performance",
     link: rootDir + "pgs/services/performance.html",
-=======
-// const rootDir:string = "./";
-
-const links = [{
-  name: "Carl Colvin Arts",
-  path: rootDir + "index.html",
-  subdirectories: []
-}, {
-  name: "About",
-  path: rootDir + "pgs/about.html",
-  subdirectories: []
-}, {
-  name: "Services",
-  path: rootDir + "pgs/services/services.html",
-  subdirectories: [{
-    name: "Reedmaking",
-    path: rootDir + "pgs/services/reedmaking.html",
-    subdirectories: []
-  }, {
-    name: "Editing",
-    path: rootDir + "pgs/services/editing.html",
-    subdirectories: []
-  }, {
-    name: "Writing",
-    path: rootDir + "pgs/services/writing.html",
-    subdirectories: []
-  }, {
-    name: "Performance",
-    path: rootDir + "pgs/services/performance.html",
->>>>>>> d059214a6136458e41404eee42c501a56b10346c
     subdirectories: []
   }]
 }, {
   name: "Listen",
-<<<<<<< HEAD
   link: rootDir + "pgs/listen.html",
   subdirectories: []
 }, {
   name: "Contact",
   link: rootDir + "pgs/contact.html",
-=======
-  path: rootDir + "pgs/listen.html",
-  subdirectories: []
-}, {
-  name: "Contact",
-  path: rootDir + "pgs/contact.html",
->>>>>>> d059214a6136458e41404eee42c501a56b10346c
   subdirectories: []
 }];
 exports.links = links;
@@ -361,6 +317,12 @@ const createNavigation = () => {
     if (currPath.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
       currLi.setAttribute("class", "active");
+    } // Check if home page: index.html
+
+
+    if (link.name.localeCompare("Carl Colvin Arts") == 0) {
+      // Add id to home page
+      currLi.setAttribute("id", "homeLink");
     } // Check if home page: index.html
 
 
