@@ -1,6 +1,6 @@
 // Improts
 import { data as images } from './data'
-import { ImageInterface } from './data'
+import { IImageLink } from '../global/interfaces'
 
 const createFooter = ():void => {
   // Create container to display across top
@@ -14,7 +14,7 @@ const createFooter = ():void => {
   socialCont.setAttribute("id","social");
 
   // Create image container to hold social media images
-  let img:ImageInterface;
+  let img:IImageLink;
   for (img of images) {
   	// Create image node
   	let imgNode:any = document.createElement("img");
@@ -22,7 +22,7 @@ const createFooter = ():void => {
   	// Add src attribute
   	imgNode.setAttribute("src",img.path);
   	// Add alt attribute
-  	imgNode.setAttribute("alt",img.name);
+  	imgNode.setAttribute("alt",img.alt);
   	// Add id attribute
   	imgNode.setAttribute("class","socialImg");
 

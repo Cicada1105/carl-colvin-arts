@@ -1,6 +1,7 @@
 // Imports
-import { links, ILink } from './data'
-import { getCurrentFile } from './methods'
+import { links } from './data'
+import { ILink } from '../global/interfaces'
+import { getCurrentFile } from '../global/methods'
 
 const createHeader = ():void => {
   // Create container to display across top
@@ -47,12 +48,15 @@ const createNavigation = ():any => {
       // Add id to home page
       currLi.setAttribute("id","homeLink");
     }
+
     // Store path of current link to use in event listener
-    let linkPath:string = link.path;
+    let linkPath:string = link.link;
+
     // Add event listener for when link is clicked on
     currLi.addEventListener("click",() => {
       window.open(linkPath,"_self");
-    })
+    });
+    
     // Store current subdirectories to loop through
     /*directories = link.subdirectories;
     // Current link could either have null subdirectories or an array of ILink objects
@@ -86,8 +90,15 @@ const createNavigation = ():any => {
       currLi.appendChild(subUl);
     }*/
 
-    // Append current li element to the ul navigation
-    navUl.appendChild(currLi);
+    /*
+        parentElement.insertBefore(element1, element2)
+
+        Goes to parentElement and inserts element1 before
+        element 2
+    */
+    // Floating li's to the right causes navigation to be displayed
+    //  backwards when using appendChild.
+    navUl.insertBefore(currLi, navUl.childNodes[0]);
   }
   // Return ul node to be added to the header
   return navUl;

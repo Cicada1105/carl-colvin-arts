@@ -1,9 +1,9 @@
 const createGradient = ():void => {
 	const cvsEl = document.createElement("canvas");
 	cvsEl.setAttribute("id","bgCanvas");
-  document.body.appendChild(cvsEl);
+	document.body.appendChild(cvsEl);
 
-  const cvs = document.getElementById("bgCanvas");
+  	const cvs:any = document.getElementById("bgCanvas");
 
 	let ctx = cvs.getContext('2d');
 	let grd = ctx.createLinearGradient(0,0,300,150);

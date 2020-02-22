@@ -6,7 +6,7 @@
   font-size:1.5rem;
   position:fixed;
   filter:opacity(70%);
-  z-index:1;
+  z-index:2;
   width:100%;
   height:6vh;
 }
@@ -16,45 +16,53 @@ html, body {
   height:100%;
   margin:0;
   #bgCanvas {
-    z-index:0;
     width:inherit;
     height:inherit;
+    z-index:0;
   }
- #header {
-  &:extend(.static);
-  top:0%;
-  ul[id = "navigation"] {
-    position:relative;
-    padding:0px;
-    margin-top:0%;
+  [id = 'bgImage'] {
+    position:fixed;
     width:inherit;
-    height:100%;
-    li {
-      text-decoration:none;
-      padding:0.65% 1.5% 0.85% 1.5%;
-      font-size:1.1rem;
-      position:inherit;
-      color:@textColor;
-      display:inline;
-      float:right;
-      top:0%;
-    }
-    // Active is the id of the navigation referring to the current page
-    .active {
-      background-color:@activeColor;
-      color:black;
-    }
-    // Home link has separate float than rest of navigation
-    #homeLink {
-      float:left;
-    }
-    // Include hover affect on navigation
-    li:hover {
-       background-color:@activeColor;
-       cursor:pointer;
-       color:black;
-    }
+    height:inherit;
+    opacity:0.05;
+    z-index:1;
+    top:0%;
   }
+  #header {
+    &:extend(.static);
+    top:0%;
+    ul[id = "navigation"] {
+      position:relative;
+      padding:0px;
+      margin-top:0%;
+      width:inherit;
+      height:100%;
+      li {
+        text-decoration:none;
+        padding:0.65% 1.5% 0.85% 1.5%;
+        font-size:1.1rem;
+        position:inherit;
+        color:@textColor;
+        display:inline;
+        float:right;
+        top:0%;
+      }
+      // Active is the id of the navigation referring to the current page
+      .active {
+        background-color:@activeColor;
+        color:black;
+      }
+      // Home link has separate float than rest of navigation
+      #homeLink {
+        float:left;
+      }
+      // Include hover affect on navigation
+      li:hover {
+         background-color:@activeColor;
+         cursor:pointer;
+         color:black;
+      }
+    }
  }
  #footer {
   &:extend(.static);
@@ -68,7 +76,7 @@ html, body {
     .socialImg {
       position:inherit;
       float:right;
-      margin-top:3%;
+      margin-top:2.5%;
       margin-right:4%;
       height:28px;
     }
