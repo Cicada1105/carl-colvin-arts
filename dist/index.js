@@ -4,6 +4,179 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.createBodyContent = void 0;
+
+var _methods = require("../global/methods");
+
+var _index = require("./pgs/home/index");
+
+var _index2 = require("./pgs/about/index");
+
+var _index3 = require("./pgs/services/index");
+
+var _index4 = require("./pgs/listen/index");
+
+var _index5 = require("./pgs/contact/index");
+
+// Imports
+// Different pages
+const createBodyContent = () => {
+  let currFile = (0, _methods.getCurrentFile)();
+
+  switch (currFile) {
+    case 'index':
+      (0, _index.loadHomePage)();
+      break;
+
+    case 'about':
+      (0, _index2.loadAboutPage)();
+      break;
+
+    case 'services':
+      (0, _index3.loadServicesPage)();
+      break;
+
+    case 'listen':
+      (0, _index4.loadListenPage)();
+      break;
+
+    case 'contact':
+      (0, _index5.loadContactPage)();
+      break;
+  }
+};
+
+exports.createBodyContent = createBodyContent;
+},{"../global/methods":12,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":6,"./pgs/services/index":7}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadAboutPage = void 0;
+
+const loadAboutPage = () => {
+  console.log("loading about page");
+};
+
+exports.loadAboutPage = loadAboutPage;
+},{}],3:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadContactPage = void 0;
+
+const loadContactPage = () => {
+  console.log("loading contact page");
+};
+
+exports.loadContactPage = loadContactPage;
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.imgData = exports.infoData = void 0;
+const infoData = [{
+  header: "About",
+  content: "Carl Colvin is a freelance musician, teacher, writer, and " + "editor originally from Chicago, Illinois and now recently residing " + "in the Cincinnati, Ohio area"
+}, {
+  header: "Listen",
+  content: ""
+}];
+exports.infoData = infoData;
+const ccImgsPath = "./resources/cc_imgs/";
+const imgData = [{
+  path: ccImgsPath + "carl_headshot.jpg",
+  alt: "",
+  caption: ""
+}, {
+  path: ccImgsPath + "oboe_performance.jpg",
+  alt: "",
+  caption: ""
+}];
+exports.imgData = imgData;
+},{}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadHomePage = void 0;
+
+var _data = require("./data");
+
+// Imports
+const loadHomePage = () => {
+  _data.infoData.forEach(infoBox);
+
+  _data.imgData.forEach(imgCont);
+};
+
+exports.loadHomePage = loadHomePage;
+
+const infoBox = e => {
+  let box = document.createElement('section');
+  let h = document.createElement('h3');
+  let hText = document.createTextNode(e.header);
+  h.appendChild(hText); // Sections contain articles
+
+  let c = document.createElement('article');
+  let cText = document.createTextNode(e.content);
+  c.appendChild(cText);
+  box.appendChild(h);
+  box.appendChild(c);
+  document.body.appendChild(box);
+};
+
+const imgCont = currImg => {
+  // HTML figure contains image and caption
+  let fig = document.createElement('figure');
+  let img = document.createElement('img');
+  img.setAttribute('src', currImg.path);
+  img.setAttribute('alt', currImg.alt);
+  let figCaption = document.createElement('figcaption');
+  let figCaptionTxt = document.createTextNode("");
+  figCaption.appendChild(figCaptionTxt);
+  fig.appendChild(img);
+  fig.appendChild(figCaption);
+  document.body.appendChild(fig);
+};
+},{"./data":4}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadListenPage = void 0;
+
+const loadListenPage = () => {
+  console.log("loading listen page");
+};
+
+exports.loadListenPage = loadListenPage;
+},{}],7:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadServicesPage = void 0;
+
+const loadServicesPage = () => {
+  console.log("loading services page");
+};
+
+exports.loadServicesPage = loadServicesPage;
+},{}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.data = void 0;
 // Use for development
 const imgPath = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/music_imgs/'; // Each page will hold a different image fade
@@ -24,7 +197,7 @@ const data = {
   }
 };
 exports.data = data;
-},{}],2:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -91,7 +264,7 @@ const createBgFade = () => {
 };
 
 exports.createBgFade = createBgFade;
-},{"../global/methods":5,"./data":1}],3:[function(require,module,exports){
+},{"../global/methods":12,"./data":8}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -122,7 +295,7 @@ const data = [{
   link: "tbd"
 }];
 exports.data = data;
-},{}],4:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -170,7 +343,7 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"./data":3}],5:[function(require,module,exports){
+},{"./data":10}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -194,7 +367,7 @@ const getCurrentFile = () => {
 };
 
 exports.getCurrentFile = getCurrentFile;
-},{}],6:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -217,7 +390,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{}],7:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -266,7 +439,7 @@ const links = [{
   subdirectories: []
 }];
 exports.links = links;
-},{}],8:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -379,7 +552,7 @@ const createNavigation = () => {
 
   return navUl;
 };
-},{"../global/methods":5,"./data":7}],9:[function(require,module,exports){
+},{"../global/methods":12,"./data":14}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -395,14 +568,17 @@ var _index3 = require("./header/index");
 
 var _index4 = require("./footer/index");
 
+var _index5 = require("./bg_content/index");
+
 // imports
 const init = () => {
   (0, _index2.createBgFade)();
   (0, _index.createGradient)();
   (0, _index3.createHeader)();
   (0, _index4.createFooter)();
+  (0, _index5.createBodyContent)();
 };
 
 exports.init = init;
-},{"./bg_img/index":2,"./footer/index":4,"./gradient/index":6,"./header/index":8}]},{},[9])(9)
+},{"./bg_content/index":1,"./bg_img/index":9,"./footer/index":11,"./gradient/index":13,"./header/index":15}]},{},[16])(16)
 });

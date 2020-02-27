@@ -1,6 +1,7 @@
 interface ImageInterface {
     path: string;
     alt: string;
+    caption?: string;
 }
 interface ImageLinkInterface extends ImageInterface {
     link: string;
@@ -10,4 +11,10 @@ interface ILink {
     link: string;
     subdirectories: ILink[] | null;
 }
-export { ImageInterface as IImage, ImageLinkInterface as IImageLink, ILink };
+interface IBox {
+    header: string;
+    content: string;
+}
+export { ImageInterface as IImage };
+export { ImageLinkInterface as IImageLink };
+export { ILink, IBox };

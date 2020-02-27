@@ -71,6 +71,13 @@ body #header ul[id="navigation"] li:hover {
   cursor: pointer;
   color: black;
 }
+html section,
+body section {
+  background-color: #0c090a;
+  box-shadow: 5px 5px #de5757;
+  width: 300px;
+  height: 300px;
+}
 html #footer,
 body #footer {
   bottom: 0%;
