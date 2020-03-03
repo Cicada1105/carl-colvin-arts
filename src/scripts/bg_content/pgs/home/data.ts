@@ -11,19 +11,28 @@ const infoData:IBox[] = [
 	{
 		header:"Listen",
 		content:""
+	},
+	{
+		header:"Services",
+		content:""
 	}
 ]
 const ccImgsPath:string = "./resources/cc_imgs/";
 const imgData:IImage[] = [
 	{
-		path:ccImgsPath + "carl_headshot.jpg",
-		alt:"",
-		caption:""
+		path:ccImgsPath + "carl_headshot.png",
+		alt:"Carl Headshot",
+		caption:"Carl Headshot"
 	}, 
 	{
-		path:ccImgsPath + "oboe_performance.jpg",
-		alt:"",
-		caption:""
+		path:ccImgsPath + "oboe_performance.png",
+		alt:"Carl Performing Oboe",
+		caption:"Carl Playing Oboe"
+	},
+	{
+		path:ccImgsPath + "",
+		alt:"Carl doing stuff",
+		caption:"Carl"
 	}
 ]
 

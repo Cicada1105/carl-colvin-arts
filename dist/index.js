@@ -86,17 +86,24 @@ const infoData = [{
 }, {
   header: "Listen",
   content: ""
+}, {
+  header: "Services",
+  content: ""
 }];
 exports.infoData = infoData;
 const ccImgsPath = "./resources/cc_imgs/";
 const imgData = [{
-  path: ccImgsPath + "carl_headshot.jpg",
-  alt: "",
-  caption: ""
+  path: ccImgsPath + "carl_headshot.png",
+  alt: "Carl Headshot",
+  caption: "Carl Headshot"
 }, {
-  path: ccImgsPath + "oboe_performance.jpg",
-  alt: "",
-  caption: ""
+  path: ccImgsPath + "oboe_performance.png",
+  alt: "Carl Performing Oboe",
+  caption: "Carl Playing Oboe"
+}, {
+  path: ccImgsPath + "",
+  alt: "Carl doing stuff",
+  caption: "Carl"
 }];
 exports.imgData = imgData;
 },{}],5:[function(require,module,exports){
@@ -111,9 +118,29 @@ var _data = require("./data");
 
 // Imports
 const loadHomePage = () => {
-  _data.infoData.forEach(infoBox);
+  let numDataRows = _data.infoData.length;
+  let currBox;
+  let currImg;
 
-  _data.imgData.forEach(imgCont);
+  for (let i = 0; i < numDataRows; i++) {
+    currBox = infoBox(_data.infoData[i]);
+    currImg = imgCont(_data.imgData[i]);
+    let dataRow = document.createElement('div');
+    dataRow.setAttribute('class', 'row'); // Alternate info boxes and images
+
+    if (i % 2 == 0) {
+      currBox.setAttribute('id', 'left');
+      currImg.setAttribute('id', 'right');
+    } else {
+      currImg.setAttribute('id', 'left');
+      currBox.setAttribute('id', 'right');
+    }
+
+    dataRow.appendChild(currBox);
+    dataRow.appendChild(currImg); // Append each row to the page
+
+    document.body.appendChild(dataRow);
+  }
 };
 
 exports.loadHomePage = loadHomePage;
@@ -124,12 +151,12 @@ const infoBox = e => {
   let hText = document.createTextNode(e.header);
   h.appendChild(hText); // Sections contain articles
 
-  let c = document.createElement('article');
+  let c = document.createElement('p');
   let cText = document.createTextNode(e.content);
   c.appendChild(cText);
   box.appendChild(h);
   box.appendChild(c);
-  document.body.appendChild(box);
+  return box;
 };
 
 const imgCont = currImg => {
@@ -139,11 +166,12 @@ const imgCont = currImg => {
   img.setAttribute('src', currImg.path);
   img.setAttribute('alt', currImg.alt);
   let figCaption = document.createElement('figcaption');
-  let figCaptionTxt = document.createTextNode("");
+  let figCaptionStr = typeof currImg.caption === "undefined" ? "" : currImg.caption;
+  let figCaptionTxt = document.createTextNode(figCaptionStr);
   figCaption.appendChild(figCaptionTxt);
   fig.appendChild(img);
   fig.appendChild(figCaption);
-  document.body.appendChild(fig);
+  return fig;
 };
 },{"./data":4}],6:[function(require,module,exports){
 "use strict";
