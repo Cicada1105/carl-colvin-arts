@@ -1,50 +1,98 @@
 // This file holds the styling that will be applied to every page
 
-.static {
-  background-color:@secondaryColor;
-  font-size:1.5rem;
-  position:fixed;
-  filter:opacity(70%);
-  z-index:2;
-  width:100%;
-  height:6vh;
+.staticBar {
+	background-color:@secondaryColor;
+  	font-size:1.5rem;
+  	position:fixed;
+  	filter:opacity(70%);
+  	z-index:2;
+  	width:100%;
+  	height:6vh;
+}
+.staticUL {
+	position:relative;
+	padding:0px;
+	margin:0%;
+}
+.staticLI {
+	text-decoration:none;
+	position:relative;
+	font-size:1.1rem;
+	color:@textColor;
+	display:inline;
+}
+.staticLIHover {
+	background-color:@activeColor;
+	cursor:pointer;
+	color:black;
 }
 // global namespace
 #globalNS() {
 	.navigation() {  
 		#header {
-		    &:extend(.static);
+		    &:extend(.staticBar);
 		    top:0%;
 		    ul[id = "navigation"] {
-				position:relative;
-				padding:0px;
-				margin-top:0%;
+		    	&:extend(.staticUL);
 				width:inherit;
 				height:100%;
 				li {
-				text-decoration:none;
-				padding:0.65% 1.5% 0.85% 1.5%;
-				font-size:1.1rem;
-				position:inherit;
-				color:@textColor;
-				display:inline;
-				float:right;
-				top:0%;
-				}
-				// Active is the id of the navigation referring to the current page
-				.active {
-				background-color:@activeColor;
-				color:black;
-				}
-				// Home link has separate float than rest of navigation
-				#homeLink {
-				float:left;
+					&:extend(.staticLI);
+					padding:0.65% 1.5% 0.85% 1.5%;
+					float:right;
+
+					ul[class = "subDir"] {
+						background-color:hotpink;
+						position:absolute;
+						padding:20% 0%;
+						display:inline;
+						float:left;
+						right:0%;
+						top:100%;
+						width:250px;
+						height:160px;
+						li {
+							&:extend(.staticLI);
+							padding:2.5% 5%;
+							margin-right:2.5%;
+						}
+						li:hover {
+							&:extend(.staticLIHover);
+						}
+					}
 				}
 				// Include hover affect on navigation
 				li:hover {
-				 background-color:@activeColor;
-				 cursor:pointer;
-				 color:black;
+					&:extend(.staticLIHover);
+					ul[class = "subDir"] {
+						&:extend(.staticUL);
+						background-color:hotpink;
+						position:absolute;
+						padding:20% 0%;
+						display:inline;
+						float:left;
+						right:0%;
+						top:100%;
+						width:250px;
+						height:160px;
+
+						li {
+							&:extend(.staticLI);
+							padding:2.5% 5%;
+						}
+						li:hover {
+							&:extend(.staticLIHover);
+						}
+					}
+				}
+				// Active is the id of the navigation referring to the current page
+				.active {
+					background-color:@activeColor;
+					color:black;
+				}
+				// Home link has separate float than rest of navigation
+				#homeLink {
+					float:left;
 				}
 		    }
 		}
@@ -70,7 +118,7 @@
 	}
 	.social() {
 		#footer {
-		    &:extend(.static);
+		    &:extend(.staticBar);
 		    bottom:0%;
 		    #social {
 				position:relative;
@@ -79,14 +127,14 @@
 				width:20vw;
 				height:100%;
 				.socialImg {
-				position:inherit;
-				float:right;
-				margin-top:2.5%;
-				margin-right:4%;
-				height:28px;
+					position:inherit;
+					float:right;
+					margin-top:2.5%;
+					margin-right:4%;
+					height:28px;
 				}
 				.socialImg:hover {
-				cursor:pointer;
+					cursor:pointer;
 				}
 				@media only screen and (max-width:670px) {
 					img[alt = "instagram"] {

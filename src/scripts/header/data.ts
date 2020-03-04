@@ -56,4 +56,4 @@ const links:Array<ILink> = [
   }
 ]
 
-export { links, ILink }
+export { links }

@@ -1,2 +1,2 @@
-declare const getCurrentFile: () => string;
-export { getCurrentFile };
+declare let createNavigation: () => any;
+export { createNavigation };

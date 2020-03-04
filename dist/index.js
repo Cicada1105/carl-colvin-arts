@@ -475,9 +475,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createHeader = void 0;
 
-var _data = require("./data");
-
-var _methods = require("../global/methods");
+var _methods = require("./methods");
 
 // Imports
 const createHeader = () => {
@@ -486,7 +484,7 @@ const createHeader = () => {
 
   headerDiv.setAttribute("id", "header"); // Create navigation => returns ul element
 
-  let navBar = createNavigation(); // Append navigation to header
+  let navBar = (0, _methods.createNavigation)(); // Append navigation to header
 
   headerDiv.appendChild(navBar); // Add element to body
 
@@ -494,20 +492,35 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
+},{"./methods":16}],16:[function(require,module,exports){
+"use strict";
 
-const createNavigation = () => {
-  // Store current path
-  let currPath = (0, _methods.getCurrentFile)(); // Current link of type ILink
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createNavigation = void 0;
+
+var _data = require("./data");
+
+var _methods = require("../global/methods");
+
+// This file is used to display navigation 
+// Imports
+// Current page user is on
+const CURRENT_PATH = (0, _methods.getCurrentFile)();
+
+let createNavigation = () => {
+  // Create new ul element
+  let navUl = document.createElement("ul"); // Add ul element attribute
+
+  navUl.setAttribute("id", "navigation"); // Current link of type ILink
 
   let link; // Subdirectories of links can be array of ILinks or null
 
-  let directories; // Create new ul element
-
-  let navUl = document.createElement("ul"); // Add ul element attribute
-
-  navUl.setAttribute("id", "navigation");
+  let directories;
 
   for (link of _data.links) {
+    // Using of when dealing with arrays
     // Create li for current link
     let currLi = document.createElement("li"); // Add text to element
 
@@ -515,15 +528,9 @@ const createNavigation = () => {
 
     currLi.appendChild(txtNode); // Check if current file matches a link (equivalent => 0)
 
-    if (currPath.localeCompare(link.name.toLowerCase()) == 0) {
+    if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
       currLi.setAttribute("class", "active");
-    } // Check if home page: index.html
-
-
-    if (link.name.localeCompare("Carl Colvin Arts") == 0) {
-      // Add id to home page
-      currLi.setAttribute("id", "homeLink");
     } // Check if home page: index.html
 
 
@@ -537,35 +544,14 @@ const createNavigation = () => {
 
     currLi.addEventListener("click", () => {
       window.open(linkPath, "_self");
-    }); // Store current subdirectories to loop through
+    }); // Current link could either have null subdirectories or an array of ILink objects
 
-    /*directories = link.subdirectories;
-    // Current link could either have null subdirectories or an array of ILink objects
-    if ((directories != null) && (directories.length > 0)) {
+    if (link.subdirectories != null && link.subdirectories.length > 0) {
       // Create new ul for subdirectories
-      let subUl = document.createElement("ul");
-      let subLi:any;
-      let subLiTxt:any;
-           for (let dir of directories) {
-        // Create li element for current subdirectory
-        subLi = document.createElement("li");
-        // Create text node storing li name
-        subLiTxt = document.createTextNode(dir.name);
-        // Append text node of li element to node itself
-        subLi.appendChild(subLiTxt);
-             if (currPath.localeCompare(dir.name.toLowerCase()) == 0) {
-          // Add active attribute to current li
-          subLi.setAttribute("id","active");
-               // No need to continue comparing other links
-          break;
-        }
-             // Append current li element to subdirectory ul
-        subUl.appendChild(subLi);
-      }
-           // Append ul subdirectory to li main directory element
-      currLi.appendChild(subUl);
-    }*/
+      let subdirectoryUl = createSubdirectory(link.subdirectories); // Append ul subdirectory to li main directory element
 
+      currLi.appendChild(subdirectoryUl);
+    }
     /*
         parentElement.insertBefore(element1, element2)
              Goes to parentElement and inserts element1 before
@@ -574,13 +560,51 @@ const createNavigation = () => {
     // Floating li's to the right causes navigation to be displayed
     //  backwards when using appendChild.
 
+
     navUl.insertBefore(currLi, navUl.childNodes[0]);
   } // Return ul node to be added to the header
 
 
   return navUl;
 };
-},{"../global/methods":12,"./data":14}],16:[function(require,module,exports){
+
+exports.createNavigation = createNavigation;
+
+let createSubdirectory = dirs => {
+  // Create UL to contain LI's 
+  let subUl = document.createElement('ul'); // Each sub directory of the navigation bar has same class name
+
+  subUl.setAttribute('class', 'subDir');
+
+  for (let dir of dirs) {
+    // Create the current LI to be appended to UL
+    let currSubLi; // Text node to store name property of dir
+
+    let subLiTxtNode; // Create LI element for current subdirectory
+
+    currSubLi = document.createElement("li"); // Create text node storing li name
+
+    subLiTxtNode = document.createTextNode(dir.name); // Append text node of li element to node itself
+
+    currSubLi.appendChild(subLiTxtNode);
+
+    if (CURRENT_PATH.localeCompare(dir.name.toLowerCase()) == 0) {
+      // Add active attribute to current li
+      currSubLi.setAttribute("id", "active");
+    }
+
+    let subLink = dir.link; // Add event listener
+
+    currSubLi.addEventListener("click", () => {
+      window.open(subLink, "_self");
+    }); // Append current li element to subdirectory ul
+
+    subUl.appendChild(currSubLi);
+  }
+
+  return subUl;
+};
+},{"../global/methods":12,"./data":14}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -608,5 +632,5 @@ const init = () => {
 };
 
 exports.init = init;
-},{"./bg_content/index":1,"./bg_img/index":9,"./footer/index":11,"./gradient/index":13,"./header/index":15}]},{},[16])(16)
+},{"./bg_content/index":1,"./bg_img/index":9,"./footer/index":11,"./gradient/index":13,"./header/index":15}]},{},[17])(17)
 });

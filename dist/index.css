@@ -4,6 +4,28 @@ html #footer,
 body #footer {
   background-color: #0c090a;font-size: 1.5rem;position: fixed;filter: opacity(70%);z-index: 2;width: 100%;height: 6vh;
 }
+html #header ul[id="navigation"],
+body #header ul[id="navigation"],
+html #header ul[id="navigation"] li:hover ul[class="subDir"],
+body #header ul[id="navigation"] li:hover ul[class="subDir"] {
+  position: relative;padding: 0px;margin: 0%;
+}
+html #header ul[id="navigation"] li,
+body #header ul[id="navigation"] li,
+html #header ul[id="navigation"] li ul[class="subDir"] li,
+body #header ul[id="navigation"] li ul[class="subDir"] li,
+html #header ul[id="navigation"] li:hover ul[class="subDir"] li,
+body #header ul[id="navigation"] li:hover ul[class="subDir"] li {
+  text-decoration: none;position: relative;font-size: 1.1rem;color: #f0edee;display: inline;
+}
+html #header ul[id="navigation"] li ul[class="subDir"] li:hover,
+body #header ul[id="navigation"] li ul[class="subDir"] li:hover,
+html #header ul[id="navigation"] li:hover,
+body #header ul[id="navigation"] li:hover,
+html #header ul[id="navigation"] li:hover ul[class="subDir"] li:hover,
+body #header ul[id="navigation"] li:hover ul[class="subDir"] li:hover {
+  background-color: #f2f2f2;cursor: pointer;color: black;
+}
 html,
 body {
   font-family: "Oswald";
@@ -17,22 +39,46 @@ body #header {
 }
 html #header ul[id="navigation"],
 body #header ul[id="navigation"] {
-  position: relative;
-  padding: 0px;
-  margin-top: 0%;
   width: inherit;
   height: 100%;
 }
 html #header ul[id="navigation"] li,
 body #header ul[id="navigation"] li {
-  text-decoration: none;
   padding: 0.65% 1.5% 0.85% 1.5%;
-  font-size: 1.1rem;
-  position: inherit;
-  color: #f0edee;
-  display: inline;
   float: right;
-  top: 0%;
+}
+html #header ul[id="navigation"] li ul[class="subDir"],
+body #header ul[id="navigation"] li ul[class="subDir"] {
+  background-color: hotpink;
+  position: absolute;
+  padding: 20% 0%;
+  display: inline;
+  float: left;
+  right: 0%;
+  top: 100%;
+  width: 250px;
+  height: 160px;
+}
+html #header ul[id="navigation"] li ul[class="subDir"] li,
+body #header ul[id="navigation"] li ul[class="subDir"] li {
+  padding: 2.5% 5%;
+  margin-right: 2.5%;
+}
+html #header ul[id="navigation"] li:hover ul[class="subDir"],
+body #header ul[id="navigation"] li:hover ul[class="subDir"] {
+  background-color: hotpink;
+  position: absolute;
+  padding: 20% 0%;
+  display: inline;
+  float: left;
+  right: 0%;
+  top: 100%;
+  width: 250px;
+  height: 160px;
+}
+html #header ul[id="navigation"] li:hover ul[class="subDir"] li,
+body #header ul[id="navigation"] li:hover ul[class="subDir"] li {
+  padding: 2.5% 5%;
 }
 html #header ul[id="navigation"] .active,
 body #header ul[id="navigation"] .active {
@@ -42,12 +88,6 @@ body #header ul[id="navigation"] .active {
 html #header ul[id="navigation"] #homeLink,
 body #header ul[id="navigation"] #homeLink {
   float: left;
-}
-html #header ul[id="navigation"] li:hover,
-body #header ul[id="navigation"] li:hover {
-  background-color: #f2f2f2;
-  cursor: pointer;
-  color: black;
 }
 html #bgCanvas,
 body #bgCanvas {
