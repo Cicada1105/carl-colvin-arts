@@ -12,14 +12,10 @@ body #header ul[id="navigation"] li:hover ul[class="subDir"] {
 }
 html #header ul[id="navigation"] li,
 body #header ul[id="navigation"] li,
-html #header ul[id="navigation"] li ul[class="subDir"] li,
-body #header ul[id="navigation"] li ul[class="subDir"] li,
 html #header ul[id="navigation"] li:hover ul[class="subDir"] li,
 body #header ul[id="navigation"] li:hover ul[class="subDir"] li {
   text-decoration: none;position: relative;font-size: 1.1rem;color: #f0edee;display: inline;
 }
-html #header ul[id="navigation"] li ul[class="subDir"] li:hover,
-body #header ul[id="navigation"] li ul[class="subDir"] li:hover,
 html #header ul[id="navigation"] li:hover,
 body #header ul[id="navigation"] li:hover,
 html #header ul[id="navigation"] li:hover ul[class="subDir"] li:hover,
@@ -49,36 +45,25 @@ body #header ul[id="navigation"] li {
 }
 html #header ul[id="navigation"] li ul[class="subDir"],
 body #header ul[id="navigation"] li ul[class="subDir"] {
-  background-color: hotpink;
-  position: absolute;
-  padding: 20% 0%;
-  display: inline;
-  float: left;
-  right: 0%;
-  top: 100%;
-  width: 250px;
-  height: 160px;
-}
-html #header ul[id="navigation"] li ul[class="subDir"] li,
-body #header ul[id="navigation"] li ul[class="subDir"] li {
-  padding: 2.5% 5%;
-  margin-right: 2.5%;
+  display: none;
 }
 html #header ul[id="navigation"] li:hover ul[class="subDir"],
 body #header ul[id="navigation"] li:hover ul[class="subDir"] {
-  background-color: hotpink;
+  background-color: #0c090a;
   position: absolute;
-  padding: 20% 0%;
+  padding: 0%;
   display: inline;
   float: left;
   right: 0%;
   top: 100%;
-  width: 250px;
-  height: 160px;
+  width: 225px;
+  height: 125px;
 }
 html #header ul[id="navigation"] li:hover ul[class="subDir"] li,
 body #header ul[id="navigation"] li:hover ul[class="subDir"] li {
-  padding: 2.5% 5%;
+  padding: 2.75% 5.25%;
+  margin-top: 7.5%;
+  margin-right: 5%;
 }
 html #header ul[id="navigation"] .active,
 body #header ul[id="navigation"] .active {

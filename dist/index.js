@@ -441,16 +441,16 @@ const links = [{
   name: "Services",
   link: rootDir + "pgs/services/services.html",
   subdirectories: [{
+    name: "Writing",
+    link: rootDir + "pgs/services/writing.html",
+    subdirectories: []
+  }, {
     name: "Reedmaking",
     link: rootDir + "pgs/services/reedmaking.html",
     subdirectories: []
   }, {
     name: "Editing",
     link: rootDir + "pgs/services/editing.html",
-    subdirectories: []
-  }, {
-    name: "Writing",
-    link: rootDir + "pgs/services/writing.html",
     subdirectories: []
   }, {
     name: "Performance",
@@ -531,7 +531,7 @@ let createNavigation = () => {
     if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
       currLi.setAttribute("class", "active");
-    } // Check if home page: index.html
+    } // Check if home page to float left: index.html
 
 
     if (link.name.localeCompare("Carl Colvin Arts") == 0) {

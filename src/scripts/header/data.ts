@@ -23,6 +23,11 @@ const links:Array<ILink> = [
     link:rootDir + "pgs/services/services.html",
     subdirectories:[
       {
+        name:"Writing",
+        link:rootDir + "pgs/services/writing.html",
+        subdirectories: []
+      },
+      {
         name:"Reedmaking",
         link:rootDir + "pgs/services/reedmaking.html",
         subdirectories: []
@@ -33,15 +38,10 @@ const links:Array<ILink> = [
         subdirectories: []
       },
       {
-        name:"Writing",
-        link:rootDir + "pgs/services/writing.html",
-        subdirectories: []
-      },
-      {
         name:"Performance",
         link:rootDir + "pgs/services/performance.html",
         subdirectories: []
-      },
+      }
     ]
   },
   {

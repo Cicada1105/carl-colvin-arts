@@ -42,23 +42,7 @@
 					float:right;
 
 					ul[class = "subDir"] {
-						background-color:hotpink;
-						position:absolute;
-						padding:20% 0%;
-						display:inline;
-						float:left;
-						right:0%;
-						top:100%;
-						width:250px;
-						height:160px;
-						li {
-							&:extend(.staticLI);
-							padding:2.5% 5%;
-							margin-right:2.5%;
-						}
-						li:hover {
-							&:extend(.staticLIHover);
-						}
+						display:none;
 					}
 				}
 				// Include hover affect on navigation
@@ -66,19 +50,21 @@
 					&:extend(.staticLIHover);
 					ul[class = "subDir"] {
 						&:extend(.staticUL);
-						background-color:hotpink;
+						background-color:@secondaryColor;
 						position:absolute;
-						padding:20% 0%;
+						padding:0%;
 						display:inline;
 						float:left;
 						right:0%;
 						top:100%;
-						width:250px;
-						height:160px;
+						width:225px;
+						height:125px;
 
 						li {
 							&:extend(.staticLI);
-							padding:2.5% 5%;
+							padding:2.75% 5.25%;
+							margin-top:7.5%;
+							margin-right:5%
 						}
 						li:hover {
 							&:extend(.staticLIHover);
