@@ -65,8 +65,8 @@ body #header ul[id="navigation"] li:hover ul[class="subDir"] li {
   margin-top: 7.5%;
   margin-right: 5%;
 }
-html #header ul[id="navigation"] .active,
-body #header ul[id="navigation"] .active {
+html #header ul[id="navigation"] #active,
+body #header ul[id="navigation"] #active {
   background-color: #f2f2f2;
   color: black;
 }

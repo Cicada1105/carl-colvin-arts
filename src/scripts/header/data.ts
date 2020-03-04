@@ -20,7 +20,7 @@ const links:Array<ILink> = [
   },
   {
     name:"Services",
-    link:rootDir + "pgs/services/services.html",
+    link:"",
     subdirectories:[
       {
         name:"Writing",

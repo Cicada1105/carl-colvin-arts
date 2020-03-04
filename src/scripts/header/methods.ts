@@ -29,7 +29,7 @@ let createNavigation = ():any => {
     // Check if current file matches a link (equivalent => 0)
     if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
-      currLi.setAttribute("class","active");
+      currLi.setAttribute("id","active");
     }
 
     // Check if home page to float left: index.html

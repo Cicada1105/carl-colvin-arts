@@ -439,7 +439,7 @@ const links = [{
   subdirectories: []
 }, {
   name: "Services",
-  link: rootDir + "pgs/services/services.html",
+  link: "",
   subdirectories: [{
     name: "Writing",
     link: rootDir + "pgs/services/writing.html",
@@ -530,7 +530,7 @@ let createNavigation = () => {
 
     if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) == 0) {
       // Add attribute to current li
-      currLi.setAttribute("class", "active");
+      currLi.setAttribute("id", "active");
     } // Check if home page to float left: index.html
 
 
