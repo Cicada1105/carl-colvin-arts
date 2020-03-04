@@ -50,11 +50,15 @@ const infoBox = (e:IBox):any => {
 
 const imgCont = (currImg:IImage):any => {
 	// HTML figure contains image and caption
-	let fig = document.createElement('figure');
+	let fig:any = document.createElement('figure');
 
-	let img = document.createElement('img');
+	let img:any = document.createElement('img');
 	img.setAttribute('src',currImg.path);
 	img.setAttribute('alt',currImg.alt);
+
+	let imgBorder:any = document.createElement('img');
+	imgBorder.setAttribute('src','./resources/cc_imgs/img_border.png');
+	imgBorder.setAttribute('class','imgBorder');
 
 	let figCaption = document.createElement('figcaption');
 	let figCaptionStr:string = typeof currImg.caption === "undefined" ? "" : currImg.caption;
@@ -63,6 +67,7 @@ const imgCont = (currImg:IImage):any => {
 	figCaption.appendChild(figCaptionTxt);
 
 	fig.appendChild(img);
+	fig.appendChild(imgBorder);
 	fig.appendChild(figCaption);
 
 	return fig;

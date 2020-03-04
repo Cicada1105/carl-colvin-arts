@@ -135,7 +135,7 @@ body .row figure {
 }
 html .row figure img,
 body .row figure img {
-  position: relative;
+  position: absolute;
   width: 100%;
 }
 html #footer,
