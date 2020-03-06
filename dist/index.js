@@ -32,10 +32,6 @@ const createBodyContent = () => {
       (0, _index2.loadAboutPage)();
       break;
 
-    case 'services':
-      (0, _index3.loadServicesPage)();
-      break;
-
     case 'listen':
       (0, _index4.loadListenPage)();
       break;
@@ -43,11 +39,15 @@ const createBodyContent = () => {
     case 'contact':
       (0, _index5.loadContactPage)();
       break;
+
+    default:
+      (0, _index3.loadServicesPage)();
+    // Doesn't have it's own home page so will redirect to loading specific page
   }
 };
 
 exports.createBodyContent = createBodyContent;
-},{"../global/methods":12,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":6,"./pgs/services/index":7}],2:[function(require,module,exports){
+},{"../global/methods":18,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":6,"./pgs/services/index":8}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -196,14 +196,205 @@ exports.loadListenPage = loadListenPage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.loadEditingPage = void 0;
+
+const loadEditingPage = () => {
+  console.log("Loading Editing Page");
+};
+
+exports.loadEditingPage = loadEditingPage;
+},{}],8:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.loadServicesPage = void 0;
 
+var _methods = require("../../../global/methods");
+
+var _index = require("./editing/index");
+
+var _index2 = require("./performance/index");
+
+var _index3 = require("./reedmaking/index");
+
+var _index4 = require("./writing/index");
+
+// This file will handle which services page to load based on the current file
+// Imports
 const loadServicesPage = () => {
-  console.log("loading services page");
+  let currPage = (0, _methods.getCurrentFile)();
+
+  switch (currPage) {
+    case "editing":
+      (0, _index.loadEditingPage)();
+      break;
+
+    case "performance":
+      (0, _index2.loadPerformancePage)();
+      break;
+
+    case "reedmaking":
+      (0, _index3.loadReedmakingPage)();
+      break;
+
+    case "writing":
+      (0, _index4.loadWritingPage)();
+      break;
+  }
 };
 
 exports.loadServicesPage = loadServicesPage;
-},{}],8:[function(require,module,exports){
+},{"../../../global/methods":18,"./editing/index":7,"./performance/index":9,"./reedmaking/index":11,"./writing/index":13}],9:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadPerformancePage = void 0;
+
+const loadPerformancePage = () => {
+  console.log("Loading Performance Page");
+};
+
+exports.loadPerformancePage = loadPerformancePage;
+},{}],10:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.data = void 0;
+const data = [{
+  name: "Reed 1",
+  description: "Has very good cane. Da best",
+  pricing: [{
+    quantity: 5,
+    cost: 50
+  }, {
+    quantity: 10,
+    cost: 90
+  }, {
+    quantity: 20,
+    cost: 160
+  }]
+}, {
+  name: "Reed 2",
+  description: "Has really good cane. Better dan da best",
+  pricing: [{
+    quantity: 5,
+    cost: 60
+  }, {
+    quantity: 10,
+    cost: 110
+  }, {
+    quantity: 20,
+    cost: 180
+  }]
+}, {
+  name: "Reed 3",
+  description: "Has amazing cane. Top of da line",
+  pricing: [{
+    quantity: 5,
+    cost: 75
+  }, {
+    quantity: 10,
+    cost: 140
+  }, {
+    quantity: 20,
+    cost: 240
+  }]
+}];
+exports.data = data;
+},{}],11:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadReedmakingPage = void 0;
+
+var _data = require("./data");
+
+var _methods = require("./methods");
+
+// Imports
+const loadReedmakingPage = () => {
+  // Create reed pricing container for each Reed
+  _data.data.forEach(reed => {
+    // Create container that will be used to help with sizing and positioning
+    let reedCont = document.createElement('div'); // Class to add styling to each price box
+
+    reedCont.setAttribute('class', 'reedPriceBox');
+    let reedPricingBox = (0, _methods.createReedPriceBox)(reed); // Append reed pricing box to the reed container
+
+    reedCont.appendChild(reedPricingBox);
+    document.body.appendChild(reedCont);
+  });
+};
+
+exports.loadReedmakingPage = loadReedmakingPage;
+},{"./data":10,"./methods":12}],12:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createReedPriceBox = void 0;
+
+// These will hold a majority of the methods used to display
+// 	content for the reedmaking page
+// Method will take in a ReedPricing Object and will return 
+// 	a container to display to the webpage
+const createReedPriceBox = reedData => {
+  let nameCont = document.createElement('div');
+  let nameNode = document.createTextNode(reedData.name); // Append name to container
+
+  nameCont.appendChild(nameNode);
+  nameCont.setAttribute('class', 'reedNameCont');
+  let descriptionCont = document.createElement('div');
+  let descriptionNode = document.createTextNode(reedData.description); // Append description to container
+
+  descriptionCont.appendChild(descriptionNode);
+  descriptionCont.setAttribute('class', 'reedDescriptionCont');
+  let pricingCont = createPriceCont(reedData.pricing); // Append pricing container to description container
+
+  descriptionCont.appendChild(pricingCont); // Append description container to name container
+
+  nameCont.appendChild(descriptionCont); // Return name container that holds the description and pricing children
+
+  return nameCont;
+}; // Method takes in IPricing Object Array and returns container organized
+// 	with passed data
+
+
+exports.createReedPriceBox = createReedPriceBox;
+
+const createPriceCont = priceData => {
+  let priceCont = document.createElement('div');
+  priceCont.setAttribute('class', 'reedPricingCont');
+  priceData.forEach(price => {
+    let priceFormat = "".concat(price.quantity, " | $").concat(price.cost);
+    let priceNode = document.createTextNode(priceFormat);
+    priceCont.appendChild(priceNode);
+  });
+  return priceCont;
+};
+},{}],13:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadWritingPage = void 0;
+
+const loadWritingPage = () => {
+  console.log("Loading writing page");
+};
+
+exports.loadWritingPage = loadWritingPage;
+},{}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -229,7 +420,7 @@ const data = {
   }
 };
 exports.data = data;
-},{}],9:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -296,7 +487,7 @@ const createBgFade = () => {
 };
 
 exports.createBgFade = createBgFade;
-},{"../global/methods":12,"./data":8}],10:[function(require,module,exports){
+},{"../global/methods":18,"./data":14}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -327,7 +518,7 @@ const data = [{
   link: "tbd"
 }];
 exports.data = data;
-},{}],11:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -375,7 +566,7 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"./data":10}],12:[function(require,module,exports){
+},{"./data":16}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -399,7 +590,7 @@ const getCurrentFile = () => {
 };
 
 exports.getCurrentFile = getCurrentFile;
-},{}],13:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -422,7 +613,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{}],14:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -471,7 +662,7 @@ const links = [{
   subdirectories: []
 }];
 exports.links = links;
-},{}],15:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -496,7 +687,7 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
-},{"./methods":16}],16:[function(require,module,exports){
+},{"./methods":22}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -608,7 +799,7 @@ let createSubdirectory = dirs => {
 
   return subUl;
 };
-},{"../global/methods":12,"./data":14}],17:[function(require,module,exports){
+},{"../global/methods":18,"./data":20}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -636,5 +827,5 @@ const init = () => {
 };
 
 exports.init = init;
-},{"./bg_content/index":1,"./bg_img/index":9,"./footer/index":11,"./gradient/index":13,"./header/index":15}]},{},[17])(17)
+},{"./bg_content/index":1,"./bg_img/index":15,"./footer/index":17,"./gradient/index":19,"./header/index":21}]},{},[23])(23)
 });
