@@ -7,12 +7,61 @@ html, body {
   width:100%;
   height:100%;
   margin:0;
-
-  #globalNS > .navigation();
-  #globalNS > .bg_canvas();
-  #globalNS > .bg_img();
-
-  /*  Rest of the styling goes here */
-
-  #globalNS > .social();
 }
+
+#globalNS > .navigation();
+#globalNS > .bg_canvas();
+#globalNS > .bg_img();
+
+.staticCont {
+	border-radius:15px;
+	position:absolute;
+	width:100%;
+}
+/*  Rest of the styling goes here */
+[class = 'reedPriceBox'] {
+	position:relative;
+	display:inline-block;
+	margin-left:2.5%;
+	top:10%;
+	width: 30%;
+	height:75%;
+	@media only screen and (max-width: 630px) {
+		display:block;
+	}
+
+	[class = 'reedNameCont'] {
+		&:extend(.staticCont);
+		background-color:@accentColor;
+		mix-blend-mode:lighten;
+		font-size:1.25rem;
+		text-align: center;
+		width:100%;
+		height:100%;
+
+		[class = 'reedDescriptionCont'] {
+			&:extend(.staticCont);
+			background-color:@activeColor;
+			mix-blend-mode: overlay;
+			text-align: center;
+			bottom:0%;
+			width:inherit;
+			height:75%;
+
+			[class = 'reedPricingCont'] {
+				&:extend(.staticCont);
+				background-color:@accentColor;
+				mix-blend-mode: darken;
+				text-align: center;
+				bottom:0%;
+				width:inherit;	
+				height:45%;
+			}
+		}
+	}
+}
+[class = 'reedText'] {
+	mix-blend-mode:difference;
+	color:@textColor;
+}
+#globalNS > .social();

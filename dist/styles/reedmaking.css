@@ -1,25 +1,17 @@
-html #header,
-body #header,
-html #footer,
-body #footer {
+#header,
+#footer {
   background-color: #0c090a;font-size: 1.5rem;position: fixed;filter: opacity(70%);z-index: 2;width: 100%;height: 6vh;
 }
-html #header ul[id="navigation"],
-body #header ul[id="navigation"],
-html #header ul[id="navigation"] li:hover ul[class="subDir"],
-body #header ul[id="navigation"] li:hover ul[class="subDir"] {
+#header ul[id="navigation"],
+#header ul[id="navigation"] li:hover ul[class="subDir"] {
   position: relative;padding: 0px;margin: 0%;
 }
-html #header ul[id="navigation"] li,
-body #header ul[id="navigation"] li,
-html #header ul[id="navigation"] li:hover ul[class="subDir"] li,
-body #header ul[id="navigation"] li:hover ul[class="subDir"] li {
+#header ul[id="navigation"] li,
+#header ul[id="navigation"] li:hover ul[class="subDir"] li {
   text-decoration: none;position: relative;font-size: 1.1rem;color: #f0edee;display: inline;
 }
-html #header ul[id="navigation"] li:hover,
-body #header ul[id="navigation"] li:hover,
-html #header ul[id="navigation"] li:hover ul[class="subDir"] li:hover,
-body #header ul[id="navigation"] li:hover ul[class="subDir"] li:hover {
+#header ul[id="navigation"] li:hover,
+#header ul[id="navigation"] li:hover ul[class="subDir"] li:hover {
   background-color: #f2f2f2;cursor: pointer;color: black;
 }
 html,
@@ -28,28 +20,22 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  /*  Rest of the styling goes here */
 }
-html #header,
-body #header {
+#header {
   top: 0%;
 }
-html #header ul[id="navigation"],
-body #header ul[id="navigation"] {
+#header ul[id="navigation"] {
   width: inherit;
   height: 100%;
 }
-html #header ul[id="navigation"] li,
-body #header ul[id="navigation"] li {
+#header ul[id="navigation"] li {
   padding: 0.65% 1.5% 0.85% 1.5%;
   float: right;
 }
-html #header ul[id="navigation"] li ul[class="subDir"],
-body #header ul[id="navigation"] li ul[class="subDir"] {
+#header ul[id="navigation"] li ul[class="subDir"] {
   display: none;
 }
-html #header ul[id="navigation"] li:hover ul[class="subDir"],
-body #header ul[id="navigation"] li:hover ul[class="subDir"] {
+#header ul[id="navigation"] li:hover ul[class="subDir"] {
   background-color: #0c090a;
   position: absolute;
   padding: 0%;
@@ -60,31 +46,26 @@ body #header ul[id="navigation"] li:hover ul[class="subDir"] {
   width: 225px;
   height: 125px;
 }
-html #header ul[id="navigation"] li:hover ul[class="subDir"] li,
-body #header ul[id="navigation"] li:hover ul[class="subDir"] li {
+#header ul[id="navigation"] li:hover ul[class="subDir"] li {
   padding: 2.75% 5.25%;
   margin-top: 7.5%;
   margin-right: 5%;
 }
-html #header ul[id="navigation"] #active,
-body #header ul[id="navigation"] #active {
+#header ul[id="navigation"] #active {
   background-color: #f2f2f2;
   color: black;
 }
-html #header ul[id="navigation"] #homeLink,
-body #header ul[id="navigation"] #homeLink {
+#header ul[id="navigation"] #homeLink {
   float: left;
 }
-html #bgCanvas,
-body #bgCanvas {
+#bgCanvas {
   position: fixed;
   width: inherit;
   height: inherit;
   top: 0%;
   z-index: 0;
 }
-html [id='bgImage'],
-body [id='bgImage'] {
+[id='bgImage'] {
   position: fixed;
   width: inherit;
   height: inherit;
@@ -92,33 +73,78 @@ body [id='bgImage'] {
   z-index: 1;
   top: 0%;
 }
-html #footer,
-body #footer {
+.staticCont,
+[class='reedPriceBox'] [class='reedNameCont'],
+[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'],
+[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'] [class='reedPricingCont'] {
+  border-radius: 15px;
+  position: absolute;
+  width: 100%;
+}
+/*  Rest of the styling goes here */
+[class='reedPriceBox'] {
+  position: relative;
+  display: inline-block;
+  margin-left: 2.5%;
+  top: 10%;
+  width: 30%;
+  height: 75%;
+}
+@media only screen and (max-width: 630px) {
+  [class='reedPriceBox'] {
+    display: block;
+  }
+}
+[class='reedPriceBox'] [class='reedNameCont'] {
+  background-color: #003249;
+  mix-blend-mode: lighten;
+  font-size: 1.25rem;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'] {
+  background-color: #f2f2f2;
+  mix-blend-mode: overlay;
+  text-align: center;
+  bottom: 0%;
+  width: inherit;
+  height: 75%;
+}
+[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'] [class='reedPricingCont'] {
+  background-color: #003249;
+  mix-blend-mode: darken;
+  text-align: center;
+  bottom: 0%;
+  width: inherit;
+  height: 45%;
+}
+[class='reedText'] {
+  mix-blend-mode: difference;
+  color: #f0edee;
+}
+#footer {
   bottom: 0%;
 }
-html #footer #social,
-body #footer #social {
+#footer #social {
   position: relative;
   padding-right: 2.5vw;
   float: right;
   width: 20vw;
   height: 100%;
 }
-html #footer #social .socialImg,
-body #footer #social .socialImg {
+#footer #social .socialImg {
   position: inherit;
   float: right;
   margin-top: 2.5%;
   margin-right: 4%;
   height: 28px;
 }
-html #footer #social .socialImg:hover,
-body #footer #social .socialImg:hover {
+#footer #social .socialImg:hover {
   cursor: pointer;
 }
 @media only screen and (max-width: 670px) {
-  html #footer #social img[alt="instagram"],
-  body #footer #social img[alt="instagram"] {
+  #footer #social img[alt="instagram"] {
     display: block;
   }
 }

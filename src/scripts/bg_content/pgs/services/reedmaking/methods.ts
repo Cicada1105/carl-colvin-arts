@@ -8,17 +8,22 @@ import { IPricing, ReedPricingInterface } from './interfaces'
 // 	a container to display to the webpage
 const createReedPriceBox = (reedData:ReedPricingInterface):any => {
 	let nameCont:any = document.createElement('div');
+
+	// Create span element to add styling to only the text element
+	let nameSpan:any = document.createElement('span');
+	// Add attribute to customize text
+	nameSpan.setAttribute('class','reedText');
+
 	let nameNode:any = document.createTextNode(reedData.name);
+	// Append name node to the span element
+	nameSpan.appendChild(nameNode);
+
 	// Append name to container
-	nameCont.appendChild(nameNode);
+	nameCont.appendChild(nameSpan);
 	nameCont.setAttribute('class','reedNameCont');
 
-	let descriptionCont:any = document.createElement('div');
-	let descriptionNode:any = document.createTextNode(reedData.description);
-	// Append description to container
-	descriptionCont.appendChild(descriptionNode);
-	descriptionCont.setAttribute('class','reedDescriptionCont');
 
+	let descriptionCont:any = createDescriptionCont(reedData.description);
 	let pricingCont:any = createPriceCont(reedData.pricing);
 
 	// Append pricing container to description container
@@ -30,18 +35,45 @@ const createReedPriceBox = (reedData:ReedPricingInterface):any => {
 	return nameCont;
 }
 
+const createDescriptionCont = (desc:string):any => {
+	let cont:any = document.createElement('div');
+
+	// Create span element to add styling to only the text element
+	let span:any = document.createElement('span');
+	// Add attribute to customize text
+	span.setAttribute('class','reedText');
+
+	let textNode:any = document.createTextNode(desc);
+	// Append description node to the span element
+	span.appendChild(textNode);
+
+	// Append description to container
+	cont.appendChild(span);
+	cont.setAttribute('class','reedDescriptionCont');
+
+	return cont;
+}
+
 // Method takes in IPricing Object Array and returns container organized
 // 	with passed data
 const createPriceCont = (priceData:IPricing[]):any => {
 	let priceCont:any = document.createElement('div');
 	priceCont.setAttribute('class','reedPricingCont');
 
+	// Create span element to add styling to only the text element
+	let span:any = document.createElement('span');
+	// Add attribute to customize text
+	span.setAttribute('class','reedText');
+
 	priceData.forEach(price => {
 		let priceFormat:string = `${price.quantity} | $${price.cost}`;
 		let priceNode:any = document.createTextNode(priceFormat);
 
-		priceCont.appendChild(priceNode);
-	})
+		span.appendChild(priceNode);
+	});
+
+	// Append span element to price container
+	priceCont.appendChild(span);
 
 	return priceCont;
 }

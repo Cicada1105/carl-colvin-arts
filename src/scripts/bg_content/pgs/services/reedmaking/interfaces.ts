@@ -1,4 +1,4 @@
-// Interfaces to be used on the Reedmaking page
+// This file holds the interfaces that are used by the reedmaking page
 
 interface IPricing {
 	quantity:number;
