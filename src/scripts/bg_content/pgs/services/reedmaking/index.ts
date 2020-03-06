@@ -8,7 +8,7 @@ const loadReedmakingPage = ():void => {
 		// Create container that will be used to help with sizing and positioning
 		let reedCont:any = document.createElement('div');
 		// Class to add styling to each price box
-		reedCont.setAttribute('class','reedPriceBox');
+		reedCont.setAttribute('class','priceBox');
 
 		let reedPricingBox:any = createReedPriceBox(reed);
 

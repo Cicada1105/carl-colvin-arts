@@ -74,54 +74,77 @@ body {
   top: 0%;
 }
 .staticCont,
-[class='reedPriceBox'] [class='reedNameCont'],
-[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'],
-[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'] [class='reedPricingCont'] {
-  border-radius: 15px;
+.staticBlendCont,
+[class="priceBox"] [class="nameCont"],
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"],
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"] [class="pricingCont"],
+[class="priceBox"] [class="nameCont"] [class="nameBlend"],
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"],
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"] [class="pricingCont"] [class="pricingBlend"] {
   position: absolute;
   width: 100%;
 }
+.staticBlendCont,
+[class="priceBox"] [class="nameCont"] [class="nameBlend"],
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"],
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"] [class="pricingCont"] [class="pricingBlend"] {
+  border-radius: 15px;
+}
+[class*="Name"] {
+  position: absolute;
+  mix-blend-mode: normal;
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 10px;
+  color: #f0edee;
+  width: 100%;
+  top: 0%;
+}
 /*  Rest of the styling goes here */
-[class='reedPriceBox'] {
+[class="priceBox"] {
   position: relative;
   display: inline-block;
   margin-left: 2.5%;
+  margin-top: 1.5%;
   top: 10%;
   width: 30%;
   height: 75%;
 }
 @media only screen and (max-width: 630px) {
-  [class='reedPriceBox'] {
+  [class="priceBox"] {
     display: block;
   }
 }
-[class='reedPriceBox'] [class='reedNameCont'] {
-  background-color: #003249;
-  mix-blend-mode: lighten;
-  font-size: 1.25rem;
-  text-align: center;
-  width: 100%;
+[class="priceBox"] [class="nameCont"] {
+  height: inherit;
   height: 100%;
-}
-[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'] {
-  background-color: #f2f2f2;
-  mix-blend-mode: overlay;
-  text-align: center;
   bottom: 0%;
-  width: inherit;
-  height: 75%;
 }
-[class='reedPriceBox'] [class='reedNameCont'] [class='reedDescriptionCont'] [class='reedPricingCont'] {
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] {
   background-color: #003249;
-  mix-blend-mode: darken;
-  text-align: center;
+  mix-blend-mode: screen;
+  height: inherit;
   bottom: 0%;
-  width: inherit;
+}
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] {
+  height: 75%;
+  bottom: 0%;
+}
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"] {
+  background-color: #31668b;
+  mix-blend-mode: screen;
+  height: 100%;
+  bottom: 0%;
+}
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"] [class="pricingCont"] {
+  bottom: 0%;
   height: 45%;
 }
-[class='reedText'] {
-  mix-blend-mode: difference;
-  color: #f0edee;
+[class="priceBox"] [class="nameCont"] [class="nameBlend"] [class="descriptionCont"] [class="descriptionBlend"] [class="pricingCont"] [class="pricingBlend"] {
+  background-color: #f2f2f2;
+  mix-blend-mode: soft-light;
+  height: 100%;
+  bottom: 0%;
 }
 #footer {
   bottom: 0%;

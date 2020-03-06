@@ -8,48 +8,55 @@ import { IPricing, ReedPricingInterface } from './interfaces'
 // 	a container to display to the webpage
 const createReedPriceBox = (reedData:ReedPricingInterface):any => {
 	let nameCont:any = document.createElement('div');
+	nameCont.setAttribute('class','nameCont');
 
 	// Create span element to add styling to only the text element
 	let nameSpan:any = document.createElement('span');
 	// Add attribute to customize text
-	nameSpan.setAttribute('class','reedText');
-
+	nameSpan.setAttribute('class','reedName');
 	let nameNode:any = document.createTextNode(reedData.name);
 	// Append name node to the span element
 	nameSpan.appendChild(nameNode);
 
-	// Append name to container
+	// Container to have the blend mode to allow the text to be different color
+	let nameBlendCont:any = document.createElement('span');
+	nameBlendCont.setAttribute('class','nameBlend');
+
+	// Append Description container to blend container
+	let descriptionCont:any = createDescriptionCont(reedData);
+	nameBlendCont.appendChild(descriptionCont);
+
+	// Append blend and text to container
 	nameCont.appendChild(nameSpan);
-	nameCont.setAttribute('class','reedNameCont');
-
-
-	let descriptionCont:any = createDescriptionCont(reedData.description);
-	let pricingCont:any = createPriceCont(reedData.pricing);
-
-	// Append pricing container to description container
-	descriptionCont.appendChild(pricingCont);
-	// Append description container to name container
-	nameCont.appendChild(descriptionCont);
+	nameCont.appendChild(nameBlendCont);
 
 	// Return name container that holds the description and pricing children
 	return nameCont;
 }
 
-const createDescriptionCont = (desc:string):any => {
+const createDescriptionCont = ({description, pricing}:any):any => {
 	let cont:any = document.createElement('div');
+	cont.setAttribute('class','descriptionCont');
 
 	// Create span element to add styling to only the text element
 	let span:any = document.createElement('span');
 	// Add attribute to customize text
-	span.setAttribute('class','reedText');
-
-	let textNode:any = document.createTextNode(desc);
+	span.setAttribute('class','descriptionName');
+	let textNode:any = document.createTextNode(description);
 	// Append description node to the span element
 	span.appendChild(textNode);
 
-	// Append description to container
+	// Container to have the blend mode to allow text to be different color
+	let blendCont:any = document.createElement('span');
+	blendCont.setAttribute('class','descriptionBlend');
+
+	// Add pricing data container to the description blend
+	let pricingCont:any = createPriceCont(pricing);
+	blendCont.appendChild(pricingCont);
+
+	// Append blend and text to container
 	cont.appendChild(span);
-	cont.setAttribute('class','reedDescriptionCont');
+	cont.appendChild(blendCont);
 
 	return cont;
 }
@@ -57,25 +64,31 @@ const createDescriptionCont = (desc:string):any => {
 // Method takes in IPricing Object Array and returns container organized
 // 	with passed data
 const createPriceCont = (priceData:IPricing[]):any => {
-	let priceCont:any = document.createElement('div');
-	priceCont.setAttribute('class','reedPricingCont');
+	let cont:any = document.createElement('div');
+	cont.setAttribute('class','pricingCont');
 
 	// Create span element to add styling to only the text element
 	let span:any = document.createElement('span');
 	// Add attribute to customize text
-	span.setAttribute('class','reedText');
+	span.setAttribute('class','pricingName');
 
+	let priceFormat:string = "";
 	priceData.forEach(price => {
-		let priceFormat:string = `${price.quantity} | $${price.cost}`;
-		let priceNode:any = document.createTextNode(priceFormat);
-
-		span.appendChild(priceNode);
+		priceFormat += `${price.quantity} | $${price.cost}\n`;
 	});
+	let priceNode:any = document.createTextNode(priceFormat);
+	// Append text to the span node
+	span.appendChild(priceNode);
 
-	// Append span element to price container
-	priceCont.appendChild(span);
+	// Container to have the blend mode to allow text to be different color
+	let blendCont:any = document.createElement('div');
+	blendCont.setAttribute('class','pricingBlend');
 
-	return priceCont;
+	// Append blend and text to price container
+	cont.appendChild(span);
+	cont.appendChild(blendCont);
+
+	return cont;
 }
 
 export { createReedPriceBox }

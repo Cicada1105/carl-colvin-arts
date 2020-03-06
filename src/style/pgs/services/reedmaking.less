@@ -14,15 +14,30 @@ html, body {
 #globalNS > .bg_img();
 
 .staticCont {
-	border-radius:15px;
 	position:absolute;
 	width:100%;
 }
+.staticBlendCont {
+	&:extend(.staticCont);
+	border-radius:15px;
+}
+// The text headers of each container
+[class *= "Name"] {
+	position:absolute;
+	mix-blend-mode:normal;
+	font-size:1.25rem;
+	text-align: center;
+	margin-top:10px;
+	color:@textColor;
+	width:100%;
+	top:0%;
+}
 /*  Rest of the styling goes here */
-[class = 'reedPriceBox'] {
+[class = "priceBox"] {
 	position:relative;
 	display:inline-block;
 	margin-left:2.5%;
+	margin-top:1.5%;
 	top:10%;
 	width: 30%;
 	height:75%;
@@ -30,38 +45,48 @@ html, body {
 		display:block;
 	}
 
-	[class = 'reedNameCont'] {
+	[class = "nameCont"] {
 		&:extend(.staticCont);
-		background-color:@accentColor;
-		mix-blend-mode:lighten;
-		font-size:1.25rem;
-		text-align: center;
-		width:100%;
+		height:inherit;
 		height:100%;
+		bottom:0%;
 
-		[class = 'reedDescriptionCont'] {
-			&:extend(.staticCont);
-			background-color:@activeColor;
-			mix-blend-mode: overlay;
-			text-align: center;
+		[class = "nameBlend"] {
+			&:extend(.staticBlendCont);
+			background-color:@accentColor;
+			mix-blend-mode: screen;
+			height:inherit;
 			bottom:0%;
-			width:inherit;
-			height:75%;
 
-			[class = 'reedPricingCont'] {
+			[class = "descriptionCont"] {
 				&:extend(.staticCont);
-				background-color:@accentColor;
-				mix-blend-mode: darken;
-				text-align: center;
+				height:75%;
 				bottom:0%;
-				width:inherit;	
-				height:45%;
-			}
+
+				[class = "descriptionBlend"] {
+					&:extend(.staticBlendCont);
+					background-color:#31668b;
+					mix-blend-mode: screen;
+					height:100%;
+					bottom:0%;
+
+					[class = "pricingCont"] {
+						&:extend(.staticCont);
+						bottom:0%;	
+						height:45%;
+
+						[class = "pricingBlend"] {
+							&:extend(.staticBlendCont);
+							background-color:@activeColor;
+							mix-blend-mode: soft-light;
+							height:100%;
+							bottom:0%;
+						}
+					}
+				}
+			}	
 		}
 	}
 }
-[class = 'reedText'] {
-	mix-blend-mode:difference;
-	color:@textColor;
-}
+
 #globalNS > .social();
