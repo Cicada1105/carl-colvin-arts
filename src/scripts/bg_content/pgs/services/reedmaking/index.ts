@@ -3,6 +3,16 @@ import { data } from './data'
 import { createReedPriceBox } from './methods'
 
 const loadReedmakingPage = ():void => {
+	// Load reed images and descriptions
+	loadReedImages();
+	// Load the reed pricings
+	loadPricings();
+}
+
+const loadReedImages = ():void => {
+	console.log("loading images");
+}
+const loadPricings = ():void => {
 	// Create reed pricing container for each Reed
 	data.forEach(reed => {
 		// Create container that will be used to help with sizing and positioning
@@ -18,5 +28,4 @@ const loadReedmakingPage = ():void => {
 		document.body.appendChild(reedCont);
 	});
 }
-
 export { loadReedmakingPage }

@@ -321,6 +321,19 @@ var _methods = require("./methods");
 
 // Imports
 const loadReedmakingPage = () => {
+  // Load reed images and descriptions
+  loadReedImages(); // Load the reed pricings
+
+  loadPricings();
+};
+
+exports.loadReedmakingPage = loadReedmakingPage;
+
+const loadReedImages = () => {
+  console.log("loading images");
+};
+
+const loadPricings = () => {
   // Create reed pricing container for each Reed
   _data.data.forEach(reed => {
     // Create container that will be used to help with sizing and positioning
@@ -333,8 +346,6 @@ const loadReedmakingPage = () => {
     document.body.appendChild(reedCont);
   });
 };
-
-exports.loadReedmakingPage = loadReedmakingPage;
 },{"./data":10,"./methods":12}],12:[function(require,module,exports){
 "use strict";
 
@@ -443,21 +454,45 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.data = void 0;
 // Use for development
-const imgPath = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/music_imgs/'; // Each page will hold a different image fade
+const imgPath = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/bg_imgs/'; // Each page will hold a different image fade
 //	 Define associative array
 
 const data = {
-  "oboe": {
+  "": {
     path: imgPath + "oboe_sheet_music.png",
     alt: "Oboe and Sheet Music"
   },
-  "english_horn": {
-    path: imgPath + "",
+  "index": {
+    path: imgPath + "oboe_sheet_music.png",
+    alt: "Oboe and Sheet Music"
+  },
+  "about": {
+    path: imgPath + "english_horn_sheet_music.jpg",
     alt: "English Horn"
   },
-  "poem": {
-    path: imgPath + "",
+  "reedmaking": {
+    path: imgPath + "reedmaking_bg.jpg",
+    alt: "Reeds with sharpening tools and woodblock"
+  },
+  "writing": {
+    path: imgPath + "flight_poem.jpg",
     alt: "Poem"
+  },
+  "performance": {
+    path: imgPath + "carl_red_pew.jpg",
+    alt: "Playing oboe in church pew"
+  },
+  "editing": {
+    path: imgPath + "",
+    alt: "Editing"
+  },
+  "listen": {
+    path: imgPath + "rand_reeds.jpg",
+    alt: "Extra reed pic"
+  },
+  "contact": {
+    path: imgPath + "",
+    alt: "Some picture of carl"
   }
 };
 exports.data = data;
@@ -484,39 +519,10 @@ const createBgFade = () => {
   let imgLocation; // Image alt
 
   let imgAlternative; // Based on current location, display different image
+  // Data is associative with currFile being name of key
 
-  switch (currFile) {
-    case 'index':
-      imgLocation = _data.data['oboe'].path;
-      imgAlternative = _data.data['oboe'].alt;
-      break;
-
-    case 'about':
-      imgLocation = _data.data['english_horn'].path;
-      imgAlternative = _data.data['english_horn'].alt;
-      break;
-
-    case 'services':
-      imgLocation = _data.data['poem'].path;
-      imgAlternative = _data.data['poem'].alt;
-      break;
-
-    case 'listen':
-      imgLocation = _data.data['oboe'].path;
-      imgAlternative = _data.data['oboe'].alt;
-      break;
-
-    case 'contact':
-      imgLocation = _data.data['oboe'].path;
-      imgAlternative = _data.data['oboe'].alt;
-      break;
-
-    default:
-      imgLocation = _data.data['oboe'].path;
-      imgAlternative = _data.data['oboe'].alt;
-  }
-
-  ; // Fade image 
+  imgLocation = _data.data[currFile].path;
+  imgAlternative = _data.data[currFile].alt; // Fade image 
   //let imageFade:any = createImageFade(imgLocation,imgAlternative);
 
   let imageFade = document.createElement('img');
@@ -537,8 +543,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.data = void 0;
 // Use during development
 const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs"; // Use during production
-// const imagePath = "/resources/media_imgs";
-// const imagePath = "./resources/media_imgs";
+//const imagePath = "./resources/media_imgs";
 // Data holding info about social media links
 
 const data = [{
@@ -663,7 +668,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.links = void 0;
 // Use during development
 const rootDir = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/"; // Use during production
-// const rootDir:string = "/";
+//const rootDir:string = "/";
 
 const links = [{
   name: "Carl Colvin Arts",

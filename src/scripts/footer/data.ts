@@ -9,8 +9,7 @@ interface ImageInterface {
 // Use during development
 const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs";
 // Use during production
-// const imagePath = "/resources/media_imgs";
-// const imagePath = "./resources/media_imgs";
+//const imagePath = "./resources/media_imgs";
 
 // Data holding info about social media links
 const data:IImageLink[] = [

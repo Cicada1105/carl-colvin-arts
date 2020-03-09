@@ -14,31 +14,9 @@ const createBgFade = ():void => {
 	// Image alt
 	let imgAlternative:string;
 	// Based on current location, display different image
-	switch(currFile) {
-		case 'index':
-			imgLocation = bgImgs['oboe'].path;
-			imgAlternative = bgImgs['oboe'].alt;
-		break;
-		case 'about':
-			imgLocation = bgImgs['english_horn'].path;
-			imgAlternative = bgImgs['english_horn'].alt;
-		break;
-		case 'services':
-			imgLocation = bgImgs['poem'].path;
-			imgAlternative = bgImgs['poem'].alt;
-		break;
-		case 'listen':
-			imgLocation = bgImgs['oboe'].path;
-			imgAlternative = bgImgs['oboe'].alt;
-		break;
-		case 'contact':
-			imgLocation = bgImgs['oboe'].path;
-			imgAlternative = bgImgs['oboe'].alt;
-		break;
-		default:
-			imgLocation = bgImgs['oboe'].path;
-			imgAlternative = bgImgs['oboe'].alt;
-	};
+	// Data is associative with currFile being name of key
+	imgLocation = bgImgs[currFile].path;
+	imgAlternative = bgImgs[currFile].alt;
 
 	// Fade image 
 	//let imageFade:any = createImageFade(imgLocation,imgAlternative);
