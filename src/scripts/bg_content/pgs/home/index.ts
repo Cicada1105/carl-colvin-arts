@@ -55,9 +55,10 @@ const imgCont = (currImg:IImage):any => {
 	let img:any = document.createElement('img');
 	img.setAttribute('src',currImg.path);
 	img.setAttribute('alt',currImg.alt);
+	img.setAttribute('class', 'homeImg');
 
 	let imgBorder:any = document.createElement('img');
-	imgBorder.setAttribute('src','./resources/cc_imgs/img_border.png');
+	imgBorder.setAttribute('src','./resources/home_imgs/img_border.png');
 	imgBorder.setAttribute('class','imgBorder');
 
 	let figCaption = document.createElement('figcaption');

@@ -17,22 +17,22 @@ const infoData:IBox[] = [
 		content:""
 	}
 ]
-const ccImgsPath:string = "./resources/cc_imgs/";
+const homeImgsPath:string = "./resources/home_imgs/";
 const imgData:IImage[] = [
 	{
-		path:ccImgsPath + "carl_headshot.png",
+		path:homeImgsPath + "carl_headshot.png",
 		alt:"Carl Headshot",
 		caption:"Carl Headshot"
 	}, 
 	{
-		path:ccImgsPath + "oboe_performance.png",
+		path:homeImgsPath + "oboe_performance.png",
 		alt:"Carl Performing Oboe",
 		caption:"Carl Playing Oboe"
 	},
 	{
-		path:ccImgsPath + "",
-		alt:"Carl doing stuff",
-		caption:"Carl"
+		path:homeImgsPath + "flight_poem.png",
+		alt:"Flight Poem",
+		caption:"Carl's published poem: Flight"
 	}
 ]
 

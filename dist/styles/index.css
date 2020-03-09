@@ -110,7 +110,12 @@ body {
 }
 .row figure img {
   position: absolute;
+}
+.row figure .imgBorder {
   width: 100%;
+}
+.row figure .homeImg {
+  width: 97%;
 }
 #footer {
   bottom: 0%;

@@ -91,19 +91,19 @@ const infoData = [{
   content: ""
 }];
 exports.infoData = infoData;
-const ccImgsPath = "./resources/cc_imgs/";
+const homeImgsPath = "./resources/home_imgs/";
 const imgData = [{
-  path: ccImgsPath + "carl_headshot.png",
+  path: homeImgsPath + "carl_headshot.png",
   alt: "Carl Headshot",
   caption: "Carl Headshot"
 }, {
-  path: ccImgsPath + "oboe_performance.png",
+  path: homeImgsPath + "oboe_performance.png",
   alt: "Carl Performing Oboe",
   caption: "Carl Playing Oboe"
 }, {
-  path: ccImgsPath + "",
-  alt: "Carl doing stuff",
-  caption: "Carl"
+  path: homeImgsPath + "flight_poem.png",
+  alt: "Flight Poem",
+  caption: "Carl's published poem: Flight"
 }];
 exports.imgData = imgData;
 },{}],5:[function(require,module,exports){
@@ -165,8 +165,9 @@ const imgCont = currImg => {
   let img = document.createElement('img');
   img.setAttribute('src', currImg.path);
   img.setAttribute('alt', currImg.alt);
+  img.setAttribute('class', 'homeImg');
   let imgBorder = document.createElement('img');
-  imgBorder.setAttribute('src', './resources/cc_imgs/img_border.png');
+  imgBorder.setAttribute('src', './resources/home_imgs/img_border.png');
   imgBorder.setAttribute('class', 'imgBorder');
   let figCaption = document.createElement('figcaption');
   let figCaptionStr = typeof currImg.caption === "undefined" ? "" : currImg.caption;
@@ -459,11 +460,11 @@ const imgPath = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resour
 
 const data = {
   "": {
-    path: imgPath + "oboe_sheet_music.png",
+    path: imgPath + "oboe_sheet_music.jpg",
     alt: "Oboe and Sheet Music"
   },
   "index": {
-    path: imgPath + "oboe_sheet_music.png",
+    path: imgPath + "oboe_sheet_music.jpg",
     alt: "Oboe and Sheet Music"
   },
   "about": {

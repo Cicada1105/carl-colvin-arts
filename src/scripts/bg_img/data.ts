@@ -15,11 +15,11 @@ interface IBgImage {
 //	 Define associative array
 const data:IBgImage = {
 	"" : {
-		path: imgPath + "oboe_sheet_music.png",
+		path: imgPath + "oboe_sheet_music.jpg",
 		alt: "Oboe and Sheet Music",	
 	},
 	"index" : {
-		path: imgPath + "oboe_sheet_music.png",
+		path: imgPath + "oboe_sheet_music.jpg",
 		alt: "Oboe and Sheet Music",
 	},
 	"about" : {
