@@ -114,8 +114,17 @@ body {
 .row figure .imgBorder {
   width: 100%;
 }
-.row figure .homeImg {
+div.row:nth-of-type(3) .homeImg {
+  margin-left: 1%;
   width: 97%;
+}
+div.row:nth-of-type(4) .homeImg {
+  margin-left: 1%;
+  width: 96%;
+}
+div.row:nth-of-type(5) .homeImg {
+  margin-left: 1.5%;
+  width: 95%;
 }
 #footer {
   bottom: 0%;
