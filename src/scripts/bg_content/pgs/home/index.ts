@@ -50,7 +50,8 @@ const infoBox = (e:IBox):any => {
 
 const imgCont = (currImg:IImage):any => {
 	// HTML figure contains image and caption
-	let fig:any = document.createElement('figure');
+	let fig:any = document.createElement('div');
+	fig.setAttribute('class','figure');
 
 	// Image to display within circular design
 	let img:any = document.createElement('img');
@@ -63,20 +64,29 @@ const imgCont = (currImg:IImage):any => {
 	imgBorder.setAttribute('src','./resources/home_imgs/img_border.png');
 	imgBorder.setAttribute('class','imgBorder');
 
+	let figCaption = document.createElement('div');
+	figCaption.setAttribute('class','figcaption');
+
+	let figCaptionP = document.createElement('p');
+	let figCaptionStr:string = typeof currImg.caption === "undefined" ? "" : currImg.caption;
+	let figCaptionTxt = document.createTextNode(figCaptionStr);
+
 	// On hovering over imgBorder, fade img itself
 	imgBorder.addEventListener('mouseover',() => {
 		img.style.filter = 'opacity(50%)';
+		figCaption.style.display = 'block';
+		
 	});
 	// On leaving image, img has full opacity
 	imgBorder.addEventListener('mouseout',() => {
 		img.style.filter = 'opacity(100%)';
-	})
+		figCaption.style.display = 'none';
+	});
 
-	let figCaption = document.createElement('figcaption');
-	let figCaptionStr:string = typeof currImg.caption === "undefined" ? "" : currImg.caption;
-
-	let figCaptionTxt = document.createTextNode(figCaptionStr);
-	figCaption.appendChild(figCaptionTxt);
+	// Append caption text to paragraph
+	figCaptionP.appendChild(figCaptionTxt);
+	// Append paragraph to caption container
+	figCaption.appendChild(figCaptionP)
 
 	fig.appendChild(img);
 	fig.appendChild(imgBorder);
