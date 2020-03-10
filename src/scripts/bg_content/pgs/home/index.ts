@@ -52,14 +52,25 @@ const imgCont = (currImg:IImage):any => {
 	// HTML figure contains image and caption
 	let fig:any = document.createElement('figure');
 
+	// Image to display within circular design
 	let img:any = document.createElement('img');
 	img.setAttribute('src',currImg.path);
 	img.setAttribute('alt',currImg.alt);
 	img.setAttribute('class', 'homeImg');
 
+	// Circular border to add depth to image
 	let imgBorder:any = document.createElement('img');
 	imgBorder.setAttribute('src','./resources/home_imgs/img_border.png');
 	imgBorder.setAttribute('class','imgBorder');
+
+	// On hovering over imgBorder, fade img itself
+	imgBorder.addEventListener('mouseover',() => {
+		img.style.filter = 'opacity(50%)';
+	});
+	// On leaving image, img has full opacity
+	imgBorder.addEventListener('mouseout',() => {
+		img.style.filter = 'opacity(100%)';
+	})
 
 	let figCaption = document.createElement('figcaption');
 	let figCaptionStr:string = typeof currImg.caption === "undefined" ? "" : currImg.caption;

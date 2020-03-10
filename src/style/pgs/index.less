@@ -31,7 +31,7 @@ html, body {
     color:@textColor;
     position:inherit;
     top:0%;
-    width:300px;
+    width:500px;
     height:100%;
     h3 {
       text-align:center;
@@ -47,31 +47,43 @@ html, body {
     width:300px;
     img {
       position:absolute;
+      z-index:1
     }
     .imgBorder {
       width:100%;
+      z-index:2;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    figcaption {
+      background-color:@secondaryColor;
+      font-size:1.2rem;
+      color:@textColor;
+      height:100%;
+      z-index:3;
     }
   }
-}
-// Carl headshot
-div.row:nth-of-type(3) {
-  .homeImg {
-    margin-left:1%;
-    width:97%;
+  // Carl headshot
+  &:nth-of-type(3) {
+    .homeImg {
+      margin-left:1%;
+      width:97%;
+    }
   }
-}
-// Carl playing oboe
-div.row:nth-of-type(4) {
-  .homeImg {
-    margin-left:1%;
-    width:96%;
+  // Carl playing oboe
+  &:nth-of-type(4) {
+    .homeImg {
+      margin-left:1%;
+      width:96%;
+    }
   }
-}
-// Flight poem
-div.row:nth-of-type(5) {
-  .homeImg {
-    margin-left:1.5%;
-    width:95%;
+  // Flight poem
+  &:nth-of-type(5) {
+    .homeImg {
+      margin-left:1.5%;
+      width:95%;
+    }
   }
 }
 #globalNS > .social();

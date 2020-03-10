@@ -93,7 +93,7 @@ body {
   color: #f0edee;
   position: inherit;
   top: 0%;
-  width: 300px;
+  width: 500px;
   height: 100%;
 }
 .row section h3 {
@@ -110,19 +110,31 @@ body {
 }
 .row figure img {
   position: absolute;
+  z-index: 1;
 }
 .row figure .imgBorder {
   width: 100%;
+  z-index: 2;
 }
-div.row:nth-of-type(3) .homeImg {
+.row figure .imgBorder:hover {
+  cursor: pointer;
+}
+.row figure figcaption {
+  background-color: #0c090a;
+  font-size: 1.2rem;
+  color: #f0edee;
+  height: 100%;
+  z-index: 3;
+}
+.row:nth-of-type(3) .homeImg {
   margin-left: 1%;
   width: 97%;
 }
-div.row:nth-of-type(4) .homeImg {
+.row:nth-of-type(4) .homeImg {
   margin-left: 1%;
   width: 96%;
 }
-div.row:nth-of-type(5) .homeImg {
+.row:nth-of-type(5) .homeImg {
   margin-left: 1.5%;
   width: 95%;
 }

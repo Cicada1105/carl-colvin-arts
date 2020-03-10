@@ -82,7 +82,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.imgData = exports.infoData = void 0;
 const infoData = [{
   header: "About",
-  content: "Carl Colvin is a freelance musician, teacher, writer, and " + "editor originally from Chicago, Illinois and now recently residing " + "in the Cincinnati, Ohio area"
+  content: "Carl Colvin is a freelance musician, teacher, writer, and " + "editor originally from Chicago, Illinois and now recently residing " + "in the Cincinnati, Ohio area."
 }, {
   header: "Listen",
   content: ""
@@ -99,11 +99,11 @@ const imgData = [{
 }, {
   path: homeImgsPath + "oboe_performance.png",
   alt: "Carl Performing Oboe",
-  caption: "Carl Playing Oboe"
+  caption: "Performing with spoken word artist and art curator Kenya Fulton " + "at the Dank Haus in Chicago."
 }, {
   path: homeImgsPath + "flight_poem.png",
   alt: "Flight Poem",
-  caption: "Carl's published poem: Flight"
+  caption: "Flight: Poem written by Carl Colvin and published in America's Best Emerging Poets"
 }];
 exports.imgData = imgData;
 },{}],5:[function(require,module,exports){
@@ -161,14 +161,24 @@ const infoBox = e => {
 
 const imgCont = currImg => {
   // HTML figure contains image and caption
-  let fig = document.createElement('figure');
+  let fig = document.createElement('figure'); // Image to display within circular design
+
   let img = document.createElement('img');
   img.setAttribute('src', currImg.path);
   img.setAttribute('alt', currImg.alt);
-  img.setAttribute('class', 'homeImg');
+  img.setAttribute('class', 'homeImg'); // Circular border to add depth to image
+
   let imgBorder = document.createElement('img');
   imgBorder.setAttribute('src', './resources/home_imgs/img_border.png');
-  imgBorder.setAttribute('class', 'imgBorder');
+  imgBorder.setAttribute('class', 'imgBorder'); // On hovering over imgBorder, fade img itself
+
+  imgBorder.addEventListener('mouseover', () => {
+    img.style.filter = 'opacity(50%)';
+  }); // On leaving image, img has full opacity
+
+  imgBorder.addEventListener('mouseout', () => {
+    img.style.filter = 'opacity(100%)';
+  });
   let figCaption = document.createElement('figcaption');
   let figCaptionStr = typeof currImg.caption === "undefined" ? "" : currImg.caption;
   let figCaptionTxt = document.createTextNode(figCaptionStr);
