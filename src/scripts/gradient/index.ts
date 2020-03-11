@@ -1,6 +1,10 @@
+// This files creates the gradient effect that will be displayed on every page
+// Imports
+// global
+import { createElement } from '../global/methods'
+
 const createGradient = ():void => {
-	const cvsEl = document.createElement("canvas");
-	cvsEl.setAttribute("id","bgCanvas");
+	let cvsEl:any = createElement({element:'canvas',idName:'bgCanvas'});
 	document.body.appendChild(cvsEl);
 
   	const cvs:any = document.getElementById("bgCanvas");

@@ -1,4 +1,3 @@
-import { IImage, IBox } from '../../../global/interfaces';
-declare const infoData: IBox[];
-declare const imgData: IImage[];
-export { infoData, imgData };
+import { IRow } from './interfaces';
+declare const Rows: IRow[];
+export { Rows };

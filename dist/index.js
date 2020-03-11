@@ -79,33 +79,40 @@ exports.loadContactPage = loadContactPage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.imgData = exports.infoData = void 0;
-const infoData = [{
-  header: "About",
-  content: "Carl Colvin is a freelance musician, teacher, writer, and " + "editor originally from Chicago, Illinois and now recently residing " + "in the Cincinnati, Ohio area."
+exports.Rows = void 0;
+const IMG_PATH = "./resources/home_imgs/";
+const Rows = [{
+  infoData: {
+    header: "About",
+    content: "Carl Colvin is a freelance musician, teacher, writer, and " + "editor originally from Chicago, Illinois and now recently residing " + "in the Cincinnati, Ohio area."
+  },
+  imgData: {
+    path: IMG_PATH + "carl_headshot.png",
+    alt: "Carl Headshot",
+    caption: "Carl Headshot"
+  }
 }, {
-  header: "Listen",
-  content: ""
+  infoData: {
+    header: "Listen",
+    content: "Listen to carl's best moooosic"
+  },
+  imgData: {
+    path: IMG_PATH + "oboe_performance.png",
+    alt: "Carl Performing Oboe",
+    caption: "Performing with spoken word artist and art curator Kenya Fulton " + "at the Dank Haus in Chicago."
+  }
 }, {
-  header: "Services",
-  content: ""
+  infoData: {
+    header: "Services",
+    content: "Take part in carl's top tier services. 6 stars out of 5"
+  },
+  imgData: {
+    path: IMG_PATH + "flight_poem.png",
+    alt: "Flight Poem",
+    caption: "Flight: Poem written by Carl Colvin and published in America's Best Emerging Poets"
+  }
 }];
-exports.infoData = infoData;
-const homeImgsPath = "./resources/home_imgs/";
-const imgData = [{
-  path: homeImgsPath + "carl_headshot.png",
-  alt: "Carl Headshot",
-  caption: "Carl Headshot"
-}, {
-  path: homeImgsPath + "oboe_performance.png",
-  alt: "Carl Performing Oboe",
-  caption: "Performing with spoken word artist and art curator Kenya Fulton " + "at the Dank Haus in Chicago."
-}, {
-  path: homeImgsPath + "flight_poem.png",
-  alt: "Flight Poem",
-  caption: "Flight: Poem written by Carl Colvin and published in America's Best Emerging Poets"
-}];
-exports.imgData = imgData;
+exports.Rows = Rows;
 },{}],5:[function(require,module,exports){
 "use strict";
 
@@ -116,17 +123,20 @@ exports.loadHomePage = void 0;
 
 var _data = require("./data");
 
+var _methods = require("../../../global/methods");
+
 // Imports
 const loadHomePage = () => {
-  let numDataRows = _data.infoData.length;
   let currBox;
   let currImg;
 
-  for (let i = 0; i < numDataRows; i++) {
-    currBox = infoBox(_data.infoData[i]);
-    currImg = imgCont(_data.imgData[i]);
-    let dataRow = document.createElement('div');
-    dataRow.setAttribute('class', 'row'); // Alternate info boxes and images
+  _data.Rows.forEach((row, i) => {
+    currBox = infoBox(row.infoData);
+    currImg = imgCont(row.imgData); // createElement's default element is div
+
+    let dataRow = (0, _methods.createElement)({
+      className: 'row'
+    }); // Alternate info boxes and images
 
     if (i % 2 == 0) {
       currBox.setAttribute('id', 'left');
@@ -140,55 +150,65 @@ const loadHomePage = () => {
     dataRow.appendChild(currImg); // Append each row to the page
 
     document.body.appendChild(dataRow);
-  }
+  });
 };
 
 exports.loadHomePage = loadHomePage;
 
 const infoBox = e => {
   let box = document.createElement('section');
-  let h = document.createElement('h3');
-  let hText = document.createTextNode(e.header);
-  h.appendChild(hText); // Sections contain articles
+  let h = (0, _methods.createTextElement)({
+    element: 'h3',
+    text: e.header
+  }); // Sections contain articles/paragraphs
+  // createTextElement's default element is 'p'
 
-  let c = document.createElement('p');
-  let cText = document.createTextNode(e.content);
-  c.appendChild(cText);
+  let c = (0, _methods.createTextElement)({
+    text: e.content
+  });
   box.appendChild(h);
   box.appendChild(c);
   return box;
 };
 
 const imgCont = currImg => {
-  // HTML figure contains image and caption
-  let fig = document.createElement('div');
-  fig.setAttribute('class', 'figure'); // Image to display within circular design
+  // Create container to store the figure/image, border and data
+  // createElement's default element is 'div'
+  let fig = (0, _methods.createElement)({
+    className: 'figure'
+  }); // Image to display
 
-  let img = document.createElement('img');
-  img.setAttribute('src', currImg.path);
-  img.setAttribute('alt', currImg.alt);
-  img.setAttribute('class', 'homeImg'); // Circular border to add depth to image
+  let img = (0, _methods.createImageElement)({
+    src: currImg.path,
+    alt: currImg.alt,
+    className: 'homeImg'
+  }); // Circular border to add depth to image
 
-  let imgBorder = document.createElement('img');
-  imgBorder.setAttribute('src', './resources/home_imgs/img_border.png');
-  imgBorder.setAttribute('class', 'imgBorder');
-  let figCaption = document.createElement('div');
-  figCaption.setAttribute('class', 'figcaption');
-  let figCaptionP = document.createElement('p');
+  let imgBorder = (0, _methods.createImageElement)({
+    src: './resources/home_imgs/img_border.png',
+    className: 'imgBorder'
+  });
+  let figCaption = (0, _methods.createElement)({
+    className: 'figcaption'
+  }); // Data to display when user hovers over the image
+
+  let figCaptionP;
   let figCaptionStr = typeof currImg.caption === "undefined" ? "" : currImg.caption;
-  let figCaptionTxt = document.createTextNode(figCaptionStr); // On hovering over imgBorder, fade img itself
+  figCaptionP = (0, _methods.createTextElement)({
+    text: figCaptionStr
+  }); // On hovering over imgBorder, fade img itself
+  // Display data 
 
   imgBorder.addEventListener('mouseover', () => {
     img.style.filter = 'opacity(50%)';
     figCaption.style.display = 'block';
   }); // On leaving image, img has full opacity
+  // Hide data
 
   imgBorder.addEventListener('mouseout', () => {
     img.style.filter = 'opacity(100%)';
     figCaption.style.display = 'none';
-  }); // Append caption text to paragraph
-
-  figCaptionP.appendChild(figCaptionTxt); // Append paragraph to caption container
+  }); // Append paragraph to caption container
 
   figCaption.appendChild(figCaptionP);
   fig.appendChild(img);
@@ -196,7 +216,7 @@ const imgCont = currImg => {
   fig.appendChild(figCaption);
   return fig;
 };
-},{"./data":4}],6:[function(require,module,exports){
+},{"../../../global/methods":18,"./data":4}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -338,6 +358,8 @@ var _data = require("./data");
 
 var _methods = require("./methods");
 
+var _methods2 = require("../../../../global/methods");
+
 // Imports
 const loadReedmakingPage = () => {
   // Load reed images and descriptions
@@ -356,16 +378,17 @@ const loadPricings = () => {
   // Create reed pricing container for each Reed
   _data.data.forEach(reed => {
     // Create container that will be used to help with sizing and positioning
-    let reedCont = document.createElement('div'); // Class to add styling to each price box
-
-    reedCont.setAttribute('class', 'priceBox');
+    // createElement's default element is 'div'
+    let reedCont = (0, _methods2.createElement)({
+      className: 'priceBox'
+    });
     let reedPricingBox = (0, _methods.createReedPriceBox)(reed); // Append reed pricing box to the reed container
 
     reedCont.appendChild(reedPricingBox);
     document.body.appendChild(reedCont);
   });
 };
-},{"./data":10,"./methods":12}],12:[function(require,module,exports){
+},{"../../../../global/methods":18,"./data":10,"./methods":12}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -373,23 +396,28 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createReedPriceBox = void 0;
 
+var _methods = require("../../../../global/methods");
+
 // These will hold a majority of the methods used to display
 // 	content for the reedmaking page
 // Method will take in a ReedPricing Object and will return 
 // 	a container to display to the webpage
 const createReedPriceBox = reedData => {
-  let nameCont = document.createElement('div');
-  nameCont.setAttribute('class', 'nameCont'); // Create span element to add styling to only the text element
+  let nameCont = (0, _methods.createElement)({
+    element: 'div',
+    className: 'nameCont'
+  }); // Create span element to add styling to only the text element
 
-  let nameSpan = document.createElement('span'); // Add attribute to customize text
+  let nameSpan = (0, _methods.createTextElement)({
+    element: 'span',
+    text: reedData.name,
+    className: 'reedName'
+  }); // Container to have the blend mode to allow the text to be different color
 
-  nameSpan.setAttribute('class', 'reedName');
-  let nameNode = document.createTextNode(reedData.name); // Append name node to the span element
-
-  nameSpan.appendChild(nameNode); // Container to have the blend mode to allow the text to be different color
-
-  let nameBlendCont = document.createElement('span');
-  nameBlendCont.setAttribute('class', 'nameBlend'); // Append Description container to blend container
+  let nameBlendCont = (0, _methods.createElement)({
+    element: 'div',
+    className: 'nameBlend'
+  }); // Append Description container to blend container
 
   let descriptionCont = createDescriptionCont(reedData);
   nameBlendCont.appendChild(descriptionCont); // Append blend and text to container
@@ -407,18 +435,20 @@ const createDescriptionCont = (_ref) => {
     description,
     pricing
   } = _ref;
-  let cont = document.createElement('div');
-  cont.setAttribute('class', 'descriptionCont'); // Create span element to add styling to only the text element
+  // createElement's default element is div
+  let cont = (0, _methods.createElement)({
+    className: 'descriptionCont'
+  }); // Create span element to add styling to only the text element
 
-  let span = document.createElement('span'); // Add attribute to customize text
+  let span = (0, _methods.createTextElement)({
+    element: 'span',
+    text: description,
+    className: 'descriptionName'
+  }); // Container to have the blend mode to allow text to be different color
 
-  span.setAttribute('class', 'descriptionName');
-  let textNode = document.createTextNode(description); // Append description node to the span element
-
-  span.appendChild(textNode); // Container to have the blend mode to allow text to be different color
-
-  let blendCont = document.createElement('span');
-  blendCont.setAttribute('class', 'descriptionBlend'); // Add pricing data container to the description blend
+  let blendCont = (0, _methods.createElement)({
+    className: 'descriptionBlend'
+  }); // Add pricing data container to the description blend
 
   let pricingCont = createPriceCont(pricing);
   blendCont.appendChild(pricingCont); // Append blend and text to container
@@ -431,28 +461,30 @@ const createDescriptionCont = (_ref) => {
 
 
 const createPriceCont = priceData => {
-  let cont = document.createElement('div');
-  cont.setAttribute('class', 'pricingCont'); // Create span element to add styling to only the text element
-
-  let span = document.createElement('span'); // Add attribute to customize text
-
-  span.setAttribute('class', 'pricingName');
+  // createElement's default element is div
+  let cont = (0, _methods.createElement)({
+    className: 'pricingCont'
+  });
   let priceFormat = "";
   priceData.forEach(price => {
     priceFormat += "".concat(price.quantity, " | $").concat(price.cost, "\n");
-  });
-  let priceNode = document.createTextNode(priceFormat); // Append text to the span node
+  }); // Create span element to add styling to only the text element
 
-  span.appendChild(priceNode); // Container to have the blend mode to allow text to be different color
+  let span = (0, _methods.createTextElement)({
+    element: 'span',
+    text: priceFormat,
+    className: 'pricingName'
+  }); // Container to have the blend mode to allow text to be different color
 
-  let blendCont = document.createElement('div');
-  blendCont.setAttribute('class', 'pricingBlend'); // Append blend and text to price container
+  let blendCont = (0, _methods.createElement)({
+    className: 'pricingBlend'
+  }); // Append blend and text to price container
 
   cont.appendChild(span);
   cont.appendChild(blendCont);
   return cont;
 };
-},{}],13:[function(require,module,exports){
+},{"../../../../global/methods":18}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -544,10 +576,11 @@ const createBgFade = () => {
   imgAlternative = _data.data[currFile].alt; // Fade image 
   //let imageFade:any = createImageFade(imgLocation,imgAlternative);
 
-  let imageFade = document.createElement('img');
-  imageFade.setAttribute('src', imgLocation);
-  imageFade.setAttribute('alt', imgAlternative);
-  imageFade.setAttribute('id', 'bgImage'); // Append image to document
+  let imageFade = (0, _methods.createImageElement)({
+    src: imgLocation,
+    alt: imgAlternative,
+    idName: 'bgImage'
+  }); // Append image to document
 
   document.body.appendChild(imageFade);
 };
@@ -591,30 +624,32 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createFooter = void 0;
 
+var _methods = require("../global/methods");
+
 var _data = require("./data");
 
-// Improts
+// local
 const createFooter = () => {
   // Create container to display across top
-  let footerDiv = document.createElement("div"); // Add 'header' id
+  // createElement's default element is 'div'
+  let footerDiv = (0, _methods.createElement)({
+    idName: 'footer'
+  }); // Container for social media links
+  // createElement's default element is 'div'
 
-  footerDiv.setAttribute("id", "footer"); // Container for social media links
-
-  let socialCont = document.createElement("div"); // Append id to container
-
-  socialCont.setAttribute("id", "social"); // Create image container to hold social media images
+  let socialCont = (0, _methods.createElement)({
+    idName: 'social'
+  }); // Create image container to hold social media images
 
   let img;
 
   for (img of _data.data) {
     // Create image node
-    let imgNode = document.createElement("img"); // Add src attribute
-
-    imgNode.setAttribute("src", img.path); // Add alt attribute
-
-    imgNode.setAttribute("alt", img.alt); // Add id attribute
-
-    imgNode.setAttribute("class", "socialImg");
+    let imgNode = (0, _methods.createImageElement)({
+      src: img.path,
+      alt: img.alt,
+      className: 'socialImg'
+    });
     let imgLink = img.link; // Add event listener to redirect to another page
 
     imgNode.addEventListener("click", () => {
@@ -631,17 +666,31 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"./data":16}],18:[function(require,module,exports){
+},{"../global/methods":18,"./data":16}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.createElement = createElement;
+exports.createTextElement = createTextElement;
+exports.createImageElement = createImageElement;
 exports.getCurrentFile = void 0;
 
 /*
     Global methods shared by the entire project
 */
+var __rest = void 0 && (void 0).__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
 const getCurrentFile = () => {
   // Get current path location
   let pathName = window.location.pathname; // Split location path to extract file name
@@ -655,6 +704,66 @@ const getCurrentFile = () => {
 };
 
 exports.getCurrentFile = getCurrentFile;
+
+function createElement(_ref) {
+  let {
+    element = "div",
+    className = "",
+    idName = ""
+  } = _ref;
+
+  try {
+    if (!className && !idName) throw new TypeError("className or idName ommited. createElement requires either one.");
+    let e = document.createElement(element);
+    if (className) e.setAttribute('class', className);
+    if (idName) e.setAttribute('id', idName);
+    return e;
+  } catch (e) {
+    console.log(e);
+    return;
+  }
+}
+
+function createTextElement(_a) {
+  var {
+    element = "p",
+    text = ""
+  } = _a,
+      rest = __rest(_a, ["element", "text"]);
+
+  try {
+    if (!text) throw new TypeError("'text' string omitted. createTextElement requires 'text' parameter");
+    let el = document.createElement(element);
+    if (rest.className) el.setAttribute('class', rest.className);
+    if (rest.idName) el.setAttribute('id', rest.idName);
+    let txt = text;
+    let txtNode = document.createTextNode(txt);
+    el.appendChild(txtNode);
+    return el;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+function createImageElement(_a) {
+  var {
+    src = '',
+    alt = ''
+  } = _a,
+      rest = __rest(_a, ["src", "alt"]);
+
+  try {
+    if (!src) throw new TypeError("'src' parameter ommited. createImageElement requires 'src' parameter");
+    let img = document.createElement('img');
+    img.setAttribute('src', src);
+    if (alt) img.setAttribute('alt', alt);
+    if (rest.className) img.setAttribute('class', rest.className);
+    if (rest.idName) img.setAttribute('id', rest.idName);
+    return img;
+  } catch (e) {
+    console.log(e);
+  }
+}
 },{}],19:[function(require,module,exports){
 "use strict";
 
@@ -663,9 +772,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createGradient = void 0;
 
+var _methods = require("../global/methods");
+
+// This files creates the gradient effect that will be displayed on every page
+// Imports
+// global
 const createGradient = () => {
-  const cvsEl = document.createElement("canvas");
-  cvsEl.setAttribute("id", "bgCanvas");
+  let cvsEl = (0, _methods.createElement)({
+    element: 'canvas',
+    idName: 'bgCanvas'
+  });
   document.body.appendChild(cvsEl);
   const cvs = document.getElementById("bgCanvas");
   let ctx = cvs.getContext('2d');
@@ -678,7 +794,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{}],20:[function(require,module,exports){
+},{"../global/methods":18}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -735,16 +851,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createHeader = void 0;
 
-var _methods = require("./methods");
+var _methods = require("../global/methods");
+
+var _methods2 = require("./methods");
 
 // Imports
+// global
+// local
 const createHeader = () => {
   // Create container to display across top
-  let headerDiv = document.createElement("div"); // Add 'header' id
+  // createElement's default element is 'div'
+  let headerDiv = (0, _methods.createElement)({
+    idName: 'header'
+  }); // Create navigation => returns ul element
 
-  headerDiv.setAttribute("id", "header"); // Create navigation => returns ul element
-
-  let navBar = (0, _methods.createNavigation)(); // Append navigation to header
+  let navBar = (0, _methods2.createNavigation)(); // Append navigation to header
 
   headerDiv.appendChild(navBar); // Add element to body
 
@@ -752,7 +873,7 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
-},{"./methods":22}],22:[function(require,module,exports){
+},{"../global/methods":18,"./methods":22}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -760,20 +881,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createNavigation = void 0;
 
-var _data = require("./data");
-
 var _methods = require("../global/methods");
 
+var _data = require("./data");
+
 // This file is used to display navigation 
-// Imports
+// local
 // Current page user is on
 const CURRENT_PATH = (0, _methods.getCurrentFile)();
 
 let createNavigation = () => {
   // Create new ul element
-  let navUl = document.createElement("ul"); // Add ul element attribute
-
-  navUl.setAttribute("id", "navigation"); // Current link of type ILink
+  let navUl = (0, _methods.createElement)({
+    element: 'ul',
+    idName: 'navigation'
+  }); // Current link of type ILink
 
   let link; // Subdirectories of links can be array of ILinks or null
 
@@ -782,21 +904,30 @@ let createNavigation = () => {
   for (link of _data.links) {
     // Using of when dealing with arrays
     // Create li for current link
-    let currLi = document.createElement("li"); // Add text to element
-
-    let txtNode = document.createTextNode(link.name); // Append text to li
-
-    currLi.appendChild(txtNode); // Check if current file matches a link (equivalent => 0)
+    let currLi; // Check if current file matches a link (equivalent => 0)
 
     if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) == 0) {
-      // Add attribute to current li
-      currLi.setAttribute("id", "active");
+      // Add attribute to current li to signify it is the active link
+      currLi = (0, _methods.createTextElement)({
+        element: 'li',
+        text: link.name,
+        idName: 'active'
+      });
     } // Check if home page to float left: index.html
 
 
     if (link.name.localeCompare("Carl Colvin Arts") == 0) {
       // Add id to home page
-      currLi.setAttribute("id", "homeLink");
+      currLi = (0, _methods.createTextElement)({
+        element: 'li',
+        text: link.name,
+        idName: 'homeLink'
+      });
+    } else {
+      currLi = (0, _methods.createTextElement)({
+        element: 'li',
+        text: link.name
+      });
     } // Store path of current link to use in event listener
 
 
@@ -832,25 +963,27 @@ exports.createNavigation = createNavigation;
 
 let createSubdirectory = dirs => {
   // Create UL to contain LI's 
-  let subUl = document.createElement('ul'); // Each sub directory of the navigation bar has same class name
-
-  subUl.setAttribute('class', 'subDir');
+  let subUl = (0, _methods.createElement)({
+    element: 'ul',
+    className: 'subDir'
+  });
 
   for (let dir of dirs) {
-    // Create the current LI to be appended to UL
-    let currSubLi; // Text node to store name property of dir
-
-    let subLiTxtNode; // Create LI element for current subdirectory
-
-    currSubLi = document.createElement("li"); // Create text node storing li name
-
-    subLiTxtNode = document.createTextNode(dir.name); // Append text node of li element to node itself
-
-    currSubLi.appendChild(subLiTxtNode);
+    // Create LI element for current subdirectory
+    let currSubLi;
 
     if (CURRENT_PATH.localeCompare(dir.name.toLowerCase()) == 0) {
       // Add active attribute to current li
-      currSubLi.setAttribute("id", "active");
+      currSubLi = (0, _methods.createTextElement)({
+        element: 'li',
+        text: dir.name,
+        idName: 'active'
+      });
+    } else {
+      currSubLi = (0, _methods.createTextElement)({
+        element: 'li',
+        text: dir.name
+      });
     }
 
     let subLink = dir.link; // Add event listener

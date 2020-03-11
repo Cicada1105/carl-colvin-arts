@@ -1,6 +1,6 @@
 // Imports
 // 	 Global
-import { getCurrentFile } from '../global/methods'
+import { getCurrentFile, createImageElement } from '../global/methods'
 //	 Local
 import { data as bgImgs } from './data'
 //import { createImageFade } from './methods'
@@ -20,10 +20,7 @@ const createBgFade = ():void => {
 
 	// Fade image 
 	//let imageFade:any = createImageFade(imgLocation,imgAlternative);
-	let imageFade:any = document.createElement('img');
-	imageFade.setAttribute('src',imgLocation);
-	imageFade.setAttribute('alt',imgAlternative);
-	imageFade.setAttribute('id','bgImage');
+	let imageFade:any = createImageElement({src:imgLocation,alt:imgAlternative,idName:'bgImage'});
 
 	// Append image to document
 	document.body.appendChild(imageFade);

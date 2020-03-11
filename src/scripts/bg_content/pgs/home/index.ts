@@ -1,18 +1,19 @@
 // Imports
-import { infoData, imgData } from './data'
+import { Rows } from './data'
 import { IImage, IBox } from '../../../global/interfaces'
+import { createElement, createTextElement, createImageElement } from '../../../global/methods'
 
 const loadHomePage = () => {
-	let numDataRows:number = infoData.length;
 	let currBox:any;
 	let currImg:any;
 
-	for (let i = 0; i < numDataRows; i++) {
-		currBox = infoBox(infoData[i]);
-		currImg = imgCont(imgData[i]);
+	Rows.forEach((row,i) => {
+		currBox = infoBox(row.infoData);
+		currImg = imgCont(row.imgData);
 
-		let dataRow:any = document.createElement('div');
-		dataRow.setAttribute('class','row');
+		// createElement's default element is div
+		let dataRow:any = createElement({className:'row'});
+
 		// Alternate info boxes and images
 		if (i % 2 == 0) {
 			currBox.setAttribute('id','left');
@@ -26,21 +27,18 @@ const loadHomePage = () => {
 		dataRow.appendChild(currImg);
 
 		// Append each row to the page
-		document.body.appendChild(dataRow);
-	}
+		document.body.appendChild(dataRow);	
+	});
 }
 
 const infoBox = (e:IBox):any => {
 	let box = document.createElement('section');
 
-	let h = document.createElement('h3');
-	let hText = document.createTextNode(e.header);
-	h.appendChild(hText);
+	let h:any = createTextElement({element:'h3',text:e.header});
 
-	// Sections contain articles
-	let c = document.createElement('p');
-	let cText = document.createTextNode(e.content);
-	c.appendChild(cText);
+	// Sections contain articles/paragraphs
+	// createTextElement's default element is 'p'
+	let c:any = createTextElement({text:e.content});
 
 	box.appendChild(h);
 	box.appendChild(c);
@@ -49,42 +47,37 @@ const infoBox = (e:IBox):any => {
 }
 
 const imgCont = (currImg:IImage):any => {
-	// HTML figure contains image and caption
-	let fig:any = document.createElement('div');
-	fig.setAttribute('class','figure');
+	// Create container to store the figure/image, border and data
+	// createElement's default element is 'div'
+	let fig:any = createElement({className:'figure'});
 
-	// Image to display within circular design
-	let img:any = document.createElement('img');
-	img.setAttribute('src',currImg.path);
-	img.setAttribute('alt',currImg.alt);
-	img.setAttribute('class', 'homeImg');
+	// Image to display
+	let img:any = createImageElement({src:currImg.path,alt:currImg.alt,className:'homeImg'});
 
 	// Circular border to add depth to image
-	let imgBorder:any = document.createElement('img');
-	imgBorder.setAttribute('src','./resources/home_imgs/img_border.png');
-	imgBorder.setAttribute('class','imgBorder');
+	let imgBorder:any = createImageElement({src:'./resources/home_imgs/img_border.png',className:'imgBorder'});
 
-	let figCaption = document.createElement('div');
-	figCaption.setAttribute('class','figcaption');
+	let figCaption = createElement({className:'figcaption'});
 
-	let figCaptionP = document.createElement('p');
+	// Data to display when user hovers over the image
+	let figCaptionP:any;
 	let figCaptionStr:string = typeof currImg.caption === "undefined" ? "" : currImg.caption;
-	let figCaptionTxt = document.createTextNode(figCaptionStr);
+	figCaptionP = createTextElement({text:figCaptionStr});
 
 	// On hovering over imgBorder, fade img itself
+	// Display data 
 	imgBorder.addEventListener('mouseover',() => {
 		img.style.filter = 'opacity(50%)';
 		figCaption.style.display = 'block';
 		
 	});
 	// On leaving image, img has full opacity
+	// Hide data
 	imgBorder.addEventListener('mouseout',() => {
 		img.style.filter = 'opacity(100%)';
 		figCaption.style.display = 'none';
 	});
 
-	// Append caption text to paragraph
-	figCaptionP.appendChild(figCaptionTxt);
 	// Append paragraph to caption container
 	figCaption.appendChild(figCaptionP)
 

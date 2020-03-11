@@ -1,30 +1,24 @@
 // Improts
-import { data as images } from './data'
+// global
 import { IImageLink } from '../global/interfaces'
+import { createElement, createImageElement } from '../global/methods'
+// local
+import { data as images } from './data'
 
 const createFooter = ():void => {
   // Create container to display across top
-  let footerDiv = document.createElement("div");
-  // Add 'header' id
-  footerDiv.setAttribute("id","footer");
+  // createElement's default element is 'div'
+  let footerDiv:any = createElement({idName:'footer'});
 
   // Container for social media links
-  let socialCont = document.createElement("div");
-  // Append id to container
-  socialCont.setAttribute("id","social");
+  // createElement's default element is 'div'
+  let socialCont:any = createElement({idName:'social'});
 
   // Create image container to hold social media images
   let img:IImageLink;
   for (img of images) {
   	// Create image node
-  	let imgNode:any = document.createElement("img");
-
-  	// Add src attribute
-  	imgNode.setAttribute("src",img.path);
-  	// Add alt attribute
-  	imgNode.setAttribute("alt",img.alt);
-  	// Add id attribute
-  	imgNode.setAttribute("class","socialImg");
+    let imgNode:any = createImageElement({src:img.path,alt:img.alt,className:'socialImg'});
 
     let imgLink:string = img.link;
     // Add event listener to redirect to another page
