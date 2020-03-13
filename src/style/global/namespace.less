@@ -1,8 +1,18 @@
 // Imports
 @import (reference) './static.less';
+@import './methods.less';
 
 // global namespace
 #globalNS() {
+	.html() {
+		html, body {
+			background-color:black;
+			font-family:"Oswald";
+			width:100%;
+			height:100%;
+			margin:0;
+		}
+	}
 	.navigation() {  
 		#header {
 		    &:extend(.staticBar);
@@ -25,15 +35,13 @@
 					&:extend(.staticLIHover);
 					ul[class = "subDir"] {
 						&:extend(.staticUL);
+						.format(absolute, 225px, 125px);
 						background-color:@secondaryColor;
-						position:absolute;
 						padding:0%;
 						display:inline;
 						float:left;
 						right:0%;
 						top:100%;
-						width:225px;
-						height:125px;
 
 						li {
 							&:extend(.staticLI);
@@ -60,18 +68,14 @@
 	}
 	.bg_canvas() {
 		#bgCanvas {
-			position:fixed;
-			width:inherit;
-			height:inherit;
+			.format(fixed, inherit, inherit);
 			top:0%;
 			z-index:0;
 		}
 	}
 	.bg_img() {
 		[id = 'bgImage'] {
-			position:fixed;
-			width:inherit;
-			height:inherit;
+			.format(fixed, inherit, inherit);
 			opacity:0.05;
 			z-index:1;
 			top:0%;
@@ -82,11 +86,9 @@
 		    &:extend(.staticBar);
 		    bottom:0%;
 		    #social {
-				position:relative;
+		    	.format(relative, 20vw, 100%);
 				padding-right:2.5vw;
 				float:right;
-				width:20vw;
-				height:100%;
 				.socialImg {
 					position:inherit;
 					float:right;

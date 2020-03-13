@@ -1,3 +1,7 @@
+interface TabInterface {
+    header: string;
+    descriptions: string[];
+}
 interface IPricing {
     quantity: number;
     cost: number;
@@ -7,4 +11,4 @@ interface ReedPricingInterface {
     description: string;
     pricing: IPricing[];
 }
-export { IPricing, ReedPricingInterface };
+export { TabInterface, IPricing, ReedPricingInterface };

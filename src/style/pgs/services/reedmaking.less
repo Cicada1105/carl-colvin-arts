@@ -1,14 +1,9 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
 
-html, body {
-  font-family:"Oswald";
-  width:100%;
-  height:100%;
-  margin:0;
-}
-
+#globalNS > .html();
 #globalNS > .navigation();
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
@@ -21,26 +16,56 @@ html, body {
 	&:extend(.staticCont);
 	border-radius:15px;
 }
+// Tabs
+[class = "tabCont"] {
+	.format(relative, 80%);
+	margin:5% 10% 0% 10%;
+	top:15%;
+
+	[class = "tabHeaderCont"] {
+		.format(inherit, 100%, 4rem);
+		background-color:@accentColor;
+
+		[class = "tabHeader"] {
+			.format(inherit, 20rem, 50%);
+			float:left;
+			margin:0px;
+			padding-left:2.5rem;
+			color:@textColor;
+			font-size:1.5rem;
+			top:25%;
+		}
+		[class = "tabButton"] {
+			.format(inherit, 2rem, 50%);
+			background-color:@secondaryColor;
+			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);		
+			top:25%;
+			right:1.5%;
+			float:right;
+		}
+	}
+	[class = "tabBody"] {
+		background-color:aqua;
+		position:inherit;
+	}
+}
 // The text headers of each container
 [class *= "Name"] {
-	position:absolute;
+	.format(absolute, 100%);
 	mix-blend-mode:normal;
 	font-size:1.25rem;
 	text-align: center;
 	margin-top:10px;
 	color:@textColor;
-	width:100%;
 	top:0%;
 }
 /*  Rest of the styling goes here */
 [class = "priceBox"] {
-	position:relative;
+	.format(relative, 30%, 75%);
 	display:inline-block;
 	margin-left:2.5%;
 	margin-top:1.5%;
 	top:10%;
-	width: 30%;
-	height:75%;
 	@media only screen and (max-width: 630px) {
 		display:block;
 	}

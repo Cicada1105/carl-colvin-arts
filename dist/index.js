@@ -304,8 +304,19 @@ exports.loadPerformancePage = loadPerformancePage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.data = void 0;
-const data = [{
+exports.pricingData = exports.tabData = void 0;
+const tabData = [{
+  header: "Reed Strength",
+  descriptions: ["Medium-Easy:Reeds for players who need lighter resistance, faster response, " + "and flexible pitch. These are suggested for younger players or adults just " + "starting off.", "Medium: Reeds with a balance of stability, reliable resistance, and more " + "resistance to blow against than a medium-easy reed. These are what I use in " + "my everyday playing.", "Medium-Hard: Reeds with a bit more wood left on them, resulting in a larger " + "opening than a medium reed. These reeds are definitely still playable with " + "appropriate pitch and balance but require more air and support. These are intended " + "for experienced players who like more resistance or want a reed they can adjust."]
+}, {
+  header: "Gouge and Shape Details",
+  descriptions: ["My oboe reeds are made from 10.5-11mm diameter cane, pre-gouged on a Ross " + "planer, and gouged on an Innoledy gouger. My English horn cane is also processed " + "on a Ross planer and Innoledy gouger and is measured from 11.5-12mm diamerer cane.", "My usual oboe shapes are Gilbert -1, Gilbert 1, and Caleb -1, though there " + "will be more to come... Gilbert shapes provide a beautifully focused sound " + "that nicely balances projection and stability. The Caleb shape provides even " + "more projection than the Gilbert shapes and a free sound meant to reach the " + "back of the concert hall.", "At the moment, my sole English horn shape is Jeanne standard.", "Leave a note in your order, and I will be happy to use any shape you would like."]
+}, {
+  header: "Staples and Tubes",
+  descriptions: ["The staples and tubes I personally use are Pisoni silver staples at 47mm " + "length for oboe and brass Pisoni tubes for English horn. The staples I use " + "for others are Pisoni silver, brass Chiarugi 2's, and synthetic cork 47mm " + "length staples. The English horn reeds I make for others are also brass " + "Pisoni tubes but also Chudnow gold tubes.", "Synthetic cork staples are great for student players  They are durable " + "and easily managed for the rigors of a student's playing.", "Pisoni staples and tubes provide a wonderfully dark sound that does not " + "bog down on itself but that also projects well in the concert hall.", "Both Chiarugi and Chudnow staples and tubes provide the opposite affect: " + "a very lively sound that responds extremely well due to their thinner walls."]
+}];
+exports.tabData = tabData;
+const pricingData = [{
   name: "Reed 1",
   description: "Has very good cane. Da best",
   pricing: [{
@@ -345,7 +356,7 @@ const data = [{
     cost: 240
   }]
 }];
-exports.data = data;
+exports.pricingData = pricingData;
 },{}],11:[function(require,module,exports){
 "use strict";
 
@@ -362,21 +373,62 @@ var _methods2 = require("../../../../global/methods");
 
 // Imports
 const loadReedmakingPage = () => {
-  // Load reed images and descriptions
-  loadReedImages(); // Load the reed pricings
+  // Load data introducing reeds to user
+  loadIntroData(); // Load tabs that hold Reed data
 
-  loadPricings();
+  loadTabs(); // Load the reed pricings
+  //loadPricings();
 };
 
 exports.loadReedmakingPage = loadReedmakingPage;
 
-const loadReedImages = () => {
-  console.log("loading images");
+const loadIntroData = () => {};
+
+const loadTabs = () => {
+  _data.tabData.forEach(tab => {
+    let tabCont = (0, _methods2.createElement)({
+      className: 'tabCont'
+    }); // Create container to hold header and button to activate dropdown 
+
+    let tabHeaderCont = (0, _methods2.createElement)({
+      className: 'tabHeaderCont'
+    }); // Header Content
+    // Header
+
+    let tabHeader = (0, _methods2.createTextElement)({
+      element: 'h3',
+      text: tab.header,
+      className: 'tabHeader'
+    }); // Button -> Stylized with CSS
+
+    let tabButton = (0, _methods2.createElement)({
+      className: 'tabButton'
+    }); // Append header data to header container
+
+    tabHeaderCont.appendChild(tabHeader);
+    tabHeaderCont.appendChild(tabButton); // Create container to hold dropdown content
+
+    let tabBody = (0, _methods2.createElement)({
+      className: 'tabBody'
+    }); // Body Content
+    //		tab.descriptions.forEach(description => {
+    // createTextElement's default element is 'p'
+    //			let p:any = createTextElement({text:description});
+    // Append paragraph description to dropdown
+    //			tabBody.appendChild(p);
+    //		});
+    // Append header and body container to tab container 
+
+    tabCont.appendChild(tabHeaderCont);
+    tabCont.appendChild(tabBody); // Append tab container to document
+
+    document.body.appendChild(tabCont);
+  });
 };
 
 const loadPricings = () => {
   // Create reed pricing container for each Reed
-  _data.data.forEach(reed => {
+  _data.pricingData.forEach(reed => {
     // Create container that will be used to help with sizing and positioning
     // createElement's default element is 'div'
     let reedCont = (0, _methods2.createElement)({
