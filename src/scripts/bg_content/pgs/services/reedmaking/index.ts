@@ -29,6 +29,11 @@ const loadTabs = ():void => {
 		// Button -> Stylized with CSS
 		let tabButton:any = createElement({className:'tabButton'});
 
+		tabButton.addEventListener('click', function() {
+			tabButton.style.animationPlayState = "running";
+			tabButton.style.animationName = tabButton.style.animationName == "plusMinus" ? "minusPlus" : "plusMinus";
+		});
+
 		// Append header data to header container
 		tabHeaderCont.appendChild(tabHeader);
 		tabHeaderCont.appendChild(tabButton);

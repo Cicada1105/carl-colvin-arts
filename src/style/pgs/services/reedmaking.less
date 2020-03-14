@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import "../../global/keyframes.less";
 @import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
 
@@ -38,10 +39,15 @@
 		[class = "tabButton"] {
 			.format(inherit, 2rem, 50%);
 			background-color:@secondaryColor;
-			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);		
+			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
+			animation-play-state:paused;
+			animation-fill-mode:forwards;
+			animation-direction:normal;
+			animation-duration:1s;
 			top:25%;
 			right:1.5%;
 			float:right;
+			z-index:1;
 		}
 	}
 	[class = "tabBody"] {

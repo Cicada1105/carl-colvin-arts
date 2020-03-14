@@ -403,6 +403,10 @@ const loadTabs = () => {
 
     let tabButton = (0, _methods2.createElement)({
       className: 'tabButton'
+    });
+    tabButton.addEventListener('click', function () {
+      tabButton.style.animationPlayState = "running";
+      tabButton.style.animationName = tabButton.style.animationName == "plusMinus" ? "minusPlus" : "plusMinus";
     }); // Append header data to header container
 
     tabHeaderCont.appendChild(tabHeader);
