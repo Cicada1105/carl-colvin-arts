@@ -38,7 +38,7 @@ const Rows:IRow[] = [
 		imgData: {
 			path:IMG_PATH + "flight_poem.png",
 			alt:"Flight Poem",
-			caption:"Flight: Poem written by Carl Colvin and published in America's Best Emerging Poets"	
+			caption:'Flight: Poem written by Carl Colvin and published in Z Publishing\'s "America\'s Best Emerging Poets" anthology'
 		}
 	}
 ]

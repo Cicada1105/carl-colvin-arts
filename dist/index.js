@@ -47,7 +47,7 @@ const createBodyContent = () => {
 };
 
 exports.createBodyContent = createBodyContent;
-},{"../global/methods":18,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":6,"./pgs/services/index":8}],2:[function(require,module,exports){
+},{"../global/methods":19,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":6,"./pgs/services/index":8}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -109,7 +109,7 @@ const Rows = [{
   imgData: {
     path: IMG_PATH + "flight_poem.png",
     alt: "Flight Poem",
-    caption: "Flight: Poem written by Carl Colvin and published in America's Best Emerging Poets"
+    caption: 'Flight: Poem written by Carl Colvin and published in Z Publishing\'s "America\'s Best Emerging Poets" anthology'
   }
 }];
 exports.Rows = Rows;
@@ -216,7 +216,7 @@ const imgCont = currImg => {
   fig.appendChild(figCaption);
   return fig;
 };
-},{"../../../global/methods":18,"./data":4}],6:[function(require,module,exports){
+},{"../../../global/methods":19,"./data":4}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -285,7 +285,7 @@ const loadServicesPage = () => {
 };
 
 exports.loadServicesPage = loadServicesPage;
-},{"../../../global/methods":18,"./editing/index":7,"./performance/index":9,"./reedmaking/index":11,"./writing/index":13}],9:[function(require,module,exports){
+},{"../../../global/methods":19,"./editing/index":7,"./performance/index":9,"./reedmaking/index":11,"./writing/index":14}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -365,63 +365,90 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.loadReedmakingPage = void 0;
 
-var _data = require("./data");
-
-var _methods = require("./methods");
-
-var _methods2 = require("../../../../global/methods");
+var _loadMethods = require("./load-methods");
 
 // Imports
 const loadReedmakingPage = () => {
   // Load data introducing reeds to user
-  loadIntroData(); // Load tabs that hold Reed data
+  (0, _loadMethods.loadIntroData)(); // Load tabs that hold Reed data
 
-  loadTabs(); // Load the reed pricings
+  (0, _loadMethods.loadTabs)(); // Load the reed pricings
   //loadPricings();
 };
 
 exports.loadReedmakingPage = loadReedmakingPage;
+},{"./load-methods":12}],12:[function(require,module,exports){
+"use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadPricings = exports.loadTabs = exports.loadIntroData = void 0;
+
+var _data = require("./data");
+
+var _privateMethods = require("./private-methods");
+
+var _methods = require("../../../../global/methods");
+
+// This file is meant to abstract from the index.ts file
+// File dependencies will be handled here
+// Imports
 const loadIntroData = () => {};
+
+exports.loadIntroData = loadIntroData;
 
 const loadTabs = () => {
   _data.tabData.forEach(tab => {
-    let tabCont = (0, _methods2.createElement)({
+    let tabCont = (0, _methods.createElement)({
       className: 'tabCont'
     }); // Create container to hold header and button to activate dropdown 
 
-    let tabHeaderCont = (0, _methods2.createElement)({
+    let tabHeaderCont = (0, _methods.createElement)({
       className: 'tabHeaderCont'
     }); // Header Content
     // Header
 
-    let tabHeader = (0, _methods2.createTextElement)({
+    let tabHeader = (0, _methods.createTextElement)({
       element: 'h3',
       text: tab.header,
       className: 'tabHeader'
     }); // Button -> Stylized with CSS
 
-    let tabButton = (0, _methods2.createElement)({
+    let tabButton = (0, _methods.createElement)({
       className: 'tabButton'
-    });
-    tabButton.addEventListener('click', function () {
-      tabButton.style.animationPlayState = "running";
-      tabButton.style.animationName = tabButton.style.animationName == "plusMinus" ? "minusPlus" : "plusMinus";
     }); // Append header data to header container
 
     tabHeaderCont.appendChild(tabHeader);
     tabHeaderCont.appendChild(tabButton); // Create container to hold dropdown content
 
-    let tabBody = (0, _methods2.createElement)({
+    let tabBody = (0, _methods.createElement)({
       className: 'tabBody'
     }); // Body Content
-    //		tab.descriptions.forEach(description => {
-    // createTextElement's default element is 'p'
-    //			let p:any = createTextElement({text:description});
-    // Append paragraph description to dropdown
-    //			tabBody.appendChild(p);
-    //		});
-    // Append header and body container to tab container 
+
+    tab.descriptions.forEach(description => {
+      // createTextElement's default element is 'p'
+      let p = (0, _methods.createTextElement)({
+        text: description
+      }); // Append paragraph description and break to dropdown
+
+      tabBody.appendChild(p);
+    });
+    /*  Event Listeners  */
+
+    tabButton.addEventListener('click', function () {
+      // Tab Button animation
+      tabButton.style.animationPlayState = "running";
+      tabButton.style.animationName = tabButton.style.animationName === "plusMinus" ? "minusPlus" : "plusMinus"; // Tab Body animation
+
+      tabBody.style.animationPlayState = "running";
+      tabBody.style.animationName = tabBody.style.animationName === "dropdownOpen" ? "dropdownClose" : "dropdownOpen"; // Paragraph animation
+
+      tabBody.childNodes.forEach(function (p) {
+        p.style.animationPlayState = "running";
+        p.style.animationName = p.style.animationName === "dropdownPOpen" ? "dropdownPClose" : "dropdownPOpen";
+      });
+    }); // Append header and body container to tab container 
 
     tabCont.appendChild(tabHeaderCont);
     tabCont.appendChild(tabBody); // Append tab container to document
@@ -430,21 +457,25 @@ const loadTabs = () => {
   });
 };
 
+exports.loadTabs = loadTabs;
+
 const loadPricings = () => {
   // Create reed pricing container for each Reed
   _data.pricingData.forEach(reed => {
     // Create container that will be used to help with sizing and positioning
     // createElement's default element is 'div'
-    let reedCont = (0, _methods2.createElement)({
+    let reedCont = (0, _methods.createElement)({
       className: 'priceBox'
     });
-    let reedPricingBox = (0, _methods.createReedPriceBox)(reed); // Append reed pricing box to the reed container
+    let reedPricingBox = (0, _privateMethods.createReedPriceBox)(reed); // Append reed pricing box to the reed container
 
     reedCont.appendChild(reedPricingBox);
     document.body.appendChild(reedCont);
   });
 };
-},{"../../../../global/methods":18,"./data":10,"./methods":12}],12:[function(require,module,exports){
+
+exports.loadPricings = loadPricings;
+},{"../../../../global/methods":19,"./data":10,"./private-methods":13}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -540,7 +571,7 @@ const createPriceCont = priceData => {
   cont.appendChild(blendCont);
   return cont;
 };
-},{"../../../../global/methods":18}],13:[function(require,module,exports){
+},{"../../../../global/methods":19}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -553,7 +584,7 @@ const loadWritingPage = () => {
 };
 
 exports.loadWritingPage = loadWritingPage;
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -574,8 +605,8 @@ const data = {
     alt: "Oboe and Sheet Music"
   },
   "about": {
-    path: imgPath + "english_horn_sheet_music.jpg",
-    alt: "English Horn"
+    path: imgPath + "",
+    alt: ""
   },
   "reedmaking": {
     path: imgPath + "reedmaking_bg.jpg",
@@ -594,16 +625,16 @@ const data = {
     alt: "Editing"
   },
   "listen": {
-    path: imgPath + "rand_reeds.jpg",
-    alt: "Extra reed pic"
+    path: imgPath + "english_horn_sheet_music.jpg",
+    alt: "English Horn"
   },
   "contact": {
     path: imgPath + "",
-    alt: "Some picture of carl"
+    alt: "Some picture of carl maybe"
   }
 };
 exports.data = data;
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -642,7 +673,7 @@ const createBgFade = () => {
 };
 
 exports.createBgFade = createBgFade;
-},{"../global/methods":18,"./data":14}],16:[function(require,module,exports){
+},{"../global/methods":19,"./data":15}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -672,7 +703,7 @@ const data = [{
   link: "tbd"
 }];
 exports.data = data;
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -722,7 +753,7 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"../global/methods":18,"./data":16}],18:[function(require,module,exports){
+},{"../global/methods":19,"./data":17}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -820,7 +851,7 @@ function createImageElement(_a) {
     console.log(e);
   }
 }
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -850,7 +881,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{"../global/methods":18}],20:[function(require,module,exports){
+},{"../global/methods":19}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -899,7 +930,7 @@ const links = [{
   subdirectories: []
 }];
 exports.links = links;
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -929,7 +960,7 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
-},{"../global/methods":18,"./methods":22}],22:[function(require,module,exports){
+},{"../global/methods":19,"./methods":23}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1053,7 +1084,7 @@ let createSubdirectory = dirs => {
 
   return subUl;
 };
-},{"../global/methods":18,"./data":20}],23:[function(require,module,exports){
+},{"../global/methods":19,"./data":21}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1081,5 +1112,5 @@ const init = () => {
 };
 
 exports.init = init;
-},{"./bg_content/index":1,"./bg_img/index":15,"./footer/index":17,"./gradient/index":19,"./header/index":21}]},{},[23])(23)
+},{"./bg_content/index":1,"./bg_img/index":16,"./footer/index":18,"./gradient/index":20,"./header/index":22}]},{},[24])(24)
 });

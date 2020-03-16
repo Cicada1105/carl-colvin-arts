@@ -23,8 +23,8 @@ const data:IBgImage = {
 		alt: "Oboe and Sheet Music",
 	},
 	"about" : {
-		path: imgPath + "english_horn_sheet_music.jpg",
-		alt: "English Horn"
+		path: imgPath + "",
+		alt: ""
 	},
 	"reedmaking" : {
 		path: imgPath + "reedmaking_bg.jpg",
@@ -43,12 +43,12 @@ const data:IBgImage = {
 		alt: "Editing"
 	},
 	"listen" : {
-		path: imgPath + "rand_reeds.jpg",
-		alt: "Extra reed pic"
+		path: imgPath + "english_horn_sheet_music.jpg",
+		alt: "English Horn"
 	}, 
 	"contact" : {
 		path: imgPath + "",
-		alt: "Some picture of carl"
+		alt: "Some picture of carl maybe"
 	}
 }
 

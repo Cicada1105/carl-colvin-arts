@@ -17,15 +17,24 @@
 	&:extend(.staticCont);
 	border-radius:15px;
 }
+.animation {
+	animation-play-state:paused;
+	animation-fill-mode:forwards;
+	animation-direction:normal;
+	animation-duration:1s;	
+}
 // Tabs
 [class = "tabCont"] {
 	.format(relative, 80%);
-	margin:5% 10% 0% 10%;
+	margin:5% 10% 5% 10%;
+	display: block;
 	top:15%;
 
 	[class = "tabHeaderCont"] {
 		.format(inherit, 100%, 4rem);
+		display: block;
 		background-color:@accentColor;
+		top:0%;
 
 		[class = "tabHeader"] {
 			.format(inherit, 20rem, 50%);
@@ -38,21 +47,34 @@
 		}
 		[class = "tabButton"] {
 			.format(inherit, 2rem, 50%);
+			.animation;
 			background-color:@secondaryColor;
 			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
-			animation-play-state:paused;
-			animation-fill-mode:forwards;
-			animation-direction:normal;
-			animation-duration:1s;
 			top:25%;
 			right:1.5%;
 			float:right;
 			z-index:1;
 		}
+		[class = "tabButton"]:hover {
+			cursor:pointer;
+		}
 	}
 	[class = "tabBody"] {
+		.format(inherit, 100%,17rem);
+		.animation;
+		animation-name:dropdownOpen;
+		overflow: hidden;
 		background-color:aqua;
-		position:inherit;
+
+		p {
+			.animation;
+			animation-name:dropdownPOpen;
+			margin:0px;
+			padding:1rem 5%;
+		}
+		p::before {
+			content:"> ";
+		}
 	}
 }
 // The text headers of each container
