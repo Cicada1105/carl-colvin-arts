@@ -1,6 +1,21 @@
 // Imports
 import { TabInterface, ReedPricingInterface } from './interfaces'
 
+const introData:string[] = [
+	"Reeds are hard, whether to play on or make. There's no getting around it. However, that " +
+	"shouldn't stop you from playing at your best, and that is why I offer reedmaking services.",
+	"I have been making reeds for 11 years and, like many other professional oboists, offer " +
+	"them to the public for sale. My reeds are all handmade from start to finish, from tube " +
+	"cane to performance-ready, and will not leave my hand until they are play-tested and at " +
+	"a level that I would perform on them myself.",
+	"My sale price reflects my years of experience in reeds and the cane itself. However, I " +
+	"completely understand that everyone is different and may not like my reeds. If this is " +
+	"the case, I would love the opportunity to make it right and get the best reed that fits " +
+	"all your needs. If any of your needs are more immediate, I am more than happy to work with " +
+	"you. I normally create and ship reeds within a week of receiving payment, Please reach me " +
+	"via the \"Contact\" tab with any orders, issues, and special instructions."
+]
+
 const tabData:TabInterface[] = [
 	{
 		header: "Reed Strength",
@@ -107,4 +122,4 @@ const pricingData:ReedPricingInterface[] = [
 	},
 ]
 
-export { tabData, pricingData }
+export { introData, tabData, pricingData }

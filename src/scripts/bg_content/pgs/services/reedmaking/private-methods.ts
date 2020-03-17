@@ -5,6 +5,10 @@
 import { IPricing, ReedPricingInterface } from './interfaces'
 import { createElement, createTextElement } from '../../../../global/methods'
 
+/************************************/
+/*		Reed Pricings Container 	*/
+/************************************/
+
 // Method will take in a ReedPricing Object and will return 
 // 	a container to display to the webpage
 const createReedPriceBox = (reedData:ReedPricingInterface):any => {

@@ -208,8 +208,9 @@ body {
   animation-direction: normal;
   animation-duration: 1s;
   animation-name: dropdownOpen;
+  background-color: #003249;
+  color: #f0edee;
   overflow: hidden;
-  background-color: aqua;
 }
 [class="tabCont"] [class="tabBody"] p {
   animation-play-state: paused;
