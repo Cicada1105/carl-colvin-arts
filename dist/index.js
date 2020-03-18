@@ -304,7 +304,9 @@ exports.loadPerformancePage = loadPerformancePage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.pricingData = exports.tabData = void 0;
+exports.pricingData = exports.tabData = exports.introData = void 0;
+const introData = ["Reeds are hard, whether to play on or make. There's no getting around it. However, that " + "shouldn't stop you from playing at your best, and that is why I offer reedmaking services.", "I have been making reeds for 11 years and, like many other professional oboists, offer " + "them to the public for sale. My reeds are all handmade from start to finish, from tube " + "cane to performance-ready, and will not leave my hand until they are play-tested and at " + "a level that I would perform on them myself.", "My sale price reflects my years of experience in reeds and the cane itself. However, I " + "completely understand that everyone is different and may not like my reeds. If this is " + "the case, I would love the opportunity to make it right and get the best reed that fits " + "all your needs. If any of your needs are more immediate, I am more than happy to work with " + "you. I normally create and ship reeds within a week of receiving payment, Please reach me " + "via the \"Contact\" tab with any orders, issues, and special instructions."];
+exports.introData = introData;
 const tabData = [{
   header: "Reed Strength",
   descriptions: ["Medium-Easy:Reeds for players who need lighter resistance, faster response, " + "and flexible pitch. These are suggested for younger players or adults just " + "starting off.", "Medium: Reeds with a balance of stability, reliable resistance, and more " + "resistance to blow against than a medium-easy reed. These are what I use in " + "my everyday playing.", "Medium-Hard: Reeds with a bit more wood left on them, resulting in a larger " + "opening than a medium reed. These reeds are definitely still playable with " + "appropriate pitch and balance but require more air and support. These are intended " + "for experienced players who like more resistance or want a reed they can adjust."]
@@ -394,11 +396,59 @@ var _methods = require("../../../../global/methods");
 // This file is meant to abstract from the index.ts file
 // File dependencies will be handled here
 // Imports
-const loadIntroData = () => {};
+const loadIntroData = () => {
+  let introHeaderCont = (0, _methods.createElement)({
+    className: 'reedmakingHeader'
+  });
+  let leftReed = (0, _methods.createImageElement)({
+    src: '../../resources/reedmaking_imgs/reed.png',
+    alt: 'Reed silhouette',
+    className: 'reed_silhouette',
+    idName: 'leftReed'
+  });
+  let introHeader = (0, _methods.createTextElement)({
+    element: 'h3',
+    text: 'Reedmaking'
+  });
+  let rightReed = (0, _methods.createImageElement)({
+    src: '../../resources/reedmaking_imgs/reed.png',
+    alt: 'Reed silhouette',
+    className: 'reed_silhouette',
+    idName: 'rightReed'
+  });
+  introHeaderCont.appendChild(leftReed);
+  introHeaderCont.appendChild(introHeader);
+  introHeaderCont.appendChild(rightReed);
+  document.body.appendChild(introHeaderCont);
+};
 
 exports.loadIntroData = loadIntroData;
 
 const loadTabs = () => {
+  let aboutHeaderCont = (0, _methods.createElement)({
+    className: 'reedmakingHeader'
+  });
+  let leftReed = (0, _methods.createImageElement)({
+    src: '../../resources/reedmaking_imgs/reed.png',
+    alt: 'Reed silhouette',
+    className: 'reed_silhouette',
+    idName: 'leftReed'
+  });
+  let aboutHeader = (0, _methods.createTextElement)({
+    element: 'h3',
+    text: 'About'
+  });
+  let rightReed = (0, _methods.createImageElement)({
+    src: '../../resources/reedmaking_imgs/reed.png',
+    alt: 'Reed silhouette',
+    className: 'reed_silhouette',
+    idName: 'rightReed'
+  });
+  aboutHeaderCont.appendChild(leftReed);
+  aboutHeaderCont.appendChild(aboutHeader);
+  aboutHeaderCont.appendChild(rightReed);
+  document.body.appendChild(aboutHeaderCont);
+
   _data.tabData.forEach(tab => {
     let tabCont = (0, _methods.createElement)({
       className: 'tabCont'
@@ -487,6 +537,12 @@ var _methods = require("../../../../global/methods");
 
 // These will hold a majority of the methods used to display
 // 	content for the reedmaking page
+
+/************************************/
+
+/*		Reed Pricings Container 	*/
+
+/************************************/
 // Method will take in a ReedPricing Object and will return 
 // 	a container to display to the webpage
 const createReedPriceBox = reedData => {

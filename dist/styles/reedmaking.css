@@ -155,12 +155,43 @@ body {
   animation-direction: normal;
   animation-duration: 1s;
 }
+[class="reedmakingHeader"] {
+  position: relative;
+  margin-top: 7%;
+  width: 100%;
+  height: 10rem;
+}
+[class="reedmakingHeader"] h3 {
+  text-align: center;
+  color: #f0edee;
+  margin: auto;
+  width: 27rem;
+  height: 100%;
+  font-size: 2rem;
+}
+[class="reedmakingHeader"] [class="reed_silhouette"] {
+  mix-blend-mode: hard-light;
+}
+[class="reedmakingHeader"] [id="leftReed"] {
+  position: absolute;
+  height: 50%;
+  width: 18rem;
+  left: 15%;
+}
+[class="reedmakingHeader"] [id="rightReed"] {
+  position: absolute;
+  height: 50%;
+  width: 18rem;
+  right: 15%;
+  top: 0px;
+  transform: rotate(180deg) scaleY(-1);
+}
 [class="tabCont"] {
   position: relative;
   width: 80%;
   margin: 5% 10% 5% 10%;
   display: block;
-  top: 15%;
+  top: 0%;
 }
 [class="tabCont"] [class="tabHeaderCont"] {
   position: inherit;
