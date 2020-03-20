@@ -6,10 +6,10 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "less": "^3.10.3",
-    "typescript": "^3.7.5"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "less": "^3.11.1",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +17,7 @@
     "compile": "for fileName in ./src/style/pgs/*.less ./src/style/pgs/services/*.less; do baseName=`basename ${fileName}`; base=${baseName%'.less'}; ./node_modules/less/bin/lessc $fileName ./dist/styles/$base.css; done",
     "transpile": "./node_modules/typescript/bin/tsc",
     "build": "./node_modules/.bin/babel ./lib/es6 --ignore ./lib/declarations --out-dir ./lib/es5/",
-    "dev":"browserify ./lib/es5/ --outfile ./dist/index.js --standalone begin"
+    "dev": "browserify ./lib/es5/ --outfile ./dist/index.js --standalone begin"
   },
   "repository": {
     "type": "git",
