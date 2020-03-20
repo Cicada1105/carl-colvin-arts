@@ -169,9 +169,6 @@ body {
   height: 100%;
   font-size: 2rem;
 }
-[class="reedmakingHeader"] [class="reed_silhouette"] {
-  mix-blend-mode: hard-light;
-}
 [class="reedmakingHeader"] [id="leftReed"] {
   position: absolute;
   height: 50%;
