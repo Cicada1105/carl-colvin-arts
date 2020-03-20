@@ -47,7 +47,7 @@ const createBodyContent = () => {
 };
 
 exports.createBodyContent = createBodyContent;
-},{"../global/methods":19,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":6,"./pgs/services/index":8}],2:[function(require,module,exports){
+},{"../global/methods":22,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":6,"./pgs/services/index":8}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -216,7 +216,7 @@ const imgCont = currImg => {
   fig.appendChild(figCaption);
   return fig;
 };
-},{"../../../global/methods":19,"./data":4}],6:[function(require,module,exports){
+},{"../../../global/methods":22,"./data":4}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -285,7 +285,40 @@ const loadServicesPage = () => {
 };
 
 exports.loadServicesPage = loadServicesPage;
-},{"../../../global/methods":19,"./editing/index":7,"./performance/index":9,"./reedmaking/index":11,"./writing/index":14}],9:[function(require,module,exports){
+},{"../../../global/methods":22,"./editing/index":7,"./performance/index":10,"./reedmaking/index":14,"./writing/index":17}],9:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.headerData = void 0;
+// This file holds the data specific to the Performance page
+const IMG_PATH = "../../resources/performance_imgs/";
+const headerData = {
+  "performance": {
+    header: "Performance",
+    image: {
+      path: IMG_PATH + "treble_clef.png",
+      alt: "Treble Clef Symbol"
+    }
+  },
+  "previous_performances": {
+    header: "Previous Performances",
+    image: {
+      path: IMG_PATH + "eighth_note.png",
+      alt: "Eighth Note Symbol"
+    }
+  },
+  "rates": {
+    header: "Rates",
+    image: {
+      path: IMG_PATH + "bass_clef.png",
+      alt: "Bass Clef Symbol"
+    }
+  }
+};
+exports.headerData = headerData;
+},{}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -293,12 +326,122 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.loadPerformancePage = void 0;
 
+var _load_methods = require("./load_methods");
+
+// Imports
 const loadPerformancePage = () => {
-  console.log("Loading Performance Page");
+  // Load intro to the Performance page
+  (0, _load_methods.loadPerformanceIntro)(); // Load section to display/discuss previous performances
+
+  (0, _load_methods.loadPreviousPerformances)(); // Load rates for user to view 
+
+  (0, _load_methods.loadRates)();
 };
 
 exports.loadPerformancePage = loadPerformancePage;
-},{}],10:[function(require,module,exports){
+},{"./load_methods":11}],11:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadRates = exports.loadPreviousPerformances = exports.loadPerformanceIntro = void 0;
+
+var _data = require("./data");
+
+var _special_methods = require("./special_methods");
+
+// This file holds the load methods for the individual
+// 	sections on the performance page
+// Imports
+// data
+// methods
+const loadPerformanceIntro = () => {
+  (0, _special_methods.createImageHeader)(_data.headerData['performance']);
+};
+
+exports.loadPerformanceIntro = loadPerformanceIntro;
+
+const loadPreviousPerformances = () => {
+  (0, _special_methods.createImageHeader)(_data.headerData['previous_performances']);
+};
+
+exports.loadPreviousPerformances = loadPreviousPerformances;
+
+const loadRates = () => {
+  (0, _special_methods.createImageHeader)(_data.headerData['rates']);
+};
+
+exports.loadRates = loadRates;
+},{"./data":9,"./special_methods":12}],12:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createImageHeader = void 0;
+
+var _methods = require("../../../../global/methods");
+
+// Special methods used by the Performance page
+// Can be used by methods specified in load_methods.ts
+// methods
+// Methods will take in an object of type ImageHeaderInterface
+// Returns relative container with proper designed
+const createImageHeader = headerData => {
+  // Container to hold every element of the header
+  let cont = (0, _methods.createElement)({
+    className: "imageHeaderCont"
+  });
+  let centerCont = createCenterImageHeader(headerData); // "hr" element to be display on left of header and images
+  //let leftHrCont:any = createElement({className:"hrCont",idName:"leftHrCont"});
+  //let leftHr:any = createElement({element:"hr",className:"",idName:"hrLeft"});
+  // Append hr to it's container to be later used to calculate sizing
+  //leftHrCont.appendChild(leftHr);
+  // "hr" element to be display on right of header and images
+  //let rightHrCont:any = createElement({className:"hrCont",idName:"rightHrCont"});
+  //let rightHr:any = createElement({element:"hr",idName:"hrRight"});
+  // Append hr to it's container to be later used to calculate sizing
+  //rightHrCont.appendChild(rightHr);
+  // Append elements to parent container
+  //cont.appendChild(leftHrCont);
+
+  cont.appendChild(centerCont); //cont.appendChild(rightHrCont);
+  // Apend Container to document
+
+  document.body.appendChild(cont);
+};
+
+exports.createImageHeader = createImageHeader;
+
+const createCenterImageHeader = headerData => {
+  let cont = (0, _methods.createElement)({
+    className: "centerHeaderCont"
+  }); // Musical symbol to be display on left side of header
+
+  let leftSymbol = (0, _methods.createImageElement)({
+    src: headerData.image.path,
+    alt: headerData.image.alt,
+    className: "musicalSymbol"
+  }); // Header text to be at the center of the container
+
+  let header = (0, _methods.createTextElement)({
+    element: "h3",
+    text: headerData.header
+  }); // Musical symbol to be display on right side of header
+
+  let rightSymbol = (0, _methods.createImageElement)({
+    src: headerData.image.path,
+    alt: headerData.image.alt,
+    className: "musicalSymbol"
+  }); // Append Header and Symbols to center container
+
+  cont.appendChild(leftSymbol);
+  cont.appendChild(header);
+  cont.appendChild(rightSymbol);
+  return cont;
+};
+},{"../../../../global/methods":22}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -359,7 +502,7 @@ const pricingData = [{
   }]
 }];
 exports.pricingData = pricingData;
-},{}],11:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -379,7 +522,7 @@ const loadReedmakingPage = () => {
 };
 
 exports.loadReedmakingPage = loadReedmakingPage;
-},{"./load-methods":12}],12:[function(require,module,exports){
+},{"./load-methods":15}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -525,7 +668,7 @@ const loadPricings = () => {
 };
 
 exports.loadPricings = loadPricings;
-},{"../../../../global/methods":19,"./data":10,"./private-methods":13}],13:[function(require,module,exports){
+},{"../../../../global/methods":22,"./data":13,"./private-methods":16}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -627,7 +770,7 @@ const createPriceCont = priceData => {
   cont.appendChild(blendCont);
   return cont;
 };
-},{"../../../../global/methods":19}],14:[function(require,module,exports){
+},{"../../../../global/methods":22}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -640,7 +783,7 @@ const loadWritingPage = () => {
 };
 
 exports.loadWritingPage = loadWritingPage;
-},{}],15:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -690,7 +833,7 @@ const data = {
   }
 };
 exports.data = data;
-},{}],16:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -729,7 +872,7 @@ const createBgFade = () => {
 };
 
 exports.createBgFade = createBgFade;
-},{"../global/methods":19,"./data":15}],17:[function(require,module,exports){
+},{"../global/methods":22,"./data":18}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -759,7 +902,7 @@ const data = [{
   link: "tbd"
 }];
 exports.data = data;
-},{}],18:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -809,7 +952,7 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"../global/methods":19,"./data":17}],19:[function(require,module,exports){
+},{"../global/methods":22,"./data":20}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -907,7 +1050,7 @@ function createImageElement(_a) {
     console.log(e);
   }
 }
-},{}],20:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -937,7 +1080,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{"../global/methods":19}],21:[function(require,module,exports){
+},{"../global/methods":22}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -986,7 +1129,7 @@ const links = [{
   subdirectories: []
 }];
 exports.links = links;
-},{}],22:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1016,7 +1159,7 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
-},{"../global/methods":19,"./methods":23}],23:[function(require,module,exports){
+},{"../global/methods":22,"./methods":26}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1140,7 +1283,7 @@ let createSubdirectory = dirs => {
 
   return subUl;
 };
-},{"../global/methods":19,"./data":21}],24:[function(require,module,exports){
+},{"../global/methods":22,"./data":24}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1168,5 +1311,5 @@ const init = () => {
 };
 
 exports.init = init;
-},{"./bg_content/index":1,"./bg_img/index":16,"./footer/index":18,"./gradient/index":20,"./header/index":22}]},{},[24])(24)
+},{"./bg_content/index":1,"./bg_img/index":19,"./footer/index":21,"./gradient/index":23,"./header/index":25}]},{},[27])(27)
 });
