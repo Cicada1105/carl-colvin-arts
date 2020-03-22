@@ -58,11 +58,35 @@ const loadListenPreview = ():void => {
 		volumeIcon.className = volumeIcon.className.indexOf("up") >= 0 ? 'fas fa-volume-mute' : 'fas fa-volume-up';
 	})
 
+	// Create audio element
+	let audioEl:any = createElement({element:'audio',idName:'audioExcerpt'});
+	audioEl.setAttribute('controls','');
+
+	// Create source element
+	let audioSrc:any = document.createElement('source');
+	audioSrc.setAttribute('src','./resources/media/kenya-lifestream.wav');
+	audioSrc.setAttribute('type','audio/wav');
+
+	// Append audio source to audio element
+	audioEl.appendChild(audioSrc);
+
+	// Add event listener to audio element
+	audioEl.ontimeupdate = () => {
+		if (audioEl.currentTime >= 30) {
+			audioEl.currentTime = 0;
+			audioEl.pause();
+		}
+	}
+
 	// Create container to hold font awesome icon
-	let volumeIcon:any = createElement({element:'i',className:'fas fa-volume-up'});
+	let volumeIcon:any = createElement({element:'i',className:'fas fa-volume-mute'});
 	// Add event listener to icon to activate sound and switch icon
 	volumeIcon.addEventListener('click',() => {
 		volumeIcon.className = volumeIcon.className.indexOf("up") >= 0 ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+		if (audioEl.paused) 
+			audioEl.play();
+		else 
+			audioEl.pause();
 	})
 
 	// Append image and icon to Listen Image Container
