@@ -120,6 +120,10 @@ body {
 .row section h3 {
   text-align: center;
 }
+.row section h3:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 .row section p {
   text-indent: 25px;
   margin: 0px 15px;

@@ -80,10 +80,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.Rows = void 0;
-const IMG_PATH = "./resources/home_imgs/";
+const IMG_PATH = "./resources/home_imgs/"; // Use during development
+
+const ROOT_PGS_DIR = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/pgs/"; // Use during production
+//const ROOT_PGS_DIR:string = "/";
+
 const Rows = [{
   infoData: {
     header: "About",
+    link: "".concat(ROOT_PGS_DIR, "about.html"),
     content: "Carl Colvin is a freelance musician, teacher, writer, and " + "editor originally from Chicago, Illinois and now recently residing " + "in the Cincinnati, Ohio area."
   },
   imgData: {
@@ -94,6 +99,7 @@ const Rows = [{
 }, {
   infoData: {
     header: "Listen",
+    link: "".concat(ROOT_PGS_DIR, "listen.html"),
     content: "Listen to carl's best moooosic"
   },
   imgData: {
@@ -104,6 +110,7 @@ const Rows = [{
 }, {
   infoData: {
     header: "Services",
+    link: "".concat(ROOT_PGS_DIR, "services/performance.html"),
     content: "Take part in carl's top tier services. 6 stars out of 5"
   },
   imgData: {
@@ -270,6 +277,10 @@ const infoBox = e => {
   let h = (0, _methods.createTextElement)({
     element: 'h3',
     text: e.header
+  }); // Add event listener to header to redirect user to specific page
+
+  h.addEventListener("click", () => {
+    window.open(e.link, "_self");
   }); // Sections contain articles/paragraphs
   // createTextElement's default element is 'p'
 

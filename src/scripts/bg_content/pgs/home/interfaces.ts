@@ -1,9 +1,9 @@
 // Holds interfaces for local home directory
 // Imports
-import { IImage, IBox } from '../../../global/interfaces'
+import { IImage, IBoxLink } from '../../../global/interfaces'
 
 interface IRow {
-	infoData:IBox;
+	infoData:IBoxLink;
 	imgData:IImage;
 }
 

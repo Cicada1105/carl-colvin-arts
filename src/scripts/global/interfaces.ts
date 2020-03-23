@@ -19,6 +19,10 @@ interface IBox {
 	content:string;
 
 }
+interface IBoxLink extends IBox {
+	link:string;
+}
+
 export { ImageInterface as IImage }
 export { ImageLinkInterface as IImageLink }
-export { ILink, IBox }
+export { ILink, IBox, IBoxLink }

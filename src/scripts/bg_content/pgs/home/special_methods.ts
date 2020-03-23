@@ -3,16 +3,21 @@
 
 // Imports
 // interfaces
-import { IImage, IBox } from '../../../global/interfaces'
+import { IImage, IBoxLink } from '../../../global/interfaces'
 // methods
 import { createElement, createTextElement, createImageElement } from '../../../global/methods'
 
 const IMAGE_DIR:string = './resources/home_imgs/';
 
-const infoBox = (e:IBox):any => {
+const infoBox = (e:IBoxLink):any => {
 	let box = document.createElement('section');
 
 	let h:any = createTextElement({element:'h3',text:e.header});
+
+	// Add event listener to header to redirect user to specific page
+	h.addEventListener("click", () => {
+		window.open(e.link,"_self");
+	});
 
 	// Sections contain articles/paragraphs
 	// createTextElement's default element is 'p'
