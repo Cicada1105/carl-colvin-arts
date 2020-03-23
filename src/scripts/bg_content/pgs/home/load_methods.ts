@@ -56,6 +56,10 @@ const loadListenPreview = ():void => {
 	// Add event listener to image to activate sound and switch icon
 	listenImg.addEventListener('click',() => {
 		volumeIcon.className = volumeIcon.className.indexOf("up") >= 0 ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+		if (audioEl.paused) 
+			audioEl.play();
+		else 
+			audioEl.pause();
 	})
 
 	// Create audio element
@@ -69,11 +73,13 @@ const loadListenPreview = ():void => {
 
 	// Append audio source to audio element
 	audioEl.appendChild(audioSrc);
+	// Start current time at 1:48(108 seconds);
+	audioEl.currentTime = 108;
 
 	// Add event listener to audio element
 	audioEl.ontimeupdate = () => {
-		if (audioEl.currentTime >= 30) {
-			audioEl.currentTime = 0;
+		if (audioEl.currentTime >= 161) {
+			audioEl.currentTime = 108;
 			audioEl.pause();
 		}
 	}
