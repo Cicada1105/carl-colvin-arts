@@ -47,7 +47,7 @@ const createBodyContent = () => {
 };
 
 exports.createBodyContent = createBodyContent;
-},{"../global/methods":24,"./pgs/about/index":2,"./pgs/contact/index":3,"./pgs/home/index":5,"./pgs/listen/index":8,"./pgs/services/index":10}],2:[function(require,module,exports){
+},{"../global/methods":26,"./pgs/about/index":2,"./pgs/contact/index":4,"./pgs/home/index":7,"./pgs/listen/index":10,"./pgs/services/index":12}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -66,14 +66,151 @@ exports.loadAboutPage = loadAboutPage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.formData = void 0;
+// This file holds the info to be display on the form
+const formData = {
+  header: "Contact",
+  form: [{
+    type: "text",
+    name: "name",
+    displayName: "Name",
+    placeholder: "Enter name..."
+  }, {
+    type: "text",
+    name: "email",
+    displayName: "Email",
+    placeholder: "example@gmail.com"
+  }, {
+    type: "text",
+    name: "subject",
+    displayName: "Subject",
+    placeholder: "Enter subject..."
+  }, {
+    type: "text",
+    name: "message",
+    displayName: "Message",
+    placeholder: "Enter message..."
+  }],
+  submit: {
+    type: "button",
+    name: "submitBtn",
+    value: "Send"
+  }
+};
+exports.formData = formData;
+},{}],4:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.loadContactPage = void 0;
 
+var _methods = require("../../../global/methods");
+
+var _data = require("./data");
+
+var _methods2 = require("./methods");
+
+// Imports
+//  Global
+//  methods
+// 	Local
+//	data
+//  methods
 const loadContactPage = () => {
-  console.log("loading contact page");
+  // Create container to hold contact form
+  let formCont = (0, _methods.createElement)({
+    idName: "formCont"
+  }); // Create element for header
+
+  let headerCont = (0, _methods.createTextElement)({
+    element: "h3",
+    text: _data.formData.header,
+    idName: "headerCont"
+  }); // Append header to form container
+
+  formCont.appendChild(headerCont); // Create element for each text input
+
+  _data.formData.form.forEach(input => {
+    let formInput = (0, _methods2.loadTextInput)(input); // Append input to form container
+
+    formCont.appendChild(formInput);
+  }); // Create element for submit button
+
+
+  let submitCont = (0, _methods2.loadButtonInput)(_data.formData.submit); // Append submit container to form container
+
+  formCont.appendChild(submitCont);
+  document.body.appendChild(formCont);
 };
 
 exports.loadContactPage = loadContactPage;
-},{}],4:[function(require,module,exports){
+},{"../../../global/methods":26,"./data":3,"./methods":5}],5:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.loadButtonInput = exports.loadTextInput = void 0;
+
+var _methods = require("../../../global/methods");
+
+// Local methods to be used by contact page
+//  Global
+//  methods
+const loadTextInput = input => {
+  let cont = (0, _methods.createElement)({
+    className: "textInput"
+  }); // Create text element for name to be displayed for input
+
+  let inputText = (0, _methods.createTextElement)({
+    element: "h2",
+    text: input.displayName
+  }); // Create element for input tag
+
+  let inputTag = (0, _methods.createElement)({
+    element: "input",
+    idName: input.name
+  }); // Set type attribute
+
+  inputTag.setAttribute('type', input.type); // Set placeholder attribute
+
+  inputTag.setAttribute('placeholder', input.placeholder); // Append input text and tag to input container
+
+  cont.appendChild(inputText);
+  cont.appendChild(inputTag);
+  return cont;
+};
+
+exports.loadTextInput = loadTextInput;
+
+const loadButtonInput = input => {
+  let cont = (0, _methods.createElement)({
+    idName: "submitCont"
+  }); // Create container to be used to display messages about the form status
+
+  let msgCont = (0, _methods.createElement)({
+    element: "span",
+    idName: "formMessage"
+  }); // Create button element for submit button
+
+  let submitBtn = (0, _methods.createElement)({
+    element: "input",
+    idName: input.name
+  }); // Set type attribute
+
+  submitBtn.setAttribute("type", input.type); // Set value attribute
+
+  submitBtn.setAttribute("value", input.value); // Append message container and submit button to container
+
+  cont.appendChild(msgCont);
+  cont.appendChild(submitBtn);
+  return cont;
+};
+
+exports.loadButtonInput = loadButtonInput;
+},{"../../../global/methods":26}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -120,7 +257,7 @@ const Rows = [{
   }
 }];
 exports.Rows = Rows;
-},{}],5:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -142,7 +279,7 @@ const loadHomePage = () => {
 };
 
 exports.loadHomePage = loadHomePage;
-},{"./load_methods":6}],6:[function(require,module,exports){
+},{"./load_methods":8}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -260,7 +397,7 @@ const loadListenPreview = () => {
 };
 
 exports.loadListenPreview = loadListenPreview;
-},{"../../../global/methods":24,"./data":4,"./special_methods":7}],7:[function(require,module,exports){
+},{"../../../global/methods":26,"./data":6,"./special_methods":9}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -344,7 +481,7 @@ const imgCont = currImg => {
 };
 
 exports.imgCont = imgCont;
-},{"../../../global/methods":24}],8:[function(require,module,exports){
+},{"../../../global/methods":26}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -357,7 +494,7 @@ const loadListenPage = () => {
 };
 
 exports.loadListenPage = loadListenPage;
-},{}],9:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -370,7 +507,7 @@ const loadEditingPage = () => {
 };
 
 exports.loadEditingPage = loadEditingPage;
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -413,7 +550,7 @@ const loadServicesPage = () => {
 };
 
 exports.loadServicesPage = loadServicesPage;
-},{"../../../global/methods":24,"./editing/index":9,"./performance/index":12,"./reedmaking/index":16,"./writing/index":19}],11:[function(require,module,exports){
+},{"../../../global/methods":26,"./editing/index":11,"./performance/index":14,"./reedmaking/index":18,"./writing/index":21}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -446,7 +583,7 @@ const headerData = {
   }
 };
 exports.headerData = headerData;
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -467,7 +604,7 @@ const loadPerformancePage = () => {
 };
 
 exports.loadPerformancePage = loadPerformancePage;
-},{"./load_methods":13}],13:[function(require,module,exports){
+},{"./load_methods":15}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -501,7 +638,7 @@ const loadRates = () => {
 };
 
 exports.loadRates = loadRates;
-},{"./data":11,"./special_methods":14}],14:[function(require,module,exports){
+},{"./data":13,"./special_methods":16}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -569,7 +706,7 @@ const createCenterImageHeader = headerData => {
   cont.appendChild(rightSymbol);
   return cont;
 };
-},{"../../../../global/methods":24}],15:[function(require,module,exports){
+},{"../../../../global/methods":26}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -630,7 +767,7 @@ const pricingData = [{
   }]
 }];
 exports.pricingData = pricingData;
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -650,7 +787,7 @@ const loadReedmakingPage = () => {
 };
 
 exports.loadReedmakingPage = loadReedmakingPage;
-},{"./load-methods":17}],17:[function(require,module,exports){
+},{"./load-methods":19}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -796,7 +933,7 @@ const loadPricings = () => {
 };
 
 exports.loadPricings = loadPricings;
-},{"../../../../global/methods":24,"./data":15,"./private-methods":18}],18:[function(require,module,exports){
+},{"../../../../global/methods":26,"./data":17,"./private-methods":20}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -898,7 +1035,7 @@ const createPriceCont = priceData => {
   cont.appendChild(blendCont);
   return cont;
 };
-},{"../../../../global/methods":24}],19:[function(require,module,exports){
+},{"../../../../global/methods":26}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -911,7 +1048,7 @@ const loadWritingPage = () => {
 };
 
 exports.loadWritingPage = loadWritingPage;
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -961,7 +1098,7 @@ const data = {
   }
 };
 exports.data = data;
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1000,7 +1137,7 @@ const createBgFade = () => {
 };
 
 exports.createBgFade = createBgFade;
-},{"../global/methods":24,"./data":20}],22:[function(require,module,exports){
+},{"../global/methods":26,"./data":22}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1030,7 +1167,7 @@ const data = [{
   link: "tbd"
 }];
 exports.data = data;
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1080,7 +1217,7 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"../global/methods":24,"./data":22}],24:[function(require,module,exports){
+},{"../global/methods":26,"./data":24}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1178,7 +1315,7 @@ function createImageElement(_a) {
     console.log(e);
   }
 }
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1208,7 +1345,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{"../global/methods":24}],26:[function(require,module,exports){
+},{"../global/methods":26}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1257,7 +1394,7 @@ const links = [{
   subdirectories: []
 }];
 exports.links = links;
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1287,7 +1424,7 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
-},{"../global/methods":24,"./methods":28}],28:[function(require,module,exports){
+},{"../global/methods":26,"./methods":30}],30:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1411,7 +1548,7 @@ let createSubdirectory = dirs => {
 
   return subUl;
 };
-},{"../global/methods":24,"./data":26}],29:[function(require,module,exports){
+},{"../global/methods":26,"./data":28}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1439,5 +1576,5 @@ const init = () => {
 };
 
 exports.init = init;
-},{"./bg_content/index":1,"./bg_img/index":21,"./footer/index":23,"./gradient/index":25,"./header/index":27}]},{},[29])(29)
+},{"./bg_content/index":1,"./bg_img/index":23,"./footer/index":25,"./gradient/index":27,"./header/index":29}]},{},[31])(31)
 });

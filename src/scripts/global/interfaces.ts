@@ -16,7 +16,7 @@ interface ILink {
 }
 interface IBox {
 	header:string;
-	content:string;
+	content:string | any;
 
 }
 interface IBoxLink extends IBox {
