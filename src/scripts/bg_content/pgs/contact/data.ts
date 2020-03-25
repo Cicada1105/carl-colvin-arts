@@ -15,10 +15,10 @@ const formData:IForm = {
 			placeholder:"Enter name..."
 		},
 		{
-			type:"text",
+			type:"email",
 			name:"email",
 			displayName:"Email",
-			placeholder:"example@gmail.com"
+			placeholder:"Example@gmail.com"
 		},
 		{
 			type:"text",

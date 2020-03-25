@@ -20,17 +20,32 @@ const loadTextInput = (input:IText):any => {
 	inputTag.setAttribute('type',input.type);
 	// Set placeholder attribute
 	inputTag.setAttribute('placeholder',input.placeholder);
+	// Set autocomplete to prevent browser from offering suggestions
+	inputTag.setAttribute('autocomplete','off');
 
+	// Create span element to be used as an animation for click effect
+	let spanAnimation:any = createElement({element:"div",className:"inputAnimation"});
 
-	// Append input text and tag to input container
+	// Set event listener for input tag focus to active animation
+	inputTag.addEventListener("focus",() => {
+		spanAnimation.style.animationName = "inputFocus";
+	});
+	inputTag.addEventListener("blur",() => {
+		spanAnimation.style.animationName = "inputUnfocus";
+	});
+
+	// Append input text, tag and span to input container
 	cont.appendChild(inputText);
+	cont.appendChild(spanAnimation);
 	cont.appendChild(inputTag);
 
 	return cont;
 }
-
+const submitForm = () => {
+	alert();
+}
 const loadButtonInput = (input:IButton):any => {
-	let cont:any = createElement({idName:"submitCont"});
+	let cont:any = createElement({className:"buttonInput", idName:"submitCont"});
 
 	// Create container to be used to display messages about the form status
 	let msgCont:any = createElement({element:"span",idName:"formMessage"});
@@ -41,6 +56,10 @@ const loadButtonInput = (input:IButton):any => {
 	submitBtn.setAttribute("type",input.type);
 	// Set value attribute
 	submitBtn.setAttribute("value",input.value);
+
+	submitBtn.addEventListener("click",function() {
+		alert("Clicked");
+	})
 
 	// Append message container and submit button to container
 	cont.appendChild(msgCont);

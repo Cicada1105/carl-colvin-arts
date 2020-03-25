@@ -15,7 +15,7 @@ const loadContactPage = () => {
 	let formCont:any = createElement({idName:"formCont"});
 
 	// Create element for header
-	let headerCont:any = createTextElement({element:"h3",text:formData.header, idName:"headerCont"});
+	let headerCont:any = createTextElement({element:"h1",text:formData.header});
 	// Append header to form container
 	formCont.appendChild(headerCont);
 

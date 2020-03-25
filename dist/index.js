@@ -76,10 +76,10 @@ const formData = {
     displayName: "Name",
     placeholder: "Enter name..."
   }, {
-    type: "text",
+    type: "email",
     name: "email",
     displayName: "Email",
-    placeholder: "example@gmail.com"
+    placeholder: "Example@gmail.com"
   }, {
     type: "text",
     name: "subject",
@@ -125,9 +125,8 @@ const loadContactPage = () => {
   }); // Create element for header
 
   let headerCont = (0, _methods.createTextElement)({
-    element: "h3",
-    text: _data.formData.header,
-    idName: "headerCont"
+    element: "h1",
+    text: _data.formData.header
   }); // Append header to form container
 
   formCont.appendChild(headerCont); // Create element for each text input
@@ -176,17 +175,39 @@ const loadTextInput = input => {
 
   inputTag.setAttribute('type', input.type); // Set placeholder attribute
 
-  inputTag.setAttribute('placeholder', input.placeholder); // Append input text and tag to input container
+  inputTag.setAttribute('placeholder', input.placeholder); // Set autocomplete to prevent browser from offering suggestions
+
+  inputTag.setAttribute('autocomplete', 'off'); // Create span element to be used as an animation for click effect
+
+  let spanAnimation = (0, _methods.createElement)({
+    element: "div",
+    className: "inputAnimation"
+  }); // Set event listener for input tag focus to active animation
+
+  inputTag.addEventListener("focus", () => {
+    console.log("Focus event");
+    spanAnimation.style.animationName = "inputFocus";
+  });
+  inputTag.addEventListener("blur", () => {
+    console.log("Focus out event");
+    spanAnimation.style.animationName = "inputUnfocus";
+  }); // Append input text, tag and span to input container
 
   cont.appendChild(inputText);
+  cont.appendChild(spanAnimation);
   cont.appendChild(inputTag);
   return cont;
 };
 
 exports.loadTextInput = loadTextInput;
 
+const submitForm = () => {
+  alert();
+};
+
 const loadButtonInput = input => {
   let cont = (0, _methods.createElement)({
+    className: "buttonInput",
     idName: "submitCont"
   }); // Create container to be used to display messages about the form status
 
@@ -202,7 +223,10 @@ const loadButtonInput = input => {
 
   submitBtn.setAttribute("type", input.type); // Set value attribute
 
-  submitBtn.setAttribute("value", input.value); // Append message container and submit button to container
+  submitBtn.setAttribute("value", input.value);
+  submitBtn.addEventListener("click", function () {
+    alert("Clicked");
+  }); // Append message container and submit button to container
 
   cont.appendChild(msgCont);
   cont.appendChild(submitBtn);

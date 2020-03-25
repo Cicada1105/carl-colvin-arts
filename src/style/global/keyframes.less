@@ -1,3 +1,5 @@
+@import (reference) './colors.less';
+
 // From plus to minus
 @keyframes plusMinus {
 	0% {
@@ -57,5 +59,22 @@
 	to {
 		visibility: hidden;
 		padding:0rem 5%;
+	}
+}
+/*		Contact Page 		*/
+@keyframes inputFocus {
+	from {
+		width:0rem;
+	}
+	to {
+		width:10.125rem;
+	}
+}
+@keyframes inputUnfocus {
+	from {
+		width:10.125rem;
+	}
+	to {
+		width:0rem;
 	}
 }

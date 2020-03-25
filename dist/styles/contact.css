@@ -1,3 +1,78 @@
+@keyframes plusMinus {
+  0% {
+    clip-path: polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
+  }
+  100% {
+    clip-path: polygon(5% 40%, 40% 40%, 45% 40%, 60% 40%, 65% 40%, 95% 40%, 95% 60%, 60% 60%, 55% 60%, 40% 60%, 35% 60%, 5% 60%);
+  }
+}
+@keyframes minusPlus {
+  0% {
+    clip-path: polygon(5% 40%, 40% 40%, 45% 40%, 60% 40%, 65% 40%, 95% 40%, 95% 60%, 60% 60%, 55% 60%, 40% 60%, 35% 60%, 5% 60%);
+  }
+  100% {
+    clip-path: polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
+  }
+}
+/*		Dropdown		*/
+@keyframes dropdownOpen {
+  0% {
+    display: none;
+    height: 0rem;
+  }
+  100% {
+    display: block;
+    height: 17rem;
+  }
+}
+@keyframes dropdownClose {
+  0% {
+    display: block;
+    height: 17rem;
+  }
+  100% {
+    display: none;
+    height: 0rem;
+  }
+}
+/*		Dropdown Paragraphs		*/
+@keyframes dropdownPOpen {
+  from {
+    visibility: hidden;
+    padding: 0rem 5%;
+  }
+  to {
+    visibility: visible;
+    padding: 1rem 5%;
+  }
+}
+@keyframes dropdownPClose {
+  from {
+    visibility: visible;
+    padding: 1rem 5%;
+  }
+  to {
+    visibility: hidden;
+    padding: 0rem 5%;
+  }
+}
+/*		Contact Page 		*/
+@keyframes inputFocus {
+  from {
+    width: 0rem;
+  }
+  to {
+    width: 10.125rem;
+  }
+}
+@keyframes inputUnfocus {
+  from {
+    width: 10.125rem;
+  }
+  to {
+    width: 0rem;
+  }
+}
 #header,
 #footer {
   position: fixed;width: 100%;height: 6vh;background-color: #0c090a;font-size: 1.5rem;filter: opacity(70%);z-index: 2;
@@ -24,6 +99,7 @@ body {
 }
 #header {
   top: 0%;
+  z-index: 3;
 }
 #header ul[id="navigation"] {
   width: inherit;
@@ -75,8 +151,85 @@ body {
   top: 0%;
 }
 /*  Rest of the styling goes here */
+[id="formCont"] {
+  position: relative;
+  width: 60%;
+  margin: 5rem auto auto auto;
+  z-index: 2;
+}
+[id="formCont"] h1:first-child {
+  position: relative;
+  width: 100%;
+  font-size: 2.5rem;
+  color: #f0edee;
+  text-align: center;
+}
+[id="formCont"] [class$="Input"] {
+  position: relative;
+  width: 100%;
+}
+[id="formCont"] [class$="Input"] h2 {
+  color: #f0edee;
+  display: inline-block;
+  text-align: right;
+  width: 5rem;
+  margin-right: 30%;
+  margin-left: 25%;
+}
+[id="formCont"] [class$="Input"] input {
+  display: inline-block;
+  font-size: 1rem;
+}
+[id="formCont"] [class$="Input"] input:focus {
+  outline: none;
+}
+[id="formCont"] [class$="Input"] input[type="text"],
+[id="formCont"] [class$="Input"] input[type="email"] {
+  position: relative;
+  width: 10rem;
+  height: 1.25rem;
+  border: none;
+}
+[id="formCont"] [class$="Input"] [class="inputAnimation"] {
+  background-color: #de5757;
+  position: absolute;
+  display: inline-block;
+  height: 1.375rem;
+  left: 64.25%;
+  top: 41%;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  animation-delay: 0s;
+  animation-direction: normal;
+}
+[id="formCont"] [class$="Input"] [id="formMessage"] {
+  color: #f0edee;
+  display: block;
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+}
+[id="formCont"] [class$="Input"] [id="submitBtn"] {
+  background-color: #de5757;
+  border: none;
+  color: #f0edee;
+  border-radius: 5px;
+  display: block;
+  padding: 10px 40px;
+  margin: 3rem auto;
+}
+[id="formCont"] [class$="Input"] input[type="button"]:hover {
+  background-color: #a21616;
+  cursor: pointer;
+}
+[id="formCont"] [class="buttonInput"] {
+  height: 2rem;
+}
 #footer {
   bottom: 0%;
+  z-index: 3;
 }
 #footer #social {
   position: relative;
