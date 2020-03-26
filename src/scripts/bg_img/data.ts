@@ -39,8 +39,8 @@ const data:IBgImage = {
 		alt: "Playing oboe in church pew"
 	}, 
 	"editing" : {
-		path: imgPath + "",
-		alt: "Editing"
+		path: imgPath + "book_edit.jpg",
+		alt: "Editing excerpt from David Soula"
 	},
 	"listen" : {
 		path: imgPath + "english_horn_sheet_music.jpg",
