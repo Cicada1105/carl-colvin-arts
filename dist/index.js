@@ -47,7 +47,7 @@ const createBodyContent = () => {
 };
 
 exports.createBodyContent = createBodyContent;
-},{"../global/methods":26,"./pgs/about/index":2,"./pgs/contact/index":4,"./pgs/home/index":7,"./pgs/listen/index":10,"./pgs/services/index":12}],2:[function(require,module,exports){
+},{"../global/methods":27,"./pgs/about/index":2,"./pgs/contact/index":4,"./pgs/home/index":8,"./pgs/listen/index":11,"./pgs/services/index":13}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -79,7 +79,7 @@ const formData = {
     type: "email",
     name: "email",
     displayName: "Email",
-    placeholder: "Example@gmail.com"
+    placeholder: "example@mail.com"
   }, {
     type: "text",
     name: "subject",
@@ -110,7 +110,7 @@ var _methods = require("../../../global/methods");
 
 var _data = require("./data");
 
-var _methods2 = require("./methods");
+var _load_methods = require("./load_methods");
 
 // Imports
 //  Global
@@ -132,20 +132,20 @@ const loadContactPage = () => {
   formCont.appendChild(headerCont); // Create element for each text input
 
   _data.formData.form.forEach(input => {
-    let formInput = (0, _methods2.loadTextInput)(input); // Append input to form container
+    let formInput = (0, _load_methods.loadTextInput)(input); // Append input to form container
 
     formCont.appendChild(formInput);
   }); // Create element for submit button
 
 
-  let submitCont = (0, _methods2.loadButtonInput)(_data.formData.submit); // Append submit container to form container
+  let submitCont = (0, _load_methods.loadButtonInput)(_data.formData.submit); // Append submit container to form container
 
   formCont.appendChild(submitCont);
   document.body.appendChild(formCont);
 };
 
 exports.loadContactPage = loadContactPage;
-},{"../../../global/methods":26,"./data":3,"./methods":5}],5:[function(require,module,exports){
+},{"../../../global/methods":27,"./data":3,"./load_methods":5}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -153,9 +153,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.loadButtonInput = exports.loadTextInput = void 0;
 
+var _special_methods = require("./special_methods");
+
 var _methods = require("../../../global/methods");
 
 // Local methods to be used by contact page
+//  methods
 //  Global
 //  methods
 const loadTextInput = input => {
@@ -185,11 +188,9 @@ const loadTextInput = input => {
   }); // Set event listener for input tag focus to active animation
 
   inputTag.addEventListener("focus", () => {
-    console.log("Focus event");
     spanAnimation.style.animationName = "inputFocus";
   });
   inputTag.addEventListener("blur", () => {
-    console.log("Focus out event");
     spanAnimation.style.animationName = "inputUnfocus";
   }); // Append input text, tag and span to input container
 
@@ -201,19 +202,10 @@ const loadTextInput = input => {
 
 exports.loadTextInput = loadTextInput;
 
-const submitForm = () => {
-  alert();
-};
-
 const loadButtonInput = input => {
   let cont = (0, _methods.createElement)({
     className: "buttonInput",
     idName: "submitCont"
-  }); // Create container to be used to display messages about the form status
-
-  let msgCont = (0, _methods.createElement)({
-    element: "span",
-    idName: "formMessage"
   }); // Create button element for submit button
 
   let submitBtn = (0, _methods.createElement)({
@@ -223,18 +215,71 @@ const loadButtonInput = input => {
 
   submitBtn.setAttribute("type", input.type); // Set value attribute
 
-  submitBtn.setAttribute("value", input.value);
-  submitBtn.addEventListener("click", function () {
-    alert("Clicked");
+  submitBtn.setAttribute("value", input.value); // Add event listener to handle submitting form 
+
+  submitBtn.addEventListener("click", _special_methods.submitForm); // Create container to be used to display messages about the form status
+
+  let msgCont = (0, _methods.createElement)({
+    element: "span",
+    idName: "formMessage"
   }); // Append message container and submit button to container
 
-  cont.appendChild(msgCont);
   cont.appendChild(submitBtn);
+  cont.appendChild(msgCont);
   return cont;
 };
 
 exports.loadButtonInput = loadButtonInput;
-},{"../../../global/methods":26}],6:[function(require,module,exports){
+},{"../../../global/methods":27,"./special_methods":6}],6:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.submitForm = void 0;
+
+var _methods = require("../../../global/methods");
+
+// This file contains special methods that are used in aiding the load methods
+// Imports
+// 	Global
+// 	methods
+// Image path
+const sending_img_path = "../resources/contact_imgs/sending_envelope.png";
+
+const submitForm = event => {
+  // Store button to be display after message processing has been accomplished
+  // path[i] selects element that received mouse event. If bubbling is true, rest of array is bubbled elements
+  let submit_btn = event.path[0]; // access parent node of submit button
+
+  let submit_cont = document.querySelector("#submitCont"); // Access message element to display updates to user
+
+  let submit_msg = submit_cont.lastChild; // Message
+  // Create new iamge element
+
+  let sending_img = (0, _methods.createImageElement)({
+    src: sending_img_path,
+    idName: "sending_img"
+  }); // Replace button with image
+
+  submit_cont.replaceChild(sending_img, submit_btn); // Update message
+
+  submit_msg.innerHTML = "Sending..."; // Mimic delay in sending message
+
+  setTimeout(function () {
+    // Return image back to original submit button
+    submit_cont.replaceChild(submit_btn, sending_img); // Update message
+
+    submit_msg.innerHTML = "Message Sent!";
+  }, 2000); // Clear message after some time
+
+  setTimeout(function () {
+    submit_msg.innerHTML = "";
+  }, 4000);
+};
+
+exports.submitForm = submitForm;
+},{"../../../global/methods":27}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -281,7 +326,7 @@ const Rows = [{
   }
 }];
 exports.Rows = Rows;
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -303,7 +348,7 @@ const loadHomePage = () => {
 };
 
 exports.loadHomePage = loadHomePage;
-},{"./load_methods":8}],8:[function(require,module,exports){
+},{"./load_methods":9}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -421,7 +466,7 @@ const loadListenPreview = () => {
 };
 
 exports.loadListenPreview = loadListenPreview;
-},{"../../../global/methods":26,"./data":6,"./special_methods":9}],9:[function(require,module,exports){
+},{"../../../global/methods":27,"./data":7,"./special_methods":10}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -505,7 +550,7 @@ const imgCont = currImg => {
 };
 
 exports.imgCont = imgCont;
-},{"../../../global/methods":26}],10:[function(require,module,exports){
+},{"../../../global/methods":27}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -518,7 +563,7 @@ const loadListenPage = () => {
 };
 
 exports.loadListenPage = loadListenPage;
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -531,7 +576,7 @@ const loadEditingPage = () => {
 };
 
 exports.loadEditingPage = loadEditingPage;
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -574,7 +619,7 @@ const loadServicesPage = () => {
 };
 
 exports.loadServicesPage = loadServicesPage;
-},{"../../../global/methods":26,"./editing/index":11,"./performance/index":14,"./reedmaking/index":18,"./writing/index":21}],13:[function(require,module,exports){
+},{"../../../global/methods":27,"./editing/index":12,"./performance/index":15,"./reedmaking/index":19,"./writing/index":22}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -607,7 +652,7 @@ const headerData = {
   }
 };
 exports.headerData = headerData;
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -628,7 +673,7 @@ const loadPerformancePage = () => {
 };
 
 exports.loadPerformancePage = loadPerformancePage;
-},{"./load_methods":15}],15:[function(require,module,exports){
+},{"./load_methods":16}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -662,7 +707,7 @@ const loadRates = () => {
 };
 
 exports.loadRates = loadRates;
-},{"./data":13,"./special_methods":16}],16:[function(require,module,exports){
+},{"./data":14,"./special_methods":17}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -730,7 +775,7 @@ const createCenterImageHeader = headerData => {
   cont.appendChild(rightSymbol);
   return cont;
 };
-},{"../../../../global/methods":26}],17:[function(require,module,exports){
+},{"../../../../global/methods":27}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -791,7 +836,7 @@ const pricingData = [{
   }]
 }];
 exports.pricingData = pricingData;
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -811,7 +856,7 @@ const loadReedmakingPage = () => {
 };
 
 exports.loadReedmakingPage = loadReedmakingPage;
-},{"./load-methods":19}],19:[function(require,module,exports){
+},{"./load-methods":20}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -957,7 +1002,7 @@ const loadPricings = () => {
 };
 
 exports.loadPricings = loadPricings;
-},{"../../../../global/methods":26,"./data":17,"./private-methods":20}],20:[function(require,module,exports){
+},{"../../../../global/methods":27,"./data":18,"./private-methods":21}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1059,7 +1104,7 @@ const createPriceCont = priceData => {
   cont.appendChild(blendCont);
   return cont;
 };
-},{"../../../../global/methods":26}],21:[function(require,module,exports){
+},{"../../../../global/methods":27}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1072,7 +1117,7 @@ const loadWritingPage = () => {
 };
 
 exports.loadWritingPage = loadWritingPage;
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1122,7 +1167,7 @@ const data = {
   }
 };
 exports.data = data;
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1161,7 +1206,7 @@ const createBgFade = () => {
 };
 
 exports.createBgFade = createBgFade;
-},{"../global/methods":26,"./data":22}],24:[function(require,module,exports){
+},{"../global/methods":27,"./data":23}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1191,7 +1236,7 @@ const data = [{
   link: "tbd"
 }];
 exports.data = data;
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1241,7 +1286,7 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"../global/methods":26,"./data":24}],26:[function(require,module,exports){
+},{"../global/methods":27,"./data":25}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1339,7 +1384,7 @@ function createImageElement(_a) {
     console.log(e);
   }
 }
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1369,7 +1414,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{"../global/methods":26}],28:[function(require,module,exports){
+},{"../global/methods":27}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1418,7 +1463,7 @@ const links = [{
   subdirectories: []
 }];
 exports.links = links;
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1448,7 +1493,7 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
-},{"../global/methods":26,"./methods":30}],30:[function(require,module,exports){
+},{"../global/methods":27,"./methods":31}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1572,7 +1617,7 @@ let createSubdirectory = dirs => {
 
   return subUl;
 };
-},{"../global/methods":26,"./data":28}],31:[function(require,module,exports){
+},{"../global/methods":27,"./data":29}],32:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1600,5 +1645,5 @@ const init = () => {
 };
 
 exports.init = init;
-},{"./bg_content/index":1,"./bg_img/index":23,"./footer/index":25,"./gradient/index":27,"./header/index":29}]},{},[31])(31)
+},{"./bg_content/index":1,"./bg_img/index":24,"./footer/index":26,"./gradient/index":28,"./header/index":30}]},{},[32])(32)
 });

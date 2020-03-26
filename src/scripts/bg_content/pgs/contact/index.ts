@@ -8,7 +8,7 @@ import { formData } from './data'
 // 	interfaces
 import { IForm } from './interfaces'
 //  methods
-import { loadTextInput, loadButtonInput } from './methods'
+import { loadTextInput, loadButtonInput } from './load_methods'
 
 const loadContactPage = () => {
 	// Create container to hold contact form

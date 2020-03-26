@@ -218,7 +218,13 @@ body {
   border-radius: 5px;
   display: block;
   padding: 10px 40px;
-  margin: 3rem auto;
+  margin: 2rem auto 1rem auto;
+}
+[id="formCont"] [class$="Input"] [id="sending_img"] {
+  display: block;
+  margin: 1.5rem auto 0.5rem auto;
+  width: 7rem;
+  height: 4rem;
 }
 [id="formCont"] [class$="Input"] input[type="button"]:hover {
   background-color: #a21616;

@@ -4,6 +4,8 @@
 // 	Local
 // 	interfaces 
 import { TextInputInterface as IText, ButtonInputInterface as IButton } from './interfaces'
+//  methods
+import { submitForm } from './special_methods'
 //  Global
 //  methods
 import { createElement, createTextElement } from '../../../global/methods'
@@ -41,14 +43,9 @@ const loadTextInput = (input:IText):any => {
 
 	return cont;
 }
-const submitForm = () => {
-	alert();
-}
+
 const loadButtonInput = (input:IButton):any => {
 	let cont:any = createElement({className:"buttonInput", idName:"submitCont"});
-
-	// Create container to be used to display messages about the form status
-	let msgCont:any = createElement({element:"span",idName:"formMessage"});
 
 	// Create button element for submit button
 	let submitBtn:any = createElement({element:"input",idName:input.name});
@@ -57,13 +54,15 @@ const loadButtonInput = (input:IButton):any => {
 	// Set value attribute
 	submitBtn.setAttribute("value",input.value);
 
-	submitBtn.addEventListener("click",function() {
-		alert("Clicked");
-	})
+	// Add event listener to handle submitting form 
+	submitBtn.addEventListener("click",submitForm);
+	
+	// Create container to be used to display messages about the form status
+	let msgCont:any = createElement({element:"span",idName:"formMessage"});
 
 	// Append message container and submit button to container
-	cont.appendChild(msgCont);
 	cont.appendChild(submitBtn);
+	cont.appendChild(msgCont);
 
 	return cont;
 }

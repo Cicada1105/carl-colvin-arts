@@ -12,13 +12,11 @@
 /*  Rest of the styling goes here */
 [id = "formCont"] {
 	.format(relative, 60%); 
-	//background-color:orange;
 	margin:5rem auto auto auto;
 	z-index:2;
 
 	h1:first-child {
 		.format(relative, 100%);
-		//background-color:green;
 		font-size:2.5rem;
 		color:@textColor;
 		text-align: center;
@@ -26,7 +24,6 @@
 
 	[class $= "Input"] {
 		.format(relative, 100%);
-		//background-color:aqua;
 		h2 {
 			color:@textColor;
 			display:inline-block;
@@ -78,7 +75,13 @@
 			border-radius:5px;
 			display:block;
 			padding:10px 40px;
-			margin:3rem auto;
+			margin:2rem auto 1rem auto;
+		}
+		[id = "sending_img"] {
+			display:block;
+			margin:1.5rem auto 0.5rem auto;
+			width:7rem;
+			height:4rem;
 		}
 		input[type="button"] {
 			&:hover {

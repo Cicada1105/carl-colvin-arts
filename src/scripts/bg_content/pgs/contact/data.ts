@@ -18,7 +18,7 @@ const formData:IForm = {
 			type:"email",
 			name:"email",
 			displayName:"Email",
-			placeholder:"Example@gmail.com"
+			placeholder:"example@mail.com"
 		},
 		{
 			type:"text",
