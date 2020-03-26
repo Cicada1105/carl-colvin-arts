@@ -40,7 +40,7 @@ const data:IBgImage = {
 	}, 
 	"editing" : {
 		path: imgPath + "book_edit.jpg",
-		alt: "Editing excerpt from David Soula"
+		alt: "Editing excerpt from David Sula"
 	},
 	"listen" : {
 		path: imgPath + "english_horn_sheet_music.jpg",
