@@ -1,4 +1,4 @@
-// Local methods to be used by contact page
+// Local loading methods to be used by contact page
 
 // Imports
 // 	Local
@@ -10,23 +10,38 @@ import { submitForm } from './special_methods'
 //  methods
 import { createElement, createTextElement } from '../../../global/methods'
 
-const loadTextInput = (input:IText):any => {
+const loadInputRow = (input:IText):any => {
 	let cont:any = createElement({className:"textInput"});
 
 	// Create text element for name to be displayed for input
 	let inputText:any = createTextElement({element:"h2",text:input.displayName});
 
 	// Create element for input tag
-	let inputTag:any = createElement({element:"input",idName:input.name});
-	// Set type attribute
-	inputTag.setAttribute('type',input.type);
-	// Set placeholder attribute
-	inputTag.setAttribute('placeholder',input.placeholder);
-	// Set autocomplete to prevent browser from offering suggestions
-	inputTag.setAttribute('autocomplete','off');
+	let inputCont:any = loadInputCont(input);
 
-	// Create span element to be used as an animation for click effect
-	let spanAnimation:any = createElement({element:"div",className:"inputAnimation"});
+	// Append input text, tag and span to input container
+	cont.appendChild(inputText);
+	cont.appendChild(inputCont);
+
+	return cont;
+}
+
+const loadInputCont = ({type="",name="",placeholder=""}):any => {
+	let cont:any = createElement({className:"inputCont"});
+
+	// Create children elements of input container
+	//		element for user input
+	let inputTag:any = createElement({element:"input",idName:name});
+	// 		element to be used as an animation for click effect
+	let spanAnimation:any = createElement({className:"inputAnimation"});
+	//		element to display message for incomplete field
+	let errorMsg:any = createTextElement({text:"*", className:"errorMsg"});
+
+	// Set attributes for input tag
+	inputTag.setAttribute('type',type);
+	inputTag.setAttribute('placeholder',placeholder);
+	// 	autocomplete attribute can prevent browser from offering suggestions
+	inputTag.setAttribute('autocomplete','off');
 
 	// Set event listener for input tag focus to active animation
 	inputTag.addEventListener("focus",() => {
@@ -36,10 +51,9 @@ const loadTextInput = (input:IText):any => {
 		spanAnimation.style.animationName = "inputUnfocus";
 	});
 
-	// Append input text, tag and span to input container
-	cont.appendChild(inputText);
-	cont.appendChild(spanAnimation);
 	cont.appendChild(inputTag);
+	cont.appendChild(spanAnimation);
+	cont.appendChild(errorMsg);
 
 	return cont;
 }
@@ -67,4 +81,4 @@ const loadButtonInput = (input:IButton):any => {
 	return cont;
 }
 
-export { loadTextInput, loadButtonInput }
+export { loadInputRow, loadButtonInput }

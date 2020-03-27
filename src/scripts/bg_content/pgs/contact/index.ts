@@ -8,7 +8,7 @@ import { formData } from './data'
 // 	interfaces
 import { IForm } from './interfaces'
 //  methods
-import { loadTextInput, loadButtonInput } from './load_methods'
+import { loadInputRow, loadButtonInput } from './load_methods'
 
 const loadContactPage = () => {
 	// Create container to hold contact form
@@ -21,7 +21,7 @@ const loadContactPage = () => {
 
 	// Create element for each text input
 	formData.form.forEach(input => {
-		let formInput:any = loadTextInput(input);
+		let formInput:any = loadInputRow(input);
 
 		// Append input to form container
 		formCont.appendChild(formInput);
