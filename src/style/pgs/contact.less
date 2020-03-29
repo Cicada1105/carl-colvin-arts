@@ -40,13 +40,6 @@
 			display:inline-block;
 			padding-left:15%;
 
-			input {
-				display:inline-block;
-				font-size:1rem;
-				&:focus {
-					outline: none;
-				}
-			}
 			input[type="text"], input[type="email"]{
 				.format(relative,10rem,1.25rem);
 				border:none;
@@ -81,6 +74,13 @@
 			width:fit-content;
 			height:fit-content;
 			margin:auto;
+		}
+		input {
+			display:inline-block;
+			font-size:1rem;
+			&:focus {
+				outline: none;
+			}
 		}
 		[id = "submitBtn"] {
 			background-color:@shadowColor;

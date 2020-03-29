@@ -4,6 +4,9 @@
 // 	Global
 // 	methods
 import { createImageElement } from '../../../global/methods'
+//  Local
+//  methods
+import { request } from './request_methods'
 
 // Image path
 const sending_img_path:string = "../resources/contact_imgs/sending_envelope.png";
@@ -18,41 +21,54 @@ const submitForm = (event:any) => {
 		let submit_cont:any = document.querySelector("#submitCont");
 		// Access message element to display updates to user
 		let submit_msg:any = submit_cont.lastChild;		// Message
-
 		// Create new iamge element
 		let sending_img:any = createImageElement({src:sending_img_path,idName:"sending_img"});
+
+		// Store input data
+		let name:any = document.querySelector("#name");
+		let email:any = document.querySelector("#email");
+		let subject:any = document.querySelector("#subject");
+		let body:any = document.querySelector("#message");
 
 		// Replace button with image
 		submit_cont.replaceChild(sending_img, submit_btn);
 		// Update message
 		submit_msg.innerHTML = "Sending...";
 
-		// Mimic delay in sending message
-		setTimeout(function(){ 
+		request(name.value,email.value,subject.value,body.value).then((res) => {
+			// Return image back to original submit button
+			submit_cont.replaceChild(submit_btn, sending_img);
+			alert();
+			// Update message
+			submit_msg.innerHTML = "Message Sent!";
+
+			console.log(res);
+		}).catch((err) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);
 			// Update message
-			submit_msg.innerHTML = "Message Sent!";
-		},2000);
+			submit_msg.innerHTML = "Error sending email";
 
-		// Clear message after some time
-		setTimeout(function() {
-			submit_msg.innerHTML = "";
-		},4000);
-	}
-	else {
-		alert("Form not completed");
+			console.log(err);
+			// Clear message after some time
+			setTimeout(function() {
+				submit_msg.innerHTML = "";
+			},4000);
+		});
 	}
 }
 
 const fieldsCompleted = ():boolean => {
 	let formCompleted:boolean = true;
 
-	let inputs:any = document.getElementsByClassName("textInput");
+	let inputs:any = document.getElementsByClassName("inputCont");
 	for (let input of inputs) {
-		if (input.children[2].value === "") {
+		if (input.firstChild.value === "") {
+			input.lastChild.innerHTML = "*Incomplete Field"
 			formCompleted = false;
 		}
+		else
+			input.lastChild.innerHTML = "*";
 	}
 
 	return formCompleted;
