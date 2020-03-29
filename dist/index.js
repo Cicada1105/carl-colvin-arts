@@ -47,7 +47,7 @@ const createBodyContent = () => {
 };
 
 exports.createBodyContent = createBodyContent;
-},{"../global/methods":28,"./pgs/about/index":2,"./pgs/contact/index":4,"./pgs/home/index":9,"./pgs/listen/index":12,"./pgs/services/index":14}],2:[function(require,module,exports){
+},{"../global/methods":27,"./pgs/about/index":2,"./pgs/contact/index":4,"./pgs/home/index":8,"./pgs/listen/index":11,"./pgs/services/index":13}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -145,7 +145,7 @@ const loadContactPage = () => {
 };
 
 exports.loadContactPage = loadContactPage;
-},{"../../../global/methods":28,"./data":3,"./load_methods":5}],5:[function(require,module,exports){
+},{"../../../global/methods":27,"./data":3,"./load_methods":5}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -250,54 +250,7 @@ const loadButtonInput = input => {
 };
 
 exports.loadButtonInput = loadButtonInput;
-},{"../../../global/methods":28,"./special_methods":7}],6:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.request = void 0;
-
-// This file handles making request to server to send email
-let makeRequest = (name, email, subject, body) => {
-  request(name, email, subject, body).then(res => {
-    console.log("Successfuly sent email:");
-    console.log(res);
-  }).catch(err => {
-    console.log("Error sending email:");
-    console.log(err);
-  });
-};
-
-let request = (n, e, sub, body) => {
-  let contactInfo = {
-    "name": n,
-    "email": e,
-    "subject": sub,
-    "message": body
-  };
-  return new Promise((resolve, reject) => {
-    const http = new XMLHttpRequest();
-    http.open('POST', 'http://localhost:8080/');
-    http.setRequestHeader("Content-Type", "application/json");
-
-    http.onreadystatechange = function () {
-      if (this.readyState == 4) {
-        if (this.status == 200) {
-          resolve(this.responseText);
-        } else if (this.status == 400) {
-          reject(this.responseText);
-        }
-      }
-    };
-
-    let contactObjStr = JSON.stringify(contactInfo);
-    http.send(contactObjStr);
-  });
-};
-
-exports.request = request;
-},{}],7:[function(require,module,exports){
+},{"../../../global/methods":27,"./special_methods":6}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -307,14 +260,10 @@ exports.submitForm = void 0;
 
 var _methods = require("../../../global/methods");
 
-var _request_methods = require("./request_methods");
-
 // This file contains special methods that are used in aiding the load methods
 // Imports
 // 	Global
 // 	methods
-//  Local
-//  methods
 // Image path
 const sending_img_path = "../resources/contact_imgs/sending_envelope.png";
 
@@ -343,24 +292,29 @@ const submitForm = event => {
     submit_cont.replaceChild(sending_img, submit_btn); // Update message
 
     submit_msg.innerHTML = "Sending...";
-    (0, _request_methods.request)(name.value, email.value, subject.value, body.value).then(res => {
-      // Return image back to original submit button
-      submit_cont.replaceChild(submit_btn, sending_img);
-      alert(); // Update message
-
+    setTimeout(() => {
       submit_msg.innerHTML = "Message Sent!";
-      console.log(res);
-    }).catch(err => {
-      // Return image back to original submit button
-      submit_cont.replaceChild(submit_btn, sending_img); // Update message
-
-      submit_msg.innerHTML = "Error sending email";
-      console.log(err); // Clear message after some time
-
-      setTimeout(function () {
-        submit_msg.innerHTML = "";
-      }, 4000);
-    });
+      submit_cont.replaceChild(submit_btn, sending_img);
+    }, 2000);
+    setTimeout(() => submit_msg.innerHTML = "", 4000);
+    /*request(name.value,email.value,subject.value,body.value).then((res) => {
+        // Return image back to original submit button
+        submit_cont.replaceChild(submit_btn, sending_img);
+        alert();
+        // Update message
+        submit_msg.innerHTML = "Message Sent!";
+         console.log(res);
+    }).catch((err) => {
+        // Return image back to original submit button
+        submit_cont.replaceChild(submit_btn, sending_img);
+        // Update message
+        submit_msg.innerHTML = "Error sending email";
+         console.log(err);
+        // Clear message after some time
+        setTimeout(function() {
+            submit_msg.innerHTML = "";
+        },4000);
+    });*/
   }
 };
 
@@ -379,7 +333,7 @@ const fieldsCompleted = () => {
 
   return formCompleted;
 };
-},{"../../../global/methods":28,"./request_methods":6}],8:[function(require,module,exports){
+},{"../../../global/methods":27}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -426,7 +380,7 @@ const Rows = [{
   }
 }];
 exports.Rows = Rows;
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -448,7 +402,7 @@ const loadHomePage = () => {
 };
 
 exports.loadHomePage = loadHomePage;
-},{"./load_methods":10}],10:[function(require,module,exports){
+},{"./load_methods":9}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -566,7 +520,7 @@ const loadListenPreview = () => {
 };
 
 exports.loadListenPreview = loadListenPreview;
-},{"../../../global/methods":28,"./data":8,"./special_methods":11}],11:[function(require,module,exports){
+},{"../../../global/methods":27,"./data":7,"./special_methods":10}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -650,7 +604,7 @@ const imgCont = currImg => {
 };
 
 exports.imgCont = imgCont;
-},{"../../../global/methods":28}],12:[function(require,module,exports){
+},{"../../../global/methods":27}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -663,7 +617,7 @@ const loadListenPage = () => {
 };
 
 exports.loadListenPage = loadListenPage;
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -676,7 +630,7 @@ const loadEditingPage = () => {
 };
 
 exports.loadEditingPage = loadEditingPage;
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -719,7 +673,7 @@ const loadServicesPage = () => {
 };
 
 exports.loadServicesPage = loadServicesPage;
-},{"../../../global/methods":28,"./editing/index":13,"./performance/index":16,"./reedmaking/index":20,"./writing/index":23}],15:[function(require,module,exports){
+},{"../../../global/methods":27,"./editing/index":12,"./performance/index":15,"./reedmaking/index":19,"./writing/index":22}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -752,7 +706,7 @@ const headerData = {
   }
 };
 exports.headerData = headerData;
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -773,7 +727,7 @@ const loadPerformancePage = () => {
 };
 
 exports.loadPerformancePage = loadPerformancePage;
-},{"./load_methods":17}],17:[function(require,module,exports){
+},{"./load_methods":16}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -807,7 +761,7 @@ const loadRates = () => {
 };
 
 exports.loadRates = loadRates;
-},{"./data":15,"./special_methods":18}],18:[function(require,module,exports){
+},{"./data":14,"./special_methods":17}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -875,7 +829,7 @@ const createCenterImageHeader = headerData => {
   cont.appendChild(rightSymbol);
   return cont;
 };
-},{"../../../../global/methods":28}],19:[function(require,module,exports){
+},{"../../../../global/methods":27}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -936,7 +890,7 @@ const pricingData = [{
   }]
 }];
 exports.pricingData = pricingData;
-},{}],20:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -956,7 +910,7 @@ const loadReedmakingPage = () => {
 };
 
 exports.loadReedmakingPage = loadReedmakingPage;
-},{"./load-methods":21}],21:[function(require,module,exports){
+},{"./load-methods":20}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1102,7 +1056,7 @@ const loadPricings = () => {
 };
 
 exports.loadPricings = loadPricings;
-},{"../../../../global/methods":28,"./data":19,"./private-methods":22}],22:[function(require,module,exports){
+},{"../../../../global/methods":27,"./data":18,"./private-methods":21}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1204,7 +1158,7 @@ const createPriceCont = priceData => {
   cont.appendChild(blendCont);
   return cont;
 };
-},{"../../../../global/methods":28}],23:[function(require,module,exports){
+},{"../../../../global/methods":27}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1217,7 +1171,7 @@ const loadWritingPage = () => {
 };
 
 exports.loadWritingPage = loadWritingPage;
-},{}],24:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1267,7 +1221,7 @@ const data = {
   }
 };
 exports.data = data;
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1306,7 +1260,7 @@ const createBgFade = () => {
 };
 
 exports.createBgFade = createBgFade;
-},{"../global/methods":28,"./data":24}],26:[function(require,module,exports){
+},{"../global/methods":27,"./data":23}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1336,7 +1290,7 @@ const data = [{
   link: "tbd"
 }];
 exports.data = data;
-},{}],27:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1386,7 +1340,7 @@ const createFooter = () => {
 };
 
 exports.createFooter = createFooter;
-},{"../global/methods":28,"./data":26}],28:[function(require,module,exports){
+},{"../global/methods":27,"./data":25}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1484,7 +1438,7 @@ function createImageElement(_a) {
     console.log(e);
   }
 }
-},{}],29:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1514,7 +1468,7 @@ const createGradient = () => {
 };
 
 exports.createGradient = createGradient;
-},{"../global/methods":28}],30:[function(require,module,exports){
+},{"../global/methods":27}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1563,7 +1517,7 @@ const links = [{
   subdirectories: []
 }];
 exports.links = links;
-},{}],31:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1593,7 +1547,7 @@ const createHeader = () => {
 };
 
 exports.createHeader = createHeader;
-},{"../global/methods":28,"./methods":32}],32:[function(require,module,exports){
+},{"../global/methods":27,"./methods":31}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1717,7 +1671,7 @@ let createSubdirectory = dirs => {
 
   return subUl;
 };
-},{"../global/methods":28,"./data":30}],33:[function(require,module,exports){
+},{"../global/methods":27,"./data":29}],32:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1745,5 +1699,5 @@ const init = () => {
 };
 
 exports.init = init;
-},{"./bg_content/index":1,"./bg_img/index":25,"./footer/index":27,"./gradient/index":29,"./header/index":31}]},{},[33])(33)
+},{"./bg_content/index":1,"./bg_img/index":24,"./footer/index":26,"./gradient/index":28,"./header/index":30}]},{},[32])(32)
 });

@@ -35,7 +35,12 @@ const submitForm = (event:any) => {
 		// Update message
 		submit_msg.innerHTML = "Sending...";
 
-		request(name.value,email.value,subject.value,body.value).then((res) => {
+		setTimeout(() => {
+			submit_msg.innerHTML = "Message Sent!";
+			submit_cont.replaceChild(submit_btn, sending_img);
+		},2000);
+		setTimeout(() => submit_msg.innerHTML = "",4000);
+		/*request(name.value,email.value,subject.value,body.value).then((res) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);
 			alert();
@@ -54,7 +59,7 @@ const submitForm = (event:any) => {
 			setTimeout(function() {
 				submit_msg.innerHTML = "";
 			},4000);
-		});
+		});*/
 	}
 }
 
