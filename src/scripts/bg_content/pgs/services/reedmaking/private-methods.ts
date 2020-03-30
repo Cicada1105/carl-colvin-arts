@@ -3,7 +3,33 @@
 
 // Imports
 import { IPricing, ReedPricingInterface } from './interfaces'
-import { createElement, createTextElement } from '../../../../global/methods'
+import { createElement, createTextElement, createImageElement } from '../../../../global/methods'
+import { IBox } from '../../../../global/interfaces'
+
+/************************************/
+/*		Header Text and Contentd 	*/
+/************************************/
+const createHeaderContent = (data:IBox):any => {
+	let cont:any = createElement({className:"headerCont"});
+
+	let headerCont:any = createElement({className:'headerText'});
+
+	let leftReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'leftReed'});
+	let introHeader:any = createTextElement({element:'h3',text:data.header});
+	let rightReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'rightReed'});
+
+	headerCont.appendChild(leftReed);
+	headerCont.appendChild(introHeader);
+	headerCont.appendChild(rightReed);
+
+	let bodyCont:any = createTextElement({text:data.content,className:"headerBody"});
+
+	cont.appendChild(headerCont);
+	cont.appendChild(bodyCont);
+
+	return cont;
+}
+
 
 /************************************/
 /*		Reed Pricings Container 	*/
@@ -21,7 +47,7 @@ const createReedPriceBox = (reedData:ReedPricingInterface):any => {
 	let nameBlendCont:any = createElement({element:'div',className:'nameBlend'});
 
 	// Append Description container to blend container
-	let descriptionCont:any = createDescriptionCont(reedData);
+	let descriptionCont:any = createReedDescriptionCont(reedData);
 	nameBlendCont.appendChild(descriptionCont);
 
 	// Append blend and text to container
@@ -32,7 +58,7 @@ const createReedPriceBox = (reedData:ReedPricingInterface):any => {
 	return nameCont;
 }
 
-const createDescriptionCont = ({description, pricing}:any):any => {
+const createReedDescriptionCont = ({description, pricing}:any):any => {
 	// createElement's default element is div
 	let cont:any = createElement({className:'descriptionCont'});
 
@@ -76,4 +102,4 @@ const createPriceCont = (priceData:IPricing[]):any => {
 	return cont;
 }
 
-export { createReedPriceBox }
+export { createHeaderContent, createReedPriceBox }

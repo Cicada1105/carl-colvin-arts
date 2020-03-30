@@ -836,7 +836,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.pricingData = exports.tabData = exports.introData = void 0;
-const introData = ["Reeds are hard, whether to play on or make. There's no getting around it. However, that " + "shouldn't stop you from playing at your best, and that is why I offer reedmaking services.", "I have been making reeds for 11 years and, like many other professional oboists, offer " + "them to the public for sale. My reeds are all handmade from start to finish, from tube " + "cane to performance-ready, and will not leave my hand until they are play-tested and at " + "a level that I would perform on them myself.", "My sale price reflects my years of experience in reeds and the cane itself. However, I " + "completely understand that everyone is different and may not like my reeds. If this is " + "the case, I would love the opportunity to make it right and get the best reed that fits " + "all your needs. If any of your needs are more immediate, I am more than happy to work with " + "you. I normally create and ship reeds within a week of receiving payment, Please reach me " + "via the \"Contact\" tab with any orders, issues, and special instructions."];
+const introData = [{
+  header: "Reedmaking",
+  content: "Reeds are hard, whether to play on or make. There's no getting around it. However, that " + "shouldn't stop you from playing at your best, and that is why I offer reedmaking services." + "I have been making reeds for 11 years and, like many other professional oboists, offer " + "them to the public for sale. My reeds are all handmade from start to finish, from tube " + "cane to performance-ready, and will not leave my hand until they are play-tested and at " + "a level that I would perform on them myself."
+}, {
+  header: "About",
+  content: "My sale price reflects my years of experience in reeds and the cane itself. However, I " + "completely understand that everyone is different and may not like my reeds. If this is " + "the case, I would love the opportunity to make it right and get the best reed that fits " + "all your needs. If any of your needs are more immediate, I am more than happy to work with " + "you. I normally create and ship reeds within a week of receiving payment, Please reach me " + "via the \"Contact\" tab with any orders, issues, and special instructions."
+}];
 exports.introData = introData;
 const tabData = [{
   header: "Reed Strength",
@@ -928,58 +934,15 @@ var _methods = require("../../../../global/methods");
 // File dependencies will be handled here
 // Imports
 const loadIntroData = () => {
-  let introHeaderCont = (0, _methods.createElement)({
-    className: 'reedmakingHeader'
+  _data.introData.forEach(header => {
+    let headerContainer = (0, _privateMethods.createHeaderContent)(header);
+    document.body.appendChild(headerContainer);
   });
-  let leftReed = (0, _methods.createImageElement)({
-    src: '../../resources/reedmaking_imgs/reed.png',
-    alt: 'Reed silhouette',
-    className: 'reed_silhouette',
-    idName: 'leftReed'
-  });
-  let introHeader = (0, _methods.createTextElement)({
-    element: 'h3',
-    text: 'Reedmaking'
-  });
-  let rightReed = (0, _methods.createImageElement)({
-    src: '../../resources/reedmaking_imgs/reed.png',
-    alt: 'Reed silhouette',
-    className: 'reed_silhouette',
-    idName: 'rightReed'
-  });
-  introHeaderCont.appendChild(leftReed);
-  introHeaderCont.appendChild(introHeader);
-  introHeaderCont.appendChild(rightReed);
-  document.body.appendChild(introHeaderCont);
 };
 
 exports.loadIntroData = loadIntroData;
 
 const loadTabs = () => {
-  let aboutHeaderCont = (0, _methods.createElement)({
-    className: 'reedmakingHeader'
-  });
-  let leftReed = (0, _methods.createImageElement)({
-    src: '../../resources/reedmaking_imgs/reed.png',
-    alt: 'Reed silhouette',
-    className: 'reed_silhouette',
-    idName: 'leftReed'
-  });
-  let aboutHeader = (0, _methods.createTextElement)({
-    element: 'h3',
-    text: 'About'
-  });
-  let rightReed = (0, _methods.createImageElement)({
-    src: '../../resources/reedmaking_imgs/reed.png',
-    alt: 'Reed silhouette',
-    className: 'reed_silhouette',
-    idName: 'rightReed'
-  });
-  aboutHeaderCont.appendChild(leftReed);
-  aboutHeaderCont.appendChild(aboutHeader);
-  aboutHeaderCont.appendChild(rightReed);
-  document.body.appendChild(aboutHeaderCont);
-
   _data.tabData.forEach(tab => {
     let tabCont = (0, _methods.createElement)({
       className: 'tabCont'
@@ -1062,7 +1025,7 @@ exports.loadPricings = loadPricings;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createReedPriceBox = void 0;
+exports.createReedPriceBox = exports.createHeaderContent = void 0;
 
 var _methods = require("../../../../global/methods");
 
@@ -1071,11 +1034,54 @@ var _methods = require("../../../../global/methods");
 
 /************************************/
 
+/*		Header Text and Contentd 	*/
+
+/************************************/
+const createHeaderContent = data => {
+  let cont = (0, _methods.createElement)({
+    className: "headerCont"
+  });
+  let headerCont = (0, _methods.createElement)({
+    className: 'headerText'
+  });
+  let leftReed = (0, _methods.createImageElement)({
+    src: '../../resources/reedmaking_imgs/reed.png',
+    alt: 'Reed silhouette',
+    className: 'reed_silhouette',
+    idName: 'leftReed'
+  });
+  let introHeader = (0, _methods.createTextElement)({
+    element: 'h3',
+    text: data.header
+  });
+  let rightReed = (0, _methods.createImageElement)({
+    src: '../../resources/reedmaking_imgs/reed.png',
+    alt: 'Reed silhouette',
+    className: 'reed_silhouette',
+    idName: 'rightReed'
+  });
+  headerCont.appendChild(leftReed);
+  headerCont.appendChild(introHeader);
+  headerCont.appendChild(rightReed);
+  let bodyCont = (0, _methods.createTextElement)({
+    text: data.content,
+    className: "headerBody"
+  });
+  cont.appendChild(headerCont);
+  cont.appendChild(bodyCont);
+  return cont;
+};
+/************************************/
+
 /*		Reed Pricings Container 	*/
 
 /************************************/
 // Method will take in a ReedPricing Object and will return 
 // 	a container to display to the webpage
+
+
+exports.createHeaderContent = createHeaderContent;
+
 const createReedPriceBox = reedData => {
   let nameCont = (0, _methods.createElement)({
     element: 'div',
@@ -1093,7 +1099,7 @@ const createReedPriceBox = reedData => {
     className: 'nameBlend'
   }); // Append Description container to blend container
 
-  let descriptionCont = createDescriptionCont(reedData);
+  let descriptionCont = createReedDescriptionCont(reedData);
   nameBlendCont.appendChild(descriptionCont); // Append blend and text to container
 
   nameCont.appendChild(nameSpan);
@@ -1104,7 +1110,7 @@ const createReedPriceBox = reedData => {
 
 exports.createReedPriceBox = createReedPriceBox;
 
-const createDescriptionCont = (_ref) => {
+const createReedDescriptionCont = (_ref) => {
   let {
     description,
     pricing
@@ -1477,7 +1483,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.links = void 0;
 // Use during development
 const rootDir = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/"; // Use during production
-//const rootDir:string = "/";
+//const rootDir:string = "./";
 
 const links = [{
   name: "Carl Colvin Arts",

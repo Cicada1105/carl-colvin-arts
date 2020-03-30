@@ -173,33 +173,48 @@ body {
   animation-direction: normal;
   animation-duration: 1s;
 }
-[class="reedmakingHeader"] {
+[class="headerCont"] {
   position: relative;
+  width: 80%;
+  margin: auto;
   margin-top: 7%;
-  width: 100%;
-  height: 10rem;
 }
-[class="reedmakingHeader"] h3 {
+[class="headerCont"] [class="headerText"] {
+  position: relative;
+  width: 100%;
+  height: 8rem;
+}
+[class="headerCont"] [class="headerText"] h3 {
   text-align: center;
   color: #f0edee;
   margin: auto;
-  width: 27rem;
+  width: 25rem;
   height: 100%;
   font-size: 2rem;
 }
-[class="reedmakingHeader"] [id="leftReed"] {
+[class="headerCont"] [class="headerText"] [id$="Reed"] {
   position: absolute;
+  width: 15rem;
   height: 50%;
-  width: 18rem;
+}
+[class="headerCont"] [class="headerText"] [id="leftReed"] {
   left: 15%;
 }
-[class="reedmakingHeader"] [id="rightReed"] {
-  position: absolute;
-  height: 50%;
-  width: 18rem;
+[class="headerCont"] [class="headerText"] [id="rightReed"] {
   right: 15%;
   top: 0px;
   transform: rotate(180deg) scaleY(-1);
+}
+[class="headerCont"] [class="headerBody"] {
+  border: 3px inset #003249;
+  width: 80%;
+  margin: auto;
+  font-size: 1.05rem;
+  padding: 1rem 5rem;
+  color: #f0edee;
+}
+[class="headerCont"] [class="headerBody"]::first-line {
+  text-indent: 2rem;
 }
 [class="tabCont"] {
   position: relative;

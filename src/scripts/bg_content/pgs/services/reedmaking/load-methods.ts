@@ -3,34 +3,18 @@
 
 // Imports
 import { introData, tabData, pricingData } from './data' 
-import { createReedPriceBox } from './private-methods'
+import { createHeaderContent, createReedPriceBox } from './private-methods'
 import { createElement, createTextElement, createImageElement } from '../../../../global/methods'
 
 const loadIntroData = ():void => {
-	let introHeaderCont:any = createElement({className:'reedmakingHeader'});
-	let leftReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'leftReed'});
-	let introHeader:any = createTextElement({element:'h3',text:'Reedmaking'});
-	let rightReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'rightReed'});
+	introData.forEach(header => {
+		let headerContainer:any = createHeaderContent(header);
 
-	introHeaderCont.appendChild(leftReed);
-	introHeaderCont.appendChild(introHeader);
-	introHeaderCont.appendChild(rightReed);
-
-	document.body.appendChild(introHeaderCont);
+		document.body.appendChild(headerContainer);
+	})
 }
 
 const loadTabs = ():void => {
-	let aboutHeaderCont:any = createElement({className:'reedmakingHeader'});
-	let leftReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'leftReed'});
-	let aboutHeader:any = createTextElement({element:'h3',text:'About'});
-	let rightReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'rightReed'});
-	
-	aboutHeaderCont.appendChild(leftReed);
-	aboutHeaderCont.appendChild(aboutHeader);
-	aboutHeaderCont.appendChild(rightReed);
-
-	document.body.appendChild(aboutHeaderCont);
-
 	tabData.forEach(tab => {
 		let tabCont:any = createElement({className:'tabCont'});
 
