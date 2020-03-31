@@ -47,7 +47,7 @@
 			}
 			[class = "inputAnimation"] {
 				position:absolute;
-				background-color:@shadowColor;
+				background-color:@accentColor;
 				display:inline-block;
 				height:1.375rem;
 				left:30%;
@@ -61,7 +61,7 @@
 			}
 			[class = "errorMsg"] {
 				display:inline;
-				color:red;
+				color:@errorMsgColor;
 				width:fit-content;
 				margin-left:0.75rem;
 			}
@@ -83,7 +83,7 @@
 			}
 		}
 		[id = "submitBtn"] {
-			background-color:@shadowColor;
+			background-color:@accentColor;
 			font-size:1rem;
 			border:none;
 			color:@textColor;
@@ -100,7 +100,7 @@
 		}
 		input[type="button"] {
 			&:hover {
-				background-color:#a21616;
+				background-color:@buttonHoverColor;
 				cursor:pointer;	
 			}
 		}

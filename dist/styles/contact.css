@@ -205,7 +205,7 @@ body {
 }
 [id="formCont"] [class$="Input"] [class="inputCont"] [class="errorMsg"] {
   display: inline;
-  color: red;
+  color: #ff3838;
   width: fit-content;
   margin-left: 0.75rem;
 }

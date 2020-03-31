@@ -61,8 +61,8 @@
 		&::first-line {
 			text-indent:2rem;
 		}
-		//background-color:@accentColor;
-		border:3px inset @accentColor;
+		//background-color:@secondaryColor;
+		border:3px inset @secondaryColor;
 		width:80%;
 		margin:auto;
 		font-size:1.05rem;
@@ -80,7 +80,7 @@
 	[class = "tabHeaderCont"] {
 		.format(inherit, 100%, 4rem);
 		display: block;
-		background-color:@accentColor;
+		background-color:@secondaryColor;
 		top:0%;
 
 		[class = "tabHeader"] {
@@ -95,7 +95,7 @@
 		[class = "tabButton"] {
 			.format(inherit, 2rem, 50%);
 			.animation;
-			background-color:@secondaryColor;
+			background-color:@secondaryBackgroundColor;
 			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
 			top:25%;
 			right:1.5%;
@@ -110,7 +110,7 @@
 		.format(inherit, 100%,17rem);
 		.animation;
 		animation-name:dropdownOpen;
-		background-color:@accentColor;
+		background-color:@secondaryColor;
 		color:@textColor;
 		overflow: hidden;
 
@@ -154,7 +154,7 @@
 
 		[class = "nameBlend"] {
 			&:extend(.staticBlendCont);
-			background-color:@accentColor;
+			background-color:@secondaryColor;
 			mix-blend-mode: screen;
 			height:inherit;
 			bottom:0%;
@@ -178,7 +178,7 @@
 
 						[class = "pricingBlend"] {
 							&:extend(.staticBlendCont);
-							background-color:@activeColor;
+							background-color:@activeTextColor;
 							mix-blend-mode: soft-light;
 							height:100%;
 							bottom:0%;
