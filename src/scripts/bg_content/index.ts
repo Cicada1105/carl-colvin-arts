@@ -14,6 +14,9 @@ const createBodyContent = () => {
 		case 'index':
 			loadHomePage();
 		break;
+		case '':
+			loadHomePage();
+		break;
 		case 'about':
 			loadAboutPage();
 		break;

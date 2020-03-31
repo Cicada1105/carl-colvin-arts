@@ -2,9 +2,9 @@
 import { ILink } from '../global/interfaces'
 
 // Use during development
-const rootDir:string = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/";
+//const rootDir:string = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/";
 // Use during production
-//const rootDir:string = "./";
+const rootDir:string = "/";
 
 
 const links:Array<ILink> = [
