@@ -1,0 +1,104 @@
+#header,
+#footer {
+  position: fixed;width: 100%;height: 6vh;background-color: #0c090a;font-size: 1.5rem;filter: opacity(70%);z-index: 2;
+}
+#header ul[id="navigation"],
+#header ul[id="navigation"] li:hover ul[class="subDir"] {
+  position: relative;padding: 0px;margin: 0%;
+}
+#header ul[id="navigation"] li,
+#header ul[id="navigation"] li:hover ul[class="subDir"] li {
+  text-decoration: none;position: relative;font-size: 1.1rem;color: #f0edee;display: inline;
+}
+#header ul[id="navigation"] li:hover,
+#header ul[id="navigation"] li:hover ul[class="subDir"] li:hover {
+  background-color: #f2f2f2;cursor: pointer;color: black;
+}
+html,
+body {
+  background-color: black;
+  font-family: "Oswald";
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+#header {
+  top: 0%;
+  z-index: 3;
+}
+#header ul[id="navigation"] {
+  width: inherit;
+  height: 100%;
+}
+#header ul[id="navigation"] li {
+  padding: 0.65% 1.5% 0.85% 1.5%;
+  float: right;
+}
+#header ul[id="navigation"] li ul[class="subDir"] {
+  display: none;
+}
+#header ul[id="navigation"] li:hover ul[class="subDir"] {
+  position: absolute;
+  width: 225px;
+  height: 125px;
+  background-color: #0c090a;
+  padding: 0%;
+  display: inline;
+  float: left;
+  right: 0%;
+  top: 100%;
+}
+#header ul[id="navigation"] li:hover ul[class="subDir"] li {
+  padding: 2.75% 5.25%;
+  margin-top: 7.5%;
+  margin-right: 5%;
+}
+#header ul[id="navigation"] #active {
+  background-color: #f2f2f2;
+  color: black;
+}
+#header ul[id="navigation"] #homeLink {
+  float: left;
+}
+#bgCanvas {
+  position: fixed;
+  width: inherit;
+  height: inherit;
+  top: 0%;
+  z-index: 0;
+}
+[id='bgImage'] {
+  position: fixed;
+  width: inherit;
+  height: inherit;
+  opacity: 0.05;
+  z-index: 1;
+  top: 0%;
+}
+/*  Rest of the styling goes here */
+#footer {
+  bottom: 0%;
+  z-index: 3;
+}
+#footer #social {
+  position: relative;
+  width: 20vw;
+  height: 100%;
+  padding-right: 2.5vw;
+  float: right;
+}
+#footer #social .socialImg {
+  position: inherit;
+  float: right;
+  margin-top: 2.5%;
+  margin-right: 4%;
+  height: 28px;
+}
+#footer #social .socialImg:hover {
+  cursor: pointer;
+}
+@media only screen and (max-width: 670px) {
+  #footer #social img[alt="instagram"] {
+    display: block;
+  }
+}
