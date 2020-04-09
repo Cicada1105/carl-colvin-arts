@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../global/colors.less";
+@import (reference) '../global/methods.less';
 @import (reference) '../global/namespace.less';
 
 #globalNS > .html();
@@ -7,6 +8,138 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
-/*  Rest of the styling goes here */
+.row(@h) {
+	.format(relative, 72rem, @h);
+	color:@textColor;
+	margin:auto;
+	z-index:2;
+}
+[id = "listenHeader"] {
+	.row(5rem);
+	margin-top:6%;
+	margin-bottom:3rem;
+	font-size:2rem;
+	text-align:center;
+}
+[class = "mediaRow"] {
+	//background-color:pink;
+	.row(12rem);
+	margin-bottom:3rem;
 
+	& > p {
+		.format(relative,42.5%,65%);
+		//background-color:green;
+		display:inline-block;
+		margin:0px;
+		padding:2rem 2.5rem;
+
+		&::first-line {
+			text-indent:2rem;
+		}
+	}
+	& > div {
+		.format(relative, 50%, 98%);
+		//background-color:yellow;
+		display:inline-block;
+
+		[class = "mediaTag"] {
+			//background-color:aqua;
+			position:relative;
+			margin-left:22.5%;
+			margin-top:1rem;
+			width:20rem;
+			height:10rem;
+		}
+	}
+	&:nth-of-type(odd) {
+		p {
+			float:left;
+		}
+	}
+	&:nth-of-type(even) {
+		p {
+			float:right;
+		}
+	}
+}
+[class = "mediaControls"] {
+	& > i {
+		color:@accentColor;
+	}
+	& > span {
+		color:@accentColor;
+	}
+	& > progress[value] {
+		-webkit-appearance:none;
+		appearance:none;
+	}
+}
+[class = "mediaControls"] > progress::-webkit-progress-value {
+	background-color:#ff0000;
+	border-radius:5px;
+}
+[class = "mediaControls"] > progress::-webkit-progress-bar {
+	background-color:@accentColor;
+	border-radius:5px;
+}
+/*@media only screen and (max-width: 1150px) {
+	[class = "mediaRow"] {
+		& > p {
+			display:block;
+			width:100%;
+		}
+		& > div {
+			display:block;
+			width:100%;
+		}
+	}
+}*/
+[class = "mediaRow"] {
+	& > div[class ^= "border"] {
+		.format(absolute,25%, 100%);
+	}
+	& > div[class $= "Left"] {
+		left:0%;	
+	}
+	& > div[class $= "Right"] {
+		right:0%;
+	}
+}
+@border:3px solid @secondaryColor;
+[class = "mediaRow"]:nth-of-type(3) {
+	& > div[class $= "Left"] {
+		border-top: @border;
+		border-left: @border;	
+	}
+	& > div[class $= "Right"] {
+		border-top: @border;
+		border-right: @border;
+	}
+}
+[class = "mediaRow"]:nth-of-type(4) {
+	& > div[class $= "Left"] {
+		height:calc(98% + 4px);
+		border-left: @border;
+	}
+	& > div[class $= "Right"] {
+		height:calc(98% + 4px);
+		border-right: @border;
+	}
+}
+[class = "mediaRow"]:nth-of-type(5) {
+	& > div[class $= "Left"] {
+		border-left: @border;
+		border-bottom: @border;
+	}
+	& > div[class $= "Right"] {
+		border-right: @border;
+		border-bottom: @border;
+	}
+}
+[class = "waveDivider"] {
+	.format(relative, 80%, 4.2rem);
+	margin-left:10%;
+	margin-bottom:3rem;
+	//background-color:black;
+}
 #globalNS > .social();

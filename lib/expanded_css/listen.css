@@ -75,7 +75,129 @@ body {
   z-index: 1;
   top: 0%;
 }
-/*  Rest of the styling goes here */
+[id="listenHeader"] {
+  position: relative;
+  width: 72rem;
+  height: 5rem;
+  color: #f0edee;
+  margin: auto;
+  z-index: 2;
+  margin-top: 6%;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  text-align: center;
+}
+[class="mediaRow"] {
+  position: relative;
+  width: 72rem;
+  height: 12rem;
+  color: #f0edee;
+  margin: auto;
+  z-index: 2;
+  margin-bottom: 3rem;
+}
+[class="mediaRow"] > p {
+  position: relative;
+  width: 42.5%;
+  height: 65%;
+  display: inline-block;
+  margin: 0px;
+  padding: 2rem 2.5rem;
+}
+[class="mediaRow"] > p::first-line {
+  text-indent: 2rem;
+}
+[class="mediaRow"] > div {
+  position: relative;
+  width: 50%;
+  height: 98%;
+  display: inline-block;
+}
+[class="mediaRow"] > div [class="mediaTag"] {
+  position: relative;
+  margin-left: 22.5%;
+  margin-top: 1rem;
+  width: 20rem;
+  height: 10rem;
+}
+[class="mediaRow"]:nth-of-type(odd) p {
+  float: left;
+}
+[class="mediaRow"]:nth-of-type(even) p {
+  float: right;
+}
+[class="mediaControls"] > i {
+  color: #de5757;
+}
+[class="mediaControls"] > span {
+  color: #de5757;
+}
+[class="mediaControls"] > progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+[class="mediaControls"] > progress::-webkit-progress-value {
+  background-color: #ff0000;
+  border-radius: 5px;
+}
+[class="mediaControls"] > progress::-webkit-progress-bar {
+  background-color: #de5757;
+  border-radius: 5px;
+}
+/*@media only screen and (max-width: 1150px) {
+	[class = "mediaRow"] {
+		& > p {
+			display:block;
+			width:100%;
+		}
+		& > div {
+			display:block;
+			width:100%;
+		}
+	}
+}*/
+[class="mediaRow"] > div[class^="border"] {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+}
+[class="mediaRow"] > div[class$="Left"] {
+  left: 0%;
+}
+[class="mediaRow"] > div[class$="Right"] {
+  right: 0%;
+}
+[class="mediaRow"]:nth-of-type(3) > div[class$="Left"] {
+  border-top: 3px solid #003249;
+  border-left: 3px solid #003249;
+}
+[class="mediaRow"]:nth-of-type(3) > div[class$="Right"] {
+  border-top: 3px solid #003249;
+  border-right: 3px solid #003249;
+}
+[class="mediaRow"]:nth-of-type(4) > div[class$="Left"] {
+  height: calc(98% + 4px);
+  border-left: 3px solid #003249;
+}
+[class="mediaRow"]:nth-of-type(4) > div[class$="Right"] {
+  height: calc(98% + 4px);
+  border-right: 3px solid #003249;
+}
+[class="mediaRow"]:nth-of-type(5) > div[class$="Left"] {
+  border-left: 3px solid #003249;
+  border-bottom: 3px solid #003249;
+}
+[class="mediaRow"]:nth-of-type(5) > div[class$="Right"] {
+  border-right: 3px solid #003249;
+  border-bottom: 3px solid #003249;
+}
+[class="waveDivider"] {
+  position: relative;
+  width: 80%;
+  height: 4.2rem;
+  margin-left: 10%;
+  margin-bottom: 3rem;
+}
 #footer {
   bottom: 0%;
   z-index: 3;

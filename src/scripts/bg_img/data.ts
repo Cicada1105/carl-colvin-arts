@@ -2,9 +2,9 @@
 import { IImage } from '../global/interfaces'
 
 // Use for development
-//const imgPath:string = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/bg_imgs/';
+const imgPath:string = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/bg_imgs/';
 // Use for production
-const imgPath:string = '/resources/bg_imgs/'
+//const imgPath:string = '/resources/bg_imgs/'
 
 // Local interface to define an associative array of IMage's
 interface IBgImage {
