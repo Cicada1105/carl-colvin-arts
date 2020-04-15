@@ -120,6 +120,11 @@ body {
   width: 20rem;
   height: 10rem;
 }
+[class="mediaRow"] > div [class="mediaTab"][poster] {
+  position: inherit;
+  width: 20rem;
+  height: 20rem;
+}
 [class="mediaRow"]:nth-of-type(odd) p {
   float: left;
 }

@@ -57,7 +57,7 @@ function createTextElement({element="p",text="",...rest}):any|void {
     console.log(e);
   }
 }
-function createImageElement({src='',alt='', ...rest}) {
+function createImageElement({src='',alt='', ...rest}):any {
   try {
     if (!src)
       throw new TypeError("'src' parameter ommited. createImageElement requires 'src' parameter")
@@ -77,5 +77,6 @@ function createImageElement({src='',alt='', ...rest}) {
     console.log(e);
   }
 }
+
 
 export { getCurrentFile, createElement, createTextElement, createImageElement }

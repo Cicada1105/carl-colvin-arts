@@ -16,11 +16,11 @@ const loadBootstrap = ():void => {
 	// Append Bootstrap cdn to head for font asesome icons
 	document.head.appendChild(bootstrapLink);
 }
-const loadAudioRow = (data:RowInterface):void => {
+const loadAudioRow = async (data:RowInterface):Promise<any> => {
 	let cont:any = createElement({className:"mediaRow"});
 
 	let mediaDescription:any = createTextElement({text:data.description,className:"mediaDescription"});
-	let mediaCont:any = createAudioCont(data.media as AudioInterface);
+	let mediaCont:any = await createAudioCont(data.media as AudioInterface);
 
 	// Create elements to display a controllable border around other elements
 	let mediaDescriptionBorder:any = createElement({className:"borderLeft"});
@@ -34,11 +34,11 @@ const loadAudioRow = (data:RowInterface):void => {
 	document.body.appendChild(cont);
 }
 
-const loadVideoRow = (data:RowInterface):void => {
+const loadVideoRow = async (data:RowInterface):Promise<any> => {
 	let cont:any = createElement({className:"mediaRow"});
 
 	let mediaDescription:any = createTextElement({text:data.description,className:"mediaDescription"});
-	let mediaCont:any = createVideoCont(data.media as VideoInterface);
+	let mediaCont:any = await createVideoCont(data.media as VideoInterface);
 
 	// Create elements to display a controllable border around other elements
 	let mediaDescriptionBorder:any = createElement({className:"borderRight"});

@@ -1,2 +1,2 @@
-declare const loadListenPage: () => void;
+declare const loadListenPage: () => Promise<any>;
 export { loadListenPage };

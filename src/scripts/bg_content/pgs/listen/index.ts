@@ -9,7 +9,7 @@ import { createTextElement } from '../../../global/methods'
 //  interfaces
 import { RowInterface } from './interfaces'
 
- const loadListenPage = () => {
+ const loadListenPage = async ():Promise<any> => {
  	// Load bootstrap so font awesome can be used
  	loadBootstrap();
  	// Create header
@@ -17,11 +17,11 @@ import { RowInterface } from './interfaces'
  	// Append to document before rows
  	document.body.appendChild(header);
 
- 	loadAudioRow(audioData['sketches'] as RowInterface);
+ 	await loadAudioRow(audioData['sketches'] as RowInterface);
  	loadCanvasWave();
- 	loadVideoRow(videoData['poem-reading'] as RowInterface);
+ 	await loadVideoRow(videoData['poem-reading'] as RowInterface);
  	loadCanvasWave();
- 	loadAudioRow(audioData['ka-ra-zen'] as RowInterface);
+ 	await loadAudioRow(audioData['ka-ra-zen'] as RowInterface);
  }
 
  export { loadListenPage }
