@@ -113,17 +113,19 @@ body {
   height: 98%;
   display: inline-block;
 }
-[class="mediaRow"] > div [class="mediaTag"] {
+[class="mediaRow"] > div img {
+  width: 50%;
+  height: 80%;
+}
+[class="mediaRow"] > div [class="mediaControls"] {
+  object-fit: none;
   position: relative;
-  margin-left: 22.5%;
   margin-top: 1rem;
-  width: 20rem;
+  width: 100%;
   height: 10rem;
 }
-[class="mediaRow"] > div [class="mediaTab"][poster] {
-  position: inherit;
-  width: 20rem;
-  height: 20rem;
+[class="mediaRow"] > div [class="mediaControls"] video {
+  display: none;
 }
 [class="mediaRow"]:nth-of-type(odd) p {
   float: left;
@@ -149,51 +151,29 @@ body {
   background-color: #de5757;
   border-radius: 5px;
 }
-/*@media only screen and (max-width: 1150px) {
-	[class = "mediaRow"] {
-		& > p {
-			display:block;
-			width:100%;
-		}
-		& > div {
-			display:block;
-			width:100%;
-		}
-	}
-}*/
 [class="mediaRow"] > div[class^="border"] {
   position: absolute;
   width: 25%;
   height: 100%;
 }
 [class="mediaRow"] > div[class$="Left"] {
+  border-left: 3px solid #003249;
   left: 0%;
 }
 [class="mediaRow"] > div[class$="Right"] {
+  border-right: 3px solid #003249;
   right: 0%;
 }
-[class="mediaRow"]:nth-of-type(3) > div[class$="Left"] {
+[class="mediaRow"]:nth-of-type(3) > div[class^="border"] {
   border-top: 3px solid #003249;
-  border-left: 3px solid #003249;
-}
-[class="mediaRow"]:nth-of-type(3) > div[class$="Right"] {
-  border-top: 3px solid #003249;
-  border-right: 3px solid #003249;
 }
 [class="mediaRow"]:nth-of-type(4) > div[class$="Left"] {
   height: calc(98% + 4px);
-  border-left: 3px solid #003249;
 }
 [class="mediaRow"]:nth-of-type(4) > div[class$="Right"] {
   height: calc(98% + 4px);
-  border-right: 3px solid #003249;
 }
-[class="mediaRow"]:nth-of-type(5) > div[class$="Left"] {
-  border-left: 3px solid #003249;
-  border-bottom: 3px solid #003249;
-}
-[class="mediaRow"]:nth-of-type(5) > div[class$="Right"] {
-  border-right: 3px solid #003249;
+[class="mediaRow"]:nth-of-type(5) > div[class^="border"] {
   border-bottom: 3px solid #003249;
 }
 [class="waveDivider"] {

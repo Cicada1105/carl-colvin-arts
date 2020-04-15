@@ -29,8 +29,13 @@ const createVideoCont = async (data:VideoInterface):Promise<any> => {
 	// Create container to aid in positioning video element
 	let videoCont:any = createElement({className:"mediaCont"});
 
+	// Create image instead of using poster to allow for common positioning
+	let videoImg:any = createImageElement({src:data.poster,className:"videoImg"});
+
 	let videoEl:any = await createMediaElement(data as VideoInterface);
 
+	// Append video image to container
+	videoCont.appendChild(videoImg);
 	// Append video media to container
 	videoCont.appendChild(videoEl);
 

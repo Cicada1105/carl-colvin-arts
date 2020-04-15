@@ -91,8 +91,8 @@ const createMediaElement:(el:media)=>any = async (mediaEl:media):Promise<any> =>
 	// Append Source to child
 	el.appendChild(source);
 
-	if ((<VideoInterface>mediaEl).poster) 
-		el.setAttribute("poster",(<VideoInterface>mediaEl).poster);
+	//if ((<VideoInterface>mediaEl).poster) 
+	//	el.setAttribute("poster",(<VideoInterface>mediaEl).poster);
 
 	// If controls set to true, return default, built-in controls
 	if (mediaEl.controls) {
