@@ -114,7 +114,7 @@ body {
   display: inline-block;
 }
 [class="mediaRow"] > div img {
-  width: 50%;
+  width: ;
   height: 80%;
 }
 [class="mediaRow"] > div [class="mediaControls"] {

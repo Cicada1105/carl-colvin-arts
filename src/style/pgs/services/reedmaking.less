@@ -66,7 +66,7 @@
 		width:80%;
 		margin:auto;
 		font-size:1.05rem;
-		padding:1rem 5rem;
+		padding:1.5rem 5rem 2rem 5rem;
 		color:@textColor;
 	}
 }
@@ -125,6 +125,13 @@
 		}
 	}
 }
+h2 {
+	.format(relative,10%,5rem);
+	text-decoration: underline;
+	color:@textColor;
+	font-size:2rem;
+	margin:auto;
+}
 // The text headers of each container
 [class *= "Name"] {
 	.format(absolute, 100%);
@@ -137,9 +144,9 @@
 }
 /*  Rest of the styling goes here */
 [class = "priceBox"] {
-	.format(relative, 30%, 75%);
+	.format(relative, 25%, 75%);
 	display:inline-block;
-	margin-left:2.5%;
+	margin-left:6.25%;
 	margin-top:1.5%;
 	top:10%;
 	@media only screen and (max-width: 630px) {
@@ -156,7 +163,7 @@
 			&:extend(.staticBlendCont);
 			background-color:@secondaryColor;
 			mix-blend-mode: screen;
-			height:inherit;
+			height:inherit;	
 			bottom:0%;
 
 			[class = "descriptionCont"] {

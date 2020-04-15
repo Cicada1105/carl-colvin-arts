@@ -69,6 +69,9 @@ const loadTabs = ():void => {
 }
 
 const loadPricings = ():void => {
+	let pricingHeader:any = createTextElement({element:"h2",text:"Pricings"});
+	document.body.appendChild(pricingHeader);
+
 	// Create reed pricing container for each Reed
 	pricingData.forEach(reed => {
 		// Create container that will be used to help with sizing and positioning

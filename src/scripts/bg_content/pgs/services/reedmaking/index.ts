@@ -7,7 +7,7 @@ const loadReedmakingPage = ():void => {
 	// Load tabs that hold Reed data
 	loadTabs();
 	// Load the reed pricings
-	//loadPricings();
+	loadPricings();
 }
 
 
