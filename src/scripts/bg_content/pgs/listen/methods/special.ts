@@ -46,6 +46,15 @@ const createCustomControls:(mediaEl:any) => any = (mediaEl:any):any => {
 	let timeStamp:any = createTimeStamp(mediaEl.duration);
 
 	mediaEl.addEventListener("timeupdate",() => {
+		//  check if current time is the end of the current media length
+		if (mediaEl.currentTime == mediaEl.duration) {
+			// Bring media current time to begging
+			mediaEl.currentTime = 0;
+			// Pause media 
+			mediaEl.pause();
+			// Change pause button to play
+			playBtn.className = "fas fa-play";
+		}
 		let min:number = Math.floor(mediaEl.currentTime / 60);
 		let seconds:number = Math.floor((mediaEl.currentTime - (min * 60)));
 		let secondsStr:string = seconds < 10 ? `0${seconds}` : `${seconds}`;
