@@ -5,7 +5,7 @@ const IMG_PATH:string = "./resources/home_imgs/";
 // Use during development
 const ROOT_PGS_DIR:string = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/pgs/";
 // Use during production
-//const ROOT_PGS_DIR:string = "/";
+//const ROOT_PGS_DIR:string = "/pgs/";
 
 const Rows:IRow[] = [
 	{
