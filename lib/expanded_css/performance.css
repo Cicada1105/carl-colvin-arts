@@ -76,54 +76,71 @@ body {
   top: 0%;
 }
 /*  Rest of the styling goes here */
-[class="imageHeaderCont"] {
+[class="sectionCont"] {
   position: relative;
   width: 100%;
   height: 6rem;
-  margin-top: 5%;
+  margin: 5% auto 20rem auto;
 }
-[class="imageHeaderCont"] [id$="HrCont"] {
-  display: inline;
-  width: 33.3%;
+[class="sectionCont"] [class="centerHeaderCont"] {
+  position: inherit;
+  width: 50rem;
   height: 100%;
+  margin: 0px auto 2.5rem auto;
 }
-[class="imageHeaderCont"] [id$="HrCont"] hr {
+[class="sectionCont"] [class="centerHeaderCont"] h3 {
+  position: inherit;
+  width: 100%;
   display: inline-block;
-  width: 70%;
-  margin: 10% 15%;
-}
-[class="imageHeaderCont"] [id^="left"] {
-  float: left;
-}
-[class="imageHeaderCont"] [id^="right"] {
-  float: right;
-}
-[class="imageHeaderCont"] [class="centerHeaderCont"] {
-  margin: 0px auto;
-  width: 30rem;
-  height: 100%;
-}
-[class="imageHeaderCont"] [class="centerHeaderCont"] h3 {
-  display: inline-block;
-  margin: auto;
-  padding: 5% 0px;
+  vertical-align: middle;
   color: #f0edee;
   font-size: 2rem;
   text-align: center;
-  width: 22rem;
-  height: 50%;
 }
-[class="imageHeaderCont"] [class="centerHeaderCont"] [class="musicalSymbol"] {
-  display: inline;
-  margin: auto;
+[class="sectionCont"] [class="centerHeaderCont"] [class="musicalSymbol"] {
+  position: absolute;
   width: 4rem;
   height: 6rem;
+  display: inline;
+  margin: auto;
 }
-[class="imageHeaderCont"] [class="centerHeaderCont"] [class="musicalSymbol"]:first-of-type {
-  float: left;
+[class="sectionCont"] [class="centerHeaderCont"] [class="musicalSymbol"]:first-of-type {
+  left: 0px;
 }
-[class="imageHeaderCont"] [class="centerHeaderCont"] [class="musicalSymbol"]:last-of-type {
-  float: right;
+[class="sectionCont"] [class="centerHeaderCont"] [class="musicalSymbol"]:last-of-type {
+  right: 0px;
+}
+[class="sectionCont"] [class="bodyCont"] {
+  position: relative;
+  width: 50rem;
+  height: calc(8rem + 30px);
+  margin: auto;
+}
+[class="sectionCont"] [class="bodyCont"] [class="stage"] {
+  position: inherit;
+  width: 100%;
+  height: calc(8rem + 20px);
+  background-color: #003249;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+  color: #f0edee;
+}
+[class="sectionCont"] [class="bodyCont"] [class="stage"] p[class="bodyText"] {
+  position: relative;
+  width: 25rem;
+  height: 100%;
+  text-indent: 20px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 15px;
+  margin: auto;
+}
+[class="sectionCont"] [class="bodyCont"] [class="stageFront"] {
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background-color: #de5757;
+  content: "";
+  bottom: 0px;
 }
 #footer {
   bottom: 0%;

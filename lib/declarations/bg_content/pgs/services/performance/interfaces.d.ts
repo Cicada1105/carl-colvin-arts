@@ -1,6 +1,13 @@
 import { IImage } from '../../../../global/interfaces';
 interface ImageHeaderInterface {
-    header: string;
+    data: string;
     image: IImage;
 }
-export { ImageHeaderInterface };
+interface IBody {
+    content: string;
+}
+interface ICustomContainer {
+    header: ImageHeaderInterface;
+    body: IBody;
+}
+export { ImageHeaderInterface, IBody, ICustomContainer };
