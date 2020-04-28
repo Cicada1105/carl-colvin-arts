@@ -80,13 +80,13 @@ body {
   position: relative;
   width: 100%;
   height: 6rem;
-  margin: 5% auto 20rem auto;
+  margin: 5% auto 25rem auto;
 }
 [class="sectionCont"] [class="centerHeaderCont"] {
   position: inherit;
   width: 50rem;
   height: 100%;
-  margin: 0px auto 2.5rem auto;
+  margin: 0px auto 3rem auto;
 }
 [class="sectionCont"] [class="centerHeaderCont"] h3 {
   position: inherit;
@@ -113,13 +113,13 @@ body {
 [class="sectionCont"] [class="bodyCont"] {
   position: relative;
   width: 50rem;
-  height: calc(8rem + 30px);
+  height: calc(11rem + 30px);
   margin: auto;
 }
 [class="sectionCont"] [class="bodyCont"] [class="stage"] {
   position: inherit;
   width: 100%;
-  height: calc(8rem + 20px);
+  height: calc(11rem + 10px);
   background-color: #003249;
   clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
   color: #f0edee;
@@ -137,7 +137,7 @@ body {
 [class="sectionCont"] [class="bodyCont"] [class="stageFront"] {
   position: absolute;
   width: 100%;
-  height: 10px;
+  height: 20px;
   background-color: #de5757;
   content: "";
   bottom: 0px;
