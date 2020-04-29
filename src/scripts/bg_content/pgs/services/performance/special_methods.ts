@@ -6,6 +6,8 @@
 import { ICustomContainer, ImageHeaderInterface as IHeader, IBody } from './interfaces'
 // methods
 import { createElement, createTextElement, createImageElement } from '../../../../global/methods'
+// classes
+import CurtainRod from './curtain_class'
 
 // Methods will take in an object of type ImageHeaderInterface
 // Returns relative container with proper designed
@@ -40,6 +42,7 @@ const createContent = (body:IBody):any => {
 	let stageFrontCont:any = createElement({
 		className:"stageFront"
 	});
+	let curtainCont:any = createCurtain();
 
 	// Append text to stage container
 	stageCont.appendChild(text);
@@ -47,6 +50,49 @@ const createContent = (body:IBody):any => {
 	// Append stage front and stage to container
 	cont.appendChild(stageCont);
 	cont.appendChild(stageFrontCont);
+	cont.appendChild(curtainCont);
+
+	return cont;
+}
+const createCurtain = ():any => {
+	let cont:any = createElement({
+		element:"canvas",
+		className:"curtains"
+	});
+
+	let ctx:any = cont.getContext("2d");
+
+	let row_widths:Array<number> = [2, 10, 16, 2, 5, 13, 2, 5, 13, 2, 13, 
+									2, 10, 16, 2, 5, 13, 2, 5, 13, 2, 13, 
+									2, 10, 16, 2, 5, 13, 2, 5, 13, 2, 13, 
+									2, 10, 16, 2, 5, 13, 2, 5];
+
+	// keep track of current position on x-axis
+	let curr_pos:number = 0;
+	row_widths.forEach(width => {
+		let rod:any = new CurtainRod(ctx,width, curr_pos);
+		// Increment curr_pos based on width of current width
+		curr_pos += width;
+		rod.draw();
+	});
+
+	cont.addEventListener("mouseover",() => {
+		if ((cont.style.animationPlayState !== "running") && (cont.style.animationName === "curtainClose" || cont.style.animationName === "")){
+			console.log("Opening");
+			cont.style.animationName = "curtainOpen";
+			cont.style.animationPlayState = "running";
+		}
+	});
+	cont.addEventListener("mouseout", () => {
+		if ((cont.style.animationPlayState !== "running") && (cont.style.animationName === "curtainOpen")){
+			console.log("Closing");
+			cont.style.animationName = "curtainClose";
+			cont.style.animationPlayState = "running";
+		}
+	})
+	cont.addEventListener("animationend",() => {
+		cont.style.animationPlayState = "paused";
+	})
 
 	return cont;
 }

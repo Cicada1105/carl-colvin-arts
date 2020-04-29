@@ -56,6 +56,23 @@
     padding: 0rem 5%;
   }
 }
+/*		Performance Page 	*/
+@keyframes curtainOpen {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 5%;
+  }
+}
+@keyframes curtainClose {
+  from {
+    width: 5%;
+  }
+  to {
+    width: 100%;
+  }
+}
 /*		Contact Page 		*/
 @keyframes inputFocus {
   from {

@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import '../../global/keyframes.less';
 @import (reference) '../../global/namespace.less';
 @import (reference) '../../global/methods.less';
 
@@ -42,15 +43,16 @@
 		}
 	}
 	[class = "bodyCont"] {
-		.format(relative,50rem, calc(11rem + 30px));
+		.format(relative,40rem, calc(11rem + 30px));
 		//background-color:aqua;
 		margin:auto;
 
 		[class = "stage"] {	
 			.format(inherit,100%,calc(11rem + 10px));
 			background-color:@secondaryColor;
-			clip-path:polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+			clip-path:polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
 			color:@textColor;
+			z-index:0;
 
 			p[class = "bodyText"] {
 				.format(relative,25rem,100%);
@@ -67,6 +69,18 @@
 			background-color:@accentColor;
 			content:"";
 			bottom:0px;
+			z-index:0;
+		}
+		[class = "curtains"] {
+			.format(absolute,40rem,inherit);
+			animation-duration:3s;
+			animation-direction:normal;
+			animation-timing-function:ease-out;
+			animation-iteration-count:1;
+			animation-fill-mode:forwards;
+			animation-play-state:paused;
+			top:0px;
+			z-index:1;
 		}
 	}
 }#globalNS > .social();
