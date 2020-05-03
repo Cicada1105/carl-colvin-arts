@@ -54,6 +54,17 @@ const createContent = (body:IBody):any => {
 
 	return cont;
 }
+const activateCurtains = () => {
+	// Locate curtains
+	let curtains = document.getElementsByClassName("curtains");
+	// Page loading will mimic the click event
+	let clickEvent = new Event("click");
+
+	// Activate click event for each curtain container
+	for (let val of curtains) {
+		val.dispatchEvent(clickEvent);
+	}
+}
 const createCurtain = ():any => {
 	let cont:any = createElement({
 		element:"canvas",
@@ -76,7 +87,15 @@ const createCurtain = ():any => {
 		rod.draw();
 	});
 
-	cont.addEventListener("mouseover",() => {
+	cont.addEventListener("click",() => {
+		let animationName:string = cont.style.animationName;
+
+		if(cont.style.animationPlayState !== "running") {
+			cont.style.animationName = ((animationName === "curtainClose") || (animationName === "")) ? "curtainOpen" : "curtainClose";
+			cont.style.animationPlayState = "running";
+		}
+	});
+	/*cont.addEventListener("mouseover",() => {
 		if ((cont.style.animationPlayState !== "running") && (cont.style.animationName === "curtainClose" || cont.style.animationName === "")){
 			console.log("Opening");
 			cont.style.animationName = "curtainOpen";
@@ -89,7 +108,7 @@ const createCurtain = ():any => {
 			cont.style.animationName = "curtainClose";
 			cont.style.animationPlayState = "running";
 		}
-	})
+	})*/
 	cont.addEventListener("animationend",() => {
 		cont.style.animationPlayState = "paused";
 	})
@@ -124,4 +143,4 @@ const createImageHeader = (headerData:IHeader):any => {
 
 	return cont;
 }
-export { createSection }
+export { createSection, activateCurtains }

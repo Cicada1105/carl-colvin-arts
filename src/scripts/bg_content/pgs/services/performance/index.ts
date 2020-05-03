@@ -1,5 +1,6 @@
 // Imports
 import { loadPerformanceIntro, loadPreviousPerformances, loadRates } from './load_methods'
+import { activateCurtains } from './special_methods'
 
 const loadPerformancePage = ():void => {
 	// Load intro to the Performance page
@@ -8,6 +9,8 @@ const loadPerformancePage = ():void => {
 	loadPreviousPerformances();
 	// Load rates for user to view 
 	loadRates();
+	// Activate the curtains
+	activateCurtains();
 }
 
 export { loadPerformancePage }

@@ -249,6 +249,9 @@ body {
   top: 0px;
   z-index: 1;
 }
+[class="sectionCont"] [class="bodyCont"] [class="curtains"]:hover {
+  cursor: pointer;
+}
 #footer {
   bottom: 0%;
   z-index: 3;
