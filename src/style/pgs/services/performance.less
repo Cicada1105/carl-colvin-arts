@@ -52,7 +52,7 @@
 			background-color:@secondaryColor;
 			clip-path:polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
 			color:@textColor;
-			z-index:0;
+			z-index:1;
 
 			p[class = "bodyText"] {
 				.format(relative,25rem,100%);
@@ -65,17 +65,19 @@
 				padding-top:15px;
 				margin:auto;
 			}
-			[id $= "Arrow"] {
+			i {
 				position:absolute;
 				font-size:1rem;
-				width:10px;
-				height:10px;
 				bottom:1rem;
+				z-index:1;
 			}
-			#leftArrow {
+			i:hover {
+				cursor:pointer;
+			}
+			i:first-of-type {
 				left:2.5rem;
 			}
-			#rightArrow {
+			i:last-of-type {
 				right:1.5rem;
 			}
 		}

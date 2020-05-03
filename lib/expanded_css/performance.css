@@ -215,7 +215,7 @@ body {
   background-color: #003249;
   clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   color: #f0edee;
-  z-index: 0;
+  z-index: 1;
 }
 [class="sectionCont"] [class="bodyCont"] [class="stage"] p[class="bodyText"] {
   position: relative;
@@ -229,17 +229,19 @@ body {
   padding-top: 15px;
   margin: auto;
 }
-[class="sectionCont"] [class="bodyCont"] [class="stage"] [id$="Arrow"] {
+[class="sectionCont"] [class="bodyCont"] [class="stage"] i {
   position: absolute;
   font-size: 1rem;
-  width: 10px;
-  height: 10px;
   bottom: 1rem;
+  z-index: 1;
 }
-[class="sectionCont"] [class="bodyCont"] [class="stage"] #leftArrow {
+[class="sectionCont"] [class="bodyCont"] [class="stage"] i:hover {
+  cursor: pointer;
+}
+[class="sectionCont"] [class="bodyCont"] [class="stage"] i:first-of-type {
   left: 2.5rem;
 }
-[class="sectionCont"] [class="bodyCont"] [class="stage"] #rightArrow {
+[class="sectionCont"] [class="bodyCont"] [class="stage"] i:last-of-type {
   right: 1.5rem;
 }
 [class="sectionCont"] [class="bodyCont"] [class="stageFront"] {
