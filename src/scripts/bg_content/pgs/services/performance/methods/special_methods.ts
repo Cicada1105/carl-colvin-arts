@@ -66,7 +66,7 @@ const createBody = (bodyText:string[]):any => {
 	});
 	leftArrow.addEventListener("click",() => {
 		if (currentSlide !== 1) {
-			let slides:any = document.getElementsByClassName("bodyText");
+			let slides:any = cont.querySelectorAll("p");//document.getElementsByClassName("bodyText");
 
 			for (let slide of slides) {
 				slide.style.left = (parseFloat(slide.style.left) + SPACING) + "rem";
@@ -83,7 +83,7 @@ const createBody = (bodyText:string[]):any => {
 	});
 	rightArrow.addEventListener("click",() => {
 		if (currentSlide !== bodyText.length) {
-			let slides:any = document.getElementsByClassName("bodyText");
+			let slides:any = cont.querySelectorAll("p");//document.getElementsByClassName("bodyText");
 
 			for (let slide of slides) {
 				slide.style.left = (parseFloat(slide.style.left) - SPACING) + "rem";
