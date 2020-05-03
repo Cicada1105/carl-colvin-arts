@@ -3,11 +3,11 @@
 
 // Imports
 // interfaces
-import { ICustomContainer, ImageHeaderInterface as IHeader, IBody } from './interfaces'
+import { ICustomContainer, ImageHeaderInterface as IHeader, IBody } from '../interfaces'
 // methods
-import { createElement, createTextElement, createImageElement } from '../../../../global/methods'
+import { createElement, createTextElement, createImageElement } from '../../../../../global/methods'
 // classes
-import CurtainRod from './curtain_class'
+import CurtainRod from '../curtain_class'
 
 // Methods will take in an object of type ImageHeaderInterface
 // Returns relative container with proper designed
@@ -32,20 +32,14 @@ const createContent = (body:IBody):any => {
 	let cont:any = createElement({
 		className:"bodyCont",
 	});
-	let stageCont:any = createElement({
-		className:"stage"
-	});
-	let text:any = createTextElement({
-		text:body.content,
-		className:"bodyText"
-	});
+
+	let stageCont:any = createBody(body.content);
+
 	let stageFrontCont:any = createElement({
 		className:"stageFront"
 	});
-	let curtainCont:any = createCurtain();
 
-	// Append text to stage container
-	stageCont.appendChild(text);
+	let curtainCont:any = createCurtain();
 
 	// Append stage front and stage to container
 	cont.appendChild(stageCont);
@@ -54,16 +48,49 @@ const createContent = (body:IBody):any => {
 
 	return cont;
 }
-const activateCurtains = () => {
-	// Locate curtains
-	let curtains = document.getElementsByClassName("curtains");
-	// Page loading will mimic the click event
-	let clickEvent = new Event("click");
+const createBody = (bodyText:string[]):any => {
+	const SPACING:number = 32.5;	// rem
+	const P_CENTER_POSITIONING = 7.5;	// rem
 
-	// Activate click event for each curtain container
-	for (let val of curtains) {
-		val.dispatchEvent(clickEvent);
-	}
+	let cont:any = createElement({
+		className:"stage"
+	});
+
+	/*
+		To do: Add left and right arrows, add event listeners to rotate through text
+	*/
+	// Create left and right arrows
+	let leftArrow:any = createElement({
+		element:"i",
+		className:"fas fa-chevron-left",
+		idName:"leftArrow"
+	});
+	let rightArrow:any = createElement({
+		element:"i",
+		className:"fas fa-chevron-right",
+		idName:"rightArrow"
+	});
+	// Append left and right arrows to container
+	cont.appendChild(leftArrow);
+	cont.appendChild(rightArrow);
+
+	// Text that is offset to create "slideshow" effect creates additional 
+	//	x-axis space; prevent users from "viewing" this additional space
+	document.body.style.overflowX = "hidden";
+
+	bodyText.forEach((str,i) => {
+		let text:any = createTextElement({
+			text:str,
+			className:"bodyText"
+		});	
+		// Offset paragraphs to later be animated in user initiated slideshow
+		text.style.left = (P_CENTER_POSITIONING + (SPACING * i)) + "rem";
+
+		// Append text to stage container
+		cont.appendChild(text);
+	});
+
+	return cont;
 }
 const createCurtain = ():any => {
 	let cont:any = createElement({
@@ -95,20 +122,6 @@ const createCurtain = ():any => {
 			cont.style.animationPlayState = "running";
 		}
 	});
-	/*cont.addEventListener("mouseover",() => {
-		if ((cont.style.animationPlayState !== "running") && (cont.style.animationName === "curtainClose" || cont.style.animationName === "")){
-			console.log("Opening");
-			cont.style.animationName = "curtainOpen";
-			cont.style.animationPlayState = "running";
-		}
-	});
-	cont.addEventListener("mouseout", () => {
-		if ((cont.style.animationPlayState !== "running") && (cont.style.animationName === "curtainOpen")){
-			console.log("Closing");
-			cont.style.animationName = "curtainClose";
-			cont.style.animationPlayState = "running";
-		}
-	})*/
 	cont.addEventListener("animationend",() => {
 		cont.style.animationPlayState = "paused";
 	})
@@ -143,4 +156,4 @@ const createImageHeader = (headerData:IHeader):any => {
 
 	return cont;
 }
-export { createSection, activateCurtains }
+export { createSection }

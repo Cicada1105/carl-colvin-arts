@@ -14,4 +14,5 @@ declare function createImageElement({ src, alt, ...rest }: {
     src?: string | undefined;
     alt?: string | undefined;
 }): any;
-export { getCurrentFile, createElement, createTextElement, createImageElement };
+declare const loadBootstrap: () => void;
+export { getCurrentFile, createElement, createTextElement, createImageElement, loadBootstrap };

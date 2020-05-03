@@ -4,7 +4,7 @@ interface ImageHeaderInterface {
     image: IImage;
 }
 interface IBody {
-    content: string;
+    content: string[];
 }
 interface ICustomContainer {
     header: ImageHeaderInterface;

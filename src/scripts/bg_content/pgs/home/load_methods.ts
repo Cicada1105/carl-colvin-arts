@@ -9,16 +9,6 @@ import { Rows } from './data'
 
 const IMAGE_DIR:string = './resources/home_imgs/';
 
-const loadBootstrap = ():void => {
-	// Create link tag for Bootstrap Font Awesome icons
-	let bootstrapLink:any = document.createElement('script');
-	// Add href attribute
-	bootstrapLink.setAttribute('src','https://kit.fontawesome.com/296e9763f7.js');
-
-	// Append Bootstrap cdn to head for font asesome icons
-	document.head.appendChild(bootstrapLink);
-}
-
 const loadRows = ():void => {
 	let currBox:any;
 	let currImg:any;
@@ -104,4 +94,4 @@ const loadListenPreview = ():void => {
 	listenEl.appendChild(cont);
 }
 
-export { loadBootstrap, loadRows, loadListenPreview }
+export { loadRows, loadListenPreview }

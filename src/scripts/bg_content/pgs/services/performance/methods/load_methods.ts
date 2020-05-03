@@ -3,7 +3,7 @@
 
 // Imports
 // data
-import { headerData } from './data'
+import { headerData } from '../data'
 // methods
 import { createSection } from './special_methods'
 

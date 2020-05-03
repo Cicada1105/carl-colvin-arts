@@ -1,6 +1,7 @@
 // Imports
 // methods
-import { loadBootstrap, loadRows, loadListenPreview } from './load_methods'
+import { loadRows, loadListenPreview } from './load_methods'
+import { loadBootstrap } from '../../../global/methods'
 
 const loadHomePage = () => {
 	// Load bootstrap to allow Font Awesome to be used
