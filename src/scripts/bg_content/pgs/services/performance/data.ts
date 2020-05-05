@@ -29,10 +29,12 @@ const headerData:ImageHeaderArrayInterface = {
 				"performance opportunity, whether in the genres ranging from classical to hip hop.",
 				"Music is a service for its current audience and for the time it was written. Every audience " +
 				"and ensemble is different, so every service performed must be different to accomplish a " +
-				"successful performance. I have easily applied my versatility not only to genre but also to " +
+				"successful performance. ",
+				"I have easily applied my versatility not only to genre but also to " +
 				"the aesthetic of specific performances by taking my two decades of oboe playing experience " +
 				"and fitting them into whatever ensemble requires my services. Check out the Listen page to " +
 				"hear for yourself. "
+
 			]
 		}
 	},

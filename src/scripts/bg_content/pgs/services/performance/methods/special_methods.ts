@@ -64,6 +64,9 @@ const createBody = (bodyText:string[]):any => {
 		element:'i',
 		className:'fas fa-chevron-left'
 	});
+	// Each slide starts at beginning so left arrows are initially hidden
+	leftArrow.style.visibility = "hidden";
+
 	leftArrow.addEventListener("click",() => {
 		if (currentSlide !== 1) {
 			let slides:any = cont.querySelectorAll("p");//document.getElementsByClassName("bodyText");
@@ -74,6 +77,12 @@ const createBody = (bodyText:string[]):any => {
 			// Increment current slide
 			currentSlide--;
 		}
+		if (currentSlide === 1)
+			leftArrow.style.visibility = "hidden";
+		else 
+			leftArrow.style.visibility = "visible";
+		if (currentSlide < bodyText.length)
+			rightArrow.style.visiblity = "visible";
 	});
 
 	let rightArrow:any = createElement({
@@ -81,6 +90,10 @@ const createBody = (bodyText:string[]):any => {
 		className:"fas fa-chevron-right",
 		idName:"rightArrow"
 	});
+	
+	if (bodyText.length === 1)
+		rightArrow.style.visibility = "hidden";
+
 	rightArrow.addEventListener("click",() => {
 		if (currentSlide !== bodyText.length) {
 			let slides:any = cont.querySelectorAll("p");//document.getElementsByClassName("bodyText");
@@ -91,6 +104,12 @@ const createBody = (bodyText:string[]):any => {
 			// Increment current slide
 			currentSlide++;
 		}
+		if (currentSlide === bodyText.length)
+			rightArrow.style.visibility = "hidden";
+		else
+			rightArrow.style.visibility = "visible";
+		if (currentSlide > 1)
+			leftArrow.style.visibility = "visible";
 	});
 
 	// Append left and right arrows to container
