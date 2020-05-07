@@ -1,3 +1,2 @@
-import { ICustomContainer } from '../interfaces';
-declare const createSection: (headerData: ICustomContainer) => void;
-export { createSection };
+declare const createArrows: (parentCont: any) => any[];
+export { createArrows };

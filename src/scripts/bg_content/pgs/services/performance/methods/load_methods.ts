@@ -5,7 +5,7 @@
 // data
 import { headerData } from '../data'
 // methods
-import { createSection } from './special_methods'
+import { createSection } from './create_methods'
 
 const loadPerformanceIntro = ():void => {
 	createSection(headerData['performance']);
