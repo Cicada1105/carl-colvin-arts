@@ -1,116 +1,14 @@
 // Import fixed colors to used throughout the pages
-@import "../global/colors.less";
+@import "./about.less";
+@import "./contact.less";
 @import (reference) '../global/namespace.less';
+@import (reference) '../global/methods.less';
 
 #globalNS > .html();
 #globalNS > .navigation();
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
-.row {
-  position:relative;
-  margin:100px auto;
-  display:block;
-  z-index:1;
-  width:75%;
-  height:45%;
-  #left {
-    float:left;
-  }
-  #right {
-    float:right;
-  }
-  section {
-    .format(inherit, 500px, 100%);
-    background-color:@secondaryBackgroundColor;
-    box-shadow:15px 15px 5px @accentColor;
-    color:@textColor;
-    top:0%;
+/*  Rest of the styling goes here */
 
-    #listenImageCont {
-      position:absolute;
-      right:30px;
-      top:20px;
-      width:5rem;
-      height:5rem;
-
-      &:hover {
-        cursor:pointer;
-      }
-      #listenImage {
-        width:100%;
-        height:100%;
-      }
-      i {
-        position:absolute;
-        font-size:1.25rem;
-        left:40%;
-        top:30%;
-      }
-    }
-
-    h3 {
-      text-align:center;
-      &:hover {
-        cursor:pointer;
-        text-decoration: underline;
-      }
-    }
-    p {
-      text-indent:25px;
-      margin:0px 15px;
-    }
-  }
-  .figure {
-    .format(inherit, 300px, 300px);
-    margin:0px;
-    img {
-      position:absolute;
-      z-index:1
-    }
-    .imgBorder {
-      width:100%;
-      z-index:3;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    .figcaption {
-      .format(relative, 70%, 70%);
-      display:none;
-      font-size:1.2rem;
-      margin:auto;
-      margin-top: 15%;
-      color:@textColor;
-      z-index:2;
-
-      p {
-        text-align: center;
-        width:100%;
-        position:absolute;
-      }
-    }
-  }
-  // Carl headshot
-  &:nth-of-type(3) {
-    .homeImg {
-      margin-left:1%;
-      width:97%;
-    }
-  }
-  // Carl playing oboe
-  &:nth-of-type(4) {
-    .homeImg {
-      margin-left:1%;
-      width:96%;
-    }
-  }
-  // Flight poem
-  &:nth-of-type(5) {
-    .homeImg {
-      margin-left:1.5%;
-      width:95%;
-    }
-  }
-}
 #globalNS > .social();
