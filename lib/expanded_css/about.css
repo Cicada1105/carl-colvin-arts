@@ -75,7 +75,105 @@ body {
   z-index: 1;
   top: 0%;
 }
-/*  Rest of the styling goes here */
+.row {
+  position: relative;
+  margin: 100px auto;
+  display: block;
+  z-index: 1;
+  width: 75%;
+  height: 45%;
+}
+.row #left {
+  float: left;
+}
+.row #right {
+  float: right;
+}
+.row section {
+  position: inherit;
+  width: 500px;
+  height: 100%;
+  background-color: #0c090a;
+  box-shadow: 15px 15px 5px #de5757;
+  color: #f0edee;
+  top: 0%;
+}
+.row section #listenImageCont {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  width: 5rem;
+  height: 5rem;
+}
+.row section #listenImageCont:hover {
+  cursor: pointer;
+}
+.row section #listenImageCont #listenImage {
+  width: 100%;
+  height: 100%;
+}
+.row section #listenImageCont i {
+  position: absolute;
+  font-size: 1.25rem;
+  left: 40%;
+  top: 30%;
+}
+.row section h3 {
+  text-align: center;
+}
+.row section h3:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.row section p {
+  text-indent: 25px;
+  margin: 0px 15px;
+}
+.row .figure {
+  position: inherit;
+  width: 300px;
+  height: 300px;
+  margin: 0px;
+}
+.row .figure img {
+  position: absolute;
+  z-index: 1;
+}
+.row .figure .imgBorder {
+  width: 100%;
+  z-index: 3;
+}
+.row .figure .imgBorder:hover {
+  cursor: pointer;
+}
+.row .figure .figcaption {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  display: none;
+  font-size: 1.2rem;
+  margin: auto;
+  margin-top: 15%;
+  color: #f0edee;
+  z-index: 2;
+}
+.row .figure .figcaption p {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+}
+.row:nth-of-type(3) .homeImg {
+  margin-left: 1%;
+  width: 97%;
+}
+.row:nth-of-type(4) .homeImg {
+  margin-left: 1%;
+  width: 96%;
+}
+.row:nth-of-type(5) .homeImg {
+  margin-left: 1.5%;
+  width: 95%;
+}
 #footer {
   bottom: 0%;
   z-index: 3;

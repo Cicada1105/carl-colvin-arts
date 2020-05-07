@@ -7,7 +7,11 @@ import { IImage, IBoxLink } from '../../../global/interfaces'
 // methods
 import { createElement, createTextElement, createImageElement } from '../../../global/methods'
 
-const IMAGE_DIR:string = './resources/home_imgs/';
+// Path for development
+let isHomePage:boolean = window.location.pathname.includes('index');
+const IMAGE_DIR:string = isHomePage ? './resources/about_imgs/' : '../resources/about_imgs/';
+// Paths for production
+//const IMAGE_DIR:string = '/resources/home_imgs/'
 
 const infoBox = (e:IBoxLink):any => {
 	let box = document.createElement('section');
