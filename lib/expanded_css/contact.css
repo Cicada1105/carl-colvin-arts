@@ -170,7 +170,7 @@ body {
 [id="formCont"] {
   position: relative;
   width: 54rem;
-  margin: 5rem auto auto auto;
+  margin: 10rem auto auto auto;
   z-index: 2;
 }
 [id="formCont"] h1:first-child {

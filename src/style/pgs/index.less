@@ -11,50 +11,46 @@
 
 /*  Rest of the styling goes here */
 #collage {
-	& > [class = "collageGridItem"] {
-		& > img {
-			object-fit:contain;
-			width:100%;
-			max-height: 100%;
+	& > img {
+		position:absolute;
+		object-fit:contain;
+
+		&[class ^= "top"] {
+			top:0;
 		}
-		&:nth-of-type(1) {
-			background-color:green;
-			grid-area:ungovernables;
+		&[class ^= "bottom"] {
+			bottom:0;
 		}
-		&:nth-of-type(2) {
-			background-color:aqua;
-			grid-area:spoken_word;
+		&[class $= "Right"] {
+			width:12.815rem;
+			right:0;
 		}
-		&:nth-of-type(3) {
-			background-color:green;
-			grid-area:festival;
+		&[class $= "Left"] {
+			width:14.5rem;
+			left:0;
 		}
-		&:nth-of-type(4) {
-			background-color:green;
-			grid-area:rand_reeds;
+		&[class $= "Middle"] {
+			width:18.75rem;
+			left:14.5rem;
 		}
-		&:nth-of-type(5) {
-			background-color:aqua;
-			grid-area:reed_scraping;
+
+		& {
+			transform: scale(1,1);
+			transition: transform 0.45s;
 		}
-		&:nth-of-type(6) {
-			background-color:aqua;
-			grid-area:poem;
+		&:hover {
+			transform: scale(0.85, 0.85);
+			cursor:pointer;
 		}
 	}
 }
 #collage {
 	.format(relative,46.065rem, 24.75rem);
-	background-color:aqua;
-	display:grid;
-	margin:5rem auto;
-	grid-template-rows: 0.915fr 0.77fr 1.25fr;
-	grid-template-columns: 0.7725fr 1.015fr 0.695fr;
-	grid-template-areas: 	'festival 		poem 			rand_reeds'
-							'festival 		poem 			spoken_word'
-							'reed_scraping	ungovernables 	spoken_word';
+	margin:11rem auto;
 	z-index:1;
 }
-
+#formCont {
+	margin:12rem auto 10.75rem auto;
+}
 
 #globalNS > .social();

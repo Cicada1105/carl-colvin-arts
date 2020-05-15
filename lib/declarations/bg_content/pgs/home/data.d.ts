@@ -1,3 +1,3 @@
-import { IImage } from '../../../global/interfaces';
-declare const collageImages: Array<IImage>;
+import { ICollage } from './interfaces';
+declare const collageImages: Array<ICollage>;
 export { collageImages };

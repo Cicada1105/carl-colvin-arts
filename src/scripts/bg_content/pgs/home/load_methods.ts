@@ -3,7 +3,7 @@
 */
 // Imports
 //	interfaces
-import { IImage } from '../../../global/interfaces'
+import { ICollage } from './interfaces'
 //	methods
 import { createElement, createImageElement } from '../../../global/methods'
 //	data
@@ -15,23 +15,24 @@ const loadCollage = ():void => {
 	});
 
 	collageImages.forEach((img) => {
-		let imgGridCont:any = createElement({
+		/*let imgGridCont:any = createElement({
 			className:"collageGridItem"
-		});
+		});*/
 
-		imgGridCont.appendChild(loadImage(img));
+		//imgGridCont.appendChild(loadImage(img));
 		
 		// Append image grid container to the collage container
-		collageCont.appendChild(imgGridCont);
+		collageCont.appendChild(loadImage(img));
 	});
 
 	document.body.appendChild(collageCont);
 }
 
-const loadImage = (img:IImage):any => {
+const loadImage = (img:ICollage):any => {
 	let currImg:any = createImageElement({
 		src: img.path,
-		alt: img.alt
+		alt: img.alt,
+		className: img.className
 	});
 
 	currImg.addEventListener("click", () => displayImagePost(currImg));
@@ -43,8 +44,9 @@ const loadImage = (img:IImage):any => {
 }
 
 const displayImagePost = (img:any):void => {
+	alert(img);
 	// Image post and caption will lay on a gray background to create fade effect
-	let imgPostBackdrop:any = createElement({
+	/*let imgPostBackdrop:any = createElement({
 		idName:"postBackdrop"
 	});
 
@@ -54,7 +56,7 @@ const displayImagePost = (img:any):void => {
 	imgPostBackdrop.appendChild(imgPostCont);
 
 	// Append post to the page to be displayed
-	document.body.appendChild(imgPostBackdrop);
+	document.body.appendChild(imgPostBackdrop);*/
 }
 
 const loadPost = (img:any):any => {
