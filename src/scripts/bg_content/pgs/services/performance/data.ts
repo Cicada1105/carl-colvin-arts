@@ -7,7 +7,7 @@ interface ImageHeaderArrayInterface {
 	[index:string]:ICustomContainer;
 }
 
-const IMG_PATH:string = "../../resources/performance_imgs/";
+const IMG_PATH:string = "../../resources/pg_imgs/performance_imgs/";
 
 const headerData:ImageHeaderArrayInterface = {
 	"performance": {

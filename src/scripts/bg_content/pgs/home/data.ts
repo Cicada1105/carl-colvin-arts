@@ -5,7 +5,7 @@
 import { ICollage } from './interfaces'
 
 // Path to home collage images
-const imagePaths:string = "./resources/home_collage_imgs/";
+const imagePaths:string = "./resources/pg_imgs/home_collage_imgs/";
 
 const collageImages:Array<ICollage> = [
 	{

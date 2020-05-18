@@ -9,9 +9,9 @@ import { createElement, createTextElement, createImageElement } from '../../../g
 
 // Path for development
 let isHomePage:boolean = window.location.pathname.includes('index');
-const IMAGE_DIR:string = isHomePage ? './resources/about_imgs/' : '../resources/about_imgs/';
+const IMAGE_DIR:string = isHomePage ? './resources/pg_imgs/about_imgs/' : '../resources/pg_imgs/about_imgs/';
 // Paths for production
-//const IMAGE_DIR:string = '/resources/home_imgs/'
+//const IMAGE_DIR:string = '/resources/pg_imgs/about_imgs/'
 
 const infoBox = (e:IBoxLink):any => {
 	let box = document.createElement('section');

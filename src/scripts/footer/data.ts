@@ -7,9 +7,9 @@ interface ImageInterface {
 }
 
 // Use during development
-const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/media_imgs";
+const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/global_imgs/media";
 // Use during production
-//const imagePath = "/resources/media_imgs";
+//const imagePath = "/resources/global_imgs/media";
 
 // Data holding info about social media links
 const data:IImageLink[] = [

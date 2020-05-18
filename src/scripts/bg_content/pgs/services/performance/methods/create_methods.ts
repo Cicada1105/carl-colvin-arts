@@ -12,7 +12,7 @@ import { createElement, createTextElement, createImageElement } from '../../../.
 // classes
 import CurtainRod from '../curtain_class'
 
-// Methods will take in an object of type ImageHeaderInterface
+// Methods will take in an object of type ICustomContainer
 // Returns relative container with proper designed
 const createSection = (headerData:ICustomContainer):void => {
 	// Container to hold every element of the header

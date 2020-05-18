@@ -6,6 +6,8 @@ import { IPricing, ReedPricingInterface } from './interfaces'
 import { createElement, createTextElement, createImageElement } from '../../../../global/methods'
 import { IBox } from '../../../../global/interfaces'
 
+const IMG_PATH:string = "../../resources/pg_imgs/reedmaking_imgs/";
+
 /************************************/
 /*		Header Text and Contentd 	*/
 /************************************/
@@ -14,9 +16,9 @@ const createHeaderContent = (data:IBox):any => {
 
 	let headerCont:any = createElement({className:'headerText'});
 
-	let leftReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'leftReed'});
+	let leftReed:any = createImageElement({src:`${IMG_PATH}reed.png`,alt:'Reed silhouette',className:'reed_silhouette',idName:'leftReed'});
 	let introHeader:any = createTextElement({element:'h3',text:data.header});
-	let rightReed:any = createImageElement({src:'../../resources/reedmaking_imgs/reed.png',alt:'Reed silhouette',className:'reed_silhouette',idName:'rightReed'});
+	let rightReed:any = createImageElement({src:`${IMG_PATH}reed.png`,alt:'Reed silhouette',className:'reed_silhouette',idName:'rightReed'});
 
 	headerCont.appendChild(leftReed);
 	headerCont.appendChild(introHeader);
