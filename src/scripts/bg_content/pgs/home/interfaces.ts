@@ -1,9 +1,15 @@
 // Interfaces that only pertain to the home page
 
-import { IImage } from '../../../global/interfaces'
+import { IImage, IBox } from '../../../global/interfaces'
 
 interface ICollage extends IImage {
 	className:string;
 }
 
-export { ICollage }
+// Each image will have imageData and postData
+interface IPost {
+	imageData: ICollage;
+	postData: IBox;
+}
+
+export { IPost, ICollage }
