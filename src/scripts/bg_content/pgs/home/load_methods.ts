@@ -62,23 +62,54 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 	let imgPostBackdrop:any = createElement({
 		idName:"postBackdrop"
 	});
-/*
+
 	let imgPostCont:any = createElement({
 		idName:"imgPostCont"
 	});
-
+/*
 	// Create container that holds post details, functionality and exit
 	let postCont:any = createPostCont(postData);
+*/	
+	// Create exit button
+	let exitButton:any = createElement({element:"i",className:"fas fa-times"});
+	// Add event listener to exit button to remove backdrop and image post container
+	exitButton.addEventListener("click",() => {
+		imgPostBackdrop.remove();
+		imgPostCont.remove();
+	});
 
-	// Append image and post container to "pop up" container
+
+	// Append image, post container, and exit button to "pop up" container
 	imgPostCont.appendChild(img);
+/*
 	imgPostCont.appendChild(postCont);
-
-	// Append "pop up" container to post backdrop
-	imgPostBackdrop.appendChild(imgPostCont);
 */
+	imgPostCont.appendChild(exitButton);
+
+	// Depending on image size and its affect on imgPostCont, center accordingly
+	/*
+		Default width and height of container 40rem x 20rem (640px x 320px)
+			centering image by 50% results in left and top being at 50% and not the 
+			center of the container. 
+				-If height is greater than default height, "subtract"
+				margin top by half height for vertical centering, else "subtract" half of 
+				default: 160
+				-If width is greater than half of default width (one side for image one
+				side for post), "subtract" margin left by half for horizontal centering,
+				else "subtract" half of default: 320
+	*/
+	imgPostCont.style.marginTop = -(img.height > 320 ? (img.height / 2) : 160) + "px";
+	imgPostCont.style.marginLeft = -(img.width > 320 ? img.width : 320) + "px";
+	// Size container according to image dimensions 
+	// 		if height > default height => imgPostCont height = image height
+	//		if width > half of default width => imgPostCont width = image width times two
+	imgPostCont.style.height = (img.height > 320 ? img.height : 320) + "px";
+	imgPostCont.style.width = (img.width > 320 ? (img.width * 2) : 640) + "px";
+	
 	// Append backdrop to the page to be displayed
 	document.body.appendChild(imgPostBackdrop);
+	// Append "pop up" container to the page to prevent inheriting properties from backdrop
+	document.body.appendChild(imgPostCont);
 }
 
 /*
@@ -86,11 +117,11 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 	postData:IBox
 		-header and content to be displayed to the side of image
 
-	This function creates elements for post, left and right arrows, and exit button
+	This function creates elements for post and left and right arrows
 
 	@return
 	postCont:any
-		-Container holding left and right arrows, post data and exit button
+		-Container holding left and right arrows and post data
 */
 const createPostCont = (postData:IBox):any => {
 	// Post container will hold the two "panels" one that holds image on left 
@@ -108,14 +139,11 @@ const createPostCont = (postData:IBox):any => {
 	// Create right arrow 
 	//let rightArrow:any = createElement({element:"i",className:""});
 
-	// Create exit button
-	//let exitButton:any = createElement({element:"i",className:""});
 
 	// Append left arrow, postCardCont, right arrow and exit button to postCont
 	//postCont.appendChild(leftArrow);
 	postCont.appendChild(postCardCont);
 	//postCont.appendChild(rightArrow);
-	//postCont.appendChild(exitButton);
 
 	return postCont;
 }
