@@ -15,25 +15,36 @@
 		position:absolute;
 		object-fit:contain;
 
-		&[class ^= "top"] {
-			top:0;
-		}
-		&[class ^= "bottom"] {
-			bottom:0;
-		}
-		&[class $= "Right"] {
-			width:12.815rem;
-			right:0;
-		}
-		&[class $= "Left"] {
-			width:14.5rem;
+		&[class ^= "left"] {
+			width:12.915rem;
 			left:0;
 		}
-		&[class $= "Middle"] {
-			width:18.75rem;
-			left:14.5rem;
+		&[class ^= "middle"] {
+			width:17.05rem;
+			left:12.95rem;
 		}
-
+		&[class ^= "right"] {
+			width:14.85rem;
+			right:0;
+		}
+		&[class $= "Top"] {
+			top:0;
+		}
+		// Ungovernables
+		&[class = "middleSecond"] {
+			top:8.9rem;
+		}
+		// Happy Holy Dayz
+		&[class = "leftMiddle"] {
+			top:17.28rem;
+		}
+		// Oboe on sheet music 
+		&[class = "middleThird"] {
+			top:18.5rem;
+		}
+		&[class $= "Bottom"] {
+			bottom:0;
+		}
 		& {
 			transform: scale(1,1);
 			transition: transform 0.45s;
@@ -45,8 +56,8 @@
 	}
 }
 #collage {
-	.format(relative,46.065rem, 24.75rem);
-	margin:11rem auto;
+	.format(relative,44.85rem, 39.55rem);
+	margin:3rem auto 11rem auto;
 	z-index:1;
 }
 #formCont {

@@ -559,23 +559,32 @@ body {
   transform: scale(1, 1);
   transition: transform 0.45s;
 }
-#collage > img[class^="top"] {
-  top: 0;
-}
-#collage > img[class^="bottom"] {
-  bottom: 0;
-}
-#collage > img[class$="Right"] {
-  width: 12.815rem;
-  right: 0;
-}
-#collage > img[class$="Left"] {
-  width: 14.5rem;
+#collage > img[class^="left"] {
+  width: 12.915rem;
   left: 0;
 }
-#collage > img[class$="Middle"] {
-  width: 18.75rem;
-  left: 14.5rem;
+#collage > img[class^="middle"] {
+  width: 17.05rem;
+  left: 12.95rem;
+}
+#collage > img[class^="right"] {
+  width: 14.85rem;
+  right: 0;
+}
+#collage > img[class$="Top"] {
+  top: 0;
+}
+#collage > img[class="middleSecond"] {
+  top: 8.9rem;
+}
+#collage > img[class="leftMiddle"] {
+  top: 17.28rem;
+}
+#collage > img[class="middleThird"] {
+  top: 18.5rem;
+}
+#collage > img[class$="Bottom"] {
+  bottom: 0;
 }
 #collage > img:hover {
   transform: scale(0.85, 0.85);
@@ -583,9 +592,9 @@ body {
 }
 #collage {
   position: relative;
-  width: 46.065rem;
-  height: 24.75rem;
-  margin: 11rem auto;
+  width: 44.85rem;
+  height: 39.55rem;
+  margin: 3rem auto 11rem auto;
   z-index: 1;
 }
 #formCont {
