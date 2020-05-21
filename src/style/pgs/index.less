@@ -3,6 +3,7 @@
 @import "./contact.less";
 @import (reference) '../global/namespace.less';
 @import (reference) '../global/methods.less';
+@import (reference) '../global/colors.less';
 
 #globalNS > .html();
 #globalNS > .navigation();
@@ -48,6 +49,13 @@
 	.format(relative,46.065rem, 24.75rem);
 	margin:11rem auto;
 	z-index:1;
+}
+#postBackdrop {
+	.format(fixed, 100%, 100%);
+	background-color:@secondaryBackgroundColor;
+	filter:opacity(0.75);
+	top:0;
+	z-index:2;
 }
 #formCont {
 	margin:12rem auto 10.75rem auto;

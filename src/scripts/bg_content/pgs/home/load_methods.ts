@@ -16,13 +16,7 @@ const loadCollage = ():void => {
 	});
 
 	collageImages.forEach((img) => {
-		/*let imgGridCont:any = createElement({
-			className:"collageGridItem"
-		});*/
-
-		//imgGridCont.appendChild(loadImage(img));
-		
-		// Append image grid container to the collage container
+		// Append image to the collage container
 		collageCont.appendChild(loadImage(img));
 	});
 
@@ -68,13 +62,13 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 	let imgPostBackdrop:any = createElement({
 		idName:"postBackdrop"
 	});
-
+/*
 	let imgPostCont:any = createElement({
 		idName:"imgPostCont"
 	});
 
 	// Create container that holds post details, functionality and exit
-	let postCont:any = loadPostCont(postData);
+	let postCont:any = createPostCont(postData);
 
 	// Append image and post container to "pop up" container
 	imgPostCont.appendChild(img);
@@ -82,7 +76,7 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 
 	// Append "pop up" container to post backdrop
 	imgPostBackdrop.appendChild(imgPostCont);
-
+*/
 	// Append backdrop to the page to be displayed
 	document.body.appendChild(imgPostBackdrop);
 }
@@ -98,7 +92,7 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 	postCont:any
 		-Container holding left and right arrows, post data and exit button
 */
-const loadPostCont = (postData:IBox):any => {
+const createPostCont = (postData:IBox):any => {
 	// Post container will hold the two "panels" one that holds image on left 
 	//  and one that holds caption on right
 	let postCont:any = createElement({
