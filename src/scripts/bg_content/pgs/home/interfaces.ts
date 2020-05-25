@@ -3,7 +3,7 @@
 import { IImage, IBox } from '../../../global/interfaces'
 
 interface ICollage extends IImage {
-	className:string;
+	idName:string;
 }
 
 // Each image will have imageData and postData

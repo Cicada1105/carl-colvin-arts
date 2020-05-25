@@ -15,31 +15,40 @@ const loadCollage = ():void => {
 		idName:"collage"
 	});
 
+	// Keep array of images to loop through for post "slide show"
+	//let imgPostArray:Array<Node> = [];
+
 	collageImages.forEach((img) => {
+		let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
+
 		// Append image to the collage container
-		collageCont.appendChild(loadImage(img));
+		collageCont.appendChild(imgNode);
 	});
 
 	document.body.appendChild(collageCont);
+
+	let collageChildren:HTMLCollection|null = document.querySelector("#collage").children;
+
+	// Add click event listener after loading images to body to get css computed dimensions for pop up window
+	collageImages.forEach((img) => {
+		let currImgElement:HTMLElement|null = collageChildren.namedItem(img.imageData.idName);
+		let postData:IBox = <IBox>img.postData;
+
+		currImgElement.addEventListener("click", () => {
+			displayImagePostPost(currImgElement.cloneNode(true), postData);
+		});
+	});
+	
 }
 
-const loadImage = (img:IPost):any => {
-	let imgData:ICollage = <ICollage>img.imageData;
-	let postData:IBox = <IBox>img.postData;
-
+const loadImage = (imgData:ICollage):HTMLImageElement => {
 	let currImg:any = createImageElement({
 		src: imgData.path,
 		alt: imgData.alt,
-		className: imgData.className
+		idName: imgData.idName
 	});
 
-	// Clone image node so original image remains in collage
-	let currImgClone:any = currImg.cloneNode(true);
-
-	currImg.addEventListener("click", () => displayImagePost(currImgClone, postData));
-	currImg.addEventListener("hover", () => {
-		console.log("Hovered over: " + currImg);
-	});
+	currImg.addEventListener("hover",() => console.log(imgData.caption));
 
 	return currImg;
 }
@@ -87,6 +96,12 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 	imgPostCont.appendChild(exitButton);
 
 	// Depending on image size and its affect on imgPostCont, center accordingly
+	// Image computed dimensions after style has been applied
+	let widthStr:string = window.getComputedStyle(img)["width"];	// Returns string with px
+	let heightStr:string = window.getComputedStyle(img)["height"];	// Returns string with px
+
+	let width:number = parseFloat(widthStr);
+	let height:number = parseFloat(heightStr);
 	/*
 		Default width and height of container 40rem x 20rem (640px x 320px)
 			centering image by 50% results in left and top being at 50% and not the 
@@ -98,13 +113,13 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 				side for post), "subtract" margin left by half for horizontal centering,
 				else "subtract" half of default: 320
 	*/
-	imgPostCont.style.marginTop = -(img.height > 320 ? (img.height / 2) : 160) + "px";
-	imgPostCont.style.marginLeft = -(img.width > 320 ? img.width : 320) + "px";
+	imgPostCont.style.marginTop = -(height > 320 ? (height / 2) : 160) + "px";
+	imgPostCont.style.marginLeft = -(width > 320 ? width : 320) + "px";
 	// Size container according to image dimensions 
 	// 		if height > default height => imgPostCont height = image height
 	//		if width > half of default width => imgPostCont width = image width times two
-	imgPostCont.style.height = (img.height > 320 ? img.height : 320) + "px";
-	imgPostCont.style.width = (img.width > 320 ? (img.width * 2) : 640) + "px";
+	imgPostCont.style.height = (height > 320 ? height : 320) + "px";
+	imgPostCont.style.width = (width > 320 ? (width * 2) : 640) + "px";
 	
 	// Append backdrop to the page to be displayed
 	document.body.appendChild(imgPostBackdrop);

@@ -556,39 +556,45 @@ body {
 #collage > img {
   position: absolute;
   object-fit: contain;
-  transform: scale(1, 1);
   transition: transform 0.45s;
 }
-#collage > img[class^="left"] {
-  width: 12.915rem;
+#collage > img[id^="left"] {
   left: 0;
 }
-#collage > img[class^="middle"] {
-  width: 17.05rem;
+#collage > img[id^="middle"] {
   left: 12.95rem;
 }
-#collage > img[class^="right"] {
-  width: 14.85rem;
+#collage > img[id^="right"] {
   right: 0;
 }
-#collage > img[class$="Top"] {
+#collage > img[id$="Top"] {
   top: 0;
 }
-#collage > img[class="middleSecond"] {
+#collage > img[id="middleSecond"] {
   top: 8.9rem;
 }
-#collage > img[class="leftMiddle"] {
+#collage > img[id="leftMiddle"] {
   top: 17.28rem;
 }
-#collage > img[class="middleThird"] {
+#collage > img[id="middleThird"] {
   top: 18.5rem;
 }
-#collage > img[class$="Bottom"] {
+#collage > img[id$="Bottom"] {
   bottom: 0;
 }
 #collage > img:hover {
   transform: scale(0.85, 0.85);
   cursor: pointer;
+}
+/*		Images within collage and post		*/
+img[id^="left"] {
+  width: 12.915rem;
+}
+img[id^="middle"] {
+  width: 17.05rem;
+}
+img[id^="right"] {
+  width: 14.85rem;
 }
 #collage {
   position: relative;
@@ -607,7 +613,7 @@ body {
   z-index: 2;
 }
 #imgPostCont {
-  background-color: aqua;
+  background-color: #f2f2f2;
   position: fixed;
   left: 50%;
   top: 50%;

@@ -16,44 +16,52 @@
 		position:absolute;
 		object-fit:contain;
 
-		&[class ^= "left"] {
-			width:12.915rem;
+		&[id ^= "left"] {
 			left:0;
 		}
-		&[class ^= "middle"] {
-			width:17.05rem;
+		&[id ^= "middle"] {
 			left:12.95rem;
 		}
-		&[class ^= "right"] {
-			width:14.85rem;
+		&[id ^= "right"] {
 			right:0;
 		}
-		&[class $= "Top"] {
+		&[id $= "Top"] {
 			top:0;
 		}
 		// Ungovernables
-		&[class = "middleSecond"] {
+		&[id = "middleSecond"] {
 			top:8.9rem;
 		}
 		// Happy Holy Dayz
-		&[class = "leftMiddle"] {
+		&[id = "leftMiddle"] {
 			top:17.28rem;
 		}
 		// Oboe on sheet music 
-		&[class = "middleThird"] {
+		&[id = "middleThird"] {
 			top:18.5rem;
 		}
-		&[class $= "Bottom"] {
+		&[id $= "Bottom"] {
 			bottom:0;
 		}
 		& {
-			transform: scale(1,1);
 			transition: transform 0.45s;
 		}
 		&:hover {
 			transform: scale(0.85, 0.85);
 			cursor:pointer;
 		}
+	}
+}
+/*		Images within collage and post		*/
+img {
+	&[id ^= "left"] {
+		width:12.915rem;
+	}
+	&[id ^= "middle"] {
+		width:17.05rem;
+	}
+	&[id ^= "right"] {
+		width:14.85rem;
 	}
 }
 #collage {
@@ -69,7 +77,7 @@
 	z-index:2;
 }
 #imgPostCont {
-	background-color:aqua;
+	background-color:@activeTextColor;
 	position:fixed;
 	left:50%;
 	top:50%;

@@ -15,7 +15,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}fathers_touch_poem.png`,
 			alt:'A Father\'s Touch poem',
 			caption:'[A Father\'s Touch partial description]',
-			className:'leftTop'
+			idName:'leftTop'
 		},
 		postData: {
 			header:'A Father\'s Touch',
@@ -27,7 +27,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}reed_scraping_types.png`,
 			alt:'Types of reed scraping',
 			caption:'[Reed scraping partial description]',
-			className:'middleTop'
+			idName:'middleTop'
 		},
 		postData: {
 			header: "Types of Reed Scraping",
@@ -39,7 +39,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}dank_haus_spoken_word.png`,
 			alt:'Dank Hause Kenya Spoken Word',
 			caption:'[Spoken Word partial description]',
-			className:'rightTop'
+			idName:'rightTop'
 		},
 		postData: {
 			header: "Dank Hause Kenya Spoken Word",
@@ -52,7 +52,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}dank_haus_ungovernables.png`,
 			alt:'Dank Haus Ungovernables',
 			caption:'[Ungovernables partial description]',
-			className:'middleSecond'
+			idName:'middleSecond'
 		},
 		postData: {
 			header: "Dank Haus Ungovernables",
@@ -65,7 +65,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}happy_holy_dayz.png`,
 			alt:'Happy Holy Dayz annual Chicago Hiphop Festival',
 			caption:'[Chicago Hiphop Festival partial description]',
-			className:'leftMiddle'
+			idName:'leftMiddle'
 		},
 		postData: {
 			header: "Happy Holy Dayz annual Chicago Hiphop Festival",
@@ -78,7 +78,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}oboe_sheet_music.png`,
 			alt:'Oboe on sheet music',
 			caption:'[Oboe on sheet music partial description]',
-			className:'middleThird'
+			idName:'middleThird'
 		},
 		postData: {
 			header:'Oboe Sheet Music',
@@ -90,7 +90,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}take_my_hand_poem.png`,
 			alt:'Take My Hand poem',
 			caption:'[Take my hand poem partial description]',
-			className:'rightBottom'
+			idName:'rightBottom'
 		},
 		postData: {
 			header: "Take My Hand",
@@ -102,7 +102,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}english_horn_sheet_music.png`,
 			alt:'English horn on sheet music',
 			caption:'[English horn on sheet music partial description]',
-			className:'leftBottom'
+			idName:'leftBottom'
 		},
 		postData: {
 			header:'English Horn Sheet Music',
@@ -114,7 +114,7 @@ const collageImages:Array<IPost> = [
 			path:`${imagePath}rand_reeds.png`,
 			alt:'Random Reeds',
 			caption:'[Random reeds partial description]',
-			className:'middleBottom'
+			idName:'middleBottom'
 		},
 		postData: {
 			header: "Random Reeds",

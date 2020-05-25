@@ -1,6 +1,6 @@
 import { IImage, IBox } from '../../../global/interfaces';
 interface ICollage extends IImage {
-    className: string;
+    idName: string;
 }
 interface IPost {
     imageData: ICollage;
