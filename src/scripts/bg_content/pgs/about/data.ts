@@ -7,6 +7,7 @@ const ROOT_PGS_DIR:string = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts
 const IMG_PATH:string = isHomePage ? "./resources/pg_imgs/about_imgs/" : "../resources/pg_imgs/about_imgs/";
 // Use during production
 //const ROOT_PGS_DIR:string = "/pgs/";
+//const IMG_PATH:string = "/resources/pg_imgs/about_imgs/";
 
 const Rows:IRow[] = [
 	{

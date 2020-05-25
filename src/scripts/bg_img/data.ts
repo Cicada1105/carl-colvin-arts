@@ -4,7 +4,7 @@ import { IImage } from '../global/interfaces'
 // Use for development
 const imgPath:string = 'file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/global_imgs/background/';
 // Use for production
-//const imgPath:string = '/resources/global_imgs/background/'
+//const imgPath:string = '/resources/global_imgs/background/';
 
 // Local interface to define an associative array of IMage's
 interface IBgImage {
