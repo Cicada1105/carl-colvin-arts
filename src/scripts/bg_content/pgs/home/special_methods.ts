@@ -12,7 +12,7 @@ import { createElement, createTextElement } from '../../../global/methods'
 //  data 
 import { collageImages } from './data'
 
-const addImageListener = () => {
+/*const addImageListener = () => {
 	// Add click event listener after loading images to body to get css computed dimensions for pop up window
 	collageImages.forEach((img, i) => {
 		let currImgElement:HTMLImageElement = document.querySelector("#collage").children.namedItem(img.imageData.idName);
@@ -24,7 +24,7 @@ const addImageListener = () => {
 			displayImagePost(imgClone, postData);
 		});
 	});
-}
+}*/
 
 /*
 	@params
@@ -40,7 +40,7 @@ const addImageListener = () => {
 	@return
 	void
 */
-const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
+const displayImagePost = (img:any, postData:IBox):void => {
 	let imgPostBackdrop:any = createElement({
 		idName:"postBackdrop"
 	});
@@ -79,8 +79,10 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 	let widthStr:string = window.getComputedStyle(img)["width"];	// Returns string with px
 	let heightStr:string = window.getComputedStyle(img)["height"];	// Returns string with px
 
-	let width:number = parseFloat(widthStr);
-	let height:number = parseFloat(heightStr);
+	//let width:number = parseFloat(widthStr);
+	//let height:number = parseFloat(heightStr);
+	let width:number = img.width;
+	let height:number = img.height;
 	/*
 		Default width and height of container 40rem x 20rem (640px x 320px)
 			centering image by 50% results in left and top being at 50% and not the 
@@ -92,12 +94,12 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
 				side for post), "subtract" margin left by half for horizontal centering,
 				else "subtract" half of default: 320
 	*/
-	imgPostCont.style.marginTop = -(height > 380 ? (height / 2) : 160) + "px";
+	imgPostCont.style.marginTop = -(height > 320 ? (height / 2) : 160) + "px";
 	imgPostCont.style.marginLeft = -(width > 320 ? width : 320) + "px";
 	// Size container according to image dimensions 
 	// 		if height > default height => imgPostCont height = image height
 	//		if width > half of default width => imgPostCont width = image width times two
-	imgPostCont.style.height = (height > 380 ? height : 380) + "px";
+	imgPostCont.style.height = (height > 320 ? height : 320) + "px";
 	imgPostCont.style.width = (width > 320 ? (width * 2) : 640) + "px";
 	
 	// Append backdrop to the page to be displayed
@@ -199,4 +201,4 @@ const postCard = (postData:IBox):any => {
 	return cont;
 }
 
-export { addImageListener }
+export { displayImagePost }

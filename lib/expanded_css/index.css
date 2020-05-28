@@ -628,6 +628,7 @@ img[id^="right"] {
 }
 .imgPostCont > .imgCont > img {
   position: absolute;
+  width: initial;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

@@ -86,11 +86,10 @@ img {
 	& > .imgCont {
 		.format(relative,50%, 100%);
 		background-color: rgba(12, 9, 10, 0.2);
-		//border:2px solid @accentColor;
 		float:left;
 
 		& > img {
-			position:absolute;
+			.format(absolute,initial);
 			left:50%;
 			top:50%;
 			transform:translate(-50%, -50%);

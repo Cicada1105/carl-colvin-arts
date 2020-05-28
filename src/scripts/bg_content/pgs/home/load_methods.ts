@@ -3,9 +3,11 @@
 */
 // Imports
 //	interfaces
+import { IBox } from '../../../global/interfaces'
 import { ICollage } from './interfaces'
 //	methods
 import { createElement, createImageElement } from '../../../global/methods'
+import { displayImagePost } from './special_methods'
 //	data
 import { collageImages } from './data'
 
@@ -20,6 +22,14 @@ const loadCollage = ():void => {
 	collageImages.forEach((img) => {
 		let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
 
+		// Add click event listener after loading images to body to get css computed dimensions for pop up window
+		let postData:IBox = <IBox>img.postData;
+
+		let imgClone:HTMLImageElement = <HTMLImageElement>imgNode.cloneNode(true);
+
+		imgNode.addEventListener("click", () => {
+			displayImagePost(imgNode.cloneNode(true), postData);
+		});
 		// Append image to the collage container
 		collageCont.appendChild(imgNode);
 	});
