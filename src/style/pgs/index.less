@@ -76,25 +76,73 @@ img {
 	top:0;
 	z-index:2;
 }
-#imgPostCont {
+.imgPostCont {
 	background-color:@activeTextColor;
 	position:fixed;
 	left:50%;
 	top:50%;
 	z-index:2;
 
-	& > img {
-		position:relative;
+	& > .imgCont {
+		.format(relative,50%, 100%);
+		background-color: rgba(12, 9, 10, 0.2);
+		//border:2px solid @accentColor;
 		float:left;
-		object-fit:contain;
+
+		& > img {
+			position:absolute;
+			left:50%;
+			top:50%;
+			transform:translate(-50%, -50%);
+			object-fit:contain;	
+		}
 	}
-	& > #postCont {
+	& > .postCont {
+		width:50%;
+		height:100%;
 		float:right;
+
+		& > div {
+			display:inline-block;
+		}
+
+		& > .postDataCont {
+			.format(relative,70%,100%);
+			text-align:center;
+			margin:auto;
+
+			& > hr {
+				border: 2px solid @secondaryColor;
+			}
+		}
+		& > .arrowCont {
+			.format(relative,15%,100%);
+			text-align:center;
+
+			& > i {
+				position:relative;
+				color:@secondaryColor;
+				font-size:2em;
+				top:50%;
+				transform:translateY(-50%);
+
+				&:hover {
+					cursor:pointer;
+				}
+			}
+		}
+		& > #leftArrowCont {
+			float:left;
+		}
+		& > #rightArrowCont {
+			float:right;
+		}
 	}
 	& > i {
 		position:absolute;
+		color:@secondaryColor;
 		font-size:1.5rem;
-		top:0.5rem;
+		top:0.25rem;
 		right:0.5rem;
 
 		&:hover {

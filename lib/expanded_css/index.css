@@ -612,28 +612,75 @@ img[id^="right"] {
   top: 0;
   z-index: 2;
 }
-#imgPostCont {
+.imgPostCont {
   background-color: #f2f2f2;
   position: fixed;
   left: 50%;
   top: 50%;
   z-index: 2;
 }
-#imgPostCont > img {
+.imgPostCont > .imgCont {
   position: relative;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(12, 9, 10, 0.2);
   float: left;
+}
+.imgPostCont > .imgCont > img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   object-fit: contain;
 }
-#imgPostCont > #postCont {
+.imgPostCont > .postCont {
+  width: 50%;
+  height: 100%;
   float: right;
 }
-#imgPostCont > i {
+.imgPostCont > .postCont > div {
+  display: inline-block;
+}
+.imgPostCont > .postCont > .postDataCont {
+  position: relative;
+  width: 70%;
+  height: 100%;
+  text-align: center;
+  margin: auto;
+}
+.imgPostCont > .postCont > .postDataCont > hr {
+  border: 2px solid #003249;
+}
+.imgPostCont > .postCont > .arrowCont {
+  position: relative;
+  width: 15%;
+  height: 100%;
+  text-align: center;
+}
+.imgPostCont > .postCont > .arrowCont > i {
+  position: relative;
+  color: #003249;
+  font-size: 2em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.imgPostCont > .postCont > .arrowCont > i:hover {
+  cursor: pointer;
+}
+.imgPostCont > .postCont > #leftArrowCont {
+  float: left;
+}
+.imgPostCont > .postCont > #rightArrowCont {
+  float: right;
+}
+.imgPostCont > i {
   position: absolute;
+  color: #003249;
   font-size: 1.5rem;
-  top: 0.5rem;
+  top: 0.25rem;
   right: 0.5rem;
 }
-#imgPostCont > i:hover {
+.imgPostCont > i:hover {
   cursor: pointer;
 }
 #formCont {

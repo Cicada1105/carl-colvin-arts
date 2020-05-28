@@ -8,7 +8,7 @@ import { infoBox, imgCont } from './special_methods'
 import { Rows } from './data'
 
 // Paths for development
-//let isHomePage:boolean = window.location.pathname.includes('index');
+let isHomePage:boolean = window.location.pathname.includes('index');
 const IMAGE_DIR:string = isHomePage ? './resources/pg_imgs/about_imgs/' : '../resources/pg_imgs/about_imgs/';
 const MEDIA_DIR:string = isHomePage ? './resources/media/' : '../resources/media/';
 // Paths for production
