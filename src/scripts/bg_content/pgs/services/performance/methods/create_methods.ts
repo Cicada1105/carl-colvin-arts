@@ -16,7 +16,7 @@ import CurtainRod from '../curtain_class'
 // Returns relative container with proper designed
 const createSection = (headerData:ICustomContainer):void => {
 	// Container to hold every element of the header
-	let cont:any = createElement({className:"sectionCont"});
+	let cont:HTMLDivElement = createElement({className:"sectionCont"});
 
 	// Create header and body of performance section
 	let headerCont:any = createImageHeader(<IHeader>headerData.header);
@@ -30,22 +30,22 @@ const createSection = (headerData:ICustomContainer):void => {
 	document.body.appendChild(cont);
 }
 
-const createImageHeader = (headerData:IHeader):any => {
-	let cont:any = createElement({className:"centerHeaderCont"});
+const createImageHeader = (headerData:IHeader):HTMLDivElement => {
+	let cont:HTMLDivElement = createElement({className:"centerHeaderCont"});
 
 	// Musical symbol to be display on left side of header
-	let leftSymbol:any = createImageElement({
+	let leftSymbol:HTMLImageElement = createImageElement({
 		src:headerData.image.path,
 		alt:headerData.image.alt,
 		className:"musicalSymbol",
 	});
 	// Header text to be at the center of the container
-	let header:any = createTextElement({
+	let header:HTMLHeadingElement = createTextElement({
 		element:"h3",
 		text:headerData.data
 	});
 	// Musical symbol to be display on right side of header
-	let rightSymbol:any = createImageElement({
+	let rightSymbol:HTMLImageElement = createImageElement({
 		src:headerData.image.path,
 		alt:headerData.image.alt,
 		className:"musicalSymbol"
@@ -59,19 +59,19 @@ const createImageHeader = (headerData:IHeader):any => {
 	return cont;
 }
 
-const createStage = (body:IBody):any => {
+const createStage = (body:IBody):HTMLDivElement => {
 	// Creating an additional container will allow for easy styling
-	let cont:any = createElement({
+	let cont:HTMLDivElement = createElement({
 		className:"bodyCont",
 	});
 
-	let stageCont:any = createBody(body.content);
+	let stageCont:HTMLDivElement = createBody(body.content);
 
-	let stageFrontCont:any = createElement({
+	let stageFrontCont:HTMLDivElement = createElement({
 		className:"stageFront"
 	});
 
-	let curtainCont:any = createCurtain();
+	let curtainCont:HTMLCanvasElement = createCurtain();
 
 	// Append stage front and stage to container
 	cont.appendChild(stageCont);
@@ -80,11 +80,11 @@ const createStage = (body:IBody):any => {
 
 	return cont;
 }
-const createBody = (bodyText:string[]):any => {
+const createBody = (bodyText:string[]):HTMLDivElement => {
 	const SPACING:number = 32.5;	// rem
-	const P_CENTER_POSITIONING = 7.5;	// rem
+	const P_CENTER_POSITIONING:number = 7.5;	// rem
 
-	let cont:any = createElement({
+	let cont:HTMLDivElement = createElement({
 		className:"stage"
 	});
 
@@ -93,7 +93,7 @@ const createBody = (bodyText:string[]):any => {
 	document.body.style.overflowX = "hidden";
 
 	bodyText.forEach((str,i) => {
-		let text:any = createTextElement({
+		let text:HTMLParagraphElement = createTextElement({
 			text:str,
 			className:"bodyText"
 		});	
@@ -108,17 +108,17 @@ const createBody = (bodyText:string[]):any => {
 	// If there is only one slide, arrows do not need to be rendered
 	if (bodyText.length > 1) {
 
-		var leftArrow:any;
-		var rightArrow:any;
+		let leftArrow:HTMLElement;
+		let rightArrow:HTMLElement;
 
 		const createArrows = (():void => {
 			const SPACING:number = 32.5;	// rem
-			const P_CENTER_POSITIONING = 7.5;	// rem
+			const P_CENTER_POSITIONING:number = 7.5;	// rem
 
 			// Create left and right arrows and event listeners to rotate through "slideshow"
 			// Keep track of current element/"slide"
-			var currentSlide:number = 1;
-			var slides:any = cont.querySelectorAll("p");
+			let currentSlide:number = 1;
+			let slides:any = cont.querySelectorAll("p");
 
 			leftArrow = createElement({
 				element:'i',
@@ -138,10 +138,10 @@ const createBody = (bodyText:string[]):any => {
 					currentSlide--;
 				}
 
-				leftArrow.style.visibility = currentSlide === 1 && "hidden";
+				leftArrow.style.visibility = currentSlide === 1 ? "hidden" : "visible";
 				// Moving to the left from last slide displays right arrow
 				// Only needed to be applied once
-				rightArrow.style.visibility = currentSlide === (slides.length - 1) && "visible";
+				rightArrow.style.visibility = currentSlide === (slides.length - 1) ? "visible" : "hidden";
 			});
 
 			rightArrow = createElement({
@@ -158,10 +158,10 @@ const createBody = (bodyText:string[]):any => {
 					// Increment current slide
 					currentSlide++;
 				}
-				rightArrow.style.visibility = currentSlide === slides.length && "hidden";
+				rightArrow.style.visibility = currentSlide === slides.length ? "hidden" : "visible";
 				// Moving to the right from first slide displays left arrow
 				// Only needed to be applied once
-				leftArrow.style.visibility = currentSlide === 2 && "visible";
+				leftArrow.style.visibility = currentSlide === 2 ? "visible" : "hidden";
 			});
 		})();
 
@@ -172,8 +172,8 @@ const createBody = (bodyText:string[]):any => {
 
 	return cont;
 }
-const createCurtain = ():any => {
-	let cont:any = createElement({
+const createCurtain = ():HTMLCanvasElement => {
+	let cont:HTMLCanvasElement = createElement({
 		element:"canvas",
 		className:"curtains"
 	});
@@ -188,7 +188,7 @@ const createCurtain = ():any => {
 	// keep track of current position on x-axis
 	let curr_pos:number = 0;
 	row_widths.forEach(width => {
-		let rod:any = new CurtainRod(ctx,width, curr_pos);
+		let rod:CurtainRod = new CurtainRod(ctx,width, curr_pos);
 		// Increment curr_pos based on width of current width
 		curr_pos += width;
 		rod.draw();

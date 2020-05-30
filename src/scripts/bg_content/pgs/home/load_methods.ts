@@ -38,7 +38,7 @@ const loadCollage = ():void => {
 }
 
 const loadImage = (imgData:ICollage):HTMLImageElement => {
-	let currImg:any = createImageElement({
+	let currImg:HTMLImageElement = createImageElement({
 		src: imgData.path,
 		alt: imgData.alt,
 		idName: imgData.idName

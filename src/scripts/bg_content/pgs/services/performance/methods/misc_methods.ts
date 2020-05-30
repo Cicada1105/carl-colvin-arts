@@ -5,9 +5,9 @@
 
 const activateCurtains = ():void => {
 	// Locate curtains
-	let curtains = document.getElementsByClassName("curtains");
+	let curtains:HTMLCollection = document.getElementsByClassName("curtains");
 	// Page loading will mimic the click event
-	let clickEvent = new Event("click");
+	let clickEvent:Event = new Event("click");
 
 	// Activate click event for each curtain container
 	for (let val of curtains) {

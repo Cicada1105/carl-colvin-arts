@@ -13,10 +13,10 @@ const IMAGE_DIR:string = isHomePage ? './resources/pg_imgs/about_imgs/' : '../re
 // Paths for production
 //const IMAGE_DIR:string = '/resources/pg_imgs/about_imgs/'
 
-const infoBox = (e:IBoxLink):any => {
-	let box = document.createElement('section');
+const infoBox = (e:IBoxLink):HTMLElement => {
+	let box:HTMLElement = document.createElement('section');
 
-	let h:any = createTextElement({element:'h3',text:e.header});
+	let h:HTMLHeadingElement = createTextElement({element:'h3',text:e.header});
 
 	// Add event listener to header to redirect user to specific page
 	h.addEventListener("click", () => {
@@ -25,7 +25,7 @@ const infoBox = (e:IBoxLink):any => {
 
 	// Sections contain articles/paragraphs
 	// createTextElement's default element is 'p'
-	let c:any = createTextElement({text:e.content});
+	let c:HTMLParagraphElement = createTextElement({text:e.content});
 
 	box.appendChild(h);
 	box.appendChild(c);
@@ -33,23 +33,22 @@ const infoBox = (e:IBoxLink):any => {
 	return box;
 }
 
-const imgCont = (currImg:IImage):any => {
+const imgCont = (currImg:IImage):HTMLDivElement => {
 	// Create container to store the figure/image, border and data
 	// createElement's default element is 'div'
 	let fig:any = createElement({className:'figure'});
 
 	// Image to display
-	let img:any = createImageElement({src:currImg.path,alt:currImg.alt,className:'homeImg'});
+	let img:HTMLImageElement = createImageElement({src:currImg.path,alt:currImg.alt,className:'homeImg'});
 
 	// Circular border to add depth to image
-	let imgBorder:any = createImageElement({src:`${IMAGE_DIR}img_border.png`,className:'imgBorder'});
+	let imgBorder:HTMLImageElement = createImageElement({src:`${IMAGE_DIR}img_border.png`,className:'imgBorder'});
 
-	let figCaption = createElement({className:'figcaption'});
+	let figCaption:HTMLDivElement = createElement({className:'figcaption'});
 
 	// Data to display when user hovers over the image
-	let figCaptionP:any;
 	let figCaptionStr:string = typeof currImg.caption === "undefined" ? "" : currImg.caption;
-	figCaptionP = createTextElement({text:figCaptionStr});
+	let figCaptionP:HTMLParagraphElement = createTextElement({text:figCaptionStr});
 
 	// On hovering over imgBorder, fade img itself
 	// Display data 

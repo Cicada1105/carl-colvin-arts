@@ -13,7 +13,11 @@ import { RowInterface } from './interfaces'
  	// Load bootstrap so font awesome can be used
  	loadBootstrap();
  	// Create header
- 	let header:any = createTextElement({element:"h3",idName:"listenHeader",text:"Listen"});
+ 	let header:HTMLHeadingElement = createTextElement({
+ 		element:"h3",
+ 		idName:"listenHeader",
+ 		text:"Listen"
+ 	});
  	// Append to document before rows
  	document.body.appendChild(header);
 

@@ -7,19 +7,22 @@ import { AudioInterface, VideoInterface } from '../interfaces'
 import { createElement, createTextElement } from '../../../../global/methods'
 
 //  local types
-type media = AudioInterface | VideoInterface;
+type Media = AudioInterface | VideoInterface;
 
-const createTimeStamp:(length:number) => any = (length:number):any => {
+const createTimeStamp:(length:number) => HTMLSpanElement = (length:number):HTMLSpanElement => {
   var durationMin:number = Math.floor(length / 60);
   var durationSec:number = Math.floor((length - (durationMin * 60)));
   var durationSecStr:string = durationSec < 10 ? `0${durationSec}` : `${durationSec}`;
 
-  let timeEl:any = createTextElement({element:"span",text:`0:00/${durationMin}:${durationSecStr}`});
+  let timeEl:HTMLSpanElement = createTextElement({
+  	element:"span",
+  	text:`0:00/${durationMin}:${durationSecStr}`
+  });
 
   return timeEl;
 } 
-const createProgressBar:(maxVal:number) => any = (val:number):any => {
-  let bar:any = createElement({element:"progress",className:"progressBar"});
+const createProgressBar:(maxVal:number) => HTMLProgressElement = (val:number):HTMLProgressElement => {
+  let bar:HTMLProgressElement = createElement({element:"progress",className:"progressBar"});
 
   // Add initial properties to progress bar
   bar.value = 0;
@@ -28,10 +31,10 @@ const createProgressBar:(maxVal:number) => any = (val:number):any => {
   return bar;
 }
 
-const createCustomControls:(mediaEl:any) => any = (mediaEl:any):any => {
-	let ctrlCont:any = createElement({className:"mediaControls"});
+const createCustomControls:(mediaEl:HTMLMediaElement) => any = (mediaEl:HTMLMediaElement):HTMLDivElement => {
+	let ctrlCont:HTMLDivElement = createElement({className:"mediaControls"});
 
-	let playBtn:any = createElement({element:'i',className:'fas fa-play'});
+	let playBtn:HTMLElement = createElement({element:'i',className:'fas fa-play'});
 	// Add click event listener
 	playBtn.addEventListener("click",(event:any) => {
 		//console.log(event);
@@ -43,7 +46,7 @@ const createCustomControls:(mediaEl:any) => any = (mediaEl:any):any => {
 			mediaEl.pause();
 	});
 
-	let timeStamp:any = createTimeStamp(mediaEl.duration);
+	let timeStamp:HTMLSpanElement = createTimeStamp(mediaEl.duration);
 
 	mediaEl.addEventListener("timeupdate",() => {
 		//  check if current time is the end of the current media length
@@ -66,9 +69,9 @@ const createCustomControls:(mediaEl:any) => any = (mediaEl:any):any => {
 		progressBar.value = Math.floor(mediaEl.currentTime);
 	});
 
-	let progressBar:any = createProgressBar(mediaEl.duration);
+	let progressBar:HTMLProgressElement = createProgressBar(mediaEl.duration);
 
-	let muteBtn:any = createElement({element:'i',className:'fas fa-volume-up'});
+	let muteBtn:HTMLElement = createElement({element:'i',className:'fas fa-volume-up'});
 	// Add click event listener to handle muting/unmuting
 	muteBtn.addEventListener("click",() => {
 		muteBtn.className = muteBtn.className === "fas fa-volume-up" ? "fas fa-volume-mute" : "fas fa-volume-up";
@@ -87,13 +90,17 @@ const createCustomControls:(mediaEl:any) => any = (mediaEl:any):any => {
 	return ctrlCont;
 }
 
-const createMediaElement:(el:media)=>any = async (mediaEl:media):Promise<any> => {
+const createMediaElement:(el:Media)=>any = async (mediaEl:Media):Promise<any> => {
 	// Audio object has image, video object has poster
 	let tag:string = (mediaEl as AudioInterface).image ? "audio" : "video";
 
-	let el = createElement({element:`${tag}`,className:"mediaTag",idName:`${tag}Tag`});
+	let el:HTMLMediaElement = createElement({
+		element:`${tag}`,
+		className:"mediaTag",
+		idName:`${tag}Tag`
+	});
 
-	let source:any = document.createElement('source');
+	let source:HTMLSourceElement = document.createElement('source');
 	source.setAttribute("src",mediaEl.source.src);
 	source.setAttribute("type",mediaEl.source.type);
 
@@ -114,14 +121,14 @@ const createMediaElement:(el:media)=>any = async (mediaEl:media):Promise<any> =>
 		return tempCtrls;
 	}
 }
-async function asyncFunction(el:any):Promise<any> {
+async function asyncFunction(el:HTMLMediaElement):Promise<any> {
 	let temp:any;
 
 	temp = await waitForCompleteLoad(el);
 
 	return temp;
 }
-function waitForCompleteLoad(el:any):Promise<any> {
+function waitForCompleteLoad(el:HTMLMediaElement):Promise<any> {
 	let promise:Promise<any> = new Promise(async (resolve) => {
 		await el.addEventListener("durationchange",(e:any) => {
 			e.preventDefault();

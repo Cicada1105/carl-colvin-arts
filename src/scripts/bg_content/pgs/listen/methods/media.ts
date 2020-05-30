@@ -10,10 +10,14 @@ import { createCustomControls, createMediaElement } from './special'
 
 const createAudioCont = async (data:AudioInterface):Promise<any> => {
 	// Create container to aid in positioning audio element
-	let audioCont:any = createElement({className:"mediaCont"});
+	let audioCont:HTMLDivElement = createElement({className:"mediaCont"});
 
 	// Create image to visually support audio controls
-	let audioImg:any = createImageElement({src:data.image.path,alt:data.image.alt,className:"audioImg"});
+	let audioImg:HTMLImageElement = createImageElement({
+		src:data.image.path,
+		alt:data.image.alt,
+		className:"audioImg"
+	});
 
 	let audioEl:any = await createMediaElement(data as AudioInterface);
 
@@ -25,12 +29,12 @@ const createAudioCont = async (data:AudioInterface):Promise<any> => {
 	return audioCont;
 }
 
-const createVideoCont = async (data:VideoInterface):Promise<any> => {
+const createVideoCont = async (data:VideoInterface):Promise<HTMLDivElement> => {
 	// Create container to aid in positioning video element
-	let videoCont:any = createElement({className:"mediaCont"});
+	let videoCont:HTMLDivElement = createElement({className:"mediaCont"});
 
 	// Create image instead of using poster to allow for common positioning
-	let videoImg:any = createImageElement({src:data.poster,className:"videoImg"});
+	let videoImg:HTMLImageElement = createImageElement({src:data.poster,className:"videoImg"});
 
 	let videoEl:any = await createMediaElement(data as VideoInterface);
 

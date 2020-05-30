@@ -20,7 +20,11 @@ const createBgFade = ():void => {
 
 	// Fade image 
 	//let imageFade:any = createImageFade(imgLocation,imgAlternative);
-	let imageFade:any = createImageElement({src:imgLocation,alt:imgAlternative,idName:'bgImage'});
+	let imageFade:HTMLImageElement = createImageElement({
+		src:imgLocation,
+		alt:imgAlternative,
+		idName:'bgImage'
+	});
 
 	// Append image to document
 	document.body.appendChild(imageFade);

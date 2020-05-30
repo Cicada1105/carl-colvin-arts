@@ -9,7 +9,7 @@ import { createElement, createTextElement } from '../../../global/methods'
 
 const loadBootstrap = ():void => {
 	// Create link tag for Bootstrap Font Awesome icons
-	let bootstrapLink:any = document.createElement('script');
+	let bootstrapLink:HTMLScriptElement = document.createElement('script');
 	// Add href attribute
 	bootstrapLink.setAttribute('src','https://kit.fontawesome.com/296e9763f7.js');
 
@@ -17,14 +17,17 @@ const loadBootstrap = ():void => {
 	document.head.appendChild(bootstrapLink);
 }
 const loadAudioRow = async (data:RowInterface):Promise<any> => {
-	let cont:any = createElement({className:"mediaRow"});
+	let cont:HTMLDivElement = createElement({className:"mediaRow"});
 
-	let mediaDescription:any = createTextElement({text:data.description,className:"mediaDescription"});
+	let mediaDescription:HTMLParagraphElement = createTextElement({
+		text:data.description,
+		className:"mediaDescription"
+	});
 	let mediaCont:any = await createAudioCont(data.media as AudioInterface);
 
 	// Create elements to display a controllable border around other elements
-	let mediaDescriptionBorder:any = createElement({className:"borderLeft"});
-	let mediaContBorder:any = createElement({className:"borderRight"});
+	let mediaDescriptionBorder:HTMLDivElement = createElement({className:"borderLeft"});
+	let mediaContBorder:HTMLDivElement = createElement({className:"borderRight"});
 
 	cont.appendChild(mediaDescription);
 	cont.appendChild(mediaCont);
@@ -35,14 +38,14 @@ const loadAudioRow = async (data:RowInterface):Promise<any> => {
 }
 
 const loadVideoRow = async (data:RowInterface):Promise<any> => {
-	let cont:any = createElement({className:"mediaRow"});
+	let cont:HTMLDivElement = createElement({className:"mediaRow"});
 
-	let mediaDescription:any = createTextElement({text:data.description,className:"mediaDescription"});
+	let mediaDescription:HTMLParagraphElement = createTextElement({text:data.description,className:"mediaDescription"});
 	let mediaCont:any = await createVideoCont(data.media as VideoInterface);
 
 	// Create elements to display a controllable border around other elements
-	let mediaDescriptionBorder:any = createElement({className:"borderRight"});
-	let mediaContBorder:any = createElement({className:"borderLeft"});
+	let mediaDescriptionBorder:HTMLDivElement = createElement({className:"borderRight"});
+	let mediaContBorder:HTMLDivElement = createElement({className:"borderLeft"});
 
 	cont.appendChild(mediaCont);
 	cont.appendChild(mediaDescription);
@@ -53,9 +56,9 @@ const loadVideoRow = async (data:RowInterface):Promise<any> => {
 }
 
 const loadCanvasWave = ():void => {
-	let cvs = createElement({element:"canvas",className:"waveDivider"});
+	let cvs:HTMLCanvasElement = createElement({element:"canvas",className:"waveDivider"});
 	cvs.height = 115;
-	let ctx = cvs.getContext('2d');
+	let ctx:any = cvs.getContext('2d');
 
 	const y_axis:number = 60;
 	let startPoint = {
@@ -74,7 +77,7 @@ const loadCanvasWave = ():void => {
 	ctx.beginPath();
 	ctx.moveTo(startPoint.x,startPoint.y);
 	ctx.quadraticCurveTo(ctrlPoint.x,ctrlPoint.y,endPoint.x,endPoint.y);
-	let i = 1;
+	let i:number = 1;
 	do {
 		ctrlPoint.y = y_axis + (i%2 === 0 ? 65 : -65);	
 

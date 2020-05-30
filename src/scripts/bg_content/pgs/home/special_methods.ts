@@ -41,27 +41,27 @@ import { collageImages } from './data'
 	void
 */
 const displayImagePost = (img:any, postData:IBox):void => {
-	let imgPostBackdrop:any = createElement({
+	let imgPostBackdrop:HTMLDivElement = createElement({
 		idName:"postBackdrop"
 	});
 
 	// Create container for image and post details
-	let imgPostCont:any = createElement({
+	let imgPostCont:HTMLDivElement = createElement({
 		className:"imgPostCont"
 	});
 
 	// Create container for image
-	let imgCont:any = createElement({
+	let imgCont:HTMLDivElement = createElement({
 		className:"imgCont"
 	});
 	// Append image to container
 	imgCont.appendChild(img);
 
 	// Create container that holds post details, functionality and exit
-	let postCont:any = createPostCont(postData);
+	let postCont:HTMLDivElement = createPostCont(postData);
 
 	// Create exit button
-	let exitButton:any = createElement({element:"i",className:"fas fa-times"});
+	let exitButton:HTMLElement = createElement({element:"i",className:"fas fa-times"});
 	// Add event listener to exit button to remove backdrop and image post container
 	exitButton.addEventListener("click",() => {
 		imgPostBackdrop.remove();
@@ -119,33 +119,33 @@ const displayImagePost = (img:any, postData:IBox):void => {
 	postCont:any
 		-Container holding left and right arrows and post data
 */
-const createPostCont = (postData:IBox):any => {
+const createPostCont = (postData:IBox):HTMLDivElement => {
 	// Post container will hold the two "panels" one that holds image on left 
 	//  and one that holds caption on right
-	let postCont:any = createElement({
+	let postCont:HTMLDivElement = createElement({
 		className:"postCont"
 	});
 
 	// Create container for left arrow for positioning
-	let leftArrowCont:any = createElement({
+	let leftArrowCont:HTMLDivElement = createElement({
 		className:"arrowCont",
 		idName:"leftArrowCont"
 	});
 	// Create left arrow
-	let leftArrow:any = createElement({element:"i",className:"fas fa-chevron-left"});
+	let leftArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-left"});
 	// Append left arrow to positioning container
 	leftArrowCont.appendChild(leftArrow);
 
 	// Create container for post 
-	let postCardCont:any = postCard(postData);
+	let postCardCont:HTMLDivElement = postCard(postData);
 
 	// Create container for right arrow for positioning
-	let rightArrowCont:any = createElement({
+	let rightArrowCont:HTMLDivElement = createElement({
 		className:"arrowCont",
 		idName:"rightArrowCont"
 	});
 	// Create right arrow 
-	let rightArrow:any = createElement({element:"i",className:"fas fa-chevron-right"});
+	let rightArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-right"});
 	// Append right arrow to positioning container
 	rightArrowCont.appendChild(rightArrow);
 
@@ -168,8 +168,8 @@ const createPostCont = (postData:IBox):any => {
 	cont:any
 		-Container holding the header, hr divider and content of the image
 */
-const postCard = (postData:IBox):any => {
-	let cont:any = createElement({
+const postCard = (postData:IBox):HTMLDivElement => {
+	let cont:HTMLDivElement = createElement({
 		className:"postDataCont"
 	});
 
@@ -177,18 +177,18 @@ const postCard = (postData:IBox):any => {
 	let content:string = postData.content;
 
 	// Create header container
-	let headerCont:any = createTextElement({
+	let headerCont:HTMLHeadingElement = createTextElement({
 		element:"h3",
 		text:header,
-		idNmae:"postCardHeader"
+		idName:"postCardHeader"
 	});
 	// Create hr to section header from content
-	let hr:any = createElement({
+	let hr:HTMLHRElement = createElement({
 		element:"hr",
 		idName:"postCardHr"
 	});
 	// Create content container
-	let contentCont:any = createTextElement({
+	let contentCont:HTMLParagraphElement = createTextElement({
 		text:content,
 		idName:"postCardContent"
 	});

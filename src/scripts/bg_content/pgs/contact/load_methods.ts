@@ -10,14 +10,14 @@ import { submitForm } from './special_methods'
 //  methods
 import { createElement, createTextElement } from '../../../global/methods'
 
-const loadInputRow = (input:IText):any => {
-	let cont:any = createElement({className:"textInput"});
+const loadInputRow = (input:IText):HTMLDivElement => {
+	let cont:HTMLDivElement = createElement({className:"textInput"});
 
 	// Create text element for name to be displayed for input
-	let inputText:any = createTextElement({element:"h2",text:input.displayName});
+	let inputText:HTMLHeadingElement = createTextElement({element:"h2",text:input.displayName});
 
 	// Create element for input tag
-	let inputCont:any = loadInputCont(input);
+	let inputCont:HTMLDivElement = loadInputCont(input);
 
 	// Append input text, tag and span to input container
 	cont.appendChild(inputText);
@@ -26,16 +26,16 @@ const loadInputRow = (input:IText):any => {
 	return cont;
 }
 
-const loadInputCont = ({type="",name="",placeholder=""}):any => {
-	let cont:any = createElement({className:"inputCont"});
+const loadInputCont = ({type="",name="",placeholder=""}):HTMLDivElement => {
+	let cont:HTMLDivElement = createElement({className:"inputCont"});
 
 	// Create children elements of input container
 	//		element for user input
-	let inputTag:any = createElement({element:"input",idName:name});
+	let inputTag:HTMLInputElement = createElement({element:"input",idName:name});
 	// 		element to be used as an animation for click effect
-	let spanAnimation:any = createElement({className:"inputAnimation"});
+	let spanAnimation:HTMLDivElement = createElement({className:"inputAnimation"});
 	//		element to display message for incomplete field
-	let errorMsg:any = createTextElement({text:"*", className:"errorMsg"});
+	let errorMsg:HTMLParagraphElement = createTextElement({text:"*", className:"errorMsg"});
 
 	// Set attributes for input tag
 	inputTag.setAttribute('type',type);
@@ -58,11 +58,11 @@ const loadInputCont = ({type="",name="",placeholder=""}):any => {
 	return cont;
 }
 
-const loadButtonInput = (input:IButton):any => {
-	let cont:any = createElement({className:"buttonInput", idName:"submitCont"});
+const loadButtonInput = (input:IButton):HTMLDivElement => {
+	let cont:HTMLDivElement = createElement({className:"buttonInput", idName:"submitCont"});
 
 	// Create button element for submit button
-	let submitBtn:any = createElement({element:"input",idName:input.name});
+	let submitBtn:HTMLInputElement = createElement({element:"input",idName:input.name});
 	// Set type attribute
 	submitBtn.setAttribute("type",input.type);
 	// Set value attribute
@@ -72,7 +72,7 @@ const loadButtonInput = (input:IButton):any => {
 	submitBtn.addEventListener("click",submitForm);
 	
 	// Create container to be used to display messages about the form status
-	let msgCont:any = createElement({element:"span",idName:"formMessage"});
+	let msgCont:HTMLSpanElement = createElement({element:"span",idName:"formMessage"});
 
 	// Append message container and submit button to container
 	cont.appendChild(submitBtn);

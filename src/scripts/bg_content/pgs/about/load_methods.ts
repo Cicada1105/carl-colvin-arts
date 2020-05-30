@@ -16,15 +16,15 @@ const MEDIA_DIR:string = isHomePage ? './resources/media/' : '../resources/media
 //const MEDIA_DIR:string = '/resources/media/';
 
 const loadRows = ():void => {
-	let currBox:any;
-	let currImg:any;
+	let currBox:HTMLElement;
+	let currImg:HTMLDivElement;
 
 	Rows.forEach((row,i) => {
 		currBox = infoBox(row.infoData);
 		currImg = imgCont(row.imgData);
 
 		// createElement's default element is div
-		let dataRow:any = createElement({className:'row'});
+		let dataRow:HTMLDivElement = createElement({className:'row'});
 
 		// Alternate info boxes and images
 		if (i % 2 == 0) {
@@ -45,10 +45,15 @@ const loadRows = ():void => {
 
 const loadListenPreview = ():void => {
 	// Container to hold image and Font Awesome Icon
-	let cont:any = createElement({idName:"listenImageCont"});
+	let cont:HTMLDivElement = createElement({idName:"listenImageCont"});
 
 	// Create Image Element to add to image container
-	let listenImg:any = createImageElement({src:`${IMAGE_DIR}kao_ra_zen_album_cover.jpg`,alt:"Kao Rao Zen Album Cover",idName:"listenImage"});
+	let listenImg:HTMLImageElement = createImageElement({
+		src:`${IMAGE_DIR}kao_ra_zen_album_cover.jpg`,
+		alt:"Kao Rao Zen Album Cover",
+		idName:"listenImage"
+	});
+	
 	// Add event listener to image to activate sound and switch icon
 	listenImg.addEventListener('click',() => {
 		volumeIcon.className = volumeIcon.className.indexOf("up") >= 0 ? 'fas fa-volume-mute' : 'fas fa-volume-up';
@@ -59,11 +64,11 @@ const loadListenPreview = ():void => {
 	})
 
 	// Create audio element
-	let audioEl:any = createElement({element:'audio',idName:'audioExcerpt'});
+	let audioEl:HTMLAudioElement = createElement({element:'audio',idName:'audioExcerpt'});
 	audioEl.setAttribute('controls','');
 
 	// Create source element
-	let audioSrc:any = document.createElement('source');
+	let audioSrc:HTMLSourceElement = document.createElement('source');
 	audioSrc.setAttribute('src',`${MEDIA_DIR}kenya-lifestream.wav`);
 	audioSrc.setAttribute('type','audio/wav');
 
@@ -81,7 +86,7 @@ const loadListenPreview = ():void => {
 	}
 
 	// Create container to hold font awesome icon
-	let volumeIcon:any = createElement({element:'i',className:'fas fa-volume-mute'});
+	let volumeIcon:HTMLElement = createElement({element:'i',className:'fas fa-volume-mute'});
 	// Add event listener to icon to activate sound and switch icon
 	volumeIcon.addEventListener('click',() => {
 		volumeIcon.className = volumeIcon.className.indexOf("up") >= 0 ? 'fas fa-volume-mute' : 'fas fa-volume-up';
