@@ -9,7 +9,7 @@ import { IBox } from '../../../../global/interfaces'
 const IMG_PATH:string = "../../resources/pg_imgs/reedmaking_imgs/";
 
 /************************************/
-/*		Header Text and Contentd 	*/
+/*		Header Text and Content 	*/
 /************************************/
 const createHeaderContent = (data:IBox):HTMLDivElement => {
 	let cont:HTMLDivElement = createElement({className:"headerCont"});

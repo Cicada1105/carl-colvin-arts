@@ -141,7 +141,7 @@ const createBody = (bodyText:string[]):HTMLDivElement => {
 				leftArrow.style.visibility = currentSlide === 1 ? "hidden" : "visible";
 				// Moving to the left from last slide displays right arrow
 				// Only needed to be applied once
-				rightArrow.style.visibility = currentSlide === (slides.length - 1) ? "visible" : "hidden";
+				rightArrow.style.visibility = currentSlide === slides.length ? "hidden" : "visible";
 			});
 
 			rightArrow = createElement({
@@ -161,7 +161,7 @@ const createBody = (bodyText:string[]):HTMLDivElement => {
 				rightArrow.style.visibility = currentSlide === slides.length ? "hidden" : "visible";
 				// Moving to the right from first slide displays left arrow
 				// Only needed to be applied once
-				leftArrow.style.visibility = currentSlide === 2 ? "visible" : "hidden";
+				leftArrow.style.visibility = currentSlide !== 1 ? "visible" : "hidden";
 			});
 		})();
 

@@ -7,15 +7,6 @@ import { AudioInterface, VideoInterface, RowInterface } from './interfaces'
 import { createAudioCont, createVideoCont } from './methods/media'
 import { createElement, createTextElement } from '../../../global/methods'
 
-const loadBootstrap = ():void => {
-	// Create link tag for Bootstrap Font Awesome icons
-	let bootstrapLink:HTMLScriptElement = document.createElement('script');
-	// Add href attribute
-	bootstrapLink.setAttribute('src','https://kit.fontawesome.com/296e9763f7.js');
-
-	// Append Bootstrap cdn to head for font asesome icons
-	document.head.appendChild(bootstrapLink);
-}
 const loadAudioRow = async (data:RowInterface):Promise<any> => {
 	let cont:HTMLDivElement = createElement({className:"mediaRow"});
 
@@ -98,4 +89,4 @@ const loadCanvasWave = ():void => {
 	document.body.appendChild(cvs);
 }
 
-export { loadBootstrap, loadAudioRow, loadVideoRow, loadCanvasWave }
+export { loadAudioRow, loadVideoRow, loadCanvasWave }
