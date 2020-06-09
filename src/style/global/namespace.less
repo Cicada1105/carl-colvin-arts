@@ -24,7 +24,7 @@
 				height:100%;
 				li {
 					&:extend(.staticLI);
-					padding:0.65% 1.5% 0.85% 1.5%;
+					padding:0.65rem 1.5rem 0.85rem 1.5rem;
 					float:right;
 
 					ul[class = "subDir"] {
@@ -88,23 +88,19 @@
 		    bottom:0%;
 		    z-index:3;
 		    #social {
-		    	.format(relative, 20vw, 100%);
-				padding-right:2.5vw;
+		    	.format(relative, 13rem, 100%);
+				margin-right:2rem;
 				float:right;
 				.socialImg {
 					position:inherit;
 					float:right;
-					margin-top:2.5%;
-					margin-right:4%;
-					height:28px;
+					vertical-align: middle;
+					margin-top: 0.325rem;
+					margin-right:1rem;
+					height:2rem;
 				}
 				.socialImg:hover {
 					cursor:pointer;
-				}
-				@media only screen and (max-width:670px) {
-					img[alt = "instagram"] {
-					  display:block;
-					}
 				}
 		    }
 		 }
