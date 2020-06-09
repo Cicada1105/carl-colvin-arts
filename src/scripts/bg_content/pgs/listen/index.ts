@@ -4,7 +4,7 @@
 //	data
 import { audioData, videoData } from './data'
 //  methods
-import { loadAudioRow, loadVideoRow, loadCanvasWave } from './load_methods'
+import { loadMediaRow, loadCanvasWave } from './load_methods'
 import { createTextElement, loadBootstrap } from '../../../global/methods'
 //  interfaces
 import { RowInterface } from './interfaces'
@@ -21,11 +21,11 @@ import { RowInterface } from './interfaces'
  	// Append to document before rows
  	document.body.appendChild(header);
 
- 	await loadAudioRow(audioData['sketches'] as RowInterface);
+ 	await loadMediaRow(audioData['sketches'] as RowInterface);
  	loadCanvasWave();
- 	await loadVideoRow(videoData['poem-reading'] as RowInterface);
+ 	await loadMediaRow(videoData['poem-reading'] as RowInterface);
  	loadCanvasWave();
- 	await loadAudioRow(audioData['ka-ra-zen'] as RowInterface);
+ 	await loadMediaRow(audioData['ka-ra-zen'] as RowInterface);
  }
 
  export { loadListenPage }

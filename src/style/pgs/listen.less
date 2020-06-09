@@ -21,79 +21,119 @@
 	font-size:2rem;
 	text-align:center;
 }
+// Generic Styling Shared by all rows
 [class = "mediaRow"] {
 	//background-color:pink;
 	.row(12rem);
 	margin-bottom:3rem;
 
 	& > p {
-		.format(relative,42.5%,65%);
-		//background-color:green;
+		.format(relative, calc(50% - 3px), 6rem);
 		display:inline-block;
 		margin:0px;
-		padding:2rem 2.5rem;
+		text-align:center;
+		padding-top:3rem;
+		padding-bottom:3rem;
 
 		&::first-line {
 			text-indent:2rem;
 		}
 	}
-	& > div {
-		.format(relative, 50%, 98%);
-		//background-color:yellow;
+	& > div { // Includes blue borders
+		.format(relative, calc(50% - 3px), 100%);
 		display:inline-block;
 
-		img {
-			width:;
-			height:80%;
-		}
-		[class = "mediaControls"] {
+		&[class = "mediaCont"] {
 			//background-color:aqua;
-			object-fit:none;
-			position:relative;
-			margin-top:1rem;
-			width:100%;
-			height:10rem;
+			//top:3px;
 
-			video {
-				display:none;
+			&[class = "mediaImgCont"] {
+				.format(relative, 50%, 100%);
+
+				& > img {
+					position:absolute;
+					transform: translate(-25%);
+					top:10%;
+					left:25%;
+					height:80%;
+				}
+			}
+			[class = "mediaControls"] {
+				//background-color:black;
+				position:relative;
+				margin: auto;
+				height: 50%;
+				top:25%;
+
+				video {
+					display:none;
+				}
 			}
 		}
 	}
+}
+/*		Specific Styling		*/
+// Alternating rows
+[class = "mediaRow"] {
 	&:nth-of-type(odd) {
-		p {
-			float:left;
-		}
+		.mediaRowChildrenFormat(left, right);
 	}
 	&:nth-of-type(even) {
+		.mediaRowChildrenFormat(right, left);
+	}
+}
+.mediaRowChildrenFormat(@pFloatDirection, @mediaFloatDirection) {
+	p {
+		float: @pFloatDirection;
+	}
+	& when (@pFloatDirection = left) {
 		p {
-			float:right;
+			left: 3px;
+		}
+		& > div[class = "mediaCont"] {
+			right: -3px;
+		}
+	}
+	& when (@pFloatDirection = right) {
+		p {
+			right: 3px;
+		}
+		& > div[class = "mediaCont"] {
+			left: 3px;
+		}
+	}
+	& > div[class = "mediaCont"] {
+
+		& > div:first-child { // Container holding media image
+			.format(relative, 50%, 100%);
+			float: @pFloatDirection;
+
+			& > img {
+				position:inherit;
+				height:100%;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+
+		& > div:last-child { // Container holding custom controls
+			.format(relative, 50%, 100%);
+			//background-color:lime;
+			margin:0;
+			float: @mediaFloatDirection;
 		}
 	}
 }
-[class = "mediaControls"] {
-	& > i {
-		color:@accentColor;
-	}
-	& > span {
-		color:@accentColor;
-	}
-	& > progress[value] {
-		-webkit-appearance:none;
-		appearance:none;
-	}
-}
-[class = "mediaControls"] > progress::-webkit-progress-value {
-	background-color:#ff0000;
-	border-radius:5px;
-}
-[class = "mediaControls"] > progress::-webkit-progress-bar {
-	background-color:@accentColor;
-	border-radius:5px;
-}
+
+// Borders
+//	Formatting, positioning and displaying of borders
 @border:3px solid @secondaryColor;
 [class = "mediaRow"] {
 	& > div[class ^= "border"] {
 		.format(absolute,25%, 100%);
+		margin:0;
+		top:0;
+		z-index: 0;
 	}
 	& > div[class $= "Left"] {
 		border-left:@border;
@@ -103,26 +143,74 @@
 		border-right:@border;
 		right:0%;
 	}
-}
-// Top row gets border top
-[class = "mediaRow"]:nth-of-type(3) {
-	& > div[class ^= "border"] {
-		border-top: @border;
+
+	// Top row gets border top
+	&:nth-of-type(3) {
+		& > div[class ^= "border"] {
+			border-top: @border;
+		}
+	}
+	// Last row gets border bottom
+	&:nth-last-of-type(1) {
+		& > div[class ^= "border"] {
+			border-bottom: @border;
+		}
 	}
 }
-[class = "mediaRow"]:nth-of-type(4) {
-	& > div[class $= "Left"] {
-		height:calc(98% + 4px);
-	}
-	& > div[class $= "Right"] {
-		height:calc(98% + 4px);
+// Row positioning based on borders
+[class = "mediaRow"] {
+	// First and last row need to account for 3px top and bottom respectively
+	&:nth-of-type(3) {  
+		p {
+			top:3px;
+		}
+		div[class = "mediaCont"] {
+			top:3px;
+		}
 	}
 }
-// Bottom row gets border bottom
-[class = "mediaRow"]:nth-of-type(5) {
-	& > div[class ^= "border"] {
-		border-bottom: @border;
+
+[class = "mediaControls"] {
+	z-index:1;
+	& > i {
+		color:@accentColor;
+		position: absolute;
+		bottom: 0;
+
+		&:hover {
+			cursor:pointer;
+		}
 	}
+	i:nth-of-type(1) {
+		left: 50px;
+	}
+	i:nth-of-type(2) {
+		right:50px;
+	}
+	& > span {
+		color:@accentColor;
+		position:absolute;
+		bottom: 0px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	& > progress {
+		display: block;
+		margin:auto;
+
+		&[value] {
+			-webkit-appearance:none;
+			appearance:none;	
+		}
+	}
+}
+[class = "mediaControls"] > progress::-webkit-progress-value {
+	background-color:#ff0000;
+	border-radius:5px;
+}
+[class = "mediaControls"] > progress::-webkit-progress-bar {
+	background-color:@accentColor;
+	border-radius:5px;
 }
 [class = "waveDivider"] {
 	.format(relative, 80%, 4.2rem);

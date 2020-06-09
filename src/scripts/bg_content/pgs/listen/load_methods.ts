@@ -4,44 +4,27 @@
 // 	interfaces
 import { AudioInterface, VideoInterface, RowInterface } from './interfaces'
 // 	methods
-import { createAudioCont, createVideoCont } from './methods/media'
+import { createMediaCont } from './methods/create_methods'
 import { createElement, createTextElement } from '../../../global/methods'
 
-const loadAudioRow = async (data:RowInterface):Promise<any> => {
-	let cont:HTMLDivElement = createElement({className:"mediaRow"});
+type Media = AudioInterface | VideoInterface;
 
-	let mediaDescription:HTMLParagraphElement = createTextElement({
-		text:data.description,
-		className:"mediaDescription"
-	});
-	let mediaCont:any = await createAudioCont(data.media as AudioInterface);
-
-	// Create elements to display a controllable border around other elements
-	let mediaDescriptionBorder:HTMLDivElement = createElement({className:"borderLeft"});
-	let mediaContBorder:HTMLDivElement = createElement({className:"borderRight"});
-
-	cont.appendChild(mediaDescription);
-	cont.appendChild(mediaCont);
-	cont.appendChild(mediaDescriptionBorder);
-	cont.appendChild(mediaContBorder);
-
-	document.body.appendChild(cont);
-}
-
-const loadVideoRow = async (data:RowInterface):Promise<any> => {
+const loadMediaRow = async (data:RowInterface):Promise<any> => {
 	let cont:HTMLDivElement = createElement({className:"mediaRow"});
 
 	let mediaDescription:HTMLParagraphElement = createTextElement({text:data.description,className:"mediaDescription"});
-	let mediaCont:any = await createVideoCont(data.media as VideoInterface);
+
+	let mediaData:Media = (data.media as AudioInterface).image ? <AudioInterface>data.media : <VideoInterface>data.media;
+	let mediaCont:any = await createMediaCont(mediaData);
 
 	// Create elements to display a controllable border around other elements
-	let mediaDescriptionBorder:HTMLDivElement = createElement({className:"borderRight"});
-	let mediaContBorder:HTMLDivElement = createElement({className:"borderLeft"});
+	let mediaLeftBorder:HTMLDivElement = createElement({className:"borderLeft"});
+	let mediaRightBorder:HTMLDivElement = createElement({className:"borderRight"});
 
 	cont.appendChild(mediaCont);
 	cont.appendChild(mediaDescription);
-	cont.appendChild(mediaDescriptionBorder);
-	cont.appendChild(mediaContBorder);
+	cont.appendChild(mediaLeftBorder);
+	cont.appendChild(mediaRightBorder);
 
 	document.body.appendChild(cont);
 }
@@ -89,4 +72,4 @@ const loadCanvasWave = ():void => {
 	document.body.appendChild(cvs);
 }
 
-export { loadAudioRow, loadVideoRow, loadCanvasWave }
+export { loadMediaRow, loadCanvasWave }
