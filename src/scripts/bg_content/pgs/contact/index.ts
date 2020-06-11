@@ -5,8 +5,6 @@ import { createElement, createTextElement } from '../../../global/methods'
 // 	Local
 //	data
 import { formData } from './data'
-// 	interfaces
-import { IForm } from './interfaces'
 //  methods
 import { loadInputRow, loadButtonInput } from './load_methods'
 
@@ -20,12 +18,22 @@ const loadContactPage = () => {
 	formCont.appendChild(headerCont);
 
 	// Create element for each text input
-	formData.form.forEach(input => {
+	formData.form.textInput.forEach(input => {
 		let formInput:HTMLDivElement = loadInputRow(input);
 
 		// Append input to form container
 		formCont.appendChild(formInput);
 	});
+
+	// Load select element for Subject input
+	let selectInputRow:HTMLDivElement = loadInputRow(formData.form.selectInput);
+	// Append select input to form container
+	formCont.appendChild(selectInputRow);
+
+	// Load textarea element for Message input
+	let textAreaInputRow:HTMLDivElement = loadInputRow(formData.form.textAreaInput);
+	// Append text area input to form container
+	formCont.appendChild(textAreaInputRow);
 
 	// Create element for submit button
 	let submitCont:HTMLDivElement = loadButtonInput(formData.submit);

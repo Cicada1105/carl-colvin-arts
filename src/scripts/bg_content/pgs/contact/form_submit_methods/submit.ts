@@ -3,10 +3,10 @@
 // Imports
 // 	Global
 // 	methods
-import { createImageElement } from '../../../global/methods'
+import { createImageElement } from '../../../../global/methods'
 //  Local
 //  methods
-import { request } from './request_methods'
+import { request } from './request'
 
 let isHome:boolean = window.location.pathname.includes("index");
 
@@ -69,12 +69,15 @@ const submitForm = (event:any):void => {
 const fieldsCompleted = ():boolean => {
 	let formCompleted:boolean = true;
 
+	type input = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+
 	let inputs:HTMLCollection = <HTMLCollection>document.getElementsByClassName("inputCont");
 	for (let inputCont of inputs) {
-		let input:HTMLInputElement = <HTMLInputElement>inputCont.firstChild;
-		let inputMsg:HTMLParagraphElement = <HTMLParagraphElement>inputCont.lastChild;
+		let firstChild:Element = <Element>inputCont.firstElementChild;
+		let input:input = firstChild.tagName === "INPUT" ? <HTMLInputElement>firstChild : (firstChild.tagName === "SELECT" ? (<HTMLSelectElement>firstChild) : (<HTMLTextAreaElement>firstChild));
+		let inputMsg:HTMLParagraphElement = <HTMLParagraphElement>inputCont.lastElementChild;
 
-		if (input.value === "") {
+		if ((input.value === "") || (input.value === "none")) {
 			inputMsg.innerHTML = "*Incomplete Field"
 			formCompleted = false;
 		}

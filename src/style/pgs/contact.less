@@ -22,13 +22,16 @@
 		text-align: center;
 	}
 
-	[class $= "Input"] {
+	[class ^= "input"] { 
 		.format(relative, 100%);
 		//background-color:black;
-		h2 {
+		margin-top:1.5rem;
+
+		label {
 			.format(relative,30%);
 			//background-color:aqua;
 			display:inline-block;
+			font-size:1.25rem;
 			text-align: right;
 			padding-right:20%;
 			color:@textColor;
@@ -39,15 +42,30 @@
 			display:inline-block;
 			padding-left:15%;
 
-			input[type="text"], input[type="email"]{
+			input, select, textarea {
 				.format(relative,10rem,1.25rem);
+				display:inline-block;
+				font-size:1rem;
 				border:none;
 				z-index:3;
+				&:focus {
+					outline: none;
+				}
+			}
+			input, textarea {
+				caret-color: @accentColor;
+			}
+			textarea {
+				min-width: 10rem;
+				min-height: 1.25rem;
+				max-width: 75%;
+				max-height:15rem;
 			}
 			[class = "inputAnimation"] {
 				position:absolute;
 				background-color:@accentColor;
-				display:inline-block;
+				//display:inline-block;
+				display: none;
 				height:1.375rem;
 				left:30%;
 				top:15%;
@@ -66,6 +84,9 @@
 			}
 		}
 
+	}
+	[class = "buttonInput"] {
+		height:2rem;
 		[id = "formMessage"] {
 			color:@textColor;
 			display:block;
@@ -73,13 +94,6 @@
 			width:fit-content;
 			height:fit-content;
 			margin:auto;
-		}
-		input {
-			display:inline-block;
-			font-size:1rem;
-			&:focus {
-				outline: none;
-			}
 		}
 		[id = "submitBtn"] {
 			background-color:@accentColor;
@@ -98,14 +112,15 @@
 			height:4rem;
 		}
 		input[type="button"] {
+			&:focus {
+				outline: 0;
+				background-color: @buttonHoverColor;
+			}
 			&:hover {
 				background-color:@buttonHoverColor;
 				cursor:pointer;	
 			}
 		}
-	}
-	[class = "buttonInput"] {
-		height:2rem;
 	}
 }
 
