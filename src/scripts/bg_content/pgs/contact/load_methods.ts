@@ -10,7 +10,7 @@ import {
 	ButtonInputInterface as IButton 
 } from './interfaces/specific_input'
 //  methods
-import { submitForm } from './form_submit_methods/submit'
+//import { submitForm } from './form_submit_methods/submit'
 import { 
 	createLabel, 
 	createTextInput as createText,
@@ -45,6 +45,9 @@ const loadInputCont = (inputData:InputInterface):HTMLDivElement => {
 	// Create children elements of input container
 	// 	creaet specific input based on properties
 	let inputTag:HTMLElement = (inputData as IText).placeholder ? createText(<IText>inputData) : ((inputData as ITextArea).rows ? createTextArea(<ITextArea>inputData) : createSelect(<ISelect>inputData));
+	//  All fields are required
+	inputTag.setAttribute("required","");
+	
 	// 		element to be used as an animation for click effect
 	let spanAnimation:HTMLDivElement = createElement({className:"inputAnimation"});
 	//		element to display message for incomplete field
@@ -76,7 +79,10 @@ const loadButtonInput = (input:IButton):HTMLDivElement => {
 	submitBtn.setAttribute("value",input.value);
 
 	// Add event listener to handle submitting form 
-	submitBtn.addEventListener("click",submitForm);
+	//submitBtn.addEventListener("submit",submitForm);
+	/*submitBtn.addEventListener("click",(event:any) => {
+		submitForm(event);
+	});*/
 	
 	// Create container to be used to display messages about the form status
 	let msgCont:HTMLSpanElement = createElement({element:"span",idName:"formMessage"});

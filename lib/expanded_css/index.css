@@ -336,7 +336,7 @@ body {
 [id="formCont"] {
   position: relative;
   width: 54rem;
-  margin: 10rem auto auto auto;
+  margin: 8rem auto auto auto;
   z-index: 2;
 }
 [id="formCont"] h1:first-child {
@@ -355,7 +355,7 @@ body {
   position: relative;
   width: 30%;
   display: inline-block;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   text-align: right;
   padding-right: 20%;
   color: #f0edee;
@@ -438,11 +438,11 @@ body {
   width: 7rem;
   height: 4rem;
 }
-[id="formCont"] [class="buttonInput"] input[type="button"]:focus {
+[id="formCont"] [class="buttonInput"] input[type="submit"]:focus {
   outline: 0;
   background-color: #a21616;
 }
-[id="formCont"] [class="buttonInput"] input[type="button"]:hover {
+[id="formCont"] [class="buttonInput"] input[type="submit"]:hover {
   background-color: #a21616;
   cursor: pointer;
 }

@@ -151,7 +151,7 @@ const formData:IForm = {
 	submit: {
 		id: "submitBtn",
 		value:"Send",
-		type:"button"
+		type:"submit"
 	}
 }
 

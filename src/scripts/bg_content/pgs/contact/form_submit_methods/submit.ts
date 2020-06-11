@@ -17,21 +17,23 @@ const sending_img_path:string = isHome ? "./resources/pg_imgs/contact_imgs/sendi
 const submitForm = (event:any):void => {
 	// Check to make sure each field has been filled out
 	if (fieldsCompleted()) {
-		// Store button to be display after message processing has been accomplished
-		// path[i] selects element that received mouse event. If bubbling is true, rest of array is bubbled elements
-		let submit_btn:HTMLInputElement = event.path[0]; 
-		// access parent node of submit button
-		let submit_cont:HTMLDivElement = <HTMLDivElement>document.querySelector("#submitCont");
+		let form:HTMLFormElement = event.target;
+		let submit_cont:HTMLDivElement = <HTMLDivElement>form.lastElementChild;
 		// Access message element to display updates to user
 		let submit_msg:HTMLSpanElement = <HTMLSpanElement>submit_cont.lastChild;		// Message
+
+		// Get submit button from form to be displayed after mail has been successfully sent
+		// SubmitEvent has one 'submitter' property that returns element that initiated submit
+		let submit_btn:HTMLInputElement = event.submitter;
+
 		// Create new iamge element
 		let sending_img:HTMLImageElement = createImageElement({src:sending_img_path,idName:"sending_img"});
 
 		// Store input data
-		let name:HTMLInputElement = document.querySelector("#name") as HTMLInputElement;
-		let email:HTMLInputElement = document.querySelector("#email") as HTMLInputElement;
-		let subject:HTMLInputElement = document.querySelector("#subject") as HTMLInputElement;
-		let body:HTMLInputElement = document.querySelector("#message") as HTMLInputElement;
+		let name:HTMLInputElement = form.querySelector("#name") as HTMLInputElement;
+		let email:HTMLInputElement = form.querySelector("#email") as HTMLInputElement;
+		let subject:HTMLInputElement = form.querySelector("#subject") as HTMLInputElement;
+		let body:HTMLInputElement = form.querySelector("#message") as HTMLInputElement;
 
 		// Replace button with image
 		submit_cont.replaceChild(sending_img, submit_btn);
@@ -42,7 +44,13 @@ const submitForm = (event:any):void => {
 			submit_msg.innerHTML = "Message Sent!";
 			submit_cont.replaceChild(submit_btn, sending_img);
 		},2000);
-		setTimeout(() => submit_msg.innerHTML = "",4000);
+		setTimeout(() => {
+			submit_msg.innerHTML = "";
+			name.value = "";
+			email.value = "";
+			subject.value = "none";
+			body.value = "";
+		},4000);
 		/*request(name.value,email.value,subject.value,body.value).then((res) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);
@@ -64,6 +72,7 @@ const submitForm = (event:any):void => {
 			},4000);
 		});*/
 	}
+	event.preventDefault();
 }
 
 const fieldsCompleted = ():boolean => {
@@ -76,7 +85,7 @@ const fieldsCompleted = ():boolean => {
 		let firstChild:Element = <Element>inputCont.firstElementChild;
 		let input:input = firstChild.tagName === "INPUT" ? <HTMLInputElement>firstChild : (firstChild.tagName === "SELECT" ? (<HTMLSelectElement>firstChild) : (<HTMLTextAreaElement>firstChild));
 		let inputMsg:HTMLParagraphElement = <HTMLParagraphElement>inputCont.lastElementChild;
-
+		
 		if ((input.value === "") || (input.value === "none")) {
 			inputMsg.innerHTML = "*Incomplete Field"
 			formCompleted = false;
