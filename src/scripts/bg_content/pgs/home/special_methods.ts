@@ -7,10 +7,13 @@
 // Imports
 //  interfaces
 import { IBox } from '../../../global/interfaces'
+import { IPostData } from './interfaces'
 //	methods
 import { createElement, createTextElement } from '../../../global/methods'
 //  data 
 import { collageImages } from './data'
+
+let imgPostArray:Array<IPostData> = [];
 
 /*const addImageListener = () => {
 	// Add click event listener after loading images to body to get css computed dimensions for pop up window
@@ -26,6 +29,9 @@ import { collageImages } from './data'
 	});
 }*/
 
+const storeCurrentImage = (image:HTMLImageElement, data:IBox):void => {
+	imgPostArray.push({img:image, postData:data});
+}
 /*
 	@params
 	img:HTMLImageElement
@@ -41,6 +47,7 @@ import { collageImages } from './data'
 	void
 */
 const displayImagePost = (img:any, postData:IBox):void => {
+
 	let imgPostBackdrop:HTMLDivElement = createElement({
 		idName:"postBackdrop"
 	});
@@ -76,8 +83,8 @@ const displayImagePost = (img:any, postData:IBox):void => {
 
 	// Depending on image size and its affect on imgPostCont, center accordingly
 	// Image computed dimensions after style has been applied
-	let widthStr:string = window.getComputedStyle(img)["width"];	// Returns string with px
-	let heightStr:string = window.getComputedStyle(img)["height"];	// Returns string with px
+	//let widthStr:string = window.getComputedStyle(img)["width"];	// Returns string with px
+	//let heightStr:string = window.getComputedStyle(img)["height"];	// Returns string with px
 
 	//let width:number = parseFloat(widthStr);
 	//let height:number = parseFloat(heightStr);
@@ -120,6 +127,10 @@ const displayImagePost = (img:any, postData:IBox):void => {
 		-Container holding left and right arrows and post data
 */
 const createPostCont = (postData:IBox):HTMLDivElement => {
+	// Store current location of postData 
+	// findIndex loops through array then returns first index of element that passes test
+	let currentPostIndex:number = imgPostArray.findIndex((currPost) => currPost.postData.header === postData.header);
+
 	// Post container will hold the two "panels" one that holds image on left 
 	//  and one that holds caption on right
 	let postCont:HTMLDivElement = createElement({
@@ -133,6 +144,22 @@ const createPostCont = (postData:IBox):HTMLDivElement => {
 	});
 	// Create left arrow
 	let leftArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-left"});
+
+	// Only add event listener to left arrow if current post is not the first post
+	if (currentPostIndex > 0) {
+		// Add event listener for cycling through posts going to the left
+		leftArrow.addEventListener("click", () => {
+			// Mimic click event of exit button
+			let clickEvent:any = new Event("click");
+			let exitButton:Element = <Element>postCont.nextElementSibling;
+			exitButton.dispatchEvent(clickEvent);
+
+			// Deccrement to next post
+			currentPostIndex--;
+			// Display current post data
+			displayImagePost(imgPostArray[currentPostIndex].img,imgPostArray[currentPostIndex].postData);
+		});
+	}
 	// Append left arrow to positioning container
 	leftArrowCont.appendChild(leftArrow);
 
@@ -146,6 +173,24 @@ const createPostCont = (postData:IBox):HTMLDivElement => {
 	});
 	// Create right arrow 
 	let rightArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-right"});
+
+	// Only add event listener to right arrow if current post is not the last post
+	if (currentPostIndex < (imgPostArray.length - 1)) {
+		// Add event listener for cycling through posts going to the right
+		rightArrow.addEventListener("click", () => {
+			// Remove current post by accessing exit button
+			// Mimi click event of exit button
+			let clickEvent:any = new Event("click");
+			let exitButton:Element = <Element>postCont.nextElementSibling;
+			// Remove current post by accessing exit button
+			exitButton.dispatchEvent(clickEvent);
+	
+			// Increment to next post
+			currentPostIndex++;
+			// Display current post data
+			displayImagePost(imgPostArray[currentPostIndex].img,imgPostArray[currentPostIndex].postData)
+		});
+	}
 	// Append right arrow to positioning container
 	rightArrowCont.appendChild(rightArrow);
 
@@ -201,4 +246,4 @@ const postCard = (postData:IBox):HTMLDivElement => {
 	return cont;
 }
 
-export { displayImagePost }
+export { displayImagePost, storeCurrentImage }

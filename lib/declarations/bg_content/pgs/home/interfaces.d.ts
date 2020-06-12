@@ -6,4 +6,8 @@ interface IPost {
     imageData: ICollage;
     postData: IBox;
 }
-export { IPost, ICollage };
+interface IPostData {
+    img: HTMLImageElement;
+    postData: IBox;
+}
+export { ICollage, IPost, IPostData };

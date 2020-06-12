@@ -12,4 +12,11 @@ interface IPost {
 	postData: IBox;
 }
 
-export { IPost, ICollage }
+// Interface that defines data to be stored in an array to allow user to 
+//	click left and right arrows, going from one post to another
+interface IPostData {
+	img: HTMLImageElement;
+	postData: IBox;
+}
+
+export { ICollage, IPost, IPostData }

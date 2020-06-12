@@ -7,7 +7,7 @@ import { IBox } from '../../../global/interfaces'
 import { ICollage } from './interfaces'
 //	methods
 import { createElement, createImageElement } from '../../../global/methods'
-import { displayImagePost } from './special_methods'
+import { displayImagePost, storeCurrentImage } from './special_methods'
 //	data
 import { collageImages } from './data'
 
@@ -27,8 +27,12 @@ const loadCollage = ():void => {
 
 		let imgClone:HTMLImageElement = <HTMLImageElement>imgNode.cloneNode(true);
 
+		// Store current image clone and post data to be used to cycle through posts
+		storeCurrentImage(imgClone, postData);
+
 		imgNode.addEventListener("click", () => {
-			displayImagePost(imgNode.cloneNode(true), postData);
+			displayImagePost(imgClone, postData);
+			//displayImagePost(imgNode.cloneNode(true), postData);
 		});
 		// Append image to the collage container
 		collageCont.appendChild(imgNode);
