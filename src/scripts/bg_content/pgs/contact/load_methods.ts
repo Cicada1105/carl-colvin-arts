@@ -10,7 +10,6 @@ import {
 	ButtonInputInterface as IButton 
 } from './interfaces/specific_input'
 //  methods
-//import { submitForm } from './form_submit_methods/submit'
 import { 
 	createLabel, 
 	createTextInput as createText,

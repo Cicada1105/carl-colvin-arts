@@ -4,7 +4,6 @@ function playButtonListener(event:any) {
 	let btn:HTMLElement = event.target;
 	btn.className = "fas fa-" + (btn.className.includes("play") ? "pause" : "play");
 
-	// this = media element bounded by addEventListener("listener", callback.bind(mediaElement))
 	this.paused ? this.play() : this.pause();
 }
 

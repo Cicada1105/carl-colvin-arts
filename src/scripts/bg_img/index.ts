@@ -3,7 +3,6 @@
 import { getCurrentFile, createImageElement } from '../global/methods'
 //	 Local
 import { data as bgImgs } from './data'
-//import { createImageFade } from './methods'
 
 const createBgFade = ():void => {
 	// Get current path to determine bg image

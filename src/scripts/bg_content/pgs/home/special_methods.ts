@@ -15,23 +15,10 @@ import { collageImages } from './data'
 
 let imgPostArray:Array<IPostData> = [];
 
-/*const addImageListener = () => {
-	// Add click event listener after loading images to body to get css computed dimensions for pop up window
-	collageImages.forEach((img, i) => {
-		let currImgElement:HTMLImageElement = document.querySelector("#collage").children.namedItem(img.imageData.idName);
-		let postData:IBox = <IBox>img.postData;
-
-		let imgClone:HTMLImageElement = <HTMLImageElement>currImgElement.cloneNode(true);
-
-		currImgElement.addEventListener("click", () => {
-			displayImagePost(imgClone, postData);
-		});
-	});
-}*/
-
 const storeCurrentImage = (image:HTMLImageElement, data:IBox):void => {
 	imgPostArray.push({img:image, postData:data});
 }
+
 /*
 	@params
 	img:HTMLImageElement

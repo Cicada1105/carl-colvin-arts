@@ -16,9 +16,6 @@ const loadCollage = ():void => {
 		idName:"collage"
 	});
 
-	// Keep array of images to loop through for post "slide show"
-	//let imgPostArray:Array<Node> = [];
-
 	collageImages.forEach((img) => {
 		let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
 
