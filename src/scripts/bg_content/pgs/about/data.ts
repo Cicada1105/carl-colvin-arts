@@ -3,8 +3,8 @@ import { IRow } from './interfaces'
 
 // Paths development
 let isHomePage:boolean = window.location.pathname.includes('index');
-const ROOT_PGS_DIR:string = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/pgs/";
-const IMG_PATH:string = isHomePage ? "./resources/pg_imgs/about_imgs/" : "../resources/pg_imgs/about_imgs/";
+const ROOT_PGS_DIR:string = (isHomePage ? "./" : "../") + "pgs/";
+const IMG_PATH:string = (isHomePage ? "./" : "../") + "resources/pg_imgs/about_imgs/";
 // Use during production
 //const ROOT_PGS_DIR:string = "/pgs/";
 //const IMG_PATH:string = "/resources/pg_imgs/about_imgs/";

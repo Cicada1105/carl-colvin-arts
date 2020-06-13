@@ -7,7 +7,9 @@ interface ImageInterface {
 }
 
 // Use during development
-const imagePath = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/resources/global_imgs/media/";
+const isHomePage:boolean = window.location.pathname.includes("index");
+const isServicePage:boolean = window.location.pathname.includes("services");
+const imagePath = (isHomePage ? "./" : (isServicePage ? "../../" : "../")) + "resources/global_imgs/media/";
 // Use during production
 //const imagePath = "/resources/global_imgs/media/";
 

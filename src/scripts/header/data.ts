@@ -2,7 +2,9 @@
 import { ILink } from '../global/interfaces'
 
 // Use during development
-const rootDir:string = "file:///Users/joshuacolvin/Desktop/carl-colvin-arts/dist/";
+const isHomePage:boolean = window.location.pathname.includes("index");
+const isServicePage:boolean = window.location.pathname.includes("services");
+const rootDir:string = isHomePage ? "./" : (isServicePage ? "../../" : "../");
 // Use during production
 //const rootDir:string = "/";
 

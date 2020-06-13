@@ -9,8 +9,8 @@ import { Rows } from './data'
 
 // Paths for development
 let isHomePage:boolean = window.location.pathname.includes('index');
-const IMAGE_DIR:string = isHomePage ? './resources/pg_imgs/about_imgs/' : '../resources/pg_imgs/about_imgs/';
-const MEDIA_DIR:string = isHomePage ? './resources/media/' : '../resources/media/';
+const IMAGE_DIR:string = (isHomePage ? "./" : "../") + "resources/pg_imgs/about_imgs/";
+const MEDIA_DIR:string = (isHomePage ? "./" : "../") + "resources/media/";
 // Paths for production
 //const IMAGE_DIR:string = '/resources/pg_imgs/about_imgs/';
 //const MEDIA_DIR:string = '/resources/media/';

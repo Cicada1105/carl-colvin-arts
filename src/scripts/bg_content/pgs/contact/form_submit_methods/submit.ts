@@ -8,10 +8,9 @@ import { createImageElement } from '../../../../global/methods'
 //  methods
 import { request } from './request'
 
-let isHome:boolean = window.location.pathname.includes("index");
-
 // Image path
-const sending_img_path:string = isHome ? "./resources/pg_imgs/contact_imgs/sending_envelope.png" : "../resources/pg_imgs/contact_imgs/sending_envelope.png";
+const isHome:boolean = window.location.pathname.includes("index");
+const sending_img_path:string = (isHome ? "./" : "../") + "resources/pg_imgs/contact_imgs/sending_envelope.png";
 //const sending_img_path:string = "/resources/pg_imgs/contact_imgs/sending_envelope.png";
 
 const submitForm = (event:any):void => {
