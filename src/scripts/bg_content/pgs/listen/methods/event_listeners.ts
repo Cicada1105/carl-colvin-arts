@@ -2,6 +2,7 @@
 
 function playButtonListener(event:any) {
 	let btn:HTMLElement = event.target;
+	
 	btn.className = "fas fa-" + (btn.className.includes("play") ? "pause" : "play");
 
 	this.paused ? this.play() : this.pause();

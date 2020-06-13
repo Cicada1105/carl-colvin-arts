@@ -1,7 +1,7 @@
 // Imports
 import { loadAboutPage } from '../about/index'
 import { loadContactPage } from '../contact/index'
-import { loadCollage } from './load_methods'
+import { loadCollage } from './methods/load'
 
 // Style method
 
