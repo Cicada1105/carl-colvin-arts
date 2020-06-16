@@ -570,46 +570,52 @@ body {
 #collage > img[id^="left"] {
   left: 0;
 }
-#collage > img[id^="middle"] {
-  left: 12.95rem;
-}
 #collage > img[id^="right"] {
   right: 0;
 }
-#collage > img[id$="Top"] {
-  top: 0;
+#collage > img[id^="middleLeft"] {
+  left: 13.625rem;
 }
-#collage > img[id="middleSecond"] {
-  top: 8.9rem;
-}
-#collage > img[id="leftMiddle"] {
-  top: 17.28rem;
-}
-#collage > img[id="middleThird"] {
-  top: 18.5rem;
+#collage > img[id^="middleRight"] {
+  right: 14.65rem;
 }
 #collage > img[id$="Bottom"] {
-  bottom: 0;
+  bottom: 0rem;
+}
+#collage > img[id="middleRightBottom"] {
+  top: 8.16rem;
 }
 #collage > img:hover {
   transform: scale(0.85, 0.85);
   cursor: pointer;
 }
 /*		Images within collage and post		*/
-img[id^="left"] {
-  width: 12.915rem;
+img[id$="leftTop"] {
+  width: 13.625rem;
 }
-img[id^="middle"] {
-  width: 17.05rem;
+img[id="leftBottom"] {
+  width: 13.6rem;
 }
-img[id^="right"] {
-  width: 14.85rem;
+img[id="middleLeftTop"] {
+  width: 12.05rem;
+}
+img[id="middleLeftBottom"] {
+  width: 19.95rem;
+}
+img[id^="middleRight"] {
+  width: 15.5rem;
+}
+img[id="rightTop"] {
+  width: 14.65rem;
+}
+img[id="rightBottom"] {
+  width: 22.3rem;
 }
 #collage {
   position: relative;
-  width: 44.85rem;
-  height: 39.55rem;
-  margin: 3rem auto 11rem auto;
+  width: 55.85rem;
+  height: 31.5rem;
+  margin: calc((100vh - 31.5rem) / 2) auto 11rem auto;
   z-index: 1;
 }
 #postBackdrop {

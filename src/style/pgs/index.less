@@ -19,29 +19,21 @@
 		&[id ^= "left"] {
 			left:0;
 		}
-		&[id ^= "middle"] {
-			left:12.95rem;
-		}
 		&[id ^= "right"] {
 			right:0;
 		}
-		&[id $= "Top"] {
-			top:0;
+		&[id ^= "middleLeft"] {
+			left: 13.625rem;
 		}
-		// Ungovernables
-		&[id = "middleSecond"] {
-			top:8.9rem;
-		}
-		// Happy Holy Dayz
-		&[id = "leftMiddle"] {
-			top:17.28rem;
-		}
-		// Oboe on sheet music 
-		&[id = "middleThird"] {
-			top:18.5rem;
+		&[id ^= "middleRight"] {
+			right: 14.65rem;
 		}
 		&[id $= "Bottom"] {
-			bottom:0;
+			bottom: 0rem;
+		}
+		&[id = "middleRightBottom"] {
+			// English horn and sheet music
+			top:8.16rem;
 		}
 		& {
 			transition: transform 0.45s;
@@ -54,19 +46,36 @@
 }
 /*		Images within collage and post		*/
 img {
-	&[id ^= "left"] {
-		width:12.915rem;
+	// Happy Holy Dayz
+	&[id $= "leftTop"] {
+		width: 13.625rem;
 	}
-	&[id ^= "middle"] {
-		width:17.05rem;
+	// A Fathers Touch
+	&[id = "leftBottom"] {
+		width: 13.6rem;
 	}
-	&[id ^= "right"] {
-		width:14.85rem;
+	// Spoken Word
+	&[id = "middleLeftTop"] {
+		width: 12.05rem;
+	}
+	// Reed Scraping, Ungovernables
+	&[id = "middleLeftBottom"] {
+		width: 19.95rem;
+	}
+	&[id ^= "middleRight"] {
+		width: 15.5rem;
+	}
+	// Take My Hand
+	&[id = "rightTop"] {
+		width:14.65rem;
+	}
+	&[id = "rightBottom"] {
+		width:22.3rem;
 	}
 }
 #collage {
-	.format(relative,44.85rem, 39.55rem);
-	margin:3rem auto 11rem auto;
+	.format(relative,55.85rem, 31.5rem);
+	margin:calc((100vh - 31.5rem) / 2) auto 11rem auto;
 	z-index:1;
 }
 #postBackdrop {
