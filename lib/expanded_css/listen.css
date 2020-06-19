@@ -115,26 +115,23 @@ body {
   height: 100%;
   display: inline-block;
 }
-[class="mediaRow"] > div[class="mediaCont"][class="mediaImgCont"] {
+[class="mediaRow"] > div[class="mediaCont"][class="mediaVisualCont"] {
   position: relative;
-  width: 50%;
+  width: 5%;
   height: 100%;
-}
-[class="mediaRow"] > div[class="mediaCont"][class="mediaImgCont"] > img {
-  position: absolute;
-  transform: translate(-25%);
-  top: 10%;
-  left: 25%;
-  height: 80%;
+  /*& > img {
+					position:absolute;
+					transform: translate(-25%);
+					top:10%;
+					left:25%;
+					height:80%;
+				}*/
 }
 [class="mediaRow"] > div[class="mediaCont"] [class="mediaControls"] {
   position: relative;
   margin: auto;
   height: 50%;
   top: 25%;
-}
-[class="mediaRow"] > div[class="mediaCont"] [class="mediaControls"] video {
-  display: none;
 }
 /*		Specific Styling		*/
 [class="mediaRow"]:nth-of-type(odd) p {
@@ -146,19 +143,22 @@ body {
 [class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] {
   right: -3px;
 }
-[class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] > div:first-child {
+[class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] > div:first-of-type {
   position: relative;
   width: 50%;
   height: 100%;
   float: left;
 }
-[class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] > div:first-child > img {
+[class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] > div:first-of-type > img {
   position: inherit;
-  height: 100%;
+  height: 90%;
   left: 50%;
   transform: translateX(-50%);
 }
-[class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] > div:last-child {
+[class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] > div:first-of-type > video {
+  width: 90%;
+}
+[class="mediaRow"]:nth-of-type(odd) > div[class="mediaCont"] > div:last-of-type {
   position: relative;
   width: 50%;
   height: 100%;
@@ -174,19 +174,22 @@ body {
 [class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] {
   left: 3px;
 }
-[class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] > div:first-child {
+[class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] > div:first-of-type {
   position: relative;
   width: 50%;
   height: 100%;
   float: right;
 }
-[class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] > div:first-child > img {
+[class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] > div:first-of-type > img {
   position: inherit;
-  height: 100%;
+  height: 90%;
   left: 50%;
   transform: translateX(-50%);
 }
-[class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] > div:last-child {
+[class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] > div:first-of-type > video {
+  width: 90%;
+}
+[class="mediaRow"]:nth-of-type(even) > div[class="mediaCont"] > div:last-of-type {
   position: relative;
   width: 50%;
   height: 100%;

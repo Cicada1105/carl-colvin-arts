@@ -47,16 +47,16 @@
 			//background-color:aqua;
 			//top:3px;
 
-			&[class = "mediaImgCont"] {
-				.format(relative, 50%, 100%);
+			&[class = "mediaVisualCont"] {
+				.format(relative, 5%, 100%);
 
-				& > img {
+				/*& > img {
 					position:absolute;
 					transform: translate(-25%);
 					top:10%;
 					left:25%;
 					height:80%;
-				}
+				}*/
 			}
 			[class = "mediaControls"] {
 				//background-color:black;
@@ -64,10 +64,6 @@
 				margin: auto;
 				height: 50%;
 				top:25%;
-
-				video {
-					display:none;
-				}
 			}
 		}
 	}
@@ -104,19 +100,22 @@
 	}
 	& > div[class = "mediaCont"] {
 
-		& > div:first-child { // Container holding media image
+		& > div:first-of-type { // Container holding media image
 			.format(relative, 50%, 100%);
 			float: @pFloatDirection;
 
 			& > img {
 				position:inherit;
-				height:100%;
+				height:90%;
 				left: 50%;
 				transform: translateX(-50%);
 			}
+			& > video {
+				width: 90%;
+			}
 		}
 
-		& > div:last-child { // Container holding custom controls
+		& > div:last-of-type { // Container holding custom controls
 			.format(relative, 50%, 100%);
 			//background-color:lime;
 			margin:0;
