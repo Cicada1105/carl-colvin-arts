@@ -76,6 +76,89 @@ body {
   top: 0%;
 }
 /*  Rest of the styling goes here */
+h2 {
+  position: relative;
+  width: 10rem;
+  text-align: center;
+  color: #f0edee;
+  margin: auto;
+}
+h2#pageHeader {
+  margin-top: 5rem;
+  font-size: 2rem;
+}
+h2#pricingHeader {
+  margin-top: 3.5rem;
+  font-size: 1.65rem;
+}
+p#intro {
+  position: relative;
+  width: 50rem;
+  text-align: center;
+  color: #f0edee;
+  margin: 3.5rem auto;
+}
+p#intro::first-line {
+  text-indent: 3rem;
+}
+hr {
+  position: relative;
+  width: 75%;
+  margin-top: 2.5rem;
+  border: 1px solid #de5757;
+}
+div#progressCont {
+  position: relative;
+  width: 60rem;
+  height: 7rem;
+  margin: auto;
+  margin-top: 2.5rem;
+}
+div#progressCont > div.circleCont {
+  position: inherit;
+  width: 5rem;
+  height: 100%;
+  display: inline-block;
+  margin: 0 2.5rem;
+}
+div#progressCont > div.circleCont > p {
+  position: absolute;
+  width: 100%;
+  height: 1rem;
+  color: #f0edee;
+  text-align: center;
+}
+div#progressCont > div.circleCont > canvas.progressCircle {
+  position: absolute;
+  width: inherit;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1;
+}
+div#progressCont > div.circleCont > div.rectCont {
+  position: absolute;
+  width: 8rem;
+  height: 2.5rem;
+  left: 3.5rem;
+  bottom: 0rem;
+  z-index: 0;
+}
+div#progressCont > div.circleCont > div.rectCont > canvas {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+div#progressCont > div.circleCont > div.rectCont > div.whiteProgressRect {
+  position: absolute;
+  width: inherit;
+  height: 0.8rem;
+  background-color: white;
+  margin-top: 0.85rem;
+}
+button {
+  position: relative;
+  z-index: 3;
+}
 #footer {
   bottom: 0%;
   z-index: 3;

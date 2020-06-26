@@ -1,6 +1,10 @@
+// Imports
+//	methods
+import { loadIntro, loadPricing } from './methods/load'
 
 const loadEditingPage = ():void => {
-	console.log("Loading Editing Page");
+	loadIntro();
+	loadPricing();
 }
 
 export { loadEditingPage }

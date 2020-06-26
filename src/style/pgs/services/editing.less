@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
 
 #globalNS > .html();
@@ -8,5 +9,76 @@
 #globalNS > .bg_img();
 
 /*  Rest of the styling goes here */
+h2 {
+	.format(relative,10rem);
+	text-align: center;
+	color: @textColor;
+	margin:auto;
 
+	&#pageHeader {
+		margin-top:5rem;
+		font-size:2rem;
+	}
+	&#pricingHeader {
+		margin-top:3.5rem;
+		font-size: 1.65rem;
+	}
+}
+p#intro {
+	.format(relative, 50rem);
+	text-align:center;
+	color: @textColor;
+	margin:3.5rem auto;
+
+	&::first-line {
+		text-indent:3rem;
+	}
+}
+hr {
+	.format(relative, 75%);
+	margin-top: 2.5rem;
+	border: 1px solid @accentColor;
+}
+div#progressCont {
+	.format(relative, 60rem, 7rem);
+	margin:auto;
+	margin-top: 2.5rem;
+
+	& > div.circleCont {
+		.format(inherit, 5rem, 100%);
+		display: inline-block;
+		margin:0 2.5rem;
+
+		& > p {
+			.format(absolute, 100%, 1rem);
+			color: @textColor;
+			text-align: center;
+		}
+		& > canvas.progressCircle {
+			.format(absolute, inherit);
+			left: 0px;
+			bottom: 0px;
+			z-index:1;
+		}
+		& > div.rectCont {
+			.format(absolute, 8rem, 2.5rem);
+			left: 3.5rem;
+			bottom:0rem;
+			z-index:0;
+
+			& > canvas {
+				.format(absolute, inherit, inherit);
+			}
+			& > div.whiteProgressRect {
+				.format(absolute, inherit, 0.8rem);
+				background-color:white;
+				margin-top:0.85rem;
+			}
+		}
+	}
+}
+button {
+	position:relative;
+	z-index:3;
+}
 #globalNS > .social();
