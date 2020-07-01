@@ -159,6 +159,11 @@ button {
   position: relative;
   z-index: 3;
 }
+div#inputRowsCont {
+  position: relative;
+  width: 100%;
+  z-index: 3;
+}
 #footer {
   bottom: 0%;
   z-index: 3;

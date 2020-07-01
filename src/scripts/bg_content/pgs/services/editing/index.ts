@@ -1,9 +1,17 @@
 // Imports
 //	methods
-import { loadIntro, loadPricing } from './methods/load'
+//	   local
+import { loadPricing } from './pricing/index'
+import { loadIntro } from './intro/index'
+//	   global
+import { loadBootstrap } from '../../../../global/methods'
 
 const loadEditingPage = ():void => {
+	// Load boostrap to be used by methods later on
+	loadBootstrap();
+	// Load intro paragraph
 	loadIntro();
+	// Load pricing info
 	loadPricing();
 }
 
