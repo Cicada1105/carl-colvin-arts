@@ -12,7 +12,6 @@ import {
 import { SelectOptionInterface as IOption } from '../interfaces/row_data_interfaces'
 //	methods
 import { createElement, createTextElement } from '../../../../../../../global/methods'
-import { formatDate } from './rows'
 
 const createInputRow = (rowData:IPricing):HTMLDivElement => {
 	const selectionRow:HTMLDivElement = createElement({
@@ -94,7 +93,49 @@ const createNumberCont = (ranges:RangeInterface, listener:EventListener):HTMLDiv
 
 	return numberCont;
 }
-const createDeadlineCont = (ranges:RangeInterface, listener:EventListener):HTMLDivElement => {
+/*		Deadline helper methods		*/
+function getMinMaxDates(date:Date) {
+	// Create new Dates that reflect the current time
+	let min = new Date();
+	let max = new Date();
+
+	// Add 1 day to current time for min value
+	let futureMinDateInMs:number = date.getTime() + (1 * 24 * 60 * 60 * 1000);
+	// Add 547.5 days(1.5 * 365) to current time for 1.5 years from current time as the max time
+	let futureMaxDateInMs:number = date.getTime() + (1.5 * 365 * 24 * 60 * 60 * 1000);
+
+	// Set times of min and max dates
+	min.setTime(futureMinDateInMs);
+	max.setTime(futureMaxDateInMs);
+
+	// Return values as an object
+	return [min, max];
+}
+function formatDate(currDate:Date):string {
+	let month:number = currDate.getMonth() + 1;
+	let date:number = currDate.getDate() ;
+	let hours:number = currDate.getHours();
+	let minutes:number = currDate.getMinutes();
+	let seconds:number = currDate.getSeconds();
+	
+	return `${currDate.getFullYear()}-` + 
+	`${month < 10 ? "0" + month : month.toString()}-` + 
+	`${date < 10 ? "0" + date : date.toString()}` + 
+	`T${hours < 10 ? "0" + hours : hours.toString()}:` + 
+	`${minutes < 10 ? "0" + minutes : minutes.toString()}:` + 
+	`${seconds < 10 ? "0" + seconds : seconds.toString()}`;
+}
+function updateTime() {
+	let currTime = new Date();
+	let [minDateNum, maxDateNum] = getMinMaxDates(currTime);
+
+	return {
+		current: formatDate(currTime),
+		min: formatDate(minDateNum),
+		max: formatDate(maxDateNum)
+	}
+}
+const createDeadlineCont = (listener:EventListener):HTMLDivElement => {
 	// Create deadline container
 	const deadlineCont:HTMLDivElement = createElement({
 		className: "deadlineCont"
@@ -107,12 +148,20 @@ const createDeadlineCont = (ranges:RangeInterface, listener:EventListener):HTMLD
 	});
 	// Set type attribute
 	dateElement.setAttribute("type","datetime-local");
-	// Set value attribute as current time
-	let currDate = new Date();
-	dateElement.setAttribute("value", formatDate(currDate));
-	// Set min and max attributes
-	dateElement.setAttribute("min", ranges.min.toString());
-	dateElement.setAttribute("max", ranges.max.toString());
+
+	//		Update value, min and max attributes every second
+	setInterval(() => {
+		// Update current time, minimum and maximum date values
+		let timeConstraints = updateTime();
+
+		// Set value attribute as current time
+		dateElement.setAttribute("value", timeConstraints.current);
+
+		// Set min and max attributes
+		dateElement.setAttribute("min", timeConstraints.min);
+		dateElement.setAttribute("max", timeConstraints.max);
+
+	}, 1000);
 
 	// Add event listener 
 	dateElement.addEventListener("change", listener);
@@ -122,7 +171,7 @@ const createDeadlineCont = (ranges:RangeInterface, listener:EventListener):HTMLD
 
 	return deadlineCont;
 }
-const createEmailCont = () => {
+const createEmailCont = (listener:EventListener) => {
 	// Create container for email input 
 	const emailCont:HTMLDivElement = createElement({
 		className: "emailCont"
@@ -140,10 +189,13 @@ const createEmailCont = () => {
 	// Set placeholder attribute
 	emailElement.setAttribute("placeholder","-Enter Email-");
 
+	// Add event listener
+	emailElement.addEventListener("change", listener);
+
 	// Append email element to email container
 	emailCont.appendChild(emailElement);
 
 	return emailCont;
 }
 
-export { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont }
+export { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont, getMinMaxDates }
