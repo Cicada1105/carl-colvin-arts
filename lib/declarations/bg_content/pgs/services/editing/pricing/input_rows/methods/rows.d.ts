@@ -1,2 +1,3 @@
 declare const createLiteratureRow: () => HTMLDivElement;
-export { createLiteratureRow };
+declare function formatDate(currDate: Date): string;
+export { createLiteratureRow, formatDate };

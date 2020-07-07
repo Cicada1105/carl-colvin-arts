@@ -26,4 +26,11 @@ interface RateInterface {
 	perHour: number;
 	perWord: number;
 }
-export { LiteratureTypeInterface, GenresInterface, EditingTypeInterface, SelectOptionInterface, RateInterface }
+export { 
+	LiteratureTypeInterface, 
+	GenresInterface, 
+	EditingTypeInterface, 
+	EditingRatesInterface, 
+	SelectOptionInterface, 
+	RateInterface 
+}

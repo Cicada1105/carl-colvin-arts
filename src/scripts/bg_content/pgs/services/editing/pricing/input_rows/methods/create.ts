@@ -5,14 +5,16 @@
 //	   local
 import { 
 	EditingPricingRowInterface as IPricing, 
-	EventListener 
+	EventListener,
+	RangeInterface
 } from '../interfaces/misc_interfaces' 
 //	   global
 import { SelectOptionInterface as IOption } from '../interfaces/row_data_interfaces'
 //	methods
 import { createElement, createTextElement } from '../../../../../../../global/methods'
+import { formatDate } from './rows'
 
-const createSelectionRow = (rowData:IPricing,listener:EventListener):HTMLDivElement => {
+const createInputRow = (rowData:IPricing):HTMLDivElement => {
 	const selectionRow:HTMLDivElement = createElement({
 		className: "selectionRow"
 	});
@@ -27,29 +29,21 @@ const createSelectionRow = (rowData:IPricing,listener:EventListener):HTMLDivElem
 		element: "h2",
 		text: rowData.header
 	});
-	// Create select container
-	let rowSelectCont:HTMLDivElement = createSelectCont(rowData.options, listener);
 
-	// Append row marker, header and select container to row container
+	// Append row marker, header and input container to row container
 	selectionRow.appendChild(rowMarker);
 	selectionRow.appendChild(rowHeader);
-	selectionRow.appendChild(rowSelectCont);
+	selectionRow.appendChild(<HTMLDivElement>(rowData.content));
 
 	return selectionRow;
 }
-const createSelectCont = (selectOptions:IOption[], listener:EventListener):HTMLDivElement => {
+const createSelectCont = (options:IOption[], listener:EventListener):HTMLDivElement => {
+	// Create container for select element
 	let selectCont:HTMLDivElement = createElement({
 		className: "selectCont"
 	});
 
-	// Create select element 
-	let selectEl:HTMLSelectElement = createSelectElement(selectOptions, listener);
-	// Append select element to select container
-	selectCont.appendChild(selectEl);
-
-	return selectCont;
-}
-const createSelectElement = (options:IOption[], listener:EventListener):HTMLSelectElement => {
+	// Create select element
 	let select:HTMLSelectElement = createElement({
 		element: "select",
 		className: "selectElement"
@@ -70,7 +64,86 @@ const createSelectElement = (options:IOption[], listener:EventListener):HTMLSele
 	// Add event listener to select element
 	select.addEventListener("change", listener);
 
-	return select;
+	// Append select element to its container
+	selectCont.appendChild(select);
+
+	return selectCont;
+}
+const createNumberCont = (ranges:RangeInterface, listener:EventListener):HTMLDivElement => {
+	// Create container for number input
+	const numberCont:HTMLDivElement = createElement({
+		className: "numberCont"
+	});
+
+	// Create number input element
+	const number:HTMLInputElement = createElement({
+		element: "input",
+		className: "numberElement"
+	});
+	// Set type attribute 
+	number.setAttribute("type", "number");
+	// Set min and max attributes 
+	number.setAttribute("min", ranges.min.toString());
+	number.setAttribute("max", ranges.max.toString());
+
+	// Add event listener to number element
+	number.addEventListener("change", listener);
+
+	// Append number input element to container
+	numberCont.appendChild(number);
+
+	return numberCont;
+}
+const createDeadlineCont = (ranges:RangeInterface, listener:EventListener):HTMLDivElement => {
+	// Create deadline container
+	const deadlineCont:HTMLDivElement = createElement({
+		className: "deadlineCont"
+	});
+
+	// Create date input element 
+	const dateElement:HTMLInputElement = createElement({
+		element: "input",
+		className: "deadlineElement"
+	});
+	// Set type attribute
+	dateElement.setAttribute("type","datetime-local");
+	// Set value attribute as current time
+	let currDate = new Date();
+	dateElement.setAttribute("value", formatDate(currDate));
+	// Set min and max attributes
+	dateElement.setAttribute("min", ranges.min.toString());
+	dateElement.setAttribute("max", ranges.max.toString());
+
+	// Add event listener 
+	dateElement.addEventListener("change", listener);
+
+	// Append input element to container
+	deadlineCont.appendChild(dateElement);
+
+	return deadlineCont;
+}
+const createEmailCont = () => {
+	// Create container for email input 
+	const emailCont:HTMLDivElement = createElement({
+		className: "emailCont"
+	});
+
+	// Create email input element 
+	const emailElement:HTMLInputElement = createElement({
+		element: "input",
+		className: "emailElement"
+	});
+	// Set type attribute
+	emailElement.setAttribute("type","email");
+	// Set required attribute
+	emailElement.setAttribute("required","");
+	// Set placeholder attribute
+	emailElement.setAttribute("placeholder","-Enter Email-");
+
+	// Append email element to email container
+	emailCont.appendChild(emailElement);
+
+	return emailCont;
 }
 
-export { createSelectionRow }
+export { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont }

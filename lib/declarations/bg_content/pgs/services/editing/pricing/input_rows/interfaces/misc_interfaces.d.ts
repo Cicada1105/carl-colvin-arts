@@ -1,7 +1,6 @@
-import { SelectOptionInterface } from './row_data_interfaces';
 interface EditingPricingRowInterface {
     header: string;
-    options: SelectOptionInterface[];
+    content: HTMLDivElement | null;
 }
 interface UserSelectedDataInterface {
     literatureType: string;
@@ -14,4 +13,8 @@ interface UserSelectedDataInterface {
 interface EventListener {
     (event: any): void;
 }
-export { EditingPricingRowInterface, UserSelectedDataInterface, EventListener };
+interface RangeInterface {
+    min: number | string;
+    max: number | string;
+}
+export { EditingPricingRowInterface, UserSelectedDataInterface, EventListener, RangeInterface };
