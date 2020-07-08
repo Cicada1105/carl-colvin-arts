@@ -149,19 +149,16 @@ const createDeadlineCont = (listener:EventListener):HTMLDivElement => {
 	// Set type attribute
 	dateElement.setAttribute("type","datetime-local");
 
-	//		Update value, min and max attributes every second
-	setInterval(() => {
-		// Update current time, minimum and maximum date values
-		let timeConstraints = updateTime();
+	// Update current time, minimum and maximum date values
+	let timeConstraints = updateTime();
 
-		// Set value attribute as current time
-		dateElement.setAttribute("value", timeConstraints.current);
+	// Set value attribute as current time
+	dateElement.setAttribute("value", timeConstraints.current);
 
-		// Set min and max attributes
-		dateElement.setAttribute("min", timeConstraints.min);
-		dateElement.setAttribute("max", timeConstraints.max);
+	// Set min and max attributes
+	dateElement.setAttribute("min", timeConstraints.min);
+	dateElement.setAttribute("max", timeConstraints.max);
 
-	}, 1000);
 
 	// Add event listener 
 	dateElement.addEventListener("change", listener);

@@ -2,8 +2,8 @@
 
 // Imports
 //	classes
-import { Circle } from '../classes/Circle'
-import { Rectangle } from '../classes/Rectangle'
+import { Circle } from '../../progress_bar/classes/Circle'
+import { Rectangle } from '../../progress_bar/classes/Rectangle'
 
 let progressCircles:Array<Circle> = [];
 let progressRectangles:Array<Rectangle> = [];

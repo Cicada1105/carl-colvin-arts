@@ -10,9 +10,8 @@ import { Rectangle } from '../classes/Rectangle'
 //	   dynamic
 import { 
 	progressCircles, 
-	progressRectangles, 
-	currentProgress as currProgress 
-} from '../data/dynamic'
+	progressRectangles 
+} from '../../shared/data/dynamic'
 
 const createCircleCont = (header:string):HTMLDivElement => {
 	let circleCont:HTMLDivElement = createElement({

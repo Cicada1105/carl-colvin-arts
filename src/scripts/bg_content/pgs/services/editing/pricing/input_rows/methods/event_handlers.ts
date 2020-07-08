@@ -3,6 +3,7 @@
 import { RateInterface as IRate } from '../interfaces/row_data_interfaces'
 import { userSelectedData } from '../data/dynamic'
 import { getMinMaxDates } from './create'
+import { Next, Previous } from '../../shared/methods/update_progress'
 
 function LiteratureTypeHandler(event:any) {
 	//	event path holds HTMLCollection hierarchy of elements, starting at the element that fired the event,
@@ -20,10 +21,15 @@ function LiteratureTypeHandler(event:any) {
 		//	one value as long as 'multiple' attribute is omitted
 		userSelectedData.literatureType = event.target.selectedOptions[0].text;
 
+		// Move progress bar
+		Next();
+
 		// Pass child data of selected literature type to display corresponding genres
 		const callbackFunc = this;
 		callbackFunc(selectedLitPos);
 	}
+	else 
+		Previous(0);
 }
 function GenreHandler(event:any) {
 	// Clear child element to allow for child update if it exists
@@ -35,10 +41,15 @@ function GenreHandler(event:any) {
 		//	one value as long as 'multiple' attribute is omitted
 		userSelectedData.genre = event.target.selectedOptions[0].text;
 
+		// Move progress bar
+		Next();
+
 		// Create child element only when value is valid
 		const callbackFunc = this;
 		callbackFunc();
 	}
+	else 
+		Previous(1);
 }
 function EditingHandler(event:any) {
 	// Clear child element to allow for child update if it exists
@@ -52,9 +63,14 @@ function EditingHandler(event:any) {
 		//	one value as long as 'multiple' attribute is omitted
 		userSelectedData.editingType = event.target.selectedOptions[0].text;
 
+		// Move progress bar
+		Next();
+
 		const callbackFunc = this;
 		callbackFunc(selectedEditingTypePos);
 	}
+	else 
+		Previous(2);
 }
 function WordCountHandler(event:any) {
 	// Clear child element to allow for child update if it exists
@@ -81,8 +97,13 @@ function WordCountHandler(event:any) {
 		// 24 hour will be replaced by # of hours Carl logs 
 		currentPricing = currentRate.flatRate ?? (currentRate.perWord * enteredValueNum) + (currentRate.perHour * 24);
 
+		// Move progress bar
+		Next();
+
 		callbackFunc();
 	}
+	else 
+		Previous(3);
 }
 function DeadlineHandler(event:any) {
 	// Clear child element to allow for child update if it exists
@@ -99,11 +120,16 @@ function DeadlineHandler(event:any) {
 		// Store value
 		userSelectedData.deadline = enteredDateStr;
 
+		// Move progress bar
+		Next();
+		
 		let callbackFunc = this;
 		callbackFunc();
 	}
+	else 
+		Previous(4);
 }
-function EmailHandler(event:any) => {
+function EmailHandler(event:any) {
 	// Store user email
 	userSelectedData.email = event.target.value;
 }
