@@ -9,6 +9,7 @@ import { createLiteratureRow } from './rows'
 
 const loadInputRows = ():HTMLDivElement => {
 	let inputRows:HTMLDivElement = createElement({
+		element:"form",
 		idName: "inputRowsCont"
 	});
 
