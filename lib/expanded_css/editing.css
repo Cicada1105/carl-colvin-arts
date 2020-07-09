@@ -161,8 +161,48 @@ button {
 }
 div#inputRowsCont {
   position: relative;
-  width: 100%;
-  z-index: 3;
+  width: 75%;
+  margin: 5rem auto 10rem auto;
+  z-index: 2;
+}
+div.selectionRow {
+  margin-top: 5rem;
+}
+div.selectionRow > i {
+  display: inline;
+  font-size: 1.5rem;
+  color: #de5757;
+}
+div.selectionRow > h2 {
+  display: inline-block;
+  width: 15rem;
+  padding-left: 2.5rem;
+}
+div.selectionRow > div[class$="Cont"] {
+  position: absolute;
+  width: 12.5rem;
+  height: 1.75rem;
+  display: inline;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+div.selectionRow > div[class$="Cont"] > [class$="Element"] {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  font-family: Arial;
+  font-size: 1rem;
+  border-width: 1px;
+  padding: 0px;
+  padding-left: 10px;
+}
+div.selectionRow > div[class$="Cont"] > [class$="Element"]:focus {
+  outline: none;
+}
+div.selectionRow > div[class$="Cont"] > [class="deadlineElement"]::-webkit-calendar-picker-indicator:hover {
+  background-color: #92d3ca;
+  cursor: pointer;
 }
 #footer {
   bottom: 0%;

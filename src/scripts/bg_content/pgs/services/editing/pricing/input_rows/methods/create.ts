@@ -159,7 +159,6 @@ const createDeadlineCont = (listener:EventListener):HTMLDivElement => {
 	dateElement.setAttribute("min", timeConstraints.min);
 	dateElement.setAttribute("max", timeConstraints.max);
 
-
 	// Add event listener 
 	dateElement.addEventListener("change", listener);
 
