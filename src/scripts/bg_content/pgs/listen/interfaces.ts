@@ -1,7 +1,7 @@
 // This file contains the interfaces to be used solely by the listen page
 
 // Imports 
-import { IImage } from '../../../global/interfaces'
+import { IImage } from '../../../global/interfaces/general'
 
 interface MediaInterface {
 	controls: boolean;

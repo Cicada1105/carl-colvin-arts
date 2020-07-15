@@ -1,5 +1,5 @@
 /*
-	Interfaces shared by the entire project
+	General interfaces shared by the entire project
 */
 interface ImageInterface {
 	path:string;
@@ -17,12 +17,17 @@ interface ILink {
 interface IBox {
 	header:string;
 	content:string | any;
-
 }
 interface IBoxLink extends IBox {
 	link:string;
 }
+interface EventListener {
+	(event:any):void;
+}
 
-export { ImageInterface as IImage }
-export { ImageLinkInterface as IImageLink }
-export { ILink, IBox, IBoxLink }
+export { 
+	ImageInterface as IImage,
+	ImageLinkInterface as IImageLink,
+	ILink, IBox, IBoxLink,
+	EventListener
+}

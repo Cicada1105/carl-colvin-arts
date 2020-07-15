@@ -1,5 +1,5 @@
 // Import image interface
-import { IImageLink } from '../global/interfaces'
+import { IImageLink } from '../global/interfaces/general'
 interface ImageInterface {
 	name:string;
 	path:string;

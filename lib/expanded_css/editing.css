@@ -173,10 +173,15 @@ div.selectionRow > i {
   font-size: 1.5rem;
   color: #de5757;
 }
-div.selectionRow > h2 {
-  display: inline-block;
+div.selectionRow > label {
+  position: relative;
   width: 15rem;
+  display: inline-block;
   padding-left: 2.5rem;
+  font-size: 1.25rem;
+  text-align: center;
+  color: #f0edee;
+  font-weight: bold;
 }
 div.selectionRow > div[class$="Cont"] {
   position: absolute;

@@ -3,7 +3,7 @@
 // Imports
 //	interfaces
 import { AudioInterface, VideoInterface } from '../interfaces'
-import { IImage } from '../../../../global/interfaces'
+import { IImage } from '../../../../global/interfaces/general'
 //	methods
 import { createElement, createTextElement, createImageElement } from '../../../../global/methods'
 import { createCustomControls, createMediaElement } from './media_elements'

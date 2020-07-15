@@ -1,21 +1,21 @@
 // Interfaces for the editing page
 
 interface LiteratureTypeInterface {
-	literatureType: SelectOptionInterface;
+	literatureType: OptionInterface;
 	child: GenresInterface;
 }
 interface GenresInterface {
-	genres: SelectOptionInterface[];
+	genres: OptionInterface[];
 	child: EditingTypeInterface[];
 }
 interface EditingTypeInterface {
-	editingType: SelectOptionInterface;
+	editingType: OptionInterface;
 	child: EditingRatesInterface;
 }
 interface EditingRatesInterface {
 	rates: RateInterface[];
 }
-interface SelectOptionInterface {
+interface OptionInterface {
 	display: string;
 	value: string;
 }
@@ -31,6 +31,6 @@ export {
 	GenresInterface, 
 	EditingTypeInterface, 
 	EditingRatesInterface, 
-	SelectOptionInterface, 
+	OptionInterface,
 	RateInterface 
 }

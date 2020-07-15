@@ -9,7 +9,7 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
-[id = "formCont"] {
+form:first-of-type {
 	.format(relative, 54rem); 
 	//background-color:green;
 	margin:8rem auto auto auto;
@@ -21,104 +21,109 @@
 		color:@textColor;
 		text-align: center;
 	}
-
-	[class ^= "input"] { 
+	& > div[id = "inputRowsCont"] {
 		.format(relative, 100%);
-		//background-color:black;
 		margin-top:1.5rem;
 
-		label {
-			.format(relative,30%);
-			//background-color:aqua;
-			display:inline-block;
-			font-size:1.45rem;
-			text-align: right;
-			padding-right:20%;
-			color:@textColor;
-		}
-		[class = "inputCont"] {
-			.format(relative,35%);
-			//background-color:orange;
-			display:inline-block;
-			padding-left:15%;
+		& > div.selectionRow { 
+			.format(inherit, inherit);
+			//background-color:black;
+			margin-top:1.65rem;
 
-			input, select, textarea {
-				.format(relative,10rem,1.25rem);
+			label {
+				.format(relative,30%);
+				//background-color:aqua;
 				display:inline-block;
-				font-size:1rem;
-				border:none;
-				z-index:3;
-				&:focus {
-					outline: none;
+				font-size:1.45rem;
+				text-align: right;
+				padding-right:20%;
+				color:@textColor;
+			}
+			.userInputCont {
+				.format(relative,35%);
+				//background-color:orange;
+				display:inline-block;
+				margin-top: 1.5rem;
+				padding-left:15%;
+
+				input, select, textarea {
+					.format(relative,10rem,1.25rem);
+					display:inline-block;
+					font-size:1rem;
+					border:none;
+					z-index:3;
+					&:focus {
+						outline: none;
+					}
+				}
+				input, textarea {
+					caret-color: @accentColor;
+				}
+				textarea {
+					min-width: 10rem;
+					min-height: 1.25rem;
+					max-width: 75%;
+					max-height:15rem;
+				}
+				[class = "inputAnimation"] {
+					position:absolute;
+					background-color:@accentColor;
+					//display:inline-block;
+					display: none;
+					height:1.375rem;
+					left:30%;
+					top:15%;
+
+					animation-duration:0.5s;
+					animation-timing-function:ease-out;
+					animation-fill-mode:forwards;
+					animation-delay:0s;
+					animation-direction:normal;
+				}
+				[class = "errorMsg"] {
+					display:inline;
+					color:@errorMsgColor;
+					width:fit-content;
+					margin-left:0.75rem;
 				}
 			}
-			input, textarea {
-				caret-color: @accentColor;
-			}
-			textarea {
-				min-width: 10rem;
-				min-height: 1.25rem;
-				max-width: 75%;
-				max-height:15rem;
-			}
-			[class = "inputAnimation"] {
-				position:absolute;
-				background-color:@accentColor;
-				//display:inline-block;
-				display: none;
-				height:1.375rem;
-				left:30%;
-				top:15%;
 
-				animation-duration:0.5s;
-				animation-timing-function:ease-out;
-				animation-fill-mode:forwards;
-				animation-delay:0s;
-				animation-direction:normal;
-			}
-			[class = "errorMsg"] {
-				display:inline;
-				color:@errorMsgColor;
+		}
+		& > div[class = "buttonInput"] {
+			height:2rem;
+			[id = "formMessage"] {
+				color:@textColor;
+				display:block;
+				text-align: center;
 				width:fit-content;
-				margin-left:0.75rem;
+				height:fit-content;
+				margin:auto;
 			}
-		}
-
-	}
-	[class = "buttonInput"] {
-		height:2rem;
-		[id = "formMessage"] {
-			color:@textColor;
-			display:block;
-			text-align: center;
-			width:fit-content;
-			height:fit-content;
-			margin:auto;
-		}
-		[id = "submitBtn"] {
-			background-color:@accentColor;
-			font-size:1rem;
-			border:none;
-			color:@textColor;
-			border-radius:5px;
-			display:block;
-			padding:10px 40px;
-			margin:2rem auto 1rem auto;
-		}
-		[id = "sending_img"] {
-			display:block;
-			margin:1.5rem auto 0.5rem auto;
-			width:7rem;
-			height:4rem;
-		}
-		input[type="submit"] {
-			&:focus {
-				outline: 0;
-				background-color: @buttonHoverColor;
+			[id = "submitBtn"] {
+				background-color:@accentColor;
+				font-size:1rem;
+				border:none;
+				color:@textColor;
+				border-radius:5px;
+				display:block;
+				padding:10px 40px;
+				margin:2rem auto 1rem auto;
 			}
-			&:hover {
-				background-color:@buttonHoverColor;
-				cursor:pointer;	
+			[id = "sending_img"] {
+				display:block;
+				margin:1.5rem auto 0.5rem auto;
+				width:7rem;
+				height:4rem;
+			}
+			input[type="submit"] {
+				&:focus {
+					outline: 0;
+					background-color: @buttonHoverColor;
+				}
+				&:hover {
+					background-color:@buttonHoverColor;
+					cursor:pointer;	
+				}
 			}
 		}
 	}

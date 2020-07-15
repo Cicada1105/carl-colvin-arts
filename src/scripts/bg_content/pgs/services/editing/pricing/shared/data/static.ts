@@ -1,12 +1,33 @@
 // Static data stored for the editing page
 
-const HEADERS:string[] = [
-	"Type of Literature",
-	"Genre",
-	"Type of Editing",
-	"Word Count",
-	"Deadline",
-	"Contact Email"
+// Imports
+import { ILabel } from '../../../../../../../global/interfaces/inputs'
+
+const LABELS:ILabel[] = [
+	{
+		text: "Type of Literature",
+		for: "literature"
+	},
+	{
+		text: "Genre",
+		for: "genre"
+	},
+	{
+		text: "Type of Editing",
+		for: "editing"
+	},
+	{
+		text: "Word Count",
+		for: "count"
+	},
+	{
+		text: "Deadline",
+		for: "deadline"
+	},
+	{
+		text: "Contact Email",
+		for: "email"
+	}
 ];
 
-export { HEADERS }
+export { LABELS }

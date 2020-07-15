@@ -1,6 +1,6 @@
 // Imports
 import { TabInterface, ReedPricingInterface } from './interfaces'
-import { IBox } from '../../../../global/interfaces'
+import { IBox } from '../../../../global/interfaces/general'
 
 const introData:IBox[] = [
 	{

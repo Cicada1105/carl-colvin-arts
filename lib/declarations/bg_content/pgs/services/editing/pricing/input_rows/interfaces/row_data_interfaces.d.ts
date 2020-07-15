@@ -1,19 +1,19 @@
 interface LiteratureTypeInterface {
-    literatureType: SelectOptionInterface;
+    literatureType: OptionInterface;
     child: GenresInterface;
 }
 interface GenresInterface {
-    genres: SelectOptionInterface[];
+    genres: OptionInterface[];
     child: EditingTypeInterface[];
 }
 interface EditingTypeInterface {
-    editingType: SelectOptionInterface;
+    editingType: OptionInterface;
     child: EditingRatesInterface;
 }
 interface EditingRatesInterface {
     rates: RateInterface[];
 }
-interface SelectOptionInterface {
+interface OptionInterface {
     display: string;
     value: string;
 }
@@ -24,4 +24,4 @@ interface RateInterface {
     perHour: number;
     perWord: number;
 }
-export { LiteratureTypeInterface, GenresInterface, EditingTypeInterface, EditingRatesInterface, SelectOptionInterface, RateInterface };
+export { LiteratureTypeInterface, GenresInterface, EditingTypeInterface, EditingRatesInterface, OptionInterface, RateInterface };

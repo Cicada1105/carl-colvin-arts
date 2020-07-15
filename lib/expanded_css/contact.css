@@ -167,25 +167,30 @@ body {
   z-index: 1;
   top: 0%;
 }
-[id="formCont"] {
+form:first-of-type {
   position: relative;
   width: 54rem;
   margin: 8rem auto auto auto;
   z-index: 2;
 }
-[id="formCont"] h1:first-child {
+form:first-of-type h1:first-child {
   position: relative;
   width: 100%;
   font-size: 2.5rem;
   color: #f0edee;
   text-align: center;
 }
-[id="formCont"] [class^="input"] {
+form:first-of-type > div[id="inputRowsCont"] {
   position: relative;
   width: 100%;
   margin-top: 1.5rem;
 }
-[id="formCont"] [class^="input"] label {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow {
+  position: inherit;
+  width: inherit;
+  margin-top: 1.65rem;
+}
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow label {
   position: relative;
   width: 30%;
   display: inline-block;
@@ -194,15 +199,16 @@ body {
   padding-right: 20%;
   color: #f0edee;
 }
-[id="formCont"] [class^="input"] [class="inputCont"] {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont {
   position: relative;
   width: 35%;
   display: inline-block;
+  margin-top: 1.5rem;
   padding-left: 15%;
 }
-[id="formCont"] [class^="input"] [class="inputCont"] input,
-[id="formCont"] [class^="input"] [class="inputCont"] select,
-[id="formCont"] [class^="input"] [class="inputCont"] textarea {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont input,
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont select,
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont textarea {
   position: relative;
   width: 10rem;
   height: 1.25rem;
@@ -211,22 +217,22 @@ body {
   border: none;
   z-index: 3;
 }
-[id="formCont"] [class^="input"] [class="inputCont"] input:focus,
-[id="formCont"] [class^="input"] [class="inputCont"] select:focus,
-[id="formCont"] [class^="input"] [class="inputCont"] textarea:focus {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont input:focus,
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont select:focus,
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont textarea:focus {
   outline: none;
 }
-[id="formCont"] [class^="input"] [class="inputCont"] input,
-[id="formCont"] [class^="input"] [class="inputCont"] textarea {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont input,
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont textarea {
   caret-color: #de5757;
 }
-[id="formCont"] [class^="input"] [class="inputCont"] textarea {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont textarea {
   min-width: 10rem;
   min-height: 1.25rem;
   max-width: 75%;
   max-height: 15rem;
 }
-[id="formCont"] [class^="input"] [class="inputCont"] [class="inputAnimation"] {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont [class="inputAnimation"] {
   position: absolute;
   background-color: #de5757;
   display: none;
@@ -239,16 +245,16 @@ body {
   animation-delay: 0s;
   animation-direction: normal;
 }
-[id="formCont"] [class^="input"] [class="inputCont"] [class="errorMsg"] {
+form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont [class="errorMsg"] {
   display: inline;
   color: #ff3838;
   width: fit-content;
   margin-left: 0.75rem;
 }
-[id="formCont"] [class="buttonInput"] {
+form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] {
   height: 2rem;
 }
-[id="formCont"] [class="buttonInput"] [id="formMessage"] {
+form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] [id="formMessage"] {
   color: #f0edee;
   display: block;
   text-align: center;
@@ -256,7 +262,7 @@ body {
   height: fit-content;
   margin: auto;
 }
-[id="formCont"] [class="buttonInput"] [id="submitBtn"] {
+form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] [id="submitBtn"] {
   background-color: #de5757;
   font-size: 1rem;
   border: none;
@@ -266,17 +272,17 @@ body {
   padding: 10px 40px;
   margin: 2rem auto 1rem auto;
 }
-[id="formCont"] [class="buttonInput"] [id="sending_img"] {
+form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] [id="sending_img"] {
   display: block;
   margin: 1.5rem auto 0.5rem auto;
   width: 7rem;
   height: 4rem;
 }
-[id="formCont"] [class="buttonInput"] input[type="submit"]:focus {
+form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] input[type="submit"]:focus {
   outline: 0;
   background-color: #a21616;
 }
-[id="formCont"] [class="buttonInput"] input[type="submit"]:hover {
+form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] input[type="submit"]:hover {
   background-color: #a21616;
   cursor: pointer;
 }

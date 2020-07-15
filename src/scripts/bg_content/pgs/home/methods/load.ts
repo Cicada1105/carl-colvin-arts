@@ -3,7 +3,7 @@
 */
 // Imports
 //	interfaces
-import { IBox } from '../../../../global/interfaces'
+import { IBox } from '../../../../global/interfaces/general'
 import { ICollage } from '../interfaces'
 //	methods
 import { createElement, createImageElement } from '../../../../global/methods'

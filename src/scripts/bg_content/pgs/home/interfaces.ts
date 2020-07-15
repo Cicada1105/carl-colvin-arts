@@ -1,6 +1,6 @@
 // Interfaces that only pertain to the home page
 
-import { IImage, IBox } from '../../../global/interfaces'
+import { IImage, IBox } from '../../../global/interfaces/general'
 
 interface ICollage extends IImage {
 	idName:string;

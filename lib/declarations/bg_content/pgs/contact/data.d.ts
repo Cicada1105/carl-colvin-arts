@@ -1,3 +1,3 @@
-import { IForm } from './interfaces/specific_input';
+import { IForm } from './interfaces';
 declare const formData: IForm;
 export { formData };

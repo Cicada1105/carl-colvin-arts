@@ -1,4 +1,4 @@
-import { IImage } from '../../../../global/interfaces';
+import { IImage } from '../../../../global/interfaces/general';
 interface ImageHeaderInterface {
     data: string;
     image: IImage;

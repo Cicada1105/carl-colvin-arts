@@ -1,5 +1,5 @@
 // Imports
-import { ILink } from '../global/interfaces'
+import { ILink } from '../global/interfaces/general'
 
 // Use during development
 const isHomePage:boolean = window.location.pathname.includes("index");

@@ -1,7 +1,7 @@
 // Imports
 //  interfaces
 //		global
-import { IBox } from '../../../../global/interfaces'
+import { IBox } from '../../../../global/interfaces/general'
 //	methods
 //		global
 import { createElement } from '../../../../global/methods'

@@ -1,2 +1,2 @@
-declare const createCircleCont: (header: string) => HTMLDivElement;
+declare const createCircleCont: (label: string) => HTMLDivElement;
 export { createCircleCont };

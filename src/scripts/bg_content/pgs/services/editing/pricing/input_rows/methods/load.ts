@@ -1,8 +1,6 @@
 // Methods specific to the pricing input section
 
 // Imports
-//	interfaces
-import { EditingPricingRowInterface as IPricingRow } from '../interfaces/misc_interfaces'
 //	methods
 import { createElement } from '../../../../../../../global/methods'
 import { createLiteratureRow } from './rows'

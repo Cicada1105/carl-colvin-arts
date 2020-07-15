@@ -1,5 +1,5 @@
 // Imports
-import { IImage } from '../global/interfaces'
+import { IImage } from '../global/interfaces/general'
 
 // Use for development
 const isHomePage:boolean = window.location.pathname.includes("index");

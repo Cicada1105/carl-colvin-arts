@@ -18,6 +18,7 @@ interface IBox {
 interface IBoxLink extends IBox {
     link: string;
 }
-export { ImageInterface as IImage };
-export { ImageLinkInterface as IImageLink };
-export { ILink, IBox, IBoxLink };
+interface EventListener {
+    (event: any): void;
+}
+export { ImageInterface as IImage, ImageLinkInterface as IImageLink, ILink, IBox, IBoxLink, EventListener };

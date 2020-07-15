@@ -3,7 +3,7 @@
 // Imports
 //	data
 //	   static
-import { HEADERS } from '../../shared/data/static'
+import { LABELS } from '../../shared/data/static'
 //	   dynamic
 import { 
 	progressCircles, 
@@ -20,14 +20,14 @@ const loadProgressBar = ():HTMLDivElement => {
 		idName: "progressCont"
 	});
 
-	HEADERS.forEach((header, i) => {
-		let circleCont:HTMLDivElement = createCircleCont(header);
+	LABELS.forEach((label, i) => {
+		let circleCont:HTMLDivElement = createCircleCont(label.text);
 
 		// First circle will always be filled in
 		if (i == 0) 
 			progressCircles[0].fill();
 		// Remove last square container 
-		if (i == (HEADERS.length - 1)) {
+		if (i == (LABELS.length - 1)) {
 			let lastRectCont:HTMLDivElement = <HTMLDivElement>circleCont.lastElementChild;
 			lastRectCont.remove();
 			// Pop rectangle off of stack

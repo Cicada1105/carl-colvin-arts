@@ -4,16 +4,19 @@
 //	interfaces
 //	   local
 import { 
-	EditingPricingRowInterface as IPricing, 
-	EventListener,
-	RangeInterface
-} from '../interfaces/misc_interfaces' 
-//	   global
-import { SelectOptionInterface as IOption } from '../interfaces/row_data_interfaces'
+	EventListener
+} from '../../../../../../../global/interfaces/general' 
+import { 
+	IInputRow, ISelect, IRange,
+	GenericInputInterface as IGenericInput
+} from '../../../../../../../global/interfaces/inputs'
 //	methods
-import { createElement, createTextElement } from '../../../../../../../global/methods'
+import { 
+	createElement, createTextElement, 
+	createLabelElement, createSelectElement 
+} from '../../../../../../../global/methods'
 
-const createInputRow = (rowData:IPricing):HTMLDivElement => {
+const createInputRow = (rowData:IInputRow):HTMLDivElement => {
 	const selectionRow:HTMLDivElement = createElement({
 		className: "selectionRow"
 	});
@@ -23,41 +26,32 @@ const createInputRow = (rowData:IPricing):HTMLDivElement => {
 		element: "i",
 		className: "fas fa-chevron-right"
 	});
-	// Create header
-	let rowHeader:HTMLHeadingElement = createTextElement({
-		element: "h2",
-		text: rowData.header
+
+	// Create label 
+	let rowLabel:HTMLLabelElement = createLabelElement({
+		text: rowData.label.text,
+		forIn: rowData.label.for
 	});
 
-	// Append row marker, header and input container to row container
+	// Append row marker, label and input container to row container
 	selectionRow.appendChild(rowMarker);
-	selectionRow.appendChild(rowHeader);
+	selectionRow.appendChild(rowLabel);
 	selectionRow.appendChild(<HTMLDivElement>(rowData.content));
 
 	return selectionRow;
 }
-const createSelectCont = (options:IOption[], listener:EventListener):HTMLDivElement => {
+const createSelectCont = (optionsIn:IGenericInput<ISelect>, listener:EventListener):HTMLDivElement => {
 	// Create container for select element
 	let selectCont:HTMLDivElement = createElement({
-		className: "selectCont"
+		className: "userInputCont",
+		idName: "selectCont"
 	});
 
 	// Create select element
-	let select:HTMLSelectElement = createElement({
-		element: "select",
-		className: "selectElement"
-	});
-
-	options.forEach((option) => {
-		// Create new option element 
-		let optionEl:HTMLOptionElement = createTextElement({
-			element: "option",
-			text: option.display
-		});
-		// Add value attribute to option tag
-		optionEl.setAttribute("value",option.value);
-		// Append option element to select tag
-		select.appendChild(optionEl);
+	let select:HTMLSelectElement = createSelectElement({
+		options:optionsIn.data.options,
+		className: "selectElement",
+		idName: optionsIn.id
 	});
 
 	// Add event listener to select element
@@ -68,22 +62,24 @@ const createSelectCont = (options:IOption[], listener:EventListener):HTMLDivElem
 
 	return selectCont;
 }
-const createNumberCont = (ranges:RangeInterface, listener:EventListener):HTMLDivElement => {
+const createNumberCont = (ranges:IGenericInput<IRange>, listener:EventListener):HTMLDivElement => {
 	// Create container for number input
 	const numberCont:HTMLDivElement = createElement({
-		className: "numberCont"
+		className: "userInputCont",
+		idName: "numberCont"
 	});
 
 	// Create number input element
 	const number:HTMLInputElement = createElement({
 		element: "input",
-		className: "numberElement"
+		className: "numberElement",
+		idName: ranges.id
 	});
 	// Set type attribute 
 	number.setAttribute("type", "number");
 	// Set min and max attributes 
-	number.setAttribute("min", ranges.min.toString());
-	number.setAttribute("max", ranges.max.toString());
+	number.setAttribute("min", ranges.data.min.toString());
+	number.setAttribute("max", ranges.data.max.toString());
 
 	// Add event listener to number element
 	number.addEventListener("change", listener);
@@ -135,16 +131,18 @@ function updateTime() {
 		max: formatDate(maxDateNum)
 	}
 }
-const createDeadlineCont = (listener:EventListener):HTMLDivElement => {
+const createDeadlineCont = (data:IGenericInput<null>,listener:EventListener):HTMLDivElement => {
 	// Create deadline container
 	const deadlineCont:HTMLDivElement = createElement({
-		className: "deadlineCont"
+		className: "userInputCont",
+		idName: "deadlineCont"
 	});
 
 	// Create date input element 
 	const dateElement:HTMLInputElement = createElement({
 		element: "input",
-		className: "deadlineElement"
+		className: "deadlineElement",
+		idName: data.id
 	});
 	// Set type attribute
 	dateElement.setAttribute("type","datetime-local");
@@ -167,16 +165,18 @@ const createDeadlineCont = (listener:EventListener):HTMLDivElement => {
 
 	return deadlineCont;
 }
-const createEmailCont = (listener:EventListener) => {
+const createEmailCont = (data:IGenericInput<null>, listener:EventListener) => {
 	// Create container for email input 
 	const emailCont:HTMLDivElement = createElement({
-		className: "emailCont"
+		className: "userInputCont",
+		idName: "emailCont"
 	});
 
 	// Create email input element 
 	const emailElement:HTMLInputElement = createElement({
 		element: "input",
-		className: "emailElement"
+		className: "emailElement",
+		idName: data.id
 	});
 	// Set type attribute
 	emailElement.setAttribute("type","email");

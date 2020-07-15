@@ -1,4 +1,4 @@
-import { IImage, IBoxLink } from '../../../global/interfaces';
+import { IImage, IBoxLink } from '../../../global/interfaces/general';
 interface IRow {
     infoData: IBoxLink;
     imgData: IImage;

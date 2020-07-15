@@ -14,7 +14,7 @@ function LiteratureTypeHandler(event:any) {
 	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
 
 	// Display next row if current selection is not default option
-	if (event.target.value !== "select") {
+	if (event.target.value !== "none") {
 		// Get indexed location of selected value minus 1 (to remove default value) to get access to child data
 		let selectedLitPos:number = event.target.selectedIndex - 1;
 		// Store value -> HTMLCollection of selectedOptions will only hold 
@@ -36,7 +36,7 @@ function GenreHandler(event:any) {
 	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
 
 	// Display next row if current selection is not default option
-	if (event.target.value !== "select") {
+	if (event.target.value !== "none") {
 		// Store value -> HTMLCollection of selectedOptions will only hold 
 		//	one value as long as 'multiple' attribute is omitted
 		userSelectedData.genre = event.target.selectedOptions[0].text;
@@ -56,7 +56,7 @@ function EditingHandler(event:any) {
 	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
 
 	// Display next row if current selection is not default option
-	if (event.target.value !== "select") {
+	if (event.target.value !== "none") {
 		// Get indexed location of selected value minus 1 (to remove default value) to get access to child data
 		let selectedEditingTypePos:number = event.target.selectedIndex - 1;
 		// Store value -> HTMLCollection of selectedOptions will only hold 

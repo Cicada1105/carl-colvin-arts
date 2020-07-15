@@ -1,6 +1,6 @@
 // Improts
 // global
-import { IImageLink } from '../global/interfaces'
+import { IImageLink } from '../global/interfaces/general'
 import { createElement, createImageElement } from '../global/methods'
 // local
 import { data as images } from './data'

@@ -1,7 +1,7 @@
 // Interfaces specific to performance page
 
 // Import from global interface
-import { IImage } from '../../../../global/interfaces'
+import { IImage } from '../../../../global/interfaces/general'
 
 interface ImageHeaderInterface {
 	data:string;

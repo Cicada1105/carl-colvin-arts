@@ -13,14 +13,14 @@ import {
 	progressRectangles 
 } from '../../shared/data/dynamic'
 
-const createCircleCont = (header:string):HTMLDivElement => {
+const createCircleCont = (label:string):HTMLDivElement => {
 	let circleCont:HTMLDivElement = createElement({
 		className: "circleCont"
 	});
 
-	let label:HTMLSpanElement = createTextElement({
+	let header:HTMLSpanElement = createTextElement({
 		element: "p",
-		text: header,
+		text: label,
 		className: "circleHeader"
 	});
 
@@ -34,7 +34,7 @@ const createCircleCont = (header:string):HTMLDivElement => {
 	let rectangleProgressCont:HTMLDivElement = createRectCont();
 
 	// Append circle, rectangle container and label to circle container
-	circleCont.appendChild(label);
+	circleCont.appendChild(header);
 	circleCont.appendChild(circle.canvas);
 	circleCont.appendChild(rectangleProgressCont);
 

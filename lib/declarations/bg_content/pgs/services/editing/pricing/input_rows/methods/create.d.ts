@@ -1,9 +1,9 @@
-import { EditingPricingRowInterface as IPricing, EventListener, RangeInterface } from '../interfaces/misc_interfaces';
-import { SelectOptionInterface as IOption } from '../interfaces/row_data_interfaces';
-declare const createInputRow: (rowData: IPricing) => HTMLDivElement;
-declare const createSelectCont: (options: IOption[], listener: EventListener) => HTMLDivElement;
-declare const createNumberCont: (ranges: RangeInterface, listener: EventListener) => HTMLDivElement;
+import { EventListener } from '../../../../../../../global/interfaces/general';
+import { IInputRow, ISelect, IRange, GenericInputInterface as IGenericInput } from '../../../../../../../global/interfaces/inputs';
+declare const createInputRow: (rowData: IInputRow) => HTMLDivElement;
+declare const createSelectCont: (optionsIn: IGenericInput<ISelect>, listener: EventListener) => HTMLDivElement;
+declare const createNumberCont: (ranges: IGenericInput<IRange>, listener: EventListener) => HTMLDivElement;
 declare function getMinMaxDates(date: Date): Date[];
-declare const createDeadlineCont: (listener: EventListener) => HTMLDivElement;
-declare const createEmailCont: (listener: EventListener) => HTMLDivElement;
+declare const createDeadlineCont: (data: IGenericInput<null>, listener: EventListener) => HTMLDivElement;
+declare const createEmailCont: (data: IGenericInput<null>, listener: EventListener) => HTMLDivElement;
 export { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont, getMinMaxDates };

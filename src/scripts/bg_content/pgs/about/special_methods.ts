@@ -3,7 +3,7 @@
 
 // Imports
 // interfaces
-import { IImage, IBoxLink } from '../../../global/interfaces'
+import { IImage, IBoxLink } from '../../../global/interfaces/general'
 // methods
 import { createElement, createTextElement, createImageElement } from '../../../global/methods'
 
