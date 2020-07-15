@@ -22,7 +22,7 @@ function LiteratureTypeHandler(event:any) {
 		userSelectedData.literatureType = event.target.selectedOptions[0].text;
 
 		// Move progress bar
-		Next();
+		Next(1);
 
 		// Pass child data of selected literature type to display corresponding genres
 		const callbackFunc = this;
@@ -42,7 +42,7 @@ function GenreHandler(event:any) {
 		userSelectedData.genre = event.target.selectedOptions[0].text;
 
 		// Move progress bar
-		Next();
+		Next(2);
 
 		// Create child element only when value is valid
 		const callbackFunc = this;
@@ -64,7 +64,7 @@ function EditingHandler(event:any) {
 		userSelectedData.editingType = event.target.selectedOptions[0].text;
 
 		// Move progress bar
-		Next();
+		Next(3);
 
 		const callbackFunc = this;
 		callbackFunc(selectedEditingTypePos);
@@ -98,7 +98,7 @@ function WordCountHandler(event:any) {
 		currentPricing = currentRate.flatRate ?? (currentRate.perWord * enteredValueNum) + (currentRate.perHour * 24);
 
 		// Move progress bar
-		Next();
+		Next(4);
 
 		callbackFunc();
 	}
@@ -121,7 +121,7 @@ function DeadlineHandler(event:any) {
 		userSelectedData.deadline = enteredDateStr;
 
 		// Move progress bar
-		Next();
+		Next(5);
 		
 		let callbackFunc = this;
 		callbackFunc();

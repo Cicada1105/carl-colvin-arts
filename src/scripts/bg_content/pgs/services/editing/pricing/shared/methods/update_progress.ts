@@ -8,12 +8,16 @@ import {
 } from '../data/dynamic'
 
 let pos:number = currPos;
-const Next = () => {
-	if (pos < (circles.length - 1)) {
+const Next = (goToPos:number) => {
+	if (goToPos === pos)
+		return;
+	else if (goToPos === (pos + 1)) {
 		rectangles[pos].fill();
 		pos++;
 		circles[pos].fill();
 	}
+	else if (pos > goToPos)
+		Previous(goToPos);
 }
 
 const Previous = (goToPos:number) => {
