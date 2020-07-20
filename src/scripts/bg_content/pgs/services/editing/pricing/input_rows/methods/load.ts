@@ -11,6 +11,9 @@ const loadInputRows = ():HTMLDivElement => {
 		idName: "inputRowsCont"
 	});
 
+	// Form attributes
+	inputRows.setAttribute("method","POST");
+
 	// Initiate creation of input rows
 	let initialRow:HTMLDivElement = createLiteratureRow();
 	// Append rows to container

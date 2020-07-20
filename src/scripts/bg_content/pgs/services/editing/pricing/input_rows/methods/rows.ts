@@ -18,9 +18,9 @@ import {
 } from '../interfaces/row_data_interfaces'
 //	methods
 //	   local
-import { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont } from './create'
+import { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont, createSubmitRow } from './create'
 //	Event handler
-import { LiteratureTypeHandler, GenreHandler, EditingHandler, WordCountHandler, DeadlineHandler, EmailHandler } from './event_handlers'
+import { LiteratureTypeHandler, GenreHandler, EditingHandler, WordCountHandler, DeadlineHandler, EmailHandler, SubmitHandler } from './event_handlers'
 
 const createLiteratureRow = ():HTMLDivElement => {
 	let litOptions:IOption[] = [];
@@ -172,10 +172,17 @@ const createDeadlineRow = ():HTMLDivElement => {
 	return deadlineRow;
 }
 const createContactEmailRow = ():HTMLDivElement => {
+	const childRowCallback = () => {
+		// Button child element 
+		let childElement:HTMLDivElement = createSubmitBtn();
+		// Append child element to parent
+		emailRow.appendChild(childElement);
+	}
+
 	let emailCont:HTMLDivElement = createEmailCont({
 		id: "email",
 		data: null
-	},EmailHandler);
+	},EmailHandler.bind(childRowCallback));
 
 	// Load emailRow
 	let emailRow:HTMLDivElement = createInputRow({
@@ -184,6 +191,11 @@ const createContactEmailRow = ():HTMLDivElement => {
 	});
 
 	return emailRow;
+}
+const createSubmitBtn = ():HTMLDivElement => {
+	let submitRow:HTMLDivElement = createSubmitRow(SubmitHandler);
+
+	return submitRow;
 }
 
 export { createLiteratureRow }

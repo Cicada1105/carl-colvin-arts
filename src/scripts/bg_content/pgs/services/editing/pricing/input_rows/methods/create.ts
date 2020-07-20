@@ -165,7 +165,7 @@ const createDeadlineCont = (data:IGenericInput<null>,listener:EventListener):HTM
 
 	return deadlineCont;
 }
-const createEmailCont = (data:IGenericInput<null>, listener:EventListener) => {
+const createEmailCont = (data:IGenericInput<null>, listener:EventListener):HTMLDivElement => {
 	// Create container for email input 
 	const emailCont:HTMLDivElement = createElement({
 		className: "userInputCont",
@@ -193,5 +193,52 @@ const createEmailCont = (data:IGenericInput<null>, listener:EventListener) => {
 
 	return emailCont;
 }
+const createSubmitRow = (listener:EventListener):HTMLDivElement => {
+	// Create container row for submit container
+	const submitRow:HTMLDivElement = createElement({
+		className: "submitRow"
+	});
 
-export { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont, getMinMaxDates }
+	// Create container for submit button
+	let submitCont:HTMLDivElement = createElement({
+		className: "userInputCont",
+		idName: "submitCont"
+	});
+
+	// Create button element for submit button
+	let submitBtn:HTMLInputElement = createElement({
+		element:"input",
+		idName:"submitBtn"
+	});
+	// Set type attribute
+	submitBtn.setAttribute("type","button");
+	submitBtn.setAttribute("value", "Submit");
+
+	// Add event listener to handle submitting form 
+	submitBtn.addEventListener("click",listener);
+	/*submitBtn.addEventListener("click",(event:any) => {
+		submitForm(event);
+	});*/
+	
+	// Create container to be used to display messages about the form status
+	let msgCont:HTMLSpanElement = createElement({
+		element:"span",
+		idName:"formMessage"
+	});
+
+	// Append submit button and message container to container
+	submitCont.appendChild(submitBtn);
+	submitCont.appendChild(msgCont);
+
+	// Append submit container to submit row
+	submitRow.appendChild(submitCont);
+
+	return submitRow;
+}
+
+export { 
+	createInputRow, createSelectCont, 
+	createNumberCont, createDeadlineCont, 
+	createEmailCont, getMinMaxDates, 
+	createSubmitRow
+}

@@ -6,4 +6,5 @@ declare const createNumberCont: (ranges: IGenericInput<IRange>, listener: EventL
 declare function getMinMaxDates(date: Date): Date[];
 declare const createDeadlineCont: (data: IGenericInput<null>, listener: EventListener) => HTMLDivElement;
 declare const createEmailCont: (data: IGenericInput<null>, listener: EventListener) => HTMLDivElement;
-export { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont, getMinMaxDates };
+declare const createSubmitRow: (listener: EventListener) => HTMLDivElement;
+export { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont, getMinMaxDates, createSubmitRow };

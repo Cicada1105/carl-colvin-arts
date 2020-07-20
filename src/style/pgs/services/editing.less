@@ -86,7 +86,7 @@ form#inputRowsCont {
 	margin:5rem auto 10rem auto;
 	z-index:2;
 }
-div.selectionRow {
+div[class $= "Row"] {
 	margin-top: 5rem;
 
 	& > i {
@@ -111,17 +111,66 @@ div.selectionRow {
 		transform: translateX(-50%);
 
 		& > [class $= "Element"] {
-			.format(relative, inherit, inherit);
-			font-family: Arial;
+			.inputMixin(inherit);
+		}
+		& > input[type="datetime-local"] {
+			.inputMixin(initial)
+		}
+	}
+}
+.inputMixin(@width) {
+	.format(relative, @width, inherit);
+	font-family: Arial;
+	font-size:1rem;
+	border-width:1px;
+	padding:0px;
+	padding-left: 10px;
+
+	&:focus {
+		outline: none;
+	}
+}
+// Submit container needs to be given explicit height
+.submitRow {
+	height:5rem;
+
+	#submitCont {
+		height:inherit;
+		width:8.1rem;
+
+		#sending_img {
+			display:block;
+			margin-top:-13px;
+			width:7rem;
+		}
+		#formMessage {
+			position: absolute;
+			color:@textColor;
+			text-align: center;
+			width:100%;
+			bottom:0;
+			left:50%;
+			transform: translateX(-50%);
+		}
+		input[type = "button"] {
+			background-color:@accentColor;
 			font-size:1rem;
-			border-width:1px;
-			padding:0px;
-			padding-left: 10px;
+			border:none;
+			color:@textColor;
+			border-radius:5px;
+			display:block;
+			padding:10px 40px;
 
 			&:focus {
-				outline: none;
+				outline: 0;
+				background-color: @buttonHoverColor;
+			}
+			&:hover {
+				background-color:@buttonHoverColor;
+				cursor:pointer;	
 			}
 		}
 	}
 }
+
 #globalNS > .social();

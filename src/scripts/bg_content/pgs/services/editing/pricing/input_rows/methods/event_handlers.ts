@@ -130,8 +130,48 @@ function DeadlineHandler(event:any) {
 		Previous(4);
 }
 function EmailHandler(event:any) {
-	// Store user email
-	userSelectedData.email = event.target.value;
+	// Clear child element to allow for child update if it exists
+	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
+
+	if (event.target.value !== "") {
+		// Store user email
+		userSelectedData.email = event.target.value;
+		console.log(userSelectedData);
+		let callbackFunc = this;
+		callbackFunc();
+	}
+}
+function SubmitHandler(event:any) {
+	console.log(event);
+	// Store button to be replaced by sending image
+	let submitBtn:HTMLInputElement = event.path[0];
+	// Store message container to be used to update user
+	let msg:HTMLSpanElement = <HTMLSpanElement>submitBtn.nextElementSibling;
+	// Store parent in order to replace child element 
+	let parent:HTMLDivElement = event.path[1];
+
+	// Create iamge node to replace button
+	let sendingImg:HTMLImageElement = document.createElement("img");
+	// Set attributes
+	sendingImg.setAttribute("src","../../resources/pg_imgs/contact_imgs/sending_envelope.png");
+	sendingImg.setAttribute("id","sending_img");
+
+	// Replace button with sending image
+	parent.replaceChild(sendingImg, submitBtn);
+	// Update message 
+	msg.innerHTML = "Sending...";
+
+	// Imitate process of waiting
+	setTimeout(() => {
+		// Notify user that message has been sent
+		msg.innerHTML = "Message Sent!";
+		// Replace sending image with button
+		parent.replaceChild(submitBtn, sendingImg);
+	},2000);
+	// After a few seconds, return message to original empty state
+	setTimeout(() => {
+		msg.innerHTML = "";
+	},4000);
 }
 
 export { 
@@ -140,5 +180,6 @@ export {
 	EditingHandler,
 	WordCountHandler,
 	DeadlineHandler,
-	EmailHandler
+	EmailHandler,
+	SubmitHandler
 }

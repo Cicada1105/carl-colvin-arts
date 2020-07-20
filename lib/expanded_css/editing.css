@@ -165,15 +165,15 @@ form#inputRowsCont {
   margin: 5rem auto 10rem auto;
   z-index: 2;
 }
-div.selectionRow {
+div[class$="Row"] {
   margin-top: 5rem;
 }
-div.selectionRow > i {
+div[class$="Row"] > i {
   display: inline;
   font-size: 1.5rem;
   color: #de5757;
 }
-div.selectionRow > label {
+div[class$="Row"] > label {
   position: relative;
   width: 15rem;
   display: inline-block;
@@ -183,7 +183,7 @@ div.selectionRow > label {
   color: #f0edee;
   font-weight: bold;
 }
-div.selectionRow > div[class$="Cont"] {
+div[class$="Row"] > div[class$="Cont"] {
   position: absolute;
   width: 12.5rem;
   height: 1.75rem;
@@ -192,7 +192,7 @@ div.selectionRow > div[class$="Cont"] {
   left: 50%;
   transform: translateX(-50%);
 }
-div.selectionRow > div[class$="Cont"] > [class$="Element"] {
+div[class$="Row"] > div[class$="Cont"] > [class$="Element"] {
   position: relative;
   width: inherit;
   height: inherit;
@@ -202,8 +202,59 @@ div.selectionRow > div[class$="Cont"] > [class$="Element"] {
   padding: 0px;
   padding-left: 10px;
 }
-div.selectionRow > div[class$="Cont"] > [class$="Element"]:focus {
+div[class$="Row"] > div[class$="Cont"] > [class$="Element"]:focus {
   outline: none;
+}
+div[class$="Row"] > div[class$="Cont"] > input[type="datetime-local"] {
+  position: relative;
+  width: initial;
+  height: inherit;
+  font-family: Arial;
+  font-size: 1rem;
+  border-width: 1px;
+  padding: 0px;
+  padding-left: 10px;
+}
+div[class$="Row"] > div[class$="Cont"] > input[type="datetime-local"]:focus {
+  outline: none;
+}
+.submitRow {
+  height: 5rem;
+}
+.submitRow #submitCont {
+  height: inherit;
+  width: 8.1rem;
+}
+.submitRow #submitCont #sending_img {
+  display: block;
+  margin-top: -13px;
+  width: 7rem;
+}
+.submitRow #submitCont #formMessage {
+  position: absolute;
+  color: #f0edee;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.submitRow #submitCont input[type="button"] {
+  background-color: #de5757;
+  font-size: 1rem;
+  border: none;
+  color: #f0edee;
+  border-radius: 5px;
+  display: block;
+  padding: 10px 40px;
+}
+.submitRow #submitCont input[type="button"]:focus {
+  outline: 0;
+  background-color: #a21616;
+}
+.submitRow #submitCont input[type="button"]:hover {
+  background-color: #a21616;
+  cursor: pointer;
 }
 #footer {
   bottom: 0%;
