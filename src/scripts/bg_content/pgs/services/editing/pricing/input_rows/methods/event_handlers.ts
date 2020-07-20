@@ -92,10 +92,10 @@ function WordCountHandler(event:any) {
 
 		// Store current pricing
 		let currentRate:IRate = rates[wordCountPos];
-		let currentPricing:number;
-		// If there's a flat rate, $$/word and $$/hour are not included
-		// 24 hour will be replaced by # of hours Carl logs 
-		currentPricing = currentRate.flatRate ?? (currentRate.perWord * enteredValueNum) + (currentRate.perHour * 24);
+		// Store pricing to user data
+		currentRate.flatRate && (userSelectedData.pricing.flatRate = currentRate.flatRate);
+		userSelectedData.pricing.perWord = currentRate.perWord;
+		userSelectedData.pricing.perHour = currentRate.perHour;
 
 		// Move progress bar
 		Next(4);
@@ -136,13 +136,12 @@ function EmailHandler(event:any) {
 	if (event.target.value !== "") {
 		// Store user email
 		userSelectedData.email = event.target.value;
-		console.log(userSelectedData);
+
 		let callbackFunc = this;
 		callbackFunc();
 	}
 }
 function SubmitHandler(event:any) {
-	console.log(event);
 	// Store button to be replaced by sending image
 	let submitBtn:HTMLInputElement = event.path[0];
 	// Store message container to be used to update user
@@ -150,28 +149,36 @@ function SubmitHandler(event:any) {
 	// Store parent in order to replace child element 
 	let parent:HTMLDivElement = event.path[1];
 
-	// Create iamge node to replace button
-	let sendingImg:HTMLImageElement = document.createElement("img");
-	// Set attributes
-	sendingImg.setAttribute("src","../../resources/pg_imgs/contact_imgs/sending_envelope.png");
-	sendingImg.setAttribute("id","sending_img");
+	let currentPricing:string;
+	// If there's a flat rate, $$/word and $$/hour are not included
+	// 24 hour will be replaced by # of hours Carl logs 
+	currentPricing = userSelectedData.pricing.flatRate === 0 ? `$${userSelectedData.pricing.perWord * userSelectedData.wordCount} + $${userSelectedData.pricing.perHour}/hour` : `$${userSelectedData.pricing.flatRate} flat rate`;
 
-	// Replace button with sending image
-	parent.replaceChild(sendingImg, submitBtn);
-	// Update message 
-	msg.innerHTML = "Sending...";
+	if (confirm(`Your pricing will be: ${currentPricing}\nDo you wish to continue?`)) {
+		// Create iamge node to replace button
+		let sendingImg:HTMLImageElement = document.createElement("img");
+		// Set attributes
+		sendingImg.setAttribute("src","../../resources/pg_imgs/contact_imgs/sending_envelope.png");
+		sendingImg.setAttribute("id","sending_img");
 
-	// Imitate process of waiting
-	setTimeout(() => {
-		// Notify user that message has been sent
-		msg.innerHTML = "Message Sent!";
-		// Replace sending image with button
-		parent.replaceChild(submitBtn, sendingImg);
-	},2000);
-	// After a few seconds, return message to original empty state
-	setTimeout(() => {
-		msg.innerHTML = "";
-	},4000);
+		// Replace button with sending image
+		parent.replaceChild(sendingImg, submitBtn);
+		// Update message 
+		msg.innerHTML = "Sending...";
+
+		// Imitate process of waiting
+		setTimeout(() => {
+			// Notify user that message has been sent
+			msg.innerHTML = "Message Sent!";
+			// Replace sending image with button
+			parent.replaceChild(submitBtn, sendingImg);
+		},2000);
+		// After a few seconds, return message to original empty state
+		setTimeout(() => {
+			let callbackFunc = this;
+			callbackFunc();
+		},5000);
+	}
 }
 
 export { 

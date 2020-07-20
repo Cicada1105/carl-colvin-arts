@@ -193,7 +193,15 @@ const createContactEmailRow = ():HTMLDivElement => {
 	return emailRow;
 }
 const createSubmitBtn = ():HTMLDivElement => {
-	let submitRow:HTMLDivElement = createSubmitRow(SubmitHandler);
+	const childRowCallback = () => {
+		// Clear form and return to beginning
+		let litInput:HTMLSelectElement = <HTMLSelectElement>document.getElementById("literature");
+		let changeEvent = new Event("change");
+		litInput.value = "none";
+		litInput.dispatchEvent(changeEvent);
+	}
+
+	let submitRow:HTMLDivElement = createSubmitRow(SubmitHandler.bind(childRowCallback));
 
 	return submitRow;
 }

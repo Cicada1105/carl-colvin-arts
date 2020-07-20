@@ -5,5 +5,10 @@ interface UserSelectedDataInterface {
     wordCount: number;
     deadline?: string;
     email: string;
+    pricing: {
+        flatRate?: number;
+        perWord: number;
+        perHour: number;
+    };
 }
 export { UserSelectedDataInterface };

@@ -11,7 +11,12 @@ let userSelectedData:IUserData = {
 	editingType: "",
 	wordCount: 0,
 	deadline: "",
-	email: ""
+	email: "",
+	pricing: {
+		flatRate:0,
+		perWord:0,
+		perHour:0
+	}
 }
 
 export { userSelectedData }
