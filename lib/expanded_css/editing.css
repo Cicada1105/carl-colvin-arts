@@ -138,9 +138,9 @@ div#progressCont > div.circleCont > canvas.progressCircle {
 div#progressCont > div.circleCont > div.rectCont {
   position: absolute;
   width: 8rem;
-  height: 2.5rem;
+  height: 1.5rem;
   left: 3.5rem;
-  bottom: 0rem;
+  bottom: 0.5rem;
   z-index: 0;
 }
 div#progressCont > div.circleCont > div.rectCont > canvas {
@@ -151,9 +151,9 @@ div#progressCont > div.circleCont > div.rectCont > canvas {
 div#progressCont > div.circleCont > div.rectCont > div.whiteProgressRect {
   position: absolute;
   width: inherit;
-  height: 0.8rem;
+  height: 0.5rem;
   background-color: white;
-  margin-top: 0.85rem;
+  margin-top: 0.5rem;
 }
 button {
   position: relative;
