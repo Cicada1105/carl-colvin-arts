@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import "../../global/keyframes.less";
 @import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
 
@@ -19,7 +20,7 @@ h2 {
 		margin-top:5rem;
 		font-size:2rem;
 	}
-	&#pricingHeader {
+	&#pricingHeader, &#pricingChartHeader {
 		margin-top:3.5rem;
 		font-size: 1.65rem;
 	}
@@ -38,6 +39,171 @@ hr {
 	.format(relative, 75%);
 	margin-top: 2.5rem;
 	border: 1px solid @accentColor;
+}
+div#pricingChartCont {
+	.format(relative,90%);
+	margin:auto;
+	margin-top:2.5rem;
+	z-index: 1;
+
+	& > div#selectionsCont {
+		.format(relative,50%);
+		display:inline-block;
+
+		& > div.selectionCont {
+			.format(relative,100%,15rem);
+
+			& > .selectionHeader {
+				.format(relative,100%);
+				text-align:left;
+				text-indent:6.5rem;
+				padding-bottom:1rem;
+			}
+			& > div[class $= "Row"] {
+				.format(relative,80%);
+				text-align: center;
+				margin:auto;
+				margin-bottom:2.5rem;
+
+				&:hover {
+					cursor: pointer;
+				}
+				& > input[type="radio"] {
+				  visibility:hidden;
+
+				  	&:checked + label + div.customRadioBtnCont {
+
+				  		& > span.innerCircle {
+					  		background-color:white;	
+				  		}
+				  		& > span.rotatingWhitePiece {
+							animation-name: circle;
+				  		}
+				  		& > span.whitePieceMask {
+							transform:rotateZ(45deg);	
+				  		}
+				  		& > span.whiteFiller {
+							border-top: 2px solid white;
+							border-right: 2px solid white;
+							border-bottom: 2px solid white;
+							border-left: 2px solid white;
+				  		}
+				  	}
+				}
+				& > label {
+					margin-left:-2rem;
+					width: 20rem;
+					z-index:1;
+					&:hover {
+						cursor:pointer;
+					}
+
+					/*	White inner small circle	*/
+					& + div.customRadioBtnCont {
+						position:absolute;
+						display:inline-block;
+						border: 2px solid rgba(222, 87, 87, 1);
+						border-radius: 50%;
+					    left:8.2rem;
+					    width:18px;
+					    height:18px;
+
+						& > span.innerCircle {
+							position:absolute;
+						    left:4px;
+						    top:4px;
+							display:inline-block;
+						    margin-right:20px;
+						    width:10px;
+						    height:10px;
+						    content:"";
+	    					border-radius: 50%;
+						}
+						& > span.rotatingWhitePiece {
+							position:absolute;
+						    left:-2px;
+						    top:-2px;
+							display:inline-block;
+						    visibility:visible;
+						    margin-right:20px;
+						    width:18px;
+						    height:18px;
+						    content:"";
+						    animation-duration: 1s;
+						    animation-iteration-count:1;
+						    animation-timing-function:linear;
+						    border: 2px solid rgba(222,87,87,0);
+						    border-radius: 50%;
+						}
+				    	/*	Red slice acting as initial mask for white slice 	*/
+						& > span.whitePieceMask {
+							display:inline-block;
+						    position:absolute;
+						    content:"";
+						    left:-2px;
+						    top:-2px;
+						    width: inherit;
+						    height: inherit;
+						    transform:rotateZ(-45deg);
+						    border: 2px solid rgba(255,255,255,0);
+						    border-top: 2px solid #de5757;
+						    border-radius: 50%;
+						    transition:transform 0.25s linear 0.75s;
+						}
+				    	/*	White solid border that displays after white single border has rotated passed position: */
+				    	// Possibly changed whiteFiller from transition to animation to change fill mode
+						& > span.whiteFiller {	
+							display:inline-block;
+						    position:absolute;
+						    content:"";
+						    margin-right:20px;
+						    left:-2px;
+						    top:-2px;
+						    width:inherit;
+						    height:inherit;
+						    transform: rotateZ(45deg);
+						    border: 2px solid rgba(222,87,87,0);
+						    border-radius: 50%;
+						    transition:border-top 0s linear 0.25s, border-right 0s linear 0.5s, border-bottom 0s linear 0.75s, border-left 0s linear 1s;
+						}
+					}
+				}
+			}
+		}
+	}
+	& > div#chartCont {
+		.format(relative,45%,inherit);
+		display:inline-block;
+		float:right;
+		top:0;
+
+		/*  Chart table   */
+		& > table {
+			.format(relative,35rem);
+			margin:auto;
+			margin-top:1rem;
+			color:white;
+			border-collapse:collapse;
+
+			thead, tbody {
+				width: inherit;
+			}
+			& th {
+				border-bottom:3px solid @accentColor;
+				font-size:1.45rem;
+				text-align:center;
+				padding-top:1rem;
+				padding-bottom:0.75rem;
+				width:33.33%;
+			}
+			& td {
+				text-align:center;
+				font-size:1.2rem;
+				padding-top:1rem;
+				padding-bottom:0.75rem;
+			}
+		}
+	}
 }
 div#progressCont {
 	.format(relative, 60rem, 7rem);

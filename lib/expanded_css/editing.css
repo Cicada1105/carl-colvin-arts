@@ -1,3 +1,106 @@
+@keyframes plusMinus {
+  0% {
+    clip-path: polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
+  }
+  100% {
+    clip-path: polygon(5% 40%, 40% 40%, 45% 40%, 60% 40%, 65% 40%, 95% 40%, 95% 60%, 60% 60%, 55% 60%, 40% 60%, 35% 60%, 5% 60%);
+  }
+}
+@keyframes minusPlus {
+  0% {
+    clip-path: polygon(5% 40%, 40% 40%, 45% 40%, 60% 40%, 65% 40%, 95% 40%, 95% 60%, 60% 60%, 55% 60%, 40% 60%, 35% 60%, 5% 60%);
+  }
+  100% {
+    clip-path: polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
+  }
+}
+/*		Dropdown		*/
+@keyframes dropdownOpen {
+  0% {
+    display: none;
+    height: 0rem;
+  }
+  100% {
+    display: block;
+    height: 17rem;
+  }
+}
+@keyframes dropdownClose {
+  0% {
+    display: block;
+    height: 17rem;
+  }
+  100% {
+    display: none;
+    height: 0rem;
+  }
+}
+/*		Dropdown Paragraphs		*/
+@keyframes dropdownPOpen {
+  from {
+    visibility: hidden;
+    padding: 0rem 5%;
+  }
+  to {
+    visibility: visible;
+    padding: 1rem 5%;
+  }
+}
+@keyframes dropdownPClose {
+  from {
+    visibility: visible;
+    padding: 1rem 5%;
+  }
+  to {
+    visibility: hidden;
+    padding: 0rem 5%;
+  }
+}
+/*		Performance Page 	*/
+@keyframes curtainOpen {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 5%;
+  }
+}
+@keyframes curtainClose {
+  from {
+    width: 5%;
+  }
+  to {
+    width: 100%;
+  }
+}
+/*		Editing Page 		*/
+@keyframes circle {
+  0% {
+    transform: rotateZ(-45deg);
+    border-top: 2px solid white;
+  }
+  100% {
+    transform: rotateZ(315deg);
+    border-top: 2px solid white;
+  }
+}
+/*		Contact Page 		*/
+@keyframes inputFocus {
+  from {
+    width: 0rem;
+  }
+  to {
+    width: 10.125rem;
+  }
+}
+@keyframes inputUnfocus {
+  from {
+    width: 10.125rem;
+  }
+  to {
+    width: 0rem;
+  }
+}
 #header,
 #footer {
   position: fixed;width: 100%;height: 2.75rem;background-color: #0c090a;font-size: 1.5rem;filter: opacity(70%);z-index: 2;
@@ -87,7 +190,8 @@ h2#pageHeader {
   margin-top: 5rem;
   font-size: 2rem;
 }
-h2#pricingHeader {
+h2#pricingHeader,
+h2#pricingChartHeader {
   margin-top: 3.5rem;
   font-size: 1.65rem;
 }
@@ -106,6 +210,168 @@ hr {
   width: 75%;
   margin-top: 2.5rem;
   border: 1px solid #de5757;
+}
+div#pricingChartCont {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  margin-top: 2.5rem;
+  z-index: 1;
+}
+div#pricingChartCont > div#selectionsCont {
+  position: relative;
+  width: 50%;
+  display: inline-block;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont {
+  position: relative;
+  width: 100%;
+  height: 15rem;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > .selectionHeader {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  text-indent: 6.5rem;
+  padding-bottom: 1rem;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] {
+  position: relative;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 2.5rem;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"]:hover {
+  cursor: pointer;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > input[type="radio"] {
+  visibility: hidden;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > input[type="radio"]:checked + label + div.customRadioBtnCont > span.innerCircle {
+  background-color: white;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > input[type="radio"]:checked + label + div.customRadioBtnCont > span.rotatingWhitePiece {
+  animation-name: circle;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > input[type="radio"]:checked + label + div.customRadioBtnCont > span.whitePieceMask {
+  transform: rotateZ(45deg);
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > input[type="radio"]:checked + label + div.customRadioBtnCont > span.whiteFiller {
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label {
+  margin-left: -2rem;
+  width: 20rem;
+  z-index: 1;
+  /*	White inner small circle	*/
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label:hover {
+  cursor: pointer;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label + div.customRadioBtnCont {
+  position: absolute;
+  display: inline-block;
+  border: 2px solid #de5757;
+  border-radius: 50%;
+  left: 8.2rem;
+  width: 18px;
+  height: 18px;
+  /*	Red slice acting as initial mask for white slice 	*/
+  /*	White solid border that displays after white single border has rotated passed position: */
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label + div.customRadioBtnCont > span.innerCircle {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  display: inline-block;
+  margin-right: 20px;
+  width: 10px;
+  height: 10px;
+  content: "";
+  border-radius: 50%;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label + div.customRadioBtnCont > span.rotatingWhitePiece {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  display: inline-block;
+  visibility: visible;
+  margin-right: 20px;
+  width: 18px;
+  height: 18px;
+  content: "";
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  border: 2px solid rgba(222, 87, 87, 0);
+  border-radius: 50%;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label + div.customRadioBtnCont > span.whitePieceMask {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  left: -2px;
+  top: -2px;
+  width: inherit;
+  height: inherit;
+  transform: rotateZ(-45deg);
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-top: 2px solid #de5757;
+  border-radius: 50%;
+  transition: transform 0.25s linear 0.75s;
+}
+div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label + div.customRadioBtnCont > span.whiteFiller {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  margin-right: 20px;
+  left: -2px;
+  top: -2px;
+  width: inherit;
+  height: inherit;
+  transform: rotateZ(45deg);
+  border: 2px solid rgba(222, 87, 87, 0);
+  border-radius: 50%;
+  transition: border-top 0s linear 0.25s, border-right 0s linear 0.5s, border-bottom 0s linear 0.75s, border-left 0s linear 1s;
+}
+div#pricingChartCont > div#chartCont {
+  position: relative;
+  width: 45%;
+  height: inherit;
+  display: inline-block;
+  float: right;
+  top: 0;
+  /*  Chart table   */
+}
+div#pricingChartCont > div#chartCont > table {
+  position: relative;
+  width: 35rem;
+  margin: auto;
+  margin-top: 1rem;
+  color: white;
+  border-collapse: collapse;
+}
+div#pricingChartCont > div#chartCont > table thead,
+div#pricingChartCont > div#chartCont > table tbody {
+  width: inherit;
+}
+div#pricingChartCont > div#chartCont > table th {
+  border-bottom: 3px solid #de5757;
+  font-size: 1.45rem;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 0.75rem;
+  width: 33.33%;
+}
+div#pricingChartCont > div#chartCont > table td {
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 1rem;
+  padding-bottom: 0.75rem;
 }
 div#progressCont {
   position: relative;

@@ -73,6 +73,17 @@
     width: 100%;
   }
 }
+/*		Editing Page 		*/
+@keyframes circle {
+  0% {
+    transform: rotateZ(-45deg);
+    border-top: 2px solid white;
+  }
+  100% {
+    transform: rotateZ(315deg);
+    border-top: 2px solid white;
+  }
+}
 /*		Contact Page 		*/
 @keyframes inputFocus {
   from {

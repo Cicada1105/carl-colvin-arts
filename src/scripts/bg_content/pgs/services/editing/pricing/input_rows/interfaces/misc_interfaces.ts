@@ -1,7 +1,5 @@
 // Interfaces for the input rows
 
-import { RateInterface } from './row_data_interfaces';
-
 interface UserSelectedDataInterface {
 	literatureType: string;
 	genre: string;

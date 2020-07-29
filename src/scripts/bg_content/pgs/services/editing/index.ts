@@ -1,6 +1,7 @@
 // Imports
 //	methods
 //	   local
+import { loadPricingChart } from './pricing_chart/index'
 import { loadPricing } from './pricing/index'
 import { loadIntro } from './intro/index'
 //	   global
@@ -11,6 +12,8 @@ const loadEditingPage = ():void => {
 	loadBootstrap();
 	// Load intro paragraph
 	loadIntro();
+	// Load pricing chart info
+	loadPricingChart();
 	// Load pricing info
 	loadPricing();
 }

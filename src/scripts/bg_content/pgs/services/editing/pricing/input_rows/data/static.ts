@@ -6,37 +6,37 @@ import { LiteratureTypeInterface } from '../interfaces/row_data_interfaces'
 
 const literatureRatesSelections:Array<LiteratureTypeInterface> = [
 	{
-		"literatureType": {
-			"display": "Poetry",
-			"value": "poetry"
+		literatureType: {
+			display: "Poetry",
+			value: "poetry"
 		},
-		"child": {
-			"genres": [
+		child: {
+			genres: [
 				{
-					"display": "Genre 1",
-					"value": "genre1"
+					display: "Genre 1",
+					value: "genre1"
 				},
 				{
-					"display": "Genre 2",
-					"value": "genre2"
+					display: "Genre 2",
+					value: "genre2"
 				},
 				{
-					"display": "Genre 3",
-					"value": "genre3"
+					display: "Genre 3",
+					value: "genre3"
 				},
 				{
-					"display": "Genre 4",
-					"value": "genre4"
+					display: "Genre 4",
+					value: "genre4"
 				}
 			],
-			"child": [
+			child: [
 				{
-					"editingType": {
-						"display": "Standard Proofreading",
-						"value": "standard"
+					editingType: {
+						display: "Standard Proofreading",
+						value: "standard"
 					},
-					"child": {
-						"rates": [
+					child: {
+						rates: [
 							{
 								min: 0,
 								max: 500,
@@ -59,12 +59,12 @@ const literatureRatesSelections:Array<LiteratureTypeInterface> = [
 					}	
 				},
 				{
-					"editingType": {
-						"display": "Developmental Editing",
-						"value": "developmental"
+					editingType: {
+						display: "Developmental Editing",
+						value: "developmental"
 					},
-					"child": {
-						"rates": [
+					child: {
+						rates: [
 							{
 								min: 0,
 								max: 500,
@@ -87,12 +87,12 @@ const literatureRatesSelections:Array<LiteratureTypeInterface> = [
 					}
 				},
 				{
-					"editingType": {
-						"display": "Both",
-						"value": "both"
+					editingType: {
+						display: "Both",
+						value: "both"
 					},
-					"child": {
-						"rates": [
+					child: {
+						rates: [
 							{
 								min: 0,
 								max: 500,
@@ -118,37 +118,37 @@ const literatureRatesSelections:Array<LiteratureTypeInterface> = [
 		}
 	},
 	{
-		"literatureType": {
-			"display": "Prose",
-			"value": "prose"
+		literatureType: {
+			display: "Prose",
+			value: "prose"
 		},
-		"child": {
-			"genres": [
+		child: {
+			genres: [
 				{
-					"display": "Genre 1",
-					"value": "genre1"
+					display: "Genre 1",
+					value: "genre1"
 				},
 				{
-					"display": "Genre 2",
-					"value": "genre2"
+					display: "Genre 2",
+					value: "genre2"
 				},
 				{
-					"display": "Genre 3",
-					"value": "genre3"
+					display: "Genre 3",
+					value: "genre3"
 				},
 				{
-					"display": "Genre 4",
-					"value": "genre4"
+					display: "Genre 4",
+					value: "genre4"
 				}
 			],
-			"child": [
+			child: [
 				{
-					"editingType": {
-						"display": "Standard Proofreading",
-						"value": "standard"
+					editingType: {
+						display: "Standard Proofreading",
+						value: "standard"
 					},
-					"child": {
-						"rates": [
+					child: {
+						rates: [
 							{
 								min: 0,
 								max: 1999,
@@ -204,12 +204,12 @@ const literatureRatesSelections:Array<LiteratureTypeInterface> = [
 					}
 				},
 				{
-					"editingType": {
-						"display": "Developmental Editing",
-						"value": "developmental"
+					editingType: {
+						display: "Developmental Editing",
+						value: "developmental"
 					},
-					"child": {
-						"rates": [
+					child: {
+						rates: [
 							{
 								min: 0,
 								max: 1999,
@@ -259,12 +259,12 @@ const literatureRatesSelections:Array<LiteratureTypeInterface> = [
 					}
 				},
 				{
-					"editingType": {
-						"display": "Both",
-						"value": "both"
+					editingType: {
+						display: "Both",
+						value: "both"
 					},
-					"child": {
-						"rates": [
+					child: {
+						rates: [
 							{
 								min: 0,
 								max: 1999,
