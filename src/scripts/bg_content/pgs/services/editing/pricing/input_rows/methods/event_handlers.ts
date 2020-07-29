@@ -152,7 +152,7 @@ function SubmitHandler(event:any) {
 	let currentPricing:string;
 	// If there's a flat rate, $$/word and $$/hour are not included
 	// 24 hour will be replaced by # of hours Carl logs 
-	currentPricing = userSelectedData.pricing.flatRate === 0 ? `$${userSelectedData.pricing.perWord * userSelectedData.wordCount} + $${userSelectedData.pricing.perHour}/hour` : `$${userSelectedData.pricing.flatRate} flat rate`;
+	currentPricing = userSelectedData.pricing.flatRate !== 0 ? `$${userSelectedData.pricing.flatRate} flat rate` : ((userSelectedData.pricing.perWord !== 0 ? `$${userSelectedData.pricing.perWord * userSelectedData.wordCount} + ` : ``) + `$${userSelectedData.pricing.perHour}/hour`);
 
 	if (confirm(`Your pricing will be: ${currentPricing}\nDo you wish to continue?`)) {
 		// Create iamge node to replace button
