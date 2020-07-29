@@ -154,7 +154,13 @@ function SubmitHandler(event:any) {
 	// 24 hour will be replaced by # of hours Carl logs 
 	currentPricing = userSelectedData.pricing.flatRate !== 0 ? `$${userSelectedData.pricing.flatRate} flat rate` : ((userSelectedData.pricing.perWord !== 0 ? `$${userSelectedData.pricing.perWord * userSelectedData.wordCount} + ` : ``) + `$${userSelectedData.pricing.perHour}/hour`);
 
-	if (confirm(`Your pricing will be: ${currentPricing}\nDo you wish to continue?`)) {
+	let pricingStr:string = `Your pricing will be: ${currentPricing}\nDo you wish to continue?\n\n`;
+	let formulaStr:string = "*Formula calculated by one of the following:\n" +
+							"$$/hour\n" + 
+							"($$/word * # of words) + $$/hour\n" + 
+							"$$ flat rate";
+
+	if (confirm(pricingStr.concat(formulaStr))) {
 		// Create iamge node to replace button
 		let sendingImg:HTMLImageElement = document.createElement("img");
 		// Set attributes
