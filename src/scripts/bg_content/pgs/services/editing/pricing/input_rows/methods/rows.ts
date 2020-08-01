@@ -30,9 +30,10 @@ const createLiteratureRow = ():HTMLDivElement => {
 		litOptions.push(<IOption>litSelection.literatureType);
 	});
 
+	let childElement:HTMLDivElement | null = null;
 	// Define "callback" function for event handler once selected value position has been obtained
 	const childRowCallback = (childPos:number) => {
-		let childElement:HTMLDivElement = createGenreRow(<IGenres>(litSelections[childPos].child));
+		childElement = createGenreRow(<IGenres>(litSelections[childPos].child));
 		literatureRow.appendChild(childElement);
 	}
 
@@ -55,12 +56,12 @@ const createLiteratureRow = ():HTMLDivElement => {
 	return literatureRow;
 }
 const createGenreRow = (genreData:IGenres):HTMLDivElement => {
-
+	let childElement:HTMLDivElement | null = null;
 	// Define "callback" function for event handler once selected value position has been obtained
 	const childRowCallback = () => {
 		// Pass child data of selected literature type to display corresponding editing types
 		//	Store return value as child element
-		let childElement:HTMLDivElement = createEditingRow(<IEditingType[]>(genreData.child));
+		childElement = createEditingRow(<IEditingType[]>(genreData.child));
 		// Append childElement to parent element
 		genreRow.appendChild(childElement);
 	}
@@ -88,11 +89,12 @@ const createEditingRow = (editingData:IEditingType[]):HTMLDivElement => {
 		editingOptions.push(type.editingType);
 	});
 
+	let childElement:HTMLDivElement | null = null;
 	// Define "callback" function for event handler once selected value position has been obtained
 	const childRowCallback = (childPos:number) => {
 		// Pass child data of selected literature type to display corresponding genres 
 		//	Store return value as child element
-		let childElement:HTMLDivElement = createWordCountRow(<IRate[]>(editingData[childPos].child.rates));
+		childElement = createWordCountRow(<IRate[]>(editingData[childPos].child.rates));
 		// Append childElement to parent element
 		editingTypeRow.appendChild(childElement);
 	}
@@ -157,6 +159,10 @@ const createDeadlineRow = ():HTMLDivElement => {
 		let childElement:HTMLDivElement = createContactEmailRow();
 		// Append child element to parent
 		deadlineRow.appendChild(childElement);	
+		// Focus on email input
+		let emailInputCont:HTMLDivElement = <HTMLDivElement>childElement.lastElementChild;
+		let emailInput:HTMLInputElement = <HTMLInputElement>emailInputCont.firstElementChild;
+		emailInput.focus();
 	}
 	// Create date container with listener
 	let deadlineCont:HTMLDivElement = createDeadlineCont({
@@ -177,6 +183,10 @@ const createContactEmailRow = ():HTMLDivElement => {
 		let childElement:HTMLDivElement = createSubmitBtn();
 		// Append child element to parent
 		emailRow.appendChild(childElement);
+		// Focus on submit button
+		let submitInputCont:HTMLDivElement = <HTMLDivElement>childElement.lastElementChild;
+		let submitBtn:HTMLInputElement = <HTMLInputElement>submitInputCont.firstElementChild;
+		submitBtn.focus();
 	}
 
 	let emailCont:HTMLDivElement = createEmailCont({

@@ -5,13 +5,13 @@ import { userSelectedData } from '../data/dynamic'
 import { getMinMaxDates } from './create'
 import { Next, Previous } from '../../shared/methods/update_progress'
 
-function LiteratureTypeHandler(event:any) {
+function LiteratureTypeHandler(event:any):void {
 	//	event path holds HTMLCollection hierarchy of elements, starting at the element that fired the event,
 	//	of each parent until the last parent, window, is reached
 	//		-path[1] holds the container of the input
 	//		-nextElementSibling returns the possible child element
 	// Clear child element to allow for child update if it exists
-	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
+	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
 
 	// Display next row if current selection is not default option
 	if (event.target.value !== "none") {
@@ -27,13 +27,14 @@ function LiteratureTypeHandler(event:any) {
 		// Pass child data of selected literature type to display corresponding genres
 		const callbackFunc = this;
 		callbackFunc(selectedLitPos);
+		//that.callback(selectedLitPos);
 	}
 	else 
 		Previous(0);
 }
 function GenreHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
+	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
 
 	// Display next row if current selection is not default option
 	if (event.target.value !== "none") {
@@ -53,7 +54,7 @@ function GenreHandler(event:any) {
 }
 function EditingHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
+	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
 
 	// Display next row if current selection is not default option
 	if (event.target.value !== "none") {
@@ -74,7 +75,7 @@ function EditingHandler(event:any) {
 }
 function WordCountHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
+	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
 
 	let enteredValueStr:string = event.target.value;
 	let enteredValueNum:number = parseInt(enteredValueStr);
@@ -107,7 +108,7 @@ function WordCountHandler(event:any) {
 }
 function DeadlineHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
+	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
 
 	// Get value entered in by user through datetime-local input
 	let enteredDateStr:string = event.target.value;
@@ -120,6 +121,9 @@ function DeadlineHandler(event:any) {
 		// Store value
 		userSelectedData.deadline = enteredDateStr;
 
+		// Blur deadline input to make smoother UX
+		event.path[0].blur();
+
 		// Move progress bar
 		Next(5);
 		
@@ -131,14 +135,17 @@ function DeadlineHandler(event:any) {
 }
 function EmailHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	((event.path[1].nextElementSibling) !== null) && (<HTMLDivElement>event.path[1].nextElementSibling).remove();
+	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
 
-	if (event.target.value !== "") {
-		// Store user email
-		userSelectedData.email = event.target.value;
+	// Check if keyboard input and charCode is enter key: 13
+	if (((event.type === "keypress") && (event.charCode === 13)) || event.type === "change") {
+		if (event.target.value !== "") {
+			// Store user email
+			userSelectedData.email = event.target.value;
 
-		let callbackFunc = this;
-		callbackFunc();
+			let callbackFunc = this;
+			callbackFunc();
+		}	
 	}
 }
 function SubmitHandler(event:any) {
@@ -155,9 +162,9 @@ function SubmitHandler(event:any) {
 	currentPricing = userSelectedData.pricing.flatRate !== 0 ? `$${userSelectedData.pricing.flatRate} flat rate` : ((userSelectedData.pricing.perWord !== 0 ? `$${userSelectedData.pricing.perWord * userSelectedData.wordCount} + ` : ``) + `$${userSelectedData.pricing.perHour}/hour`);
 
 	let pricingStr:string = `Your pricing will be: ${currentPricing}\nDo you wish to continue?\n\n`;
-	let formulaStr:string = "*Formula calculated by one of the following:\n" +
-							"$$/hour\n" + 
+	let formulaStr:string = "*Formula calculated by:\n" +
 							"($$/word * # of words) + $$/hour\n" + 
+							"-or-\n" + 
 							"$$ flat rate";
 
 	if (confirm(pricingStr.concat(formulaStr))) {

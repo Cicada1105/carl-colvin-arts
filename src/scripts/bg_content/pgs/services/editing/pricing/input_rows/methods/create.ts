@@ -158,7 +158,7 @@ const createDeadlineCont = (data:IGenericInput<null>,listener:EventListener):HTM
 	dateElement.setAttribute("max", timeConstraints.max);
 
 	// Add event listener 
-	dateElement.addEventListener("change", listener);
+	dateElement.addEventListener("input", listener);
 
 	// Append input element to container
 	deadlineCont.appendChild(dateElement);
@@ -184,9 +184,15 @@ const createEmailCont = (data:IGenericInput<null>, listener:EventListener):HTMLD
 	emailElement.setAttribute("required","");
 	// Set placeholder attribute
 	emailElement.setAttribute("placeholder","-Enter Email-");
-
-	// Add event listener
-	emailElement.addEventListener("change", listener);
+	
+	// Add event listeners
+	//	only add event listeners to email input after it has been focus and remove after single use
+	//	note: user can either select outside of input field or press enter to attempt to move to submit
+	emailElement.addEventListener("focus", () => {
+		console.log("Email input focused");
+		emailElement.addEventListener("change", listener, { once: true });
+		emailElement.addEventListener("keypress", listener, { once: true });	
+	});
 
 	// Append email element to email container
 	emailCont.appendChild(emailElement);
