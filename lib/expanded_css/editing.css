@@ -485,7 +485,7 @@ div[class$="Row"] > div[class$="Cont"] > input[type="datetime-local"]:focus {
   outline: none;
 }
 .submitRow {
-  height: 5rem;
+  height: 8rem;
 }
 .submitRow #submitCont {
   height: inherit;
@@ -521,6 +521,22 @@ div[class$="Row"] > div[class$="Cont"] > input[type="datetime-local"]:focus {
 .submitRow #submitCont input[type="button"]:hover {
   background-color: #a21616;
   cursor: pointer;
+}
+.submitRow div#disclaimerCont {
+  position: relative;
+  width: 23rem;
+  color: #f0edee;
+  float: right;
+  font-size: 0.95rem;
+  right: -7rem;
+  bottom: 4rem;
+}
+.submitRow div#disclaimerCont fieldset {
+  border-color: #de5757;
+}
+.submitRow div#disclaimerCont fieldset p {
+  text-align: justify;
+  text-indent: 20px;
 }
 #footer {
   bottom: 0%;

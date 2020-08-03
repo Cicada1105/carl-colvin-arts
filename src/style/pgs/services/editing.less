@@ -298,7 +298,7 @@ div[class $= "Row"] {
 }
 // Submit container needs to be given explicit height
 .submitRow {
-	height:5rem;
+	height:8rem;
 
 	#submitCont {
 		height:inherit;
@@ -334,6 +334,23 @@ div[class $= "Row"] {
 			&:hover {
 				background-color:@buttonHoverColor;
 				cursor:pointer;	
+			}
+		}
+	}
+	div#disclaimerCont {
+		.format(relative, 23rem);
+		color:@textColor;
+		float:right;
+		font-size:.95rem;
+		right:-7rem;
+		bottom:4rem;
+
+		fieldset {
+			border-color:@accentColor;
+
+			p {
+				text-align:justify;
+				text-indent: 20px;
 			}
 		}
 	}

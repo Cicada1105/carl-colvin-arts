@@ -18,7 +18,13 @@ import {
 } from '../interfaces/row_data_interfaces'
 //	methods
 //	   local
-import { createInputRow, createSelectCont, createNumberCont, createDeadlineCont, createEmailCont, createSubmitRow } from './create'
+import { 
+	createInputRow, createSelectCont, createNumberCont, 
+	createDeadlineCont, createEmailCont, createSubmitCont,
+	createSubmitDisclaimerCont
+} from './create'
+//	   global
+import { createElement } from '../../../../../../../global/methods'
 //	Event handler
 import { LiteratureTypeHandler, GenreHandler, EditingHandler, WordCountHandler, DeadlineHandler, EmailHandler, SubmitHandler } from './event_handlers'
 
@@ -180,7 +186,7 @@ const createDeadlineRow = ():HTMLDivElement => {
 const createContactEmailRow = ():HTMLDivElement => {
 	const childRowCallback = () => {
 		// Button child element 
-		let childElement:HTMLDivElement = createSubmitBtn();
+		let childElement:HTMLDivElement = createSubmitRow();
 		// Append child element to parent
 		emailRow.appendChild(childElement);
 		// Focus on submit button
@@ -202,7 +208,7 @@ const createContactEmailRow = ():HTMLDivElement => {
 
 	return emailRow;
 }
-const createSubmitBtn = ():HTMLDivElement => {
+const createSubmitRow = ():HTMLDivElement => {
 	const childRowCallback = () => {
 		// Clear form and return to beginning
 		let litInput:HTMLSelectElement = <HTMLSelectElement>document.getElementById("literature");
@@ -211,7 +217,16 @@ const createSubmitBtn = ():HTMLDivElement => {
 		litInput.dispatchEvent(changeEvent);
 	}
 
-	let submitRow:HTMLDivElement = createSubmitRow(SubmitHandler.bind(childRowCallback));
+	// Create container row for submit container
+	let submitRow:HTMLDivElement = createElement({
+		className: "submitRow"
+	});
+
+	let submitCont:HTMLDivElement = createSubmitCont(SubmitHandler.bind(childRowCallback));
+	let submitDisclaimer:HTMLDivElement = createSubmitDisclaimerCont();
+
+	submitRow.appendChild(submitCont);
+	submitRow.appendChild(submitDisclaimer);
 
 	return submitRow;
 }

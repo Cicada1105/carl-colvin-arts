@@ -199,12 +199,7 @@ const createEmailCont = (data:IGenericInput<null>, listener:EventListener):HTMLD
 
 	return emailCont;
 }
-const createSubmitRow = (listener:EventListener):HTMLDivElement => {
-	// Create container row for submit container
-	const submitRow:HTMLDivElement = createElement({
-		className: "submitRow"
-	});
-
+const createSubmitCont = (listener:EventListener):HTMLDivElement => {
 	// Create container for submit button
 	let submitCont:HTMLDivElement = createElement({
 		className: "userInputCont",
@@ -236,15 +231,50 @@ const createSubmitRow = (listener:EventListener):HTMLDivElement => {
 	submitCont.appendChild(submitBtn);
 	submitCont.appendChild(msgCont);
 
-	// Append submit container to submit row
-	submitRow.appendChild(submitCont);
+	return submitCont;
+}
+const createSubmitDisclaimerCont = ():HTMLDivElement => {
+	// Create container to hold disclaimer 
+	let disclaimerCont:HTMLDivElement = createElement({
+		idName: "disclaimerCont"
+	});
 
-	return submitRow;
+	/*
+		Create a form that contains a fieldset with a header legend for UI
+	*/
+	// Create a form to hold the fieldset 
+	let disclaimerForm:HTMLFormElement = document.createElement("form");
+
+	// Create the fieldset
+	let disclaimerFieldSet:HTMLFieldSetElement = document.createElement("fieldset");
+
+	// Create the legend for the fieldset
+	let disclaimerLegend:HTMLLegendElement = createTextElement({
+		element: "legend",
+		text: "Disclaimer"
+	});
+	let disclaimerText:HTMLParagraphElement = createTextElement({
+		text: "By clicking submit, you are NOT committing to any payment or contract with carlcolvinarts. By " +
+			  "submitting this information, you are agreeing to continue communication, via email, with [email name], outside " +
+			  "of the carlcolvinarts domain. Privacy and terms of service are handled by respective owners of the email " +
+			  "services used to continue communications over any email, telecommunication, or media service. A follow up " +
+			  "email will be sent 2-3 business days after initial submission discussing further price inquiries"
+	});
+
+	// Append legend and text to fieldset
+	disclaimerFieldSet.appendChild(disclaimerLegend);
+	disclaimerFieldSet.appendChild(disclaimerText);
+	// Append fieldset to form 
+	disclaimerForm.appendChild(disclaimerFieldSet);
+	// Append form to container
+	disclaimerCont.appendChild(disclaimerForm);
+
+	return disclaimerCont;
 }
 
 export { 
 	createInputRow, createSelectCont, 
 	createNumberCont, createDeadlineCont, 
 	createEmailCont, getMinMaxDates, 
-	createSubmitRow
+	createSubmitCont, createSubmitDisclaimerCont
 }
