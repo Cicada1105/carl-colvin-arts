@@ -82,7 +82,11 @@ const createNumberCont = (ranges:IGenericInput<IRange>, listener:EventListener):
 	number.setAttribute("max", ranges.data.max.toString());
 
 	// Add event listener to number element
-	number.addEventListener("change", listener);
+	number.addEventListener("focus", () => {
+		// Add change listener and keypress listener to allow user to press enter
+		number.addEventListener("change", listener, { once:true });
+		number.addEventListener("keypress", listener, { once:true });
+	});
 
 	// Append number input element to container
 	numberCont.appendChild(number);
@@ -189,7 +193,6 @@ const createEmailCont = (data:IGenericInput<null>, listener:EventListener):HTMLD
 	//	only add event listeners to email input after it has been focus and remove after single use
 	//	note: user can either select outside of input field or press enter to attempt to move to submit
 	emailElement.addEventListener("focus", () => {
-		console.log("Email input focused");
 		emailElement.addEventListener("change", listener, { once: true });
 		emailElement.addEventListener("keypress", listener, { once: true });	
 	});

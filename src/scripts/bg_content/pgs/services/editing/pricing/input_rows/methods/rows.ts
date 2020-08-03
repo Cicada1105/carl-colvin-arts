@@ -103,6 +103,10 @@ const createEditingRow = (editingData:IEditingType[]):HTMLDivElement => {
 		childElement = createWordCountRow(<IRate[]>(editingData[childPos].child.rates));
 		// Append childElement to parent element
 		editingTypeRow.appendChild(childElement);
+		// Place focus on word count input
+		let wordCountCont:HTMLDivElement = <HTMLDivElement>childElement.lastElementChild;
+		let wordCountInput:HTMLInputElement = <HTMLInputElement>wordCountCont.firstElementChild;
+		wordCountInput.focus();
 	}
 	// Create event listener for when specific editing type option is selected
 	// Create select container
@@ -138,6 +142,10 @@ const createWordCountRow = (rates:IRate[]):HTMLDivElement => {
 		let childElement:HTMLDivElement = createDeadlineRow();
 		// Append deadline row to parent
 		wordCountRow.appendChild(childElement);
+		// Focus on deadline input
+		let deadlineCont:HTMLDivElement = <HTMLDivElement>childElement.lastElementChild;
+		let deadlineInput:HTMLInputElement = <HTMLInputElement>deadlineCont.firstElementChild;
+		deadlineInput.focus();
 	}
 	// Create word count container with ranges and handler
 	let wordCountCont:HTMLDivElement = createNumberCont({
@@ -190,7 +198,7 @@ const createContactEmailRow = ():HTMLDivElement => {
 		// Append child element to parent
 		emailRow.appendChild(childElement);
 		// Focus on submit button
-		let submitInputCont:HTMLDivElement = <HTMLDivElement>childElement.lastElementChild;
+		let submitInputCont:HTMLDivElement = <HTMLDivElement>childElement.firstElementChild;
 		let submitBtn:HTMLInputElement = <HTMLInputElement>submitInputCont.firstElementChild;
 		submitBtn.focus();
 	}

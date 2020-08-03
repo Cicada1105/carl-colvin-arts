@@ -76,35 +76,37 @@ function EditingHandler(event:any) {
 function WordCountHandler(event:any) {
 	// Clear child element to allow for child update if it exists
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	// Handle entered value if "Enter"/"return" keypress event has been triggered or entered value is not empty
+	if (((event.type === "keypress") && (event.charCode === 13)) || event.type === "change") {
+		let enteredValueStr:string = event.target.value;
+		let enteredValueNum:number = parseInt(enteredValueStr);
 
-	let enteredValueStr:string = event.target.value;
-	let enteredValueNum:number = parseInt(enteredValueStr);
+		// Display next row if current selection is valid
+		if ((enteredValueNum >= event.target.min) && (enteredValueNum <= event.target.max) && !(enteredValueStr === "")) {
+			// 'this' is bound to an object containing callback function and rates
+			let rates:IRate[] = this.data;
+			let callbackFunc = this.callBack;
+			
+			// Store word count 
+			userSelectedData.wordCount = enteredValueNum;
+			// Find range that entered value falls in to return rates
+			let wordCountPos:number = rates.findIndex((rate:IRate) => ((enteredValueNum >= rate.min) && (enteredValueNum <= rate.max)) );
 
-	// 'this' is bound to an object containing callback function and rates
-	let rates:IRate[] = this.data;
-	let callbackFunc = this.callBack;
+			// Store current pricing
+			let currentRate:IRate = rates[wordCountPos];
+			// Store pricing to user data
+			currentRate.flatRate && (userSelectedData.pricing.flatRate = currentRate.flatRate);
+			userSelectedData.pricing.perWord = currentRate.perWord;
+			userSelectedData.pricing.perHour = currentRate.perHour;
 
-	// Display next row if current selection is valid
-	if ((enteredValueNum >= event.target.min) && (enteredValueNum <= event.target.max) && !(enteredValueStr === "")) {
-		// Store word count 
-		userSelectedData.wordCount = enteredValueNum;
-		// Find range that entered value falls in to return rates
-		let wordCountPos:number = rates.findIndex((rate:IRate) => ((enteredValueNum >= rate.min) && (enteredValueNum <= rate.max)) );
+			// Move progress bar
+			Next(4);
 
-		// Store current pricing
-		let currentRate:IRate = rates[wordCountPos];
-		// Store pricing to user data
-		currentRate.flatRate && (userSelectedData.pricing.flatRate = currentRate.flatRate);
-		userSelectedData.pricing.perWord = currentRate.perWord;
-		userSelectedData.pricing.perHour = currentRate.perHour;
-
-		// Move progress bar
-		Next(4);
-
-		callbackFunc();
+			callbackFunc();
+		}
+		else 
+			Previous(3);
 	}
-	else 
-		Previous(3);
 }
 function DeadlineHandler(event:any) {
 	// Clear child element to allow for child update if it exists
