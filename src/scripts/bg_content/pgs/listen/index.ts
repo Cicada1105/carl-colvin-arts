@@ -5,7 +5,8 @@
 import { audioData, videoData } from './data'
 //  methods
 import { loadMediaRow, loadCanvasWave } from './load_methods'
-import { createTextElement, loadBootstrap } from '../../../global/methods'
+import { createTextElement } from '../../../global/methods/elements'
+import { loadBootstrap } from '../../../global/methods/utilities'
 //  interfaces
 import { RowInterface } from './interfaces'
 

@@ -5,7 +5,7 @@
 import { AudioInterface, VideoInterface, RowInterface } from './interfaces'
 // 	methods
 import { createMediaCont } from './methods/create_methods'
-import { createElement, createTextElement } from '../../../global/methods'
+import { createElement, createTextElement } from '../../../global/methods/elements'
 
 type Media = AudioInterface | VideoInterface;
 

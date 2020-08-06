@@ -4,7 +4,7 @@
 // Imports
 import { introData, tabData, pricingData } from './data' 
 import { createHeaderContent, createReedPriceBox } from './private-methods'
-import { createElement, createTextElement, createImageElement } from '../../../../global/methods'
+import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
 
 const loadIntroData = ():void => {
 	introData.forEach(header => {

@@ -14,7 +14,7 @@ import {
 import { 
 	createElement, createTextElement, 
 	createLabelElement, createSelectElement 
-} from '../../../../../../../global/methods'
+} from '../../../../../../../global/methods/elements'
 
 const createInputRow = (rowData:IInputRow):HTMLDivElement => {
 	const selectionRow:HTMLDivElement = createElement({

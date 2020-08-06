@@ -5,9 +5,9 @@ import { loadPricingChart } from './pricing_chart/index'
 import { loadPricing } from './pricing/index'
 import { loadIntro } from './intro/index'
 //	   global
-import { loadBootstrap } from '../../../../global/methods'
+import { loadBootstrap, isValidEmail } from '../../../../global/methods/utilities'
 
-const loadEditingPage = ():void => {
+const loadEditingPage = async ():Promise<void> => {
 	// Load boostrap to be used by methods later on
 	loadBootstrap();
 	// Load intro paragraph
@@ -16,6 +16,8 @@ const loadEditingPage = ():void => {
 	loadPricingChart();
 	// Load pricing info
 	loadPricing();
+
+	await isValidEmail("guitarlegen@gmail.com.uk") && alert("Valid Email");
 }
 
 export { loadEditingPage }

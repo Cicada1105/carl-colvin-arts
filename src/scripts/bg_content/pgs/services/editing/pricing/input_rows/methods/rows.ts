@@ -24,7 +24,7 @@ import {
 	createSubmitDisclaimerCont
 } from './create'
 //	   global
-import { createElement } from '../../../../../../../global/methods'
+import { createElement } from '../../../../../../../global/methods/elements'
 //	Event handler
 import { LiteratureTypeHandler, GenreHandler, EditingHandler, WordCountHandler, DeadlineHandler, EmailHandler, SubmitHandler } from './event_handlers'
 

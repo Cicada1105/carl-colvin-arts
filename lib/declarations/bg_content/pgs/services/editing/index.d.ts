@@ -1,2 +1,2 @@
-declare const loadEditingPage: () => void;
+declare const loadEditingPage: () => Promise<void>;
 export { loadEditingPage };

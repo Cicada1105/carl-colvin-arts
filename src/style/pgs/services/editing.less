@@ -189,12 +189,51 @@ div#pricingChartCont {
 				width: inherit;
 			}
 			& th {
+				position:relative;
 				border-bottom:3px solid @accentColor;
 				font-size:1.45rem;
 				text-align:center;
 				padding-top:1rem;
 				padding-bottom:0.75rem;
 				width:33.33%;
+
+				&:last-of-type {
+					&::before {
+						.format(absolute, 9rem, 3.5rem);
+						display:none;
+						background-color:@secondaryColor;
+						content: "       fr - flat rate              pw - per word";
+						white-space: pre-wrap;
+						font-size:1rem;
+						padding-top:0.95rem;
+						top:-71px;
+						left:50%;
+						transform: translateX(-50%);
+					}
+					&::after {
+						position:absolute;
+						display:none;
+						content: " ";
+						border-width:10px;
+						border-style: solid;
+						border-color: @secondaryColor transparent transparent transparent;
+						top:0;
+						left:50%;
+						transform: translateX(-50%);
+					}
+					&:hover {
+						cursor:pointer;
+
+						&::before {
+							display:block;
+						}
+						&::after {
+							display:block;
+						}
+					}
+				}
+				&:last-of-type::after {
+				}
 			}
 			& td {
 				text-align:center;

@@ -15,7 +15,7 @@ import {
 } from './create'
 //  Global
 //  methods
-import { createElement, createTextElement } from '../../../../global/methods'
+import { createElement, createTextElement } from '../../../../global/methods/elements'
 import { formData } from '../data'
 
 const createRows = ():HTMLDivElement => {

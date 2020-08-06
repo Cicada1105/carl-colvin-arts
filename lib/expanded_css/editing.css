@@ -360,12 +360,47 @@ div#pricingChartCont > div#chartCont > table tbody {
   width: inherit;
 }
 div#pricingChartCont > div#chartCont > table th {
+  position: relative;
   border-bottom: 3px solid #de5757;
   font-size: 1.45rem;
   text-align: center;
   padding-top: 1rem;
   padding-bottom: 0.75rem;
   width: 33.33%;
+}
+div#pricingChartCont > div#chartCont > table th:last-of-type::before {
+  position: absolute;
+  width: 9rem;
+  height: 3.5rem;
+  display: none;
+  background-color: #003249;
+  content: "       fr - flat rate              pw - per word";
+  white-space: pre-wrap;
+  font-size: 1rem;
+  padding-top: 0.95rem;
+  top: -71px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+div#pricingChartCont > div#chartCont > table th:last-of-type::after {
+  position: absolute;
+  display: none;
+  content: " ";
+  border-width: 10px;
+  border-style: solid;
+  border-color: #003249 transparent transparent transparent;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+div#pricingChartCont > div#chartCont > table th:last-of-type:hover {
+  cursor: pointer;
+}
+div#pricingChartCont > div#chartCont > table th:last-of-type:hover::before {
+  display: block;
+}
+div#pricingChartCont > div#chartCont > table th:last-of-type:hover::after {
+  display: block;
 }
 div#pricingChartCont > div#chartCont > table td {
   text-align: center;
