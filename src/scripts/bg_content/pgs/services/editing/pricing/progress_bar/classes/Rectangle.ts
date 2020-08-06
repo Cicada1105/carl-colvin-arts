@@ -1,7 +1,7 @@
 // Rectangle class to be used 
 
 // Imports
-import { createElement } from '../../../../../../../global/methods'
+import { createElement } from '../../../../../../../global/methods/elements'
 
 class Rectangle {
 	private cvs:HTMLCanvasElement;

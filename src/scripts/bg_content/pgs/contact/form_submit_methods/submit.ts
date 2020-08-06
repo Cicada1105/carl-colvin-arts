@@ -3,7 +3,7 @@
 // Imports
 // 	Global
 // 	methods
-import { createImageElement } from '../../../../global/methods'
+import { createImageElement } from '../../../../global/methods/elements'
 //  Local
 //  methods
 import { request } from './request'

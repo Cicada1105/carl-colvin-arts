@@ -4,7 +4,7 @@
 import { IBox } from '../../../../global/interfaces/general'
 //	methods
 //		global
-import { createElement } from '../../../../global/methods'
+import { createElement } from '../../../../global/methods/elements'
 //		local
 import { createPostCont } from './create'
 //	data

@@ -5,7 +5,7 @@
 
 // Imports
 //	methods
-import { createElement, createTextElement } from '../../../../../global/methods'
+import { createElement, createTextElement } from '../../../../../global/methods/elements'
 import { createSelections } from './selections/create'
 import { createChart } from './chart/create'
 

@@ -6,7 +6,7 @@
 import { IBox } from '../../../../global/interfaces/general'
 import { ICollage } from '../interfaces'
 //	methods
-import { createElement, createImageElement } from '../../../../global/methods'
+import { createElement, createImageElement } from '../../../../global/methods/elements'
 import { displayImagePost, storeCurrentImage } from './display'
 //	data
 import { collageImages } from '../data'

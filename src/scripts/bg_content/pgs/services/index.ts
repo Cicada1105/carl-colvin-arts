@@ -1,7 +1,7 @@
 // This file will handle which services page to load based on the current file
 
 // Imports
-import { getCurrentFile } from '../../../global/methods'
+import { getCurrentFile } from '../../../global/methods/utilities'
 import { loadEditingPage } from './editing/index'
 import { loadPerformancePage } from './performance/index'
 import { loadReedmakingPage } from './reedmaking/index'

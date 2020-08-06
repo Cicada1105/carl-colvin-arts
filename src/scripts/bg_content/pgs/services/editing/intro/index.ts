@@ -4,7 +4,7 @@
 //	data
 import { INTRO } from './data'
 //	methods
-import { createElement, createTextElement } from '../../../../../global/methods';
+import { createElement, createTextElement } from '../../../../../global/methods/elements';
 
 					
 const loadIntro = ():void => {

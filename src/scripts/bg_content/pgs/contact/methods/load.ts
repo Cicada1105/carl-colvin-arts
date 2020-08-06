@@ -1,7 +1,7 @@
 // Imports
 //  Global
 //  methods
-import { createElement, createTextElement } from '../../../../global/methods'
+import { createElement, createTextElement } from '../../../../global/methods/elements'
 // 	Local
 //	data
 import { formData } from '../data'

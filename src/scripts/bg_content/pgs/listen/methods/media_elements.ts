@@ -4,7 +4,7 @@
 //	interfaces
 import { AudioInterface, VideoInterface } from '../interfaces'
 //	methods
-import { createElement, createTextElement } from '../../../../global/methods'
+import { createElement, createTextElement } from '../../../../global/methods/elements'
 //  event listeners
 import { playButtonListener as playBtnListener, muteButtonListener as muteBtnListener } from './event_listeners'
 

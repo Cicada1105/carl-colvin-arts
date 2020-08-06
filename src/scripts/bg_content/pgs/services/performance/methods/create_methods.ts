@@ -8,7 +8,7 @@
 // interfaces
 import { ICustomContainer, ImageHeaderInterface as IHeader, IBody } from '../interfaces'
 // methods
-import { createElement, createTextElement, createImageElement } from '../../../../../global/methods'
+import { createElement, createTextElement, createImageElement } from '../../../../../global/methods/elements'
 // classes
 import CurtainRod from '../curtain_class'
 

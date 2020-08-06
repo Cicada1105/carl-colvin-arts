@@ -1,7 +1,7 @@
 // Circle class to be used by "progress bar" for pricing
 
 // Imports
-import { createElement } from '../../../../../../../global/methods'
+import { createElement } from '../../../../../../../global/methods/elements'
 
 class Circle {
 	private cvs:HTMLCanvasElement;

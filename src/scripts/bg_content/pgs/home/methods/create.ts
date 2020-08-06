@@ -12,7 +12,7 @@ import { IBox } from '../../../../global/interfaces/general'
 import { IPostData } from '../interfaces'
 //	methods
 //		global
-import { createElement, createTextElement } from '../../../../global/methods'
+import { createElement, createTextElement } from '../../../../global/methods/elements'
 //	event listeners
 import { ArrowClickListener } from './event_listeners'
 //  data 

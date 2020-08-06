@@ -3,7 +3,8 @@
 // Imports
 // global
 import { ILink } from '../global/interfaces/general'
-import { getCurrentFile, createElement, createTextElement } from '../global/methods'
+import { createElement, createTextElement } from '../global/methods/elements'
+import { getCurrentFile } from '../global/methods/utilities'
 // local
 import { links } from './data'
 
