@@ -1,2 +1,2 @@
-declare const submitForm: (event: any) => void;
+declare const submitForm: (event: any) => Promise<void>;
 export { submitForm };

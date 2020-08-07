@@ -17,7 +17,7 @@ const loadEditingPage = async ():Promise<void> => {
 	// Load pricing info
 	loadPricing();
 
-	await isValidEmail("guitarlegen@gmail.com.uk") && alert("Valid Email");
+	//await isValidEmail("guitarlegen@gmail.com.uk") && alert("Valid Email");
 }
 
 export { loadEditingPage }

@@ -17,6 +17,8 @@ const loadForm = () => {
 	});
 	// Set method as post
 	formCont.setAttribute("method", "POST");
+	// Prevent default form validation
+	formCont.setAttribute("novalidate","");
 	formCont.addEventListener("submit",submitForm);
 
 	// Create element for header

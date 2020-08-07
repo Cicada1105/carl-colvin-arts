@@ -5,6 +5,7 @@
 // Imports
 //  interfaces
 import {
+  EmailReport,
   MissingCharacter,
   RepeatingCharacter,
   InvalidCharacterLocation,
@@ -40,8 +41,11 @@ const loadBootstrap = ():void => {
   // Append Bootstrap cdn to head for font asesome icons
   document.head.appendChild(bootstrapLink);
 }
-const isValidEmail = async (email:string):Promise<boolean> => {
-  let isValid:boolean = true;
+
+const isValidEmail = async (email:string):Promise<EmailReport> => {
+  let emailReport:EmailReport = {
+    validEmail: true
+  }
 
   // Check if email contains multiple "@" symbols
   let ampMatch:string[] = <string[]>email.match(/@/g) ?? [];
@@ -52,16 +56,20 @@ const isValidEmail = async (email:string):Promise<boolean> => {
         type: "Repeating Character",
         message: "@ symbol displayed more than once. Valid email contains only one @ symbol"
       }
-      console.error(reaptingCharError);
-      return false;
+      emailReport.validEmail = false;
+      emailReport.report = reaptingCharError;
+
+      return emailReport;
     }
     else {
       let missingCharError:MissingCharacter = {
         type: "Missing Character",
         message: "Missing '@' symbol. Valid email requires '@' symbol"
       }
-      console.error(missingCharError);
-      return false;
+      emailReport.validEmail = false;
+      emailReport.report = missingCharError;
+
+      return emailReport;
     }
   }
 
@@ -83,8 +91,10 @@ const isValidEmail = async (email:string):Promise<boolean> => {
       subtype: "Invalid Recipient Starting Character",
       message: `Cannot begin email local name with ${startingRecipientMatch[0]}`
     }
-    console.error(invalidStartChar);
-    return false;
+    emailReport.validEmail = false;
+    emailReport.report = invalidStartChar;
+
+    return emailReport;
   }
 
   // Check if Recipient ends with valid char -> invalid
@@ -96,8 +106,10 @@ const isValidEmail = async (email:string):Promise<boolean> => {
       subtype: "Invalid Recipient Trailing Character",
       message: `Cannot end email local name with ${endingMatch[0]}`
     }
-    console.error(invalidEndChar);
-    return false;
+    emailReport.validEmail = false;
+    emailReport.report = invalidEndChar;
+
+    return emailReport;
   }
 
   // Check if recipient contains same valid char appars consecutively >= 2 times -> invalid
@@ -119,8 +131,10 @@ const isValidEmail = async (email:string):Promise<boolean> => {
       type: "Invalid Repeating Character",
       message: `${multiplValidChars[0]} cannot be used more than once within local name`
     }
-    console.error(invalidRepeatingChar);
-    return false;
+    emailReport.validEmail = false;
+    emailReport.report = invalidRepeatingChar;
+
+    return emailReport;
   }
 
   /*********************/
@@ -135,8 +149,10 @@ const isValidEmail = async (email:string):Promise<boolean> => {
       subtype: "Invalid Domain Starting Character",
       message: `Cannot begin domain with ${startingDomainMatch[0]}`
     }
-    console.error(invalidStartChar);
-    return false;
+    emailReport.validEmail = false;
+    emailReport.report = invalidStartChar;
+
+    return emailReport;
   }
 
   let endingDomainMatch:string[] = <string[]>domain.match(/([.-](?!\w))(?!\W)/g) ?? [];
@@ -147,8 +163,10 @@ const isValidEmail = async (email:string):Promise<boolean> => {
       subtype: "Invalid Domain Trailing Character",
       message: `Cannot end domain with ${endingDomainMatch[0]}`
     }
-    console.error(invalidEndChar);
-    return false;
+    emailReport.validEmail = false;
+    emailReport.report = invalidEndChar;
+
+    return emailReport;
   }
 
   // Split at . to extract domain name, TLD name and possibly SLD name
@@ -165,8 +183,10 @@ const isValidEmail = async (email:string):Promise<boolean> => {
       type: "Invalid Character",
       message: `Domain name cannot contain ${domainNameMatch[0]}`
     }
-    console.error(invalidChar);
-    return false;
+    emailReport.validEmail = false;
+    emailReport.report = invalidChar;
+
+    return emailReport;
   }
 
   // Check TLD against valid list
@@ -185,11 +205,11 @@ const isValidEmail = async (email:string):Promise<boolean> => {
         subtype: "Top Level Domain Name is invalid",
         message: `TLD Name ${TLDName} cannot be found`
       };
-      console.error(tldError);
-      isValid = false;
+      emailReport.validEmail = false;
+      emailReport.report = tldError;
     }
     // Check SLDName only if it exists and TLDName did not return an error, attempt to locate
-    if (SLDName && isValid) {
+    if (SLDName && emailReport.validEmail) {
       // Reusing found index var 
       foundIndex = validDomains.findIndex((domain:string) => {
         return (domain.localeCompare(SLDName.toUpperCase()) === 0);
@@ -200,13 +220,13 @@ const isValidEmail = async (email:string):Promise<boolean> => {
           subtype: "Secondary Level Domain Name is invalid",
           message: `SLD Name ${SLDName} cannot be found`   
         }
-        console.error(sldError);
-        isValid = false;
+        emailReport.validEmail = false;
+        emailReport.report = sldError;
       }
     }
   });
 
-  return isValid;
+  return emailReport;
 }
 async function requestValidDomains():Promise<string> {
   let results:string = "";

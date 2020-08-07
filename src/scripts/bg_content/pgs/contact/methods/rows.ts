@@ -13,6 +13,7 @@ import {
 	createSelectCont,
 	createTextAreaCont
 } from './create'
+import { submitForm } from '../form_submit_methods/submit'
 //  Global
 //  methods
 import { createElement, createTextElement } from '../../../../global/methods/elements'
@@ -79,7 +80,7 @@ const loadButtonInput = (input:IButton):HTMLDivElement => {
 	submitBtn.setAttribute("type",input.type);
 
 	// Add event listener to handle submitting form 
-	//submitBtn.addEventListener("submit",submitForm);
+	submitBtn.addEventListener("submit",submitForm);
 	/*submitBtn.addEventListener("click",(event:any) => {
 		submitForm(event);
 	});*/
