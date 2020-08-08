@@ -563,8 +563,8 @@ div[class$="Row"] > div[class$="Cont"] > input[type="datetime-local"]:focus {
   color: #f0edee;
   float: right;
   font-size: 0.95rem;
-  right: -7rem;
-  bottom: 4rem;
+  right: -5rem;
+  bottom: 3rem;
 }
 .submitRow div#disclaimerCont fieldset {
   border-color: #de5757;

@@ -1,9 +1,19 @@
 // Event handlers to be added to input listeners
 
+// Imports
+//	Interfaces
+//		Local
 import { RateInterface as IRate } from '../interfaces/row_data_interfaces'
+//		Global
+import { EmailError, EmailReport } from '../../../../../../../global/interfaces/errors'
+//	Data
 import { userSelectedData } from '../data/dynamic'
+//	Methods
+//		Local
 import { getMinMaxDates } from './create'
 import { Next, Previous } from '../../shared/methods/update_progress'
+//		Global
+import { isValidEmail } from '../../../../../../../global/methods/utilities'
 
 function LiteratureTypeHandler(event:any):void {
 	//	event path holds HTMLCollection hierarchy of elements, starting at the element that fired the event,
@@ -135,19 +145,32 @@ function DeadlineHandler(event:any) {
 	else 
 		Previous(4);
 }
-function EmailHandler(event:any) {
+async function EmailHandler(event:any) {
 	// Clear child element to allow for child update if it exists
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	// Entered email
+	let emailStr:string = event.target.value;
 
 	// Check if keyboard input and charCode is enter key: 13
 	if (((event.type === "keypress") && (event.charCode === 13)) || event.type === "change") {
-		if (event.target.value !== "") {
-			// Store user email
-			userSelectedData.email = event.target.value;
+		// Evaluate email field for validation
+		if (emailStr === "") {
+			console.log("Required Field");
+		}
+		else {
+			let emailReport:EmailReport = await isValidEmail(emailStr);
 
-			let callbackFunc = this;
-			callbackFunc();
-		}	
+			if (emailReport.validEmail) {
+				// Store user email
+				userSelectedData.email = emailStr;
+
+				let callbackFunc = this;
+				callbackFunc();	
+			}
+			else {
+				console.log(emailReport.report);
+			}
+		}
 	}
 }
 function SubmitHandler(event:any) {
