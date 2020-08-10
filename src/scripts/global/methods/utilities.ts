@@ -82,6 +82,20 @@ const isValidEmail = async (email:string):Promise<EmailReport> => {
   /***********************/
   /*      Recipient      */
   /***********************/
+  // Check if Recipient contains invalid character
+  let invalidCharMatch:string[] = <string[]>recipientLocalName.match(/["(),:;<>[\]]/) ?? [];
+
+  if (invalidCharMatch.length === 1) {
+    let invalidChar:InvalidCharacter = {
+      type: "Invalid Character",
+      message: `Local name cannot contain ${invalidCharMatch[0]}`
+    }
+    emailReport.validEmail = false;
+    emailReport.report = invalidChar;
+
+    return emailReport;
+  }
+
   // Check if Recipient starts w/ valid char -> invalid
   let startingRecipientMatch:string[] = <string[]>recipientLocalName.match(/(?<!\W)((?<!\w)[!#$%&'*+-/=?^_`{|}~])/g) ?? [];
 

@@ -194,11 +194,19 @@ const createEmailCont = (data:IGenericInput<null>, listener:EventListener):HTMLD
 	//	note: user can either select outside of input field or press enter to attempt to move to submit
 	emailElement.addEventListener("focus", () => {
 		emailElement.addEventListener("change", listener, { once: true });
-		emailElement.addEventListener("keypress", listener, { once: true });	
+		emailElement.addEventListener("keyup", listener, { once: true });	
 	});
 
-	// Append email element to email container
+	// Create span to hold error message for email
+	let errorMsg:HTMLSpanElement = createTextElement({
+		element:"span",
+		text:"*",
+		idName: "emailErrorMsg"
+	});
+
+	// Append email element and error message to email container
 	emailCont.appendChild(emailElement);
+	emailCont.appendChild(errorMsg);
 
 	return emailCont;
 }

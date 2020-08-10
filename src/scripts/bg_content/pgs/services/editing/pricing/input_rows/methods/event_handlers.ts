@@ -150,17 +150,22 @@ async function EmailHandler(event:any) {
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
 	// Entered email
 	let emailStr:string = event.target.value;
-
+	// Error message span container
+	let errorMsg:HTMLSpanElement = <HTMLSpanElement>event.path[0].nextElementSibling;
+	console.log(event.keyCode);
 	// Check if keyboard input and charCode is enter key: 13
-	if (((event.type === "keypress") && (event.charCode === 13)) || event.type === "change") {
+	if (((event.type === "keyup") && (event.keyCode === 13)) || event.type === "change") {
+
 		// Evaluate email field for validation
 		if (emailStr === "") {
-			console.log("Required Field");
+			errorMsg.innerHTML = "*Required Field";
 		}
-		else {
+		else{
 			let emailReport:EmailReport = await isValidEmail(emailStr);
 
 			if (emailReport.validEmail) {
+				// Clear any previous error message
+				errorMsg.innerHTML = "*";
 				// Store user email
 				userSelectedData.email = emailStr;
 
@@ -168,7 +173,8 @@ async function EmailHandler(event:any) {
 				callbackFunc();	
 			}
 			else {
-				console.log(emailReport.report);
+				let report:EmailError = <EmailError>emailReport.report;
+				errorMsg.innerHTML = `*${report.type}`;
 			}
 		}
 	}

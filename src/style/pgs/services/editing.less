@@ -322,6 +322,21 @@ div[class $= "Row"] {
 			.inputMixin(initial)
 		}
 	}
+	& > div#emailCont {
+		width:26rem;
+		left:60%;
+
+		& > input#email {
+			width:12.5rem;
+		}
+		& > span#emailErrorMsg {
+			position:absolute;
+			color:@errorMsgColor;
+			display:inline;
+			top:4px;
+			margin-left:5px;
+		}
+	}
 }
 .inputMixin(@width) {
 	.format(relative, @width, inherit);

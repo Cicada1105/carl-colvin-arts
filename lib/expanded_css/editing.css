@@ -519,6 +519,20 @@ div[class$="Row"] > div[class$="Cont"] > input[type="datetime-local"] {
 div[class$="Row"] > div[class$="Cont"] > input[type="datetime-local"]:focus {
   outline: none;
 }
+div[class$="Row"] > div#emailCont {
+  width: 26rem;
+  left: 60%;
+}
+div[class$="Row"] > div#emailCont > input#email {
+  width: 12.5rem;
+}
+div[class$="Row"] > div#emailCont > span#emailErrorMsg {
+  position: absolute;
+  color: #ff3838;
+  display: inline;
+  top: 4px;
+  margin-left: 5px;
+}
 .submitRow {
   height: 8rem;
 }
