@@ -46,23 +46,6 @@ const createMediaElement:(mediaElement:Media)=>Promise<HTMLMediaElement> = (medi
 	//}
 }
 
-/*function asyncFunction(el:HTMLMediaElement):any {
-	let temp:any = waitForCompleteLoad(el);
-	
-	return temp;
-}
-
-function waitForCompleteLoad(el:HTMLMediaElement):HTMLDivElement {
-	let promise:Promise<HTMLDivElement> = new Promise(async (resolve) => {
-		await el.addEventListener("durationchange",(e:any) => {
-			e.preventDefault();
-			resolve(createCustomControls(el));
-		});
-	});
-
-	return promise;
-}*/
-
 const createCustomControls:(mediaEl:HTMLMediaElement) => any = (mediaEl:HTMLMediaElement):HTMLDivElement => {
 	let ctrlCont:HTMLDivElement = createElement({className:"mediaControls"});
 
@@ -94,6 +77,41 @@ const createCustomControls:(mediaEl:HTMLMediaElement) => any = (mediaEl:HTMLMedi
 	});
 
 	let progressBar:HTMLProgressElement = createProgressBar(mediaEl.duration);
+	// Use closure to contain one time calculationts for progress bar click event
+	(function() {
+		// Store current time of media in seconds 
+		let mediaLength:number = mediaEl.duration;
+		// Create variables to store values each time progress bar is clicked
+		let xClickedPos:number = 0;
+		let barWidth:number = 0;
+		let segmentLength:number = 0;
+		let nearestBtmSegment:number = 0;
+		// Create time update event to trigger visual update (above)
+		let timeUpdateEvent = new Event("timeupdate");
+
+		// Add "seek" ability to progress bar
+		progressBar.addEventListener("click",(event:any) => {
+			// Store location of where user clicked on progress bar
+			xClickedPos = event.offsetX;
+			console.log(`User clicked pos: ${xClickedPos}`);
+			// Get width of progress bar for dividing up evenly based on length of media
+			barWidth = parseFloat(event.path[0].clientWidth);
+			console.log(`Progress bar width: ${barWidth}`);
+
+			// Divide length of bar into even segments based on length of media
+			segmentLength = barWidth / mediaLength;
+			console.log(`Each even segment is ${segmentLength} units long`);
+
+			// Locate nearest segment 
+			nearestBtmSegment = Math.floor(xClickedPos / segmentLength);
+			console.log(`User is closest to the ${nearestBtmSegment} segment`)
+
+			// Set media time to rounded down time segment the user selected
+			mediaEl.currentTime = nearestBtmSegment;
+			// Trigger time update event
+			mediaEl.dispatchEvent(timeUpdateEvent);
+		})
+	})();
 
 	let muteBtn:HTMLElement = createElement({element:'i',className:'fas fa-volume-up'});
 	// Add click event listener to handle muting/unmuting

@@ -16,12 +16,22 @@ const createMediaCont = async (data:Media):Promise<HTMLDivElement> => {
 	let mediaCont:HTMLDivElement = createElement({className:"mediaCont"});
 
 	// Create media element and await it to be finished loading
-	let mediaEl:any = await createMediaElement(data);
+	let mediaEl:HTMLMediaElement = await createMediaElement(data);
 
 	// Create container for controls 
 	let mediaCtrlsCont:HTMLDivElement = createMediaControlsCont(mediaEl);
 	// Create media visual container for positioning
 	let mediaVisualCont:HTMLDivElement = (data as AudioInterface).image ? createMediaVisualCont((<AudioInterface>data).image) : createMediaVisualCont(<HTMLVideoElement>mediaEl);
+
+	/*
+		OFFLINE PURPOSES ONLY
+	*/
+	mediaVisualCont.addEventListener("click",() => {
+		mediaEl.paused ? mediaEl.play() : mediaEl.pause();
+	});
+	/*
+		OFFLINE PURPOSES ONLY
+	*/
 
 	// Append media visual to container
 	mediaCont.appendChild(mediaVisualCont);
@@ -63,7 +73,7 @@ const createMediaVisualCont:(data:VisualDisplayData)=>HTMLDivElement = (visualDa
 
 	//  Append visual element to container
 	visualCont.appendChild(mediaEl);
-	console.log(visualCont);
+	
 	return visualCont;
 }
 
