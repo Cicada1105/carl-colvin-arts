@@ -45,7 +45,7 @@ const loadImage = (imgData:ICollage):HTMLImageElement => {
 		idName: imgData.idName
 	});
 
-	currImg.addEventListener("hover",() => {
+	currImg.addEventListener("mouseover",() => {
 		console.log("Hover caption: " + imgData.caption);
 	});
 

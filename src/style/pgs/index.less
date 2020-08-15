@@ -11,72 +11,63 @@
 #globalNS > .bg_img();
 
 /*  Rest of the styling goes here */
-#collage {
-	& > img {
-		position:absolute;
-		object-fit:contain;
-
-		&[id ^= "left"] {
-			left:0;
-		}
-		&[id ^= "right"] {
-			right:0;
-		}
-		&[id ^= "middleLeft"] {
-			left: 13.625rem;
-		}
-		&[id ^= "middleRight"] {
-			right: 14.65rem;
-		}
-		&[id $= "Bottom"] {
-			bottom: 0rem;
-		}
-		&[id = "middleRightBottom"] {
-			// English horn and sheet music
-			top:8.16rem;
-		}
-		& {
-			transition: transform 0.45s;
-		}
-		&:hover {
-			transform: scale(0.85, 0.85);
-			cursor:pointer;
-		}
-	}
-}
 /*		Images within collage and post		*/
 img {
 	// Happy Holy Dayz
-	&[id $= "leftTop"] {
-		width: 13.625rem;
+	&#leftTop {
+		grid-area:holyDayz;
 	}
 	// A Fathers Touch
-	&[id = "leftBottom"] {
-		width: 13.6rem;
+	&#leftBottom {
+		grid-area:fathersTouch;
 	}
 	// Spoken Word
-	&[id = "middleLeftTop"] {
-		width: 12.05rem;
+	&#middleLeftTop {
+		grid-area:spokenWord;
 	}
-	// Reed Scraping, Ungovernables
-	&[id = "middleLeftBottom"] {
-		width: 19.95rem;
+	// Reed Scraping
+	&#middleLeftBottom {
+		grid-area:reedScraping;
 	}
-	&[id ^= "middleRight"] {
-		width: 15.5rem;
+	// Random Reeds
+	&#middleRightTop {
+		grid-area:randReeds;
+	}
+	// Oboe and sheet music
+	&#middleRightBottom {
+		grid-area:oboe;
 	}
 	// Take My Hand
-	&[id = "rightTop"] {
-		width:14.65rem;
+	&#rightTop {
+		grid-area:takeHand;
 	}
-	&[id = "rightBottom"] {
-		width:22.3rem;
+	// Ungovernables
+	&#rightBottom {
+		grid-area:ungovernables;
 	}
 }
 #collage {
 	.format(relative,55.85rem, 31.5rem);
 	margin:calc((100vh - 31.5rem) / 2) auto 11rem auto;
-	z-index:1;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 13.625rem 12.05rem 7.9rem 7.6rem 14.65rem;
+	grid-template-rows:8.140625rem 5.30875rem 6.183625rem 11.9345625rem;
+	grid-template-areas: 'holyDayz 		spokenWord 		randReeds 		randReeds 		takeHand'
+						 'holyDayz 		spokenWord 		oboe 			oboe 			takeHand'
+						 'fathersTouch 	spokenWord 		oboe 			oboe 			takeHand'
+						 'fathersTouch	reedScraping 	reedScraping 	ungovernables 	ungovernables';
+
+	& > img {
+		transition: transform 0.45s;
+		width:100%;
+		height:100%;
+
+		&:hover {
+			transform: scale(0.85, 0.85);
+			cursor:pointer;
+		}
+	}
 }
 #postBackdrop {
 	.format(fixed, 100%, 100%);
