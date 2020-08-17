@@ -109,20 +109,19 @@ const createPriceCont = (priceData:IPricing[]):HTMLDivElement => {
 
 	let priceFormat:string = "";
 	priceData.forEach(price => {
-		priceFormat += `${price.quantity} | $${price.cost}\n`;
-	});
-	// Create span element to add styling to only the text element
-	let span:HTMLSpanElement = createTextElement({
-		element:'span',
-		text:priceFormat,
-		className:'pricingName'
+		priceFormat = `${price.quantity}  |  $${price.cost}`;
+		// Create span element to add styling to only the text element
+		let span:HTMLSpanElement = createTextElement({
+			element:'span',
+			text:priceFormat,
+			className:'pricingName'
+		});
+		cont.appendChild(span);
 	});
 
 	// Container to have the blend mode to allow text to be different color
 	let blendCont:HTMLDivElement = createElement({className:'pricingBlend'});
-
-	// Append blend and text to price container
-	cont.appendChild(span);
+	// Append blend to price container
 	cont.appendChild(blendCont);
 
 	return cont;
