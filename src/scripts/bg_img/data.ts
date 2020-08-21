@@ -1,9 +1,12 @@
 // Imports
 import { IImage } from '../global/interfaces/general'
+import { getCurrentFile } from '../global/methods/utilities'
 
 // Use for development
-const isHomePage:boolean = window.location.pathname.includes("index");
-const isServicePage:boolean = window.location.pathname.includes("services");
+let currFile:string = getCurrentFile();
+let isHomePage:boolean = currFile.localeCompare("index") === 0;	// compare === 0 -> MATCH
+// if path contains services/ -> it is a specific page within services directory
+let isServicePage:boolean = window.location.pathname.includes("services/"); 
 const imgPath:string = (isHomePage ? "./" : (isServicePage ? "../../" : "../")) + "resources/global_imgs/background/";
 // Use for production
 //const imgPath:string = '/resources/global_imgs/background/';
@@ -27,6 +30,10 @@ const data:IBgImage = {
 	"about" : {
 		path: imgPath + "",
 		alt: ""
+	},
+	"services" : {
+		path: imgPath + "",
+		alt: "Services Landing Page Image"
 	},
 	"reedmaking" : {
 		path: imgPath + "reedmaking_bg.jpg",

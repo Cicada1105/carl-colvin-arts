@@ -2,6 +2,7 @@
 
 // Imports
 import { getCurrentFile } from '../../../global/methods/utilities'
+import { loadServicesLandingPage } from './landing_pg/index'
 import { loadEditingPage } from './editing/index'
 import { loadPerformancePage } from './performance/index'
 import { loadReedmakingPage } from './reedmaking/index'
@@ -22,6 +23,9 @@ const loadServicesPage = () => {
 		break;
 		case "writing":
 			loadWritingPage();
+		break;
+		default:
+			loadServicesLandingPage();
 		break;
 	}
 }

@@ -19,7 +19,7 @@ const loadCollage = ():void => {
 	collageImages.forEach((img) => {
 		let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
 
-		let postData:IBox = <IBox>img.postData;
+		let postData:IBox<string> = <IBox<string>>img.postData;
 
 		// Clone node to be displayed in pop up when user clicks on image
 		let imgClone:HTMLImageElement = <HTMLImageElement>imgNode.cloneNode(true);

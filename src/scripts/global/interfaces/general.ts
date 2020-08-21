@@ -14,11 +14,11 @@ interface ILink {
 	link:string;
 	subdirectories: ILink[] | null;
 }
-interface IBox {
+interface IBox<T> {
 	header:string;
-	content:string | any;
+	content:T;
 }
-interface IBoxLink extends IBox {
+interface IBoxLink<T> extends IBox<T> {
 	link:string;
 }
 interface EventListener {

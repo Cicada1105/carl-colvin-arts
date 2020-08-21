@@ -23,15 +23,15 @@ let createNavigation = ():any => {
     // Create li for current link
     let currLi:any;
 
-    // Check if current file matches a link (equivalent => 0)
-    if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) == 0) {
-      // Add attribute to current li to signify it is the active link
-      currLi = createTextElement({element:'li',text:link.name, idName:'active'});
-    }
     // Check if home page to float left: index.html
-    if (link.name.localeCompare("Carl Colvin Arts") == 0) {
+    if (link.name.localeCompare("Carl Colvin Arts") === 0) {
       // Add id to home page
       currLi =  createTextElement({element:'li',text:link.name, idName:'homeLink'});
+    }
+    // Check if current file matches a link (equivalent => 0)
+    else if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) === 0) {
+      // Add attribute to current li to signify it is the active link
+      currLi = createTextElement({element:'li',text:link.name, idName:'active'});
     }
     else {
       currLi = createTextElement({element:'li',text:link.name});
@@ -86,7 +86,8 @@ let createSubdirectory = (dirs:Array<ILink>):any => {
 
     let subLink:string = dir.link;
     // Add event listener
-    currSubLi.addEventListener("click", () => {
+    currSubLi.addEventListener("click", (event:any) => {
+      event.stopPropagation();
       window.open(subLink,"_self");
     })
     // Append current li element to subdirectory ul

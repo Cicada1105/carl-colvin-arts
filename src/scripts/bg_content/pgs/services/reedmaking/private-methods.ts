@@ -11,7 +11,7 @@ const IMG_PATH:string = "../../resources/pg_imgs/reedmaking_imgs/";
 /************************************/
 /*		Header Text and Content 	*/
 /************************************/
-const createHeaderContent = (data:IBox):HTMLDivElement => {
+const createHeaderContent = (data:IBox<string>):HTMLDivElement => {
 	let cont:HTMLDivElement = createElement({className:"headerCont"});
 
 	let headerCont:HTMLDivElement = createElement({className:'headerText'});

@@ -4,10 +4,10 @@ interface ICollage extends IImage {
 }
 interface IPost {
     imageData: ICollage;
-    postData: IBox;
+    postData: IBox<string>;
 }
 interface IPostData {
     img: HTMLImageElement;
-    postData: IBox;
+    postData: IBox<string>;
 }
 export { ICollage, IPost, IPostData };

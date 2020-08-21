@@ -13,7 +13,7 @@ const IMAGE_DIR:string = (isHomePage ? './' : '../') + "resources/pg_imgs/about_
 // Paths for production
 //const IMAGE_DIR:string = '/resources/pg_imgs/about_imgs/'
 
-const infoBox = (e:IBoxLink):HTMLElement => {
+const infoBox = (e:IBoxLink<string>):HTMLElement => {
 	let box:HTMLElement = document.createElement('section');
 
 	let h:HTMLHeadingElement = createTextElement({element:'h3',text:e.header});

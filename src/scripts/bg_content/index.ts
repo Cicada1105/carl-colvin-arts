@@ -27,7 +27,7 @@ const createBodyContent = () => {
 			loadContactPage();
 		break;
 		default:
-			loadServicesPage(); // Doesn't have it's own home page so will redirect to loading specific page
+			loadServicesPage();
 	}
 }
 

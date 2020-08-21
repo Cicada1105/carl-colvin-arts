@@ -3,7 +3,7 @@
 import { IImage, IBoxLink } from '../../../global/interfaces/general'
 
 interface IRow {
-	infoData:IBoxLink;
+	infoData:IBoxLink<string>;
 	imgData:IImage;
 }
 

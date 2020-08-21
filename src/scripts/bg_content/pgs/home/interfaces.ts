@@ -9,14 +9,14 @@ interface ICollage extends IImage {
 // Each image will have imageData and postData
 interface IPost {
 	imageData: ICollage;
-	postData: IBox;
+	postData: IBox<string>;
 }
 
 // Interface that defines data to be stored in an array to allow user to 
 //	click left and right arrows, going from one post to another
 interface IPostData {
 	img: HTMLImageElement;
-	postData: IBox;
+	postData: IBox<string>;
 }
 
 export { ICollage, IPost, IPostData }

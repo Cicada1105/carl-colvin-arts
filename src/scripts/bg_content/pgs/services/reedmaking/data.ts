@@ -2,7 +2,7 @@
 import { TabInterface, ReedPricingInterface } from './interfaces'
 import { IBox } from '../../../../global/interfaces/general'
 
-const introData:IBox[] = [
+const introData:IBox<string>[] = [
 	{
 		header:"Reedmaking",
 		content:"Reeds are hard, whether to play on or make. There's no getting around it. However, that " +

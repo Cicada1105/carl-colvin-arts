@@ -31,7 +31,7 @@ let imgPostArray:Array<IPostData> = [];
 	postCont:any
 		-Container holding left and right arrows and post data
 */
-const createPostCont = (postData:IBox):HTMLDivElement => {
+const createPostCont = (postData:IBox<string>):HTMLDivElement => {
 	// Store current location of postData 
 	// findIndex loops through array then returns first index of element that passes test
 	let currentPostIndex:number = imgPostArray.findIndex((currPost) => currPost.postData.header === postData.header);
@@ -100,7 +100,7 @@ const createPostCont = (postData:IBox):HTMLDivElement => {
 	cont:any
 		-Container holding the header, hr divider and content of the image
 */
-const createPostCard = (postData:IBox):HTMLDivElement => {
+const createPostCard = (postData:IBox<string>):HTMLDivElement => {
 	let cont:HTMLDivElement = createElement({
 		className:"postDataCont"
 	});

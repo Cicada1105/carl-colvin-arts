@@ -10,7 +10,7 @@ import { createPostCont } from './create'
 //	data
 import { imgPostArray } from './create'
 
-const storeCurrentImage = (image:HTMLImageElement, data:IBox):void => {
+const storeCurrentImage = (image:HTMLImageElement, data:IBox<string>):void => {
 	imgPostArray.push({img:image, postData:data});
 }
 /*
@@ -27,7 +27,7 @@ const storeCurrentImage = (image:HTMLImageElement, data:IBox):void => {
 	@return
 	void
 */
-const displayImagePost = (img:HTMLImageElement, postData:IBox):void => {
+const displayImagePost = (img:HTMLImageElement, postData:IBox<string>):void => {
 	let imgPostBackdrop:HTMLDivElement = createElement({
 		idName:"postBackdrop"
 	});

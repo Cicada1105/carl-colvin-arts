@@ -3,7 +3,7 @@ import { ILink } from '../global/interfaces/general'
 
 // Use during development
 const isHomePage:boolean = window.location.pathname.includes("index");
-const isServicePage:boolean = window.location.pathname.includes("services");
+const isServicePage:boolean = window.location.pathname.includes("services/");
 const rootDir:string = isHomePage ? "./" : (isServicePage ? "../../" : "../");
 // Use during production
 //const rootDir:string = "/";
@@ -22,7 +22,7 @@ const links:Array<ILink> = [
   },
   {
     name:"Services",
-    link:"",
+    link:rootDir + "pgs/services.html",
     subdirectories:[
       {
         name:"Writing",
