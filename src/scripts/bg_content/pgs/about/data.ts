@@ -40,7 +40,7 @@ const Rows:IRow[] = [
 	{
 		infoData: {
 			header:"Services",
-			link:`${ROOT_PGS_DIR}services/performance.html`,
+			link:`${ROOT_PGS_DIR}services.html`,
 			content:"Take part in carl's top tier services. 6 stars out of 5"
 		},
 		imgData: {
