@@ -99,7 +99,6 @@ h3 + p {
   z-index: 3;
 }
 div#flexCont {
-  width: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

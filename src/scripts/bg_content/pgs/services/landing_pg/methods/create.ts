@@ -78,6 +78,10 @@ const createButton = (link:string):HTMLDivElement => {
 		text:"Go To"
 	});
 
+	btnCont.addEventListener("click",() => {
+		window.open(link, "_self");
+	})
+
 	// Create container for button hover animation
 	let circleAnimation:HTMLDivElement = createElement({
 		idName: "circle"
