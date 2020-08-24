@@ -35,17 +35,13 @@ const createServiceCard = (cardData:IBoxLink<IImage>):HTMLDivElement => {
 }
 
 const createSVGBorder = ():SVGElement => {
-	let svg:SVGElement = <SVGElement>(document.createElement("svg") as unknown);
+	let svg:SVGElement = <SVGElement>document.createElementNS("http://www.w3.org/2000/svg","svg");
 
 	// Create polyline to define the border positions and style
-	let polyline:SVGPolylineElement = <SVGPolylineElement>(document.createElement("polyline") as unknown);
+	let polyline:SVGPolylineElement = <SVGPolylineElement>document.createElementNS("http://www.w3.org/2000/svg","polyline");
 
 	// Add points to polyline 
-	polyline.setAttribute("points","0,0 300,0 300,340 0,340 0,0");
-	// Set styling for polyline
-	polyline.setAttribute("fill","none");
-	polyline.setAttribute("stroke-width","5");
-	polyline.setAttribute("stroke","#de5757");
+	polyline.setAttribute("points","0,0 300,0 300,400 0,400 0,0");
 
 	// Append polyline to svg
 	svg.appendChild(polyline);

@@ -1,6 +1,7 @@
 // Import fixed colors to used throughout the pages
 @import "../global/colors.less";
 @import (reference) '../global/namespace.less';
+@import (reference) '../global/methods.less';
 
 #globalNS > .html();
 #globalNS > .navigation();
@@ -10,5 +11,122 @@
 /*
 	Rest of the code goes here
 */
+h3 {
+	.format(relative,40rem);
+	color:@textColor;
+	text-align:center;
+	display:block;
+	margin:5rem auto;
+	font-size:2rem;
+	z-index:3;
+
+	& + p {
+		.format(relative, 50rem);
+		display:block;
+		margin:auto;
+		margin-bottom:4rem;
+		color:@textColor;
+		font-size:1rem;
+		z-index: 3;
+	}
+}
+div#flexCont {
+	display:flex;
+	flex-direction: row;
+	justify-content: space-around;
+ 	flex-wrap: wrap;
+ 	color: @textColor;
+
+ 	& > div.serviceCard {
+ 		margin:2rem 6rem 5rem 6rem;
+ 		width: 300px;
+ 		height: 400px;
+ 		z-index: 3;
+
+        & > h2 {
+        	text-align:center;
+            color:white;
+            padding-top:10px;
+            padding-bottom:5px;
+
+            &:hover {
+            	cursor:default;
+            }
+        }
+        & > svg {
+        	.format(absolute, 300px, 400px);
+        	transition:0.5s linear;
+        	stroke-dasharray:300 1100;
+
+        	& > polyline {
+        		fill: none;
+        		stroke-width:5;
+        		stroke: @accentColor;
+        	}
+        }
+        & > figure {
+        	.format(relative,inherit, 300px);
+            display:block;
+            margin:0;
+	        transition:1s linear;
+	        opacity:0;
+
+            & > img {
+            	.format(relative,80%);
+	            margin:auto;
+	            display:block;
+	            top:40%;
+	            transform:translateY(-50%);
+	            padding-bottom:15px;
+            }
+            & > figcaption {
+            	position:absolute;
+            	bottom:2rem;
+            	word-break: break-word;
+            	padding: 0px 39px;
+            	text-align:center;
+            }
+        }
+        & > div.serviceBtn {
+        	.format(relative,50px,20px);
+            color:white;
+            text-align:center;
+            transition:color 0.15s linear 0s;
+        	margin:auto;
+            margin-top:25px;
+            padding:10px 15px;
+            border: 2px solid #de5757;
+            border-radius:10px;
+
+            &:hover {
+	        	color:white;
+	        	cursor:pointer;
+
+	        	& > div#circle {
+        			clip-path:circle(100% at 50% 50%);
+	        	}
+            }
+            & > div#circle {
+            	.format(absolute, 100%, 100%);
+	            display:block;
+	            background-color:#de5757;
+	            border-radius:8px;
+	            clip-path:circle(0% at -50% 100%);
+	            transition-duration:0.5s;
+	            left:0px;
+	            top:0px;
+	            z-index:-1;
+            }
+        }
+        // Cause image to display when card is hovered over
+        &:hover figure {
+        	opacity:1;
+        }
+        // Cause svg stroke dash array to increase when card is hovered over
+        &:hover > svg {
+        	stroke-dasharray: 1400;
+        }
+ 	}
+}
 
 #globalNS > .social();

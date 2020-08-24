@@ -78,6 +78,125 @@ body {
 /*
 	Rest of the code goes here
 */
+h3 {
+  position: relative;
+  width: 40rem;
+  color: #f0edee;
+  text-align: center;
+  display: block;
+  margin: 5rem auto;
+  font-size: 2rem;
+  z-index: 3;
+}
+h3 + p {
+  position: relative;
+  width: 50rem;
+  display: block;
+  margin: auto;
+  margin-bottom: 4rem;
+  color: #f0edee;
+  font-size: 1rem;
+  z-index: 3;
+}
+div#flexCont {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  color: #f0edee;
+}
+div#flexCont > div.serviceCard {
+  margin: 2rem 6rem 5rem 6rem;
+  width: 300px;
+  height: 400px;
+  z-index: 3;
+}
+div#flexCont > div.serviceCard > h2 {
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+div#flexCont > div.serviceCard > h2:hover {
+  cursor: default;
+}
+div#flexCont > div.serviceCard > svg {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  transition: 0.5s linear;
+  stroke-dasharray: 300 1100;
+}
+div#flexCont > div.serviceCard > svg > polyline {
+  fill: none;
+  stroke-width: 5;
+  stroke: #de5757;
+}
+div#flexCont > div.serviceCard > figure {
+  position: relative;
+  width: inherit;
+  height: 300px;
+  display: block;
+  margin: 0;
+  transition: 1s linear;
+  opacity: 0;
+}
+div#flexCont > div.serviceCard > figure > img {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  display: block;
+  top: 40%;
+  transform: translateY(-50%);
+  padding-bottom: 15px;
+}
+div#flexCont > div.serviceCard > figure > figcaption {
+  position: absolute;
+  bottom: 2rem;
+  word-break: break-word;
+  padding: 0px 39px;
+  text-align: center;
+}
+div#flexCont > div.serviceCard > div.serviceBtn {
+  position: relative;
+  width: 50px;
+  height: 20px;
+  color: white;
+  text-align: center;
+  transition: color 0.15s linear 0s;
+  margin: auto;
+  margin-top: 25px;
+  padding: 10px 15px;
+  border: 2px solid #de5757;
+  border-radius: 10px;
+}
+div#flexCont > div.serviceCard > div.serviceBtn:hover {
+  color: white;
+  cursor: pointer;
+}
+div#flexCont > div.serviceCard > div.serviceBtn:hover > div#circle {
+  clip-path: circle(100% at 50% 50%);
+}
+div#flexCont > div.serviceCard > div.serviceBtn > div#circle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #de5757;
+  border-radius: 8px;
+  clip-path: circle(0% at -50% 100%);
+  transition-duration: 0.5s;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+div#flexCont > div.serviceCard:hover figure {
+  opacity: 1;
+}
+div#flexCont > div.serviceCard:hover > svg {
+  stroke-dasharray: 1400;
+}
 #footer {
   bottom: 0%;
   z-index: 3;
