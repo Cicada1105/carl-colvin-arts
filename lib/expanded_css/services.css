@@ -106,10 +106,10 @@ div#flexCont {
   color: #f0edee;
 }
 div#flexCont > div.serviceCard {
-  margin: 2rem 6rem 5rem 6rem;
+  margin: 2rem 6rem 8rem 6rem;
   width: 300px;
   height: 400px;
-  z-index: 3;
+  z-index: 2;
 }
 div#flexCont > div.serviceCard > h2 {
   text-align: center;

@@ -38,10 +38,10 @@ div#flexCont {
  	color: @textColor;
 
  	& > div.serviceCard {
- 		margin:2rem 6rem 5rem 6rem;
+ 		margin:2rem 6rem 8rem 6rem;
  		width: 300px;
  		height: 400px;
- 		z-index: 3;
+ 		z-index: 2;
 
         & > h2 {
         	text-align:center;
@@ -59,7 +59,8 @@ div#flexCont {
         	stroke-dasharray:300 1100;
 
         	& > polyline {
-        		fill: none;
+        		//fill: @secondaryColor;
+                fill: none;
         		stroke-width:5;
         		stroke: @accentColor;
         	}
