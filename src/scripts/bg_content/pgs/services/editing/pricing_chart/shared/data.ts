@@ -217,34 +217,28 @@ const chartSelectionsData:ILit[] = [
 					{
 						min: 0,
 						max: 1999,
-						flatRate: 150,
+						flatRate: 79,
 						perHour: 0,
 						perWord: 0.00
 					},
 					{
 						min: 2000,
 						max: 3999,
-						flatRate: 245,
+						flatRate: 149,
 						perHour: 0,
 						perWord: 0.00
 					},
 					{
 						min: 4000,
 						max: 5999,
-						flatRate: 380,
+						flatRate: 218,
 						perHour: 0,
 						perWord: 0.00
 					},
 					{
 						min: 6000,
-						max: 39999,
-						perHour: 34,
-						perWord: 0.02
-					},
-					{
-						min: 40000,
 						max: Infinity,
-						perHour: 35,
+						perHour: 32,
 						perWord: 0.02
 					}
 				]
