@@ -2,9 +2,11 @@
 // 	content for the reedmaking page
 
 // Imports
+//	interfaces
 import { IPricing, ReedPricingInterface } from './interfaces'
-import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
 import { IBox } from '../../../../global/interfaces/general'
+//	methods
+import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
 
 const IMG_PATH:string = "../../resources/pg_imgs/reedmaking_imgs/";
 
@@ -43,7 +45,6 @@ const createHeaderContent = (data:IBox<string>):HTMLDivElement => {
 
 	return cont;
 }
-
 
 /************************************/
 /*		Reed Pricings Container 	*/

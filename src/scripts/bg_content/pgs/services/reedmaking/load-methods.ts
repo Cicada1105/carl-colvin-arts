@@ -2,16 +2,90 @@
 // File dependencies will be handled here
 
 // Imports
-import { introData, tabData, pricingData } from './data' 
+import { REEDMAKING_DESCR, ABOUT_DESCR, introData, tabData, pricingData } from './data'
 import { createHeaderContent, createReedPriceBox } from './private-methods'
 import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
 
 const loadIntroData = ():void => {
-	introData.forEach(header => {
-		let headerContainer:HTMLDivElement = createHeaderContent(header);
+	let cvs:HTMLCanvasElement = createElement({
+		element: "canvas",
+		idName: "introCvs"
+	});
 
-		document.body.appendChild(headerContainer);
+	const CVS_WIDTH = window.innerWidth * 0.8;
+	const CVS_HEIGHT = window.innerHeight * 0.65;
+
+	cvs.setAttribute("width", CVS_WIDTH.toString());
+	cvs.setAttribute("height", CVS_HEIGHT.toString());
+
+	let ctx:CanvasRenderingContext2D = cvs.getContext("2d") as CanvasRenderingContext2D;
+	ctx.strokeStyle = "#003249";
+	ctx.lineWidth = 2;
+	ctx.fillStyle = "#f0edee";
+	ctx.font = "2.15rem Oswald";
+
+	// Line before reedmaking
+	ctx.beginPath();
+	ctx.moveTo(0, CVS_HEIGHT * 0.1);
+	ctx.lineTo(CVS_WIDTH * 0.1,CVS_HEIGHT * 0.1);
+
+	ctx.fillText("Reedmaking", CVS_WIDTH * 0.125, CVS_HEIGHT * 0.125);
+
+	// '-v-' in between reedmaking and about
+	ctx.moveTo(CVS_WIDTH * 0.3, CVS_HEIGHT * 0.1);
+	ctx.lineTo(CVS_WIDTH * 0.4, CVS_HEIGHT * 0.1);
+	ctx.lineTo(CVS_WIDTH * 0.5, CVS_HEIGHT * 0.3);
+	ctx.lineTo(CVS_WIDTH * 0.6, CVS_HEIGHT * 0.1);
+	ctx.lineTo(CVS_WIDTH * 0.7, CVS_HEIGHT * 0.1);
+
+	ctx.fillText("About", CVS_WIDTH * 0.7625, CVS_HEIGHT * 0.125);
+
+	// Line after about
+	ctx.moveTo(CVS_WIDTH * 0.9, CVS_HEIGHT * 0.1);
+	ctx.lineTo(CVS_WIDTH * 1, CVS_HEIGHT * 0.1)
+
+	// Draw line 
+	ctx.stroke();
+
+	// Draw rectangle for "housing" Reedmaking and About text
+	/*
+		Positioning determined by:
+		-width: start @ half of XPos of line before header -> half of XPos after header
+		-height: start @ third of YPos of the "V" -> slightly shorter than height of canvas
+	*/
+	ctx.strokeRect(CVS_WIDTH * 0.05, CVS_HEIGHT * 0.2, CVS_WIDTH * 0.3, CVS_HEIGHT * 0.79);		// Reedmaking text container
+	ctx.strokeRect(CVS_WIDTH * 0.65, CVS_HEIGHT * 0.2, CVS_WIDTH * 0.3, CVS_HEIGHT * 0.79);		// About text container
+	ctx.strokeRect(CVS_WIDTH * 0.4, CVS_HEIGHT * 0.3, CVS_WIDTH * 0.2, CVS_HEIGHT * 0.6);	// Reedmaking image container
+
+	ctx.font = "1.1rem Oswald";
+	const REED_X_TEXT_POS:number = CVS_WIDTH * 0.07;
+	const ABOUT_X_TEXT_POS:number = CVS_WIDTH * 0.67;
+	const Y_TEXT_POS:number = CVS_HEIGHT * 0.265;
+	const TEXT_ROW_LENGTH:number = CVS_WIDTH * 0.29;
+	const LINE_HEIGHT:number = 22;	
+	let reedmakingDescrRows:string[] = REEDMAKING_DESCR.split("\n");
+	let aboutDescrRows:string[] = ABOUT_DESCR.split("\n");
+
+	// Loop through reedmaking rows and display them accordingly in the canvas
+	reedmakingDescrRows.forEach((row:string, i:number) => {
+		ctx.fillText(row, REED_X_TEXT_POS, Y_TEXT_POS + (i * LINE_HEIGHT), TEXT_ROW_LENGTH);
+	});
+	// Loop through about rows and display them accordingly in the canvas
+	aboutDescrRows.forEach((row:string, i:number) => {
+		ctx.fillText(row, ABOUT_X_TEXT_POS, Y_TEXT_POS + (i * LINE_HEIGHT), TEXT_ROW_LENGTH);	
 	})
+
+	// Reed Image
+	let reedImg:HTMLImageElement = createImageElement({
+		src: "../../resources/pg_imgs/reedmaking_imgs/finished_reed.jpg",
+		alt: "Finished Reed",
+		idName: "finished_reed"
+	})
+	reedImg.onload = () => {
+		ctx.drawImage(reedImg, CVS_WIDTH * 0.402, CVS_HEIGHT * 0.302, CVS_WIDTH * 0.196, CVS_HEIGHT * 0.596);
+	};
+
+	document.body.appendChild(cvs);
 }
 
 const loadTabs = ():void => {

@@ -2,6 +2,34 @@
 import { TabInterface, ReedPricingInterface } from './interfaces'
 import { IBox } from '../../../../global/interfaces/general'
 
+const REEDMAKING_DESCR:string = "Reeds are hard, whether to play on or make. \n" +
+								"There's no getting around it. However, \n" +
+								"that shouldn't stop you from playing at \n" +
+								"your best, and that is why I offer \n" +
+								"reedmaking services. I have been making \n" +
+								"reeds for 11 years and, like many other \n" + 
+								"professional oboists, offer them to the \n" +
+								"public for sale. My reeds are all handmade\n" + 
+								"from start to finish, from tube cane to \n" +
+								"performance-ready, and will not leave my\n" +
+								"hand until they are play-tested and at a \n" + 
+								"level that I would perform on them \n" +
+								"myself."
+
+const ABOUT_DESCR:string = 	"My sale price reflects my years of \n" +
+							"experience in reeds and the cane itself. \n" +
+							"However, I completely understand that \n" +
+							"everyone is different and may not like my \n" +
+							"reeds. If this is the case, I would love \n" +
+							"the opportunity to make it right and get \n" +
+							"the best reed that fits all your needs. \n" +
+							"If any of your needs are more immediate, \n" +
+							"I am more than happy to work with you. \n" +
+							"I normally create and ship reeds within \n" +
+							"a week of receiving payment. Please reach \n" +
+							"me via the \"Contact\" tab with any \n" +
+							"orders, issues, and special instructions."
+
 const introData:IBox<string>[] = [
 	{
 		header:"Reedmaking",
@@ -129,4 +157,4 @@ const pricingData:ReedPricingInterface[] = [
 	},
 ]
 
-export { introData, tabData, pricingData }
+export { REEDMAKING_DESCR, ABOUT_DESCR, introData, tabData, pricingData }
