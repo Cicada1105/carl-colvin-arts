@@ -7,12 +7,7 @@ import { IBox } from '../../../../global/interfaces/general'
 import { createElement } from '../../../../global/methods/elements'
 //		local
 import { createPostCont } from './create'
-//	data
-import { imgPostArray } from './create'
 
-const storeCurrentImage = (image:HTMLImageElement, data:IBox<string>):void => {
-	imgPostArray.push({img:image, postData:data});
-}
 /*
 	@params
 	img:HTMLImageElement
@@ -90,4 +85,4 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox<string>):void => {
 	document.body.appendChild(imgPostCont);
 }
 
-export { displayImagePost, storeCurrentImage }
+export { displayImagePost }

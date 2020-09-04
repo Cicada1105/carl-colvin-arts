@@ -8,17 +8,13 @@
 //  interfaces
 //		global
 import { IBox } from '../../../../global/interfaces/general'
-//		local
-import { IPostData } from '../interfaces'
 //	methods
 //		global
 import { createElement, createTextElement } from '../../../../global/methods/elements'
 //	event listeners
 import { ArrowClickListener } from './event_listeners'
 //  data 
-import { collageImages } from '../data'
-
-let imgPostArray:Array<IPostData> = [];
+import CollageData from '../classes/CollageData'
 
 /*
 	@params
@@ -33,8 +29,9 @@ let imgPostArray:Array<IPostData> = [];
 */
 const createPostCont = (postData:IBox<string>):HTMLDivElement => {
 	// Store current location of postData 
-	// findIndex loops through array then returns first index of element that passes test
-	let currentPostIndex:number = imgPostArray.findIndex((currPost) => currPost.postData.header === postData.header);
+	let currentPostIndex:number = CollageData.findIndex(postData);
+	// Go to location of current post
+	CollageData.goToIndex(currentPostIndex);
 
 	// Post container will hold the two "panels" one that holds image on left 
 	//  and one that holds caption on right
@@ -50,12 +47,8 @@ const createPostCont = (postData:IBox<string>):HTMLDivElement => {
 
 	// Create left arrow
 	let leftArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-left"});
-	// Only add event listener to left arrow if current post is not the first post
-	if (currentPostIndex > 0) {
-		// Add event listener for cycling through posts going to the left
-		//	bind currentPostIndex to manipulate variable
-		leftArrow.addEventListener("click", ArrowClickListener.bind(currentPostIndex));
-	}
+	// Add event listener for cycling through posts going to the left
+	leftArrow.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
 
 	// Append left arrow to positioning container
 	leftArrowCont.appendChild(leftArrow);
@@ -71,12 +64,8 @@ const createPostCont = (postData:IBox<string>):HTMLDivElement => {
 
 	// Create right arrow 
 	let rightArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-right"});
-	// Only add event listener to right arrow if current post is not the last post
-	if (currentPostIndex < (imgPostArray.length - 1)) {
-		// Add event listener for cycling through posts going to the right
-		//	bind currentPostIndex to manipulate variable
-		rightArrow.addEventListener("click", ArrowClickListener.bind(currentPostIndex));
-	}
+	// Add event listener for cycling through posts going to the right
+	rightArrow.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
 
 	// Append right arrow to positioning container
 	rightArrowCont.appendChild(rightArrow);
@@ -133,4 +122,4 @@ const createPostCard = (postData:IBox<string>):HTMLDivElement => {
 	return cont;
 }
 
-export { createPostCont, imgPostArray }
+export { createPostCont }

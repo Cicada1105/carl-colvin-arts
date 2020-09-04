@@ -7,43 +7,63 @@ import { IBox } from '../../../../global/interfaces/general'
 import { ICollage } from '../interfaces'
 //	methods
 import { createElement, createImageElement } from '../../../../global/methods/elements'
-import { displayImagePost, storeCurrentImage } from './display'
+import { displayImagePost } from './display'
 //	data
 import { collageImages } from '../data'
-import { imgPostArray } from './create';
+import CollageData from '../classes/CollageData'
 
 const loadMobileDisplay = ():void => {
-	collageImages.forEach((img) => {
-		let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
-		let postData:IBox<string> = <IBox<string>>img.postData;
+	// Only store images if they have not already been created by loadCollage
+	if (CollageData.isEmpty()) {
+		collageImages.forEach((img) => {
+			let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
+			let postData:IBox<string> = <IBox<string>>img.postData;
 
-		storeCurrentImage(imgNode, postData);
-	});
-	displayImagePost(imgPostArray[0].img, imgPostArray[0].postData);
+			CollageData.storeImage(imgNode, postData);
+		});
+	}
+
+	displayImagePost(CollageData.getImage(), CollageData.getData());
 }
 const loadCollage = ():void => {
 	let collageCont:HTMLDivElement = createElement({
 		idName:"collage"
 	});
 
-	collageImages.forEach((img) => {
-		let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
+	// Only store data if D=CollageData is empty
+	if (CollageData.isEmpty()) {
+		collageImages.forEach((img) => {
+			let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
 
-		let postData:IBox<string> = <IBox<string>>img.postData;
+			let postData:IBox<string> = <IBox<string>>img.postData;
 
-		// Clone node to be displayed in pop up when user clicks on image
-		let imgClone:HTMLImageElement = <HTMLImageElement>imgNode.cloneNode(true);
+			// Clone node to be displayed in pop up when user clicks on image
+			let imgClone:HTMLImageElement = <HTMLImageElement>imgNode.cloneNode(true);
 
-		// Store current image clone and post data to be used to cycle through posts
-		//	-only want to store once and not each time image is clicked
-		storeCurrentImage(imgClone, postData);
+			// Store current image clone and post data to be used to cycle through posts
+			//	-only want to store once and not each time image is clicked
+			CollageData.storeImage(imgClone, postData);
 
-		imgNode.addEventListener("click", () => {
-			displayImagePost(imgClone, postData);
+			imgNode.addEventListener("click", () => {
+				displayImagePost(imgClone, postData);
+			});
+			// Append image to the collage container
+			collageCont.appendChild(imgNode);
 		});
-		// Append image to the collage container
-		collageCont.appendChild(imgNode);
-	});
+	}
+	else {
+		collageImages.forEach((img,index) => {
+			let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
+
+			CollageData.goToIndex(index);
+
+			imgNode.addEventListener("click", () => {
+				displayImagePost(CollageData.getImage(), CollageData.getData());
+			});
+			// Append image to the collage container
+			collageCont.appendChild(imgNode);
+		});
+	}
 
 	document.body.appendChild(collageCont);
 }

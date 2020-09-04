@@ -4,7 +4,7 @@
 //		local
 import { displayImagePost } from './display'
 //	data
-import { imgPostArray } from './create'
+import CollageData from '../classes/CollageData'
 
 function ArrowClickListener(event:any) {
 	// Store current target
@@ -20,18 +20,16 @@ function ArrowClickListener(event:any) {
 	let exitButton:Element = <Element>postCont.nextElementSibling;
 	exitButton.dispatchEvent(clickEvent);
 
-	// Store current index
-	let currentIndex:number = this;
 	// Increment or Decrement to next post based on target pressed
-	currentIndex += arrow.className.includes("left") ? -1 : 1;
+	arrow.className.includes("left") ? CollageData.previousImage() : CollageData.nextImage();
 	// Display current post data
-	displayImagePost(imgPostArray[currentIndex].img,imgPostArray[currentIndex].postData);
+	displayImagePost(CollageData.getImage(),CollageData.getData());
 }
 
 function MobileListener():void {
 	if (window.innerWidth < 900) {
 		if (!(document.getElementById("postBackdrop"))) 
-			displayImagePost(imgPostArray[0].img, imgPostArray[0].postData);
+			displayImagePost(CollageData.getImage(), CollageData.getData());
 		
 		window.removeEventListener("resize",MobileListener);
 		window.addEventListener("resize",DesktopListener);
