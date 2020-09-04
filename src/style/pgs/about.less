@@ -2,10 +2,17 @@
 @import "../global/colors.less";
 @import (reference) '../global/namespace.less';
 
-#globalNS > .html();
-#globalNS > .navigation();
-#globalNS > .bg_canvas();
-#globalNS > .bg_img();
+// Load global styling only on about page and not home
+@isHomePage:false;
+.aboutMixin(@isHome) when not (@isHome = true) {
+  #globalNS > .html();
+  #globalNS > .navigation();
+  #globalNS > .bg_canvas();
+  #globalNS > .bg_img();
+  #globalNS > .social();
+}
+
+.aboutMixin(@isHomePage);
 
 .row {
   position:relative;
@@ -107,5 +114,3 @@
     width:95%;
   }
 }
-
-#globalNS > .social();

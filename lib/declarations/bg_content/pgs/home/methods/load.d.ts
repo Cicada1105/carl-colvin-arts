@@ -1,2 +1,3 @@
+declare const loadMobileDisplay: () => void;
 declare const loadCollage: () => void;
-export { loadCollage };
+export { loadMobileDisplay, loadCollage };

@@ -10,7 +10,17 @@ import { createElement, createImageElement } from '../../../../global/methods/el
 import { displayImagePost, storeCurrentImage } from './display'
 //	data
 import { collageImages } from '../data'
+import { imgPostArray } from './create';
 
+const loadMobileDisplay = ():void => {
+	collageImages.forEach((img) => {
+		let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
+		let postData:IBox<string> = <IBox<string>>img.postData;
+
+		storeCurrentImage(imgNode, postData);
+	});
+	displayImagePost(imgPostArray[0].img, imgPostArray[0].postData);
+}
 const loadCollage = ():void => {
 	let collageCont:HTMLDivElement = createElement({
 		idName:"collage"
@@ -54,4 +64,4 @@ const loadImage = (imgData:ICollage):HTMLImageElement => {
 
 
 
-export { loadCollage }
+export { loadMobileDisplay, loadCollage }

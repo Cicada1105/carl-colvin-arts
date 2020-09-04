@@ -4,10 +4,16 @@
 @import (reference) '../global/namespace.less';
 @import (reference) '../global/methods.less';
 
-#globalNS > .html();
-#globalNS > .navigation();
-#globalNS > .bg_canvas();
-#globalNS > .bg_img();
+// Only load if on contact page and not on home page
+@isHomePage: false;
+.contactMixin(@isHome) when not (@isHome = true) {
+	#globalNS > .html();
+	#globalNS > .navigation();
+	#globalNS > .bg_canvas();
+	#globalNS > .bg_img();
+	#globalNS > .social();
+}
+.contactMixin(@isHomePage);
 
 form:first-of-type {
 	.format(relative, 54rem); 
@@ -131,5 +137,3 @@ form:first-of-type {
 		}
 	}
 }
-
-#globalNS > .social();

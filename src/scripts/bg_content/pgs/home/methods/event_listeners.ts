@@ -28,4 +28,24 @@ function ArrowClickListener(event:any) {
 	displayImagePost(imgPostArray[currentIndex].img,imgPostArray[currentIndex].postData);
 }
 
-export { ArrowClickListener }
+function MobileListener():void {
+	if (window.innerWidth < 900) {
+		if (!(document.getElementById("postBackdrop"))) 
+			displayImagePost(imgPostArray[0].img, imgPostArray[0].postData);
+		
+		window.removeEventListener("resize",MobileListener);
+		window.addEventListener("resize",DesktopListener);
+	}
+}
+function DesktopListener():void {
+	if (window.innerWidth >= 900) {
+		let click:any = new Event("click");
+		// Remove image post if displayed by dispatching exit event
+		document.getElementsByClassName("fas fa-times")[0].dispatchEvent(click) || console.log("Not displayed");
+
+		window.removeEventListener("resize", DesktopListener);
+		window.addEventListener("resize",MobileListener);
+	}
+}
+
+export { ArrowClickListener, MobileListener, DesktopListener }

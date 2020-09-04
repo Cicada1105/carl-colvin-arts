@@ -106,11 +106,11 @@
   position: fixed;width: 100%;height: 2.75rem;background-color: #0c090a;font-size: 1.5rem;filter: opacity(70%);z-index: 2;
 }
 #header ul[id="navigation"],
-#header ul[id="navigation"] li:hover ul[class="subDir"] {
+#header ul[id="navigation"] li ul[class="subDir"] {
   position: relative;padding: 0px;margin: 0%;
 }
 #header ul[id="navigation"] li,
-#header ul[id="navigation"] li:hover ul[class="subDir"] li {
+#header ul[id="navigation"] li ul[class="subDir"] li {
   text-decoration: none;position: relative;font-size: 1.1rem;color: #f0edee;display: inline;
 }
 #header ul[id="navigation"] li:hover,
@@ -121,6 +121,7 @@ html,
 body {
   background-color: black;
   font-family: "Oswald";
+  font-size: 16px;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -132,29 +133,50 @@ body {
 #header ul[id="navigation"] {
   width: inherit;
   height: 100%;
+  /*@media only screen and (max-width: 600px) {
+					span#linksCont {
+						//display:none;
+						width:100vw;
+
+						& > li {
+							display:block;
+						}
+					}
+				}*/
+}
+#header ul[id="navigation"] > span#linksCont {
+  position: relative;
+  float: right;
+  top: 4px;
+}
+@media only screen and (max-device-width: 560px) {
+  #header ul[id="navigation"] span#linksCont > li {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 #header ul[id="navigation"] li {
-  padding: 0.65rem 1.5rem 0.85rem 1.5rem;
-  float: right;
+  padding: 0.625rem 1.5rem 0.85rem 1.5rem;
 }
 #header ul[id="navigation"] li ul[class="subDir"] {
-  display: none;
-}
-#header ul[id="navigation"] li:hover ul[class="subDir"] {
   position: absolute;
   width: 225px;
   height: 125px;
   background-color: #0c090a;
   padding: 0%;
-  display: inline;
   float: left;
   right: 0%;
   top: 100%;
+  display: none;
 }
-#header ul[id="navigation"] li:hover ul[class="subDir"] li {
+#header ul[id="navigation"] li ul[class="subDir"] li {
+  display: inline-block;
   padding: 2.75% 5.25%;
   margin-top: 7.5%;
-  margin-right: 5%;
+  margin-left: 5.3%;
+}
+#header ul[id="navigation"] li:hover ul[class="subDir"] {
+  display: block;
 }
 #header ul[id="navigation"] #active {
   background-color: #f2f2f2;

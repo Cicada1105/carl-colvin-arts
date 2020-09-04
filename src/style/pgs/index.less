@@ -5,6 +5,8 @@
 @import (reference) '../global/methods.less';
 @import (reference) '../global/colors.less';
 
+// @isHomePage is used as a mixing guard for preventing global styling being loaded multiple times
+@isHomePage: true;
 #globalNS > .html();
 #globalNS > .navigation();
 #globalNS > .bg_canvas();
@@ -67,6 +69,11 @@ img {
 			transform: scale(0.85, 0.85);
 			cursor:pointer;
 		}
+	}
+}
+@media only screen and (max-width: 900px) {
+	#collage {
+		visibility:hidden;
 	}
 }
 #postBackdrop {
@@ -147,6 +154,17 @@ img {
 		&:hover {
 			cursor:pointer;
 		}
+	}
+}
+@media only screen and (max-width: 900px) {
+	.imgPostCont  {
+		position:absolute;
+		& > i {
+			display:none;	
+		}
+	}
+	#postBackdrop {
+		filter: opacity(0);
 	}
 }
 #formCont {

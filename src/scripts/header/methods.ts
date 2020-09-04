@@ -15,30 +15,46 @@ let createNavigation = ():any => {
   // Create new ul element
   let navUl:any = createElement({element:'ul',idName:'navigation'});
 
-  // Current link of type ILink
-  let link:ILink;
-  // Subdirectories of links can be array of ILinks or null
-  let directories:Array<ILink> | null;
-  for(link of links) { // Using of when dealing with arrays
-    // Create li for current link
-    let currLi:any;
+  // First link does not need to be looped through -> Home page link floated to left side
+  // Prevent excessive checking on each link
+  let homeData:ILink = links[0];
+  let homeLi:HTMLLIElement = createTextElement({element:'li',text:homeData.name, idName:'homeLink'});
+  homeLi.addEventListener("click",() => {
+    window.open(homeData.link, "_self");
+  });
+  navUl.appendChild(homeLi);
 
-    // Check if home page to float left: index.html
-    if (link.name.localeCompare("Carl Colvin Arts") === 0) {
-      // Add id to home page
-      currLi =  createTextElement({element:'li',text:link.name, idName:'homeLink'});
-    }
+  // Create container to hold page links to be manipulated for page responsiveness
+  let linksCont:HTMLSpanElement = createPageLinksCont(links.slice(1)); // Returns array without first element
+  // Append container to ul
+  navUl.appendChild(linksCont);
+
+  // Return ul node to be added to the header
+  return navUl;
+}
+
+const createPageLinksCont = (pageLinks:Array<ILink>):HTMLSpanElement => {
+  let linksCont:HTMLSpanElement = createElement({
+    element:"span",
+    idName:"linksCont"
+  });
+
+  // Current link of type ILink
+  let currLiData:ILink;
+  for(let i = 0; i < pageLinks.length; i++) { // Start at 1, skipping over first as it is previously handled
+    currLiData = pageLinks[i];
+    // Create li for current link
+    let currLi:HTMLLIElement;
+
     // Check if current file matches a link (equivalent => 0)
-    else if (CURRENT_PATH.localeCompare(link.name.toLowerCase()) === 0) {
+    if (CURRENT_PATH.localeCompare(currLiData.name.toLowerCase()) === 0)
       // Add attribute to current li to signify it is the active link
-      currLi = createTextElement({element:'li',text:link.name, idName:'active'});
-    }
-    else {
-      currLi = createTextElement({element:'li',text:link.name});
-    }
+      currLi = createTextElement({element:'li',text:currLiData.name, idName:'active'});
+    else 
+      currLi = createTextElement({element:'li',text:currLiData.name});
 
     // Store path of current link to use in event listener
-    let linkPath:string = link.link;
+    let linkPath:string = currLiData.link;
 
     // Add event listener for when link is clicked on
     currLi.addEventListener("click",() => {
@@ -46,9 +62,9 @@ let createNavigation = ():any => {
     });
 
     // Current link could either have null subdirectories or an array of ILink objects
-    if ((link.subdirectories != null) && (link.subdirectories.length > 0)) {
+    if ((currLiData.subdirectories != null) && (currLiData.subdirectories.length > 0)) {
       // Create new ul for subdirectories
-      let subdirectoryUl:any = createSubdirectory(link.subdirectories);
+      let subdirectoryUl:any = createSubdirectory(currLiData.subdirectories);
 
       // Append ul subdirectory to li main directory element
       currLi.appendChild(subdirectoryUl);
@@ -62,19 +78,20 @@ let createNavigation = ():any => {
     */
     // Floating li's to the right causes navigation to be displayed
     //  backwards when using appendChild.
-    navUl.insertBefore(currLi, navUl.childNodes[0]);
+    //linksCont.insertBefore(currLi, linksCont.childNodes[0]);
+    linksCont.appendChild(currLi);
   }
-  // Return ul node to be added to the header
-  return navUl;
+
+  return linksCont;
 }
 
-let createSubdirectory = (dirs:Array<ILink>):any => {
+const createSubdirectory = (dirs:Array<ILink>):HTMLUListElement => {
   // Create UL to contain LI's 
-  let subUl:any = createElement({element:'ul',className:'subDir'});
+  let subUl:HTMLUListElement = createElement({element:'ul',className:'subDir'});
 
   for (let dir of dirs) {
     // Create LI element for current subdirectory
-    let currSubLi:any;
+    let currSubLi:HTMLLIElement;
 
     if (CURRENT_PATH.localeCompare(dir.name.toLowerCase()) == 0) {
       // Add active attribute to current li

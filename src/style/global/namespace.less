@@ -8,12 +8,13 @@
 		html, body {
 			background-color:black;
 			font-family:"Oswald";
+			font-size:16px;
 			width:100%;
 			height:100%;
 			margin:0;
 		}
 	}
-	.navigation() {  
+	.navigation() {
 		#header {
 		    &:extend(.staticBar);
 		    top:0%;
@@ -22,34 +23,59 @@
 		    	&:extend(.staticUL);
 				width:inherit;
 				height:100%;
-				li {
-					&:extend(.staticLI);
-					padding:0.65rem 1.5rem 0.85rem 1.5rem;
-					float:right;
 
-					ul[class = "subDir"] {
-						display:none;
+				& > span#linksCont {
+					position:relative;
+					float:right;
+					top:4px;
+				}
+				@media only screen and (max-device-width: 560px) {
+					span#linksCont {
+						& > li {
+							padding-left:1rem;
+							padding-right:1rem;
+						}
 					}
 				}
-				// Include hover affect on navigation
-				li:hover {
-					&:extend(.staticLIHover);
+				/*@media only screen and (max-width: 600px) {
+					span#linksCont {
+						//display:none;
+						width:100vw;
+
+						& > li {
+							display:block;
+						}
+					}
+				}*/
+				li {
+					&:extend(.staticLI);
+					padding:0.625rem 1.5rem 0.85rem 1.5rem;
+
 					ul[class = "subDir"] {
 						&:extend(.staticUL);
 						.format(absolute, 225px, 125px);
 						background-color:@secondaryBackgroundColor;
 						padding:0%;
-						display:inline;
 						float:left;
 						right:0%;
 						top:100%;
 
+						display:none;
 						li {
 							&:extend(.staticLI);
+							display:inline-block;
 							padding:2.75% 5.25%;
 							margin-top:7.5%;
-							margin-right:5%
+							margin-left:5.3%
 						}
+					}
+				}
+				// Include hover affect on navigation
+				li:hover {
+					&:extend(.staticLIHover);
+
+					ul[class = "subDir"] {
+						display:block;
 						li:hover {
 							&:extend(.staticLIHover);
 						}
