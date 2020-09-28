@@ -7,6 +7,8 @@ import { IBox } from '../../../../global/interfaces/general'
 import { createElement } from '../../../../global/methods/elements'
 //		local
 import { createPostCont } from './create'
+//	classes
+import { HomeComponentPositioning } from '../classes/ComponentPositioning'
 
 /*
 	@params
@@ -27,9 +29,12 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox<string>):void => {
 		idName:"postBackdrop"
 	});
 
+	// Get element to insert "post" cont before
+	let rows:HTMLCollectionOf<HTMLElement> = document.getElementsByClassName("row") as HTMLCollectionOf<HTMLElement>;
+
 	// Create container for image and post details
 	let imgPostCont:HTMLDivElement = createElement({
-		className:"imgPostCont"
+		idName:"imgPostCont"
 	});
 
 	// Create container for image
@@ -56,33 +61,18 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox<string>):void => {
 	imgPostCont.appendChild(postCont);
 	imgPostCont.appendChild(exitButton);
 
-	//let width:number = parseFloat(widthStr);
-	//let height:number = parseFloat(heightStr);
-	let width:number = img.width;
-	let height:number = img.height;
-	/*
-		Default width and height of container 40rem x 20rem (640px x 320px)
-			centering image by 50% results in left and top being at 50% and not the 
-			center of the container. 
-				-If height is greater than default height, "subtract"
-				margin top by half height for vertical centering, else "subtract" half of 
-				default: 160
-				-If width is greater than half of default width (one side for image one
-				side for post), "subtract" margin left by half for horizontal centering,
-				else "subtract" half of default: 320
-	*/
-	imgPostCont.style.marginTop = -(height > 320 ? (height / 2) : 160) + "px";
-	imgPostCont.style.marginLeft = -(width > 320 ? width : 320) + "px";
-	// Size container according to image dimensions 
-	// 		if height > default height => imgPostCont height = image height
-	//		if width > half of default width => imgPostCont width = image width times two
-	imgPostCont.style.height = (height > 320 ? height : 320) + "px";
-	imgPostCont.style.width = (width > 320 ? (width * 2) : 640) + "px";
+	// Create "instance" of singleton class, passing in necessary data
+	HomeComponentPositioning.create(imgPostCont);
+	// Store imgPostCont in Singleton Pattern class to handle position updates
+	const homeCompPos:HomeComponentPositioning = HomeComponentPositioning.getInstance();
+	// Update home component
+	homeCompPos.update();
+
 	
-	// Append backdrop to the page to be displayed
-	document.body.appendChild(imgPostBackdrop);
-	// Append "pop up" container to the page to prevent inheriting properties from backdrop
-	document.body.appendChild(imgPostCont);
+	// Insert backdrop to the page, before the individual rows, to be displayed
+	document.body.insertBefore(imgPostBackdrop, rows[0]);
+	// Insert "pop up" container to the page, before the individual rows, to prevent inheriting properties from backdrop
+	document.body.insertBefore(imgPostCont, rows[0]);
 }
 
 export { displayImagePost }

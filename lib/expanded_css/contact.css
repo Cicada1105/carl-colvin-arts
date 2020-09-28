@@ -121,6 +121,7 @@ html,
 body {
   background-color: black;
   font-family: "Oswald";
+  overflow-x: hidden;
   font-size: 16px;
   width: 100%;
   height: 100%;
@@ -133,16 +134,6 @@ body {
 #header ul[id="navigation"] {
   width: inherit;
   height: 100%;
-  /*@media only screen and (max-width: 600px) {
-					span#linksCont {
-						//display:none;
-						width:100vw;
-
-						& > li {
-							display:block;
-						}
-					}
-				}*/
 }
 #header ul[id="navigation"] > span#linksCont {
   position: relative;
@@ -228,6 +219,11 @@ form:first-of-type {
   margin: 8rem auto auto auto;
   z-index: 2;
 }
+@media only screen and (max-width: 900px) {
+  form:first-of-type {
+    width: unset;
+  }
+}
 form:first-of-type h1:first-child {
   position: relative;
   width: 100%;
@@ -245,6 +241,14 @@ form:first-of-type > div[id="inputRowsCont"] > div.selectionRow {
   width: inherit;
   margin-top: 1.65rem;
 }
+@media only screen and (max-width: 600px) {
+  form:first-of-type > div[id="inputRowsCont"] > div.selectionRow {
+    margin-bottom: 3.65rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow label {
   position: relative;
   width: 30%;
@@ -254,12 +258,27 @@ form:first-of-type > div[id="inputRowsCont"] > div.selectionRow label {
   padding-right: 20%;
   color: #f0edee;
 }
+@media only screen and (max-width: 600px) {
+  form:first-of-type > div[id="inputRowsCont"] > div.selectionRow label {
+    display: block;
+    width: fit-content;
+    margin: auto;
+    padding-right: 0%;
+  }
+}
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont {
   position: relative;
   width: 35%;
   display: inline-block;
   margin-top: 1.5rem;
   padding-left: 15%;
+}
+@media only screen and (max-width: 600px) {
+  form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont {
+    margin-top: 0.5rem;
+    padding-left: 0%;
+    width: fit-content;
+  }
 }
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont input,
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont select,
@@ -276,6 +295,13 @@ form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont i
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont select:focus,
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont textarea:focus {
   outline: none;
+}
+@media only screen and (max-width: 900px) {
+  form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont input,
+  form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont select,
+  form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont textarea {
+    display: block;
+  }
 }
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont input,
 form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont textarea {
@@ -309,8 +335,15 @@ form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont [
   margin-top: 0px;
   margin-left: 0.75rem;
 }
+@media only screen and (max-width: 900px) {
+  form:first-of-type > div[id="inputRowsCont"] > div.selectionRow .userInputCont [class="errorMsg"] {
+    top: 30px;
+    margin-left: 0;
+  }
+}
 form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] {
   height: 2rem;
+  margin-top: 5rem;
 }
 form:first-of-type > div[id="inputRowsCont"] > div[class="buttonInput"] [id="formMessage"] {
   color: #f0edee;

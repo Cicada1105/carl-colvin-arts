@@ -16,11 +16,14 @@
 .contactMixin(@isHomePage);
 
 form:first-of-type {
-	.format(relative, 54rem); 
+	.format(relative, 54rem);
 	//background-color:green;
 	margin:8rem auto auto auto;
 	z-index:2;
-
+ 
+	@media only screen and (max-width:900px) {
+		width:unset;
+	}
 	h1:first-child {
 		.format(relative, 100%);
 		font-size:2.5rem;
@@ -36,6 +39,13 @@ form:first-of-type {
 			//background-color:black;
 			margin-top:1.65rem;
 
+			@media only screen and (max-width: 600px) {
+				margin-bottom:3.65rem;
+				width:fit-content;
+				margin-left:auto;
+				margin-right:auto;
+			}
+
 			label {
 				.format(relative,30%);
 				//background-color:aqua;
@@ -44,6 +54,13 @@ form:first-of-type {
 				text-align: right;
 				padding-right:20%;
 				color:@textColor;
+
+				@media only screen and (max-width:600px) {
+					display:block;
+					width:fit-content;
+					margin:auto;
+					padding-right:0%;
+				}
 			}
 			.userInputCont {
 				.format(relative,35%);
@@ -52,14 +69,25 @@ form:first-of-type {
 				margin-top: 1.5rem;
 				padding-left:15%;
 
+				@media only screen and (max-width:600px) {
+					margin-top:0.5rem;
+					padding-left:0%;
+					width:fit-content;
+				}
+
 				input, select, textarea {
 					.format(relative,10rem,1.25rem);
 					display:inline-block;
 					font-size:1rem;
 					border:none;
 					z-index:3;
+
 					&:focus {
 						outline: none;
+					}
+
+					@media only screen and (max-width:900px) {
+						display:block;
 					}
 				}
 				input, textarea {
@@ -94,12 +122,19 @@ form:first-of-type {
 					top:-2px;
 					margin-top:0px;
 					margin-left:0.75rem;
+
+					@media only screen and (max-width:900px) {
+						top:30px;
+						margin-left:0;
+					}
 				}
 			}
 
 		}
 		& > div[class = "buttonInput"] {
 			height:2rem;
+			margin-top:5rem;
+
 			[id = "formMessage"] {
 				color:@textColor;
 				display:block;

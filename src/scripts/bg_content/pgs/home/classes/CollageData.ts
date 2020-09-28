@@ -33,13 +33,16 @@ class CollageData {
 	static isEmpty():boolean {
 		return CollageData.curr_pos === -1;
 	}
+	
+	static get current_index():number {
+		return CollageData.curr_pos;
+	}
 
 	static previousImage() {
 		CollageData.curr_pos > 0 && CollageData.curr_pos--;
 	}
 	static goToIndex(index:number) {
-		(index < CollageData.img_post_array.length) && (CollageData.curr_pos = index);
-			
+		(index < CollageData.img_post_array.length) && (CollageData.curr_pos = index);	
 	}
 	static nextImage() {
 		(CollageData.curr_pos < CollageData.img_post_array.length - 1) && CollageData.curr_pos++;

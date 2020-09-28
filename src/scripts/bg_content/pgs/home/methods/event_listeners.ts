@@ -5,6 +5,8 @@
 import { displayImagePost } from './display'
 //	data
 import CollageData from '../classes/CollageData'
+//	classes
+import { HomeComponentPositioning } from '../classes/ComponentPositioning'
 
 function ArrowClickListener(event:any) {
 	// Store current target
@@ -27,22 +29,26 @@ function ArrowClickListener(event:any) {
 }
 
 function MobileListener():void {
-	if (window.innerWidth < 900) {
+	if (window.innerWidth <= 900) {
 		if (!(document.getElementById("postBackdrop"))) 
 			displayImagePost(CollageData.getImage(), CollageData.getData());
-		
+
 		window.removeEventListener("resize",MobileListener);
 		window.addEventListener("resize",DesktopListener);
 	}
 }
 function DesktopListener():void {
-	if (window.innerWidth >= 900) {
+	if (window.innerWidth > 900) {
 		let click:any = new Event("click");
 		// Remove image post if displayed by dispatching exit event
 		document.getElementsByClassName("fas fa-times")[0].dispatchEvent(click) || console.log("Not displayed");
 
 		window.removeEventListener("resize", DesktopListener);
 		window.addEventListener("resize",MobileListener);
+	}
+	else {
+		const homeCompPos:HomeComponentPositioning = HomeComponentPositioning.getInstance();
+		homeCompPos.update();
 	}
 }
 

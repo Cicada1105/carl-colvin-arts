@@ -22,8 +22,10 @@ const loadMobileDisplay = ():void => {
 			CollageData.storeImage(imgNode, postData);
 		});
 	}
-
-	displayImagePost(CollageData.getImage(), CollageData.getData());
+	
+	CollageData.current_index === 0 && CollageData.getImage().addEventListener("load", () => {
+		displayImagePost(CollageData.getImage(), CollageData.getData());	
+	}, {once: true});
 }
 const loadCollage = ():void => {
 	let collageCont:HTMLDivElement = createElement({
@@ -64,8 +66,9 @@ const loadCollage = ():void => {
 			collageCont.appendChild(imgNode);
 		});
 	}
-
-	document.body.appendChild(collageCont);
+	let rows:HTMLCollection = document.getElementsByClassName("row");
+	let row:HTMLDivElement = <HTMLDivElement>rows[0];
+	document.body.insertBefore(collageCont,row);
 }
 
 const loadImage = (imgData:ICollage):HTMLImageElement => {
@@ -81,7 +84,5 @@ const loadImage = (imgData:ICollage):HTMLImageElement => {
 
 	return currImg;
 }
-
-
 
 export { loadMobileDisplay, loadCollage }

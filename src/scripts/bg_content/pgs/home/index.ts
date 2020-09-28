@@ -7,19 +7,19 @@ import { MobileListener, DesktopListener } from './methods/event_listeners'
 // Style method
 
 const loadHomePage = () => {
-	// Load collage 
-	loadCollage()
-	// Load collage only if screen is large enough, else load mobile version
-	window.innerWidth < 900 ? (() => {
-		loadMobileDisplay()
-		window.addEventListener("resize", DesktopListener)	
-	})() : (() => {
-		window.addEventListener("resize", MobileListener)
-	})();
 	// Load about info
 	loadAboutPage();
 	// Load contact info for home page for ease of access
 	loadContactPage();
+	// Load collage 
+	loadCollage()
+	// Load collage only if screen is large enough, else load mobile version
+	window.innerWidth <= 900 ? (() => {
+		loadMobileDisplay();
+		window.addEventListener("resize", DesktopListener);
+	})() : (() => {
+		window.addEventListener("resize", MobileListener);
+	})();
 }
 
 export { loadHomePage }

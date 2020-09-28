@@ -9,6 +9,7 @@ declare class CollageData {
     static getData(): IBox<string>;
     static findIndex(data: IBox<string>): number;
     static isEmpty(): boolean;
+    static get current_index(): number;
     static previousImage(): void;
     static goToIndex(index: number): void;
     static nextImage(): void;

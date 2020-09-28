@@ -15,12 +15,11 @@
 .aboutMixin(@isHomePage);
 
 .row {
-  position:relative;
+  .format(relative, 75%, 45%);
   margin:100px auto;
   display:block;
   z-index:1;
-  width:75%;
-  height:45%;
+
   #left {
     float:left;
   }
@@ -113,4 +112,37 @@
     margin-left:1.5%;
     width:95%;
   }
+}
+
+@media only screen and (max-width: 1130px) {
+  .row {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .row {
+    height: unset;
+    width:100%;
+
+    &:first-of-type {
+      top:28vh;
+    }
+    #left, #right {
+      float:none;
+    }
+    section {
+      .format(relative, 80%, 15rem);
+      margin:auto;
+      margin-bottom: 3.5rem;
+
+      h3 {
+        padding-top:1rem;
+      }
+    }
+    .figure {
+      position:relative;
+      margin:auto;
+      margin-bottom: 5rem;
+    }
+  } 
 }
