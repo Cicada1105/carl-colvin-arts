@@ -18,7 +18,7 @@ html,
 body {
   background-color: black;
   font-family: "Oswald";
-  overflow-x: hidden;
+  position: static;
   font-size: 16px;
   width: 100%;
   height: 100%;
@@ -99,7 +99,7 @@ h3 {
   display: block;
   margin: 5rem auto;
   font-size: 2rem;
-  z-index: 3;
+  z-index: 2;
 }
 h3 + p {
   position: relative;
@@ -109,7 +109,7 @@ h3 + p {
   margin-bottom: 4rem;
   color: #f0edee;
   font-size: 1rem;
-  z-index: 3;
+  z-index: 2;
 }
 div#flexCont {
   display: flex;
@@ -137,13 +137,11 @@ div#flexCont > div.serviceCard > svg {
   position: absolute;
   width: 300px;
   height: 400px;
-  transition: 0.5s linear;
-  stroke-dasharray: 300 1100;
 }
 div#flexCont > div.serviceCard > svg > polyline {
   fill: none;
-  stroke-width: 5;
   stroke: #de5757;
+  transition: 0.5s linear;
 }
 div#flexCont > div.serviceCard > figure {
   position: relative;
@@ -206,7 +204,7 @@ div#flexCont > div.serviceCard > div.serviceBtn > div#circle {
 div#flexCont > div.serviceCard:hover figure {
   opacity: 1;
 }
-div#flexCont > div.serviceCard:hover > svg {
+div#flexCont > div.serviceCard:hover polyline {
   stroke-dasharray: 1400;
 }
 #footer {

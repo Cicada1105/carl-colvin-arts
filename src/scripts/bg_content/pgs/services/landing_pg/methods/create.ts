@@ -39,10 +39,13 @@ const createSVGBorder = ():SVGElement => {
 
 	// Create polyline to define the border positions and style
 	let polyline:SVGPolylineElement = <SVGPolylineElement>document.createElementNS("http://www.w3.org/2000/svg","polyline");
-
 	// Add points to polyline 
 	polyline.setAttribute("points","0,0 300,0 300,400 0,400 0,0");
-
+	// Set dash array to initially "underline" header
+	polyline.setAttribute("stroke-dasharray", "300 1100");
+	// et "thickness" of stroke to actually display line
+	polyline.setAttribute("stroke-width","5");
+	
 	// Append polyline to svg
 	svg.appendChild(polyline);
 

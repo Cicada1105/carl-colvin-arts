@@ -18,7 +18,7 @@ html,
 body {
   background-color: black;
   font-family: "Oswald";
-  overflow-x: hidden;
+  position: static;
   font-size: 16px;
   width: 100%;
   height: 100%;
