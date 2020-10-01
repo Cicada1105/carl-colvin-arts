@@ -20,6 +20,10 @@
 		    &:extend(.staticBar);
 		    top:0%;
 		    z-index:3;
+
+			@media only screen and (max-device-width: 560px), (max-width: 560px) {
+				filter:opacity(100%);
+			}
 		    ul[id = "navigation"] {
 		    	&:extend(.staticUL);
 				width:inherit;
@@ -27,14 +31,19 @@
 
 				& > span#linksCont {
 					position:relative;
+					display:block;
 					float:right;
 					top:4px;
-				}
-				@media only screen and (max-device-width: 560px) {
-					span#linksCont {
+
+					@media only screen and (max-device-width: 560px), (max-width: 560px) {
+						background-color: @secondaryBackgroundColor;
+						display:none;
+						width: 100%;
+						top:0px;
+
 						& > li {
-							padding-left:1rem;
-							padding-right:1rem;
+							display:block;
+							text-align: center;
 						}
 					}
 				}
@@ -57,8 +66,34 @@
 							display:inline-block;
 							padding:2.75% 5.25%;
 							margin-top:7.5%;
-							margin-left:5.3%
+							margin-left:5.3%;
 						}
+
+						@media only screen and (max-device-width: 560px), (max-width: 560px) {
+							width:100%;
+							height:initial;
+							z-index: 1;
+
+							& > li {
+								display:block;
+								margin:0;
+							}
+						}
+					}
+				}
+				& > i {
+					position:absolute;
+					display:none;
+					font-size:1.5rem;
+					color:@textColor;
+					top:0.625rem;
+					right:1rem;
+					
+					@media only screen and (max-device-width: 560px), (max-width: 560px) {
+						display:block;
+					}
+					&:hover {
+						cursor: pointer;
 					}
 				}
 				// Include hover affect on navigation
@@ -122,4 +157,4 @@
 		    }
 		 }
 	}
-}
+}	

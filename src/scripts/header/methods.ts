@@ -13,7 +13,7 @@ const CURRENT_PATH:string = getCurrentFile();
 
 let createNavigation = ():any => {
   // Create new ul element
-  let navUl:any = createElement({element:'ul',idName:'navigation'});
+  let navUl:HTMLUListElement = createElement({element:'ul',idName:'navigation'});
 
   // First link does not need to be looped through -> Home page link floated to left side
   // Prevent excessive checking on each link
@@ -28,6 +28,37 @@ let createNavigation = ():any => {
   let linksCont:HTMLSpanElement = createPageLinksCont(links.slice(1)); // Returns array without first element
   // Append container to ul
   navUl.appendChild(linksCont);
+
+  // Create "hamburger" element for when screen is too small
+  let bars:HTMLElement = createElement({
+    element: "i",
+    className: "fas fa-bars"
+  });
+  bars.addEventListener("click",() => {
+    linksCont.style.display = linksCont.style.display === "block" ? "none" : "block";
+  });
+  // Create listeners to reset navigation display to combat final state being kept from user clicking on bars
+  const desktopReset:any = () => {
+    if (window.innerWidth > 560) {
+      linksCont.style.display = "block";
+
+      window.removeEventListener("resize",desktopReset);
+      window.addEventListener("resize",mobileReset);
+    }
+  }
+  const mobileReset:any = () => {
+    if (window.innerWidth <= 560) {
+      linksCont.style.display = "none";
+
+      window.removeEventListener("resize",mobileReset);
+      window.addEventListener("resize",desktopReset);
+    }
+  }
+  // Set initial listener for window
+  window.addEventListener("resize",(window.innerWidth > 560 ? mobileReset : desktopReset));
+  
+  // Append bars to ul
+  navUl.appendChild(bars);
 
   // Return ul node to be added to the header
   return navUl;

@@ -28,19 +28,31 @@ body {
   top: 0%;
   z-index: 3;
 }
+@media only screen and (max-device-width: 560px), (max-width: 560px) {
+  #header {
+    filter: opacity(100%);
+  }
+}
 #header ul[id="navigation"] {
   width: inherit;
   height: 100%;
 }
 #header ul[id="navigation"] > span#linksCont {
   position: relative;
+  display: block;
   float: right;
   top: 4px;
 }
-@media only screen and (max-device-width: 560px) {
-  #header ul[id="navigation"] span#linksCont > li {
-    padding-left: 1rem;
-    padding-right: 1rem;
+@media only screen and (max-device-width: 560px), (max-width: 560px) {
+  #header ul[id="navigation"] > span#linksCont {
+    background-color: #0c090a;
+    display: none;
+    width: 100%;
+    top: 0px;
+  }
+  #header ul[id="navigation"] > span#linksCont > li {
+    display: block;
+    text-align: center;
   }
 }
 #header ul[id="navigation"] li {
@@ -62,6 +74,33 @@ body {
   padding: 2.75% 5.25%;
   margin-top: 7.5%;
   margin-left: 5.3%;
+}
+@media only screen and (max-device-width: 560px), (max-width: 560px) {
+  #header ul[id="navigation"] li ul[class="subDir"] {
+    width: 100%;
+    height: initial;
+    z-index: 1;
+  }
+  #header ul[id="navigation"] li ul[class="subDir"] > li {
+    display: block;
+    margin: 0;
+  }
+}
+#header ul[id="navigation"] > i {
+  position: absolute;
+  display: none;
+  font-size: 1.5rem;
+  color: #f0edee;
+  top: 0.625rem;
+  right: 1rem;
+}
+@media only screen and (max-device-width: 560px), (max-width: 560px) {
+  #header ul[id="navigation"] > i {
+    display: block;
+  }
+}
+#header ul[id="navigation"] > i:hover {
+  cursor: pointer;
 }
 #header ul[id="navigation"] li:hover ul[class="subDir"] {
   display: block;

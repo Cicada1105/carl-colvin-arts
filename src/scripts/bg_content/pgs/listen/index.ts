@@ -11,8 +11,6 @@ import { loadBootstrap } from '../../../global/methods/utilities'
 import { RowInterface } from './interfaces'
 
  const loadListenPage = async ():Promise<any> => {
- 	// Load bootstrap so font awesome can be used
- 	loadBootstrap();
  	// Create header
  	let header:HTMLHeadingElement = createTextElement({
  		element:"h3",

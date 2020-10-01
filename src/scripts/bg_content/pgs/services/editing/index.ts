@@ -8,8 +8,6 @@ import { loadIntro } from './intro/index'
 import { loadBootstrap, isValidEmail } from '../../../../global/methods/utilities'
 
 const loadEditingPage = async ():Promise<void> => {
-	// Load boostrap to be used by methods later on
-	loadBootstrap();
 	// Load intro paragraph
 	loadIntro();
 	// Load pricing chart info
