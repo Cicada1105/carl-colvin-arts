@@ -9,99 +9,89 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
+@visualScreenHeight:calc(100vh - 5.5rem);	// 5.5rem === height of header + height of footer
+.screenRadius(@rad) when (isnumber(@rad)) {
+	@radiusConversion:@rad/300;
+	@screenRadius:calc(@visualScreenHeight * @radiusConversion);
+}
 /*  Rest of the styling goes here */
-[class = "sectionCont"] {
-	//background-color:aqua;
-	.format(relative,100%,6rem);
-	margin:5% auto 25rem auto;
+section {
+	position:relative;
+	width:fit-content;
+	z-index: 1;
+	margin:auto;
 
-	[class = "centerHeaderCont"] {
-		//background-color:green;
-		.format(inherit,50rem, 100%);
-		margin:0px auto 3rem auto;
+	& > svg {
+		display:block;
+		height: @visualScreenHeight;
+		padding-top:2.75rem;
+		z-index: 1;
 
-		h3 {
-			.format(inherit,100%);
-			display:inline-block;
-			vertical-align: middle;
-			text-align: center;
-			color:@textColor;
-			font-size:2rem;
-			text-align: center;
+		& text {
+			pointer-events: none;
+			fill:white;
+
+			&.header {
+				font-size:0.85rem;
+			}
+			&.sector_hover {
+				font-size:0.75rem;
+				display:none;
+				z-index: 2;
+			}
+			&.sector_content {
+				font-size:0.5rem;
+			}
 		}
-		[class = "musicalSymbol"] {
-			.format(absolute, 4rem, 6rem);
-			display:inline;
-			margin:auto;
+		& > image {
+			animation-duration:1s;
+			animation-direction: normal;
+			animation-play-state: running;
+			animation-timing-function: linear;
+			animation-iteration-count: 1;
+			animation-fill-mode: both;
 
 			&:first-of-type {
-				left:0px;
+				opacity:0;
 			}
 			&:last-of-type {
-				right:0px;
+				opacity:1;
 			}
+		}
+		& path {
+			z-index: 1;
+		}
+		& line {
+			pointer-events: none;
 		}
 	}
-	[class = "bodyCont"] {
-		.format(relative,40rem, calc(11rem + 30px));
-		//background-color:aqua;
-		margin:auto;
+	& > i.arrow {
+		position:absolute;
+		display:none;
+		color:#de5757;
+		font-size:3rem;
+		z-index: 2;
 
-		[class = "stage"] {	
-			.format(inherit,100%,calc(11rem + 10px));
-			background-color:@secondaryColor;
-			clip-path:polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-			color:@textColor;
-			z-index:1;
-
-			p[class = "bodyText"] {
-				.format(relative,25rem,100%);
-				//background-color:red;
-				display:inline-block;
-				position:absolute;
-				text-indent:20px;
-				text-align:center;
-				vertical-align: middle;
-				padding-top:15px;
-				margin:auto;
-			}
-			i {
-				position:absolute;
-				font-size:1rem;
-				bottom:1rem;
-				z-index:1;
-			}
-			i:hover {
-				cursor:pointer;
-			}
-			i:first-of-type {
-				left:2.5rem;
-			}
-			i:last-of-type {
-				right:1.5rem;
-			}
+		&:hover {
+			cursor:pointer;
 		}
-		[class = "stageFront"] {
-			.format(absolute,100%,20px);
-			background-color:@accentColor;
-			content:"";
-			bottom:0px;
-			z-index:0;
-		}
-		[class = "curtains"] {
-			.format(absolute,40rem,inherit);
-			animation-duration:3s;
-			animation-direction:normal;
-			animation-timing-function:ease-out;
-			animation-iteration-count:1;
-			animation-fill-mode:forwards;
-			animation-play-state:paused;
-			top:0px;
-			z-index:1;
 
-			&:hover {
-				cursor:pointer;
-			}
+		&:nth-of-type(1) {
+			top:50%;
+			left:50%;
+			transform:rotate(-50deg) translate(-100%, calc(0% - calc(@visualScreenHeight * (135/300))));
+		}
+		&:nth-of-type(2) {
+			bottom:50%;
+			left:50%;
+			transform:rotate(180deg) translate(50%,calc(-50% - calc(@visualScreenHeight * (142/300))));
+		}
+		&:last-of-type {
+			top:50%;
+			right:50%;
+			transform:rotate(50deg) translate(100%, calc(0% - calc(@visualScreenHeight * (135/300))));
 		}
 	}
-}#globalNS > .social();
+}
+
+#globalNS > .social();

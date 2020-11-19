@@ -1,17 +1,33 @@
+/*
+	File for handling performance routing
+*/
+
 // Imports
-import { loadPerformanceIntro, loadPreviousPerformances, loadRates } from './methods/load_methods'
-import { activateCurtains } from './methods/misc_methods'
-import { loadBootstrap } from '../../../../global/methods/utilities'
+//	global
+import { getCurrentFile } from '../../../../global/methods/utilities'
+//	local
+import { loadLandingPage } from './landing_pg/index';
+import { loadPreviousPerformances } from './past/index';
+import { loadMusicStand } from './present/index';
+import { loadFuturePerformances } from './future/index';
 
 const loadPerformancePage = ():void => {
-	// Load intro to the Performance page
-	loadPerformanceIntro();
-	// Load section to display/discuss previous performances
-	loadPreviousPerformances();
-	// Load rates for user to view 
-	loadRates();
-	// Activate the curtains
-	activateCurtains();
+	const currPage:string = getCurrentFile();
+
+	switch(currPage) {
+		case "past":
+			loadPreviousPerformances();
+		break;
+		case "present":
+			loadMusicStand();
+		break;
+		case "future":
+			loadFuturePerformances();
+		break;
+		default:
+			loadLandingPage();
+		break;
+	}
 }
 
 export { loadPerformancePage }

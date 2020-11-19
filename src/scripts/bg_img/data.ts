@@ -6,8 +6,9 @@ import { getCurrentFile } from '../global/methods/utilities'
 let currFile:string = getCurrentFile();
 let isHomePage:boolean = currFile.localeCompare("index") === 0;	// compare === 0 -> MATCH
 // if path contains services/ -> it is a specific page within services directory
-let isServicePage:boolean = window.location.pathname.includes("services/"); 
-const imgPath:string = (isHomePage ? "./" : (isServicePage ? "../../" : "../")) + "resources/global_imgs/background/";
+let isServicePage:boolean = window.location.pathname.includes("services/");
+const isPerformancesPage:boolean = window.location.pathname.includes("performances/");
+const imgPath:string = (isPerformancesPage ? "../../../" : (isServicePage ? "../../" : (isHomePage ? "./" : "../"))) + "resources/global_imgs/background/";
 // Use for production
 //const imgPath:string = '/resources/global_imgs/background/';
 
@@ -43,10 +44,22 @@ const data:IBgImage = {
 		path: imgPath + "flight_poem.jpg",
 		alt: "Poem"
 	}, 
-	"performance" : {
+	"performances" : {
 		path: imgPath + "carl_red_pew.jpg",
 		alt: "Playing oboe in church pew"
-	}, 
+	},
+	"past" : {
+		path: imgPath + "",
+		alt: "Past background image"
+	},
+	"present" : {
+		path: imgPath + "",
+		alt: "Present background image"
+	},
+	"future" : {
+		path: imgPath + "",
+		alt: "Future background image"
+	},
 	"editing" : {
 		path: imgPath + "book_edit.jpg",
 		alt: "Editing excerpt from David Sula"

@@ -17,7 +17,6 @@ const createBgFade = ():void => {
 	// Data is associative with currFile being name of key
 	imgLocation = bgImgs[currFile].path;
 	imgAlternative = bgImgs[currFile].alt;
-
 	// Fade image 
 	//let imageFade:any = createImageFade(imgLocation,imgAlternative);
 	let imageFade:HTMLImageElement = createImageElement({

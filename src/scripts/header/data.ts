@@ -4,7 +4,9 @@ import { ILink } from '../global/interfaces/general'
 // Use during development
 const isHomePage:boolean = window.location.pathname.includes("index");
 const isServicePage:boolean = window.location.pathname.includes("services/");
-const rootDir:string = isHomePage ? "./" : (isServicePage ? "../../" : "../");
+const isPerformancesPage:boolean = window.location.pathname.includes("performances/");
+const rootDir:string = isPerformancesPage ? "../../../" : (isServicePage ? "../../" : (isHomePage ? "./" : "../"))
+//const rootDir:string = isHomePage ? "./" : (isServicePage ? "../../" : (isPerformancesPage ? "../../../" : "../"));
 // Use during production
 //const rootDir:string = "/";
 
@@ -36,7 +38,7 @@ const links:Array<ILink> = [
       },
       {
         name:"Performance",
-        link:rootDir + "pgs/services/performance.html",
+        link:rootDir + "pgs/services/performances.html",
         subdirectories: []
       },
       {

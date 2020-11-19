@@ -9,7 +9,8 @@ interface ImageInterface {
 // Use during development
 const isHomePage:boolean = window.location.pathname.includes("index");
 const isServicePage:boolean = window.location.pathname.includes("services/");
-const imagePath = (isHomePage ? "./" : (isServicePage ? "../../" : "../")) + "resources/global_imgs/media/";
+const isPerformancesPage:boolean = window.location.pathname.includes("performances/");
+const imagePath:string = (isPerformancesPage ? "../../../" : (isServicePage ? "../../" : (isHomePage ? "./" : "../"))) + "resources/global_imgs/media/";
 // Use during production
 //const imagePath = "/resources/global_imgs/media/";
 

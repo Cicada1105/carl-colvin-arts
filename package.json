@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run-script compile; npm run-script minify; npm run-script transpile; npm run-script build; npm run-script dev",
-    "compile": "for fileName in ./src/style/pgs/*.less ./src/style/pgs/services/*.less; do baseName=`basename ${fileName}`; base=${baseName%'.less'}; ./node_modules/less/bin/lessc $fileName ./lib/expanded_css/$base.css; done",
+    "compile": "for fileName in ./src/style/pgs/*.less ./src/style/pgs/services/*.less ./src/style/pgs/services/performances/*.less; do baseName=`basename ${fileName}`; base=${baseName%'.less'}; ./node_modules/less/bin/lessc $fileName ./lib/expanded_css/$base.css; done",
     "minify": "for cssFile in ./lib/expanded_css/*.css; do basename=`basename ${cssFile}`; base=${basename%'.css'}; uglifycss ${cssFile} --output ./dist/styles/${base}.css; done",
     "transpile": "./node_modules/typescript/bin/tsc",
     "build": "babel ./lib/es6 --ignore ./lib/declarations --out-dir ./lib/es5/ --compact true --no-comments",

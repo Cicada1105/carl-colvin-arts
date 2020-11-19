@@ -42,7 +42,7 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 			alt:"Playing oboe in church pew",
 			caption:"Carl Colvin practicing in [-Insert Church Name Here-]'s pew"
 		},
-		link:`${SERVICES_DIR}performance.html`
+		link:`${SERVICES_DIR}performances.html`
 	},
 	{
 		header:"Editing",

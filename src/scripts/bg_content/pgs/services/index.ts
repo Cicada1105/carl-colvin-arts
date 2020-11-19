@@ -15,7 +15,10 @@ const loadServicesPage = () => {
 		case "editing":
 			loadEditingPage();
 		break;
-		case "performance":
+		case "performances":
+		case "past":
+		case "present":
+		case "future":
 			loadPerformancePage();
 		break;
 		case "reedmaking":
