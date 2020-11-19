@@ -5,7 +5,7 @@
 // 	Methods
 import { 
 	createSVGText, createSVGLine, createSVGCircle, 
-	createSVGPath, createSVGFilter, createSVGImage
+	createSVGPath, createSVGImage
 } from './create_methods';
 //	Event Handlers
 import { init } from './event_listeners';
@@ -18,9 +18,7 @@ import {
 	LineInterface as ILine,
 	PathInterface as IPath,
 	TextInterface as IText,
-	FilterElementInterface as IFilterElement,
-	FilteredImageInterface as IFilterImage,
-	GaussianBlurInterface as IGaussian,
+	SVGImageInterface as ISVGImage,
 	ISector
 } from '../interfaces';
 //	 Global
@@ -31,28 +29,23 @@ const loadSVG = function():void {
 	const svg:SVGSVGElement = <SVGSVGElement>this;
 
 	/* Handle creation of children elements */
-	// Create static content: circle, lines, filter, cener image
+	// Create static content: circle, lines, cener image
 	//	Create circles
 	let circles:Array<ICircle> = <ICircle[]>graphicsAttributes["circles"];
 	circles.forEach((circle:ICircle) => svg.appendChild(createSVGCircle(circle)));
 	//	Create lines connecting outter circle to inner circle
 	let lines:Array<ILine> = <ILine[]>graphicsAttributes["lines"];
 	lines.forEach((line:ILine) => svg.appendChild(createSVGLine(line)));
-	//	Create filter
-	//let filters:IFilterElement<IGaussian>[] = <IFilterElement<IGaussian>[]>graphicsAttributes["imageFilters"];
-	//filters.forEach((filter:IFilterElement<IGaussian>) => svg.appendChild(createSVGFilter(filter)));
 	// 	Create center image
-	centerImagesData.forEach((imageData:IFilterImage) => svg.appendChild(createSVGImage(imageData)));
+	centerImagesData.forEach((imageData:ISVGImage) => svg.appendChild(createSVGImage(imageData)));
 	// 	Create each sector
 	sectorData.forEach((sector:ISector, sectorNum:number) => {
-		//let groupedSectorSVG:SVGElement = 
 		loadSector.bind({
 			svgElement: svg,
 			sectorData:sector,
 			arrowNum:sectorNum,
 			imageSrc:sector.image
 		})();
-		//svg.appendChild(groupedSectorSVG);
 	});
 }
 
@@ -65,8 +58,6 @@ const loadSector = function():void {
 	const data:ISector = <ISector>that.sectorData;
 	const arrow:number = <number>that.arrowNum;
 	const image:IImage = <IImage>that.imageSrc;
-
-	//let groupedSVG:SVGGElement = document.createElementNS("http://www.w3.org/2000/svg","g");
 
 	// Create header for the sector and append it
 	let header:SVGTextElement = createSVGText(data.sectorHeader);
@@ -81,7 +72,6 @@ const loadSector = function():void {
 	});
 
 	// Create path for current sector
-	//let sectorPath:SVGPathElement = 
 	loadPath.bind({
 		svgElement: svg,
 		data:data.sectorPath,
@@ -91,13 +81,10 @@ const loadSector = function():void {
 		},
 		imageSrc:image
 	})();
-	//svg.appendChild(sectorPath);
 
 	// Loop through and create the descriptions to be displayed when the user hovers over sector
 	//	append each description to sector
 	data.hoverHeader.forEach((header:IText) => svg.appendChild(createSVGText(header)));
-
-	//return groupedSVG;
 }
 
 const loadPath = function():void {
@@ -134,7 +121,6 @@ const loadPath = function():void {
 	}));
 
 	svg.appendChild(path);
-	//return path;
 }
 
 export { loadSVG }

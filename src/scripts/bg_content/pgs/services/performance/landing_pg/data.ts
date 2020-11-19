@@ -5,9 +5,7 @@ import {
 	CircleInterface as ICircle, 
 	LineInterface as ILine,
 	PathInterface as IPath,
-	FilterElementInterface as IFilterElement,
-	FilteredImageInterface as IFilteredImage,
-	GaussianBlurInterface as IGaussianBlur,
+	SVGImageInterface as ISVGImage,
 	AnimateInterface as IAnimate,
 	ISector
 } from './interfaces'
@@ -16,10 +14,10 @@ const IMG_PATH:string = "../../resources/pg_imgs/performance_imgs";
 const PERFORMANCES_SUB_PATH:string = "./performances";
 
 interface DimensionsInterface {
-	[index:string]: ICircle[] | ILine[] | IPath[]; //| IFilterElement<IGaussianBlur>[];
+	[index:string]: ICircle[] | ILine[] | IPath[];
 }
 
-const centerImagesData:IFilteredImage[] = [
+const centerImagesData:ISVGImage[] = [
 	{
 		href:``,
 		//filter:"url(#blur)",

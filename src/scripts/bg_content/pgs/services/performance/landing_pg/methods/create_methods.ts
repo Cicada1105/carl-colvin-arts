@@ -13,9 +13,7 @@ import {
 	PathInterface as IPath,
 	SetInterface as ISet,
 	AnimateInterface as IAnimate,
-	FilterElementInterface as IFilter,
-	FilteredImageInterface as IFilteredImage,
-	GaussianBlurInterface as IGaussian
+	SVGImageInterface as ISVGImage
 } from '../interfaces'
 // methods
 //	global
@@ -83,35 +81,11 @@ const createSVGPath = (data:IPath):SVGPathElement => {
 
 	return path;
 }
-const createSVGFilter = <T extends IGaussian>(data:IFilter<T>):SVGFilterElement => {
-	let filter:SVGFilterElement = document.createElementNS("http://www.w3.org/2000/svg","filter");
-
-	/* Determine which filter is being used and handle appropriately */
-	// GaussianBlurInterface	// Append Guassian Blur filter effect
-	data.filter.stdDeviation && filter.appendChild(createFeGaussianBlur(<IGaussian>data.filter));
-
-	// Add additional core attributes if provided
-	UTILITY.setCoreAttributes(filter,data);
-
-	return filter;
-}
-const createFeGaussianBlur = (data:IGaussian):SVGFEGaussianBlurElement => {
-	let gaussBlurEl:SVGFEGaussianBlurElement = document.createElementNS("http://www.w3.org/2000/svg","feGaussianBlur");
-
-	// Set standard deviation of gaussian blur
-	gaussBlurEl.setAttribute("stdDeviation",data.stdDeviation);
-	// Append animation elements if provided
-	data.children && UTILITY.setAnimationElements(gaussBlurEl,data.children);
-
-	return gaussBlurEl;
-}
-const createSVGImage = (data:IFilteredImage):SVGImageElement => {
+const createSVGImage = (data:ISVGImage):SVGImageElement => {
 	let img:SVGImageElement = document.createElementNS("http://www.w3.org/2000/svg","image");
 
 	// Set image source to locate image file
 	img.setAttribute("href",data.href);
-	// Set url of filter 
-	//img.setAttribute("filter",data.filter);
 
 	// Add additional SVG Primitive attributes if provided
 	UTILITY.setPrimitiveAttributes(img,data);
@@ -124,6 +98,5 @@ const createSVGImage = (data:IFilteredImage):SVGImageElement => {
 export { 
 	createSVGCircle, createSVGLine, 
 	createSVGText, createSVGPath,
-	createSVGFilter, createFeGaussianBlur, 
 	createSVGImage 
 }

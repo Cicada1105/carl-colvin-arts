@@ -37,15 +37,7 @@ interface AnimateInterface extends AnimationAttributesInterface, CoreAttributesI
 
 type AnimationElements = SetInterface[] | AnimateInterface[];
 
-interface FilterElementInterface<T> extends CoreAttributesInterface {
-	filter:T
-}
-interface GaussianBlurInterface {
-	stdDeviation:string;
-	children?:AnimationElements;
-}
-
-interface FilteredImageInterface extends PrimitiveAttributesInterface, CoreAttributesInterface {
+interface SVGImageInterface extends PrimitiveAttributesInterface, CoreAttributesInterface {
 	href:string;
 	//filter:string;
 }
@@ -81,9 +73,8 @@ interface ISector {
 export { 
 	CircleInterface, LineInterface, PathInterface,
 	TextInterface, AnimateInterface, SetInterface,
-	FilterElementInterface, FilteredImageInterface,
+	SVGImageInterface, ISector,
 	AnimationAttributesInterface, AnimationElements,
-	GaussianBlurInterface, ISector, 
 	SVGGraphicsInterface, TimingAttributesInterface,
 	PrimitiveAttributesInterface, CoreAttributesInterface
 }

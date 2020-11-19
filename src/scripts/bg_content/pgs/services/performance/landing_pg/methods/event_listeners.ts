@@ -17,10 +17,6 @@ export function init() {
 	const center_img_default:SVGImageElement = <SVGImageElement>svg.getElementsByTagName("image")[1];
 	const circle:SVGCircleElement = <SVGCircleElement>svg.getElementsByTagName("circle")[0];
 	const arrows:HTMLCollection = document.getElementsByClassName("arrow");
-	//const noblurAnimation:SVGAnimationTransform = <SVGAnimationTransform>svg.getElementsByTagName("animate")[0];
-	//const blurAnimation:SVGAnimationTransform = <SVGAnimationTransform>svg.getElementsByTagName("animate")[1];
-	//const noblurAnimationDefault:SVGAnimationTransform = <SVGAnimationTransform>svg.getElementsByTagName("animate")[2];
-	//const blurAnimationDefault:SVGAnimationTransform = <SVGAnimationTransform>svg.getElementsByTagName("animate")[3];
 	// Numeric constaants
 	const viewBox = svg.viewBox;
 	const svgDim = {
