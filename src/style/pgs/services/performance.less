@@ -18,13 +18,13 @@
 section {
 	position:relative;
 	width:fit-content;
-	z-index: 1;
+	padding-top:2.75rem;
 	margin:auto;
+	z-index: 1;
 
 	& > svg {
 		display:block;
 		height: @visualScreenHeight;
-		padding-top:2.75rem;
 		z-index: 1;
 
 		& text {
@@ -35,9 +35,14 @@ section {
 				font-size:0.85rem;
 			}
 			&.sector_hover {
+				pointer-events:fill;
 				font-size:0.75rem;
 				display:none;
 				z-index: 2;
+
+				&:hover {
+					cursor: pointer;
+				}
 			}
 			&.sector_content {
 				font-size:0.5rem;
@@ -58,7 +63,7 @@ section {
 				opacity:1;
 			}
 		}
-		& path {
+		& > path {
 			z-index: 1;
 		}
 		& line {
@@ -84,7 +89,7 @@ section {
 		&:nth-of-type(2) {
 			bottom:50%;
 			left:50%;
-			transform:rotate(180deg) translate(50%,calc(-50% - calc(@visualScreenHeight * (142/300))));
+			transform:rotate(180deg) translate(50%,calc(-50% - calc(@visualScreenHeight * (145/300))));
 		}
 		&:last-of-type {
 			top:50%;

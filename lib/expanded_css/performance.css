@@ -234,13 +234,13 @@ body {
 section {
   position: relative;
   width: fit-content;
-  z-index: 1;
+  padding-top: 2.75rem;
   margin: auto;
+  z-index: 1;
 }
 section > svg {
   display: block;
   height: calc(100vh - 5.5rem);
-  padding-top: 2.75rem;
   z-index: 1;
 }
 section > svg text {
@@ -251,9 +251,13 @@ section > svg text.header {
   font-size: 0.85rem;
 }
 section > svg text.sector_hover {
+  pointer-events: fill;
   font-size: 0.75rem;
   display: none;
   z-index: 2;
+}
+section > svg text.sector_hover:hover {
+  cursor: pointer;
 }
 section > svg text.sector_content {
   font-size: 0.5rem;
@@ -272,7 +276,7 @@ section > svg > image:first-of-type {
 section > svg > image:last-of-type {
   opacity: 1;
 }
-section > svg path {
+section > svg > path {
   z-index: 1;
 }
 section > svg line {

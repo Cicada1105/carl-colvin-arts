@@ -20,7 +20,6 @@ interface DimensionsInterface {
 const centerImagesData:ISVGImage[] = [
 	{
 		href:``,
-		//filter:"url(#blur)",
 		x:"112.5",
 		y:"112.5",
 		width:"75",
@@ -28,7 +27,6 @@ const centerImagesData:ISVGImage[] = [
 	},
 	{
 		href:`${IMG_PATH}/carl_headshot.png`,
-		//filter:"url(#noBlur)",
 		x:"112.5",
 		y:"112.5",
 		width:"75",
@@ -256,12 +254,6 @@ const sectorData:ISector[] = [
 				x:"215",
 				y:"145"
 			}
-			/*{
-				text: "have",
-				className:"sector_content",
-				x:"214",
-				y:"155"
-			}*/
 		],
 		sectorPath: {
 			idName:"futureSector",
