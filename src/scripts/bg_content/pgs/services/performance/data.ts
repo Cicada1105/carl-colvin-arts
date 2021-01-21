@@ -1,7 +1,6 @@
-"use strict";
 // This file holds the data specific to the Performance page
-const IMG_PATH = "../../resources/pg_imgs/performance_imgs/";
-const headerData = {
+const IMG_PATH:string = "../../resources/pg_imgs/performance_imgs/";
+const headerData:any = {
     "performance": {
         header: {
             data: "Performance",

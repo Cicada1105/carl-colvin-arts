@@ -128,6 +128,145 @@ body {
   top: 0%;
 }
 /*  Rest of the styling goes here */
+h1#previousPerformancesTitle {
+  position: relative;
+  width: 40rem;
+  color: #f0edee;
+  text-align: center;
+  display: block;
+  margin: 4rem auto;
+}
+.pageCardCont {
+  position: relative;
+  width: 60rem;
+  background-color: #003249;
+  padding: 1.5rem;
+  margin: 3rem auto;
+  z-index: 2;
+}
+.pageCardCont > h2 {
+  position: relative;
+  width: fit-content;
+  color: #f0edee;
+  border-bottom: 2px solid #de5757;
+  padding: 0px 13px 8px 13px;
+  display: block;
+  margin: 0px;
+}
+.pageCardCont > h3 {
+  position: relative;
+  width: 40rem;
+  color: #f0edee;
+  text-align: center;
+  display: block;
+  margin: 3rem auto;
+}
+.pageCardCont > section.pastPerformanceCard {
+  position: relative;
+  width: 90%;
+  background-color: #340604;
+  color: #f0edee;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 2rem auto;
+}
+.pageCardCont > section.pastPerformanceCard > hgroup > h2 {
+  display: inline;
+  margin: 0px;
+}
+.pageCardCont > section.pastPerformanceCard > hgroup > h4 {
+  display: inline;
+  margin: 0px;
+}
+.pageCardCont > section.pastPerformanceCard > article {
+  width: 70%;
+}
+.pageCardCont > section.pastPerformanceCard > img {
+  position: absolute;
+  width: 8rem;
+  border-radius: 10px;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pageCardCont:nth-of-type(4) {
+  text-align: center;
+}
+.pageCardCont:nth-of-type(4) polyline {
+  stroke-dasharray: 263 320;
+}
+.pageCardCont > section.collaboratorCard {
+  position: relative;
+  width: 20rem;
+  height: 15rem;
+  display: inline-block;
+  margin: 2rem 4rem;
+}
+.pageCardCont > section.collaboratorCard > svg {
+  width: inherit;
+  height: inherit;
+}
+.pageCardCont > section.collaboratorCard > svg > polyline {
+  fill: none;
+  stroke: #de5757;
+  stroke-width: 3px;
+}
+.pageCardCont > section.collaboratorCard > svg > foreignObject {
+  text-align: center;
+  color: #f0edee;
+  width: inherit;
+  height: inherit;
+}
+.pageCardCont > section.collaboratorCard > svg > foreignObject > img {
+  width: 6rem;
+  border-radius: 50%;
+}
+.pageCardCont > section.collaboratorCard > svg > foreignObject > hgroup {
+  margin: 1rem 0px;
+}
+.pageCardCont > section.collaboratorCard > svg > foreignObject > hgroup > h2 {
+  margin-bottom: 8px;
+}
+.pageCardCont > section.collaboratorCard > svg > foreignObject > hgroup > h3 {
+  margin: 0px;
+}
+.pageCardCont > section.anecdoteCard {
+  position: relative;
+  width: 40rem;
+  height: 17rem;
+  margin: 2rem auto;
+}
+.pageCardCont > section.anecdoteCard > svg {
+  width: inherit;
+  height: inherit;
+}
+.pageCardCont > section.anecdoteCard > svg > polyline {
+  fill: none;
+  stroke: #de5757;
+  stroke-width: 3px;
+}
+.pageCardCont > section.anecdoteCard > svg > foreignObject {
+  text-align: center;
+  color: #f0edee;
+  width: inherit;
+  height: inherit;
+}
+.pageCardCont > section.anecdoteCard > svg > foreignObject > img {
+  width: 6rem;
+  border-radius: 50%;
+}
+.pageCardCont > section.anecdoteCard > svg > foreignObject > hgroup {
+  margin: 1rem 0px;
+}
+.pageCardCont > section.anecdoteCard > svg > foreignObject > hgroup > h3 {
+  margin-bottom: 8px;
+}
+.pageCardCont > section.anecdoteCard > svg > foreignObject > hgroup > h4 {
+  margin: 0px;
+}
+.pageCardCont > section.anecdoteCard > svg > foreignObject > article {
+  margin: 0 3rem;
+}
 #footer {
   bottom: 0%;
   z-index: 3;

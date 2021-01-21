@@ -1,6 +1,2 @@
-import { ICustomContainer } from './interfaces';
-interface ImageHeaderArrayInterface {
-    [index: string]: ICustomContainer;
-}
-declare const headerData: ImageHeaderArrayInterface;
-export { headerData };
+declare const IMG_PATH: string;
+declare const headerData: any;

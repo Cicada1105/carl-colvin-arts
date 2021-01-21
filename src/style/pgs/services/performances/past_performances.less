@@ -9,5 +9,157 @@
 #globalNS > .bg_img();
 
 /*  Rest of the styling goes here */
+h1#previousPerformancesTitle {
+	.format(relative,40rem);
+	color:@textColor;
+	text-align:center;
+	display:block;
+	margin:4rem auto;
+}
+.pageCardCont {
+	.format(relative,60rem);
+	background-color:@secondaryColor;
+	padding:1.5rem;
+	margin:3rem auto;
+	z-index: 2;
+
+	// Card headers
+	& > h2 {
+		.format(relative,fit-content);
+		color:@textColor;
+		border-bottom:2px solid @accentColor;
+		padding:0px 13px 8px 13px;
+		display:block;
+		margin:0px;
+	}
+	// "Loading..." text
+	& > h3 {
+		.format(relative,40rem);
+		color:@textColor;
+		text-align:center;
+		display:block;
+		margin:3rem auto;
+	}
+	// Past performance card
+	& > section.pastPerformanceCard {
+		.format(relative,90%);
+		background-color:@primaryColor;
+		color:@textColor;
+		border-radius:15px;
+		padding:1rem;
+		margin:2rem auto;
+
+		// Card header group
+		& > hgroup {
+
+			// Name of performance
+			& > h2 {
+				display: inline;
+				margin:0px;
+			}
+			// Performance location
+			& > h4 {
+				display: inline;
+				margin:0px;
+			}
+		}
+		& > article {
+			width:70%;
+		}
+		& > img {
+			.format(absolute,8rem);
+			border-radius:10px;
+			right:2rem;
+			top:50%;
+			transform:translateY(-50%);
+		}
+	}
+	// Collaborator page card container
+	&:nth-of-type(4) {
+		text-align: center;
+
+		& polyline {
+			stroke-dasharray:263 320;
+		}
+	}
+	// Collaborators cards
+	& > section.collaboratorCard {
+		.format(relative,20rem, 15rem);
+		display: inline-block;
+		margin:2rem 4rem;
+
+		& > svg {
+			width:inherit;
+			height:inherit;
+
+			& > polyline {
+				fill:none;
+				stroke:@accentColor;
+				stroke-width:3px;
+			}
+			& > foreignObject {
+				text-align: center;
+				color:@textColor;
+				width: inherit;
+				height: inherit;
+
+				& > img {
+					width:6rem;
+					border-radius:50%;
+				}
+				& > hgroup {
+					margin:1rem 0px;
+
+					& > h2 {
+						margin-bottom:8px;
+					}
+					& > h3 {
+						margin:0px;
+					}
+				}
+			}
+		}
+	}
+	// Anecdotes cards
+	& > section.anecdoteCard {
+		.format(relative,40rem, 17rem);
+		margin:2rem auto;
+
+		& > svg {
+			width:inherit;
+			height:inherit;
+
+			& > polyline {
+				fill:none;
+				stroke:@accentColor;
+				stroke-width:3px;
+			}
+			& > foreignObject {
+				text-align: center;
+				color:@textColor;
+				width: inherit;
+				height: inherit;
+
+				& > img {
+					width:6rem;
+					border-radius:50%;
+				}
+				& > hgroup {
+					margin:1rem 0px;
+
+					& > h3 {
+						margin-bottom:8px;
+					}
+					& > h4 {
+						margin:0px;
+					}
+				}
+				& > article {
+					margin:0 3rem;
+				}
+			}
+		}
+	}
+}
 
 #globalNS > .social();
