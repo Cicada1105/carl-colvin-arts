@@ -9,18 +9,22 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
-/*  Rest of the styling goes here */
-h2 {
+.header() {
 	.format(relative,10rem);
 	text-align: center;
 	color: @textColor;
 	margin:auto;
+}
+/*  Rest of the styling goes here */
+h1#pageHeader {
+	.header();
+	margin-top:5rem;
+	font-size:2rem;
+}
+h2 {
+	.header();
 
-	&#pageHeader {
-		margin-top:5rem;
-		font-size:2rem;
-	}
-	&#pricingHeader, &#pricingChartHeader {
+	&#pricingChartHeader {
 		margin-top:3.5rem;
 		font-size: 1.65rem;
 	}
@@ -60,7 +64,7 @@ div#pricingChartCont {
 				padding-bottom:1rem;
 			}
 			& > div[class $= "Row"] {
-				.format(relative,80%);
+				.format(relative,55%);
 				text-align: center;
 				margin:auto;
 				margin-bottom:2.5rem;
@@ -92,8 +96,9 @@ div#pricingChartCont {
 				}
 				& > label {
 					margin-left:-2rem;
-					width: 20rem;
+					width: calc(100% - 29px);
 					z-index:1;
+					
 					&:hover {
 						cursor:pointer;
 					}
@@ -104,7 +109,7 @@ div#pricingChartCont {
 						display:inline-block;
 						border: 2px solid rgba(222, 87, 87, 1);
 						border-radius: 50%;
-					    left:8.2rem;
+					    left:0.75rem;
 					    width:18px;
 					    height:18px;
 
@@ -288,7 +293,9 @@ button {
 }
 form#inputRowsCont {
 	.format(relative, 75%);
-	margin:5rem auto 10rem auto;
+	margin:auto;
+	margin-top:5rem;
+	padding-bottom:10rem;
 	z-index:2;
 }
 div[class $= "Row"] {

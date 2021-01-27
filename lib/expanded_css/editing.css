@@ -231,6 +231,15 @@ body {
   top: 0%;
 }
 /*  Rest of the styling goes here */
+h1#pageHeader {
+  position: relative;
+  width: 10rem;
+  text-align: center;
+  color: #f0edee;
+  margin: auto;
+  margin-top: 5rem;
+  font-size: 2rem;
+}
 h2 {
   position: relative;
   width: 10rem;
@@ -238,11 +247,6 @@ h2 {
   color: #f0edee;
   margin: auto;
 }
-h2#pageHeader {
-  margin-top: 5rem;
-  font-size: 2rem;
-}
-h2#pricingHeader,
 h2#pricingChartHeader {
   margin-top: 3.5rem;
   font-size: 1.65rem;
@@ -289,7 +293,7 @@ div#pricingChartCont > div#selectionsCont > div.selectionCont > .selectionHeader
 }
 div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] {
   position: relative;
-  width: 80%;
+  width: 55%;
   text-align: center;
   margin: auto;
   margin-bottom: 2.5rem;
@@ -317,7 +321,7 @@ div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"
 }
 div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"] > label {
   margin-left: -2rem;
-  width: 20rem;
+  width: calc(100% - 29px);
   z-index: 1;
   /*	White inner small circle	*/
 }
@@ -329,7 +333,7 @@ div#pricingChartCont > div#selectionsCont > div.selectionCont > div[class$="Row"
   display: inline-block;
   border: 2px solid #de5757;
   border-radius: 50%;
-  left: 8.2rem;
+  left: 0.75rem;
   width: 18px;
   height: 18px;
   /*	Red slice acting as initial mask for white slice 	*/
@@ -515,7 +519,9 @@ button {
 form#inputRowsCont {
   position: relative;
   width: 75%;
-  margin: 5rem auto 10rem auto;
+  margin: auto;
+  margin-top: 5rem;
+  padding-bottom: 10rem;
   z-index: 2;
 }
 div[class$="Row"] {

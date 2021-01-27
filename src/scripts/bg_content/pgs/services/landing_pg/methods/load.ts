@@ -13,7 +13,7 @@ import { INTRO_DATA, CARD_DATA } from '../data'
 
 const loadIntro = () => {
 	let header:HTMLHeadingElement = createTextElement({
-		element:"h3",
+		element:"h1",
 		text: "Services"
 	});
 

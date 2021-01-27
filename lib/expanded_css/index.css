@@ -6,6 +6,9 @@
   display: block;
   z-index: 1;
 }
+.row:last-child {
+  padding-bottom: 100px;
+}
 .row #left {
   float: left;
 }
@@ -655,7 +658,9 @@ img#rightBottom {
   cursor: pointer;
 }
 #formCont {
-  margin: 12rem auto 10.75rem auto;
+  margin: auto;
+  margin-top: 12rem;
+  padding-bottom: 10.75rem;
 }
 @media only screen and (max-height: 640px) {
   #formCont {

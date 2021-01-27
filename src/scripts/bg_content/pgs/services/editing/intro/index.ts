@@ -9,7 +9,7 @@ import { createElement, createTextElement } from '../../../../../global/methods/
 					
 const loadIntro = ():void => {
 	let header:HTMLHeadingElement = createTextElement({
-		element: "h2",
+		element: "h1",
 		text: "Editing",
 		idName: "pageHeader"
 	});

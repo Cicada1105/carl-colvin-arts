@@ -157,6 +157,9 @@ body {
   display: block;
   z-index: 1;
 }
+.row:last-child {
+  padding-bottom: 100px;
+}
 .row #left {
   float: left;
 }

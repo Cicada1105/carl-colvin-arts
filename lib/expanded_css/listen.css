@@ -148,6 +148,13 @@ body {
   z-index: 2;
   margin-bottom: 3rem;
 }
+[class="mediaRow"]:last-child::after {
+  content: "";
+  float: right;
+  display: block;
+  width: 100%;
+  height: 4.2rem;
+}
 [class="mediaRow"] > p {
   position: relative;
   width: calc(50% - 3px);

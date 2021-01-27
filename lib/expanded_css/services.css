@@ -130,17 +130,16 @@ body {
 /*
 	Rest of the code goes here
 */
-h3 {
+h1 {
   position: relative;
   width: 40rem;
   color: #f0edee;
   text-align: center;
   display: block;
   margin: 5rem auto;
-  font-size: 2rem;
   z-index: 2;
 }
-h3 + p {
+h1 + p {
   position: relative;
   width: 50rem;
   display: block;

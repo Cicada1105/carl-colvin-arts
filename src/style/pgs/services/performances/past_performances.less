@@ -16,6 +16,15 @@ h1#previousPerformancesTitle {
 	display:block;
 	margin:4rem auto;
 }
+.pageCardCont:last-child {
+	&::after {
+		content:"";
+		float:right;
+		display:block;
+		width:100%;
+		height:5rem;
+	}
+}
 .pageCardCont {
 	.format(relative,60rem);
 	background-color:@secondaryColor;

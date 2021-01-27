@@ -27,6 +27,14 @@
 	.row(12rem);
 	margin-bottom:3rem;
 
+	&:last-child::after {
+		content:"";
+		float:right;
+		display:block;
+		width:100%;
+		height:4.2rem;
+	}
+
 	& > p {
 		.format(relative, calc(50% - 3px), 6rem);
 		display:inline-block;

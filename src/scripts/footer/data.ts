@@ -34,7 +34,7 @@ const data:IImageLink[] = [
 	{
 		path:`${imagePath}fb_logo.png`,
 		alt:"facebook",
-		link:"tbd"
+		link:" https://www.facebook.com/CarlColvinArts/"
 	}
 ]
 
