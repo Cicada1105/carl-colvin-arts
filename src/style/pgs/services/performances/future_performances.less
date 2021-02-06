@@ -9,5 +9,86 @@
 #globalNS > .bg_img();
 
 /*  Rest of the styling goes here */
+h1#futurePerformancesTitle {
+	.format(relative,40rem);
+	color:@textColor;
+	text-align: center;
+	margin:4rem auto;
+}
+h3#loadingText {
+	.format(relative,40rem);
+	color:@textColor;
+	text-align:center;
+	display:block;
+	margin:3rem auto;
+}
+.performanceSection {
+	.format(relative,70rem);
+	border-bottom:2px solid @accentColor;
+	text-align: center;
+	color:@textColor;
+	padding:30px 0px;
+	margin:auto;
+
+	// Section holds about performance info and instruments container 
+	& > section {
+		.format(relative,calc(49rem - 2px));
+		display:inline-block;
+		border-right:2px solid @accentColor;
+
+		& > div.aboutPerformanceCont {
+			.format(relative,60%);
+			display:inline-block;
+
+		}
+		& > div.instrumentsCont {
+			.format(relative,40%);
+			display:inline;
+			float:right;
+
+			& > h3 {
+				border-bottom:1px solid @accentColor;
+				padding-bottom:8px;
+				width:10rem;
+				margin:auto;
+			}
+			& > p {
+				width:70%;
+				margin:1rem auto;
+			}
+		}
+	}
+	// Aside holds date of performance
+	& > aside {
+		.format(relative,30%);
+		display:inline;
+		float:right;
+	}
+}
+div#contactLink {
+	.format(relative,20rem);
+	display:inline-block;
+	left:50%;
+	transform:translateX(-50%);
+	text-align: center;
+	margin:2rem auto 5rem auto;
+	z-index: 1;
+
+	// text "Request Performance"
+	& > h2 {
+		display:inline;
+		text-align: center;
+		color:@textColor;
+		margin-right: 1.5rem;
+	}
+	& > i {
+		font-size:1.75rem;
+		color:@accentColor;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
 
 #globalNS > .social();

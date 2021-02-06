@@ -1,2 +1,2 @@
-declare const loadFuturePerformances: () => void;
+declare const loadFuturePerformances: () => Promise<void>;
 export { loadFuturePerformances };
