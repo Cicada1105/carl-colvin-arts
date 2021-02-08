@@ -1,3 +1,4 @@
 import { AudioInterface, VideoInterface } from '../interfaces';
-declare const createMediaCont: (data: AudioInterface | VideoInterface) => Promise<HTMLDivElement>;
+declare type Media = AudioInterface | VideoInterface;
+declare const createMediaCont: (data: Media) => Promise<HTMLDivElement>;
 export { createMediaCont };

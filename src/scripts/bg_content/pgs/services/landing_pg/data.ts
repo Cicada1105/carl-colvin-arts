@@ -27,15 +27,6 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 		link:`${SERVICES_DIR}reedmaking.html`
 	},
 	{
-		header:"Writing",
-		content: {
-			path:`${SERVICES_IMGS}flight_poem.jpg`,
-			alt:"Flight Poem",
-			caption:"'Flight': Published poem written by Carl colvin"
-		},
-		link:`${SERVICES_DIR}writing.html`
-	},
-	{
 		header:"Performance",
 		content: {
 			path:`${SERVICES_IMGS}carl_red_pew.jpg`,

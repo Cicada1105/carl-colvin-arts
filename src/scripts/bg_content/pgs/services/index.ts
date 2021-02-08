@@ -6,7 +6,6 @@ import { loadServicesLandingPage } from './landing_pg/index'
 import { loadEditingPage } from './editing/index'
 import { loadPerformancePage } from './performance/index'
 import { loadReedmakingPage } from './reedmaking/index'
-import { loadWritingPage } from './writing/index'
 
 const loadServicesPage = () => {
 	let currPage:string = getCurrentFile();
@@ -23,9 +22,6 @@ const loadServicesPage = () => {
 		break;
 		case "reedmaking":
 			loadReedmakingPage();
-		break;
-		case "writing":
-			loadWritingPage();
 		break;
 		default:
 			loadServicesLandingPage();

@@ -59,10 +59,8 @@ body {
   padding: 0.625rem 1.5rem 0.85rem 1.5rem;
 }
 #header ul[id="navigation"] li ul[class="subDir"] {
-  position: absolute;
-  width: 225px;
-  height: 125px;
   background-color: #0c090a;
+  position: absolute;
   padding: 0%;
   float: left;
   right: 0%;
@@ -70,10 +68,9 @@ body {
   display: none;
 }
 #header ul[id="navigation"] li ul[class="subDir"] li {
-  display: inline-block;
-  padding: 2.75% 5.25%;
-  margin-top: 7.5%;
-  margin-left: 5.3%;
+  display: block;
+  text-align: center;
+  margin: 0.65rem;
 }
 @media only screen and (max-device-width: 560px), (max-width: 560px) {
   #header ul[id="navigation"] li ul[class="subDir"] {
@@ -126,9 +123,6 @@ body {
   opacity: 0.05;
   z-index: 1;
   top: 0%;
-}
-body {
-  overflow: auto;
 }
 /*  Rest of the styling goes here */
 h1#futurePerformancesTitle {
@@ -195,7 +189,7 @@ div#contactLink {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  margin: 5rem auto;
+  margin: 2rem auto 5rem auto;
   z-index: 1;
 }
 div#contactLink > h2 {

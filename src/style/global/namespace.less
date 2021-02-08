@@ -53,8 +53,8 @@
 
 					ul[class = "subDir"] {
 						&:extend(.staticUL);
-						.format(absolute, 225px, 125px);
 						background-color:@secondaryBackgroundColor;
+						position:absolute;
 						padding:0%;
 						float:left;
 						right:0%;
@@ -63,10 +63,9 @@
 						display:none;
 						li {
 							&:extend(.staticLI);
-							display:inline-block;
-							padding:2.75% 5.25%;
-							margin-top:7.5%;
-							margin-left:5.3%;
+							display:block;
+							text-align: center;
+							margin:0.65rem;
 						}
 
 						@media only screen and (max-device-width: 560px), (max-width: 560px) {

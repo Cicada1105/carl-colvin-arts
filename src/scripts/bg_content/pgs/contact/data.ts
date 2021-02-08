@@ -83,27 +83,6 @@ const formData:IForm = {
 						]
 					},
 					{
-						label: "Writing",
-						options: [
-							{
-								display: "General Info",
-								value: "general"
-							},
-							{
-								display: "Pricing",
-								value: "pricing"
-							},
-							{
-								display: "Writing Details",
-								value: "details"
-							},
-							{
-								display: "Other",
-								value: "other"
-							}
-						]
-					},
-					{
 						label: "Editing",
 						options: [
 							{

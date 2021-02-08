@@ -40,10 +40,6 @@ const data:IBgImage = {
 		path: imgPath + "reedmaking_bg.jpg",
 		alt: "Reeds with sharpening tools and woodblock"
 	},
-	"writing" : {
-		path: imgPath + "flight_poem.jpg",
-		alt: "Poem"
-	}, 
 	"performances" : {
 		path: imgPath + "carl_red_pew.jpg",
 		alt: "Playing oboe in church pew"
