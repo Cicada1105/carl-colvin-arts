@@ -4,6 +4,7 @@
 
 // Imports
 import { IOptionGroup, IOption } from '../interfaces/inputs'
+import { IContactLink } from '../interfaces/general';
 
 function createElement({element="div",className="",idName=""}):any {
   try {
@@ -161,8 +162,41 @@ const createSelectElement = ({options=[{}], ...rest}):any => {
   }
 }
 
+// text, from 
+function createContactLink(data:IContactLink):HTMLDivElement {
+  // Create container for contact link text and button
+  let cont:HTMLDivElement = createElement({
+    idName:"contactLink"
+  });
+
+  // Create header for contact link 
+  let linkText:HTMLHeadingElement = createTextElement({
+    element:"h2",
+    text: data["text"]
+  });
+  // Create arrow element to be used as "button" image
+  let iBtn:HTMLElement = createElement({
+    element:"i",
+    className:"fas fa-chevron-right"
+  });
+
+  // Add event listener to iBtn to set session to send to contact page 
+  iBtn.addEventListener("click",function() {
+    // Set session storage to be "from" future performances 
+    sessionStorage.setItem("from",data["from"]);
+    // Navigate to contact page 
+    window.location.assign(data["path"]);
+  },{once:true})
+
+  // Append text and arrow to contact container 
+  cont.appendChild(linkText);
+  cont.appendChild(iBtn);
+
+  return cont;
+}
+
 export { 
   createElement, createTextElement, 
   createLabelElement, createImageElement, 
-  createSelectElement
+  createSelectElement, createContactLink
 }

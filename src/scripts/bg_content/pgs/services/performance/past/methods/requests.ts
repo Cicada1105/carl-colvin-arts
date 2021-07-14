@@ -6,9 +6,9 @@
 import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
 
 // Development server
-//const BASE_SERVER = "http://localhost:8080/api/performance";
+const BASE_SERVER = "http://localhost:2020/api/performance";
 // Production server 
-const BASE_SERVER = "https://cca-server.herokuapp.com/api/performance"
+//const BASE_SERVER = "https://cca-server.herokuapp.com/api/performance"
 
 type RequestResponseType = IRepertoire[] | ICollaborator[] | IAnecdote[];
 

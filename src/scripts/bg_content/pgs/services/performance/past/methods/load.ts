@@ -12,7 +12,8 @@ import { RequestResponseType, requestPastData } from './requests';
 //		interfaces
 import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
 //	Global
-import { createTextElement } from '../../../../../../global/methods/elements';
+import { createTextElement, createContactLink } from '../../../../../../global/methods/elements';
+import { IContactLink } from '../../../../../../global/interfaces/general';
 
 const loadRepertoire:()=>void = ():void => {
 	// Create container for holding past performances
@@ -106,7 +107,17 @@ const loadAnecdotes:()=>void = ():void => {
 		console.error(err);
 	})
 }
+const loadContactLink:()=>void = ():void => {
+	let linkData:IContactLink = {
+		text: "Request Performance Info",
+		from: "past",
+		path: "../../contact.html"
+	}
+	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
+	document.body.appendChild(contactLinkCont);
+}
 
 export {
-	loadRepertoire, loadCollaborators, loadAnecdotes
+	loadRepertoire, loadCollaborators, 
+	loadAnecdotes, loadContactLink
 }

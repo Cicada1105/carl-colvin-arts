@@ -7,9 +7,10 @@
 //    methods
 import { requestFuturePerformances } from './requests';
 import { createPerformanceRow } from './create';
-import { createElement, createTextElement } from '../../../../../../global/methods/elements';
+import { createElement, createTextElement, createContactLink } from '../../../../../../global/methods/elements';
 //    interfaces
 import { IPerformance } from '../interfaces';
+import { IContactLink } from '../../../../../../global/interfaces/general';
 
 const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 	// Create temporary loading text 
@@ -32,37 +33,14 @@ const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 		})
 	})
 }
-
 const loadContactLink:()=>void = ():void => {
-	// Create container for contact link text and button
-	let cont:HTMLDivElement = createElement({
-		idName:"contactLink"
-	});
-
-	// Create header for contact link 
-	let linkText:HTMLHeadingElement = createTextElement({
-		element:"h2",
-		text:"Request Performance"
-	});
-	// Create arrow element to be used as "button" image
-	let iBtn:HTMLElement = createElement({
-		element:"i",
-		className:"fas fa-chevron-right"
-	});
-
-	// Add event listener to iBtn to set session to send to contact page 
-	iBtn.addEventListener("click",function() {
-		// Set session storage to be "from" future performances 
-		sessionStorage.setItem("from","future");
-		// Navigate to contact page 
-		window.location.assign("../../contact.html");
-	},{once:true})
-
-	// Append text and arrow to contact container 
-	cont.appendChild(linkText);
-	cont.appendChild(iBtn);
-
-	document.body.appendChild(cont);
+	let linkData:IContactLink = {
+		text: "Request Performance",
+		from: "future",
+		path: "../../contact.html"
+	}
+	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
+	document.body.appendChild(contactLinkCont);
 }
 
 export { loadPerformances, loadContactLink }

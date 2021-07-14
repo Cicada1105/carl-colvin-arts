@@ -4,7 +4,7 @@
 //	data
 import { audioData, videoData } from './data'
 //  methods
-import { loadMediaRow, loadCanvasWave } from './load_methods'
+import { loadMediaRow, loadCanvasWave, loadContactLink } from './load_methods'
 import { createTextElement } from '../../../global/methods/elements'
 import { loadBootstrap } from '../../../global/methods/utilities'
 //  interfaces
@@ -25,6 +25,9 @@ import { RowInterface } from './interfaces'
  	await loadMediaRow(videoData['poem-reading'] as RowInterface);
  	loadCanvasWave();
  	await loadMediaRow(audioData['ka-ra-zen'] as RowInterface);
+
+	// Load link to contact page, using current page as reference
+	loadContactLink();
  }
 
  export { loadListenPage }

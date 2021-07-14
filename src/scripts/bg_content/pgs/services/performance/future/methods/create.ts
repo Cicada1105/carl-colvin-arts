@@ -22,7 +22,7 @@ const createPerformanceRow:(futurePerformanceData:IPerformance)=>HTMLDivElement 
 		description:performance["description"]
 	});
 	// Create date time container 
-	let dateTimeCont:HTMLElement = createDateTimeCont(performance["date_time"]);
+	let dateTimeCont:HTMLElement = createDateTimeCont({ date: performance["date"], time: performance["time"] });
 
 	// Append main section and date time aside section to row 
 	row.appendChild(mainSection);

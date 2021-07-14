@@ -445,6 +445,32 @@ h2 {
   height: 100%;
   bottom: 0%;
 }
+div#contactLink {
+  position: relative;
+  width: 20rem;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin: 2rem auto 5rem auto;
+  z-index: 1;
+}
+div#contactLink > h2 {
+  display: inline;
+  text-decoration: none;
+  text-align: center;
+  font-size: revert;
+  color: #f0edee;
+}
+div#contactLink > i {
+  position: absolute;
+  font-size: 1.75rem;
+  color: #de5757;
+  right: 0;
+}
+div#contactLink > i:hover {
+  cursor: pointer;
+}
 #footer {
   bottom: 0%;
   z-index: 3;

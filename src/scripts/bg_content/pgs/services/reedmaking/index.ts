@@ -1,5 +1,5 @@
 // Imports
-import { loadIntroData, loadTabs, loadPricings } from './load-methods'
+import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './load-methods'
 
 const loadReedmakingPage = ():void => {
 	// Load data introducing reeds to user
@@ -8,6 +8,8 @@ const loadReedmakingPage = ():void => {
 	loadTabs();
 	// Load the reed pricings
 	loadPricings();
+	// Load link to contact page, using current page as reference
+	loadContactLink();
 }
 
 

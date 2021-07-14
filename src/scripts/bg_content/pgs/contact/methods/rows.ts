@@ -45,6 +45,35 @@ const createRows = ():HTMLDivElement => {
 		id: formData.form.selectInput.id,
 		data: formData.form.selectInput.data
 	});
+	// If directed from service, display subject accordingly
+	if (sessionStorage.length === 1) {
+		let from:string = <string>sessionStorage.getItem("from");
+		let selectEl:HTMLSelectElement = <HTMLSelectElement>selectCont.firstElementChild;
+
+		switch(from) {
+			case 'reedmaking':
+				selectEl.selectedIndex = 3; // Reed Details
+			break;
+			case 'past':
+				selectEl.selectedIndex = 7; // Performance Details
+			break;
+			case 'present':
+				selectEl.selectedIndex = 5; // General info
+			break;
+			case 'future':
+				selectEl.selectedIndex = 6; // Pricing
+			break;
+			case 'editing':
+				selectEl.selectedIndex = 11; // Editing details
+			break;
+			case 'listen':
+				selectEl.selectedIndex = 14; // Specific piece
+			break;
+		}
+
+		// Clear remove item from session storage 
+		sessionStorage.removeItem("from");
+	}
 	let selectInputRow:HTMLDivElement = createInputRow({
 		label: formData.form.selectInput.label,
 		content: selectCont

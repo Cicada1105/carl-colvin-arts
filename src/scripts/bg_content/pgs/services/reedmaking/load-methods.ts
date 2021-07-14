@@ -4,7 +4,8 @@
 // Imports
 import { REEDMAKING_DESCR, ABOUT_DESCR, introData, tabData, pricingData } from './data'
 import { createHeaderContent, createReedPriceBox } from './private-methods'
-import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
+import { createElement, createTextElement, createImageElement, createContactLink } from '../../../../global/methods/elements'
+import { IContactLink } from '../../../../global/interfaces/general'
 
 const loadIntroData = ():void => {
 	let cvs:HTMLCanvasElement = createElement({
@@ -161,4 +162,14 @@ const loadPricings = ():void => {
 	});
 }
 
-export { loadIntroData, loadTabs, loadPricings }
+const loadContactLink = ():void => {
+	let linkData:IContactLink = {
+		text: "Request Reeds",
+		from: "reedmaking",
+		path: "../contact.html"
+	}
+	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
+	document.body.appendChild(contactLinkCont);
+}
+
+export { loadIntroData, loadTabs, loadPricings, loadContactLink }

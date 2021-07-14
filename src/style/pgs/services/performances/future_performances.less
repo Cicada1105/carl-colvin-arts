@@ -50,7 +50,8 @@ h3#loadingText {
 				border-bottom:1px solid @accentColor;
 				padding-bottom:8px;
 				width:10rem;
-				margin:auto;
+				margin-left:auto;
+				margin-right:auto;
 			}
 			& > p {
 				width:70%;
@@ -79,11 +80,12 @@ div#contactLink {
 		display:inline;
 		text-align: center;
 		color:@textColor;
-		margin-right: 1.5rem;
 	}
 	& > i {
+		position:absolute;
 		font-size:1.75rem;
 		color:@accentColor;
+		right:0;
 
 		&:hover {
 			cursor: pointer;

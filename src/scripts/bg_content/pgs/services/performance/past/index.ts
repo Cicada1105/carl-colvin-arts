@@ -3,7 +3,7 @@
 */
 
 // Imports
-import { loadRepertoire, loadCollaborators, loadAnecdotes } from './methods/load';
+import { loadRepertoire, loadCollaborators, loadAnecdotes, loadContactLink } from './methods/load';
 import { createTextElement } from '../../../../../global/methods/elements';
 
 const loadPreviousPerformances:()=>void = ():void => {
@@ -18,6 +18,8 @@ const loadPreviousPerformances:()=>void = ():void => {
 	loadRepertoire();
 	loadCollaborators();
 	loadAnecdotes();
+	// Load contact link
+	loadContactLink();
 }
 
 export { loadPreviousPerformances }

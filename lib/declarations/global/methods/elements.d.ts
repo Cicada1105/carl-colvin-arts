@@ -1,3 +1,4 @@
+import { IContactLink } from '../interfaces/general';
 declare function createElement({ element, className, idName }: {
     element?: string | undefined;
     className?: string | undefined;
@@ -22,4 +23,5 @@ declare const createSelectElement: ({ options, ...rest }: {
     [x: string]: any;
     options?: {}[] | undefined;
 }) => any;
-export { createElement, createTextElement, createLabelElement, createImageElement, createSelectElement };
+declare function createContactLink(data: IContactLink): HTMLDivElement;
+export { createElement, createTextElement, createLabelElement, createImageElement, createSelectElement, createContactLink };

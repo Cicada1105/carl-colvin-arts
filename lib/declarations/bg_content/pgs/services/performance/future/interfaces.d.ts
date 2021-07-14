@@ -10,8 +10,7 @@ interface AboutPerformanceInterface {
     location: string;
     description: string;
 }
-interface PerformanceInterface extends AboutPerformanceInterface {
+interface PerformanceInterface extends AboutPerformanceInterface, DateTimeInterface {
     instruments: string[];
-    date_time: DateTimeInterface;
 }
 export { PerformanceInterface as IPerformance, AboutPerformanceInterface as IAboutPerformance, DateTimeInterface as IDateTime };

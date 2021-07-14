@@ -170,7 +170,8 @@ h3#loadingText {
   border-bottom: 1px solid #de5757;
   padding-bottom: 8px;
   width: 10rem;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .performanceSection > section > div.instrumentsCont > p {
   width: 70%;
@@ -196,11 +197,12 @@ div#contactLink > h2 {
   display: inline;
   text-align: center;
   color: #f0edee;
-  margin-right: 1.5rem;
 }
 div#contactLink > i {
+  position: absolute;
   font-size: 1.75rem;
   color: #de5757;
+  right: 0;
 }
 div#contactLink > i:hover {
   cursor: pointer;
