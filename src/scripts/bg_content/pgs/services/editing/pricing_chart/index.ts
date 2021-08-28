@@ -6,6 +6,7 @@
 // Imports
 //	methods
 import { createElement, createTextElement } from '../../../../../global/methods/elements'
+import { constructEditingPricingChartData } from './shared/construct'
 import { createSelections } from './selections/create'
 import { createChart } from './chart/create'
 
@@ -21,6 +22,8 @@ const loadPricingChart = ():void => {
 		idName:"pricingChartCont"
 	});
 
+	// Construct editing data to be used by pricing chart
+	constructEditingPricingChartData();
 	// Create selections for users to choose from
 	let selections:HTMLDivElement = createSelections();
 	// Create the chart for the pricings to be displayed

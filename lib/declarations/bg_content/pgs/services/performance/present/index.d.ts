@@ -1,2 +1,2 @@
-declare const loadMusicStand: () => void;
+declare const loadMusicStand: () => Promise<void>;
 export { loadMusicStand };

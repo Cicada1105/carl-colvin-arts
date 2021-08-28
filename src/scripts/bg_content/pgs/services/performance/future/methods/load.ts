@@ -5,7 +5,7 @@
 
 // Imports
 //    methods
-import { requestFuturePerformances } from './requests';
+import requestData from '../../../request';
 import { createPerformanceRow } from './create';
 import { createElement, createTextElement, createContactLink } from '../../../../../../global/methods/elements';
 //    interfaces
@@ -22,7 +22,7 @@ const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 	// Append loading text to body 
 	document.body.appendChild(loadingTxt);
 
-	await requestFuturePerformances().then((performances:IPerformance[]) => {
+	let performances:IPerformance[] = await requestData<IPerformance[]>("performance/future");
 		// Request is done: remove loading text
 		document.body.removeChild(loadingTxt)
 		performances.forEach((performance:IPerformance) => {
@@ -31,7 +31,22 @@ const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 			// Append performance row to body
 			document.body.appendChild(performanceRow);
 		})
-	})
+	/*catch((err:Error) => {
+		document.body.appendChild(
+			createTextElement({
+				element: "h3",
+				text: err.name,
+				idName: "errName"
+			})
+		);
+		document.body.appendChild(
+			createTextElement({
+				element: "h6",
+				text: err.message,
+				idName: "errMessage"
+			})
+		);
+	})*/
 }
 const loadContactLink:()=>void = ():void => {
 	let linkData:IContactLink = {

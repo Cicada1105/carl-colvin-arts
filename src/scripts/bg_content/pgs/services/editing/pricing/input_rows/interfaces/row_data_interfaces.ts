@@ -1,36 +1,26 @@
 // Interfaces for the editing page
+import { RateInterface as IRate } from '../../../interfaces'
+import { IOption } from '../../../../../../../global/interfaces/inputs'
 
 interface LiteratureTypeInterface {
-	literatureType: OptionInterface;
+	literatureType: IOption;
 	child: GenresInterface;
 }
 interface GenresInterface {
-	genres: OptionInterface[];
+	genres: IOption[];
 	child: EditingTypeInterface[];
 }
 interface EditingTypeInterface {
-	editingType: OptionInterface;
+	editingType: IOption;
 	child: EditingRatesInterface;
 }
 interface EditingRatesInterface {
-	rates: RateInterface[];
+	rates: IRate[];
 }
-interface OptionInterface {
-	display: string;
-	value: string;
-}
-interface RateInterface {
-	min: number;
-	max: number;
-	flatRate?:number;
-	perHour: number;
-	perWord: number;
-}
+
 export { 
 	LiteratureTypeInterface, 
 	GenresInterface, 
 	EditingTypeInterface, 
-	EditingRatesInterface, 
-	OptionInterface,
-	RateInterface 
+	EditingRatesInterface
 }

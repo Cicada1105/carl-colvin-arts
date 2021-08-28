@@ -2,10 +2,13 @@
 // File dependencies will be handled here
 
 // Imports
-import { REEDMAKING_DESCR, ABOUT_DESCR, introData, tabData, pricingData } from './data'
-import { createHeaderContent, createReedPriceBox } from './private-methods'
-import { createElement, createTextElement, createImageElement, createContactLink } from '../../../../global/methods/elements'
-import { IContactLink } from '../../../../global/interfaces/general'
+import { REEDMAKING_DESCR, ABOUT_DESCR, introData, tabData } from './data';
+import { ReedPricingInterface } from './interfaces';
+import { createHeaderContent, createReedPriceBox } from './private-methods';
+
+import { createElement, createTextElement, createImageElement, createContactLink } from '../../../../global/methods/elements';
+import { IContactLink } from '../../../../global/interfaces/general';
+import requestData from '../request';
 
 const loadIntroData = ():void => {
 	let cvs:HTMLCanvasElement = createElement({
@@ -143,10 +146,11 @@ const loadTabs = ():void => {
 	});
 }
 
-const loadPricings = ():void => {
+const loadPricings = async ():Promise<void> => {
 	let pricingHeader:HTMLHeadingElement = createTextElement({element:"h2",text:"Pricings"});
 	document.body.appendChild(pricingHeader);
 
+	let pricingData: ReedPricingInterface[] = await requestData<ReedPricingInterface[]>("reedmaking");
 	// Create reed pricing container for each Reed
 	pricingData.forEach(reed => {
 		// Create container that will be used to help with sizing and positioning
@@ -160,6 +164,22 @@ const loadPricings = ():void => {
 
 		document.body.appendChild(reedCont);
 	});
+	/*catch((err:Error) => {
+		document.body.appendChild(
+			createTextElement({
+				element: "h3",
+				text: err.name,
+				idName: "errName"
+			})
+		);
+		document.body.appendChild(
+			createTextElement({
+				element: "h6",
+				text: err.message,
+				idName: "errMessage"
+			})
+		);
+	})*/
 }
 
 const loadContactLink = ():void => {

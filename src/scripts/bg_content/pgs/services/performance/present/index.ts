@@ -3,9 +3,18 @@
 */
 
 // Imports
+import requestData from '../../request';
 
-const loadMusicStand = () => {
-	console.log("Loading Music Stand");
+interface SongInterface {
+	name:string;
+	by:string;
+	description:string;
+}
+
+const loadMusicStand = async ():Promise<void> => {
+  	console.log("Loading Music Stand");
+  	let songs:SongInterface[] = await requestData<SongInterface[]>("performances/present");
+  	console.log(songs);
 }
 
 export { loadMusicStand }

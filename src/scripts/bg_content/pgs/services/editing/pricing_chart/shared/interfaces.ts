@@ -2,6 +2,7 @@
 //	for the pricing chart and pricing selections
 
 // Imports
+import { RateInterface as IRate } from '../../interfaces'
 import { ILabelRow } from '../../../../../../global/interfaces/inputs';
 
 interface LiteratureTypeInterface {
@@ -10,18 +11,10 @@ interface LiteratureTypeInterface {
 }
 interface EditingTypeInterface extends ILabelRow {
 	id:string;
-	rates:Array<RateInterface>;
-}
-interface RateInterface {
-	min: number;
-	max: number;
-	flatRate?:number;
-	perHour: number;
-	perWord: number;
+	rates:Array<IRate>;
 }
 
 export {
 	LiteratureTypeInterface,
-	EditingTypeInterface,
-	RateInterface
+	EditingTypeInterface
 }

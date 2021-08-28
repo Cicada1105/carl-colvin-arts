@@ -7,7 +7,7 @@ import { createTextElement } from '../../../../../global/methods/elements';
 import { loadBootstrap } from '../../../../../global/methods/utilities';
 import { loadPerformances, loadContactLink } from './methods/load';
 
-const loadFuturePerformances = async () => {
+const loadFuturePerformances = async ():Promise<void> => {
 	// Create header for future performancecs page
 	let title:HTMLHeadingElement = createTextElement({
 		element:"h1",

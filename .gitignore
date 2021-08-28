@@ -1,15 +1,19 @@
 # gitignore comment -> ignore node_modules, package-lock.json
 
 # Dependencies
-#./node_modules/*
-package-lock.json
+/node_modules
+/package-lock.json
 
 # Compiled files
 # 	Condensed
-# 	  ./dist/styles
-# 	  ./dist/index.js
-#	  ./dist/refresh.js
+/dist/index.js
+/dist/styles/*.css
+/dist/refresh.js
+
 # 	Non-condensed
-# 	  ./lib/es5
-# 	  ./lib/es6
-#	  ./lib/expanded_css
+/lib/es5
+/lib/es6
+/lib/expanded_css
+
+# Misc
+Todo.md

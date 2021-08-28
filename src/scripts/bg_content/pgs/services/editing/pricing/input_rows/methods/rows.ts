@@ -3,7 +3,8 @@
 // Imports
 //	data
 //	   local
-import { literatureRatesSelections as litSelections } from '../data/static'
+//import { literatureRatesSelections as litSelections } from '../data/static'
+import { constructEditingData } from './construct'
 //	   shared
 import { LABELS } from '../../shared/data/static'
 //	interfaces
@@ -13,9 +14,9 @@ import {
 import { 
 	LiteratureTypeInterface as ILitType,
 	GenresInterface as IGenres,
-	EditingTypeInterface as IEditingType,
-	RateInterface as IRate
+	EditingTypeInterface as IEditingType
 } from '../interfaces/row_data_interfaces'
+import { RateInterface as IRate } from '../../../interfaces'
 //	methods
 //	   local
 import { 
@@ -31,6 +32,7 @@ import { LiteratureTypeHandler, GenreHandler, EditingHandler, WordCountHandler, 
 const createLiteratureRow = ():HTMLDivElement => {
 	let litOptions:IOption[] = [];
 
+	let litSelections:ILitType[] = constructEditingData();
 	// Loop through editingRatesSelections, adding the literature type to rowData
 	litSelections.forEach((litSelection:ILitType) => {
 		litOptions.push(<IOption>litSelection.literatureType);

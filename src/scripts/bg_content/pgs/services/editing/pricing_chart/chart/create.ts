@@ -6,7 +6,7 @@ import { createElement, createTextElement } from '../../../../../../global/metho
 //	data
 import { chartSelectionsData } from '../shared/data'
 //	interfaces
-import { RateInterface as IRate } from '../shared/interfaces'
+import { RateInterface as IRate } from '../..//interfaces'
 
 const HEADERS:string[] = ["Words","Hourly Rate","Flat Rate*"];
 

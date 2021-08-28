@@ -1,3 +1,2 @@
-import { LiteratureTypeInterface as ILit } from '../shared/interfaces';
-declare const chartSelectionsData: ILit[];
-export { chartSelectionsData };
+import { LiteratureTypeInterface as ILit } from './interfaces';
+export declare let chartSelectionsData: ILit[];

@@ -3,7 +3,7 @@
 // Imports
 //	Interfaces
 //		Local
-import { RateInterface as IRate } from '../interfaces/row_data_interfaces'
+import { RateInterface as IRate } from '../../../interfaces'
 //		Global
 import { EmailError, EmailReport } from '../../../../../../../global/interfaces/errors'
 //	Data
