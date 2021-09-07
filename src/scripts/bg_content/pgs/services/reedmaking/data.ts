@@ -1,60 +1,32 @@
 // Imports
-import { TabInterface, ReedPricingInterface } from './interfaces'
+import { ReedPricingInterface } from './interfaces'
 import { IBox } from '../../../../global/interfaces/general'
 
-const REEDMAKING_DESCR:string = "Reeds are hard, whether to play on or make. \n" +
-								"There's no getting around it. However, \n" +
-								"that shouldn't stop you from playing at \n" +
-								"your best, and that is why I offer \n" +
-								"reedmaking services. I have been making \n" +
-								"reeds for 11 years and, like many other \n" + 
-								"professional oboists, offer them to the \n" +
-								"public for sale. My reeds are all handmade\n" + 
-								"from start to finish, from tube cane to \n" +
-								"performance-ready, and will not leave my\n" +
-								"hand until they are play-tested and at a \n" + 
-								"level that I would perform on them \n" +
-								"myself."
+const reedmakingIntro:IBox<string> = {
+	header:"Reedmaking",
+	content: "Reeds are hard, whether to play on or make. There's no getting around it. However, " +
+				 "that shouldn't stop you from playing at your best, and that is why I offer " +
+				 "reedmaking services. I have been making reeds for 11 years and, like many other " + 
+				 "professional oboists, offer them to the public for sale. My reeds are all handmade" + 
+				 "from start to finish, from tube cane to performance-ready, and will not leave my" +
+				 "hand until they are play-tested and at a level that I would perform on them myself."
+}
 
-const ABOUT_DESCR:string = 	"My sale price reflects my years of \n" +
-							"experience in reeds and the cane itself. \n" +
-							"However, I completely understand that \n" +
-							"everyone is different and may not like my \n" +
-							"reeds. If this is the case, I would love \n" +
-							"the opportunity to make it right and get \n" +
-							"the best reed that fits all your needs. \n" +
-							"If any of your needs are more immediate, \n" +
-							"I am more than happy to work with you. \n" +
-							"I normally create and ship reeds within \n" +
-							"a week of receiving payment. Please reach \n" +
-							"me via the \"Contact\" tab with any \n" +
-							"orders, issues, and special instructions."
+const aboutIntro:IBox<string> = {
+	header: "About",
+	content: "My sale price reflects my years of experience in reeds and the cane itself. " +
+				 "However, I completely understand that everyone is different and may not like my " +
+				 "reeds. If this is the case, I would love the opportunity to make it right and get " +
+				 "the best reed that fits all your needs. If any of your needs are more immediate, " +
+				 "I am more than happy to work with you. I normally create and ship reeds within " +
+				 "a week of receiving payment. Please reach me via the \"Contact\" tab with any " +
+				 "orders, issues, and special instructions."
+}
 
-const introData:IBox<string>[] = [
-	{
-		header:"Reedmaking",
-		content:"Reeds are hard, whether to play on or make. There's no getting around it. However, that " +
-		"shouldn't stop you from playing at your best, and that is why I offer reedmaking services." +
-		"I have been making reeds for 11 years and, like many other professional oboists, offer " +
-		"them to the public for sale. My reeds are all handmade from start to finish, from tube " +
-		"cane to performance-ready, and will not leave my hand until they are play-tested and at " +
-		"a level that I would perform on them myself."
-	},
-	{
-		header:"About",
-		content:"My sale price reflects my years of experience in reeds and the cane itself. However, I " +
-		"completely understand that everyone is different and may not like my reeds. If this is " +
-		"the case, I would love the opportunity to make it right and get the best reed that fits " +
-		"all your needs. If any of your needs are more immediate, I am more than happy to work with " +
-		"you. I normally create and ship reeds within a week of receiving payment, Please reach me " +
-		"via the \"Contact\" tab with any orders, issues, and special instructions."
-	}
-]
-
-const tabData:TabInterface[] = [
+const tabData:Array<IBox<string[]>> = [
 	{
 		header: "Reed Strength",
-		descriptions: [
+		content: [
 			"Medium-Easy:Reeds for players who need lighter resistance, faster response, " +
 			"and flexible pitch. These are suggested for younger players or adults just " +
 			"starting off.",
@@ -69,7 +41,7 @@ const tabData:TabInterface[] = [
 	},
 	{
 		header: "Gouge and Shape Details",
-		descriptions: [
+		content: [
 			"My oboe reeds are made from 10.5-11mm diameter cane, pre-gouged on a Ross " +
 			"planer, and gouged on an Innoledy gouger. My English horn cane is also processed " +
 			"on a Ross planer and Innoledy gouger and is measured from 11.5-12mm diamerer cane.",
@@ -84,7 +56,7 @@ const tabData:TabInterface[] = [
 	},
 	{
 		header: "Staples and Tubes",
-		descriptions: [
+		content: [
 			"The staples and tubes I personally use are Pisoni silver staples at 47mm " +
 			"length for oboe and brass Pisoni tubes for English horn. The staples I use " +
 			"for others are Pisoni silver, brass Chiarugi 2's, and synthetic cork 47mm " +
@@ -100,4 +72,4 @@ const tabData:TabInterface[] = [
 	}
 ]
 
-export { REEDMAKING_DESCR, ABOUT_DESCR, introData, tabData }
+export { reedmakingIntro, aboutIntro, tabData }

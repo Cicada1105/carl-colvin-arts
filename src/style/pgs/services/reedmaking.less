@@ -23,71 +23,90 @@
 	animation-direction:normal;
 	animation-duration:1s;	
 }
-#introCvs {
-	position:relative;
-	display:block;
-	margin:auto;
-	margin-top:2.5rem;
-	margin-bottom:5rem;
-	width:80vw;
-	height:30rem;
-	z-index:2;
-}
-#finished_reed {
-	position:relative;
-	display:block;
-	z-index: 4;
-}
 // Headers
-[class = "headerCont"] {
-	//background-color:yellow;
-	.format(relative,80%);
-	margin:auto;
-	margin-top:7%;
+#reedmakingIntro {
+	.format(relative,90vw,fit-content);
+	margin:3rem auto;
+	text-align: center;
 
-	[class = "headerText"] {
-		//background-color:green;
-		position:relative;
+	[id $= "IntroSection"] {
+		display: inline-block;
+		vertical-align: top;
 		width:100%;
-		height:8rem;
 
-		h3 {
-			text-align: center;
+		@media only screen and (min-width: 1072px) {
+			width: 40%;
+		}
+		article {
 			color:@textColor;
-			margin:auto;
-			width:25rem;
-			height:100%;
-			font-size:2rem;
-		}
-		[id $= "Reed"] {
-			.format(absolute,15rem,50%);
-		}
-		[id = "leftReed"] {
-			left:15%;
-		}
-		[id = "rightReed"] {
-			right:15%;
-			top:0px;
-			transform:rotate(180deg) scaleY(-1);
+
+			& > header {
+				text-align:center;
+
+				h2 {
+					display:inline-block;
+					text-align:center;
+					width:40%;
+				}
+
+				div.headerEnding {
+					background-color:#003249;
+					display:inline-block;
+					margin-top:1.99415625rem;
+					width:28%;
+					height:2px;
+
+					&:first-of-type {
+						float:left;
+					}
+					&:last-of-type {
+						float:right;
+					}
+				}
+			}
+			& > p {
+				border:2px solid #003249;
+				font-size:1.15rem;
+				text-indent:20px;
+				text-align:justify;
+				padding:8px 14px 10px 14px;
+				margin:auto;
+				margin-top:1rem;
+				width:66%;
+			}
 		}
 	}
-	[class = "headerBody"] {
-		&::first-line {
-			text-indent:2rem;
+	#imgSection {
+		.format(relative,fit-content);
+		display:block;
+		margin:2rem auto;
+
+		& > img {
+			border:2px solid #003249;
+			width:12rem;
 		}
-		//background-color:@secondaryColor;
-		border:3px inset @secondaryColor;
-		width:80%;
-		margin:auto;
-		font-size:1.05rem;
-		padding:1.5rem 5rem 2rem 5rem;
-		color:@textColor;
+
+		@media only screen and (min-width: 1072px) {
+			display:inline-block;
+			margin-top:1rem;
+			width:20%;
+
+			div#connector {
+				background-color:#003249;
+				margin-top:0.99415625rem;
+				height:5rem;
+				clip-path:polygon(0% 0%, 50% calc(100% - 2px), 100% 0%, 100% 2px, 50% 100%, 0% 2px);
+			}
+			& > img {
+				width:12rem;
+			}
+		}
 	}
 }
 // Tabs
 [class = "tabCont"] {
 	.format(relative, 80%);
-	margin:5% 10% 5% 10%;
+	margin:0% 10% 5% 10%;
 	display: block;
 	top:0%;
 
@@ -139,7 +158,7 @@
 		}
 	}
 }
-h2 {
+.tabCont:last-of-type + h2 {
 	.format(relative,10%,5rem);
 	text-decoration: underline;
 	color:@textColor;

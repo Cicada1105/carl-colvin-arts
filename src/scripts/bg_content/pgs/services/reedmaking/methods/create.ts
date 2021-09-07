@@ -3,46 +3,37 @@
 
 // Imports
 //	interfaces
-import { IPricing, ReedPricingInterface } from './interfaces'
-import { IBox } from '../../../../global/interfaces/general'
+import { IPricing, ReedPricingInterface } from '../interfaces'
+import { IBox } from '../../../../../global/interfaces/general'
 //	methods
-import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
+import { createElement, createTextElement } from '../../../../../global/methods/elements'
+import { createIntroHeader } from './utilities';
 
-const IMG_PATH:string = "../../resources/pg_imgs/reedmaking_imgs/";
+const IMG_PATH:string = "../../../resources/pg_imgs/reedmaking_imgs/";
 
 /************************************/
 /*		Header Text and Content 	*/
 /************************************/
 const createHeaderContent = (data:IBox<string>):HTMLDivElement => {
-	let cont:HTMLDivElement = createElement({className:"headerCont"});
+	let cont:HTMLDivElement = document.createElement("div");
 
-	let headerCont:HTMLDivElement = createElement({className:'headerText'});
+	// Create article to semantically define individual header section
+	let article:HTMLElement = document.createElement("article");
 
-	let leftReed:HTMLImageElement = createImageElement({
-		src:`${IMG_PATH}reed.png`,
-		alt:'Reed silhouette',
-		className:'reed_silhouette',
-		idName:'leftReed'
+	// Create title header
+	let header:HTMLElement = createIntroHeader(data["header"]);
+	// Create paragraph containing description
+	let description:HTMLParagraphElement = createTextElement({
+		text:data["content"]
 	});
 
-	let introHeader:HTMLHeadingElement = createTextElement({element:'h3',text:data.header});
+	// Append header and description to header article
+	article.appendChild(header);
+	article.appendChild(description);
+	// Append article to header container
+	cont.appendChild(article);
 
-	let rightReed:HTMLImageElement = createImageElement({
-		src:`${IMG_PATH}reed.png`,
-		alt:'Reed silhouette',
-		className:'reed_silhouette',
-		idName:'rightReed'
-	});
-
-	headerCont.appendChild(leftReed);
-	headerCont.appendChild(introHeader);
-	headerCont.appendChild(rightReed);
-
-	let bodyCont:HTMLParagraphElement = createTextElement({text:data.content,className:"headerBody"});
-
-	cont.appendChild(headerCont);
-	cont.appendChild(bodyCont);
-
+	// return container
 	return cont;
 }
 

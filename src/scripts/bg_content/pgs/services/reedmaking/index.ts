@@ -1,5 +1,5 @@
 // Imports
-import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './load-methods'
+import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './methods/load'
 
 const loadReedmakingPage = async ():Promise<void> => {
 	// Load data introducing reeds to user
