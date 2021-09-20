@@ -3,18 +3,25 @@
 */
 
 // Imports
+//	Global
 import requestData from '../../request';
-
-interface SongInterface {
-	name:string;
-	by:string;
-	description:string;
-}
+import { loadBootstrap } from '../../../../../global/methods/utilities';
+//	Local
+import { SongInterface } from './interfaces';
+import { createSheetMusic } from './methods/music_sheets';
+import { createStand } from './methods/create';
 
 const loadMusicStand = async ():Promise<void> => {
-  	console.log("Loading Music Stand");
+	// Load bootstrap to allow fontawesome icons
+	loadBootstrap();
+	
+	// Retrieve songs for the music stand from server
   	let songs:SongInterface[] = await requestData<SongInterface[]>("performances/present");
-  	console.log(songs);
+  	// Create the sheet music for the song data
+  	let sheetMusic:HTMLDivElement = createSheetMusic(songs);
+  	// Create the stand with the sheet music and add to the page
+  	let musicStand:HTMLDivElement = createStand(sheetMusic);
+  	document.body.appendChild(musicStand);
 }
 
 export { loadMusicStand }

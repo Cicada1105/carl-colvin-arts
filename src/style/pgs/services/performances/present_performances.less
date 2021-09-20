@@ -8,6 +8,316 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
+body {
+	position:static;
+}
+
+@musicStandBorder:1px solid silver;
+.musicStandBorders() {
+	border-left:@musicStandBorder;
+	border-top:@musicStandBorder;
+	border-right:@musicStandBorder;
+}
 /*  Rest of the styling goes here */
+#musicStandCont {
+	.format(relative,100vw);
+	z-index: 1;
+
+	#standTray {
+		.format(relative,100%);
+		perspective:8rem;
+
+		#sheetMusicCont {
+			padding-top:2.75rem;
+			padding-bottom:2.75rem;
+
+			.musicSheet {
+				transform:rotateY(0deg);
+				width:25rem;
+				margin:auto;
+
+				article.musicPage {
+					backface-visibility: visible;
+					background-color:#d0d0d0;
+					border:3px solid #767676;
+					margin:2.75rem auto;
+
+					.songTitle {
+						text-align:center;
+						padding-top:1rem;
+						margin-top:0px;
+					}
+					.songComposer {
+						text-align:end;
+						padding-right:1.5rem;
+
+						&::before {
+							content:"By: ";
+						}
+					}
+					.musicDescCont {
+						.format(relative,calc(95% - 1rem),initial);
+						border:1px solid black;
+						border-left:unset;
+						margin:1rem 0.25rem 1rem 0.75rem;
+
+						& > img {
+							.format(absolute,2rem);
+							transform:translateY(-50%);
+							top:50%;
+						}
+						p {
+							text-align:justify;
+							// margin-left === treb-clef.png width + 0.4rem padding. 0.5rem padding on right
+							margin-left:2.4rem;
+							//width === musicDescCont width - (treb-clef.png width + 1rem of padding^)
+							width:calc(100% - 4rem);
+						}
+					}
+					i[class $= "Arrow"] {
+						display:none;
+					}
+					/*span {
+						&[class $= "Arrow"] {
+							.format(absolute,2rem,2rem);
+							background-color:black;
+							clip-path:polygon(0% 50%, 40% 0%, 40% 40%, 100% 40%, 100% 60%, 40% 60%, 40% 100%);
+						}
+						&.rightArrow {
+							transform:rotateZ(180deg);
+							right:1rem;
+						}
+						&.leftArrow {
+							transform:rotateX(180deg) ;
+							left:1rem;
+						}
+					}*/
+				}
+			}
+		}
+	}
+}
+/*Set visual music stand when screen is larger than 560px*/
+@media only screen and (min-width: 815px) {
+	body {
+		position:fixed;
+	}
+	#musicStandCont {
+		min-width:45rem;
+		max-width:52rem;
+		/* width === */
+		width: 50.526315789473685vw;
+		margin:auto;
+		margin-top:3rem;
+
+		#standTray {
+			height:26rem;
+			z-index: 1;
+
+			#trayBack {
+				.format(absolute,inherit,inherit);
+				.musicStandBorders();
+				background-color:black;
+				transform:rotateX(1deg);
+				border-radius:10px;
+			}
+			#sheetMusicCont {
+				.format(absolute,94%,80%);
+				transform: translate(-50%);
+				padding:unset;
+				bottom:16%;
+				left:50%;
+
+				.musicSheet {
+					.format(absolute,42%,100%);
+					// margin (visual padding) === ((50% - sheet width) / 2) - width of border
+					margin:calc(4% - 3px);
+					right:0%;
+
+					/*
+						Transform origin:
+						% of width of music sheet that equals distance from left side to middle
+						
+						width of music sheet:
+							42%
+						distance from left side to middle:
+							4%
+						equation:
+							> 42% * x = 4% 
+							> (42/100) * x = (4/100)
+							> 42 * x = 4
+							> x = (4/42) = 2/21 = 0.09523809523 = 9.52380952381%
+					*/
+					transform-origin:calc(-9.52380952381% + 3px);
+					transform:rotateY(0deg);
+
+					// Will change lets the browser know how this element intends to change
+					//will-change: transform;
+					transition:transform 2s linear;
+
+					&:first-of-type {
+						transform:translate(calc(-119.0476190476% + 6px));
+					}
+
+					article.musicPage {
+						.format(absolute,-webkit-fill-available,inherit);
+						margin:auto;
+
+						.musicDescCont {
+							/*
+								height:
+									80% (sheetMusicCont Height) of standTray height (first parent w/ specific height) -
+									songTitle marginTop (bottom overlaps w/ songCompser marginTop) -
+									songTitle fontSize -
+									songComposer marginTop and marginBottom -
+									songComposer fontSize -
+									songComposer margin length (for padding after description container) -
+									arrow fontSize - 
+									arrow distance from bottom of card 
+									- equals -
+									To be musicPage height with current card height
+
+									Divide result (in pixels) by height (convert) to pixels
+									Multiply by 100 to get percentage
+
+									26rem (standTray height) * 0.8 (sheetMusicCont height) =
+									20.8rem -> 20.8rem * 16px (convert to pixels) = 332.8
+
+									332.8 - 44 (songTitle marginTop and height of songTitle fontSize/container) = 
+									288.8 - 60.56 (songTitle marginTop, marginBottom and songComposer fontSize/container) =
+									228.24 - 40 (arrow fontSize/height and space from bottom) =
+									188.24 - 21.28 (description container padding below matching composer margin) - 
+									166.96
+
+									166.96 / 16 (Convert to rem units) =
+									10.435 / 20.8 (calculate percent decimal) =
+									0.5016826923076924 * 100 (in %)
+									50.16826923076923
+							*/
+							height: 50.16826923076923%;
+							overflow:scroll;
+
+							/* Hide scrollbar for IE, Edge and Firefox */
+							-ms-overflow-style:none; /* IE and Edge */
+							scrollbar-width:none; /* Firefox */
+
+							/* Hide scrollbar for Chrome, Safari and Opera */
+							&::-webkit-scrollbar {
+								display:none;
+							}
+
+							& > img {
+								position:fixed;
+								transform:none;
+							}
+							p {
+								padding:0rem 0.5rem;
+							}
+						}
+						// Second page will be viewed on the opposite side
+						&:nth-of-type(2) {
+							backface-visibility:hidden;
+							transform:rotateY(180deg);
+						}
+						i {
+							&[class $= "Arrow"] {
+								position:absolute;
+								display: block;
+								font-size:1.75rem;
+								color:@primaryColor;
+								bottom:0.75rem;
+							}
+							&.rightArrow {
+								transform:rotateZ(180deg);
+								right:1rem;
+							}
+							&.leftArrow {
+								transform:rotateX(180deg) ;
+								left:1rem;
+							}
+						}
+					}
+				}
+			}
+
+			#trayGuard {
+				.format(absolute,107%,3.5rem);
+				.musicStandBorders();
+				background-color:#424242;
+				transform:rotateX(-8deg);
+				border-radius:10px;
+				bottom:-3.3%;
+				left: -3.5%;
+			}
+		}
+		#standShaftCont {
+			/*
+				Height of shaft container
+					page height - height of stand tray and top spacing
+					100vh - (26rem + 3rem)
+			*/
+			.format(relative,2rem,calc(100vh - 29rem));
+			margin:auto;
+			z-index: 0;
+
+			#standPipeCont {
+				position:relative;
+				height:45%;
+
+				#metalPipe {
+					.format(absolute,1rem, 100%);
+					background-color:silver;
+					transform: translate(-50%);
+					top:-0.125rem;
+					left:50%;
+					z-index: 1;
+
+					&::after {
+						.format(absolute,1rem,1rem);
+						background-color:silver;
+						display:block;
+						content:"";
+						bottom:0px;
+						transform:translateY(100%);
+						clip-path: ellipse(0.5rem 0.25rem at 50% 0%);
+					}
+				}
+				.halfCircle {
+					.format(absolute,2rem,1rem);
+					bottom:0px;
+
+					&::before {
+						.format(absolute,2rem,1rem);
+						background-color:silver;
+						display:block;
+						content:"";
+						clip-path: ellipse(1rem 0.5rem at 50% 100%);
+					}
+					&::after {
+						.format(relative,1.94rem,0.97rem);
+						background-color:black;
+						display:block;
+						content:"";
+						clip-path: ellipse(0.97rem 0.485rem at 50% 100%);
+						margin:auto;
+						margin-top:0.06rem
+					}
+
+					&:first-of-type {
+						z-index: 0;
+					}
+					&:last-of-type {
+						transform:rotateZ(180deg) translateY(-100%);
+					}
+				}
+			}
+			#metalPipeTube {
+				background-color:black;
+				border:@musicStandBorder;
+				height:55%;
+			}
+		}
+	}
+}
 
 #globalNS > .social();
