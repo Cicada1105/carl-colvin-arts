@@ -22,6 +22,9 @@ function LiteratureTypeHandler(event:any):void {
 	//		-nextElementSibling returns the possible child element
 	// Clear child element to allow for child update if it exists
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	// Submit row is not included with rest of rows; remove row if displayed
+	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
+	submitRowEl !== null && submitRowEl.remove();
 
 	// Display next row if current selection is not default option
 	if (event.target.value !== "none") {
@@ -45,6 +48,9 @@ function LiteratureTypeHandler(event:any):void {
 function GenreHandler(event:any) {
 	// Clear child element to allow for child update if it exists
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	// Submit row is not included with rest of rows; remove row if displayed
+	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
+	submitRowEl !== null && submitRowEl.remove();
 
 	// Display next row if current selection is not default option
 	if (event.target.value !== "none") {
@@ -65,6 +71,9 @@ function GenreHandler(event:any) {
 function EditingHandler(event:any) {
 	// Clear child element to allow for child update if it exists
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	// Submit row is not included with rest of rows; remove row if displayed
+	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
+	submitRowEl !== null && submitRowEl.remove();
 
 	// Display next row if current selection is not default option
 	if (event.target.value !== "none") {
@@ -86,6 +95,10 @@ function EditingHandler(event:any) {
 function WordCountHandler(event:any) {
 	// Clear child element to allow for child update if it exists
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	// Submit row is not included with rest of rows; remove row if displayed
+	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
+	submitRowEl !== null && submitRowEl.remove();
+
 	// Handle entered value if "Enter"/"return" keypress event has been triggered or entered value is not empty
 	if (((event.type === "keypress") && (event.charCode === 13)) || event.type === "change") {
 		let enteredValueStr:string = event.target.value;
@@ -121,6 +134,9 @@ function WordCountHandler(event:any) {
 function DeadlineHandler(event:any) {
 	// Clear child element to allow for child update if it exists
 	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	// Submit row is not included with rest of rows; remove row if displayed
+	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
+	submitRowEl !== null && submitRowEl.remove();
 
 	// Get value entered in by user through datetime-local input
 	let enteredDateStr:string = event.target.value;
@@ -147,12 +163,13 @@ function DeadlineHandler(event:any) {
 }
 async function EmailHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
+	submitRowEl !== null && submitRowEl.remove();
 	// Entered email
 	let emailStr:string = event.target.value;
 	// Error message span container
 	let errorMsg:HTMLSpanElement = <HTMLSpanElement>event.path[0].nextElementSibling;
-	console.log(event.keyCode);
+
 	// Check if keyboard input and charCode is enter key: 13
 	if (((event.type === "keyup") && (event.keyCode === 13)) || event.type === "change") {
 

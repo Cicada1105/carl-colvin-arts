@@ -39,7 +39,7 @@ export const constructEditingPricingChartData = ():void => {
 			let rates:IRate[] = editingTypeRatesServerObj["rates"];
 
 			let editingType: IEditingType = {
-				id: EDITING_TYPE_SHORTHAND,
+				id: LABEL_FOR,
 				label: {
 					text: serverEditingType,
 					for: LABEL_FOR

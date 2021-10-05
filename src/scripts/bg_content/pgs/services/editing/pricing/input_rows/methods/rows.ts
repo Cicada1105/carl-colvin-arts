@@ -195,12 +195,13 @@ const createDeadlineRow = ():HTMLDivElement => {
 }
 const createContactEmailRow = ():HTMLDivElement => {
 	const childRowCallback = () => {
-		// Button child element 
-		let childElement:HTMLDivElement = createSubmitRow();
-		// Append child element to parent
-		emailRow.appendChild(childElement);
+		// Button submit element container
+		let submitCont:HTMLDivElement = createSubmitRow();
+		// Append discalimer element after input rows container
+		let inputRowsForm:HTMLDivElement = <HTMLDivElement>document.getElementById("inputRowsCont");
+		inputRowsForm.insertAdjacentElement("afterend",submitCont);
 		// Focus on submit button
-		let submitInputCont:HTMLDivElement = <HTMLDivElement>childElement.firstElementChild;
+		let submitInputCont:HTMLDivElement = <HTMLDivElement>submitCont.firstElementChild;
 		let submitBtn:HTMLInputElement = <HTMLInputElement>submitInputCont.firstElementChild;
 		submitBtn.focus();
 	}
@@ -229,7 +230,7 @@ const createSubmitRow = ():HTMLDivElement => {
 
 	// Create container row for submit container
 	let submitRow:HTMLDivElement = createElement({
-		className: "submitRow"
+		idName: "submitRow"
 	});
 
 	let submitCont:HTMLDivElement = createSubmitCont(SubmitHandler.bind(childRowCallback));

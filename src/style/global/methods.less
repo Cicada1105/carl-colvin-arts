@@ -1,10 +1,13 @@
 // This file will host the methods regarding LESS styling
 // These methods will be used throughout the entire website
 
-.format(@pos; @w; @h) {
-	position: @pos;
+.dimensions(@w; @h) {
 	width: @w;
 	height: @h;
+}
+.format(@pos; @w; @h) {
+	position: @pos;
+	.dimensions(@w,@h);
 }
 .format(@pos; @w) {
 	position: @pos;
