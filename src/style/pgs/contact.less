@@ -1,6 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../global/colors.less";
-@import "../global/keyframes.less";
+@import (reference) "../global/keyframes.less";
 @import (reference) '../global/namespace.less';
 @import (reference) '../global/methods.less';
 
@@ -15,9 +15,11 @@
 }
 .contactMixin(@isHomePage);
 
+// Load in keyframes specific to contact page
+.inputKeyFrames();
+
 form:first-of-type {
 	.format(relative, 54rem);
-	//background-color:green;
 	margin:8rem auto auto auto;
 	z-index:2;
  
@@ -36,7 +38,6 @@ form:first-of-type {
 
 		& > div.selectionRow { 
 			.format(inherit, inherit);
-			//background-color:black;
 			margin-top:1.65rem;
 
 			@media only screen and (max-width: 600px) {
@@ -48,7 +49,6 @@ form:first-of-type {
 
 			label {
 				.format(relative,30%);
-				//background-color:aqua;
 				display:inline-block;
 				font-size:1.45rem;
 				text-align: right;
@@ -64,7 +64,6 @@ form:first-of-type {
 			}
 			.userInputCont {
 				.format(relative,35%);
-				//background-color:orange;
 				display:inline-block;
 				margin-top: 1.5rem;
 				padding-left:15%;

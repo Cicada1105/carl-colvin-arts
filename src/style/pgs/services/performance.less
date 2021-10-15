@@ -1,6 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
-@import '../../global/keyframes.less';
+@import (reference) '../../global/keyframes.less';
 @import (reference) '../../global/namespace.less';
 @import (reference) '../../global/methods.less';
 
@@ -14,6 +14,10 @@
 	@radiusConversion:@rad/300;
 	@screenRadius:calc(@visualScreenHeight * @radiusConversion);
 }
+
+// Load keyframes specific to perforamnce landing page
+.blurImageKeyFrames();
+
 /*  Rest of the styling goes here */
 section {
 	position:relative;
@@ -90,6 +94,10 @@ section {
 			bottom:50%;
 			left:50%;
 			transform:rotate(180deg) translate(50%,calc(-50% - calc(@visualScreenHeight * (145/300))));
+
+			@media only screen and (min-height:730px) {
+				transform:rotate(180deg) translate(50%,calc(-50% - calc(@visualScreenHeight * (138/300))));
+			}
 		}
 		&:last-of-type {
 			top:50%;

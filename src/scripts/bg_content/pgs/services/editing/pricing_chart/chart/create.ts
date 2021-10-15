@@ -6,7 +6,7 @@ import { createElement, createTextElement } from '../../../../../../global/metho
 //	data
 import { chartSelectionsData } from '../shared/data'
 //	interfaces
-import { RateInterface as IRate } from '../..//interfaces'
+import { RateInterface as IRate } from '../../interfaces'
 
 const HEADERS:string[] = ["Words","Hourly Rate","Flat Rate*"];
 
@@ -21,7 +21,6 @@ const createChart = ():HTMLDivElement => {
 
 	// Create table header
 	let chartTableHead:HTMLTableSectionElement = document.createElement("thead");
-
 	// Create table header row
 	let chartTableHeaderRow:HTMLTableRowElement = document.createElement("tr");
 
@@ -38,8 +37,12 @@ const createChart = ():HTMLDivElement => {
 	// Append chart table header row to the table head
 	chartTableHead.appendChild(chartTableHeaderRow);
 
-	// Append table header and body to table 
+	// Create table footer
+	let chartTableFooter:HTMLTableSectionElement = createFooter();
+
+	// Append table header, footer and body to table 
 	chartTable.appendChild(chartTableHead);
+	chartTable.appendChild(chartTableFooter);
 	updateChartBody.call(chartTable,<IRate[]>chartSelectionsData[0].editingTypes[0].rates)
 
 	// Append chart table to table container
@@ -47,11 +50,35 @@ const createChart = ():HTMLDivElement => {
 
 	return chartCont;
 }
+const createFooter = ():HTMLTableSectionElement => {
+	// Create footer
+	let footer:HTMLTableSectionElement = document.createElement("tfoot");
+	// Create footer row
+	let footerRow:HTMLTableRowElement = document.createElement("tr");
+	// Create footer row data element
+	let footerRowTD:HTMLTableCellElement = document.createElement("td");
+
+	// Create text element that has chart definition
+	let txt:Text = document.createTextNode("*fr - flat rate; pw - per word");
+	// Append text node to td
+	footerRowTD.appendChild(txt);
+
+	// Set element column span
+	footerRowTD.setAttribute("colspan","3");
+
+	// Append footer row td to footer row
+	footerRow.appendChild(footerRowTD);
+	// Append footer row to footer element
+	footer.appendChild(footerRow);
+
+	// Return newly created footer
+	return footer;
+}
 function updateChartBody(rates:IRate[]):void {
 	// Store update data
 	let currTable:HTMLTableElement = this ?? document.getElementsByTagName("table")[0];
 	// Remove tbody if exists
-	currTable && (currTable.children[1] && currTable.children[1].remove());
+	currTable && (currTable.children[2] && currTable.children[2].remove());
 
 	// Create table body
 	let tableBody:HTMLTableSectionElement = document.createElement("tbody");
@@ -62,7 +89,7 @@ function updateChartBody(rates:IRate[]):void {
 
 		// Create table data cell for item of row
 		//	Word count/range
-		let wordData:HTMLTableDataCellElement = rate.max === Infinity ? createTextElement({
+		let wordData:HTMLTableCellElement = rate.max === Infinity ? createTextElement({
 			element:"td",
 			text:`${rate.min}+`
 		}) :

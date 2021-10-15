@@ -1,6 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
-@import "../../global/keyframes.less";
+@import (reference) "../../global/keyframes.less";
 @import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
 
@@ -8,6 +8,9 @@
 #globalNS > .navigation();
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
+
+// Load keyframes specific to editing page
+.rotateCircleKeyFrames();
 
 .header() {
 	.format(relative,10rem);
@@ -50,13 +53,15 @@ hr {
 	margin-top: 2.5rem;
 	border: 1px solid @accentColor;
 }
-.labelFormatting(@w) {
-	.format(relative,@w);
-	display: inline-block;
-	font-size:1.25rem;
-	text-align: center;
-	color: @textColor;
-	font-weight:bold;
+.labelFormatting() {
+	.formatting {
+		position:relative;
+		display: inline-block;
+		font-size:1.25rem;
+		text-align: center;
+		color: @textColor;
+		font-weight:bold;
+	}
 }
 /*.textFormatting(@color: @textColor; @align; @decoration; @indent; @weight; @size; @family) {
 	color:@color;
@@ -64,6 +69,13 @@ hr {
 	text-indent:@indent;
 	font:@weight @size @family;
 }*/
+.customRadioStyle {
+	display:inline-block;
+	border-radius:50%;
+	content:"";
+	left:-2px;
+	top:-2px;
+}
 /* Mobile first design */
 div#pricingChartCont {
 	.format(relative,90%);
@@ -117,7 +129,8 @@ div#pricingChartCont {
 				  	}
 				}
 				& > label {
-					.labelFormatting(calc(100% - 29px));
+					.labelFormatting > .formatting;
+					width:calc(100% - 29px);
 					margin-left:-2rem;
 					z-index:1;
 				
@@ -143,44 +156,35 @@ div#pricingChartCont {
 	    					border-radius: 50%;
 						}
 						& > span.rotatingWhitePiece {
+							&:extend(.customRadioStyle);
 							.format(absolute,18px,18px);
-						    left:-2px;
-						    top:-2px;
-							display:inline-block;
+
 						    visibility:visible;
 						    margin-right:20px;
-						    content:"";
 						    animation-duration: 1s;
 						    animation-iteration-count:1;
 						    animation-timing-function:linear;
 						    border: 2px solid rgba(222,87,87,0);
-						    border-radius: 50%;
 						}
 				    	/*	Red slice acting as initial mask for white slice 	*/
 						& > span.whitePieceMask {
+							&:extend(.customRadioStyle);
 							.format(absolute,inherit,inherit);
-							display:inline-block;
-						    content:"";
-						    left:-2px;
-						    top:-2px;
+
 						    transform:rotateZ(-45deg);
 						    border: 2px solid rgba(255,255,255,0);
 						    border-top: 2px solid #de5757;
-						    border-radius: 50%;
 						    transition:transform 0.25s linear 0.75s;
 						}
 				    	/*	White solid border that displays after white single border has rotated passed position: */
 				    	// Possibly changed whiteFiller from transition to animation to change fill mode
 						& > span.whiteFiller {	
+							&:extend(.customRadioStyle);
 							.format(absolute,inherit,inherit);
-							display:inline-block;
-						    content:"";
+
 						    margin-right:20px;
-						    left:-2px;
-						    top:-2px;
 						    transform: rotateZ(45deg);
 						    border: 2px solid rgba(222,87,87,0);
-						    border-radius: 50%;
 						    transition:border-top 0s linear 0.25s, border-right 0s linear 0.5s, border-bottom 0s linear 0.75s, border-left 0s linear 1s;
 						}
 					}
@@ -212,44 +216,6 @@ div#pricingChartCont {
 				text-align:center;
 				padding-top:1rem;
 				padding-bottom:0.75rem;
-
-				&:last-of-type {
-					&::before {
-						.format(absolute, 9rem, 3.5rem);
-						display:none;
-						background-color:@secondaryColor;
-						content: "       fr - flat rate              pw - per word";
-						white-space: pre-wrap;
-						font-size:1rem;
-						padding-top:0.95rem;
-						left:50%;
-						top:-71px;
-						transform: translateX(-50%);
-					}
-					&::after {
-						position:absolute;
-						display:none;
-						content: " ";
-						border-width:10px;
-						border-style: solid;
-						border-color: @secondaryColor transparent transparent transparent;
-						top:0;
-						left:50%;
-						transform: translateX(-50%);
-					}
-					&:hover {
-						cursor:pointer;
-
-						&::before {
-							display:block;
-						}
-						&::after {
-							display:block;
-						}
-					}
-				}
-				&:last-of-type::after {
-				}
 			}
 			& td {
 				text-align:center;
@@ -355,7 +321,6 @@ form#inputRowsCont {
 
 						& > div.selectionRow {
 							height:(@MAX_SELECTION_ROW_HEIGHT - (@SPACE_BETWEEN_ROWS * 5));
-
 
 							& > div.selectionRow {
 								height:(@MAX_SELECTION_ROW_HEIGHT - (@SPACE_BETWEEN_ROWS * 6));
@@ -579,8 +544,9 @@ div#contactLink {
 				float:left;
 			}
 			& > label {
-				.labelFormatting(15rem);
-				position:absolute;
+				.labelFormatting > .formatting;
+				.format(absolute,15rem);
+
 				float:left;
 			}
 			& > div[class $= "Cont"] {
@@ -635,12 +601,6 @@ div#contactLink {
 					text-align:left;
 					text-indent:3rem;
 					margin:unset;
-				}
-
-				div[class $= "Row"] {
-					& > label {
-						.labelFormatting(15rem);
-					}
 				}
 			}
 		}

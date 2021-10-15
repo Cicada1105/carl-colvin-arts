@@ -10,6 +10,8 @@ import { links } from './data'
 
 // Current page user is on
 const CURRENT_PATH:string = getCurrentFile();
+// Mobile width
+const MOBILE_DEVICE_MAX_WIDTH:number = 575;
 
 let createNavigation = ():any => {
   // Create new ul element
@@ -39,7 +41,7 @@ let createNavigation = ():any => {
   });
   // Create listeners to reset navigation display to combat final state being kept from user clicking on bars
   const desktopReset:any = () => {
-    if (window.innerWidth > 560) {
+    if (window.innerWidth > MOBILE_DEVICE_MAX_WIDTH) {
       linksCont.style.display = "block";
 
       window.removeEventListener("resize",desktopReset);
@@ -47,7 +49,7 @@ let createNavigation = ():any => {
     }
   }
   const mobileReset:any = () => {
-    if (window.innerWidth <= 560) {
+    if (window.innerWidth <= MOBILE_DEVICE_MAX_WIDTH) {
       linksCont.style.display = "none";
 
       window.removeEventListener("resize",mobileReset);
@@ -55,7 +57,7 @@ let createNavigation = ():any => {
     }
   }
   // Set initial listener for window
-  window.addEventListener("resize",(window.innerWidth > 560 ? mobileReset : desktopReset));
+  window.addEventListener("resize",(window.innerWidth > MOBILE_DEVICE_MAX_WIDTH ? mobileReset : desktopReset));
   
   // Append bars to ul
   navUl.appendChild(bars);

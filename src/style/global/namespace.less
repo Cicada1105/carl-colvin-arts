@@ -1,6 +1,6 @@
 // Imports
 @import (reference) './static.less';
-@import './methods.less';
+@import (reference) './methods.less';
 
 // global namespace
 #globalNS() {
@@ -21,7 +21,7 @@
 		    top:0%;
 		    z-index: 3;
 
-			@media only screen and (max-device-width: 560px), (max-width: 560px) {
+			@media only screen and (max-width: 575px) {
 				filter:opacity(100%);
 			}
 		    ul[id = "navigation"] {
@@ -35,7 +35,7 @@
 					float:right;
 					top:4px;
 
-					@media only screen and (max-device-width: 560px), (max-width: 560px) {
+					@media only screen and (max-width: 575px) {
 						background-color: @secondaryBackgroundColor;
 						display:none;
 						width: 100%;
@@ -68,7 +68,7 @@
 							margin:0.65rem;
 						}
 
-						@media only screen and (max-device-width: 560px), (max-width: 560px) {
+						@media only screen and (max-width: 575px) {
 							width:100%;
 							height:initial;
 							z-index: 1;
@@ -88,7 +88,7 @@
 					top:0.625rem;
 					right:1rem;
 					
-					@media only screen and (max-device-width: 560px), (max-width: 560px) {
+					@media only screen and (max-width: 575px) {
 						display:block;
 					}
 					&:hover {

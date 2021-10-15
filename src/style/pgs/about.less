@@ -15,8 +15,8 @@
 .aboutMixin(@isHomePage);
 
 .row {
-  .format(relative, 75%, 45%);
-  margin:100px auto;
+  .format(relative, 75%, 300px);
+  margin:100px auto 150px auto;
   display:block;
   z-index:1;
 
@@ -72,58 +72,63 @@
     }
   }
   .figure {
-    .format(inherit, 300px, 300px);
+    .format(inherit, 500px, 300px);
     margin:0px;
+
     img {
       position:absolute;
-      z-index:1
+      transform: translateX(-50%);
+      margin:auto;
+      left:50%;
+      z-index:1;
+
+      // Carl headshot
+      &[alt *= "Headshot"] {
+        width:291px;
+      }
+      // Carl playing oboe
+      &[alt *= "Performing"] {
+        width:288px;
+      }
+      // Flight poem
+      &[alt *= "Poem"] {
+        width:285px;
+      }
     }
     .imgBorder {
-      width:100%;
+      transform: translateX(-50%);
+      margin:auto;
+      width:300px;
+      left: 50%;
       z-index:3;
+
       &:hover {
         cursor: pointer;
       }
     }
     .figcaption {
-      .format(relative, 70%, 70%);
+      .format(relative, 210px, 210px);
       display:none;
       font-size:1.2rem;
       margin:auto;
-      margin-top: 15%;
       color:@textColor;
       z-index:2;
 
       p {
+        .format(absolute,100%);
         text-align: center;
-        width:100%;
-        position:absolute;
+        margin-top:4rem;
       }
     }
   }
-  // Carl headshot
-  img[alt *= "Headshot"] {
-    margin-left:1%;
-    width:97%;
-  }
-  // Carl playing oboe
-  img[alt *= "Performing"] {
-    margin-left:1%;
-    width:96%; 
-  }
-  // Flight poem
-  img[alt *= "Poem"] {
-    margin-left:1.5%;
-    width:95%;
-  }
 }
 
-@media only screen and (max-width: 1130px) {
+@media only screen and (max-width: 1354px) {
   .row {
     width: 90%;
   }
 }
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1128px) {
   .row {
     height: unset;
     width:100%;

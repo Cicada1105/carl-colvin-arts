@@ -1,6 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
-@import "../../global/keyframes.less";
+@import (reference) "../../global/keyframes.less";
 @import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
 
@@ -8,6 +8,10 @@
 #globalNS > .navigation();
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
+
+// Load keyframes specific to reedmaking page
+.plusKeyFrames();
+.dropDownKeyFrames();
 
 .staticCont {
 	position:absolute;
@@ -17,7 +21,7 @@
 	&:extend(.staticCont);
 	border-radius:15px;
 }
-.animation {
+.animation() {
 	animation-play-state:paused;
 	animation-fill-mode:forwards;
 	animation-direction:normal;
@@ -72,6 +76,7 @@
 				padding:8px 14px 10px 14px;
 				margin:auto;
 				margin-top:1rem;
+				min-height:18rem;
 				width:66%;
 			}
 		}
@@ -127,7 +132,7 @@
 		}
 		[class = "tabButton"] {
 			.format(inherit, 2rem, 50%);
-			.animation;
+			.animation();
 			background-color:@secondaryBackgroundColor;
 			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
 			top:25%;
@@ -141,14 +146,14 @@
 	}
 	[class = "tabBody"] {
 		.format(inherit, 100%,17rem);
-		.animation;
+		.animation();
 		animation-name:dropdownOpen;
 		background-color:@secondaryColor;
 		color:@textColor;
 		overflow: hidden;
 
 		p {
-			.animation;
+			.animation();
 			animation-name:dropdownPOpen;
 			margin:0px;
 			padding:1rem 5%;
