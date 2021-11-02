@@ -1,8 +1,11 @@
 // This file holds the info to be display on the form
 
 // Imports
-//  local
-// 	interfaces
+//	Global
+//		interfaces
+import { IImageLink } from '../../../global/interfaces/general';
+//  Local
+// 		interfaces
 import { IForm } from './interfaces'
 
 const formData:IForm = {
@@ -141,4 +144,27 @@ const formData:IForm = {
 	}
 }
 
-export { formData }
+const linkData:IImageLink[] = [
+	{
+		path:"facebook.svg",
+		alt:"Facebook Image Link",
+		link:"https://www.facebook.com/CarlColvinArts/"
+	},
+	{
+		path:"twitter.svg",
+		alt:"Twitter Image Link",
+		link:"https://twitter.com/CarlColvinArts"
+	},
+	{
+		path:"instagram.svg",
+		alt:"Instagram Image Link",
+		link:"https://www.instagram.com/carl_colvin_arts"
+	},
+	{
+		path:"linkedin.svg",
+		alt:"Linkedin Image Link",
+		link:"https://www.linkedin.com/in/carl-colvin-68122379"
+	}
+]
+
+export { formData, linkData }

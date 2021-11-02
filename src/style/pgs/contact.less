@@ -16,8 +16,8 @@
 .contactMixin(@isHomePage);
 
 // Load in keyframes specific to contact page
-.inputKeyFrames();
-
+//.inputKeyFrames();
+/*
 form:first-of-type {
 	.format(relative, 54rem);
 	margin:8rem auto auto auto;
@@ -169,5 +169,171 @@ form:first-of-type {
 				}
 			}
 		}
+	}
+}
+*/
+@AVAILABLE_SPACE: calc(100vh - 27.5rem);
+@INTRO_AND_MEDIA_SECTION_HEIGHT: calc(@AVAILABLE_SPACE / 2);
+.paragraph() {
+	font-size:1.25rem;
+	text-align: center;
+	margin:0;
+	margin-top:1rem;
+}
+section {
+	.format(relative,95%);
+	min-width:unset;
+	color:@textColor;
+	margin:auto;
+	top:5rem;
+
+	&#introSection {
+		//height:@INTRO_AND_MEDIA_SECTION_HEIGHT;
+		min-height: 6.125rem;
+		top:4rem;
+
+		h1 {
+			font-size:1.95rem;
+			text-align:center;
+			margin:0px;
+		}
+		p {
+			.paragraph();
+		}
+	}
+	&#serverGraphicSection {
+		display:flex;
+		justify-content: space-around;
+		flex-flow:row nowrap;
+		align-items:center;
+		height:19.5rem;
+
+		& > img {
+			width:15rem;
+
+			// Person image
+			&:first-of-type {
+				align-self:flex-end;
+				height:13rem;
+			}
+		}
+		// Speech bubble and text
+		&::before {
+			.format(absolute,9.5rem,7.6875rem);
+			background-image:url(../resources/pg_imgs/contact_imgs/speech_bubble.png);
+			background-repeat:no-repeat;
+			background-size:contain;
+			display:inline-block;
+			content:"";
+			left:30%;
+			top:0rem;
+		}
+		&::after {
+			.format(absolute,8rem);
+			content:"It's okay, you're doing great!";
+			text-align: center;
+			font-size:1.15rem;
+			display: block;
+			color:black;
+			left:32%;
+			top:2rem;
+		}
+		& > div#speechBubble {
+			display:none;
+		}
+	}
+	&#mediaLinksSection {
+		//height:calc(@INTRO_AND_MEDIA_SECTION_HEIGHT - 1rem);
+		min-height:6.29375rem;
+		padding:0px;
+		padding-top:1rem;
+
+		p {
+			.paragraph();
+			margin:0px;
+		}
+		div#mediaLinksCont {
+			position:relative;
+			display:flex;
+			flex-flow:row nowrap;
+			justify-content: space-around;
+			margin-top:1rem;
+			z-index: 2;
+
+			& > img {
+				opacity:0.6;
+				width:40px;
+
+				&:hover {
+					opacity:1;
+					cursor:pointer;
+				}
+			}
+		}
+	}
+}
+// Max height of screen before media container overflows
+@media only screen and (max-height: 640px) {
+	section {
+		&#introSection {
+			top:2.75rem;
+		}
+		&#serverGraphicSection {
+			top:2.75rem;
+			height:17.5rem;
+
+			&::before {
+				width:8rem;
+			}
+			img:first-of-type {
+				width:10rem;
+			}
+			img:last-of-type {
+				width:12rem;
+			}
+			&::after {
+				font-size:1rem;
+				left:30%;
+			}
+		}
+		&#mediaLinksSection {
+			top:2.75rem;
+		}
+	}
+}
+@media only screen and (max-height:565px) {
+	section {
+		&#introSection {
+			min-height: 0px;
+
+			p {
+				margin-top:0px;
+			}
+		}
+		&#mediaLinksSection {
+			padding-top:0px;
+			padding-bottom:2.75rem;
+		}
+	}
+}
+@media only screen and (min-width:720px) {
+	section {
+		width:40vw;	
+		min-width:45rem;
+
+		&#serverGraphicSection {
+			&::before {
+				left:14rem;
+			}
+			&::after {
+				left:14.75rem;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width:720px) and (max-height: 640px) {
+	section#serverGraphicSection::after {
+		left:14rem;
 	}
 }

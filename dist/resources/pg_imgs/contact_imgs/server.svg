@@ -1,0 +1,67 @@
+<svg version="1.1" width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+	<rect 
+		x="25" y="90" rx="10" ry="10" width="250" height="30" 
+		fill="white" stroke="black" stroke-width="3" />
+	<circle cx="45" cy="105" r="5" />
+	<circle cx="65" cy="105" r="5" />
+	<circle cx="85" cy="105" r="5" />
+	<rect 
+		x="25" y="120" rx="10" ry="10" width="250" height="30" 
+		fill="white" stroke="black" stroke-width="3" />
+	<circle cx="45" cy="135" r="5" />
+	<circle cx="65" cy="135" r="5" />
+	<circle cx="85" cy="135" r="5" />
+	<rect 
+		x="25" y="150" rx="10" ry="10" width="250" height="30" 
+		fill="white" stroke="black" stroke-width="3" />
+	<circle cx="45" cy="165" r="5" />
+	<circle cx="65" cy="165" r="5" />
+	<circle cx="85" cy="165" r="5" />
+	<rect 
+		x="25" y="180" rx="10" ry="10" width="250" height="30" 
+		fill="white" stroke="black" stroke-width="3" />
+	<circle cx="45" cy="195" r="5" />
+	<circle cx="65" cy="195" r="5" />
+	<circle cx="85" cy="195" r="5" />
+
+	<!--Define an eye to be used-->
+	<symbol id="eye" width="50" height="40" viewBox="0 0 50 40">
+		<circle cx="25" cy="20" r="10" fill="#003249" />
+		<circle cx="25" cy="20" r="8" fill="#3d8fac" />
+		<circle cx="25" cy="20" r="6" fill="black" />
+		<circle cx="22.8786796564" cy="17.8786796564" r="3" fill="white" />
+		<path d="
+				M 1.5,20
+				Q 25,0  48.5,20
+				Q 25,40 1.5,20 
+			" fill="none" stroke="#0c090a" stroke-width="1.5" stroke-linecap="round" />
+	</symbol>
+	<!--Centers of eyes are at posX + (width / 2), posY + (height / 2)-->
+	<!--Left Eye-->
+	<use href="#eye" x="105" y="115" transform="rotate(-15,130,135)" />
+	<!--Right Eye-->
+	<use href="#eye" x="195" y="115" transform="rotate(15,220,135)" />
+	<!--Frown-->
+	<!--<path d="
+			M 130,195
+			Q 175,120 220,195
+		" fill="none" stroke="black" stroke-width="2" />-->
+	<circle cx="175" cy="210" r="45" fill="none" stroke="black" stroke-width="2" pathLength="100" stroke-dasharray="0 55 40 5"/>
+	<symbol id="eyebrow" width="30" height="30" viewBox="0 0 30 30">
+		<path d="
+				M 0,25
+				Q 15,30 28,10
+			" fill="none" stroke="black" stroke-width="2" />
+	</symbol>
+	<!--Left Eyebrow-->
+	<path d="
+			M 105,125
+			Q 120,130 133,110
+		" fill="none" stroke="black" stroke-width="2" />
+	<!--Right Eyebrow-->
+	<path d="
+			M 245,125
+			Q 230,130 217,110
+		" fill="none" stroke="black" stroke-width="2" />
+	<use href="#eyebrow" x="200" y="100" style="transform:rotateY(90deg);backface-visibility:visible;transform-origin:215px 115px" />
+</svg>

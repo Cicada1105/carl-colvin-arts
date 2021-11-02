@@ -9,7 +9,11 @@ import {
 	GenericInputInterface as IGenericInput
 } from "../../../../global/interfaces/inputs"
 //	methods
-import { createElement, createTextElement, createSelectElement, createLabelElement } from '../../../../global/methods/elements'
+import { 
+	createElement, createTextElement, 
+	createImageElement, createSelectElement, 
+	createLabelElement 
+} from '../../../../global/methods/elements'
 
 // Input element types to create generic input container
 type InputType = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
@@ -101,4 +105,7 @@ const createTextAreaCont = (textAreaData:IGenericInput<ITextArea>):HTMLDivElemen
 	return cont;
 }
 
-export { createInputRow, createTextCont, createSelectCont, createTextAreaCont }
+export { 
+	createInputRow, createTextCont, 
+	createSelectCont, createTextAreaCont
+}
