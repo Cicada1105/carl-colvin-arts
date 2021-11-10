@@ -12,9 +12,7 @@ const MEDIA_PATH:string = "../resources/media/";
 
 const audioData:IRow = {
 	"sketches": {
-		description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
-		"tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis " +
-		"nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		description:"Excerpt from Hungarian Sketches by Béla Bartók with the DePaul University Chamber Orchestra",
 		media: {
 			controls:false,
 			image: {

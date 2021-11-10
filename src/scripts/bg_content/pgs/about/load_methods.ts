@@ -101,8 +101,11 @@ const loadListenPreview = ():void => {
 	cont.appendChild(volumeIcon);
 
 	// locate listen section element
-	let listenEl:any = document.getElementsByClassName('row')[1].firstChild;
-	listenEl.appendChild(cont);
+	let listenRow:HTMLDivElement = <HTMLDivElement>document.getElementsByClassName('row')[1];
+	let listenRowSecton:HTMLElement = <HTMLElement>listenRow.firstChild;
+	let listenRowSectionP:HTMLParagraphElement = <HTMLParagraphElement>listenRowSecton.lastElementChild;
+
+	listenRowSecton.insertBefore(cont,listenRowSectionP);
 }
 
 export { loadRows, loadListenPreview }

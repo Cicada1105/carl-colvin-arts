@@ -1,2 +1,2 @@
-declare const INTRO: string;
-export { INTRO };
+declare const INTRO_DATA: string[];
+export { INTRO_DATA };

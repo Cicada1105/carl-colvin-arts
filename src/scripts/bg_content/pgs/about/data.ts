@@ -16,7 +16,12 @@ const Rows:IRow[] = [
 			link:`${ROOT_PGS_DIR}about.html`,
 			content:"Carl Colvin is a freelance musician, teacher, writer, and " +
 			"editor originally from Chicago, Illinois and now recently residing " + 
-			"in the Cincinnati, Ohio area."
+			"in the Cincinnati, Ohio area. Carl holds a Bachelor of Arts with " +
+			"majors in creative writing, music, and humanities from Valparaiso " +
+			"University and a Master of Music in Oboe Performance from DePaul " +
+			"University. At Valparaiso University he was awarded the Anna Zink " +
+			"Springsteen award for his many contributions to the University’s " +
+			"literary culture."
 		},
 		imgData: {
 			path:IMG_PATH + "carl_headshot.png",
@@ -28,7 +33,14 @@ const Rows:IRow[] = [
 		infoData: {
 			header:"Listen",
 			link:`${ROOT_PGS_DIR}listen.html`,
-			content:"Listen to carl's best moooosic"
+			content:"Music is a service for its current audience and for the " +
+			"time it was written. Every audience and ensemble is different, " +
+			"so every service performed must be different to accomplish a " +
+			"successful performance. I have easily applied my versatility " +
+			"not only to genre but also to the aesthetic of specific performances " +
+			"by taking my two decades of oboe playing experience and fitting " +
+			"them into whatever ensemble requires my services. Check out the " +
+			"Listen page to hear for yourself. "
 		},
 		imgData: {
 			path:IMG_PATH + "oboe_performance.png",
@@ -41,7 +53,10 @@ const Rows:IRow[] = [
 		infoData: {
 			header:"Services",
 			link:`${ROOT_PGS_DIR}services.html`,
-			content:"Take part in carl's top tier services. 6 stars out of 5"
+			content:"As a teacher and editor, Carl’s mission is to provide " +
+			"new and emerging musicians and writers the opportunity to share " +
+			"and express their work while also developing the best versions " +
+			"of themselves as artists."
 		},
 		imgData: {
 			path:IMG_PATH + "flight_poem.png",

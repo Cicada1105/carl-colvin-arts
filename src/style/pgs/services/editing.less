@@ -12,40 +12,46 @@
 // Load keyframes specific to editing page
 .rotateCircleKeyFrames();
 
-.header() {
-	.format(relative,10rem);
-	text-align: center;
+.textFormatting(@width; @fontSize) {
+	.format(relative,@width);
+	font-size:@fontSize;
 	color: @textColor;
 	margin:auto;
 }
+.header(@fontSize) {
+	.textFormatting(10rem,@fontSize);
+	text-align: center;
+}
 /*  Rest of the styling goes here */
 h1#pageHeader {
-	.header();
+	.header(2rem);
 	margin-top:5rem;
-	font-size:2rem;
+}
+p.editingIntro {
+	.textFormatting(@width:50rem,@fontSize:1rem);
+
+	line-height:1.25rem;
+	text-indent: 2rem;
+	max-width:50rem;
+	display:block;
+	z-index: 2;
+
+	&:first-of-type {
+		margin-top:3.5rem;
+		margin-bottom:1rem;
+	}
+	&:last-of-type {
+		margin-bottom:3.5rem;
+	}
 }
 h2 {
-	.header();
+	.header(1.65rem);
 
 	&#pricingChartHeader {
 		margin-top:3.5rem;
-		font-size: 1.65rem;
 	}
 	&#pricingHeader {
-		font-size: 1.65rem;
 		margin-bottom:2.5rem;
-	}
-}
-p#intro {
-	.format(relative, 80%);
-	max-width:50rem;
-	text-align:center;
-	color: @textColor;
-	margin:3.5rem auto;
-	padding:0px 2rem;
-
-	&::first-line {
-		text-indent:3rem;
 	}
 }
 hr {

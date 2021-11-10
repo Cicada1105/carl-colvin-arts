@@ -8,10 +8,31 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
-body {
-	position:static;
+h1#myMusicStandTitle {
+	.format(relative,40rem);
+	color:@textColor;
+	text-align:center;
+	display:block;
+	margin:4rem auto 2rem auto;
+	z-index: 2;
 }
+p.introParagraph {
+	.format(relative, 90%);
+	color:@textColor;
+	line-height:1.25rem;
+	text-indent: 2rem;
+	display:block;
+	margin:auto;
+	font-size:1rem;
+	z-index: 2;
 
+	&:first-of-type {
+		margin-bottom:1rem;
+	}
+	&:last-of-type {
+		margin-bottom:0rem;
+	}
+}
 @musicStandBorder:1px solid silver;
 .musicStandBorders() {
 	border-left:@musicStandBorder;
@@ -99,8 +120,15 @@ body {
 }
 /*Set visual music stand when screen is larger than 560px*/
 @media only screen and (min-width: 815px) {
-	body {
-		position:fixed;
+	p.introParagraph{
+		width:50rem;
+
+		&:first-of-type {
+			margin-bottom:1rem;
+		}
+		&:last-of-type {
+			margin-bottom: 4rem;
+		}
 	}
 	#musicStandCont {
 		min-width:45rem;

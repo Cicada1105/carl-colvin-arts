@@ -14,12 +14,24 @@
 	margin:auto;
 	z-index:2;
 }
-[id = "listenHeader"] {
+h3#listenHeader {
 	.row(5rem);
 	margin-top:6%;
-	margin-bottom:3rem;
 	font-size:2rem;
 	text-align:center;
+
+	& + p {
+		.format(relative,50rem);
+		font-size:1.25rem;
+		text-align: center;
+		color: @textColor;
+		margin:auto;
+		margin-bottom:3.5rem;
+		line-height:1.25rem;
+		text-indent: 2rem;
+		max-width:50rem;
+		z-index: 2;
+	}
 }
 // Generic Styling Shared by all rows
 [class = "mediaRow"] {

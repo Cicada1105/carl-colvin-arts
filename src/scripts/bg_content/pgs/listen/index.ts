@@ -17,8 +17,13 @@ import { RowInterface } from './interfaces'
  		idName:"listenHeader",
  		text:"Listen"
  	});
- 	// Append to document before rows
+    // Create intro
+    let intro:HTMLParagraphElement = createTextElement({
+        text:"A sampling of past performances and recordings."
+    });
+ 	// Append header and intro to document before rows
  	document.body.appendChild(header);
+    document.body.appendChild(intro);
 
  	await loadMediaRow(audioData['sketches'] as RowInterface);
  	loadCanvasWave();
