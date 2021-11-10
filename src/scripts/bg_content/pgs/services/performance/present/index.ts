@@ -5,7 +5,7 @@
 // Imports
 //	Global
 import requestData from '../../request';
-import { loadBootstrap } from '../../../../../global/methods/utilities';
+import { loadBootstrap, loadingScreen } from '../../../../../global/methods/utilities';
 import { createTextElement } from '../../../../../global/methods/elements';
 //	Local
 import { SongInterface } from './interfaces';
@@ -23,7 +23,7 @@ const INTRO_DATA:string[] = [
 	"whether in the genres ranging from classical to hip hop."
 ];
 
-const loadMusicStand = async ():Promise<void> => {
+const loadMusicStand = ():void => {
 	// Load bootstrap to allow fontawesome icons
 	loadBootstrap();
 	
@@ -37,13 +37,20 @@ const loadMusicStand = async ():Promise<void> => {
 
 	INTRO_DATA.forEach((section:string) => document.body.appendChild(createTextElement({ text:section, className:"introParagraph" })))
 
+	// Add loading text to screen while retrieving data from the server
+	const loadingText:HTMLElement = loadingScreen();
+	document.body.appendChild(loadingText);
 	// Retrieve songs for the music stand from server
-  	let songs:SongInterface[] = await requestData<SongInterface[]>("performances/present");
-  	// Create the sheet music for the song data
-  	let sheetMusic:HTMLDivElement = createSheetMusic(songs);
-  	// Create the stand with the sheet music and add to the page
-  	let musicStand:HTMLDivElement = createStand(sheetMusic);
-  	document.body.appendChild(musicStand);
+  	requestData<SongInterface[]>("performances/present").then((songs:SongInterface[]) => {
+  		// Remove loading text
+  		loadingText.remove();
+  		
+	  	// Create the sheet music for the song data
+	  	let sheetMusic:HTMLDivElement = createSheetMusic(songs);
+	  	// Create the stand with the sheet music and add to the page
+	  	let musicStand:HTMLDivElement = createStand(sheetMusic);
+	  	document.body.appendChild(musicStand);	
+  	})
 }
 
 export { loadMusicStand }

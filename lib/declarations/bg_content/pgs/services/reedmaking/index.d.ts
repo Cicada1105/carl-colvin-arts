@@ -1,2 +1,2 @@
-declare const loadReedmakingPage: () => Promise<void>;
+declare const loadReedmakingPage: () => void;
 export { loadReedmakingPage };
