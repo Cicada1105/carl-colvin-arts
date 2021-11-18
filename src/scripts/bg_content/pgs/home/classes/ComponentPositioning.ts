@@ -148,8 +148,8 @@ class HomeComponentPositioning extends ComponentPositioning implements ISingleto
 			}
 
 			// Contact container also needs to be offset by previously calculated margin
-			let contactForm:HTMLFormElement = document.forms[0];
-			contactForm.style.top = marginStyle;
+			//let contactForm:HTMLFormElement = document.forms[0];
+			//contactForm.style.top = marginStyle;
 		}
 		else {
 			this.imgPostCont.style.width = isMinWidth ? `${img.naturalWidth * 2}px` : "640px";

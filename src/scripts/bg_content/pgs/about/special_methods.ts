@@ -9,9 +9,9 @@ import { createElement, createTextElement, createImageElement } from '../../../g
 
 // Path for development
 let isHomePage:boolean = window.location.pathname.includes('index');
-const IMAGE_DIR:string = (isHomePage ? './' : '../') + "resources/pg_imgs/about_imgs/";
+const IMAGE_DIR:string = (isHomePage ? './' : '../') + "resources/pg_imgs/about/";
 // Paths for production
-//const IMAGE_DIR:string = '/resources/pg_imgs/about_imgs/'
+//const IMAGE_DIR:string = '/resources/pg_imgs/about/'
 
 const infoBox = (e:IBoxLink<string>):HTMLElement => {
 	let box:HTMLElement = document.createElement('section');
@@ -43,6 +43,22 @@ const imgCont = (currImg:IImage):HTMLDivElement => {
 
 	// Circular border to add depth to image
 	let imgBorder:HTMLImageElement = createImageElement({src:`${IMAGE_DIR}img_border.png`,className:'imgBorder'});
+
+	/*
+		Add lazy loading and async loading to image and border 
+		only if on the home page, else set decoding as sync 
+	*/
+	isHomePage ? (() => {
+		img.setAttribute("loading","lazy");
+		img.setAttribute("decoding","async");
+
+		imgBorder.setAttribute("loading","lazy");
+		imgBorder.setAttribute("decoding","async");		
+	})() : (() => {
+		img.setAttribute("decoding","sync");
+		// Change async to sync if not visually appealing
+		imgBorder.setAttribute("decoding","async");
+	})();
 
 	let figCaption:HTMLDivElement = createElement({className:'figcaption'});
 

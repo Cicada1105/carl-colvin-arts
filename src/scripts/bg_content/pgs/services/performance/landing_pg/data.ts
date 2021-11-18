@@ -10,7 +10,11 @@ import {
 	ISector
 } from './interfaces'
 
-const IMG_PATH:string = "../../resources/pg_imgs/performance_imgs";
+const RESOURCES:string = "../../resources";
+
+const IMG_PATH:string = `${RESOURCES}/pg_imgs/performance`;
+const SHARED_IMG_PATH:string = `${RESOURCES}/global_imgs/shared/`;
+
 const PERFORMANCES_SUB_PATH:string = "./performances";
 
 interface DimensionsInterface {
@@ -26,7 +30,7 @@ const centerImagesData:ISVGImage[] = [
 		height:"75"
 	},
 	{
-		href:`${IMG_PATH}/carl_headshot.png`,
+		href:`${SHARED_IMG_PATH}/carl_headshot.png`,
 		x:"112.5",
 		y:"112.5",
 		width:"75",
@@ -120,7 +124,7 @@ const sectorData:ISector[] = [
 		],
 		link:`${PERFORMANCES_SUB_PATH}/past.html`,
 		image: {
-			path:`${IMG_PATH}/past_img.png`,
+			path:`${SHARED_IMG_PATH}/happy_holy_dayz.png`,
 			alt:"Past image"
 		}
 	},
@@ -197,7 +201,7 @@ const sectorData:ISector[] = [
 		],
 		link:`${PERFORMANCES_SUB_PATH}/present.html`,
 		image: {
-			path:`${IMG_PATH}/present_img.jpg`,
+			path:`${SHARED_IMG_PATH}/oboe_sheet_music.jpeg`,
 			alt:"Present image"
 		}
 	},
@@ -293,7 +297,7 @@ const sectorData:ISector[] = [
 		],
 		link:`${PERFORMANCES_SUB_PATH}/future.html`,
 		image: {
-			path:`${IMG_PATH}/future_img.jpg`,
+			path:`${IMG_PATH}/future.jpeg`,
 			alt:"Future image"
 		}
 	}

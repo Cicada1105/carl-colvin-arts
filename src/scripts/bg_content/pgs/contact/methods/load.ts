@@ -11,7 +11,7 @@ import { linkData } from '../data'
 //import { createRows } from './rows'
 //import { submitForm } from '../form_submit_methods/submit'
 
-const IMG_FOLDER:string = "../resources/pg_imgs/contact_imgs";
+const IMG_FOLDER:string = "../resources/pg_imgs/contact";
 /*
 const loadForm = () => {
 	// Create container to hold contact form

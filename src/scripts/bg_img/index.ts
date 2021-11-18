@@ -25,6 +25,9 @@ const createBgFade = ():void => {
 		idName:'bgImage'
 	});
 
+	// Add async decoding attribute to background image for faster processing
+	imageFade.setAttribute("decoding","async");
+	
 	// Append image to document
 	document.body.appendChild(imageFade);
 }

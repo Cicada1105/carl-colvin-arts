@@ -28,7 +28,7 @@ const loadIntroData = ():void => {
 		idName:"connector"
 	});
 	let reedImg:HTMLImageElement = createImageElement({
-		src:"../../resources/pg_imgs/reedmaking_imgs/finished_reed.jpg",
+		src:"../../resources/pg_imgs/reedmaking/finished_reed.jpg",
 		alt:"Finished Reed"
 	});
 

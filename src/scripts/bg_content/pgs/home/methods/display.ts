@@ -49,6 +49,9 @@ const displayImagePost = (img:HTMLImageElement, postData:IBox<string>):void => {
 
 	// Create exit button
 	let exitButton:HTMLElement = createElement({element:"i",className:"fas fa-times"});
+	// Add lazy loading attribute to exit button for faster processing
+	exitButton.setAttribute("loading","lazy");
+
 	// Add event listener to exit button to remove backdrop and image post container
 	exitButton.addEventListener("click",() => {
 		imgPostBackdrop.remove();

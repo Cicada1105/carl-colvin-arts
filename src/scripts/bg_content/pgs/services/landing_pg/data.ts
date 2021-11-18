@@ -20,7 +20,7 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 	{
 		header:"Reedmaking",
 		content: {
-			path:`${SERVICES_IMGS}reedmaking_bg.jpg`,
+			path:`${SERVICES_IMGS}reedmaking_bg.jpeg`,
 			alt:"Reeds with sharpening tools and woodblock",
 			caption:"Tools used to sharpen and craft reeds"
 		},
@@ -29,7 +29,7 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 	{
 		header:"Performance",
 		content: {
-			path:`${SERVICES_IMGS}carl_red_pew.jpg`,
+			path:`${SERVICES_IMGS}carl_red_pew.jpeg`,
 			alt:"Playing oboe in church pew",
 			caption:"Carl Colvin practicing in [-Insert Church Name Here-]'s pew"
 		},
@@ -38,7 +38,7 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 	{
 		header:"Editing",
 		content: {
-			path:`${SERVICES_IMGS}book_edit.jpg`,
+			path:`${SERVICES_IMGS}book_edit.jpeg`,
 			alt:"Editing Excerpt",
 			caption:"Editing excerpt from literary work written by David Sula"
 		},

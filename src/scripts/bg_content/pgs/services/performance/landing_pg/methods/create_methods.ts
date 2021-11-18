@@ -86,6 +86,8 @@ const createSVGImage = (data:ISVGImage):SVGImageElement => {
 
 	// Set image source to locate image file
 	img.setAttribute("href",data.href);
+	// Set decoding type as sync to set loading "priority"
+	img.setAttribute("decoding","sync");
 
 	// Add additional SVG Primitive attributes if provided
 	UTILITY.setPrimitiveAttributes(img,data);

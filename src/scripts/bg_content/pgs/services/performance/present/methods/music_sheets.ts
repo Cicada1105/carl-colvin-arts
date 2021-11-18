@@ -138,7 +138,7 @@ function createMusicDescription(desc:string):HTMLDivElement {
 		text:desc
 	});
 	let trebleCleff:HTMLElement = createImageElement({
-		src:"../../../resources/pg_imgs/performance_imgs/treble-clef.png",
+		src:"../../../resources/pg_imgs/performance/treble-clef.png",
 		alt:"Treble Cleff"
 	});
 

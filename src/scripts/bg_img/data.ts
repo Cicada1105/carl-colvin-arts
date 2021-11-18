@@ -8,9 +8,12 @@ let isHomePage:boolean = currFile.localeCompare("index") === 0;	// compare === 0
 // if path contains services/ -> it is a specific page within services directory
 let isServicePage:boolean = window.location.pathname.includes("services/");
 const isPerformancesPage:boolean = window.location.pathname.includes("performances/");
-const imgPath:string = (isPerformancesPage ? "../../../" : (isServicePage ? "../../" : (isHomePage ? "./" : "../"))) + "resources/global_imgs/background/";
+
+const GLOBAL_RESOURCES:string = (isPerformancesPage ? "../../../" : (isServicePage ? "../../" : (isHomePage ? "./" : "../"))) + "resources/global_imgs";
+const IMG_PATH:string = `${GLOBAL_RESOURCES}/background`;
+const SHARED_IMG_PATH:string = `${GLOBAL_RESOURCES}/shared`;
 // Use for production
-//const imgPath:string = '/resources/global_imgs/background/';
+//const IMG_PATH:string = '/resources/global_imgs/background/';
 
 // Local interface to define an associative array of IMage's
 interface IBgImage {
@@ -21,51 +24,51 @@ interface IBgImage {
 //	 Define associative array
 const data:IBgImage = {
 	"" : {
-		path: imgPath + "oboe_sheet_music.jpg",
+		path: `${SHARED_IMG_PATH}/oboe_sheet_music.jpeg`,
 		alt: "Oboe and Sheet Music",	
 	},
 	"index" : {
-		path: imgPath + "oboe_sheet_music.jpg",
+		path: `${SHARED_IMG_PATH}/oboe_sheet_music.jpeg`,
 		alt: "Oboe and Sheet Music",
 	},
 	"about" : {
-		path: imgPath + "",
+		path: `${IMG_PATH}/`,
 		alt: ""
 	},
 	"services" : {
-		path: imgPath + "",
+		path: `${IMG_PATH}/`,
 		alt: "Services Landing Page Image"
 	},
 	"reedmaking" : {
-		path: imgPath + "reedmaking_bg.jpg",
+		path: `${IMG_PATH}/reedmaking_bg.jpeg`,
 		alt: "Reeds with sharpening tools and woodblock"
 	},
 	"performances" : {
-		path: imgPath + "carl_red_pew.jpg",
+		path: `${IMG_PATH}/carl_red_pew.jpeg`,
 		alt: "Playing oboe in church pew"
 	},
 	"past" : {
-		path: imgPath + "",
+		path: `${IMG_PATH}/`,
 		alt: "Past background image"
 	},
 	"present" : {
-		path: imgPath + "",
+		path: `${IMG_PATH}/`,
 		alt: "Present background image"
 	},
 	"future" : {
-		path: imgPath + "",
+		path: `${IMG_PATH}/`,
 		alt: "Future background image"
 	},
 	"editing" : {
-		path: imgPath + "book_edit.jpg",
+		path: `${IMG_PATH}/book_edit.jpeg`,
 		alt: "Editing excerpt from David Sula"
 	},
 	"listen" : {
-		path: imgPath + "english_horn_sheet_music.jpg",
+		path: `${IMG_PATH}/english_horn_sheet_music.jpeg`,
 		alt: "English Horn"
 	}, 
 	"contact" : {
-		path: imgPath + "",
+		path: `${IMG_PATH}/`,
 		alt: "Some picture of carl maybe"
 	}
 }

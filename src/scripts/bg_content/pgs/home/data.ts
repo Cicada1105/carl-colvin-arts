@@ -5,14 +5,17 @@
 import { IPost } from './interfaces'
 
 // Path to home collage images
-const imagePath:string = "./resources/pg_imgs/home_collage_imgs/";
+const RESOURCES:string = "./resources";
+
+const IMG_PATH:string = `${RESOURCES}/pg_imgs/home_collage`;
+const SHARED_IMG_PATH:string = `${RESOURCES}/global_imgs/shared`;
 
 // collageImages will hold data for each image and 
 //	"post" data to be displayed when user clicks on image
 const collageImages:Array<IPost> = [
 	{
 		imageData: {
-			path:`${imagePath}happy_holy_dayz.png`,
+			path:`${SHARED_IMG_PATH}/happy_holy_dayz.png`,
 			alt:'Happy Holy Dayz annual Chicago Hiphop Festival',
 			caption:'[Chicago Hiphop Festival partial description]',
 			idName:'leftTop'
@@ -25,7 +28,7 @@ const collageImages:Array<IPost> = [
 	},
 	{
 		imageData: {
-			path:`${imagePath}dank_haus_spoken_word.png`,
+			path:`${IMG_PATH}/dank_haus_spoken_word.png`,
 			alt:'Dank Hause Kenya Spoken Word',
 			caption:'[Spoken Word partial description]',
 			idName:'middleLeftTop'
@@ -38,7 +41,7 @@ const collageImages:Array<IPost> = [
 	},
 	{
 		imageData: {
-			path:`${imagePath}rand_reeds.png`,
+			path:`${IMG_PATH}/rand_reeds.png`,
 			alt:'Random Reeds',
 			caption:'[Random reeds partial description]',
 			idName:'middleRightTop'
@@ -50,7 +53,7 @@ const collageImages:Array<IPost> = [
 	},
 	{
 		imageData: {
-			path:`${imagePath}english_horn_sheet_music.png`,
+			path:`${IMG_PATH}/english_horn_sheet_music.jpeg`,
 			alt:'English horn on sheet music',
 			caption:'[English horn on sheet music partial description]',
 			idName:'middleRightBottom'
@@ -62,7 +65,7 @@ const collageImages:Array<IPost> = [
 	},
 	{
 		imageData: {
-			path:`${imagePath}take_my_hand_poem.png`,
+			path:`${IMG_PATH}/take_my_hand_poem.png`,
 			alt:'Take My Hand poem',
 			caption:'[Take my hand poem partial description]',
 			idName:'rightTop'
@@ -74,7 +77,7 @@ const collageImages:Array<IPost> = [
 	},
 	{
 		imageData: {
-			path:`${imagePath}fathers_touch_poem.png`,
+			path:`${IMG_PATH}/fathers_touch_poem.png`,
 			alt:'A Father\'s Touch poem',
 			caption:'[A Father\'s Touch partial description]',
 			idName:'leftBottom'
@@ -86,7 +89,7 @@ const collageImages:Array<IPost> = [
 	},
 	{
 		imageData: {
-			path:`${imagePath}reed_scraping_types.png`,
+			path:`${IMG_PATH}/reed_scraping_types.png`,
 			alt:'Types of reed scraping',
 			caption:'[Reed scraping partial description]',
 			idName:'middleLeftBottom'
@@ -98,7 +101,7 @@ const collageImages:Array<IPost> = [
 	},
 	{
 		imageData: {
-			path:`${imagePath}dank_haus_ungovernables.png`,
+			path:`${IMG_PATH}/dank_haus_ungovernables.png`,
 			alt:'Dank Haus Ungovernables',
 			caption:'[Ungovernables partial description]',
 			idName:'rightBottom'
