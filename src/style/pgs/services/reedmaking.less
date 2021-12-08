@@ -1,6 +1,5 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
-@import (reference) "../../global/keyframes.less";
 @import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
 
@@ -9,10 +8,6 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
-// Load keyframes specific to reedmaking page
-.plusKeyFrames();
-.dropDownKeyFrames();
-
 .staticCont {
 	position:absolute;
 	width:100%;
@@ -20,12 +15,6 @@
 .staticBlendCont {
 	&:extend(.staticCont);
 	border-radius:15px;
-}
-.animation() {
-	animation-play-state:paused;
-	animation-fill-mode:forwards;
-	animation-direction:normal;
-	animation-duration:1s;	
 }
 // Headers
 #reedmakingIntro {
@@ -132,9 +121,9 @@
 		}
 		[class = "tabButton"] {
 			.format(inherit, 2rem, 50%);
-			.animation();
 			background-color:@secondaryBackgroundColor;
 			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
+			transition:clip-path 1s;
 			top:25%;
 			right:1.5%;
 			float:right;
@@ -145,25 +134,24 @@
 		}
 	}
 	[class = "tabBody"] {
-		.format(inherit, 100%,17rem);
-		.animation();
-		animation-name:dropdownOpen;
+		.format(inherit, 100%);
+		transition:height 1s;
 		background-color:@secondaryColor;
 		color:@textColor;
 		overflow: hidden;
 
 		p {
-			.animation();
-			animation-name:dropdownPOpen;
+			visibility: hidden;
 			margin:0px;
-			padding:1rem 5%;
+			padding:0rem 5%;
+			transition:padding 1s, visibility 1s;
 		}
 		p::before {
 			content:"> ";
 		}
 	}
 }
-.tabCont:last-of-type + h2 {
+.tabCont:nth-last-of-type(2) + h2 {
 	.format(relative,10%,5rem);
 	text-decoration: underline;
 	color:@textColor;
@@ -181,11 +169,21 @@
 	top:0%;
 }
 /*  Rest of the styling goes here */
+#priceCont {
+	display:flex;
+	justify-content:space-around;
+	flex-flow:row wrap;
+}
+.pricingCardStyling(@bgColor;@blendMode:screen;) {
+	background-color:@bgColor;
+	mix-blend-mode: @blendMode;
+	height:100%;
+	bottom:0%;
+}
 [class = "priceBox"] {
-	.format(relative, 25%, 75%);
+	.format(relative, 22rem, 75vh);
 	display:inline-block;
-	margin-left:6.25%;
-	margin-bottom:3.5%;
+	margin:2.5rem 3rem 8rem 3rem;
 	@media only screen and (max-width: 630px) {
 		display:block;
 	}
@@ -198,10 +196,7 @@
 
 		[class = "nameBlend"] {
 			&:extend(.staticBlendCont);
-			background-color:@secondaryColor;
-			mix-blend-mode: screen;
-			height:inherit;	
-			bottom:0%;
+			.pricingCardStyling(@bgColor:@secondaryColor);
 
 			[class = "descriptionCont"] {
 				&:extend(.staticCont);
@@ -210,10 +205,7 @@
 
 				[class = "descriptionBlend"] {
 					&:extend(.staticBlendCont);
-					background-color:#31668b;
-					mix-blend-mode: screen;
-					height:100%;
-					bottom:0%;
+					.pricingCardStyling(@bgColor:#31668b);
 
 					[class = "pricingCont"] {
 						&:extend(.staticCont);
@@ -227,10 +219,7 @@
 
 						[class = "pricingBlend"] {
 							&:extend(.staticBlendCont);
-							background-color:@activeTextColor;
-							mix-blend-mode: soft-light;
-							height:100%;
-							bottom:0%;
+							.pricingCardStyling(@bgColor:@activeTextColor;@blendMode:soft-light);
 						}
 					}
 				}

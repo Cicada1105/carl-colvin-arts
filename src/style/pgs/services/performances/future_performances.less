@@ -10,13 +10,14 @@
 
 /*  Rest of the styling goes here */
 h1#futurePerformancesTitle {
-	.format(relative,40rem);
+	position:relative;
 	color:@textColor;
 	text-align: center;
-	margin:4rem auto;
+	margin-top: 4rem;
 }
 .performanceSection {
-	.format(relative,70rem);
+	.format(relative,90%);
+	//.format(relative,70rem);
 	border-bottom:2px solid @accentColor;
 	text-align: center;
 	color:@textColor;
@@ -25,19 +26,12 @@ h1#futurePerformancesTitle {
 
 	// Section holds about performance info and instruments container 
 	& > section {
-		.format(relative,calc(49rem - 2px));
-		display:inline-block;
-		border-right:2px solid @accentColor;
+		margin-bottom:2rem;
 
 		& > div.aboutPerformanceCont {
-			.format(relative,60%);
-			display:inline-block;
-
+			margin-bottom:2rem;
 		}
 		& > div.instrumentsCont {
-			.format(relative,40%);
-			display:inline;
-			float:right;
 
 			& > h3 {
 				border-bottom:1px solid @accentColor;
@@ -47,18 +41,60 @@ h1#futurePerformancesTitle {
 				margin-right:auto;
 			}
 			& > p {
-				width:70%;
+				width:80%;
 				margin:1rem auto;
 			}
 		}
 	}
-	// Aside holds date of performance
-	& > aside {
-		.format(relative,30%);
-		display:inline;
-		float:right;
+}
+@media only screen and (min-width:908px) {
+	.performanceSection {
+		//width:60rem;
+
+		& > section {
+			.format(relative,calc(60% - 2px));
+			//min-width: 42rem;
+			min-width: 30rem;
+			padding:0px 5%;
+			display:inline-block;
+			border-right:2px solid @accentColor;
+		}
+		// Aside holds date of performance
+		& > aside {
+			.format(relative,30%);
+			min-width:15rem;
+			display:inline;
+			float:right;
+		}
 	}
 }
+@media only screen and (min-width:1244px) {
+	.performanceSection {
+		width:75%;
+		max-width:70rem;
+
+		& > section {
+			width:calc(70% - 2px);
+			padding:0px;
+
+			& > div.aboutPerformanceCont {
+				.format(relative,70%);
+				display:inline-block;
+			}
+			& > div.instrumentsCont {
+				.format(relative,30%);
+				min-width:12rem;
+				display:inline;
+				float:right;
+			}
+		}
+		& > aside {
+			width:30%;
+			min-width:16rem;
+		}
+	}
+}
+/*
 div#contactLink {
 	.format(relative,20rem);
 	display:inline-block;
@@ -85,5 +121,5 @@ div#contactLink {
 		}
 	}
 }
-
+*/
 #globalNS > .social();

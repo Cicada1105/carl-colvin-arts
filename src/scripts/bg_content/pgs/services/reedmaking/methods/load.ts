@@ -66,6 +66,8 @@ const loadTabs = ():void => {
 
 		// Create container to hold dropdown content
 		let tabBody:HTMLDivElement = createElement({className:'tabBody'});
+		// Set height for managing open/close state
+		tabBody.style.height = "0rem";
 
 		// Body Content
 		tab["content"].forEach((description:string) => {
@@ -78,19 +80,39 @@ const loadTabs = ():void => {
 
 		/*  Event Listeners  */
 		tabButton.addEventListener('click', function() {
-			// Tab Button animation
-			tabButton.style.animationPlayState = "running";
-			tabButton.style.animationName = tabButton.style.animationName === "plusMinus" ? "minusPlus" : "plusMinus";
-			// Tab Body animation
-			tabBody.style.animationPlayState = "running";
-			tabBody.style.animationName = tabBody.style.animationName === "dropdownOpen" ? "dropdownClose" : "dropdownOpen";
-			// Paragraph animation
-			tabBody.childNodes.forEach(function(p:any) {
-				p.style.animationPlayState = "running";
-				p.style.animationName = p.style.animationName === "dropdownPOpen" ? "dropdownPClose" : "dropdownPOpen";
-			})
-		});
+			const IS_OPEN:boolean = tabBody.style.height !== "0rem";
 
+			// Tab Button animation
+			//tabButton.style.animationPlayState = "running";
+			//tabButton.style.animationName = IS_OPEN ? "minusPlus" : "plusMinus";
+
+			if (IS_OPEN) { // "Close" tab
+				tabButton.style.clipPath = "polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%)";
+				tabBody.style.height = "0rem";
+
+				// Paragraph animation
+				tabBody.childNodes.forEach(function(p:any) {
+					p.style.visibility = "hidden";
+					p.style.padding = "0rem 5%";
+				});
+			}
+			else { // "Open" tab
+				tabButton.style.clipPath = "polygon(5% 40%, 40% 40%, 45% 40%, 60% 40%, 65% 40%, 95% 40%, 95% 60%, 60% 60%, 55% 60%, 40% 60%, 35% 60%, 5% 60%)";
+				// Calculate height of individual paragraph elements to get container height
+				let contHeight:number = 0;
+
+				// Paragraph animation
+				tabBody.childNodes.forEach(function(p:any) {
+					// Add current paragraph height and top (1rem/16px) and bottom (1rem/16px) margin to running total
+					contHeight += parseInt(getComputedStyle(p).height) + 32;
+
+					p.style.visibility = "visible";
+					p.style.padding = "1rem 5%";
+				});
+
+				tabBody.style.height = `${contHeight}px`;
+			}
+		});
 
 		// Append header and body container to tab container 
 		tabCont.appendChild(tabHeaderCont);
@@ -105,6 +127,9 @@ const loadPricings = async ():Promise<void> => {
 	let pricingHeader:HTMLHeadingElement = createTextElement({element:"h2",text:"Pricings"});
 	document.body.appendChild(pricingHeader);
 
+	// Create container to be the flex box for reed pricings
+	let pricingCont:HTMLDivElement = createElement({idName:"priceCont"});
+
 	let pricingData: ReedPricingInterface[] = await requestData<ReedPricingInterface[]>("reedmaking");
 	// Create reed pricing container for each Reed
 	pricingData.forEach(reed => {
@@ -117,8 +142,11 @@ const loadPricings = async ():Promise<void> => {
 		// Append reed pricing box to the reed container
 		reedCont.appendChild(reedPricingBox);
 
-		document.body.appendChild(reedCont);
+		// Append reed container to pricing container
+		pricingCont.appendChild(reedCont);
 	});
+	// Append pricing container to body
+	document.body.appendChild(pricingCont);
 	/*catch((err:Error) => {
 		document.body.appendChild(
 			createTextElement({

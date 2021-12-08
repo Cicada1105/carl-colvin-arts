@@ -33,6 +33,9 @@ const createPerformanceCard:(pastPerformanceData:IRepertoire)=>HTMLElement = (da
 		]
 	})
 
+	// For past performances card, swap image and header group
+	cardCont.children[0].insertAdjacentElement("beforebegin",cardCont.children[1]);
+
 	// Create paragraphs for date and instruments
 	let date:HTMLParagraphElement = createTextElement({
 		text:data.date,
@@ -93,7 +96,8 @@ const createCollaboratorCard:(collaboratorCardData:ICollaborator)=>HTMLElement =
 	// Create collaborator outline, passing in html elements 
 	let svgOutlineData:ICard = {
 		foreignObject:foreignObj,
-		points:"230,64 318.5,64 318.5,238.5 1.5,238.5 1.5,64 90,65"
+		points:"230,64 318.5,64 318.5,238.5 1.5,238.5 1.5,64 90,65",
+		viewBox:"0 0 320 240"
 	}
 	let svgOutline:SVGSVGElement = createCardOutline(svgOutlineData);
 
@@ -103,18 +107,29 @@ const createCollaboratorCard:(collaboratorCardData:ICollaborator)=>HTMLElement =
 	return collaboratorCard;
 }
 const createAnecdoteCard:(anecdoteCardData:IAnecdote)=>HTMLElement = (data:IAnecdote):HTMLElement => {
-	// Create container for holding anecdote data 
-	let anecdoteCard:HTMLElement = createElement({
+	// Create container for holding user anecdote data 
+	let userCard:HTMLElement = createElement({
 		element:"section",
-		className:"anecdoteCard"
+		className:"userCard"
 	});
 
-	// Create foreign object to hold html elements inside svg 
-	let foreignObj:SVGForeignObjectElement = <SVGForeignObjectElement>document.createElementNS("http://www.w3.org/2000/svg","foreignObject");
+	// Create outline for user card
+	let userCardOutline:HTMLDivElement = createElement({
+		className:"userCardOutline"
+	})
+	// Create image back drop to simulate space between image and outline
+	let userCardImgBackdrop:HTMLSpanElement = createElement({
+		element:"span",
+		className:"imageBackDrop"
+	});
+
+	// Append user card outine and user card image backdrop to user card
+	userCard.appendChild(userCardOutline);
+	userCard.appendChild(userCardImgBackdrop);
 
 	// Append generic data to parent container
 	createGenericCard({
-		parent: foreignObj,
+		parent: userCard,
 		img: {
 			src: data.img["src"],
 			alt: data.img["alt"]
@@ -130,7 +145,7 @@ const createAnecdoteCard:(anecdoteCardData:IAnecdote)=>HTMLElement = (data:IAnec
 			}
 		]
 	});
-
+	
 	// Create article for holding user's anecdote 
 	let anecdoteMsg:HTMLElement = createTextElement({
 		element:"article",
@@ -138,19 +153,9 @@ const createAnecdoteCard:(anecdoteCardData:IAnecdote)=>HTMLElement = (data:IAnec
 	});
 
 	// Append non generic html elements, specific to anecdote card, to foreign object 
-	foreignObj.appendChild(anecdoteMsg);
+	userCard.appendChild(anecdoteMsg);
 
-	// Create anecdote outline, passing in html elements 
-	let svgOutlineData:ICard = {
-		foreignObject:foreignObj,
-		points:"410,64 638.5,64 638.5,270.5 1.5,270.5 1.5,64 230,64"
-	}
-	let svgOutline:SVGSVGElement = createCardOutline(svgOutlineData);
-
-	// Append anecdote outline, with html elements (added to svg with createCardOutline), to anecdote card
-	anecdoteCard.appendChild(svgOutline);
-
-	return anecdoteCard;
+	return userCard;
 }
 
 export { createPerformanceCard, createCollaboratorCard, createAnecdoteCard }

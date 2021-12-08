@@ -40,6 +40,8 @@ const createGenericCard:(genericUserData:IGenericCard)=>void = (data:IGenericCar
 const createCardOutline:(userCardOutlineData:ICard)=>SVGSVGElement = (data:ICard):SVGSVGElement => {
 	// Create svg for containing svg elements 
 	let svg:SVGSVGElement = <SVGSVGElement>document.createElementNS("http://www.w3.org/2000/svg","svg");
+	// Set viewbox of svg
+	svg.setAttribute("viewBox",data["viewBox"]);
 
 	// Create polyline for outline 
 	let polyline:SVGPolylineElement = document.createElementNS("http://www.w3.org/2000/svg","polyline");

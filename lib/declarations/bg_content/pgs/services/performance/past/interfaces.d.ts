@@ -28,6 +28,7 @@ interface AnecdoteInterface extends GenericUserInterface {
 interface CardOutlineInterface {
     foreignObject: SVGForeignObjectElement;
     points: string;
+    viewBox: string;
 }
 interface HeaderInterface {
     tagname: string;

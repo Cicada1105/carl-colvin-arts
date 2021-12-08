@@ -12,7 +12,7 @@
 	Rest of the code goes here
 */
 h1 {
-	.format(relative,40rem);
+	position:relative;
 	color:@textColor;
 	text-align:center;
 	display:block;
@@ -20,7 +20,8 @@ h1 {
 	z-index:2;
 
 	& + p {
-		.format(relative, 50rem);
+		.format(relative, 80%);
+		max-width: 50rem;
 		display:block;
 		margin:auto;
 		margin-bottom:4rem;

@@ -9,145 +9,115 @@
 #globalNS > .bg_img();
 
 .row(@h) {
-	.format(relative, 72rem, @h);
+	.format(relative, 80%, @h);
 	color:@textColor;
 	margin:auto;
 	z-index:2;
 }
 h3#listenHeader {
 	.row(5rem);
-	margin-top:6%;
+	margin-top:4rem;
 	font-size:2rem;
 	text-align:center;
 
 	& + p {
-		.format(relative,50rem);
+		.format(relative,80%);
 		font-size:1.25rem;
 		text-align: center;
 		color: @textColor;
-		margin:auto;
-		margin-bottom:3.5rem;
+		margin:auto auto 3.5rem auto;
 		line-height:1.25rem;
 		text-indent: 2rem;
 		max-width:50rem;
 		z-index: 2;
 	}
 }
+
+.mediaPreviewFormat() {
+	position:absolute;
+	max-width: 100%;
+	max-height: 100%;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+}
+@border:3px solid @secondaryColor;
 // Generic Styling Shared by all rows
 [class = "mediaRow"] {
 	//background-color:pink;
-	.row(12rem);
+	.row(unset);
 	margin-bottom:3rem;
+	text-align:center; // Centers mediaContainer but not mediaDescription
+	padding:1rem 0px;
 
-	&:last-child::after {
-		content:"";
-		float:right;
-		display:block;
-		width:100%;
-		height:4.2rem;
-	}
-
-	& > p {
-		.format(relative, calc(50% - 3px), 6rem);
-		display:inline-block;
-		margin:0px;
-		text-align:center;
-		padding-top:3rem;
-		padding-bottom:3rem;
-
-		&::first-line {
-			text-indent:2rem;
-		}
-	}
-	& > div { // Includes blue borders
-		.format(relative, calc(50% - 3px), 100%);
-		display:inline-block;
-
-		&[class = "mediaCont"] {
-			//background-color:aqua;
-			//top:3px;
-
-			&[class = "mediaVisualCont"] {
-				.format(relative, 5%, 100%);
-
-				/*& > img {
-					position:absolute;
-					transform: translate(-25%);
-					top:10%;
-					left:25%;
-					height:80%;
-				}*/
-			}
-			[class = "mediaControls"] {
-				//background-color:black;
-				position:relative;
-				margin: auto;
-				height: 50%;
-				top:25%;
-			}
-		}
-	}
-}
-/*		Specific Styling		*/
-// Alternating rows
-[class = "mediaRow"] {
+	// Styling for alternative rows
 	&:nth-of-type(odd) {
 		.mediaRowChildrenFormat(left, right);
 	}
 	&:nth-of-type(even) {
 		.mediaRowChildrenFormat(right, left);
 	}
-}
-.mediaRowChildrenFormat(@pFloatDirection, @mediaFloatDirection) {
-	p {
-		float: @pFloatDirection;
-	}
-	& when (@pFloatDirection = left) {
-		p {
-			left: 3px;
-		}
-		& > div[class = "mediaCont"] {
-			right: -3px;
-		}
-	}
-	& when (@pFloatDirection = right) {
-		p {
-			right: 3px;
-		}
-		& > div[class = "mediaCont"] {
-			left: 3px;
-		}
-	}
-	& > div[class = "mediaCont"] {
 
-		& > div:first-of-type { // Container holding media image
-			.format(relative, 50%, 100%);
-			float: @pFloatDirection;
+	& > p {
+		.format(relative, 65%);
+		margin:auto;
+		text-align:center;
+		padding-bottom:3rem;
 
-			& > img {
-				position:inherit;
-				height:90%;
-				left: 50%;
-				transform: translateX(-50%);
+		&::first-line {
+			text-indent:2rem;
+		}
+	}
+	& > div.mediaCont {
+		.format(relative, 80%, fit-content);
+		max-width:35rem;
+		display:inline-block;
+
+		& > div.mediaVisualCont {
+			.format(relative, 5%, 100%);
+
+			/*& > img {
+				position:absolute;
+				transform: translate(-25%);
+				top:10%;
+				left:25%;
+				height:80%;
+			}*/
+		}
+		& div.mediaControls {
+			position:relative;
+			margin: auto;
+			width:fit-content;
+			height: 50%;
+			top:25%;
+		}
+		& > div[class ^= "media"] {
+			.format(relative, 13rem, 12rem);
+			margin:auto;
+
+			@media only screen and (min-width: 665px) {
+				height: 100%;
 			}
-			& > video {
-				width: 90%;
+			@media only screen and (min-width:1133px) {
+				width: 48%;	
+			}
+			&:first-of-type { // div[class = "mediaVisualCont"]
+
+				& > img {
+					.mediaPreviewFormat();
+				}
+				& > video {
+					.mediaPreviewFormat();
+				}
+			}
+			&:last-of-type { // div[class = "mediaCtrlsCont"]
+				//margin:0;
 			}
 		}
-
-		& > div:last-of-type { // Container holding custom controls
-			.format(relative, 50%, 100%);
-			//background-color:lime;
-			margin:0;
-			float: @mediaFloatDirection;
-		}
 	}
-}
 
-// Borders
-//	Formatting, positioning and displaying of borders
-@border:3px solid @secondaryColor;
-[class = "mediaRow"] {
+	// Borders
+	//	Formatting, positioning and displaying of borders
 	& > div[class ^= "border"] {
 		.format(absolute,25%, 100%);
 		margin:0;
@@ -168,23 +138,55 @@ h3#listenHeader {
 		& > div[class ^= "border"] {
 			border-top: @border;
 		}
-	}
-	// Last row gets border bottom
-	&:last-of-type {
-		& > div[class ^= "border"] {
-			border-bottom: @border;
-		}
-	}
-}
-// Row positioning based on borders
-[class = "mediaRow"] {
-	// First and last row need to account for 3px top and bottom respectively
-	&:nth-of-type(3) {  
+		// First and last row need to account for 3px top and bottom respectively
 		p {
 			top:3px;
 		}
 		div[class = "mediaCont"] {
 			top:3px;
+		}
+	}
+
+	/* add additional row for spacing */
+	&:last-child {
+		// Last row gets border bottom
+		& > div[class ^= "border"] {
+			border-bottom: @border;
+		}
+		&::after {
+			content:"";
+			float:right;
+			display:block;
+			width:100%;
+			height:4.2rem;	
+		}
+	}
+}
+.mediaRowChildrenFormat(@pFloatDirection, @mediaFloatDirection) {
+	@media only screen and (min-width:1133px) { 
+		p {
+			float: @pFloatDirection;
+		}
+	}
+	& when (@pFloatDirection = left) {
+		p {
+			left: 3px;
+		}
+	}
+	& when (@pFloatDirection = right) {
+		p {
+			right: 3px;
+		}
+		& > div[class = "mediaCont"] {
+			left: 3px;
+		}
+	}
+	@media only screen and (min-width: 665px) {
+		div.mediaVisualCont {
+			float: @pFloatDirection;
+		}
+		div.mediaCtrlsCont {
+			float: @mediaFloatDirection;
 		}
 	}
 }
@@ -201,10 +203,10 @@ h3#listenHeader {
 		}
 	}
 	i:nth-of-type(1) {
-		left: 50px;
+		left: 0px;
 	}
 	i:nth-of-type(2) {
-		right:50px;
+		right:0px;
 	}
 	& > span {
 		color:@accentColor;
@@ -221,22 +223,61 @@ h3#listenHeader {
 			-webkit-appearance:none;
 			appearance:none;	
 		}
+
+		// Custom progress bar styling
+		&::-webkit-progress-value {
+			background-color:#ff0000;
+			border-radius:5px;
+		}
+		&::-webkit-progress-bar {
+			background-color:@accentColor;
+			border-radius:5px;
+		}
 	}
 }
-[class = "mediaControls"] > progress::-webkit-progress-value {
-	background-color:#ff0000;
-	border-radius:5px;
-}
-[class = "mediaControls"] > progress::-webkit-progress-bar {
-	background-color:@accentColor;
-	border-radius:5px;
-}
 [class = "waveDivider"] {
-	.format(relative, 80%, 4.2rem);
-	margin-left:10%;
-	margin-bottom:3rem;
-	//background-color:black;
+	display: none;
 }
+
+@media only screen and (min-width: 665px) {
+	div.mediaRow {
+
+		& > div.mediaCont {
+			height: 12rem
+		}
+		& > p {
+			padding-top:3rem;
+		}
+	}
+}
+@media only screen and (min-width:1133px) {
+	[class = "mediaRow"] {
+		text-align: unset;
+		max-width:72rem;
+		width:75%;
+		height:12rem;
+
+		& > div.mediaCont {
+			.format(relative, calc(50% - 3px), 100%);
+
+			& > div[class ^= "media"] {
+				width:48%;
+				min-width:13rem;
+			}
+		}
+		& > p {
+			width:42%;
+			margin:auto 4%;
+		}
+	}
+	[class = "waveDivider"] {
+		.format(relative, 80%, 4.2rem);
+		display:block;
+		margin-left:10%;
+		margin-bottom:3rem;
+	}
+}
+/*
 div#contactLink {
 	.format(relative,20rem);
 	display:inline-block;
@@ -263,5 +304,5 @@ div#contactLink {
 		}
 	}
 }
-
+*/
 #globalNS > .social();
