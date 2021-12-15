@@ -97,7 +97,8 @@ const isValidEmail = async (email:string):Promise<EmailReport> => {
   }
 
   // Check if Recipient starts w/ valid char -> invalid
-  let startingRecipientMatch:string[] = <string[]>recipientLocalName.match(/(?<!\W)((?<!\w)[!#$%&'*+-/=?^_`{|}~])/g) ?? [];
+  //let startingRecipientMatch:string[] = <string[]>recipientLocalName.match(/(?<!\W)((?<!\w)[!#$%&'*+-/=?^_`{|}~])/g) ?? [];
+  let startingRecipientMatch:string[] = <string[]>recipientLocalName.match(/^[!#$%&'*+-/=?^_`{|}~]/g) ?? [];
 
   if (startingRecipientMatch.length === 1) {
     let invalidStartChar:InvalidStartingCharacter = {
@@ -112,7 +113,8 @@ const isValidEmail = async (email:string):Promise<EmailReport> => {
   }
 
   // Check if Recipient ends with valid char -> invalid
-  let endingMatch:string[] = <string[]>recipientLocalName.match(/([!#$%&'*+-/=?^_`{|}~](?!\w))(?!\W)/g) ?? [];
+  //let endingMatch:string[] = <string[]>recipientLocalName.match(/([!#$%&'*+-/=?^_`{|}~](?!\w))(?!\W)/g) ?? [];
+  let endingMatch:string[] = <string[]>recipientLocalName.match(/[!#$%&'*+-/=?^_`{|}~]$/g) ?? [];
 
   if (endingMatch.length === 1) {
     let invalidEndChar:InvalidTrailingCharacter = {
@@ -155,7 +157,7 @@ const isValidEmail = async (email:string):Promise<EmailReport> => {
   /*      Domain       */
   /*********************/
   // Check if domain contains . or - at beginning or end -> invalid
-  let startingDomainMatch:string[] = <string[]>domain.match(/(?<!\W)((?<!\w)[.-])/g) ?? [];
+  let startingDomainMatch:string[] = <string[]>domain.match(/^[.-]/g) ?? [];
 
   if (startingDomainMatch.length === 1) {
     let invalidStartChar:InvalidStartingCharacter = {
@@ -169,7 +171,7 @@ const isValidEmail = async (email:string):Promise<EmailReport> => {
     return emailReport;
   }
 
-  let endingDomainMatch:string[] = <string[]>domain.match(/([.-](?!\w))(?!\W)/g) ?? [];
+  let endingDomainMatch:string[] = <string[]>domain.match(/[.-]$/g) ?? [];
 
   if (endingDomainMatch.length === 1) {
     let invalidEndChar:InvalidTrailingCharacter = {

@@ -38,9 +38,9 @@
 	</symbol>
 	<!--Centers of eyes are at posX + (width / 2), posY + (height / 2)-->
 	<!--Left Eye-->
-	<use href="#eye" x="105" y="115" transform="rotate(-15,130,135)" />
+	<use href="#eye" x="105" y="115" width="50" height="40" transform="rotate(-15,130,135)" />
 	<!--Right Eye-->
-	<use href="#eye" x="195" y="115" transform="rotate(15,220,135)" />
+	<use href="#eye" x="195" y="115" width="50" height="40" transform="rotate(15,220,135)" />
 	<!--Frown-->
 	<!--<path d="
 			M 130,195
