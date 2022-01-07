@@ -15,25 +15,25 @@
 .aboutMixin(@isHomePage);
 
 .row {
-  .format(relative, 75%, 300px);
+  .format(relative, 100%, unset);
   margin:100px auto 150px auto;
-  display:block;
+  min-width:575px;
   z-index:1;
 
   // Fix bottom page spacing bug
   &:last-child {
     padding-bottom:100px;
   }
-  #left {
-    float:left;
-  }
-  #right {
-    float:right;
+  #left, #right {
+    float:none;
   }
   section {
-    .format(inherit, 500px, 100%);
+    .format(inherit, 80%, fit-content);
     background-color:@secondaryBackgroundColor;
     box-shadow:15px 15px 5px @accentColor;
+    min-height:15rem;
+    margin:auto;
+    margin-bottom:3.5rem;
     color:@textColor;
     top:0%;
 
@@ -59,7 +59,9 @@
     }
 
     h3 {
+      padding-top:1rem;
       text-align:center;
+
       &:hover {
         cursor:pointer;
         text-decoration: underline;
@@ -67,12 +69,13 @@
     }
     p {
       text-indent:25px;
-      margin:0px 15px;
+      margin:0rem 2rem;
+      padding-bottom:1.5rem;
     }
   }
   .figure {
-    .format(inherit, 500px, 300px);
-    margin:0px;
+    .format(inherit, unset, 300px);
+    margin:auto;
 
     img {
       position:absolute;
@@ -121,36 +124,41 @@
     }
   }
 }
-
-@media only screen and (max-width: 1354px) {
+@media only screen and (min-width: 500px) {
   .row {
-    width: 90%;
+    .figure {
+      width: 500px;
+    }
   }
 }
-@media only screen and (max-width: 1128px) {
+@media only screen and (min-width: 1128px) {
   .row {
-    height: unset;
-    width:100%;
+    width:90%;
+    height:300px;
 
-    &:first-of-type {
-      top:28vh;
+    #left {
+      float:left;
     }
-    #left, #right {
-      float:none;
+    #right {
+      float:right;
     }
     section {
-      .format(relative, 80%, 15rem);
-      margin:auto;
-      margin-bottom: 3.5rem;
+      width: 500px;
+      height: 100%;
 
-      h3 {
-        padding-top:1rem;
+      p {
       }
     }
     .figure {
-      position:relative;
-      margin:auto;
-      margin-bottom: 5rem;
+      .figcaption {
+
+      }
     }
-  } 
+  }
+}
+@media only screen and (min-width: 1354px) {
+  .row {
+    max-width: 90rem; // For really large screens (tvs possibly)
+    width: 75%;
+  }
 }

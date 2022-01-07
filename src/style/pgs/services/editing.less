@@ -12,15 +12,23 @@
 // Load keyframes specific to editing page
 .rotateCircleKeyFrames();
 
-.textFormatting(@width; @fontSize) {
-	.format(relative,@width);
-	font-size:@fontSize;
-	color: @textColor;
-	margin:auto;
+.formatting() {
+	.text(@width; @fontSize) {
+		.format(relative,@width);
+		text-align: center;
+		font-size:@fontSize;
+		color: @textColor;
+	}
+	.label {
+		font-size:1.25rem;
+		font-weight:bold;
+		color:@textColor;
+		text-align: center;
+	}
 }
 .header(@fontSize) {
-	.textFormatting(10rem,@fontSize);
-	text-align: center;
+	.formatting > .text(10rem,@fontSize);
+	margin:auto;
 }
 /*  Rest of the styling goes here */
 h1#pageHeader {
@@ -28,12 +36,12 @@ h1#pageHeader {
 	margin-top:5rem;
 }
 p.editingIntro {
-	.textFormatting(@width:50rem,@fontSize:1rem);
-
+	.formatting > .text(@width:90%,@fontSize:1rem);
 	line-height:1.25rem;
 	text-indent: 2rem;
 	max-width:50rem;
 	display:block;
+	margin:auto;
 	z-index: 2;
 
 	&:first-of-type {
@@ -58,16 +66,6 @@ hr {
 	.format(relative, 75%);
 	margin-top: 2.5rem;
 	border: 1px solid @accentColor;
-}
-.labelFormatting() {
-	.formatting {
-		position:relative;
-		display: inline-block;
-		font-size:1.25rem;
-		text-align: center;
-		color: @textColor;
-		font-weight:bold;
-	}
 }
 /*.textFormatting(@color: @textColor; @align; @decoration; @indent; @weight; @size; @family) {
 	color:@color;
@@ -135,7 +133,10 @@ div#pricingChartCont {
 				  	}
 				}
 				& > label {
-					.labelFormatting > .formatting;
+					.formatting > .label;
+
+					position:relative;
+					display: inline-block;
 					width:calc(100% - 29px);
 					margin-left:-2rem;
 					z-index:1;
@@ -209,21 +210,19 @@ div#pricingChartCont {
 			max-width:35rem;
 			margin:auto;
 			margin-top:1rem;
-			color:white;
 			border-collapse:collapse;
 
 			thead, tbody {
 				width: inherit;
 			}
 			& th {
-				.format(relative,33.33%);
+				.formatting > .text(@width:33.33%,@fontSize:1.45rem);
 				border-bottom:3px solid @accentColor;
-				font-size:1.45rem;
-				text-align:center;
 				padding-top:1rem;
 				padding-bottom:0.75rem;
 			}
 			& td {
+				color:@textColor;
 				text-align:center;
 				font-size:1.2rem;
 				padding-top:1rem;
@@ -234,53 +233,7 @@ div#pricingChartCont {
 }
 
 div#progressCont {
-	.format(relative, 30%);
-	margin:0;
-	float:left;
-
-	& > div.circleCont {
-		.format(inherit, 5rem, 2.5rem);
-		display: block;
-		margin:auto;
-		margin-bottom:7.75rem;
-
-		// Last container, remove margin for proper spacing between submit row
-		&:last-of-type {
-			margin-bottom:0rem;
-		}
-		& > p {
-			.format(absolute,max-content);
-			color: @textColor;
-			text-align: center;
-			font-size:1.25rem;
-			font-weight:bold;
-			padding-top:0.53125rem;
-			margin:0px;
-			margin-left:100%;
-		}
-		& > canvas.progressCircle {
-			.format(absolute, inherit);
-			left: 0px;
-			bottom: 0px;
-			z-index:1;
-		}
-		& > div.rectCont {
-			.format(absolute, 8.1rem, 1.5rem);
-			transform-origin:-1rem;
-			transform:rotateZ(90deg);
-			left: 3.5rem;
-			bottom:13%;
-
-			& > canvas {
-				.format(absolute, inherit, inherit);
-			}
-			& > div.whiteProgressRect {
-				.format(absolute, inherit, 0.5rem);
-				background-color:white;
-				margin-top:0.5rem;
-			}
-		}
-	}
+	display:none;
 }
 button {
 	position:relative;
@@ -289,9 +242,9 @@ button {
 
 form#inputRowsCont {
 	.format(relative, 40%);
-	padding-bottom:0px;
-	float:right;
-	margin:0px;
+	// Padding to create distance between submit form on smaller sreens
+	padding-bottom:5rem;
+	margin:auto;
 	z-index:2;
 /*
 	@NUM_ROWS: 7;
@@ -343,23 +296,23 @@ form#inputRowsCont {
 		justify-content: space-between;
 
 		& > i {
-			display:inline;
-			font-size:1.7rem;
-			color:@accentColor;
-		}
-		& > label {
 			display:none;
 		}
+		& > label {
+			.formatting > .label;
+			margin-bottom: 1rem;
+		}
 		& > div[class $= "Cont"]{
-			.format(absolute, 12.5rem, 1.75rem);
+			.format(relative, 100%, 1.75rem);
 			display:inline;
 			margin:auto;
+			margin-top:0px;
 
 			& > [class $= "Element"] {
 				.inputMixin(inherit);
 			}
 			& > input[type="datetime-local"] {
-				.inputMixin(initial)
+				width:inherit;
 			}
 		}
 		& > div#emailCont {
@@ -395,7 +348,7 @@ form#inputRowsCont {
 	.format(relative,100%);
 	display:inline-block;
 	color:@textColor;
-	margin-top:5rem;
+	//margin-top:5rem;
 
 	#submitCont {
 		width:fit-content;
@@ -452,6 +405,7 @@ form#inputRowsCont {
 		}
 	}
 }
+/*
 div#contactLink {
 	.format(relative,20rem);
 	transform:translate(-50%);
@@ -477,9 +431,78 @@ div#contactLink {
 		}
 	}
 }
+*/
+@media only screen and (min-width:530px) {
+	div#progressCont {
+		.format(relative, 30%);
+		display:block;
+		margin:0;
+		float:left;
 
+		& > div.circleCont {
+			.format(inherit, 5rem, 2.5rem);
+			display: block;
+			margin:auto;
+			margin-bottom:7.75rem;
+
+			// Last container, remove margin for proper spacing between submit row
+			&:last-of-type {
+				margin-bottom:0rem;
+			}
+			& > p {
+				.format(absolute,max-content);
+				.formatting > .label;
+				padding-top:0.53125rem;
+				margin:0px;
+				margin-left:100%;
+			}
+			& > canvas.progressCircle {
+				.format(absolute, inherit);
+				left: 0px;
+				bottom: 0px;
+				z-index:1;
+			}
+			& > div.rectCont {
+				.format(absolute, 8.1rem, 1.5rem);
+				transform-origin:-1rem;
+				transform:rotateZ(90deg);
+				left: 3.5rem;
+				bottom:13%;
+
+				& > canvas {
+					.format(absolute, inherit, inherit);
+				}
+				& > div.whiteProgressRect {
+					.format(absolute, inherit, 0.5rem);
+					background-color:white;
+					margin-top:0.5rem;
+				}
+			}
+		}
+	}
+	form#inputRowsCont {
+		float:right;
+		margin:0px;
+
+		div[class $= "Row"] {
+			& > i {				
+				display:inline;
+				font-size:1.7rem;
+				color:@accentColor;
+			}
+			& > label {
+				display:none;
+			}
+			& > div[class $= "Cont"]{
+				position:absolute;
+				width:12.5rem;
+			}
+		}
+	}
+}
 /* Beyond mobile sizing */
-@media only screen and (min-width:960px) {
+//@media only screen and (min-width:960px) {
+@media only screen and (min-width:890px) {
 	div#progressCont {
 		.format(relative, 60rem, 7rem);
 		float:unset;
@@ -550,9 +573,8 @@ div#contactLink {
 				float:left;
 			}
 			& > label {
-				.labelFormatting > .formatting;
-				.format(absolute,15rem);
-
+				display:inline-block;
+				width:15rem;
 				float:left;
 			}
 			& > div[class $= "Cont"] {

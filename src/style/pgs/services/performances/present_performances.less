@@ -9,9 +9,8 @@
 #globalNS > .bg_img();
 
 h1#myMusicStandTitle {
-	.format(relative,40rem);
+	.format(relative,fit-content);
 	color:@textColor;
-	text-align:center;
 	display:block;
 	margin:4rem auto 2rem auto;
 	z-index: 2;
@@ -54,8 +53,12 @@ p.introParagraph {
 
 			.musicSheet {
 				transform:rotateY(0deg);
-				width:25rem;
+				width:100%;
 				margin:auto;
+
+				@media only screen and (min-width:400px) {
+					width:25rem;
+				}
 
 				article.musicPage {
 					backface-visibility: visible;

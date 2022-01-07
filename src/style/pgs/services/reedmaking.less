@@ -98,42 +98,44 @@
 	}
 }
 // Tabs
-[class = "tabCont"] {
-	.format(relative, 80%);
-	margin:0% 10% 5% 10%;
+.tabCont {
+	.format(relative, 100%);
+	@media only screen and (min-width:575px) {
+		width:90%;
+	}
+	//margin:0% 10% 5% 10%;
+	margin:auto;
+	margin-bottom:2.5rem;
 	display: block;
 	top:0%;
 
-	[class = "tabHeaderCont"] {
-		.format(inherit, 100%, 4rem);
+	.tabHeaderCont {
+		.format(inherit, 100%);
 		display: block;
 		background-color:@secondaryColor;
 		top:0%;
 
-		[class = "tabHeader"] {
-			.format(inherit, 20rem, 50%);
-			float:left;
-			margin:0px;
-			padding-left:2.5rem;
+		.tabHeader {
+			.format(inherit, fit-content);
+			margin:auto;
+			padding:0.75rem;
 			color:@textColor;
 			font-size:1.5rem;
-			top:25%;
 		}
-		[class = "tabButton"] {
-			.format(inherit, 2rem, 50%);
+		.tabButton {
+			.format(inherit, 2rem, 2rem);
 			background-color:@secondaryBackgroundColor;
 			clip-path:polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%);
 			transition:clip-path 1s;
-			top:25%;
-			right:1.5%;
-			float:right;
+			margin:auto;
 			z-index:1;
-		}
-		[class = "tabButton"]:hover {
-			cursor:pointer;
+
+			&:hover {
+				cursor: pointer;
+			}
 		}
 	}
-	[class = "tabBody"] {
+	.tabBody {
 		.format(inherit, 100%);
 		transition:height 1s;
 		background-color:@secondaryColor;
@@ -145,18 +147,20 @@
 			margin:0px;
 			padding:0rem 5%;
 			transition:padding 1s, visibility 1s;
-		}
-		p::before {
-			content:"> ";
+
+			&::before {
+				content:"> ";
+			}
 		}
 	}
 }
 .tabCont:nth-last-of-type(2) + h2 {
-	.format(relative,10%,5rem);
+	position:relative;
+	text-align:center;
 	text-decoration: underline;
 	color:@textColor;
 	font-size:2rem;
-	margin:auto;
+	margin-bottom:0px;
 }
 // The text headers of each container
 [class *= "Name"] {
@@ -180,44 +184,40 @@
 	height:100%;
 	bottom:0%;
 }
-[class = "priceBox"] {
+.priceBox {
 	.format(relative, 22rem, 75vh);
-	display:inline-block;
-	margin:2.5rem 3rem 8rem 3rem;
-	@media only screen and (max-width: 630px) {
-		display:block;
-	}
+	//margin:2.5rem 3rem 8rem 3rem;
+	margin:3rem auto;
 
-	[class = "nameCont"] {
+	.nameCont {
 		&:extend(.staticCont);
-		height:inherit;
 		height:100%;
 		bottom:0%;
 
-		[class = "nameBlend"] {
+		.nameBlend {
 			&:extend(.staticBlendCont);
 			.pricingCardStyling(@bgColor:@secondaryColor);
 
-			[class = "descriptionCont"] {
+			.descriptionCont {
 				&:extend(.staticCont);
 				height:75%;
 				bottom:0%;
 
-				[class = "descriptionBlend"] {
+				.descriptionBlend {
 					&:extend(.staticBlendCont);
 					.pricingCardStyling(@bgColor:#31668b);
 
-					[class = "pricingCont"] {
+					.pricingCont {
 						&:extend(.staticCont);
 						bottom:0%;	
 						height:45%;
 
-						[class = "pricingName"] {
+						.pricingName {
 							position:relative;
 							display:block;
 						}
 
-						[class = "pricingBlend"] {
+						.pricingBlend {
 							&:extend(.staticBlendCont);
 							.pricingCardStyling(@bgColor:@activeTextColor;@blendMode:soft-light);
 						}
@@ -227,7 +227,35 @@
 		}
 	}
 }
+@media only screen and (min-width:365px) {
+	.tabCont {
+		.tabHeaderCont {
+			height: 4rem;
 
+			.tabHeader {
+				float:left;
+				margin:0px;
+				padding:0px;
+				padding-left:2.5rem;
+				top:25%;
+			}
+			.tabButton {
+				top:25%;
+				right:1.5%;
+				float:right;
+			}	
+		}
+	}
+}
+@media only screen and (min-width:896px) {
+	.tabCont {
+		width:80%;
+	}
+	.priceBox {
+		margin:3rem;
+	}
+}
+/*
 div#contactLink {
 	.format(relative,20rem);
 	display:inline-block;
@@ -256,5 +284,5 @@ div#contactLink {
 		}
 	}
 }
-
+*/
 #globalNS > .social();
