@@ -5,6 +5,7 @@
 import { reedmakingIntro, aboutIntro, tabData } from '../data';
 import { ReedPricingInterface } from '../interfaces';
 import { createHeaderContent, createReedPriceBox } from './create';
+import { createReedTabButton } from './utilities';
 
 import { createElement, createTextElement, createImageElement/*, createContactLink*/ } from '../../../../../global/methods/elements';
 //import { IContactLink } from '../../../../../global/interfaces/general';
@@ -57,14 +58,11 @@ const loadTabs = ():void => {
 		// Header Content
 		// Header
 		let tabHeader:HTMLHeadingElement = createTextElement({element:'h3',text:tab.header,className:'tabHeader'});
-		// Button -> Stylized with CSS
-		let tabButton:HTMLDivElement = createElement({className:'tabButton'});
+		// Button
+		let tabButton:HTMLDivElement = createReedTabButton();
 
-		// Append header data to header container
-		tabHeaderCont.appendChild(tabHeader);
-		tabHeaderCont.appendChild(tabButton);
-
-		// Create container to hold dropdown content
+		// Body Content
+		// Container
 		let tabBody:HTMLDivElement = createElement({className:'tabBody'});
 		// Set height for managing open/close state
 		tabBody.style.height = "0rem";
@@ -77,17 +75,36 @@ const loadTabs = ():void => {
 			// Append paragraph description and break to dropdown
 			tabBody.appendChild(p);
 		});
+		// Append header data to header container
+		tabHeaderCont.appendChild(tabHeader);
+		tabHeaderCont.appendChild(tabButton);
 
 		/*  Event Listeners  */
-		tabButton.addEventListener('click', function() {
+		tabButton.addEventListener('click', function(e) {
+			//const NODE_TARGET:EventTarget = e.target as EventTarget;
+			//const NODE:SVGPathElement = NODE_TARGET as SVGPathElement;
+			//const NODE_NAME = NODE.nodeName;
+			//const NODE_NAME:string = NODE.nodeName;
 			const IS_OPEN:boolean = tabBody.style.height !== "0rem";
+
+			/*
+				If svg button was clicked but the path element inside 
+				was not (event target = "svg") -> trigger mouse click on path child
+			*/
+			/*if (NODE_NAME === "svg") {
+				// Get path child
+				const path:SVGPathElement = <SVGPathElement>tabButton.firstElementChild;
+				// Create a pointer event
+				const e:PointerEvent = new PointerEvent("click");
+				// Dispatch click event on path element
+				path.dispatchEvent(e);
+			}*/
 
 			// Tab Button animation
 			//tabButton.style.animationPlayState = "running";
 			//tabButton.style.animationName = IS_OPEN ? "minusPlus" : "plusMinus";
 
 			if (IS_OPEN) { // "Close" tab
-				tabButton.style.clipPath = "polygon(5% 40%, 40% 40%, 40% 5%, 60% 5%, 60% 40%, 95% 40%, 95% 60%, 60% 60%, 60% 95%, 40% 95%, 40% 60%, 5% 60%)";
 				tabBody.style.height = "0rem";
 
 				// Paragraph animation
@@ -97,7 +114,6 @@ const loadTabs = ():void => {
 				});
 			}
 			else { // "Open" tab
-				tabButton.style.clipPath = "polygon(5% 40%, 40% 40%, 45% 40%, 60% 40%, 65% 40%, 95% 40%, 95% 60%, 60% 60%, 55% 60%, 40% 60%, 35% 60%, 5% 60%)";
 				// Calculate height of individual paragraph elements to get container height
 				let contHeight:number = 0;
 
@@ -109,6 +125,9 @@ const loadTabs = ():void => {
 					p.style.visibility = "visible";
 					p.style.padding = "1rem 5%";
 				});
+
+				tabBody.addEventListener("transitionend",() => 
+				tabBody.style.height = "max-content",{once:true});
 
 				tabBody.style.height = `${contHeight}px`;
 			}

@@ -37,6 +37,9 @@ const createServiceCard = (cardData:IBoxLink<IImage>):HTMLDivElement => {
 const createSVGBorder = ():SVGElement => {
 	let svg:SVGElement = <SVGElement>document.createElementNS("http://www.w3.org/2000/svg","svg");
 
+	// Set view box of svg
+	svg.setAttribute("viewBox","0 0 300 400");
+
 	// Create polyline to define the border positions and style
 	let polyline:SVGPolylineElement = <SVGPolylineElement>document.createElementNS("http://www.w3.org/2000/svg","polyline");
 	// Add points to polyline 

@@ -30,4 +30,37 @@ function createIntroHeader(title:string):HTMLElement {
 	return headerTag;
 }
 
-export { createIntroHeader }
+const createReedTabButton = ():HTMLDivElement => {
+	const cont:HTMLDivElement = createElement({className:"tabButton"});
+
+	// Create vertical and horizontal bar of the plus sign
+	const vertBar:HTMLDivElement = createElement({className:"vertBar"});
+	const horBar:HTMLDivElement = createElement({className:"horBar"})
+
+	let isOpen = false;
+	// Add click listener to container to animate the plus/minus button
+	cont.addEventListener("click",() => {
+		if (isOpen) {
+			console.log("Minus to plus");
+			// Revert rotation back to normal
+			vertBar.style.transform = "translateX(-50%) rotateZ(0deg)";
+			horBar.style.transform = "translateY(-50%) rotateZ(0deg)";
+		}
+		else {
+			console.log("Plus to minus");
+			// Rotate the vertical bar 450deg
+			vertBar.style.transform = "translateX(-50%) rotateZ(450deg)";
+			// Rotate the horizontal bar 180deg	
+			horBar.style.transform = "translateY(-50%) rotateZ(180deg)";
+		}
+		isOpen = !isOpen;
+	});
+
+	// Append vertical and horizontal bar to container
+	cont.appendChild(vertBar);
+	cont.appendChild(horBar);
+
+	return cont;
+}
+
+export { createIntroHeader, createReedTabButton }

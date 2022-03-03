@@ -1,2 +1,3 @@
 declare function createIntroHeader(title: string): HTMLElement;
-export { createIntroHeader };
+declare const createReedTabButton: () => HTMLDivElement;
+export { createIntroHeader, createReedTabButton };

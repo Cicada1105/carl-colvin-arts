@@ -501,45 +501,42 @@ div#contactLink {
 	}
 }
 /* Beyond mobile sizing */
-//@media only screen and (min-width:960px) {
-@media only screen and (min-width:890px) {
-	div#progressCont {
-		.format(relative, 60rem, 7rem);
-		float:unset;
-		margin:2.5rem auto 7.75rem auto;
+@media only screen {
+	@media (min-width:890px) {
+		div#progressCont {
+			.format(relative, 54rem, 7rem);
+			float:unset;
+			margin:2.5rem auto 7.75rem auto;
 
-		& > div.circleCont {
-			height:100%;
-			display: inline-block;
-			margin:0 2.5rem;
+			& > div.circleCont {
+				height:100%;
+				display: inline-block;
+				margin:0 2rem;
 
-			& > p {
-				font-weight:initial;
-				font-size: 1rem;
-				margin-left:0px;
-				width:100%;
-			}
-			& > canvas.progressCircle {
-				left: 0px;
-				bottom: 0px;
-				z-index:1;
-			}
-			& > div.rectCont {
-				transform:unset;
-				bottom:0.5rem;
-				width:8rem;
+				& > p {
+					font-weight:initial;
+					font-size: 1rem;
+					margin-left:0px;
+					width:100%;
+				}
+				& > canvas.progressCircle {
+					left: 0px;
+					bottom: 0px;
+					z-index:1;
+				}
+				& > div.rectCont {
+					transform:unset;
+					bottom:0.5rem;
+					width:7rem;
+				}
 			}
 		}
-	}
-	form#inputRowsCont {
-		padding-bottom:8rem;
-		margin:auto;
-		margin-top:5rem;
-		float:unset;
-		width:75%;
-
-		& > div.selectionRow {
-			height:initial;
+		form#inputRowsCont {
+			padding-bottom:8rem;
+			margin:auto;
+			margin-top:5rem;
+			float:unset;
+			width:82%;
 
 			& > div.selectionRow {
 				height:initial;
@@ -558,127 +555,144 @@ div#contactLink {
 
 								& > div.selectionRow {
 									height:initial;
+
+									& > div.selectionRow {
+										height:initial;
+									}
 								}
 							}
 						}
 					}
 				}
 			}
-		}
-		div[class $= "Row"] {
-			display:block;
-			margin-top:5rem;
-
-			& > i {
-				float:left;
-			}
-			& > label {
-				display:inline-block;
-				width:15rem;
-				float:left;
-			}
-			& > div[class $= "Cont"] {
-				position:relative;
+			div[class $= "Row"] {
 				display:block;
-			}
-			& > div#emailCont {
-				width:fit-content;
+				margin-top:5rem;
 
-				& > input#email {
-					margin-left:13px;
+				& > i {
+					float:left;
 				}
-				& > span#emailErrorMsg {
-					position:absolute;
+				& > label {
+					display:inline-block;
+					width:15rem;
+					float:left;
+				}
+				& > div[class $= "Cont"] {
+					position:relative;
+					display:block;
+				}
+				& > div#emailCont {
+					width:fit-content;
+
+					& > input#email {
+						margin-left:13px;
+					}
+					& > span#emailErrorMsg {
+						position:absolute;
+					}
+				}
+			}
+		}
+		#submitRow {
+			.dimensions(75%,fit-content);
+			display:block;
+			margin:auto;
+
+			#submitCont {
+			}
+			div#disclaimerCont {
+				margin-right:0;
+			}
+		}
+		div#contactLink {
+			transform:unset;
+			display:block;
+			padding-bottom:5rem;
+			left:unset;
+		}
+	}
+	@media (min-width: 975px) {
+		div#progressCont {
+			width: 60rem;
+
+			& > div.circleCont {
+				margin:0rem 2.5rem;
+
+				& > div.rectCont {
+					width:8rem;
 				}
 			}
 		}
 	}
-	#submitRow {
-		.dimensions(75%,fit-content);
-		display:block;
-		margin:auto;
+	@media (min-width:1245px) {
+		div#pricingChartCont {
 
-		#submitCont {
+			& > div#selectionsCont {
+				display:inline-block;
+				width:50%;
+
+				& > div.selectionCont {
+
+					& > .selectionHeader {
+						text-align:left;
+						text-indent:3rem;
+						margin:unset;
+					}
+				}
+			}
+			& > div#chartCont {
+				display:inline-block;
+				float:right;
+				width:50%;
+
+				/*  Chart table   */
+				& > table {
+					width:35rem;
+
+					thead, tbody {
+						width: inherit;
+					}
+					& th {
+						&:extend(.table_cell_format);
+						.format(relative,33.33%);
+						border-bottom:3px solid @accentColor;
+						font-size:1.45rem;
+					}
+					& td {
+						&:extend(.table_cell_format);
+						font-size:1.2rem;
+					}
+				}
+			}
 		}
-		div#disclaimerCont {
-			margin-right:0;
+		div#progressCont {
+			width:72rem;
+
+			& > div.circleCont {
+				width:6rem;
+				margin:0 3rem;
+
+				& > p {
+					font-size: 1.3rem;
+				}
+				& > div.rectCont {
+					bottom:0.75rem;
+					width:9.25rem;
+					left:4.4rem;
+				}
+			}
 		}
-	}
-	div#contactLink {
-		transform:unset;
-		display:block;
-		padding-bottom:5rem;
-		left:unset;
+		form#inputRowsCont {
+			div[class $= "Row"] > label {
+				padding-left:2.5rem;
+			}
+		}
 	}
 }
 .table_cell_format() {
 	text-align:center;
 	padding-top:1rem;
 	padding-bottom:0.75rem;
-}
-@media only screen and (min-width:1245px) {
-	div#pricingChartCont {
-
-		& > div#selectionsCont {
-			display:inline-block;
-			width:50%;
-
-			& > div.selectionCont {
-
-				& > .selectionHeader {
-					text-align:left;
-					text-indent:3rem;
-					margin:unset;
-				}
-			}
-		}
-		& > div#chartCont {
-			display:inline-block;
-			float:right;
-			width:50%;
-
-			/*  Chart table   */
-			& > table {
-				width:35rem;
-
-				thead, tbody {
-					width: inherit;
-				}
-				& th {
-					&:extend(.table_cell_format);
-					.format(relative,33.33%);
-					border-bottom:3px solid @accentColor;
-					font-size:1.45rem;
-				}
-				& td {
-					&:extend(.table_cell_format);
-					font-size:1.2rem;
-				}
-			}
-		}
-	}
-	div#progressCont {
-		width:72rem;
-
-		& > div.circleCont {
-			width:6rem;
-			margin:0 3rem;
-
-			& > p {
-				font-size: 1.3rem;
-			}
-			& > div.rectCont {
-				bottom:0.75rem;
-				width:9.25rem;
-				left:4.4rem;
-			}
-		}
-	}
-	form#inputRowsCont {
-		div[class $= "Row"] > label {
-			padding-left:2.5rem;
-		}
-	}
 }
 
 #globalNS > .social();
