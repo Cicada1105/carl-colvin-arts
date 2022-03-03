@@ -14,28 +14,38 @@ import { IPerformance } from '../interfaces';
 
 const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 	let performances:IPerformance[] = await requestData<IPerformance[]>("performance/future");
-	performances.forEach((performance:IPerformance) => {
-		// Create performance section with currentt data 
-		let performanceRow:HTMLElement = createPerformanceRow(performance);
-		// Append performance row to body
-		document.body.appendChild(performanceRow);
-	})
-	/*catch((err:Error) => {
-		document.body.appendChild(
-			createTextElement({
-				element: "h3",
-				text: err.name,
-				idName: "errName"
-			})
-		);
-		document.body.appendChild(
-			createTextElement({
-				element: "h6",
-				text: err.message,
-				idName: "errMessage"
-			})
-		);
-	})*/
+
+	if (performances.length !== 0) {
+		performances.forEach((performance:IPerformance) => {
+			// Create performance section with currentt data 
+			let performanceRow:HTMLElement = createPerformanceRow(performance);
+			// Append performance row to body
+			document.body.appendChild(performanceRow);
+		})
+		/*catch((err:Error) => {
+			document.body.appendChild(
+				createTextElement({
+					element: "h3",
+					text: err.name,
+					idName: "errName"
+				})
+			);
+			document.body.appendChild(
+				createTextElement({
+					element: "h6",
+					text: err.message,
+					idName: "errMessage"
+				})
+			);
+		})*/
+	}
+	else {
+		document.body.appendChild(createTextElement({
+			element:"h2",
+			idName:"noPerformancesHeader",
+			text:"Sorry, no future performances today!"
+		}));
+	}
 }
 /*
 const loadContactLink:()=>void = ():void => {

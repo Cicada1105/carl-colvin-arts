@@ -48,7 +48,8 @@ const createSheetMusic = (sheets:SongInterface[]):HTMLDivElement => {
 	}
 	else {
 		sheetMusicCont.appendChild(createTextElement({
-			element:"h1",
+			element:"h2",
+			idName:"noMusicHeader",
 			text:"Sorry, no music today!"
 		}));
 	}
@@ -137,6 +138,39 @@ function createMusicDescription(desc:string):HTMLDivElement {
 	let descEl:HTMLParagraphElement = createTextElement({
 		text:desc
 	});
+
+	/*
+		If description overflow height > height of container
+			- Remove align-center property (Prevents users from seeing top of overflowed text)
+	*/
+	const pContHeight:number = 134;
+	// Create mutation observer to watch for changes of this element to get accurate scroll height reading
+	const observer:MutationObserver = new MutationObserver(function(mutList,observer) {
+		// Only one type and one attribute is being observed, so checks don't need to be made for these properties
+		const mutationRecord:MutationRecord = mutList[0];
+		const addedNodeList:NodeList = mutationRecord["addedNodes"];
+		const node:HTMLElement = <HTMLElement>addedNodeList[0]; // Holds the div#musicStandCont
+
+		// Query node for description paragraphs
+		const musicDescContainers:HTMLCollection = node.getElementsByClassName("musicDescCont");
+		/*
+			Loop through the music description containers, accessing the description paragraph 
+			and checking each overflow height accordingly
+		*/
+		for (const descCont of musicDescContainers) {
+			let descEl:HTMLParagraphElement = descCont.getElementsByTagName("p")[0];
+
+			if (descEl.scrollHeight > pContHeight)
+				descEl.style.alignItems = "flex-start";
+		}
+
+		// Disconnect ovserver
+		observer.disconnect();
+	});
+	observer.observe(document.body,{
+		childList: true
+	});
+
 	let trebleCleff:HTMLElement = createImageElement({
 		src:"../../../resources/pg_imgs/performance/treble-clef.png",
 		alt:"Treble Cleff"
