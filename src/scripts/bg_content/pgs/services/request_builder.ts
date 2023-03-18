@@ -37,7 +37,7 @@ abstract class RequestBuilderBase<T> {
 }
 export default class RequestBuilder<T> extends RequestBuilderBase<T> {
 	private _request:Request;
-	private _BASE_URL:string = "https://cca-server.herokuapp.com/api";
+	private _BASE_URL:string = "http://localhost:2020/api";
 
 	constructor() {
 		super();

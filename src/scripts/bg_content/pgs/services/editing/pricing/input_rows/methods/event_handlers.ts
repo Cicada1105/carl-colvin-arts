@@ -16,12 +16,14 @@ import { Next, Previous } from '../../shared/methods/update_progress'
 import { isValidEmail } from '../../../../../../../global/methods/utilities'
 
 function LiteratureTypeHandler(event:any):void {
-	//	event path holds HTMLCollection hierarchy of elements, starting at the element that fired the event,
+	//	event target holds HTMLCollection hierarchy of elements, starting at the element that fired the event,
 	//	of each parent until the last parent, window, is reached
-	//		-path[1] holds the container of the input
+	//		-target holds the input element
 	//		-nextElementSibling returns the possible child element
 	// Clear child element to allow for child update if it exists
-	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	let selectEl:HTMLSelectElement = event.target;
+	let parentEl:HTMLDivElement = <HTMLDivElement>selectEl.parentElement;
+	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
 	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
 	submitRowEl !== null && submitRowEl.remove();
@@ -29,10 +31,10 @@ function LiteratureTypeHandler(event:any):void {
 	// Display next row if current selection is not default option
 	if (event.target.value !== "none") {
 		// Get indexed location of selected value minus 1 (to remove default value) to get access to child data
-		let selectedLitPos:number = event.target.selectedIndex - 1;
+		let selectedLitPos:number = selectEl.selectedIndex - 1;
 		// Store value -> HTMLCollection of selectedOptions will only hold 
 		//	one value as long as 'multiple' attribute is omitted
-		userSelectedData.literatureType = event.target.selectedOptions[0].text;
+		userSelectedData.literatureType = selectEl.selectedOptions[0].text;
 
 		// Move progress bar
 		Next(1);
@@ -47,16 +49,18 @@ function LiteratureTypeHandler(event:any):void {
 }
 function GenreHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	let selectEl:HTMLSelectElement = event.target;
+	let parentEl:HTMLDivElement = <HTMLDivElement>selectEl.parentElement;
+	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
 	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
 	submitRowEl !== null && submitRowEl.remove();
 
 	// Display next row if current selection is not default option
-	if (event.target.value !== "none") {
+	if (selectEl.value !== "none") {
 		// Store value -> HTMLCollection of selectedOptions will only hold 
 		//	one value as long as 'multiple' attribute is omitted
-		userSelectedData.genre = event.target.selectedOptions[0].text;
+		userSelectedData.genre = selectEl.selectedOptions[0].text;
 
 		// Move progress bar
 		Next(2);
@@ -70,18 +74,20 @@ function GenreHandler(event:any) {
 }
 function EditingHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	let selectEl:HTMLSelectElement = event.target;
+	let parentEl:HTMLDivElement = <HTMLDivElement>selectEl.parentElement;
+	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
 	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
 	submitRowEl !== null && submitRowEl.remove();
 
 	// Display next row if current selection is not default option
-	if (event.target.value !== "none") {
+	if (selectEl.value !== "none") {
 		// Get indexed location of selected value minus 1 (to remove default value) to get access to child data
-		let selectedEditingTypePos:number = event.target.selectedIndex - 1;
+		let selectedEditingTypePos:number = selectEl.selectedIndex - 1;
 		// Store value -> HTMLCollection of selectedOptions will only hold 
 		//	one value as long as 'multiple' attribute is omitted
-		userSelectedData.editingType = event.target.selectedOptions[0].text;
+		userSelectedData.editingType = selectEl.selectedOptions[0].text;
 
 		// Move progress bar
 		Next(3);
@@ -94,14 +100,16 @@ function EditingHandler(event:any) {
 }
 function WordCountHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	let inputEl:HTMLInputElement = event.target;
+	let parentEl:HTMLDivElement = <HTMLDivElement>inputEl.parentElement;
+	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
 	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
 	submitRowEl !== null && submitRowEl.remove();
 
 	// Handle entered value if "Enter"/"return" keypress event has been triggered or entered value is not empty
 	if (((event.type === "keypress") && (event.charCode === 13)) || event.type === "change") {
-		let enteredValueStr:string = event.target.value;
+		let enteredValueStr:string = inputEl.value;
 		let enteredValueNum:number = parseInt(enteredValueStr);
 
 		// Display next row if current selection is valid
@@ -133,13 +141,15 @@ function WordCountHandler(event:any) {
 }
 function DeadlineHandler(event:any) {
 	// Clear child element to allow for child update if it exists
-	event.path[1].nextElementSibling !== null && <HTMLDivElement>event.path[1].nextElementSibling.remove();
+	let dateInputEl:HTMLInputElement = event.target;
+	let parentEl:HTMLDivElement = <HTMLDivElement>dateInputEl.parentElement;
+	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
 	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
 	submitRowEl !== null && submitRowEl.remove();
 
 	// Get value entered in by user through datetime-local input
-	let enteredDateStr:string = event.target.value;
+	let enteredDateStr:string = dateInputEl.value;
 	// Date.parse returns integer representing ms sine 
 	let enteredDateMs:number = Date.parse(enteredDateStr);
 
@@ -150,7 +160,7 @@ function DeadlineHandler(event:any) {
 		userSelectedData.deadline = enteredDateStr;
 
 		// Blur deadline input to make smoother UX
-		event.path[0].blur();
+		dateInputEl.blur();
 
 		// Move progress bar
 		Next(5);
@@ -166,9 +176,10 @@ async function EmailHandler(event:any) {
 	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
 	submitRowEl !== null && submitRowEl.remove();
 	// Entered email
-	let emailStr:string = event.target.value;
+	let inputEl:HTMLInputElement = event.target;
+	let emailStr:string = inputEl.value;
 	// Error message span container
-	let errorMsg:HTMLSpanElement = <HTMLSpanElement>event.path[0].nextElementSibling;
+	let errorMsg:HTMLSpanElement = <HTMLSpanElement>inputEl.nextElementSibling;
 
 	// Check if keyboard input and charCode is enter key: 13
 	if (((event.type === "keyup") && (event.keyCode === 13)) || event.type === "change") {
@@ -198,11 +209,11 @@ async function EmailHandler(event:any) {
 }
 function SubmitHandler(event:any) {
 	// Store button to be replaced by sending image
-	let submitBtn:HTMLInputElement = event.path[0];
+	let submitBtn:HTMLInputElement = event.target;
 	// Store message container to be used to update user
 	let msg:HTMLSpanElement = <HTMLSpanElement>submitBtn.nextElementSibling;
 	// Store parent in order to replace child element 
-	let parent:HTMLDivElement = event.path[1];
+	let parent:HTMLDivElement = <HTMLDivElement>submitBtn.parentElement;
 
 	let currentPricing:string;
 	// If there's a flat rate, $$/word and $$/hour are not included
@@ -219,7 +230,7 @@ function SubmitHandler(event:any) {
 		// Create iamge node to replace button
 		let sendingImg:HTMLImageElement = document.createElement("img");
 		// Set attributes
-		sendingImg.setAttribute("src","../../resources/pg_imgs/contact_imgs/sending_envelope.png");
+		sendingImg.setAttribute("src","../../resources/pg_imgs/contact/sending_envelope.png");
 		sendingImg.setAttribute("id","sending_img");
 
 		// Replace button with sending image
@@ -227,7 +238,7 @@ function SubmitHandler(event:any) {
 		// Update message 
 		msg.innerHTML = "Sending...";
 
-		// Imitate process of waiting
+		//Imitate process of waiting
 		setTimeout(() => {
 			// Notify user that message has been sent
 			msg.innerHTML = "Message Sent!";

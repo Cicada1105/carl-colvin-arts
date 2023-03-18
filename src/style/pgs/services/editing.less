@@ -363,18 +363,19 @@ form#inputRowsCont {
 			.format(absolute,100%);
 			color:@textColor;
 			text-align: center;
-			bottom:0;
 			left:50%;
 			transform: translateX(-50%);
 		}
 		input[type = "button"] {
 			background-color:@accentColor;
+			position:relative;
 			font-size:1rem;
 			border:none;
 			color:@textColor;
 			border-radius:5px;
 			display:block;
 			padding:10px 40px;
+			z-index: 1;
 
 			&:focus {
 				outline: 0;
