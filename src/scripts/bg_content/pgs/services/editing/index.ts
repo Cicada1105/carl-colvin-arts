@@ -8,8 +8,8 @@ import { litEditingServerData } from './data'
 import { IServerData } from './interfaces'
 //	Global
 import { loadBootstrap, isValidEmail, loadingScreen } from '../../../../global/methods/utilities'
-//import { createContactLink } from '../../../../global/methods/elements'
-//import { IContactLink } from '../../../../global/interfaces/general'
+import { createContactLink } from '../../../../global/methods/elements'
+import { IContactLink } from '../../../../global/interfaces/general'
 import requestData from '../request';
 
 const loadEditingPage = ():void => {
@@ -29,11 +29,11 @@ const loadEditingPage = ():void => {
 		// Load pricing info
 		loadPricing();
 		// Load contact link 
-		/*loadContactLink();*/
+		loadContactLink();
 		//await isValidEmail("guitarlegen@gmail.com.uk") && alert("Valid Email");
 	})
 }
-/*
+
 const loadContactLink = ():void => {
 	let linkData:IContactLink = {
 		text: "Request More Info",
@@ -43,6 +43,6 @@ const loadContactLink = ():void => {
 	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
 	document.body.appendChild(contactLinkCont);
 }
-*/
+
 
 export { loadEditingPage }

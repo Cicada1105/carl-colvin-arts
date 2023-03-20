@@ -13,8 +13,7 @@ import { request } from './request'
 
 // Image path
 const isHome:boolean = window.location.pathname.includes("index");
-const sending_img_path:string = (isHome ? "./" : "../") + "resources/pg_imgs/contact_imgs/sending_envelope.png";
-//const sending_img_path:string = "/resources/pg_imgs/contact_imgs/sending_envelope.png";
+const sending_img_path:string = (isHome ? "./" : "../") + "resources/pg_imgs/contact/sending_envelope.png";
 
 const submitForm = async (event:any):Promise<void> => {
 	event.preventDefault();
@@ -22,6 +21,7 @@ const submitForm = async (event:any):Promise<void> => {
 	// Check to make sure each field has been filled out
 	if (await fieldsCompleted()) {
 		let form:HTMLFormElement = event.target;
+		console.log(event);
 		// Get container holding all rows of contact form
 		let rows_cont:HTMLDivElement = <HTMLDivElement>form.lastElementChild;
 		// Get submit container to access submit button
@@ -47,37 +47,27 @@ const submitForm = async (event:any):Promise<void> => {
 		// Update message
 		submit_msg.innerHTML = "Sending...";
 
-		setTimeout(() => {
-			submit_msg.innerHTML = "Message Sent!";
-			submit_cont.replaceChild(submit_btn, sending_img);
-		},2000);
-		setTimeout(() => {
-			submit_msg.innerHTML = "";
-			name.value = "";
-			email.value = "";
-			subject.value = "none";
-			body.value = "";
-		},4000);
-		/*request(name.value,email.value,subject.value,body.value).then((res) => {
+		request(name.value,email.value,subject.value,body.value).then((res) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);
-			alert();
 			// Update message
 			submit_msg.innerHTML = "Message Sent!";
-
-			console.log(res);
 		}).catch((err) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);
 			// Update message
 			submit_msg.innerHTML = "Error sending email";
-
-			console.log(err);
+		}).finally(() => {
 			// Clear message after some time
 			setTimeout(function() {
 				submit_msg.innerHTML = "";
 			},4000);
-		});*/
+
+			name.value = "";
+			email.value = "";
+			subject.value = "none";
+			body.value = "";
+		});
 	}
 }
 

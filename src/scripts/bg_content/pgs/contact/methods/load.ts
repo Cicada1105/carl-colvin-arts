@@ -3,16 +3,16 @@
 //  methods
 import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
 //	interfaces
-import { IImageLink } from '../../../../global/interfaces/general';
+//import { IImageLink } from '../../../../global/interfaces/general';
 // 	Local
 //	data
-import { linkData } from '../data'
+import { formData } from '../data'
 //  methods
-//import { createRows } from './rows'
-//import { submitForm } from '../form_submit_methods/submit'
+import { createRows } from './rows'
+import { submitForm } from '../form_submit_methods/submit'
 
 const IMG_FOLDER:string = "../resources/pg_imgs/contact";
-/*
+
 const loadForm = () => {
 	// Create container to hold contact form
 	let formCont:HTMLDivElement = createElement({
@@ -38,9 +38,9 @@ const loadForm = () => {
 	document.body.appendChild(formCont);
 
 	// Set screen position to fixed if on contact page (removes unintentional space below)
-	document.body.style.position = window.location.pathname.includes("contact") ? "fixed" : "initial";
+	//document.body.style.position = window.location.pathname.includes("contact") ? "fixed" : "initial";
 }
-*/
+/*
 const loadHeaderSection = ():void => {
 	let section:HTMLElement = createElement({
 		element:"section",
@@ -116,4 +116,5 @@ const loadSocialMediaLinks = ():void => {
 	document.body.appendChild(section);
 }
 
-export { loadHeaderSection, loadServerGraphic, loadSocialMediaLinks }
+export { loadHeaderSection, loadServerGraphic, loadSocialMediaLinks }*/
+export { loadForm }

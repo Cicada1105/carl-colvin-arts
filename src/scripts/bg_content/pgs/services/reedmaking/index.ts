@@ -2,7 +2,7 @@
 //	Global
 import { loadingScreen } from '../../../../global/methods/utilities';
 //	Local
-import { loadIntroData, loadTabs, loadPricings/*, loadContactLink*/ } from './methods/load'
+import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './methods/load'
 
 const loadReedmakingPage = ():void => {
 	// Load data introducing reeds to user
@@ -13,9 +13,11 @@ const loadReedmakingPage = ():void => {
 	const loadText:HTMLElement = loadingScreen();
 	document.body.appendChild(loadText);
 	// Load the reed pricings
-	loadPricings().then(() => loadText.remove());
-	// Load link to contact page, using current page as reference
-	//loadContactLink();
+	loadPricings().then(() => {
+		loadText.remove()
+		// Load link to contact page, using current page as reference
+		loadContactLink();
+	});
 }
 
 

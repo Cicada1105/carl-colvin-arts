@@ -1,2 +1,3 @@
 declare const loadPerformances: () => Promise<void>;
-export { loadPerformances };
+declare const loadContactLink: () => void;
+export { loadPerformances, loadContactLink };

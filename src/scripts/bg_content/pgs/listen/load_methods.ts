@@ -3,10 +3,10 @@
 // Imports
 // 	interfaces
 import { AudioInterface, VideoInterface, RowInterface } from './interfaces'
-//import { IContactLink } from '../../../global/interfaces/general'
+import { IContactLink } from '../../../global/interfaces/general'
 // 	methods
 import { createMediaCont } from './methods/create_methods'
-import { createElement, createTextElement/*, createContactLink*/ } from '../../../global/methods/elements'
+import { createElement, createTextElement, createContactLink } from '../../../global/methods/elements'
 
 type Media = AudioInterface | VideoInterface;
 
@@ -72,7 +72,7 @@ const loadCanvasWave = ():void => {
 
 	document.body.appendChild(cvs);
 }
-/*
+
 const loadContactLink = ():void => {
 	let linkData:IContactLink = {
 		text: "Request Song Info",
@@ -82,5 +82,5 @@ const loadContactLink = ():void => {
 	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
 	document.body.appendChild(contactLinkCont);
 }
-*/
-export { loadMediaRow, loadCanvasWave/*, loadContactLink*/ }
+
+export { loadMediaRow, loadCanvasWave, loadContactLink }

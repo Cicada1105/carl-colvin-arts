@@ -5,7 +5,7 @@
 // Imports
 import { createTextElement } from '../../../../../global/methods/elements';
 import { loadBootstrap, loadingScreen } from '../../../../../global/methods/utilities';
-import { loadPerformances/*, loadContactLink*/ } from './methods/load';
+import { loadPerformances, loadContactLink } from './methods/load';
 
 const loadFuturePerformances = ():void => {
 	// Create header for future performancecs page
@@ -26,7 +26,7 @@ const loadFuturePerformances = ():void => {
 		loadingText.remove();
 
 		// Load link to contact page
-		//loadContactLink();
+		loadContactLink();
 	});
 }
 

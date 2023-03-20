@@ -110,9 +110,6 @@ const loadButtonInput = (input:IButton):HTMLDivElement => {
 
 	// Add event listener to handle submitting form 
 	submitBtn.addEventListener("submit",submitForm);
-	/*submitBtn.addEventListener("click",(event:any) => {
-		submitForm(event);
-	});*/
 	
 	// Create container to be used to display messages about the form status
 	let msgCont:HTMLSpanElement = createElement({element:"span",idName:"formMessage"});

@@ -43,14 +43,6 @@ const createInputCont = (inputEl:InputType):HTMLDivElement => {
 	//		element to display message for incomplete field
 	let errorMsg:HTMLParagraphElement = createTextElement({text:"*", className:"errorMsg"});
 
-	// Set event listener for input tag focus to active animation
-	inputEl.addEventListener("focus",() => {
-		spanAnimation.style.animationName = "inputFocus";
-	});
-	inputEl.addEventListener("blur",() => {
-		spanAnimation.style.animationName = "inputUnfocus";
-	});
-
 	cont.appendChild(inputEl);
 	cont.appendChild(spanAnimation);
 	cont.appendChild(errorMsg);
@@ -67,8 +59,6 @@ const createTextCont = (textData:IGenericInput<IText>):HTMLDivElement => {
 	// Set attribute for type and placeholder
 	txtInput.setAttribute("type", textData.data.type);
 	txtInput.setAttribute("placeholder", textData.data.placeholder);
-	// Set autocomplete to off
-	txtInput.setAttribute("autocomplete", "off");
 
 	let cont:HTMLDivElement = createInputCont(txtInput);
 
@@ -97,8 +87,6 @@ const createTextAreaCont = (textAreaData:IGenericInput<ITextArea>):HTMLDivElemen
 	// Set attribute for rows and columns
 	txtAreaInput.setAttribute("rows", textAreaData.data.rows);
 	txtAreaInput.setAttribute("cols", textAreaData.data.cols);
-	// Set autocomplete to off
-	txtAreaInput.setAttribute("autocomplete", "off");
 
 	let cont:HTMLDivElement = createInputCont(txtAreaInput);
 

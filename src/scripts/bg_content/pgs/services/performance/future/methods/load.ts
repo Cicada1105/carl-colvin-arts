@@ -7,10 +7,10 @@
 //    methods
 import requestData from '../../../request';
 import { createPerformanceRow } from './create';
-import { createElement, createTextElement/*, createContactLink*/ } from '../../../../../../global/methods/elements';
+import { createElement, createTextElement, createContactLink } from '../../../../../../global/methods/elements';
 //    interfaces
 import { IPerformance } from '../interfaces';
-//import { IContactLink } from '../../../../../../global/interfaces/general';
+import { IContactLink } from '../../../../../../global/interfaces/general';
 
 const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 	let performances:IPerformance[] = await requestData<IPerformance[]>("performance/future");
@@ -47,7 +47,7 @@ const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 		}));
 	}
 }
-/*
+
 const loadContactLink:()=>void = ():void => {
 	let linkData:IContactLink = {
 		text: "Request Performance",
@@ -57,6 +57,5 @@ const loadContactLink:()=>void = ():void => {
 	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
 	document.body.appendChild(contactLinkCont);
 }
-*/
 
-export { loadPerformances/*, loadContactLink*/ }
+export { loadPerformances, loadContactLink }

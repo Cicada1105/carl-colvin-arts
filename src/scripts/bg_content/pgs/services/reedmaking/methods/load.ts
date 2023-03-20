@@ -7,8 +7,8 @@ import { ReedPricingInterface } from '../interfaces';
 import { createHeaderContent, createReedPriceBox } from './create';
 import { createReedTabButton } from './utilities';
 
-import { createElement, createTextElement, createImageElement/*, createContactLink*/ } from '../../../../../global/methods/elements';
-//import { IContactLink } from '../../../../../global/interfaces/general';
+import { createElement, createTextElement, createImageElement, createContactLink } from '../../../../../global/methods/elements';
+import { IContactLink } from '../../../../../global/interfaces/general';
 import requestData from '../../request';
 
 const loadIntroData = ():void => {
@@ -183,7 +183,7 @@ const loadPricings = async ():Promise<void> => {
 		);
 	})*/
 }
-/*
+
 const loadContactLink = ():void => {
 	let linkData:IContactLink = {
 		text: "Request Reeds",
@@ -193,6 +193,5 @@ const loadContactLink = ():void => {
 	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
 	document.body.appendChild(contactLinkCont);
 }
-*/
 
-export { loadIntroData, loadTabs, loadPricings/*, loadContactLink*/ }
+export { loadIntroData, loadTabs, loadPricings, loadContactLink }

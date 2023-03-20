@@ -9,7 +9,7 @@ import { loadBootstrap, loadingScreen } from '../../../global/methods/utilities'
 //    data
 import { audioData, videoData } from './data'
 //    methods
-import { loadMediaRow, loadCanvasWave/*, loadContactLink*/ } from './load_methods'
+import { loadMediaRow, loadCanvasWave, loadContactLink } from './load_methods'
 //    interfaces
 import { RowInterface } from './interfaces'
 
@@ -40,7 +40,7 @@ import { RowInterface } from './interfaces'
    Promise.all([sketchesPromise,poemPromise,kaRaZenPromise]).then(() => loadingText.remove());
 
 	// Load link to contact page, using current page as reference
-	//loadContactLink();
+	loadContactLink();
  }
 
  export { loadListenPage }

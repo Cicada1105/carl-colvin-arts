@@ -11,8 +11,8 @@ import { createPageSection } from './generic';
 //		interfaces
 import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
 //	Global
-import { createTextElement/*, createContactLink*/ } from '../../../../../../global/methods/elements';
-//import { IContactLink } from '../../../../../../global/interfaces/general';
+import { createTextElement, createContactLink } from '../../../../../../global/methods/elements';
+import { IContactLink } from '../../../../../../global/interfaces/general';
 import requestData from '../../../request';
 
 const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
@@ -156,7 +156,7 @@ const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 		);
 	})*/
 }
-/*
+
 const loadContactLink:()=>void = ():void => {
 	let linkData:IContactLink = {
 		text: "Request Performance Info",
@@ -166,8 +166,8 @@ const loadContactLink:()=>void = ():void => {
 	let contactLinkCont:HTMLDivElement = createContactLink(linkData);
 	document.body.appendChild(contactLinkCont);
 }
-*/
+
 export {
 	loadRepertoire, loadCollaborators, 
-	loadAnecdotes/*, loadContactLink*/
+	loadAnecdotes, loadContactLink
 }
