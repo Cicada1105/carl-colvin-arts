@@ -21,7 +21,6 @@ const submitForm = async (event:any):Promise<void> => {
 	// Check to make sure each field has been filled out
 	if (await fieldsCompleted()) {
 		let form:HTMLFormElement = event.target;
-		console.log(event);
 		// Get container holding all rows of contact form
 		let rows_cont:HTMLDivElement = <HTMLDivElement>form.lastElementChild;
 		// Get submit container to access submit button
@@ -39,7 +38,12 @@ const submitForm = async (event:any):Promise<void> => {
 		// Store input data
 		let name:HTMLInputElement = form.querySelector("#name") as HTMLInputElement;
 		let email:HTMLInputElement = form.querySelector("#email") as HTMLInputElement;
-		let subject:HTMLInputElement = form.querySelector("#subject") as HTMLInputElement;
+		// Retrieve the select element containing subject info
+		let subjectSelect:HTMLSelectElement = form.querySelector("#subject") as HTMLSelectElement;
+		// Retrieve the option that the user has selected
+		let subject:HTMLOptionElement = subjectSelect.selectedOptions[0] as HTMLOptionElement;
+		// Retrieve the Option Group element associated with the selected option
+		let group:HTMLOptGroupElement = subject.parentElement as HTMLOptGroupElement;
 		let body:HTMLInputElement = form.querySelector("#message") as HTMLInputElement;
 
 		// Replace button with image
@@ -47,7 +51,7 @@ const submitForm = async (event:any):Promise<void> => {
 		// Update message
 		submit_msg.innerHTML = "Sending...";
 
-		request(name.value,email.value,subject.value,body.value).then((res) => {
+		request(name.value,email.value,`${group.label} - ${subject.value}`,body.value).then((res) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);
 			// Update message
@@ -121,7 +125,7 @@ const isValidName = (name:string):Promise<boolean> => {
 	return new Promise((resolve) => {
 		let isValid:boolean = true;
 
-		let nameMatch:string[] = name.match(/[^A-Za-z-]/) ?? [];
+		let nameMatch:string[] = name.match(/[^\'\"\x20A-Za-z/.?!-]/) ?? [];
 		isValid = (nameMatch).length === 0;
 
 		resolve(isValid);
@@ -131,7 +135,7 @@ const isValidMessage = (msg:string):Promise<boolean> => {
 	return new Promise((resolve) => {
 		let isValid:boolean = true;
 
-		let msgMatch:string[] = msg.match(/[^\w\s]/) ?? [];
+		let msgMatch:string[] = msg.match(/[^\'\"\x20A-Za-z0-9/.?!-]/) ?? [];
 		isValid = (msgMatch).length === 0;
 
 		resolve(isValid);
