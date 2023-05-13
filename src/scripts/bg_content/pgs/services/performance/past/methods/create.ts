@@ -93,6 +93,14 @@ const createCollaboratorCard:(collaboratorCardData:ICollaborator)=>HTMLElement =
 		]
 	});
 
+	// Create article for collaborator's description
+	let collaboratorDesc: HTMLElement = createTextElement({
+		element: "article",
+		text: data['description']
+	});
+	// Append article description to collaborator card
+	foreignObj.appendChild(collaboratorDesc);
+
 	// Create collaborator outline, passing in html elements 
 	let svgOutlineData:ICard = {
 		foreignObject:foreignObj,

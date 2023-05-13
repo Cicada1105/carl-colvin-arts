@@ -21,6 +21,7 @@ interface RepertoireInterface {
     date: string;
 }
 interface CollaboratorInterface extends GenericUserInterface {
+    description: string;
 }
 interface AnecdoteInterface extends GenericUserInterface {
     anecdote: string;

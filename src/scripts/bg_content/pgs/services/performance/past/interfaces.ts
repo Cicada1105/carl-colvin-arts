@@ -27,7 +27,9 @@ interface RepertoireInterface {
 	instruments:string[];
 	date:string;
 }
-interface CollaboratorInterface extends GenericUserInterface { }
+interface CollaboratorInterface extends GenericUserInterface { 
+	description: string;
+}
 interface AnecdoteInterface extends GenericUserInterface { 
 	anecdote:string;
 }
