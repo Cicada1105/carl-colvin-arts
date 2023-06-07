@@ -13,7 +13,7 @@ import { loadMediaRow, loadCanvasWave, loadContactLink } from './load_methods'
 //    interfaces
 import { RowInterface } from './interfaces'
 
- const loadListenPage = ():any => {
+ const loadListenPage = async ():Promise<void> => {
  	// Create header
  	let header:HTMLHeadingElement = createTextElement({
  		element:"h3",
@@ -32,12 +32,17 @@ import { RowInterface } from './interfaces'
    let loadingText:HTMLElement = loadingScreen();
    document.body.appendChild(loadingText);
 
-   let sketchesPromise:Promise<void> = loadMediaRow(audioData['sketches'] as RowInterface).then(() => loadCanvasWave());
-   let poemPromise:Promise<void> = loadMediaRow(videoData['poem-reading'] as RowInterface).then(() => loadCanvasWave());
-   let kaRaZenPromise:Promise<void> = loadMediaRow(audioData['ka-ra-zen'] as RowInterface);
+   // Load sketches
+   await loadMediaRow(audioData['sketches'] as RowInterface);
+   loadCanvasWave();
+   // Load poem reading
+   await loadMediaRow(videoData['poem-reading'] as RowInterface);
+   loadCanvasWave();
+   // Load Ka Ra Zen performance
+   await loadMediaRow(audioData['ka-ra-zen'] as RowInterface);
 
    // Remove loading text after all audio and media is done loading
-   Promise.all([sketchesPromise,poemPromise,kaRaZenPromise]).then(() => loadingText.remove());
+   loadingText.remove();
 
 	// Load link to contact page, using current page as reference
 	loadContactLink();

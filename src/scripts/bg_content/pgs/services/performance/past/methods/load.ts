@@ -30,36 +30,41 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 	// Append container to body
 	document.body.appendChild(repertoireCont);
 
-	// Make request to get past performances
-	let performances:IRepertoire[] = await requestData<IRepertoire[]>("performances/past");
-		// Remove loading text 
-		repertoireCont.removeChild(loadingTxt);
+	let performances:IRepertoire[] = [];
+	try {
+		// Make request to get past performances
+		 performances = await requestData<IRepertoire[]>("performances/past");
+	} catch(e) {
+		console.error(e);
+	}
+	// Remove loading text 
+	repertoireCont.removeChild(loadingTxt);
 
+	// Check if there are any performances
+	if (performances.length === 0) {
+		repertoireCont.appendChild(
+			createTextElement({
+				element: "h3",
+				text: "No Performances At This Time",
+				className: "errName"
+			})
+		);
+		repertoireCont.appendChild(
+			createTextElement({
+				element: "h4",
+				text: "Check back at another time",
+				className: "errMessage"
+			})
+		);
+	}
+	else {
 		performances.forEach((performance:IRepertoire) => {
 			// Create performance card with current performance data
 			let performanceCard:HTMLElement = createPerformanceCard(performance);
 			// Append performance card to parent container
 			repertoireCont.appendChild(performanceCard);
-		});	
-	/*catch((err:Error) => {
-		// Remove loading text 
-		repertoireCont.removeChild(loadingTxt);
-
-		repertoireCont.appendChild(
-			createTextElement({
-				element: "h3",
-				text: err.name,
-				idName: "errName"
-			})
-		);
-		repertoireCont.appendChild(
-			createTextElement({
-				element: "h6",
-				text: err.message,
-				idName: "errMessage"
-			})
-		);
-	})*/
+		});
+	}
 }
 const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 	// Create container for holding collaborators
@@ -76,11 +81,34 @@ const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 	// Append container to body
 	document.body.appendChild(collaboratorsCont);
 
-	// Make request to get collaborators
-	let collaborators:ICollaborator[] = await requestData<ICollaborator[]>("performances/past/collaborators");
-		// Remove loading text
-		collaboratorsCont.removeChild(loadingTxt);
+	let collaborators:ICollaborator[] = [];
+	try {
+		// Make request to get collaborators
+		 collaborators = await requestData<ICollaborator[]>("performances/past/collaborators");
+	} catch(e) {
+		console.error(e);
+	}
+	// Remove loading text
+	collaboratorsCont.removeChild(loadingTxt);
 
+	// Check if there are any collaborators
+	if (collaborators.length === 0) {
+		collaboratorsCont.appendChild(
+			createTextElement({
+				element: "h3",
+				text: "No Collaborators At This Time",
+				className: "errName"
+			})
+		);
+		collaboratorsCont.appendChild(
+			createTextElement({
+				element: "h4",
+				text: "Check back at another time",
+				className: "errMessage"
+			})
+		);
+	}
+	else {
 		// Append collaborators 
 		collaborators.forEach((collaborator:ICollaborator) => {
 			// Create collaborator card with current collaborator data
@@ -88,25 +116,7 @@ const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 			// Append collaborator card to parent container
 			collaboratorsCont.appendChild(collaboratorCard);
 		});	
-	/*catch((err:Error) => {
-		// Remove loading text
-		collaboratorsCont.removeChild(loadingTxt);
-
-		collaboratorsCont.appendChild(
-			createTextElement({
-				element: "h3",
-				text: err.name,
-				idName: "errName"
-			})
-		);
-		collaboratorsCont.appendChild(
-			createTextElement({
-				element: "h6",
-				text: err.message,
-				idName: "errMessage"
-			})
-		);
-	})*/
+	}
 }
 const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 	// Create container for holding anecdotes
@@ -123,38 +133,42 @@ const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 	// Append container to body
 	document.body.appendChild(anecdotesCont);
 
-	// Make request to get anecdotes
-	let anecdotes:IAnecdote[] = await requestData<IAnecdote[]>("performances/past/anecdotes");
-		// Remove loading text 
-		anecdotesCont.removeChild(loadingTxt);
-		
+	let anecdotes:IAnecdote[] = [];
+	try {
+		// Make request to get anecdotes
+		 anecdotes = await requestData<IAnecdote[]>("performances/past/anecdotes");
+	} catch(e) {
+		console.error(e);
+	}
+	// Remove loading text 
+	anecdotesCont.removeChild(loadingTxt);
+	
+	// Check if there are any anecdotes
+	if (anecdotes.length === 0) {
+		anecdotesCont.appendChild(
+			createTextElement({
+				element: "h3",
+				text: "No Anecdotes At This Time",
+				className: "errName"
+			})
+		);
+		anecdotesCont.appendChild(
+			createTextElement({
+				element: "h4",
+				text: "Check back at another time",
+				className: "errMessage"
+			})
+		);
+	}
+	else {
 		// Append anecdotes 
 		anecdotes.forEach((anecdote:IAnecdote) => {
 			// Create anecdote card with currrent anecdote data 
 			let anecdoteCard:HTMLElement = createAnecdoteCard(anecdote);
 			// Append anecdote card to parent container
 			anecdotesCont.appendChild(anecdoteCard);
-		})
-	/*catch((err) => {
-		// Remove loading text 
-		anecdotesCont.removeChild(loadingTxt);
-
-		// Append error message
-		anecdotesCont.appendChild(
-			createTextElement({
-				element: "h3",
-				text: err.name,
-				idName: "errName"
-			})
-		);
-		anecdotesCont.appendChild(
-			createTextElement({
-				element: "h6",
-				text: err.message,
-				idName: "errMessage"
-			})
-		);
-	})*/
+		});
+	}
 }
 
 const loadContactLink:()=>void = ():void => {

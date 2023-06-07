@@ -64,7 +64,16 @@ h1#previousPerformancesTitle {
 		color:@textColor;
 		text-align:center;
 		display:block;
-		margin:3rem auto;
+		margin:3rem auto 1rem auto;
+	}
+	// "Error" heading
+	& > h3.errName {
+		font-size:1.25rem;
+		margin-bottom: 0rem;
+	}
+	& > h4.errMessage {
+		color: @textColor;
+		font-size:1.17rem;
 	}
 	// Past performance card
 	& > section.pastPerformanceCard {
