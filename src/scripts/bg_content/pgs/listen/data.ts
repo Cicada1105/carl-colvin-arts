@@ -36,8 +36,8 @@ const audioData:IRow = {
 				alt: "Kao Ra Zen Lifestream"
 			},
 			source: {
-				src:`${MEDIA_PATH}/kenya-lifestream.wav`,
-				type:'audio/wav'
+				src:`${MEDIA_PATH}/kenya-lifestream.mp3`,
+				type:'audio/mp3'
 			}
 		}
 	}
