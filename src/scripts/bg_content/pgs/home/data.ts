@@ -48,7 +48,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Random Reeds",
-			content: "[Random Reeds full description]"
+			content: "I create reeds tailored to your preferences!"
 		}
 	},
 	{
@@ -72,7 +72,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Take My Hand",
-			content: '[Take My Hand Poem by Carl Colvin full description]'
+			content: "Poem written by Carl Colvin and published by Z Publishing's \"America's Emerging Poets\" anthology"
 		}
 	},
 	{
@@ -84,7 +84,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header:'A Father\'s Touch',
-			content:'[A Father\'s Touch full description]'
+			content:"Poem written by Carl Colvin and published by Z Publishing's \"America's Best Emerging Poets\" anthology"
 		}
 	},
 	{
@@ -96,7 +96,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Types of Reed Scraping",
-			content: "[Reed scraping full description]"
+			content: "I make and sell reeds at all different stages of the reedmaking process to aid whatever your reed needs are."
 		}
 	},
 	{

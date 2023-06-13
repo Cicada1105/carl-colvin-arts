@@ -12,7 +12,8 @@ const MEDIA_PATH:string = "../resources/media";
 
 const audioData:IRow = {
 	"sketches": {
-		description:"Excerpt from Hungarian Sketches by Béla Bartók with the DePaul University Chamber Orchestra",
+		description:"Excerpt from Hungarian Sketches by Béla Bartók with the DePaul " +
+					"University Chamber Orchestra",
 		media: {
 			controls:false,
 			image: {
@@ -26,9 +27,8 @@ const audioData:IRow = {
 		}
 	},
 	"ka-ra-zen": {
-		description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
-		"tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis " +
-		"nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		description:"Instrumental background of Kao Ra Zen and The Ungovernables's " + 
+					"Live Forever / The Lifestream including my contributions on oboe",
 		media: {
 			controls:false,
 			image: {
@@ -45,9 +45,8 @@ const audioData:IRow = {
 
 const videoData:IRow = {
 	"poem-reading": {
-		description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
-		"tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis " +
-		"nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		description:"Excerpt from my hybrid poetry and oboe performance at the " +
+					"Gallery Cabaret in Chicago, IL",
 		media: {
 			controls:false,
 			poster:`${IMG_PATH}/poem-reading.png`,
