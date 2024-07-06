@@ -36,7 +36,7 @@ const loadBootstrap = ():void => {
   // Create link tag for Bootstrap Font Awesome icons
   let bootstrapLink:any = document.createElement('script');
   // Add href attribute
-  bootstrapLink.setAttribute('src','https://kit.fontawesome.com/296e9763f7.js');
+  bootstrapLink.setAttribute('src','https://kit.fontawesome.com/de38352bbc.js');
 
   // Append Bootstrap cdn to head for font asesome icons
   document.head.appendChild(bootstrapLink);

@@ -1,3 +1,4 @@
 declare function createIntroHeader(title: string): HTMLElement;
 declare const createReedTabButton: () => HTMLDivElement;
-export { createIntroHeader, createReedTabButton };
+declare const toggleDialog: (name: string, description: string) => void;
+export { createIntroHeader, createReedTabButton, toggleDialog };

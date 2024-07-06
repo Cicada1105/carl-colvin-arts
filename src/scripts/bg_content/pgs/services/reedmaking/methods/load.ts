@@ -1,9 +1,9 @@
-// This file is meant to abstract from the index.ts file
+ // This file is meant to abstract from the index.ts file
 // File dependencies will be handled here
 
 // Imports
 import { reedmakingIntro, aboutIntro, tabData } from '../data';
-import { ReedPricingInterface } from '../interfaces';
+import type { ReedInterface, FixedPricingInterface, VariablePricingInterface, ReedPriceType } from '../interfaces';
 import { createHeaderContent, createReedPriceBox } from './create';
 import { createReedTabButton } from './utilities';
 
@@ -147,16 +147,17 @@ const loadPricings = async ():Promise<void> => {
 	document.body.appendChild(pricingHeader);
 
 	// Create container to be the flex box for reed pricings
-	let pricingCont:HTMLDivElement = createElement({idName:"priceCont"});
+	let pricingCont:HTMLUListElement = createElement({element:"ul", idName:"priceListings"});
 
-	let pricingData: ReedPricingInterface[] = await requestData<ReedPricingInterface[]>("reedmaking");
+	let pricingData: ReedInterface[] = await requestData<ReedInterface[]>("reedmaking");
+
 	// Create reed pricing container for each Reed
-	pricingData.forEach(reed => {
+	pricingData.forEach((reed:ReedInterface) => {
 		// Create container that will be used to help with sizing and positioning
 		// createElement's default element is 'div'
-		let reedCont:HTMLDivElement = createElement({className:'priceBox'});
+		let reedCont:HTMLLIElement = createElement({element:"li", className:'priceListing'});
 
-		let reedPricingBox:HTMLDivElement = createReedPriceBox(reed);
+		let reedPricingBox:HTMLElement = createReedPriceBox(reed);
 
 		// Append reed pricing box to the reed container
 		reedCont.appendChild(reedPricingBox);

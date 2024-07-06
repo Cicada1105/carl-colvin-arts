@@ -1,5 +1,4 @@
 // Imports
-import { ReedPricingInterface } from './interfaces'
 import { IBox } from '../../../../global/interfaces/general'
 
 const reedmakingIntro:IBox<string> = {

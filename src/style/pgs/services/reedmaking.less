@@ -198,60 +198,143 @@
 	color:@textColor;
 	top:0%;
 }
-/*  Rest of the styling goes here */
-#priceCont {
-	display:flex;
-	justify-content:space-around;
-	flex-flow:row wrap;
-}
 .pricingCardStyling(@bgColor;@blendMode:screen;) {
 	background-color:@bgColor;
 	mix-blend-mode: @blendMode;
 	height:100%;
 	bottom:0%;
 }
-.priceBox {
-	.format(relative, 22rem, 75vh);
-	//margin:2.5rem 3rem 8rem 3rem;
-	margin:3rem auto;
+/*  Rest of the styling goes here */
+dialog {
+	display: flex;
+	flex-flow: column nowrap;
+	background-color: @secondaryColor;
+	animation: 0.25s fadeIn 0s linear;
+	text-align: center;
+	color: @textColor;
+	height: 200px;
+	min-width: 300px;
+	max-width: 30%;
 
-	.nameCont {
-		&:extend(.staticCont);
-		height:100%;
-		bottom:0%;
+	&::backdrop {
+		animation: 0.25s fadeIn 0s linear;
+		background-color: rgba(0,0,0,0.25);
+		backdrop-filter: blur(12px);
+	}
 
-		.nameBlend {
-			&:extend(.staticBlendCont);
-			.pricingCardStyling(@bgColor:@secondaryColor);
-
-			.descriptionCont {
-				&:extend(.staticCont);
-				height:75%;
-				bottom:0%;
-
-				.descriptionBlend {
-					&:extend(.staticBlendCont);
-					.pricingCardStyling(@bgColor:#31668b);
-
-					.pricingCont {
-						&:extend(.staticCont);
-						bottom:0%;	
-						height:45%;
-
-						.pricingName {
-							position:relative;
-							display:block;
-						}
-
-						.pricingBlend {
-							&:extend(.staticBlendCont);
-							.pricingCardStyling(@bgColor:@activeTextColor;@blendMode:soft-light);
-						}
-					}
-				}
-			}	
+	form {
+		font-size: 1.25rem;
+		align-self: flex-end;
+	}
+	span {
+		&:hover {
+			cursor: pointer;
 		}
 	}
+	h4 {
+		margin: 0rem;
+	}
+}
+ul#priceListings {
+	--template-cols: 1;
+	position: relative;
+	display:grid;
+	grid-template-columns: repeat(var(--template-cols), 1fr);
+	padding: 0rem;
+	z-index: 2;
+
+	@media only screen and (min-width: 896px) {
+		--template-cols: 2;
+	}
+	@media only screen and (min-width: 1072px) {
+		--template-cols: 3;
+	}
+	@media only screen and (min-width: 1536px) {
+		--template-cols: 4;
+	}
+}
+li.priceListing {
+	margin:3rem 0rem;
+	padding: 0rem 2.5rem;
+	list-style: none;
+	color: @textColor;
+	text-align:center;
+
+	article.priceListingWrapper {
+		display: flex;
+		flex-flow:column nowrap;
+		height: 100%;
+
+		figure.reedFigure {
+			margin: 0rem;
+			flex-grow: 1;
+
+			img {
+				width: 100%;
+				margin-bottom: 0.5rem;
+			}
+			figcaption {
+				color: @textColor;
+				font-size: 1.25rem;
+				font-weight: bolder;
+			}
+		}
+		button.reedBtn {
+			background-color:@accentColor;
+			font-size:1rem;
+			border:none;
+			color:@textColor;
+			border-radius:5px;
+			padding:10px 40px;
+			width: fit-content;
+			margin: auto;
+			
+			&:focus {
+				background-color: @buttonHoverColor;
+			}
+			&:hover {
+				background-color:@buttonHoverColor;
+				cursor:pointer;	
+			}
+		}
+	}
+	// .nameCont {
+	// 	&:extend(.staticCont);
+	// 	height:100%;
+	// 	bottom:0%;
+
+	// 	.nameBlend {
+	// 		&:extend(.staticBlendCont);
+	// 		.pricingCardStyling(@bgColor:@secondaryColor);
+
+	// 		.descriptionCont {
+	// 			&:extend(.staticCont);
+	// 			height:75%;
+	// 			bottom:0%;
+
+	// 			.descriptionBlend {
+	// 				&:extend(.staticBlendCont);
+	// 				.pricingCardStyling(@bgColor:#31668b);
+
+	// 				.pricingCont {
+	// 					&:extend(.staticCont);
+	// 					bottom:0%;	
+	// 					height:45%;
+
+	// 					.pricingName {
+	// 						position:relative;
+	// 						display:block;
+	// 					}
+
+	// 					.pricingBlend {
+	// 						&:extend(.staticBlendCont);
+	// 						.pricingCardStyling(@bgColor:@activeTextColor;@blendMode:soft-light);
+	// 					}
+	// 				}
+	// 			}
+	// 		}	
+	// 	}
+	// }
 }
 @media only screen and (min-width:365px) {
 	.tabCont {
@@ -277,8 +360,16 @@
 	.tabCont {
 		width:80%;
 	}
-	.priceBox {
+	.priceListing {
 		margin:3rem;
+	}
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }
 

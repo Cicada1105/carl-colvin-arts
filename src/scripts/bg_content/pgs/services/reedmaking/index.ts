@@ -1,6 +1,6 @@
 // Imports
 //	Global
-import { loadingScreen } from '../../../../global/methods/utilities';
+import { loadBootstrap, loadingScreen } from '../../../../global/methods/utilities';
 //	Local
 import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './methods/load'
 
