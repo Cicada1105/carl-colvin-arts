@@ -4,7 +4,7 @@
 // Imports
 import { reedmakingIntro, aboutIntro, tabData } from '../data';
 import type { ReedInterface, FixedPricingInterface, VariablePricingInterface, ReedPriceType } from '../interfaces';
-import { createHeaderContent, createReedPriceBox } from './create';
+import { createHeaderContent, creatDialogBox, createReedPriceBox } from './create';
 import { createReedTabButton } from './utilities';
 
 import { createElement, createTextElement, createImageElement, createContactLink } from '../../../../../global/methods/elements';
@@ -143,6 +143,9 @@ const loadTabs = ():void => {
 }
 
 const loadPricings = async ():Promise<void> => {
+	// Load Dialog box to be updated based on current reed
+	creatDialogBox();
+	
 	let pricingHeader:HTMLHeadingElement = createTextElement({element:"h2",text:"Pricings"});
 	document.body.appendChild(pricingHeader);
 

@@ -46,7 +46,7 @@ const createRows = ():HTMLDivElement => {
 		data: formData.form.selectInput.data
 	});
 	// If directed from service, display subject accordingly
-	if (sessionStorage.length === 1) {
+	if (sessionStorage.getItem("from")) {
 		let from:string = <string>sessionStorage.getItem("from");
 		let selectEl:HTMLSelectElement = <HTMLSelectElement>selectCont.firstElementChild;
 

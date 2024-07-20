@@ -17,29 +17,27 @@
 	}
 	.navigation() {
 		#header {
-		    &:extend(.staticBar);
-		    top:0%;
-		    z-index: 3;
+	    &:extend(.staticBar);
+	    top:0%;
+	    z-index: 3;
 
-			@media only screen and (max-width: 575px) {
+			@media only screen and (max-width: 664px) {
 				filter:opacity(100%);
 			}
-		    ul[id = "navigation"] {
-		    	&:extend(.staticUL);
-				width:inherit;
-				height:100%;
+	    ul[id = "navigation"] {
+	    	&:extend(.staticUL);
+	    	.dimensions(inherit,100%);
+	    	display:flex;
+	    	align-items:center;
 
-				& > span#linksCont {
-					position:relative;
-					display:block;
-					float:right;
-					top:4px;
+				& > #linksCont {
+					display: inline-block;
 
-					@media only screen and (max-width: 575px) {
+					@media only screen and (max-width: 664px) {
+						.format(absolute,100%);
 						background-color: @secondaryBackgroundColor;
 						display:none;
-						width: 100%;
-						top:0px;
+						top:100%;
 
 						& > li {
 							display:block;
@@ -49,7 +47,8 @@
 				}
 				li {
 					&:extend(.staticLI);
-					padding:0.625rem 1.5rem 0.85rem 1.5rem;
+					display: inline-block;
+					padding:0.625rem 1.5rem;
 
 					ul[class = "subDir"] {
 						&:extend(.staticUL);
@@ -68,7 +67,7 @@
 							margin:0.65rem;
 						}
 
-						@media only screen and (max-width: 575px) {
+						@media only screen and (max-width: 664px) {
 							width:100%;
 							height:initial;
 							z-index: 1;
@@ -80,23 +79,8 @@
 						}
 					}
 				}
-				& > i {
-					position:absolute;
-					display:none;
-					font-size:1.5rem;
-					color:@textColor;
-					top:0.625rem;
-					right:1rem;
-					
-					@media only screen and (max-width: 575px) {
-						display:block;
-					}
-					&:hover {
-						cursor: pointer;
-					}
-				}
 				// Include hover affect on navigation
-				li:hover {
+				li:not(#cartLink,#menuHamburger):hover {
 					&:extend(.staticLIHover);
 
 					ul[class = "subDir"] {
@@ -113,9 +97,36 @@
 				}
 				// Home link has separate float than rest of navigation
 				#homeLink {
-					float:left;
+					margin-right:auto;
 				}
-		    }
+				#cartLink {
+					padding:0.625rem 1rem;
+
+					&:hover {
+						cursor: default;
+					}
+					span {
+						position: relative;
+						top:0.125rem;
+					}
+				}
+				#cartQty {
+					display: inline;
+					padding-left:0.5rem;
+				}
+				#menuHamburger {
+					display:none;
+					color:@textColor;
+					padding:0.625rem 1rem;
+					
+					@media only screen and (max-width: 664px) {
+						display:block;
+					}
+					&:hover {
+						cursor: pointer;
+					}
+				}
+		  }
 		}
 	}
 	.bg_canvas() {

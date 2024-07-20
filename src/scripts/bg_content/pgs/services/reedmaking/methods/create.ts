@@ -3,14 +3,15 @@
 
 // Imports
 //	interfaces
-import { 
+import type { 
 	ReedInterface, ReedPreview, 
 	ReedPriceType, PricingType,
 	FixedPricingInterface, VariablePricingInterface,
 	CategoryInterface
 } from '../interfaces';
-import { IBox, IImage } from '../../../../../global/interfaces/general';
-import { ISelectRow, ISelect, IOption } from '../../../../../global/interfaces/inputs';
+import type { IBox, IImage } from '../../../../../global/interfaces/general';
+import { CartAction, CustomEventProps, AddReedInterface } from '../../../../../global/interfaces/cart'
+import type { ISelectRow, ISelect, IOption } from '../../../../../global/interfaces/inputs';
 //	methods
 import { 
 	createElement, createTextElement, 
@@ -140,7 +141,14 @@ const createReedPreview = (preview: ReedPreview):HTMLElement => {
 
 // Method will take in a reed name and description and display a modal
 const createDescriptionModal = (reedData:ReedInterface):void => {
-	const dialogBox:HTMLDialogElement = document.createElement("dialog");
+	// Retrieve dialog containing form
+	const dialogBox:HTMLDialogElement = document.getElementsByTagName('dialog')[0];
+	// Retrieve form within the dialog
+	const form:HTMLFormElement = dialogBox.getElementsByTagName('form')[0];
+	// Retrieve title, title input field and content to display current reed data
+	const title:HTMLHeadingElement = form.getElementsByTagName('h4')[0];
+	const titleField:HTMLInputElement = <HTMLInputElement>document.getElementById('reedName');
+	const content:HTMLDivElement = <HTMLDivElement>form.getElementsByClassName('content')[0];
 
 /*
 	let test:ISelectRow[] = [];
@@ -169,17 +177,13 @@ const createDescriptionModal = (reedData:ReedInterface):void => {
 		console.log(test);
 	}
 */
-	const form:HTMLFormElement = document.createElement("form");
-	form.setAttribute("method", "dialog");
-
-	const title:HTMLHeadingElement = document.createElement("h4");
 	title.textContent = reedData['name'];
 
-	const content:HTMLDivElement = createElement({ className: 'content' });
+	titleField.setAttribute('value',reedData['name']);
 
 	if( (reedData['pricing'] as VariablePricingInterface).rates ) {
 		let varPricing: VariablePricingInterface = reedData['pricing'] as VariablePricingInterface;
-		let optionRow:HTMLDivElement = createElement({ className: 'reedOptionRow' });
+		let optionRow:HTMLDivElement = createElement({ className: 'reedPopupRow' });
 
 		let idName:string = varPricing['name'].toLowerCase().split(' ').join('-');
 		let label:HTMLLabelElement = createLabelElement({
@@ -204,22 +208,27 @@ const createDescriptionModal = (reedData:ReedInterface):void => {
 	}
 	else {
 		let staticPricing: FixedPricingInterface = reedData['pricing'] as FixedPricingInterface;
-		let hiddenInput:HTMLInputElement = createElement({
-			element: 'input',
-			idName: 'reedCost',
-		});
+		let hiddenInput:HTMLInputElement = document.createElement('input');
+
+		let fixedPriceCont:HTMLDivElement = createElement({ className: 'reedPopupRow' });
+		let fixedPriceLabel:HTMLParagraphElement = createTextElement({ text: 'Pricing' });
+		let fixedPriceText:HTMLParagraphElement = createTextElement({ text: `$${staticPricing.flatRate}` });
+
+		fixedPriceCont.appendChild(fixedPriceLabel);
+		fixedPriceCont.appendChild(fixedPriceText);
 
 		hiddenInput.setAttribute('name','cost');
 		hiddenInput.setAttribute('type','hidden');
 		hiddenInput.setAttribute('value',staticPricing['flatRate'].toString())
 
+		content.appendChild(fixedPriceCont);
 		content.appendChild(hiddenInput);
 	}
 
 	if (reedData['categories']) {
 		// Add categories as an input row
 		reedData['categories'].forEach(( category: CategoryInterface ) => {
-			let optionRow:HTMLDivElement = createElement({ className: 'reedOptionRow' });
+			let optionRow:HTMLDivElement = createElement({ className: 'reedPopupRow' });
 
 			let idName:string = category['name'].toLowerCase().split(' ').join('-');
 			let label:HTMLLabelElement = createLabelElement({
@@ -229,7 +238,7 @@ const createDescriptionModal = (reedData:ReedInterface):void => {
 
 			let select:HTMLSelectElement = createSelectElement({
 				idName,
-				optionRow: category['options'].map(( option: string ) => ({
+				options: category['options'].map(( option: string ) => ({
 					display: option,
 					value: option
 				}))
@@ -244,28 +253,112 @@ const createDescriptionModal = (reedData:ReedInterface):void => {
 		})	
 	}
 
+	// Create quantity row for user to select how many reeds they want
+	const reedRow:HTMLDivElement = createElement({
+		className: 'reedPopupRow'
+	});
+	const qtyLabel:HTMLLabelElement = createLabelElement({
+		text: 'Quantity',
+		forIn: 'quantity'
+	});
+	const qtyInput:HTMLInputElement = createElement({
+		element: 'input',
+		idName: 'quantity'
+	});
+	qtyInput.setAttribute('type','number');
+	qtyInput.setAttribute('name','quantity');
+	qtyInput.setAttribute('min','0');
+
+	reedRow.appendChild(qtyLabel);
+	reedRow.appendChild(qtyInput);
+
+	content.appendChild(reedRow);
+
+	dialogBox.showModal();
+}
+const creatDialogBox = ():void => {
+	const dialog:HTMLDialogElement = document.createElement('dialog');
+
+	const form:HTMLFormElement = document.createElement("form");
+	form.addEventListener('submit',function(e:Event) {
+		e.preventDefault();
+		const nameInput:HTMLInputElement = <HTMLInputElement>form.querySelector('[name="name"]');
+		const costInput:HTMLInputElement = <HTMLInputElement>form.querySelector('[name="cost"]');
+		const quantityInput:HTMLInputElement = <HTMLInputElement>form.querySelector('[name="quantity"]');
+
+		let data:CustomEventProps<AddReedInterface> = {
+			bubbles:true,
+			detail: {
+				action: CartAction.Add,
+				name:nameInput.value,
+				cost: parseFloat(costInput.value),
+				quantity:parseInt(quantityInput.value)
+			}
+		}
+		if ( form['category'] ) {
+			const categoryInput:HTMLSelectElement = <HTMLSelectElement>form.querySelector('[name="category"]');
+			data['detail']['category'] = categoryInput.value;
+		}
+		
+		let updateCartEvent:CustomEvent<AddReedInterface> = new CustomEvent('OnUpdateCart',data);
+		document.dispatchEvent(updateCartEvent);
+		dialog.close();
+		return false;
+	});
+
+	const closeButton:HTMLButtonElement = createElement({
+		element: 'button',
+		idName: 'dialogCloseBtn'
+	});
+	closeButton.setAttribute('autofocus','');
 	let closeButtonIcon:HTMLSpanElement = createElement({
 		element: "span",
 		className: "fa-solid fa-xmark"//fa-solid fa-x 	fas fa-chevron-up
 	});
+	closeButton.appendChild(closeButtonIcon);
+	closeButton.addEventListener("click",(e) => {
+		e.preventDefault();
+		dialog.close();
+	});
 
-	closeButtonIcon.addEventListener("click",() => dialogBox.remove())
+	const title:HTMLHeadingElement = document.createElement("h4");
+	// Add name as hidden input field to be sent with other data
+	const titleField:HTMLInputElement = createElement({
+		element: 'input',
+		idName: 'reedName'
+	});
+	titleField.setAttribute('name','name');
+	titleField.setAttribute('type','hidden');
 
-	form.appendChild(closeButtonIcon);
+	const content:HTMLDivElement = createElement({ className: 'content' });
 
-	dialogBox.appendChild(form);
-	dialogBox.appendChild(title);
-	dialogBox.appendChild(content);
+	let submitBtn:HTMLInputElement = createElement({ 
+		element: 'input', 
+		idName: 'reedSubmitBtn'
+	});
+	submitBtn.setAttribute('type','submit');
+	submitBtn.setAttribute( 'value', 'Add To Cart' );
 
-	dialogBox.addEventListener("close",() => dialogBox.remove());
-	
-	document.body.appendChild(dialogBox);
+	// Clear dialog data when closed
+	dialog.addEventListener('close', (e) => {
+		title.textContent = '';
+		titleField.value = '';
+		let numContentChildNodes:number = content.childElementCount;
+		for(let i = 0; i < numContentChildNodes; i++){ content.childNodes[0].remove(); }
+	});
 
-	dialogBox.showModal();
+	form.appendChild(closeButton);
+	form.appendChild(title);
+	form.appendChild(titleField);
+	form.appendChild(content);
+	form.appendChild(submitBtn);
+
+	dialog.appendChild(form);
+
+	document.body.appendChild(dialog);
 }
-
 const createProductOptions = (data: ISelectRow) => {
 
 }
 
-export { createHeaderContent, createReedPriceBox }
+export { createHeaderContent, createReedPriceBox, creatDialogBox }

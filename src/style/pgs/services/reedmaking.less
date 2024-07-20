@@ -206,13 +206,12 @@
 }
 /*  Rest of the styling goes here */
 dialog {
-	display: flex;
-	flex-flow: column nowrap;
+	font-size:1.25rem;
 	background-color: @secondaryColor;
 	animation: 0.25s fadeIn 0s linear;
 	text-align: center;
 	color: @textColor;
-	height: 200px;
+	min-height: 200px;
 	min-width: 300px;
 	max-width: 30%;
 
@@ -223,16 +222,65 @@ dialog {
 	}
 
 	form {
+		.dimensions(100%,inherit);
+		display: flex;
+		flex-flow:column nowrap;
 		font-size: 1.25rem;
 		align-self: flex-end;
 	}
-	span {
+	#dialogCloseBtn {
+		width: fit-content;
+		margin-left: auto;
+		background: none;
+		border:none;
+		color:unset;
+		font-size:inherit;
+
 		&:hover {
-			cursor: pointer;
+			cursor:pointer;
 		}
 	}
 	h4 {
 		margin: 0rem;
+	}
+	.content {
+		display: flex;
+		flex-flow: column nowrap;
+		flex:1 1 0;
+		padding:1rem;
+
+		* {
+			margin:0;
+			padding:0;
+		}
+		.reedPopupRow {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: space-between;
+			margin-bottom: 1rem;
+
+			select, input {
+				width: 45%;
+			}
+		}
+	}
+	#reedSubmitBtn {
+		background-color:@accentColor;
+		font-size:0.9rem;
+		border:none;
+		color:@textColor;
+		border-radius:5px;
+		padding:10px 25px;
+		width: fit-content;
+		margin: auto;
+
+		&:focus {
+			background-color: @buttonHoverColor;
+		}
+		&:hover {
+			background-color:@buttonHoverColor;
+			cursor:pointer;	
+		}
 	}
 }
 ul#priceListings {
