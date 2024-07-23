@@ -62,29 +62,5 @@ const createReedTabButton = ():HTMLDivElement => {
 
 	return cont;
 }
-const toggleDialog = (name:string, description:string):void => {
-	const dialogBox:HTMLDialogElement = document.createElement("dialog");
 
-	const title:HTMLHeadingElement = document.createElement("h4");
-	title.textContent = name;
-	const about:HTMLParagraphElement = document.createElement("p");
-	about.textContent = description;
-
-	const form:HTMLFormElement = document.createElement("form");
-	form.setAttribute("method", "dialog");
-
-	const btn:HTMLButtonElement = document.createElement("button");
-	btn.textContent = "Test";
-
-	form.appendChild(btn);
-
-	dialogBox.appendChild(title);
-	dialogBox.appendChild(about);
-	dialogBox.appendChild(form);
-
-	document.body.appendChild(dialogBox);
-
-	dialogBox.showModal();
-}
-
-export { createIntroHeader, createReedTabButton, toggleDialog }
+export { createIntroHeader, createReedTabButton }
