@@ -18,7 +18,7 @@ import {
 	createImageElement, createLabelElement,
 	createSelectElement
 } from '../../../../../global/methods/elements'
-import { createIntroHeader, toggleDialog } from './utilities';
+import { createIntroHeader } from './utilities';
 
 const IMG_PATH:string = "../../../resources/pg_imgs/reedmaking_imgs/";
 
