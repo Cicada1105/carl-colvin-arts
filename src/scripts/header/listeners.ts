@@ -80,7 +80,15 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
     break;
   }
 }
+function viewCartPage() {
+  const isHomePage:boolean = window.location.pathname.includes("index");
+  const isServicePage:boolean = window.location.pathname.includes("services/");
+  const isPerformancesPage:boolean = window.location.pathname.includes("performances/");
+  const rootDir:string = isPerformancesPage ? "../../../" : (isServicePage ? "../../" : (isHomePage ? "./" : "../"))
+
+  window.open(`${rootDir}pgs/cart.html`,'_self');
+}
 
 export {
-  updateCartListener
+  updateCartListener, viewCartPage
 }

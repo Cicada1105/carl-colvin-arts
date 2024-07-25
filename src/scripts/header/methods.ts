@@ -11,7 +11,7 @@ import { createElement, createTextElement } from '../global/methods/elements'
 import { getCurrentFile } from '../global/methods/utilities'
 // local
 import { links } from './data'
-import { updateCartListener } from './listeners'
+import { updateCartListener, viewCartPage } from './listeners'
 
 // Current page user is on
 const CURRENT_PATH:string = getCurrentFile();
@@ -50,6 +50,8 @@ let createNavigation = ():any => {
 
   cartListItem.appendChild(cartIcon);
   cartListItem.appendChild(cartItems);
+
+  cartListItem.addEventListener('click',viewCartPage);
   navUl.appendChild(cartListItem);
 
   // Initialize cart if it does not already exixt

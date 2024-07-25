@@ -6,6 +6,7 @@ import { loadAboutPage } from './pgs/about/index'
 import { loadServicesPage } from './pgs/services/index'
 import { loadListenPage } from './pgs/listen/index'
 import { loadContactPage } from './pgs/contact/index'
+import { loadCartPage } from './pgs/cart/index'
 
 const createBodyContent = () => {
 	let currFile:string = getCurrentFile();
@@ -25,6 +26,9 @@ const createBodyContent = () => {
 		break;
 		case 'contact':
 			loadContactPage();
+		break;
+		case 'cart':
+			loadCartPage();
 		break;
 		default:
 			loadServicesPage();

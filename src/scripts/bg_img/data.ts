@@ -70,6 +70,10 @@ const data:IBgImage = {
 	"contact" : {
 		path: `${IMG_PATH}/`,
 		alt: "Some picture of carl maybe"
+	},
+	"cart" : {
+		path: `${IMG_PATH}/`,
+		alt: "Nothing"
 	}
 }
 
