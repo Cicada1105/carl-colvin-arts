@@ -10,13 +10,14 @@ import { createPerformanceRow } from './create';
 import { createElement, createTextElement, createContactLink } from '../../../../../../global/methods/elements';
 //    interfaces
 import { IPerformance } from '../interfaces';
+import { PerformanceDataInterface } from '../../interfaces';
 import { IContactLink } from '../../../../../../global/interfaces/general';
 
 const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
-	let performances:IPerformance[] = await requestData<IPerformance[]>("performance/future");
+	let performanceData:PerformanceDataInterface<IPerformance> = await requestData<PerformanceDataInterface<IPerformance>>("performance/future");
 
-	if (performances.length !== 0) {
-		performances.forEach((performance:IPerformance) => {
+	if (performanceData['performances'].length !== 0) {
+		performanceData['performances'].forEach((performance:IPerformance) => {
 			// Create performance section with currentt data 
 			let performanceRow:HTMLElement = createPerformanceRow(performance);
 			// Append performance row to body

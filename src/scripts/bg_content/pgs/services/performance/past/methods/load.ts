@@ -10,6 +10,7 @@ import { createPerformanceCard, createCollaboratorCard, createAnecdoteCard } fro
 import { createPageSection } from './generic';
 //		interfaces
 import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
+import { PerformanceDataInterface } from '../../interfaces';
 //	Global
 import { createTextElement, createContactLink } from '../../../../../../global/methods/elements';
 import { IContactLink } from '../../../../../../global/interfaces/general';
@@ -30,18 +31,14 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 	// Append container to body
 	document.body.appendChild(repertoireCont);
 
-	let performances:IRepertoire[] = [];
-	try {
-		// Make request to get past performances
-		 performances = await requestData<IRepertoire[]>("performances/past");
-	} catch(e) {
-		console.error(e);
-	}
+	// Make request to get past performances
+	let performanceData:PerformanceDataInterface<IRepertoire> = await requestData<PerformanceDataInterface<IRepertoire>>("performances/past");
+
 	// Remove loading text 
 	repertoireCont.removeChild(loadingTxt);
 
 	// Check if there are any performances
-	if (performances.length === 0) {
+	if (performanceData['performances'].length === 0) {
 		repertoireCont.appendChild(
 			createTextElement({
 				element: "h3",
@@ -58,7 +55,7 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 		);
 	}
 	else {
-		performances.forEach((performance:IRepertoire) => {
+		performanceData['performances'].forEach((performance:IRepertoire) => {
 			// Create performance card with current performance data
 			let performanceCard:HTMLElement = createPerformanceCard(performance);
 			// Append performance card to parent container

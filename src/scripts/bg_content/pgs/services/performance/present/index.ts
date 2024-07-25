@@ -9,6 +9,7 @@ import { loadingScreen } from '../../../../../global/methods/utilities';
 import { createTextElement } from '../../../../../global/methods/elements';
 //	Local
 import { SongInterface } from './interfaces';
+import { PerformanceDataInterface } from '../interfaces';
 import { createSheetMusic } from './methods/music_sheets';
 import { createStand } from './methods/create';
 
@@ -38,12 +39,12 @@ const loadMusicStand = ():void => {
 	const loadingText:HTMLElement = loadingScreen();
 	document.body.appendChild(loadingText);
 	// Retrieve songs for the music stand from server
-  	requestData<SongInterface[]>("performances/present").then((songs:SongInterface[]) => {
+  	requestData<PerformanceDataInterface<SongInterface>>("performances/present").then((data:PerformanceDataInterface<SongInterface>) => {
   		// Remove loading text
   		loadingText.remove();
   		
 	  	// Create the sheet music for the song data
-	  	let sheetMusic:HTMLDivElement = createSheetMusic(songs);
+	  	let sheetMusic:HTMLDivElement = createSheetMusic(data['performances']);
 	  	// Create the stand with the sheet music and add to the page
 	  	let musicStand:HTMLDivElement = createStand(sheetMusic);
 	  	document.body.appendChild(musicStand);	
