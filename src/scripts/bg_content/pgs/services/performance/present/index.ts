@@ -5,7 +5,7 @@
 // Imports
 //	Global
 import requestData from '../../request';
-import { loadBootstrap, loadingScreen } from '../../../../../global/methods/utilities';
+import { loadingScreen } from '../../../../../global/methods/utilities';
 import { createTextElement } from '../../../../../global/methods/elements';
 //	Local
 import { SongInterface } from './interfaces';
@@ -24,9 +24,6 @@ const INTRO_DATA:string[] = [
 ];
 
 const loadMusicStand = ():void => {
-	// Load bootstrap to allow fontawesome icons
-	loadBootstrap();
-	
 	// Create page header and intro text
 	let title:HTMLHeadingElement = createTextElement({
 		element:"h1",

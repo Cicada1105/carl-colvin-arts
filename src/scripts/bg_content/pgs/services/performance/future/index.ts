@@ -4,7 +4,7 @@
 
 // Imports
 import { createTextElement } from '../../../../../global/methods/elements';
-import { loadBootstrap, loadingScreen } from '../../../../../global/methods/utilities';
+import { loadingScreen } from '../../../../../global/methods/utilities';
 import { loadPerformances, loadContactLink } from './methods/load';
 
 const loadFuturePerformances = ():void => {
@@ -15,8 +15,6 @@ const loadFuturePerformances = ():void => {
 		idName:"futurePerformancesTitle"
 	});
 	document.body.appendChild(title);
-	// Load bootstrap to be used for contact link 
-	loadBootstrap();
 	// Add loading text while retrieving server data
 	const loadingText:HTMLElement = loadingScreen();
 	document.body.appendChild(loadingText);

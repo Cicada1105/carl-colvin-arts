@@ -32,15 +32,6 @@ const getCurrentFile = ():string => {
 
   return fileName;
 }
-const loadBootstrap = ():void => {
-  // Create link tag for Bootstrap Font Awesome icons
-  let bootstrapLink:any = document.createElement('script');
-  // Add href attribute
-  bootstrapLink.setAttribute('src','https://kit.fontawesome.com/de38352bbc.js');
-
-  // Append Bootstrap cdn to head for font asesome icons
-  document.head.appendChild(bootstrapLink);
-}
 
 const isValidEmail = async (email:string):Promise<EmailReport> => {
   let emailReport:EmailReport = {
@@ -303,4 +294,4 @@ const loadingScreen:() => HTMLElement = function():HTMLElement {
   return loadingCont;
 }
 
-export { loadBootstrap, getCurrentFile, isValidEmail, loadingScreen }
+export { getCurrentFile, isValidEmail, loadingScreen }

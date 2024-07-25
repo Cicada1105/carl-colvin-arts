@@ -4,7 +4,7 @@
 //  Global
 //    methods
 import { createTextElement } from '../../../global/methods/elements'
-import { loadBootstrap, loadingScreen } from '../../../global/methods/utilities'
+import { loadingScreen } from '../../../global/methods/utilities'
 //  Local
 //    data
 import { audioData, videoData } from './data'

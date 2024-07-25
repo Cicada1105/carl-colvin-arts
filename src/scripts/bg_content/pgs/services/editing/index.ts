@@ -7,7 +7,7 @@ import { loadIntro } from './intro/index'
 import { litEditingServerData } from './data'
 import { IServerData } from './interfaces'
 //	Global
-import { loadBootstrap, isValidEmail, loadingScreen } from '../../../../global/methods/utilities'
+import { isValidEmail, loadingScreen } from '../../../../global/methods/utilities'
 import { createContactLink } from '../../../../global/methods/elements'
 import { IContactLink } from '../../../../global/interfaces/general'
 import requestData from '../request';
