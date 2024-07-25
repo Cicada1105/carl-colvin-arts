@@ -31,14 +31,27 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 	// Append container to body
 	document.body.appendChild(repertoireCont);
 
-	// Make request to get past performances
-	let performanceData:PerformanceDataInterface<IRepertoire> = await requestData<PerformanceDataInterface<IRepertoire>>("performances/past");
+	let performanceData:PerformanceDataInterface<IRepertoire> | {} = {};
+	try {
+		// Make request to get past performances
+		performanceData = await requestData<PerformanceDataInterface<IRepertoire>>("performances/past");	
+	} catch(e) {
+		console.error(e);
+	}
 
 	// Remove loading text 
 	repertoireCont.removeChild(loadingTxt);
 
 	// Check if there are any performances
-	if (performanceData['performances'].length === 0) {
+	if ( ('performances' in performanceData) && (performanceData['performances'].length !== 0) ) {
+		performanceData['performances'].forEach((performance:IRepertoire) => {
+			// Create performance card with current performance data
+			let performanceCard:HTMLElement = createPerformanceCard(performance);
+			// Append performance card to parent container
+			repertoireCont.appendChild(performanceCard);
+		});
+	}
+	else {
 		repertoireCont.appendChild(
 			createTextElement({
 				element: "h3",
@@ -53,14 +66,6 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 				className: "errMessage"
 			})
 		);
-	}
-	else {
-		performanceData['performances'].forEach((performance:IRepertoire) => {
-			// Create performance card with current performance data
-			let performanceCard:HTMLElement = createPerformanceCard(performance);
-			// Append performance card to parent container
-			repertoireCont.appendChild(performanceCard);
-		});
 	}
 }
 const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
