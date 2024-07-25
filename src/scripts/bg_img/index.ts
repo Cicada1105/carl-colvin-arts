@@ -27,6 +27,9 @@ const createBgFade = ():void => {
 
 	// Add async decoding attribute to background image for faster processing
 	imageFade.setAttribute("decoding","async");
+	// Remove background image from the accessibility tree
+	//	Image is for decoration purposes
+	imageFade.setAttribute('aria-hidden','true');
 	
 	// Append image to document
 	document.body.appendChild(imageFade);
