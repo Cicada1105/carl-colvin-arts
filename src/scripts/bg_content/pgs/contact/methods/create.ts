@@ -22,9 +22,10 @@ const createInputRow = (rowData:IInputRow):HTMLDivElement => {
 	let cont:HTMLDivElement = createElement({className:"selectionRow"});
 
 	// Create label element for name to be displayed for input
+	let { text, forIn } = rowData['label'];
 	let inputLabel:HTMLLabelElement = createLabelElement({
-		text: rowData.label.text,
-		forIn: rowData.label.for
+		text,
+		forIn
 	});
 
 	// Append input text, tag and span to input container

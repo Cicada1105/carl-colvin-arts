@@ -28,9 +28,10 @@ const createInputRow = (rowData:IInputRow):HTMLDivElement => {
 	});
 
 	// Create label 
+	let { text, forIn } = rowData['label'];
 	let rowLabel:HTMLLabelElement = createLabelElement({
-		text: rowData.label.text,
-		forIn: rowData.label.for
+		text,
+		forIn
 	});
 
 	// Append row marker, label and input container to row container

@@ -68,9 +68,10 @@ const createSelectionRow = (editData: IEdit):HTMLDivElement => {
 	});
 
 	// Create label to be display next to the radio button
+	let { text, forIn } = editData['label'];
 	let radioBtnLabel:HTMLLabelElement = createLabelElement({
-		text: editData.label.text,
-		forIn: editData.label.for
+		text,
+		forIn
 	});
 
 	// Create custom radio button

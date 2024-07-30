@@ -16,7 +16,7 @@ const formData:IForm = {
 				id: "name",
 				label: {
 					text: "Name",
-					for: "name"
+					forIn: "name"
 				},
 				data: {
 					type: "text",
@@ -27,7 +27,7 @@ const formData:IForm = {
 				id: "email",
 				label: {
 					text: "Email",
-					for: "email"
+					forIn: "email"
 				},
 				data: {
 					type: "email",
@@ -39,7 +39,7 @@ const formData:IForm = {
 			id: "subject",
 			label: {
 				text: "Subject",
-				for: "subject"
+				forIn: "subject"
 			},
 			data: {
 				options: [
@@ -130,7 +130,7 @@ const formData:IForm = {
 			id: "message",
 			label: {
 				text: "Message",
-				for: "message"
+				forIn: "message"
 			},
 			data: {
 				rows:"4",

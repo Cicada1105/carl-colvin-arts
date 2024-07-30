@@ -4,7 +4,7 @@ interface GenericInputInterface<T> {
 }
 interface LabelInterface {
     text: string;
-    for: string;
+    forIn: string;
 }
 interface LabelPropInterface {
     label: LabelInterface;

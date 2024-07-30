@@ -42,7 +42,7 @@ export const constructEditingPricingChartData = ():void => {
 				id: LABEL_FOR,
 				label: {
 					text: serverEditingType,
-					for: LABEL_FOR
+					forIn: LABEL_FOR
 				},
 				rates
 			}

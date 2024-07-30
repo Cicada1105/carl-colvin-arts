@@ -6,27 +6,27 @@ import { ILabel } from '../../../../../../../global/interfaces/inputs'
 const LABELS:ILabel[] = [
 	{
 		text: "Type of Literature",
-		for: "literature"
+		forIn: "literature"
 	},
 	{
 		text: "Genre",
-		for: "genre"
+		forIn: "genre"
 	},
 	{
 		text: "Type of Editing",
-		for: "editing"
+		forIn: "editing"
 	},
 	{
 		text: "Word Count",
-		for: "count"
+		forIn: "count"
 	},
 	{
 		text: "Deadline",
-		for: "deadline"
+		forIn: "deadline"
 	},
 	{
 		text: "Contact Email",
-		for: "email"
+		forIn: "email"
 	}
 ];
 
