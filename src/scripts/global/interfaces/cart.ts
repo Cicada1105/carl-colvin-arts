@@ -19,10 +19,7 @@ interface AddReedInterface extends UpdateCartActionloadInterface {
 }
 interface UpdateReedInterface extends UpdateCartActionloadInterface  {
   id: number;
-  name: string;
-  cost: number;
   quantity: number;
-  category?: string;
 }
 interface DeleteReedInterface extends UpdateCartActionloadInterface  {
   id: number;

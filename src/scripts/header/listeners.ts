@@ -7,7 +7,7 @@ import {
 function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
   const CART_NAME:string = 'cca-reed-cart';
   let cartPayload:T = e.detail;
-  let storedReedData:ReedStorageItem;
+  let cartItems:ReedStorageItem[] = JSON.parse(sessionStorage.getItem(CART_NAME) || '[]');
   /*
     {
       action: 'add' | 'update' | 'delete'
@@ -17,56 +17,45 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
   switch ( cartPayload.action ) {
     case CartAction.Add:
       let addReedProps:AddReedInterface = <AddReedInterface>cartPayload;
-      let idString:string = Math.random().toString().slice(2);
-      storedReedData = {
-        id: parseInt(idString),
-        name: addReedProps['name'],
-        cost: addReedProps['cost'],
-        quantity: addReedProps['quantity']
-      }
+      
+      // Check if item exists
+      let foundIndex:number = cartItems.findIndex((reed:ReedStorageItem) => reed['name'] === addReedProps['name']);
 
-      if ( addReedProps.category ) {
-        storedReedData['category'] = addReedProps['category'];
+      if ( foundIndex === -1 ) { // Item not in cart, add new item to cart
+        let idString:string = Math.random().toString().slice(2);
+
+        cartItems.push({
+          id: parseInt(idString),
+          name: addReedProps['name'],
+          cost: addReedProps['cost'],
+          quantity: addReedProps['quantity'],
+          category: addReedProps?.category
+        })
+      }
+      else { // Item exists, add quantity to existing quantity
+        cartItems[foundIndex]['quantity'] += addReedProps['quantity'];
       }
 
       sessionStorage.setItem(
         CART_NAME,
-        JSON.stringify(
-          [
-            ...JSON.parse(sessionStorage.getItem(CART_NAME) || '[]'),
-            storedReedData
-          ]
-        )
+        JSON.stringify( cartItems )
       );
     break;
     case CartAction.Update:
       let updateReedProps:UpdateReedInterface = <UpdateReedInterface>cartPayload;
-      storedReedData = {
-        id: updateReedProps['id'],
-        name: updateReedProps['name'],
-        cost: updateReedProps['cost'],
-        quantity: updateReedProps['quantity']
-      }
-
-      if ( updateReedProps.category ) {
-        storedReedData['category'] = updateReedProps['category'];
-      }
-
+      
+      // Update cart item
+      cartItems = cartItems.map((reed:ReedStorageItem) => 
+        ( reed.id === updateReedProps.id ) ?
+          {
+            ...reed,
+            ...updateReedProps
+          } :
+          reed
+      )
       sessionStorage.setItem(
         CART_NAME,
-        JSON.stringify(
-          JSON.parse(sessionStorage.getItem(CART_NAME) || '[]').map((reed:ReedStorageItem) => {
-            if ( reed.id === updateReedProps.id ) {
-              return {
-                ...reed,
-                storedReedData
-              }
-            }
-            else {
-              return reed;
-            }
-          })
-        )
+        JSON.stringify( cartItems )
       );
     break;
     case CartAction.Delete:
@@ -74,7 +63,7 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
       sessionStorage.setItem(
         CART_NAME,
         JSON.stringify(
-          JSON.parse(sessionStorage.getItem(CART_NAME) || '[]').filter((reed:ReedStorageItem) => reed['id'] !== deleteReedProps.id)
+          cartItems.filter((reed:ReedStorageItem) => reed['id'] !== deleteReedProps.id)
         )
       );
     break;

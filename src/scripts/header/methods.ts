@@ -4,7 +4,7 @@
 // global
 import { ILink } from '../global/interfaces/general'
 import { 
-  CartAction, UpdateCartPayload, 
+  CartAction, ReedStorageItem, UpdateCartPayload,
   AddReedInterface, UpdateReedInterface, DeleteReedInterface 
 } from '../global/interfaces/cart'
 import { createElement, createTextElement } from '../global/methods/elements'
@@ -17,6 +17,8 @@ import { updateCartListener, viewCartPage } from './listeners'
 const CURRENT_PATH:string = getCurrentFile();
 // Mobile width
 const MOBILE_DEVICE_MAX_WIDTH:number = 664;
+// Session storage name
+const CART_NAME:string = 'cca-reed-cart';
 
 let createNavigation = ():any => {
   // Create new ul element
@@ -55,12 +57,12 @@ let createNavigation = ():any => {
   navUl.appendChild(cartListItem);
 
   // Initialize cart if it does not already exixt
-  if ( !sessionStorage.getItem('cca-reed-cart') ) {
-    sessionStorage.setItem('cca-reed-cart',JSON.stringify([]));
+  if ( !sessionStorage.getItem(CART_NAME) ) {
+    sessionStorage.setItem(CART_NAME,JSON.stringify([]));
   }
   else {
     // Update number of items in the cart if it exists
-    let cartItemsCount:number = JSON.parse(sessionStorage['cca-reed-cart']).length
+    let cartItemsCount:number = JSON.parse(sessionStorage.getItem(CART_NAME) || '[]').length
     cartItems.innerText = cartItemsCount.toString();
   }
 
@@ -68,24 +70,25 @@ let createNavigation = ():any => {
     if ( 'detail' in e ) {
       const cartQty:HTMLParagraphElement = <HTMLParagraphElement>document.getElementById('cartQty');
       let cartPayload: UpdateCartPayload = e['detail'] as UpdateCartPayload;
-      let numItemsInCart:number = parseInt(cartQty.innerText) || 0;
       let notif:string = '';
 
       if ( cartPayload.action === CartAction.Add) {
-        cartQty.innerText = ( numItemsInCart + 1 ).toString();
         updateCartListener<AddReedInterface>(e);
         notif = 'Successfully added to cart!';
       }
       else if ( cartPayload.action === CartAction.Delete ) {
-        cartQty.innerText = ( numItemsInCart - 1 ).toString();
         updateCartListener<DeleteReedInterface>(e);
-        notif = 'Successfully updated cart!';
+        notif = 'Successfully removed item from cart!';
       }
       else if ( cartPayload.action === CartAction.Update ) {
         updateCartListener<UpdateReedInterface>(e);
-        notif = 'Successfully removed item from cart!';
+        notif = 'Successfully updated cart!';
       }
+
+      let cart:ReedStorageItem[] = JSON.parse(sessionStorage.getItem(CART_NAME) || '[]');
+      cartQty.innerText = cart.length.toString();
       alert(notif);
+      window.location.reload();
     }
   });
 

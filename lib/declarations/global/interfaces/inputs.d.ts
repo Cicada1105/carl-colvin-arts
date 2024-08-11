@@ -44,8 +44,9 @@ interface SelectInputRowInterface extends GenericInputInterface<SelectInputInter
 }
 interface NumberInputRowInterface extends GenericInputInterface<RangeInterface>, LabelPropInterface {
 }
+declare type InputRowType = TextInputRowInterface | TextAreaRowInterface | SelectInputRowInterface | NumberInputRowInterface;
 interface ButtonInputInterface {
     type: string;
     id: string;
 }
-export { GenericInputInterface, LabelInterface as ILabel, LabelPropInterface as ILabelRow, InputRowInterface as IInputRow, TextAreaInterface as ITextArea, RangeInterface as IRange, TextInputInterface as IText, SelectInputInterface as ISelect, OptionGroupInterface as IOptionGroup, OptionInterface as IOption, TextInputRowInterface as ITextRow, TextAreaRowInterface as IAreaRow, SelectInputRowInterface as ISelectRow, NumberInputRowInterface as INumberRow, ButtonInputInterface as IButton };
+export { GenericInputInterface, LabelInterface as ILabel, LabelPropInterface as ILabelRow, InputRowType, InputRowInterface as IInputRow, TextAreaInterface as ITextArea, RangeInterface as IRange, TextInputInterface as IText, SelectInputInterface as ISelect, OptionGroupInterface as IOptionGroup, OptionInterface as IOption, TextInputRowInterface as ITextRow, TextAreaRowInterface as IAreaRow, SelectInputRowInterface as ISelectRow, NumberInputRowInterface as INumberRow, ButtonInputInterface as IButton };

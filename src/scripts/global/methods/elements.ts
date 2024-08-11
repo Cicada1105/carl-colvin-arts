@@ -3,7 +3,10 @@
 */
 
 // Imports
-import { IOptionGroup, IOption } from '../interfaces/inputs'
+import { 
+  IOptionGroup, IOption, InputRowType,
+  IText, ITextArea, ISelect, IRange
+} from '../interfaces/inputs'
 import { IContactLink } from '../interfaces/general';
 
 function createElement({element="div",className="",idName=""}):any {
@@ -161,7 +164,101 @@ const createSelectElement = ({options=[{}], ...rest}):any => {
     return;
   }
 }
+function createInputRow(inputRow:InputRowType):HTMLDivElement {
+  try {
+    // Input 'id' attribute must match the 'forIn' attribute for accessibility
+    if ( inputRow.id !== inputRow['label'].forIn )
+      throw new TypeError('Input "id" attribute must match the label "forIn" attribute.');
 
+    const cont:HTMLDivElement = createElement({
+      className: 'input-row'
+    });
+
+    const label:HTMLLabelElement = createLabelElement(inputRow['label']);
+
+    // Append label and input to parent container
+    cont.appendChild(label);
+
+    // Create element based on the data type
+    if ( 'type' in inputRow['data'] ) {
+      let data:IText = inputRow['data'];
+      let el:HTMLInputElement = createElement({
+        element: 'input',
+        idName: inputRow['id'],
+        ...data
+      });
+      el.setAttribute('type',data['type']);
+      el.setAttribute('placeholder',data['placeholder']);
+
+      cont.appendChild(el);
+    }
+    else if ( 'min' in inputRow['data'] ) {
+      let data:IRange = inputRow['data'];
+      let el:HTMLInputElement = createElement({
+        element: 'input',
+        idName: inputRow['id']
+      });
+      el.setAttribute('type','number');
+      if ( typeof data['min'] === 'string' ) {
+        if ( data['min'].match(/[^0-9]/) ) {
+          throw new TypeError(`Invalid attribute value passed in. Attribute "min": ${data['min']} must not contain a non-numberic character.`); 
+        }
+        else {
+          el.setAttribute('min',data['min']);
+        }
+      }
+      else {
+        el.setAttribute('min',data['min'].toString());
+      }
+      if ( typeof data['max'] === 'string' ) {
+        if ( data['max'].match(/[^0-9]/) ) {
+          throw new TypeError(`Invalid attribute value passed in. Attribute "max": ${data['max']} must not contain a non-numberic character.`); 
+        }
+        else if ( parseInt(data['max']) < parseInt(<string>data['min']) ) {
+          throw new RangeError(`Attribute "max":${data['max']} must be greater than attribute "min": ${data['min']}`);
+        }
+        else {
+          el.setAttribute('max', data['max'])
+        }
+      }
+      else {
+        el.setAttribute('max', data['max'].toString());
+      }
+
+      cont.appendChild(el);
+    }
+    else if ( 'rows' in inputRow['data'] ) {
+      let data:ITextArea = inputRow['data'];
+      let el:HTMLTextAreaElement = createElement({
+        element: 'textarea',
+        idName: inputRow['id']
+      });
+      el.setAttribute('rows',data['rows']);
+      el.setAttribute('cols',data['cols']);
+
+      cont.appendChild(el);
+    }
+    else if ( 'options' in inputRow['data'] ) {
+      let data:ISelect = inputRow['data'];
+      let el:HTMLSelectElement = createSelectElement({
+        idName: inputRow['id'],
+        ...data
+      });
+      cont.appendChild(el);
+    }
+    else {
+      throw new TypeError(
+        'Unknown data type passed in. Properties ' +
+        Object.keys(inputRow['data']).map(key => `"${key}"`).join(', ') +
+        'are not assignable to existing input type.'
+      )
+    }
+
+    return cont;
+  } catch(e) {
+    throw new Error(e);
+  }
+}
 // text, from 
 function createContactLink(data:IContactLink):HTMLDivElement {
   // Create container for contact link text and button
@@ -198,5 +295,6 @@ function createContactLink(data:IContactLink):HTMLDivElement {
 export { 
   createElement, createTextElement, 
   createLabelElement, createImageElement, 
-  createSelectElement, createContactLink
+  createSelectElement, createInputRow,
+  createContactLink
 }

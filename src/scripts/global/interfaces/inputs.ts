@@ -49,6 +49,8 @@ interface TextInputRowInterface extends GenericInputInterface<TextInputInterface
 interface TextAreaRowInterface extends GenericInputInterface<TextAreaInterface>, LabelPropInterface {  }
 interface SelectInputRowInterface extends GenericInputInterface<SelectInputInterface>, LabelPropInterface {  }
 interface NumberInputRowInterface extends GenericInputInterface<RangeInterface>, LabelPropInterface {  }
+
+type InputRowType = TextInputRowInterface | TextAreaRowInterface | SelectInputRowInterface | NumberInputRowInterface;
 /*		Interface for Submit		*/
 interface ButtonInputInterface {
 	type: string;
@@ -59,6 +61,7 @@ export {
 	GenericInputInterface, 
 	LabelInterface as ILabel,
 	LabelPropInterface as ILabelRow,
+	InputRowType,
 	InputRowInterface as IInputRow,
 	TextAreaInterface as ITextArea, 
 	RangeInterface as IRange, 

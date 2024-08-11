@@ -1,3 +1,4 @@
+import { InputRowType } from '../interfaces/inputs';
 import { IContactLink } from '../interfaces/general';
 declare function createElement({ element, className, idName }: {
     element?: string | undefined;
@@ -23,5 +24,6 @@ declare const createSelectElement: ({ options, ...rest }: {
     [x: string]: any;
     options?: {}[] | undefined;
 }) => any;
+declare function createInputRow(inputRow: InputRowType): HTMLDivElement;
 declare function createContactLink(data: IContactLink): HTMLDivElement;
-export { createElement, createTextElement, createLabelElement, createImageElement, createSelectElement, createContactLink };
+export { createElement, createTextElement, createLabelElement, createImageElement, createSelectElement, createInputRow, createContactLink };
