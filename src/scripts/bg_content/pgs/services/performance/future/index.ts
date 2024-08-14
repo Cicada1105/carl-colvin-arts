@@ -25,6 +25,12 @@ const loadFuturePerformances = ():void => {
 
 		// Load link to contact page
 		loadContactLink();
+	}).catch(() => {
+		document.body.appendChild(createTextElement({
+			element:"h2",
+			idName:"noPerformancesHeader",
+			text:"Sorry, no future performances today!"
+		}));
 	});
 }
 
