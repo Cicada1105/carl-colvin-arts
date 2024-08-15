@@ -1,6 +1,6 @@
 // Imports
 //	Global
-import { loadingScreen } from '../../../../global/methods/utilities';
+import { createLoadingText } from '../../../../global/methods/elements';
 //	Local
 import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './methods/load'
 
@@ -9,8 +9,8 @@ const loadReedmakingPage = ():void => {
 	loadIntroData();
 	// Load tabs that hold Reed data
 	loadTabs();
-	// Add loading screen until pricings are done laoding
-	const loadText:HTMLElement = loadingScreen();
+	// Add loading screen until pricings are done laoding;
+	const loadText:HTMLParagraphElement = createLoadingText();
 	document.body.appendChild(loadText);
 	// Load the reed pricings
 	loadPricings().then(() => {

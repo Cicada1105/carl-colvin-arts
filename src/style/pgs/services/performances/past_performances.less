@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../../global/colors.less";
+@import (reference) '../../../global/keyframes.less';
 @import (reference) "../../../global/methods.less";
 @import (reference) '../../../global/namespace.less';
 
@@ -8,6 +9,14 @@
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
 
+// Load keyframes specific to past performance page
+.loadingTextFrames();
+// Load styling associated with the loading text
+.loadingText();
+
+.loading-text {
+	margin: 3rem auto 1rem auto;
+}
 /*  Rest of the styling goes here */
 h1#previousPerformancesTitle {
 	position:relative;

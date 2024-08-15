@@ -13,3 +13,48 @@
 	position: @pos;
 	width: @w;
 }
+.loadingText() {
+	.loading-text {
+		// 1.5rem and 0.83em are h2 default styles
+		position: relative;
+		font-size: 1.75rem;
+		color: @textColor;
+		text-align: center;
+		margin: 0.83em auto;
+
+		& > .loading-dot-cont {
+			display: inline-flex;
+			margin-left:4px;
+			gap:0.15em;
+
+			[class ^= 'loading-dot'] {
+				background-color: @textColor;
+				aspect-ratio: 1;
+				width: 0.125em;
+				transform: scale(1);
+				border-radius:9999px;
+				animation-duration:2s;
+				animation-timing-function: ease-out;
+				animation-name:loading;
+				animation-iteration-count: infinite;
+				animation-direction: normal;
+				animation-fill-mode: forwards;
+			}
+			.loading-dot1 {
+				animation-delay: 0s;
+			}
+			.loading-dot2 {
+				animation-delay:0.25s;
+			}
+			.loading-dot3 {
+				animation-delay:0.5s;
+			}
+
+			@media (prefers-reduced-motion) {
+				[class ^= 'loading-dot'] {
+					animation-name: none;
+				}
+			}
+		}
+	}
+}

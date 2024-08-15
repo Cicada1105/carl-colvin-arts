@@ -3,8 +3,7 @@
 // Imports
 //  Global
 //    methods
-import { createTextElement } from '../../../global/methods/elements'
-import { loadingScreen } from '../../../global/methods/utilities'
+import { createTextElement, createLoadingText } from '../../../global/methods/elements'
 //  Local
 //    data
 import { audioData, videoData } from './data'
@@ -29,7 +28,7 @@ import { RowInterface } from './interfaces'
    document.body.appendChild(intro);
 
    // Add loading text while audio and video data is being processed
-   let loadingText:HTMLElement = loadingScreen();
+   let loadingText:HTMLElement = createLoadingText();
    document.body.appendChild(loadingText);
 
    // Load sketches

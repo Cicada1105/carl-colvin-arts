@@ -5,8 +5,7 @@
 // Imports
 //	Global
 import requestData from '../../request';
-import { loadingScreen } from '../../../../../global/methods/utilities';
-import { createTextElement } from '../../../../../global/methods/elements';
+import { createTextElement, createLoadingText } from '../../../../../global/methods/elements';
 //	Local
 import { SongInterface } from './interfaces';
 import { PerformanceDataInterface } from '../interfaces';
@@ -36,7 +35,7 @@ const loadMusicStand = ():void => {
 	INTRO_DATA.forEach((section:string) => document.body.appendChild(createTextElement({ text:section, className:"introParagraph" })))
 
 	// Add loading text to screen while retrieving data from the server
-	const loadingText:HTMLElement = loadingScreen();
+	const loadingText:HTMLParagraphElement = createLoadingText();
 	document.body.appendChild(loadingText);
 	// Retrieve songs for the music stand from server
   	requestData<PerformanceDataInterface<SongInterface>>("performances/present").then((data:PerformanceDataInterface<SongInterface>) => {

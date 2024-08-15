@@ -12,7 +12,7 @@ import { createPageSection } from './generic';
 import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
 import { PerformanceDataInterface } from '../../interfaces';
 //	Global
-import { createTextElement, createContactLink } from '../../../../../../global/methods/elements';
+import { createTextElement, createLoadingText, createContactLink } from '../../../../../../global/methods/elements';
 import { IContactLink } from '../../../../../../global/interfaces/general';
 import requestData from '../../../request';
 
@@ -21,11 +21,7 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 	const repertoireCont:HTMLDivElement = createPageSection("Repertoire");
 
 	// Create temporary loading text 
-	const loadingTxt:HTMLHeadingElement = createTextElement({
-		element:"h3",
-		text:"Loading...",
-		idName:"loadingText"
-	});
+	const loadingTxt:HTMLParagraphElement = createLoadingText();
 	// Append loading text to repertoire container
 	repertoireCont.appendChild(loadingTxt);
 	// Append container to body
@@ -40,7 +36,7 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 	}
 
 	// Remove loading text 
-	repertoireCont.removeChild(loadingTxt);
+	loadingTxt.remove();
 
 	// Check if there are any performances
 	if ( ('performances' in performanceData) && (performanceData['performances'].length !== 0) ) {
@@ -73,11 +69,7 @@ const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 	const collaboratorsCont:HTMLDivElement = createPageSection("Collaborators");
 
 	// Create temporary loading text 
-	const loadingTxt:HTMLHeadingElement = createTextElement({
-		element:"h3",
-		text:"Loading...",
-		idName:"loadingText"
-	});
+	const loadingTxt:HTMLHeadingElement = createLoadingText();
 	// Append loading text to collaborators container
 	collaboratorsCont.appendChild(loadingTxt);
 	// Append container to body
@@ -91,7 +83,7 @@ const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 		console.error(e);
 	}
 	// Remove loading text
-	collaboratorsCont.removeChild(loadingTxt);
+	loadingTxt.remove();
 
 	// Check if there are any collaborators
 	if (collaborators.length === 0) {
@@ -125,11 +117,7 @@ const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 	const anecdotesCont:HTMLDivElement = createPageSection("Anecdotes");
 
 	// Create temporary loading text 
-	const loadingTxt:HTMLHeadingElement = createTextElement({
-		element:"h3",
-		text:"Loading...",
-		idName:"loadingText"
-	});
+	const loadingTxt:HTMLHeadingElement = createLoadingText();
 	// Append loading text to anecdotes container
 	anecdotesCont.appendChild(loadingTxt);
 	// Append container to body
@@ -143,7 +131,7 @@ const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 		console.error(e);
 	}
 	// Remove loading text 
-	anecdotesCont.removeChild(loadingTxt);
+	loadingTxt.remove();
 	
 	// Check if there are any anecdotes
 	if (anecdotes.length === 0) {

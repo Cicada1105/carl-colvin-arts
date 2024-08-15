@@ -7,8 +7,8 @@ import { loadIntro } from './intro/index'
 import { litEditingServerData } from './data'
 import { IServerData } from './interfaces'
 //	Global
-import { isValidEmail, loadingScreen } from '../../../../global/methods/utilities'
-import { createContactLink } from '../../../../global/methods/elements'
+import { isValidEmail } from '../../../../global/methods/utilities'
+import { createLoadingText, createContactLink } from '../../../../global/methods/elements'
 import { IContactLink } from '../../../../global/interfaces/general'
 import requestData from '../request';
 
@@ -16,7 +16,7 @@ const loadEditingPage = ():void => {
 	// Load intro paragraph
 	loadIntro();
 	// Adding loading screen while retrieving server data
-	let loadingText:HTMLElement = loadingScreen();
+	let loadingText:HTMLParagraphElement = createLoadingText();
 	document.body.appendChild(loadingText);
 	// Retrieve editing server data to be shared across secctions
 	requestData<IServerData[]>("editing").then((serverData:IServerData[]) => {

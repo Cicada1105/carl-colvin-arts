@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../../global/colors.less";
+@import (reference) '../../../global/keyframes.less';
 @import (reference) "../../../global/methods.less";
 @import (reference) '../../../global/namespace.less';
 
@@ -7,6 +8,11 @@
 #globalNS > .navigation();
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
+
+// Load keyframes specific to future performance page
+.loadingTextFrames();
+// Load styling associated with the loading text
+.loadingText();
 
 h2#noPerformancesHeader {
 	position:relative;

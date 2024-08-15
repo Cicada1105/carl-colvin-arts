@@ -259,6 +259,32 @@ function createInputRow(inputRow:InputRowType):HTMLDivElement {
     throw new Error(e);
   }
 }
+/*  Animated loading text   */
+function createLoadingText():HTMLParagraphElement {
+  const p:HTMLParagraphElement = document.createElement('p');
+  p.setAttribute('class','loading-text');
+
+  const loadingText:Text = document.createTextNode('Loading');
+  p.appendChild(loadingText);
+
+  const dotsCont:HTMLSpanElement = document.createElement('span');
+  dotsCont.setAttribute('class','loading-dot-cont');
+
+  const dot1:HTMLSpanElement = document.createElement('span');
+  dot1.setAttribute('class', 'loading-dot1');
+  const dot2:HTMLSpanElement = document.createElement('span');
+  dot2.setAttribute('class', 'loading-dot2');
+  const dot3:HTMLSpanElement = document.createElement('span');
+  dot3.setAttribute('class', 'loading-dot3');
+
+  dotsCont.appendChild(dot1);
+  dotsCont.appendChild(dot2);
+  dotsCont.appendChild(dot3);
+
+  p.appendChild(dotsCont);
+
+  return p;
+}
 // text, from 
 function createContactLink(data:IContactLink):HTMLDivElement {
   // Create container for contact link text and button
@@ -296,5 +322,5 @@ export {
   createElement, createTextElement, 
   createLabelElement, createImageElement, 
   createSelectElement, createInputRow,
-  createContactLink
+  createLoadingText, createContactLink
 }

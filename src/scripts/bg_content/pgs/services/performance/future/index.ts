@@ -3,8 +3,7 @@
 */
 
 // Imports
-import { createTextElement } from '../../../../../global/methods/elements';
-import { loadingScreen } from '../../../../../global/methods/utilities';
+import { createTextElement, createLoadingText } from '../../../../../global/methods/elements';
 import { loadPerformances, loadContactLink } from './methods/load';
 
 const loadFuturePerformances = ():void => {
@@ -16,13 +15,10 @@ const loadFuturePerformances = ():void => {
 	});
 	document.body.appendChild(title);
 	// Add loading text while retrieving server data
-	const loadingText:HTMLElement = loadingScreen();
+	const loadingText:HTMLParagraphElement = createLoadingText();
 	document.body.appendChild(loadingText);
 	// Load future performancces
 	loadPerformances().then(() => {
-		// Remove loading text
-		loadingText.remove();
-
 		// Load link to contact page
 		loadContactLink();
 	}).catch(() => {
@@ -31,6 +27,9 @@ const loadFuturePerformances = ():void => {
 			idName:"noPerformancesHeader",
 			text:"Sorry, no future performances today!"
 		}));
+	}).finally(() => {
+		// Remove loading text
+		loadingText.remove();
 	});
 }
 

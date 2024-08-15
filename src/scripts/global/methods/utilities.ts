@@ -266,32 +266,4 @@ let request:()=>Promise<string> = ():Promise<string> => {
   });
 }
 
-const loadingScreen:() => HTMLElement = function():HTMLElement {
-  const loadingCont:HTMLElement = document.createElement("section");
-
-  // Create heading to hold loading text
-  const loadingHeading:HTMLHeadingElement = document.createElement("h1");
-  // Create actual loading text to then be appended to the heading
-  const loadingText:Text = document.createTextNode("Loading...");
-  loadingHeading.appendChild(loadingText);
-
-  // Append loading heading to the loading container parent
-  loadingCont.appendChild(loadingHeading);
-
-  // Add styles 
-  loadingCont.setAttribute("style",`
-    position:relative;
-    margin:auto;
-    width:90vw
-  `);
-  loadingHeading.setAttribute("style",`
-    font-size:1.75rem;
-    color:#f0edee;
-    width:inherit;
-    text-align:center
-  `);
-
-  return loadingCont;
-}
-
-export { getCurrentFile, isValidEmail, loadingScreen }
+export { getCurrentFile, isValidEmail }

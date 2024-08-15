@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../../global/colors.less";
+@import (reference) '../../../global/keyframes.less';
 @import (reference) "../../../global/methods.less";
 @import (reference) '../../../global/namespace.less';
 
@@ -7,6 +8,11 @@
 #globalNS > .navigation();
 #globalNS > .bg_canvas();
 #globalNS > .bg_img();
+
+// Load keyframes specific to present performance page
+.loadingTextFrames();
+// Load styling associated with the loading text
+.loadingText();
 
 h2#noMusicHeader {
 	position:relative;
@@ -27,14 +33,12 @@ p.introParagraph {
 	text-indent: 2rem;
 	display:block;
 	margin:auto;
+	margin-bottom:1rem;
 	font-size:1rem;
 	z-index: 2;
 
-	&:first-of-type {
-		margin-bottom:1rem;
-	}
 	&:last-of-type {
-		margin-bottom:0rem;
+		margin-bottom:0;
 	}
 }
 @musicStandBorder:1px solid silver;
@@ -130,13 +134,6 @@ p.introParagraph {
 @media only screen and (min-width: 815px) {
 	p.introParagraph{
 		width:50rem;
-
-		&:first-of-type {
-			margin-bottom:1rem;
-		}
-		&:last-of-type {
-			margin-bottom: 4rem;
-		}
 	}
 	#musicStandCont {
 		min-width:45rem;

@@ -25,5 +25,6 @@ declare const createSelectElement: ({ options, ...rest }: {
     options?: {}[] | undefined;
 }) => any;
 declare function createInputRow(inputRow: InputRowType): HTMLDivElement;
+declare function createLoadingText(): HTMLParagraphElement;
 declare function createContactLink(data: IContactLink): HTMLDivElement;
-export { createElement, createTextElement, createLabelElement, createImageElement, createSelectElement, createInputRow, createContactLink };
+export { createElement, createTextElement, createLabelElement, createImageElement, createSelectElement, createInputRow, createLoadingText, createContactLink };
