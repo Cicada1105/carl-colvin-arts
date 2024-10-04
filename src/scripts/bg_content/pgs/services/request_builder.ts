@@ -60,7 +60,7 @@ export default class RequestBuilder<T> extends RequestBuilderBase<T> {
 				headers: {
 					"Content-Type": "application/json"
 				}
-			}).then((body:any) => {
+			}).then((body:Response) => {
 				body.json().then((data:T) => resolve(data));
 			}).catch((err:Error) => reject(err));
 		})

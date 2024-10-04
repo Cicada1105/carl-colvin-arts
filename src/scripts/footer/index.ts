@@ -8,7 +8,10 @@ import { data as images } from './data'
 const createFooter = ():void => {
   // Create container to display across top
   // createElement's default element is 'div'
-  let footerDiv:HTMLDivElement = createElement({idName:'footer'});
+  let pageFooter:HTMLElement = createElement({
+    element: 'footer',
+    idName: 'pageFooter'
+  });
 
   // Container for social media links
   // createElement's default element is 'div'
@@ -33,10 +36,10 @@ const createFooter = ():void => {
   	socialCont.appendChild(imgNode);
   }
   // Append social media content to footer
-  footerDiv.appendChild(socialCont);
+  pageFooter.appendChild(socialCont);
 
   // Add element to body
-  document.body.appendChild(footerDiv);
+  document.body.appendChild(pageFooter);
 }
 
 export { createFooter }

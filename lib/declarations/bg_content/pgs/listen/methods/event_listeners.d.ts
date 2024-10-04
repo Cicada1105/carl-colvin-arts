@@ -1,3 +1,3 @@
-declare function playButtonListener(event: any): void;
-declare function muteButtonListener(event: any): void;
+declare function playButtonListener(event: MouseEvent): void;
+declare function muteButtonListener(event: MouseEvent): void;
 export { playButtonListener, muteButtonListener };

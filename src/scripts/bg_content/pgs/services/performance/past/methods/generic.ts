@@ -6,9 +6,10 @@
 import { createElement, createTextElement, createImageElement } from '../../../../../../global/methods/elements';
 import { IGenericCard, CardOutlineInterface as ICard, IHeader } from '../interfaces';
 
-const createPageSection:(cardTitle:string)=>HTMLDivElement = (title:string):HTMLDivElement => {
+const createPageSection:(cardTitle:string)=>HTMLElement = (title:string):HTMLElement => {
 	// Create card container
-	const cont:HTMLDivElement = createElement({
+	const cont:HTMLElement = createElement({
+		element: 'section',
 		className:"pageCardCont"
 	});
 

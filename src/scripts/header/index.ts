@@ -7,14 +7,17 @@ import { createNavigation } from './methods'
 const createHeader = ():void => {
   // Create container to display across top
   // createElement's default element is 'div'
-  let headerDiv:any = createElement({idName:'header'});
+  let pageHeader:HTMLElement = createElement({
+    element:'header',
+    idName: 'pageHeader'
+  });
   
   // Create navigation => returns ul element
-  let navBar:any = createNavigation();
+  let navBar:HTMLUListElement = createNavigation();
   // Append navigation to header
-  headerDiv.appendChild(navBar);
+  pageHeader.appendChild(navBar);
   // Add element to body
-  document.body.appendChild(headerDiv);
+  document.body.appendChild(pageHeader);
 }
 
 export { createHeader }

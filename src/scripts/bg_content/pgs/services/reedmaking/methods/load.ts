@@ -107,8 +107,10 @@ const loadTabs = ():void => {
 			if (IS_OPEN) { // "Close" tab
 				tabBody.style.height = "0rem";
 
-				// Paragraph animation
-				tabBody.childNodes.forEach(function(p:any) {
+				/* Paragraph animation */
+				// Convert ChildNodes to an array
+				let childParagraphs:HTMLParagraphElement[] = Array.from(tabBody.childNodes) as HTMLParagraphElement[];
+				childParagraphs.forEach(function(p:HTMLParagraphElement) {
 					p.style.visibility = "hidden";
 					p.style.padding = "0rem 5%";
 				});
@@ -117,8 +119,10 @@ const loadTabs = ():void => {
 				// Calculate height of individual paragraph elements to get container height
 				let contHeight:number = 0;
 
-				// Paragraph animation
-				tabBody.childNodes.forEach(function(p:any) {
+				/* Paragraph animation */
+				// Convert ChildNodes to an array first
+				let childParagraphs:HTMLParagraphElement[] = Array.from(tabBody.childNodes) as HTMLParagraphElement[];
+				childParagraphs.forEach(function(p:HTMLParagraphElement) {
 					// Add current paragraph height and top (1rem/16px) and bottom (1rem/16px) margin to running total
 					contHeight += parseInt(getComputedStyle(p).height) + 32;
 

@@ -16,7 +16,7 @@ const loadMediaRow = async (data:RowInterface):Promise<void> => {
 	let mediaDescription:HTMLParagraphElement = createTextElement({text:data.description,className:"mediaDescription"});
 
 	let mediaData:Media = (data.media as AudioInterface).image ? <AudioInterface>data.media : <VideoInterface>data.media;
-	let mediaCont:any = await createMediaCont(mediaData);
+	let mediaCont:HTMLDivElement = await createMediaCont(mediaData);
 
 	// Create elements to display a controllable border around other elements
 	let mediaLeftBorder:HTMLDivElement = createElement({className:"borderLeft"});
@@ -33,7 +33,7 @@ const loadMediaRow = async (data:RowInterface):Promise<void> => {
 const loadCanvasWave = ():void => {
 	let cvs:HTMLCanvasElement = createElement({element:"canvas",className:"waveDivider"});
 	cvs.height = 115;
-	let ctx:any = cvs.getContext('2d');
+	let ctx:CanvasRenderingContext2D = cvs.getContext('2d') as CanvasRenderingContext2D;
 
 	const y_axis:number = 60;
 	let startPoint = {

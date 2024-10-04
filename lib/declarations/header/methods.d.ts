@@ -1,2 +1,2 @@
-declare let createNavigation: () => any;
+declare let createNavigation: () => HTMLUListElement;
 export { createNavigation };

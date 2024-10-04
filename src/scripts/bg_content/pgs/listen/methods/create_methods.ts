@@ -46,7 +46,7 @@ const createMediaControlsCont = (media:HTMLMediaElement):HTMLDivElement => {
 	let cont:HTMLDivElement = createElement({className:"mediaCtrlsCont"});
 
 	// Create media element with data of type Media
-	let mediaEl:any = createCustomControls(media);
+	let mediaEl:HTMLDivElement = createCustomControls(media);
 	// Append media element to container 
 	cont.appendChild(mediaEl);
 

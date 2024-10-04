@@ -5,7 +5,7 @@ import { createElement } from '../../../../../../../global/methods/elements'
 
 class Rectangle {
 	private cvs:HTMLCanvasElement;
-	private ctx:any;
+	private ctx:CanvasRenderingContext2D;
 
 	private x:number = 0;
 	private y:number = 50;
@@ -17,7 +17,7 @@ class Rectangle {
 			element: "canvas",
 			className: "redProgressRect"
 		});
-		this.ctx = this.cvs.getContext('2d');
+		this.ctx = this.cvs.getContext('2d') as CanvasRenderingContext2D;
 	}
 	public draw():void {
 		this.ctx.fillRect(this.x, this.y, this.width, this.height);

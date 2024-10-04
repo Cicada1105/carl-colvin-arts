@@ -37,7 +37,7 @@ const createMediaElement:(mediaElement:Media)=>Promise<HTMLMediaElement> = (medi
 			el.setAttribute('controls','');
 
 		// Only return media element once duration has changed (from NaN to length of media)
-		el.addEventListener("durationchange", (e) => resolve(el));
+		el.addEventListener("durationchange", (e:Event) => resolve(el));
 	})
 	// If controls set to false, return custom controls once media is completely loaded
 	//else {
@@ -46,7 +46,7 @@ const createMediaElement:(mediaElement:Media)=>Promise<HTMLMediaElement> = (medi
 	//}
 }
 
-const createCustomControls:(mediaEl:HTMLMediaElement) => any = (mediaEl:HTMLMediaElement):HTMLDivElement => {
+const createCustomControls:(mediaEl:HTMLMediaElement) => HTMLDivElement = (mediaEl:HTMLMediaElement):HTMLDivElement => {
 	let ctrlCont:HTMLDivElement = createElement({className:"mediaControls"});
 
 	let playBtn:HTMLElement = createElement({element:'i',className:'fas fa-play'});

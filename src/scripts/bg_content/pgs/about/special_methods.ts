@@ -33,16 +33,21 @@ const infoBox = (e:IBoxLink<string>):HTMLElement => {
 	return box;
 }
 
-const imgCont = (currImg:IImage):HTMLDivElement => {
+const imgCont = (currImg:IImage):HTMLElement => {
 	// Create container to store the figure/image, border and data
 	// createElement's default element is 'div'
-	let fig:any = createElement({className:'figure'});
+	let fig:HTMLElement = createElement({
+		element: 'figure',
+		className:'figure'
+	});
 
 	// Image to display
 	let img:HTMLImageElement = createImageElement({src:currImg.path,alt:currImg.alt,className:'homeImg'});
 
 	// Circular border to add depth to image
 	let imgBorder:HTMLImageElement = createImageElement({src:`${IMAGE_DIR}img_border.png`,className:'imgBorder'});
+		// Change async to sync if not visually appealing
+		imgBorder.setAttribute("decoding","async");
 
 	/*
 		Add lazy loading and async loading to image and border 
@@ -53,14 +58,14 @@ const imgCont = (currImg:IImage):HTMLDivElement => {
 		img.setAttribute("decoding","async");
 
 		imgBorder.setAttribute("loading","lazy");
-		imgBorder.setAttribute("decoding","async");		
 	})() : (() => {
 		img.setAttribute("decoding","sync");
-		// Change async to sync if not visually appealing
-		imgBorder.setAttribute("decoding","async");
 	})();
 
-	let figCaption:HTMLDivElement = createElement({className:'figcaption'});
+	let figCaption:HTMLElement = createElement({
+		element: 'figcaption',
+		className:'figcaption'
+	});
 
 	// Data to display when user hovers over the image
 	let figCaptionStr:string = typeof currImg.caption === "undefined" ? "" : currImg.caption;

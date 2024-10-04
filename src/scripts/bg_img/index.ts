@@ -18,7 +18,6 @@ const createBgFade = ():void => {
 	imgLocation = bgImgs[currFile].path;
 	imgAlternative = bgImgs[currFile].alt;
 	// Fade image 
-	//let imageFade:any = createImageFade(imgLocation,imgAlternative);
 	let imageFade:HTMLImageElement = createImageElement({
 		src:imgLocation,
 		alt:imgAlternative,

@@ -18,7 +18,7 @@ import requestData from '../../../request';
 
 const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 	// Create container for holding past performances
-	const repertoireCont:HTMLDivElement = createPageSection("Repertoire");
+	const repertoireCont:HTMLElement = createPageSection("Repertoire");
 
 	// Create temporary loading text 
 	const loadingTxt:HTMLParagraphElement = createLoadingText();
@@ -66,7 +66,7 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 }
 const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 	// Create container for holding collaborators
-	const collaboratorsCont:HTMLDivElement = createPageSection("Collaborators");
+	const collaboratorsCont:HTMLElement = createPageSection("Collaborators");
 
 	// Create temporary loading text 
 	const loadingTxt:HTMLHeadingElement = createLoadingText();
@@ -114,7 +114,7 @@ const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 }
 const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 	// Create container for holding anecdotes
-	const anecdotesCont:HTMLDivElement = createPageSection("Anecdotes");
+	const anecdotesCont:HTMLElement = createPageSection("Anecdotes");
 
 	// Create temporary loading text 
 	const loadingTxt:HTMLHeadingElement = createLoadingText();

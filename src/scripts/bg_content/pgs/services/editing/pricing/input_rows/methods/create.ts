@@ -84,9 +84,9 @@ const createNumberCont = (ranges:IGenericInput<IRange>, listener:EventListener):
 
 	// Add event listener to number element
 	number.addEventListener("focus", () => {
-		// Add change listener and keypress listener to allow user to press enter
+		// Add change listener and keydown listener to allow user to press enter
 		number.addEventListener("change", listener, { once:true });
-		number.addEventListener("keypress", listener, { once:true });
+		number.addEventListener("keydown", listener, { once:true });
 	});
 
 	// Append number input element to container
@@ -195,7 +195,7 @@ const createEmailCont = (data:IGenericInput<null>, listener:EventListener):HTMLD
 	//	note: user can either select outside of input field or press enter to attempt to move to submit
 	emailElement.addEventListener("focus", () => {
 		emailElement.addEventListener("change", listener, { once: true });
-		emailElement.addEventListener("keyup", listener, { once: true });	
+		emailElement.addEventListener("keydown", listener, { once: true });	
 	});
 
 	// Create span to hold error message for email
@@ -229,9 +229,6 @@ const createSubmitCont = (listener:EventListener):HTMLDivElement => {
 
 	// Add event listener to handle submitting form 
 	submitBtn.addEventListener("click",listener);
-	/*submitBtn.addEventListener("click",(event:any) => {
-		submitForm(event);
-	});*/
 	
 	// Create container to be used to display messages about the form status
 	let msgCont:HTMLSpanElement = createElement({

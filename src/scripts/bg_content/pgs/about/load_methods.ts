@@ -17,7 +17,7 @@ const MEDIA_DIR:string = (isHomePage ? "./" : "../") + "resources/media/";
 
 const loadRows = ():void => {
 	let currBox:HTMLElement;
-	let currImg:HTMLDivElement;
+	let currImg:HTMLElement;
 
 	Rows.forEach((row,i) => {
 		currBox = infoBox(row.infoData);

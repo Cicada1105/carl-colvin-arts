@@ -1,15 +1,15 @@
 // This file contains event listeners for the media controls on the listen page
 
-function playButtonListener(event:any) {
-	let btn:HTMLElement = event.target;
+function playButtonListener(event:MouseEvent) {
+	let btn:HTMLElement = event.currentTarget as HTMLElement;
 	
 	btn.className = "fas fa-" + (btn.className.includes("play") ? "pause" : "play");
 
 	this.paused ? this.play() : this.pause();
 }
 
-function muteButtonListener(event:any) {
-	let btn:HTMLElement = event.target;
+function muteButtonListener(event:MouseEvent) {
+	let btn:HTMLElement = event.currentTarget as HTMLElement;
 
 	btn.className = "fas fa-volume-" + (btn.className.includes("up") ? "mute" : "up");
 

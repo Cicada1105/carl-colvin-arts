@@ -4,13 +4,13 @@
 import { createElement } from '../global/methods/elements'
 
 const createGradient = ():void => {
-	let cvsEl:any = createElement({element:'canvas',idName:'bgCanvas'});
+	let cvsEl:HTMLCanvasElement = createElement({element:'canvas',idName:'bgCanvas'});
 	document.body.appendChild(cvsEl);
 
-  	const cvs:any = document.getElementById("bgCanvas");
+  // const cvs:HTMLCanvasElement = document.getElementById("bgCanvas") as HTMLCanvasElement;
 
-	let ctx = cvs.getContext('2d');
-	let grd = ctx.createLinearGradient(0,0,300,150);
+	let ctx:CanvasRenderingContext2D = cvsEl.getContext('2d') as CanvasRenderingContext2D;
+	let grd:CanvasGradient = ctx.createLinearGradient(0,0,300,150);
 
 	// Create color stops
 	grd.addColorStop(0,"#340604");

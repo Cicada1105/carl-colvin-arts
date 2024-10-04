@@ -20,7 +20,7 @@ const MOBILE_DEVICE_MAX_WIDTH:number = 664;
 // Session storage name
 const CART_NAME:string = 'cca-reed-cart';
 
-let createNavigation = ():any => {
+let createNavigation = ():HTMLUListElement => {
   // Create new ul element
   let navUl:HTMLUListElement = createElement({element:'ul',idName:'navigation'});
 
@@ -107,7 +107,7 @@ let createNavigation = ():any => {
   barsListItem.appendChild(bars);
 
   // Create listeners to reset navigation display to combat final state being kept from user clicking on bars
-  const desktopReset:any = () => {
+  const desktopReset = (e:Event):void => {
     if (window.innerWidth > MOBILE_DEVICE_MAX_WIDTH) {
       linksCont.style.display = "inline-block";
 
@@ -115,7 +115,7 @@ let createNavigation = ():any => {
       window.addEventListener("resize",mobileReset);
     }
   }
-  const mobileReset:any = () => {
+  const mobileReset = (e:Event):void => {
     if (window.innerWidth <= MOBILE_DEVICE_MAX_WIDTH) {
       linksCont.style.display = "none";
 
@@ -163,7 +163,7 @@ const createPageLinksCont = (pageLinks:Array<ILink>):HTMLDivElement => {
     // Current link could either have null subdirectories or an array of ILink objects
     if ((currLiData.subdirectories != null) && (currLiData['subdirectories'].length > 0)) {
       // Create new ul for subdirectories
-      let subdirectoryUl:any = createSubdirectory(currLiData.subdirectories);
+      let subdirectoryUl:HTMLUListElement = createSubdirectory(currLiData.subdirectories);
 
       // Append ul subdirectory to li main directory element
       currLi.appendChild(subdirectoryUl);
@@ -202,7 +202,7 @@ const createSubdirectory = (dirs:Array<ILink>):HTMLUListElement => {
 
     let subLink:string = dir.link;
     // Add event listener
-    currSubLi.addEventListener("click", (event:any) => {
+    currSubLi.addEventListener("click", (event:Event) => {
       event.stopPropagation();
       window.open(subLink,"_self");
     })

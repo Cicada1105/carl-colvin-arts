@@ -16,7 +16,7 @@
 		}
 	}
 	.navigation() {
-		#header {
+		header#pageHeader {
 	    &:extend(.staticBar);
 	    top:0%;
 	    z-index: 3;
@@ -145,13 +145,13 @@
 		}
 	}
 	.social() {
-		#footer {
-		    &:extend(.staticBar);
-		    bottom:0%;
-		    z-index: 3;
+		footer#pageFooter {
+	    &:extend(.staticBar);
+	    bottom:0%;
+	    z-index: 3;
 
-		    #social {
-		    	.format(relative, 13rem, 100%);
+	    #social {
+	    	.format(relative, 13rem, 100%);
 				margin-right:2rem;
 				float:right;
 				.socialImg {
@@ -165,7 +165,7 @@
 				.socialImg:hover {
 					cursor:pointer;
 				}
-		    }
+	    }
 		 }
 	}
 }	

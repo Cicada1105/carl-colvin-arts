@@ -15,13 +15,13 @@ import { Next, Previous } from '../../shared/methods/update_progress'
 //		Global
 import { isValidEmail } from '../../../../../../../global/methods/utilities'
 
-function LiteratureTypeHandler(event:any):void {
+function LiteratureTypeHandler(event:Event):void {
 	//	event target holds HTMLCollection hierarchy of elements, starting at the element that fired the event,
 	//	of each parent until the last parent, window, is reached
 	//		-target holds the input element
 	//		-nextElementSibling returns the possible child element
 	// Clear child element to allow for child update if it exists
-	let selectEl:HTMLSelectElement = event.target;
+	let selectEl:HTMLSelectElement = event.target as HTMLSelectElement;
 	let parentEl:HTMLDivElement = <HTMLDivElement>selectEl.parentElement;
 	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
@@ -29,7 +29,7 @@ function LiteratureTypeHandler(event:any):void {
 	submitRowEl !== null && submitRowEl.remove();
 
 	// Display next row if current selection is not default option
-	if (event.target.value !== "none") {
+	if (selectEl.value !== "none") {
 		// Get indexed location of selected value minus 1 (to remove default value) to get access to child data
 		let selectedLitPos:number = selectEl.selectedIndex - 1;
 		// Store value -> HTMLCollection of selectedOptions will only hold 
@@ -47,9 +47,9 @@ function LiteratureTypeHandler(event:any):void {
 	else 
 		Previous(0);
 }
-function GenreHandler(event:any) {
+function GenreHandler(event:Event) {
 	// Clear child element to allow for child update if it exists
-	let selectEl:HTMLSelectElement = event.target;
+	let selectEl:HTMLSelectElement = event.target as HTMLSelectElement;
 	let parentEl:HTMLDivElement = <HTMLDivElement>selectEl.parentElement;
 	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
@@ -72,9 +72,9 @@ function GenreHandler(event:any) {
 	else 
 		Previous(1);
 }
-function EditingHandler(event:any) {
+function EditingHandler(event:Event) {
 	// Clear child element to allow for child update if it exists
-	let selectEl:HTMLSelectElement = event.target;
+	let selectEl:HTMLSelectElement = event.target as HTMLSelectElement;
 	let parentEl:HTMLDivElement = <HTMLDivElement>selectEl.parentElement;
 	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
@@ -98,9 +98,9 @@ function EditingHandler(event:any) {
 	else 
 		Previous(2);
 }
-function WordCountHandler(event:any) {
+function WordCountHandler(event:Event | KeyboardEvent) {
 	// Clear child element to allow for child update if it exists
-	let inputEl:HTMLInputElement = event.target;
+	let inputEl:HTMLInputElement = <HTMLInputElement>event.target;
 	let parentEl:HTMLDivElement = <HTMLDivElement>inputEl.parentElement;
 	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
@@ -108,12 +108,17 @@ function WordCountHandler(event:any) {
 	submitRowEl !== null && submitRowEl.remove();
 
 	// Handle entered value if "Enter"/"return" keypress event has been triggered or entered value is not empty
-	if (((event.type === "keypress") && (event.charCode === 13)) || event.type === "change") {
+	if (
+		(event.type === "keypress" && (event as KeyboardEvent)['charCode'] === 13) || 
+		event.type === "change"
+	) {
 		let enteredValueStr:string = inputEl.value;
 		let enteredValueNum:number = parseInt(enteredValueStr);
+		let inputElMin:number = parseInt(inputEl.min);
+		let inputElMax:number = parseInt(inputEl.max);
 
 		// Display next row if current selection is valid
-		if ((enteredValueNum >= event.target.min) && (enteredValueNum <= event.target.max) && !(enteredValueStr === "")) {
+		if ((enteredValueNum >= inputElMin) && (enteredValueNum <= inputElMax) && !(enteredValueStr === "")) {
 			// 'this' is bound to an object containing callback function and rates
 			let rates:IRate[] = this.data;
 			let callbackFunc = this.callBack;
@@ -139,9 +144,9 @@ function WordCountHandler(event:any) {
 			Previous(3);
 	}
 }
-function DeadlineHandler(event:any) {
+function DeadlineHandler(event:InputEvent) {
 	// Clear child element to allow for child update if it exists
-	let dateInputEl:HTMLInputElement = event.target;
+	let dateInputEl:HTMLInputElement = <HTMLInputElement>event.target;
 	let parentEl:HTMLDivElement = <HTMLDivElement>dateInputEl.parentElement;
 	parentEl.nextElementSibling !== null && (<HTMLDivElement>parentEl.nextElementSibling).remove();
 	// Submit row is not included with rest of rows; remove row if displayed
@@ -171,18 +176,21 @@ function DeadlineHandler(event:any) {
 	else 
 		Previous(4);
 }
-async function EmailHandler(event:any) {
+async function EmailHandler(event:Event | KeyboardEvent) {
 	// Clear child element to allow for child update if it exists
 	let submitRowEl:HTMLDivElement = <HTMLDivElement>document.getElementById("submitRow");
 	submitRowEl !== null && submitRowEl.remove();
 	// Entered email
-	let inputEl:HTMLInputElement = event.target;
+	let inputEl:HTMLInputElement = <HTMLInputElement>event.target;
 	let emailStr:string = inputEl.value;
 	// Error message span container
 	let errorMsg:HTMLSpanElement = <HTMLSpanElement>inputEl.nextElementSibling;
 
 	// Check if keyboard input and charCode is enter key: 13
-	if (((event.type === "keyup") && (event.keyCode === 13)) || event.type === "change") {
+	if (
+		(event.type === "keypress" && (event as KeyboardEvent)['charCode'] === 13) || 
+		event.type === "change"
+	) {
 
 		// Evaluate email field for validation
 		if (emailStr === "") {
@@ -207,9 +215,9 @@ async function EmailHandler(event:any) {
 		}
 	}
 }
-function SubmitHandler(event:any) {
+function SubmitHandler(event:PointerEvent) {
 	// Store button to be replaced by sending image
-	let submitBtn:HTMLInputElement = event.target;
+	let submitBtn:HTMLInputElement = <HTMLInputElement>event.target;
 	// Store message container to be used to update user
 	let msg:HTMLSpanElement = <HTMLSpanElement>submitBtn.nextElementSibling;
 	// Store parent in order to replace child element 

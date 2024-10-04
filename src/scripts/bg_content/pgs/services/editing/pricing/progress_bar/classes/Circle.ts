@@ -5,7 +5,7 @@ import { createElement } from '../../../../../../../global/methods/elements'
 
 class Circle {
 	private cvs:HTMLCanvasElement;
-	private ctx:any;
+	private ctx:CanvasRenderingContext2D;
 
 	private x:number = 150;
 	private y:number = 75;
@@ -18,7 +18,7 @@ class Circle {
 			element: "canvas",
 			className: "progressCircle"
 		});
-		this.ctx = this.cvs.getContext("2d");
+		this.ctx = this.cvs.getContext("2d") as CanvasRenderingContext2D;
 	}
 
 	public draw():void {
