@@ -4,7 +4,7 @@
 
 // Imports
 import { createElement, createTextElement, createImageElement } from '../../../../../../global/methods/elements';
-import { IGenericCard, CardOutlineInterface as ICard, IHeader } from '../interfaces';
+import { IGenericCard, IHeader } from '../interfaces';
 
 const createPageSection:(cardTitle:string)=>HTMLElement = (title:string):HTMLElement => {
 	// Create card container
@@ -28,34 +28,19 @@ const createPageSection:(cardTitle:string)=>HTMLElement = (title:string):HTMLEle
 const createGenericCard:(genericUserData:IGenericCard)=>void = (data:IGenericCard):void => {
 	// Create heading group for generic group 
 	let cardHeadingGroup:HTMLElement = createHeaderGroup(data["headers"]);
-	// Create image element for generic card 
+
+	// Create image figure and element for generic card
+	let cardImgFigure:HTMLElement = document.createElement('figure');
 	let cardImg:HTMLImageElement = createImageElement({
 		src:data.img["src"],
 		alt:data.img["alt"]
 	});
+	// Append image to the figure
+	cardImgFigure.appendChild(cardImg);
 
 	// Append heading group and image to parent container 
-	data["parent"].appendChild(cardImg);
+	data["parent"].appendChild(cardImgFigure);
 	data["parent"].appendChild(cardHeadingGroup);
-}
-const createCardOutline:(userCardOutlineData:ICard)=>SVGSVGElement = (data:ICard):SVGSVGElement => {
-	// Create svg for containing svg elements 
-	let svg:SVGSVGElement = <SVGSVGElement>document.createElementNS("http://www.w3.org/2000/svg","svg");
-	// Set viewbox of svg
-	svg.setAttribute("viewBox",data["viewBox"]);
-
-	// Create polyline for outline 
-	let polyline:SVGPolylineElement = document.createElementNS("http://www.w3.org/2000/svg","polyline");
-	// Add points attribute 
-	polyline.setAttribute("points",data["points"]);
-	// Add stroke-dasharray attribute 
-	polyline.setAttribute("stroke-dasharray","0");
-
-	// Append polyline and foreign object to svg 
-	svg.appendChild(polyline);
-	svg.appendChild(data["foreignObject"]);
-
-	return svg;
 }
 const createHeaderGroup:(headers:IHeader[])=>HTMLElement = (headers:IHeader[]):HTMLElement => {
 	// Create group heading to hold all headers 
@@ -73,4 +58,4 @@ const createHeaderGroup:(headers:IHeader[])=>HTMLElement = (headers:IHeader[]):H
 	return headingGroup;
 }
 
-export { createPageSection, createGenericCard, createCardOutline, createHeaderGroup }
+export { createPageSection, createGenericCard, createHeaderGroup }

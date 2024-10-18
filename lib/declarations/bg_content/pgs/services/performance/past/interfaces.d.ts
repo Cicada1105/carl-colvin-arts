@@ -26,13 +26,8 @@ interface CollaboratorInterface extends GenericUserInterface {
 interface AnecdoteInterface extends GenericUserInterface {
     anecdote: string;
 }
-interface CardOutlineInterface {
-    foreignObject: SVGForeignObjectElement;
-    points: string;
-    viewBox: string;
-}
 interface HeaderInterface {
     tagname: string;
     text: string;
 }
-export { GenericCardInterface as IGenericCard, RepertoireInterface as IRepertoire, CollaboratorInterface as ICollaborator, AnecdoteInterface as IAnecdote, CardOutlineInterface, HeaderInterface as IHeader };
+export { GenericCardInterface as IGenericCard, RepertoireInterface as IRepertoire, CollaboratorInterface as ICollaborator, AnecdoteInterface as IAnecdote, HeaderInterface as IHeader };

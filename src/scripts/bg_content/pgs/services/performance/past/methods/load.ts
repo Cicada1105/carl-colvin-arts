@@ -12,7 +12,10 @@ import { createPageSection } from './generic';
 import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
 import { PerformanceDataInterface } from '../../interfaces';
 //	Global
-import { createTextElement, createLoadingText, createContactLink } from '../../../../../../global/methods/elements';
+import { 
+	createElement, createTextElement, 
+	createLoadingText, createContactLink 
+} from '../../../../../../global/methods/elements';
 import { IContactLink } from '../../../../../../global/interfaces/general';
 import requestData from '../../../request';
 
@@ -103,13 +106,17 @@ const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 		);
 	}
 	else {
+		let flexCont:HTMLDivElement = createElement({
+			className: 'collaboratorsFlexCont'
+		});
 		// Append collaborators 
 		collaborators.forEach((collaborator:ICollaborator) => {
 			// Create collaborator card with current collaborator data
 			let collaboratorCard:HTMLElement = createCollaboratorCard(collaborator);
 			// Append collaborator card to parent container
-			collaboratorsCont.appendChild(collaboratorCard);
-		});	
+			flexCont.appendChild(collaboratorCard);
+		});
+		collaboratorsCont.appendChild(flexCont);
 	}
 }
 const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
@@ -151,13 +158,17 @@ const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 		);
 	}
 	else {
+		let flexCont:HTMLDivElement = createElement({
+			className: 'anecdotesFlexCont'
+		});
 		// Append anecdotes 
 		anecdotes.forEach((anecdote:IAnecdote) => {
 			// Create anecdote card with currrent anecdote data 
 			let anecdoteCard:HTMLElement = createAnecdoteCard(anecdote);
 			// Append anecdote card to parent container
-			anecdotesCont.appendChild(anecdoteCard);
+			flexCont.appendChild(anecdoteCard);
 		});
+		anecdotesCont.appendChild(flexCont);
 	}
 }
 

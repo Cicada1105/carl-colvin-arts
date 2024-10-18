@@ -80,9 +80,9 @@ function createMusicSheet(songs:SongInterface[]):HTMLDivElement {
 			})
 			// Add event listener to arrow
 			turnPageArrow.addEventListener("click",function(e:MouseEvent) {
-				const path = e.composedPath();
-				let musicPage:HTMLElement = path[1];
-				let musicSheet:HTMLDivElement = path[2];
+				const path:EventTarget[] = e.composedPath();
+				let musicPage:HTMLElement = <HTMLElement>path[1];
+				let musicSheet:HTMLDivElement = <HTMLDivElement>path[2];
 
 				// Set animation name of arrow depending on if its to turn the page left or right
 				//musicSheet.style.animationName = IS_FRONT_PAGE ? "flipPageLeft" : "flipPageRight";

@@ -5,8 +5,8 @@
 
 // Imports
 import { createElement, createTextElement } from '../../../../../../global/methods/elements';
-import { createGenericCard, createCardOutline } from './generic';
-import { IRepertoire, ICollaborator, IAnecdote, CardOutlineInterface as ICard } from '../interfaces';
+import { createGenericCard } from './generic';
+import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
 
 const createPerformanceCard:(pastPerformanceData:IRepertoire)=>HTMLElement = (data:IRepertoire):HTMLElement => {
 	let cardCont:HTMLElement = createElement({
@@ -24,11 +24,11 @@ const createPerformanceCard:(pastPerformanceData:IRepertoire)=>HTMLElement = (da
 		headers:[
 			{
 				tagname:"h2",
-				text:data.name	
+				text:data['name']	
 			},
 			{
-				tagname:"h4",
-				text:`  -  ${data.location}`
+				tagname:"h3",
+				text:data['location']
 			}
 		]
 	})
@@ -71,12 +71,9 @@ const createCollaboratorCard:(collaboratorCardData:ICollaborator)=>HTMLElement =
 		className:"collaboratorCard"
 	});
 
-	// Create foreign object to hold html elements inside svg 
-	let foreignObj:SVGForeignObjectElement = <SVGForeignObjectElement>document.createElementNS("http://www.w3.org/2000/svg","foreignObject");
-
 	// Append generic data to parent container
 	createGenericCard({
-		parent: foreignObj,
+		parent: collaboratorCard,
 		img: {
 			src: data.img["src"],
 			alt: data.img["alt"]
@@ -93,24 +90,20 @@ const createCollaboratorCard:(collaboratorCardData:ICollaborator)=>HTMLElement =
 		]
 	});
 
+	// Create image back drop to simulate space between image and outline
+	let collaboratorCardImgBackdrop:HTMLSpanElement = createElement({
+		className:"imageBackDrop"
+	});
+	// Prepend card image backdrop to card
+	collaboratorCard.prepend(collaboratorCardImgBackdrop);
+
 	// Create article for collaborator's description
 	let collaboratorDesc: HTMLElement = createTextElement({
 		element: "article",
 		text: data['description']
 	});
 	// Append article description to collaborator card
-	foreignObj.appendChild(collaboratorDesc);
-
-	// Create collaborator outline, passing in html elements 
-	let svgOutlineData:ICard = {
-		foreignObject:foreignObj,
-		points:"230,64 318.5,64 318.5,238.5 1.5,238.5 1.5,64 90,65",
-		viewBox:"0 0 320 240"
-	}
-	let svgOutline:SVGSVGElement = createCardOutline(svgOutlineData);
-
-	// Append collaborator outline, with html elements (added to svg with createCardOutline), to collaborator card
-	collaboratorCard.appendChild(svgOutline);
+	collaboratorCard.appendChild(collaboratorDesc);
 
 	return collaboratorCard;
 }
@@ -120,20 +113,6 @@ const createAnecdoteCard:(anecdoteCardData:IAnecdote)=>HTMLElement = (data:IAnec
 		element:"section",
 		className:"userCard"
 	});
-
-	// Create outline for user card
-	let userCardOutline:HTMLDivElement = createElement({
-		className:"userCardOutline"
-	})
-	// Create image back drop to simulate space between image and outline
-	let userCardImgBackdrop:HTMLSpanElement = createElement({
-		element:"span",
-		className:"imageBackDrop"
-	});
-
-	// Append user card outine and user card image backdrop to user card
-	userCard.appendChild(userCardOutline);
-	userCard.appendChild(userCardImgBackdrop);
 
 	// Append generic data to parent container
 	createGenericCard({
@@ -154,6 +133,13 @@ const createAnecdoteCard:(anecdoteCardData:IAnecdote)=>HTMLElement = (data:IAnec
 		]
 	});
 	
+	// Create image back drop to simulate space between image and outline
+	let userCardImgBackdrop:HTMLSpanElement = createElement({
+		className:"imageBackDrop"
+	});
+	// Prepend card image backdrop to card
+	userCard.prepend(userCardImgBackdrop);
+
 	// Create article for holding user's anecdote 
 	let anecdoteMsg:HTMLElement = createTextElement({
 		element:"article",
