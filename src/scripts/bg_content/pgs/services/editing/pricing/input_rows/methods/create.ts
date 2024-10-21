@@ -248,6 +248,9 @@ const createSubmitDisclaimerCont = ():HTMLDivElement => {
 		idName: "disclaimerCont"
 	});
 
+	// Retrieve user entered email
+	const emailInput:HTMLInputElement = <HTMLInputElement>document.getElementById('email');
+	let email:string = emailInput.value;
 	/*
 		Create a form that contains a fieldset with a header legend for UI
 	*/
@@ -264,8 +267,8 @@ const createSubmitDisclaimerCont = ():HTMLDivElement => {
 	});
 	let disclaimerText:HTMLParagraphElement = createTextElement({
 		text: "By clicking submit, you are NOT committing to any payment or contract with carlcolvinarts. By " +
-			  "submitting this information, you are agreeing to continue communication, via email, with [email name], outside " +
-			  "of the carlcolvinarts domain. Privacy and terms of service are handled by respective owners of the email " +
+			  "submitting this information, you are agreeing to continue communication, via email, with " + email + ", outside " +
+			  "of the CarlColvinArts domain. Privacy and terms of service are handled by respective owners of the email " +
 			  "services used to continue communications over any email, telecommunication, or media service. A follow up " +
 			  "email will be sent 2-3 business days after initial submission discussing further price inquiries"
 	});
