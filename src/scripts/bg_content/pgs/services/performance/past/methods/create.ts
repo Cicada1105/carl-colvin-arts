@@ -14,9 +14,14 @@ const createPerformanceCard:(pastPerformanceData:IRepertoire)=>HTMLElement = (da
 		className:"pastPerformanceCard"
 	});
 
+	// Container to wrap performance content to separate from image
+	let contentCont:HTMLDivElement = createElement({
+		className: 'cardWrapper'
+	});
+
 	// Append generic data to parent container
 	createGenericCard({
-		parent:cardCont,
+		parent:contentCont,
 		img: {
 			src: data.img["src"],
 			alt: data.img["alt"]
@@ -33,8 +38,8 @@ const createPerformanceCard:(pastPerformanceData:IRepertoire)=>HTMLElement = (da
 		]
 	})
 
-	// For past performances card, swap image and header group
-	cardCont.children[0].insertAdjacentElement("beforebegin",cardCont.children[1]);
+	// For past performances card, image figure goes outside of inner wrapper container
+	cardCont.insertAdjacentElement("afterbegin",contentCont.children[0]);
 
 	// Create paragraphs for date and instruments
 	let date:HTMLParagraphElement = createTextElement({
@@ -57,10 +62,13 @@ const createPerformanceCard:(pastPerformanceData:IRepertoire)=>HTMLElement = (da
 		text:data.description
 	});
 
-	// Append non generic html elements, specific to performance card, to card container
-	cardCont.appendChild(date);
-	cardCont.appendChild(instrumentsEl);
-	cardCont.appendChild(description);
+	// Append non generic html elements, specific to performance card, to content container
+	contentCont.appendChild(date);
+	contentCont.appendChild(instrumentsEl);
+	contentCont.appendChild(description);
+
+	// Append content container to the card container
+	cardCont.appendChild(contentCont);
 
 	return cardCont;
 }

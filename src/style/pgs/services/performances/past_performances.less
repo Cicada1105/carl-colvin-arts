@@ -77,36 +77,27 @@ h1#previousPerformancesTitle {
 	}
 	// Past performance card
 	& > section.pastPerformanceCard {
-		.format(relative,90%);
+		width: 90%;
 		background-color:@primaryColor;
-		text-align:center;
+		display: flex;
+		flex-flow:column nowrap;
+		align-items:center;
+		column-gap:2rem;
 		color:@textColor;
 		border-radius:15px;
-		padding:1rem;
+		padding:2rem 1rem;
 		min-width:unset;
 		margin:2rem auto;
 
-		// Performance location
-		& h3 {
-			margin:0px;
-		}
-		& > article {
-			width:unset;
-		}
-		// & img {
-		& > figure {
-			.format(relative,16rem);
-			border-radius:10px;
-			margin: 1rem auto 0rem auto;
-			overflow: hidden;
-		}
 		& img {
-			width: inherit;
+			width: 16rem;
+			border-radius:10px;
 		}
 	}
 	// Styles shared by collaborator and anecdote cards
 	& section.collaboratorCard, & section.userCard {
 		border: 2px solid @accentColor;
+		position: relative;
 		margin-top:7rem;
 		padding: 0rem 1rem 1rem;
 		color:@textColor;
@@ -117,17 +108,11 @@ h1#previousPerformancesTitle {
 			background-color: @secondaryColor;
 			left: 50%;
 		}
-		figure {
-			.dimensions(10rem, 10rem);
-			margin: auto;
-			margin-bottom: -5rem;
-			overflow: hidden;
-			border-radius: 99999px;
-			transform: translateY(-50%);
-		}
 		& img {
-			height: 10rem;
-			min-width: 10rem;
+			.dimensions(10rem,10rem);
+			margin-bottom: -5rem;
+			border-radius: 10px;
+			transform: translateY(-50%);
 			object-fit: cover;
 			object-position: top;
 		}
@@ -152,13 +137,8 @@ h1#previousPerformancesTitle {
 		flex-direction: column;
 		align-items: center;
 	}
-	// Collaborators cards
-	& section.collaboratorCard {
-		position: relative;
-	}
 	// Anecdotes cards
 	& section.userCard {
-		position: relative;
 		max-width: 40rem;
 	}
 }
@@ -166,43 +146,18 @@ h1#previousPerformancesTitle {
 @media only screen and (min-width:705px) {
 	.pageCardCont {
 		width:75%;
-		section.pastPerformanceCard {
-			h2 {
-				display: inline;
-				margin: 0;
-
-				&::after {
-					content:'\2013';
-					display: inline;
-					margin: 0 0.5rem;
-				}
-			}
-			h3 {
-				display: inline;
-			}
-		}
 	}
 }
 @media only screen and (min-width:895px) {
 	.pageCardCont {
 		section.pastPerformanceCard {
-			text-align:initial;
+			flex-direction:row;
 
-			& figure {
-				position: absolute;
-				transform:translateY(-50%);
-				height:calc(100% - 2rem);
-				margin-top:0px;
-				right:2rem;
-				top:50%;
-			}
-			& > article {
-				width:65%;
+			& .cardWrapper {
+				order: -1;
+				flex: 1 1 0;
 			}
 		}
- 		& > section.userCard {
- 			width:40rem;
- 		}
 	}
 }
 @media only screen and (min-width: 986px) {
@@ -212,16 +167,6 @@ h1#previousPerformancesTitle {
 		}
 	}
 }
-@media only screen and (min-width:1153px) {
-	.pageCardCont {
-		section.pastPerformanceCard {
-			& > article {
-				width:75%;
-			}
-		}
-	}
-}
-
 div#contactLink {
 	.format(relative,20rem);
 	display:inline-block;

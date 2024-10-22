@@ -29,17 +29,14 @@ const createGenericCard:(genericUserData:IGenericCard)=>void = (data:IGenericCar
 	// Create heading group for generic group 
 	let cardHeadingGroup:HTMLElement = createHeaderGroup(data["headers"]);
 
-	// Create image figure and element for generic card
-	let cardImgFigure:HTMLElement = document.createElement('figure');
+	// Create image for generic card
 	let cardImg:HTMLImageElement = createImageElement({
 		src:data.img["src"],
 		alt:data.img["alt"]
 	});
-	// Append image to the figure
-	cardImgFigure.appendChild(cardImg);
 
 	// Append heading group and image to parent container 
-	data["parent"].appendChild(cardImgFigure);
+	data["parent"].appendChild(cardImg);
 	data["parent"].appendChild(cardHeadingGroup);
 }
 const createHeaderGroup:(headers:IHeader[])=>HTMLElement = (headers:IHeader[]):HTMLElement => {
