@@ -1,14 +1,13 @@
 // This file holds the interfaces that are used by the reedmaking page
-import { IImage } from '../../../../global/interfaces/general';
 
 type ReedPreview = Pick<ReedInterface, 'name' | 'description' | 'image'> & { 
-	[key: string]: string | IImage | undefined;
+	[key: string]: string | undefined;
 	displayPrice: string;
 };
 interface ReedInterface {
 	name:string;
 	description:string;
-	image?: IImage;
+	image?: string;
 	pricing: ReedPriceType;
 	categories?: CategoryInterface[];
 }

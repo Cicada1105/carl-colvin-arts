@@ -1,12 +1,11 @@
-import { IImage } from '../../../../global/interfaces/general';
 declare type ReedPreview = Pick<ReedInterface, 'name' | 'description' | 'image'> & {
-    [key: string]: string | IImage | undefined;
+    [key: string]: string | undefined;
     displayPrice: string;
 };
 interface ReedInterface {
     name: string;
     description: string;
-    image?: IImage;
+    image?: string;
     pricing: ReedPriceType;
     categories?: CategoryInterface[];
 }

@@ -102,16 +102,12 @@ const createReedPriceBox = (reedData:ReedInterface):HTMLElement => {
 const createReedPreview = (preview: ReedPreview):HTMLElement => {
 	let reedFigure:HTMLElement = createElement({element: "figure", className: "reedFigure"});
 
-	let reedImg:HTMLImageElement;
-	// Check if image is provided with current reed data
-	if (preview['image'] ) {
-		let reedImage: IImage = preview['image'];
-		// Load image
-		reedImg = createImageElement({src:reedImage['path'],alt:reedImage['alt']});
-	}
-	else {
-		reedImg = createImageElement({src: "../../resources/global_imgs/background/reedmaking_bg.jpeg", alt: preview['name']});
-	}
+	let imgSrc: string = preview['image'] || "../../resources/global_imgs/background/reedmaking_bg.jpeg";
+
+	let reedImg:HTMLImageElement = createImageElement({
+		src: imgSrc,
+		alt:`${preview.name} image`
+	});
 
 	// Create a figure caption
 	let reedCaption:HTMLElement = createElement({
