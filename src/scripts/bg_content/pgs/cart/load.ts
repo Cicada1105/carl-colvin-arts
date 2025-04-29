@@ -1,9 +1,10 @@
 // Imports
 //  methods
 import { createCartRow } from './create'
-import { createTextElement } from '../../../global/methods/elements'
+import { createTextElement, createContactLink } from '../../../global/methods/elements'
 //  interfaces
 import { ReedStorageItem } from '../../../global/interfaces/cart'
+import { IContactLink } from '../../../global/interfaces/general'
 
 const loadHeader = () => {
   let hgroup:HTMLElement = document.createElement('hgroup');
@@ -31,7 +32,21 @@ const loadCartLayout = () => {
   if ( sessionStorage['cca-reed-cart'] && JSON.parse(sessionStorage['cca-reed-cart']).length > 0 ) {
     let cart:ReedStorageItem[] = JSON.parse(sessionStorage['cca-reed-cart']);
 
-    cart.forEach((item:ReedStorageItem) => createCartRow(item))
+    let formattedMsg:string = '';
+    cart.forEach((item:ReedStorageItem) => {
+      createCartRow(item);
+      // Format message
+      formattedMsg += `${item['quantity']}x ${item['name']}\n\n`;
+    });
+    
+    let linkData:IContactLink = {
+      text: "Checkout",
+      from: "cart",
+      path: "./contact.html",
+      message: formattedMsg
+    }
+    let contactLinkCont:HTMLDivElement = createContactLink(linkData);
+    document.body.appendChild(contactLinkCont);
   }
   else {
     let emptyCartMessage:string = 'Your cart is empty! \n Checkout the reedmaking page for items to purchase.';

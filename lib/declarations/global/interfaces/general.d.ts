@@ -25,5 +25,6 @@ interface ContactLinkInterface {
     text: string;
     from: string;
     path: string;
+    message?: string;
 }
 export { ImageInterface as IImage, ImageLinkInterface as IImageLink, ILink, IBox, IBoxLink, EventListener, ContactLinkInterface as IContactLink };

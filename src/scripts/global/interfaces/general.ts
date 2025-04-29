@@ -28,6 +28,7 @@ interface ContactLinkInterface {
 	text:string;
 	from:string;
 	path:string;
+	message?:string;
 }
 
 export { 

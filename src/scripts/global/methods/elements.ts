@@ -307,6 +307,7 @@ function createContactLink(data:IContactLink):HTMLDivElement {
   iBtn.addEventListener("click",function() {
     // Set session storage to be "from" future performances 
     sessionStorage.setItem("from",data["from"]);
+    data['message'] && sessionStorage.setItem('message', data['message']);
     // Navigate to contact page 
     window.location.assign(data["path"]);
   },{once:true})

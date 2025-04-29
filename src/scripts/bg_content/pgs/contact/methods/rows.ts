@@ -51,6 +51,9 @@ const createRows = ():HTMLDivElement => {
 		let selectEl:HTMLSelectElement = <HTMLSelectElement>selectCont.firstElementChild;
 
 		switch(from) {
+			case 'cart':
+				selectEl.selectedIndex = 2; // Reed Details
+			break;
 			case 'reedmaking':
 				selectEl.selectedIndex = 3; // Reed Details
 			break;
@@ -86,6 +89,14 @@ const createRows = ():HTMLDivElement => {
 		id: formData.form.textAreaInput.id,
 		data: formData.form.textAreaInput.data
 	});
+	// Display message if one was passed
+	if ( sessionStorage.getItem('message') ) {
+		let textArea:HTMLTextAreaElement = txtAreaCont.querySelector('textarea') as HTMLTextAreaElement;
+		textArea.textContent = sessionStorage.getItem('message') as string;
+
+		// Clear message from session storage
+		sessionStorage.removeItem('message');
+	}
 	let txtAreaInputRow:HTMLDivElement = createInputRow({
 		label: formData.form.textAreaInput.label,
 		content: txtAreaCont
