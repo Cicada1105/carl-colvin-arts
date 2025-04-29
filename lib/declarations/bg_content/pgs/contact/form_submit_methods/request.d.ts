@@ -1,2 +1,3 @@
-declare let request: (n: string, e: string, sub: string, body: string) => Promise<unknown>;
+import { EmailRequestInterface } from '../interfaces';
+declare let request: (request: EmailRequestInterface) => Promise<unknown>;
 export { request };

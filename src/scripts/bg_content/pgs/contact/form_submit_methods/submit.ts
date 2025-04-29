@@ -7,8 +7,13 @@ import { createImageElement } from '../../../../global/methods/elements'
 import { isValidEmail } from '../../../../global/methods/utilities'
 //	interfaces
 import { EmailReport, EmailError } from '../../../../global/interfaces/errors'
+import {
+	CustomEventProps, ClearCartInterface, CartAction
+} from '../../../../global/interfaces/cart';
 //  Local
-//  methods
+// 		interfaces
+import { EmailRequestInterface } from '../interfaces';
+//  	methods
 import { request } from './request'
 
 // Image path
@@ -51,11 +56,31 @@ const submitForm = async (event:any):Promise<void> => {
 		// Update message
 		submit_msg.innerHTML = "Sending...";
 
-		request(name.value,email.value,`${group.label} - ${subject.value}`,body.value).then((res) => {
+		let emailRequestData:EmailRequestInterface = {
+			name: name.value,
+			email: email.value,
+			subject: `${group.label} - ${subject.value}`,
+			body: body.value
+		}
+
+		request(emailRequestData).then((res) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);
 			// Update message
 			submit_msg.innerHTML = "Message Sent!";
+
+			// Successfully sent email, now clear cart
+			// Build out the event data to notify the global event space
+			let eventData:CustomEventProps<ClearCartInterface> = {
+				bubbles: true,
+				detail: {
+					action: CartAction.Clear
+				}
+			}
+			// Create a custom event with the respective clear cart data
+			let event:CustomEvent<ClearCartInterface> = new CustomEvent('OnUpdateCart',eventData);
+			// Dispatch custom event to notify the global listener
+			document.dispatchEvent(event);
 		}).catch((err) => {
 			// Return image back to original submit button
 			submit_cont.replaceChild(submit_btn, sending_img);

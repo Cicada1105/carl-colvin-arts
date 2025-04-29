@@ -1,7 +1,8 @@
 declare enum CartAction {
     Add = 0,
     Update = 1,
-    Delete = 2
+    Delete = 2,
+    Clear = 3
 }
 interface CustomEventProps<T> {
     bubbles?: boolean;
@@ -23,7 +24,9 @@ interface UpdateReedInterface extends UpdateCartActionloadInterface {
 interface DeleteReedInterface extends UpdateCartActionloadInterface {
     id: number;
 }
-declare type UpdateCartPayload = AddReedInterface | UpdateReedInterface | DeleteReedInterface;
+interface ClearCartInterface extends UpdateCartActionloadInterface {
+}
+declare type UpdateCartPayload = AddReedInterface | UpdateReedInterface | DeleteReedInterface | ClearCartInterface;
 interface ReedStorageItem {
     id: number;
     name: string;
@@ -31,4 +34,4 @@ interface ReedStorageItem {
     quantity: number;
     category?: string;
 }
-export { CartAction, CustomEventProps, UpdateCartActionloadInterface, AddReedInterface, UpdateReedInterface, DeleteReedInterface, UpdateCartPayload, ReedStorageItem };
+export { CartAction, CustomEventProps, UpdateCartActionloadInterface, AddReedInterface, UpdateReedInterface, DeleteReedInterface, ClearCartInterface, UpdateCartPayload, ReedStorageItem };

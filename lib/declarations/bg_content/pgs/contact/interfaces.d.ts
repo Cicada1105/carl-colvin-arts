@@ -8,4 +8,10 @@ interface IForm {
     };
     submit: IButton;
 }
-export { IForm };
+interface EmailRequestInterface {
+    name: string;
+    email: string;
+    subject: string;
+    body: string;
+}
+export { IForm, EmailRequestInterface };

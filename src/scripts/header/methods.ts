@@ -5,7 +5,8 @@
 import { ILink } from '../global/interfaces/general'
 import { 
   CartAction, ReedStorageItem, UpdateCartPayload,
-  AddReedInterface, UpdateReedInterface, DeleteReedInterface 
+  AddReedInterface, UpdateReedInterface, DeleteReedInterface,
+  ClearCartInterface
 } from '../global/interfaces/cart'
 import { createElement, createTextElement } from '../global/methods/elements'
 import { getCurrentFile } from '../global/methods/utilities'
@@ -84,10 +85,13 @@ let createNavigation = ():HTMLUListElement => {
         updateCartListener<UpdateReedInterface>(e);
         notif = 'Successfully updated cart!';
       }
+      else if ( cartPayload.action === CartAction.Clear ) {
+        updateCartListener<ClearCartInterface>(e);
+      }
 
       let cart:ReedStorageItem[] = JSON.parse(sessionStorage.getItem(CART_NAME) || '[]');
       cartQty.innerText = cart.length.toString();
-      alert(notif);
+      notif && alert(notif);
       window.location.reload();
     }
   });

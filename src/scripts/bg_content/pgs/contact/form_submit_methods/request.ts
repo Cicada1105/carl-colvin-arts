@@ -1,13 +1,14 @@
 // This file handles making request to server to send email
+import { EmailRequestInterface } from '../interfaces';
 
-let request = (n:string, e:string, sub:string, body:string) => {
+let request = (request:EmailRequestInterface) => {
 	let contactInfo = {
-		"name":n,
-		"email":e,
-		"subject":sub,
-		"message":body
+		"name":request['name'],
+		"email":request['email'],
+		"subject":request['subject'],
+		"message":request['body']
 	}
-
+	
 	return new Promise((resolve,reject) => {
 		const http = new XMLHttpRequest();
 

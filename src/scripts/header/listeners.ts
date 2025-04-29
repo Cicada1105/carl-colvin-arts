@@ -1,7 +1,7 @@
 import {
   CartAction, ReedStorageItem,
   AddReedInterface, UpdateReedInterface, DeleteReedInterface,
-  UpdateCartPayload
+  UpdateCartPayload, ClearCartInterface
 } from '../global/interfaces/cart'
 
 function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
@@ -66,6 +66,13 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
           cartItems.filter((reed:ReedStorageItem) => reed['id'] !== deleteReedProps.id)
         )
       );
+    break;
+    case CartAction.Clear:
+      // Nothing stored in this payload.
+      // This is done for consistency and future unknowns.
+      let clearCartProps:ClearCartInterface = <ClearCartInterface>cartPayload;
+      // Clear users cart
+      sessionStorage.removeItem(CART_NAME);
     break;
   }
 }

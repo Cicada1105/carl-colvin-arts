@@ -17,5 +17,11 @@ interface IForm {
 	};
 	submit:IButton
 }
+interface EmailRequestInterface {
+	name: string;
+	email: string;
+	subject: string;
+	body: string;
+}
 
-export { IForm }
+export { IForm, EmailRequestInterface }
