@@ -5,7 +5,7 @@
 // 	interfaces 
 import { 
 	ITextRow, IButton
-} from '../../../../global/interfaces/inputs'
+} from '@global/interfaces/inputs'
 //  methods
 import {
 	createInputRow,
@@ -16,7 +16,7 @@ import {
 import { submitForm } from '../form_submit_methods/submit'
 //  Global
 //  methods
-import { createElement, createTextElement } from '../../../../global/methods/elements'
+import { createElement, createTextElement } from '@global/methods/elements'
 import { formData } from '../data'
 
 const createRows = ():HTMLDivElement => {

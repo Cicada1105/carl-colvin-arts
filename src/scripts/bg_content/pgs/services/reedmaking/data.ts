@@ -1,5 +1,5 @@
 // Imports
-import { IBox } from '../../../../global/interfaces/general'
+import { IBox } from '@global/interfaces/general'
 
 const reedmakingIntro:IBox<string> = {
 	header:"Reedmaking",

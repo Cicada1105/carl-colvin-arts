@@ -3,9 +3,9 @@
 
 // Imports
 // interfaces
-import { IImage, IBoxLink } from '../../../global/interfaces/general'
+import { IImage, IBoxLink } from '@global/interfaces/general'
 // methods
-import { createElement, createTextElement, createImageElement } from '../../../global/methods/elements'
+import { createElement, createTextElement, createImageElement } from '@global/methods/elements'
 
 // Path for development
 let isHomePage:boolean = window.location.pathname.includes('index');

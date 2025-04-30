@@ -4,7 +4,7 @@
 
 // Imports
 import { loadSVG } from './methods/load_methods';
-import { createElement } from '../../../../../global/methods/elements';
+import { createElement } from '@global/methods/elements';
 
 const loadLandingPage = ():void => {
 	// Create section element

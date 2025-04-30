@@ -2,7 +2,7 @@
 
 // Imports
 //	methods
-import { createElement } from '../../../../../../../global/methods/elements'
+import { createElement } from '@global/methods/elements'
 import { createLiteratureRow } from './rows'
 
 const loadInputRows = ():HTMLDivElement => {

@@ -1,5 +1,5 @@
 import { RateInterface as IRate } from '../../../interfaces';
-import { IOption } from '../../../../../../../global/interfaces/inputs';
+import { IOption } from '@global/interfaces/inputs';
 interface LiteratureTypeInterface {
     literatureType: IOption;
     child: GenresInterface;

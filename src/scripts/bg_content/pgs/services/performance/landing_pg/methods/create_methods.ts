@@ -21,7 +21,7 @@ import {
 	createElement,
 	createTextElement,
 	createImageElement
-} from '../../../../../../global/methods/elements'
+} from '@global/methods/elements'
 //	local
 import * as UTILITY from './utility_methods';
 

@@ -1,4 +1,4 @@
-import { IImage } from '../../../../../global/interfaces/general';
+import { IImage } from '@global/interfaces/general';
 interface SVGGraphicsInterface {
     fill?: string;
     fillOpacity?: string;

@@ -3,7 +3,7 @@
 // Imports
 //	Global
 //		interfaces
-import { IImageLink } from '../../../global/interfaces/general';
+import { IImageLink } from '@global/interfaces/general';
 //  Local
 // 		interfaces
 import { IForm } from './interfaces'

@@ -5,7 +5,7 @@
 */
 // Imports
 //	Global
-import { createElement, createTextElement, createImageElement } from '../../../../../../global/methods/elements';
+import { createElement, createTextElement, createImageElement } from '@global/methods/elements';
 //	Local
 import { SongInterface } from '../interfaces';
 

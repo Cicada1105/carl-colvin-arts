@@ -5,7 +5,7 @@
 
 // Imports
 //	Global
-import { createElement } from '../../../../../../global/methods/elements';
+import { createElement } from '@global/methods/elements';
 //	Local
 import { createStandTray, createStandShaft } from './utilities';
 

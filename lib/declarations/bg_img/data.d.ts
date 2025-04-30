@@ -1,4 +1,4 @@
-import { IImage } from '../global/interfaces/general';
+import { IImage } from '@global/interfaces/general';
 interface IBgImage {
     [index: string]: IImage;
 }

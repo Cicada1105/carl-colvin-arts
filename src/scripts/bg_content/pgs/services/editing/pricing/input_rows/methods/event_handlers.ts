@@ -5,7 +5,7 @@
 //		Local
 import { RateInterface as IRate } from '../../../interfaces'
 //		Global
-import { EmailError, EmailReport } from '../../../../../../../global/interfaces/errors'
+import { EmailError, EmailReport } from '@global/interfaces/errors'
 //	Data
 import { userSelectedData } from '../data/dynamic'
 //	Methods
@@ -13,7 +13,7 @@ import { userSelectedData } from '../data/dynamic'
 import { getMinMaxDates } from './create'
 import { Next, Previous } from '../../shared/methods/update_progress'
 //		Global
-import { isValidEmail } from '../../../../../../../global/methods/utilities'
+import { isValidEmail } from '@global/methods/utilities'
 
 function LiteratureTypeHandler(event:Event):void {
 	//	event target holds HTMLCollection hierarchy of elements, starting at the element that fired the event,

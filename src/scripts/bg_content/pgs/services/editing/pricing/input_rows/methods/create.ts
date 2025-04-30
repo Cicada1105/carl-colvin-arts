@@ -5,16 +5,16 @@
 //	   local
 import { 
 	EventListener
-} from '../../../../../../../global/interfaces/general' 
+} from '@global/interfaces/general' 
 import { 
 	IInputRow, ISelect, IRange,
 	GenericInputInterface as IGenericInput
-} from '../../../../../../../global/interfaces/inputs'
+} from '@global/interfaces/inputs'
 //	methods
 import { 
 	createElement, createTextElement, 
 	createLabelElement, createSelectElement 
-} from '../../../../../../../global/methods/elements'
+} from '@global/methods/elements'
 
 const createInputRow = (rowData:IInputRow):HTMLDivElement => {
 	const selectionRow:HTMLDivElement = createElement({

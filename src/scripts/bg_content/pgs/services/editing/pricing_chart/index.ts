@@ -5,7 +5,7 @@
 
 // Imports
 //	methods
-import { createElement, createTextElement } from '../../../../../global/methods/elements'
+import { createElement, createTextElement } from '@global/methods/elements'
 import { constructEditingPricingChartData } from './shared/construct'
 import { createSelections } from './selections/create'
 import { createChart } from './chart/create'

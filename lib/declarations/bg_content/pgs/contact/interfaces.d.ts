@@ -1,4 +1,4 @@
-import { ITextRow, ISelectRow, IAreaRow, IButton } from '../../../global/interfaces/inputs';
+import { ITextRow, ISelectRow, IAreaRow, IButton } from '@global/interfaces/inputs';
 interface IForm {
     header: string;
     form: {

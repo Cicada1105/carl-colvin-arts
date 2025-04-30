@@ -7,11 +7,11 @@
 //    methods
 import requestData from '../../../request';
 import { createPerformanceRow } from './create';
-import { createElement, createTextElement, createContactLink } from '../../../../../../global/methods/elements';
+import { createElement, createTextElement, createContactLink } from '@global/methods/elements';
 //    interfaces
 import { IPerformance } from '../interfaces';
 import { PerformanceDataInterface } from '../../interfaces';
-import { IContactLink } from '../../../../../../global/interfaces/general';
+import { IContactLink } from '@global/interfaces/general';
 
 const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 	let performanceData:PerformanceDataInterface<IPerformance> = await requestData<PerformanceDataInterface<IPerformance>>("performance/future");

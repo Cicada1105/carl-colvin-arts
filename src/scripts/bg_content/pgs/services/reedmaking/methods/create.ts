@@ -9,15 +9,15 @@ import type {
 	FixedPricingInterface, VariablePricingInterface,
 	CategoryInterface
 } from '../interfaces';
-import type { IBox, IImage } from '../../../../../global/interfaces/general';
-import { CartAction, CustomEventProps, AddReedInterface } from '../../../../../global/interfaces/cart'
-import type { ISelectRow, ISelect, IOption } from '../../../../../global/interfaces/inputs';
+import type { IBox, IImage } from '@global/interfaces/general';
+import { CartAction, CustomEventProps, AddReedInterface } from '@global/interfaces/cart'
+import type { ISelectRow, ISelect, IOption } from '@global/interfaces/inputs';
 //	methods
 import { 
 	createElement, createTextElement, 
 	createImageElement, createLabelElement,
 	createSelectElement
-} from '../../../../../global/methods/elements'
+} from '@global/methods/elements'
 import { createIntroHeader } from './utilities';
 
 const IMG_PATH:string = "../../../resources/pg_imgs/reedmaking_imgs/";

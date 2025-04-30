@@ -1,5 +1,5 @@
 import type { ReedInterface } from '../interfaces';
-import type { IBox } from '../../../../../global/interfaces/general';
+import type { IBox } from '@global/interfaces/general';
 /************************************/
 /************************************/
 declare const createHeaderContent: (data: IBox<string>) => HTMLDivElement;

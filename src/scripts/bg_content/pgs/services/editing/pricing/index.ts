@@ -3,7 +3,7 @@
 // Imports
 //	methods
 //	   global
-import { createTextElement } from '../../../../../global/methods/elements'
+import { createTextElement } from '@global/methods/elements'
 //	   local
 import { loadProgressBar } from './progress_bar/methods/load'
 import { loadInputRows } from './input_rows/methods/load'

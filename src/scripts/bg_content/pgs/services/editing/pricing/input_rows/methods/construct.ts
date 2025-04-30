@@ -17,7 +17,7 @@ import {
 	IServerData 
 } from '../../../interfaces';
 import { litEditingServerData } from '../../../data';
-import { IOption } from '../../../../../../../global/interfaces/inputs'
+import { IOption } from '@global/interfaces/inputs'
 
 export const constructEditingData = ():ILitType[] => {
 	let serverData: IServerData[] = litEditingServerData;

@@ -4,7 +4,7 @@
 */
 
 // Global elements imports
-import { createElement, createTextElement, } from "../../../../../global/methods/elements";
+import { createElement, createTextElement, } from "@global/methods/elements";
 
 function createIntroHeader(title:string):HTMLElement {
 	let headerTag:HTMLElement = document.createElement("header");

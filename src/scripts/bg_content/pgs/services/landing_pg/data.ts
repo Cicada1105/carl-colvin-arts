@@ -1,7 +1,7 @@
 /*
 	This file contains static data for the Services landing page
 */
-import { IImage, IBoxLink } from '../../../../global/interfaces/general'
+import { IImage, IBoxLink } from '@global/interfaces/general'
 //import { AnimationOutlineInterface as IAnimation } from './interfaces'
 
 const INTRO_DATA:string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus " +

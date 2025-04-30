@@ -5,7 +5,7 @@
 
 // Imports
 //	Global
-import { createElement } from '../../../../../../global/methods/elements';
+import { createElement } from '@global/methods/elements';
 
 function createStandTray(musicCont:HTMLDivElement):HTMLDivElement {
 	let standTrayCont:HTMLDivElement = createElement({idName:"standTray"});

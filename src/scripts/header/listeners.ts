@@ -2,7 +2,7 @@ import {
   CartAction, ReedStorageItem,
   AddReedInterface, UpdateReedInterface, DeleteReedInterface,
   UpdateCartPayload, ClearCartInterface
-} from '../global/interfaces/cart'
+} from '@global/interfaces/cart'
 
 function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
   const CART_NAME:string = 'cca-reed-cart';

@@ -2,14 +2,14 @@
 
 // Imports
 // global
-import { ILink } from '../global/interfaces/general'
+import { ILink } from '@global/interfaces/general'
 import { 
   CartAction, ReedStorageItem, UpdateCartPayload,
   AddReedInterface, UpdateReedInterface, DeleteReedInterface,
   ClearCartInterface
-} from '../global/interfaces/cart'
-import { createElement, createTextElement } from '../global/methods/elements'
-import { getCurrentFile } from '../global/methods/utilities'
+} from '@global/interfaces/cart'
+import { createElement, createTextElement } from '@global/methods/elements'
+import { getCurrentFile } from '@global/methods/utilities'
 // local
 import { links } from './data'
 import { updateCartListener, viewCartPage } from './listeners'

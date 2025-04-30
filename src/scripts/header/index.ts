@@ -1,6 +1,6 @@
 // Imports
 // global
-import { createElement } from '../global/methods/elements'
+import { createElement } from '@global/methods/elements'
 // local
 import { createNavigation } from './methods'
 

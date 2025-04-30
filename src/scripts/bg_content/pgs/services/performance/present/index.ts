@@ -5,7 +5,7 @@
 // Imports
 //	Global
 import requestData from '../../request';
-import { createTextElement, createLoadingText } from '../../../../../global/methods/elements';
+import { createTextElement, createLoadingText } from '@global/methods/elements';
 //	Local
 import { SongInterface } from './interfaces';
 import { PerformanceDataInterface } from '../interfaces';

@@ -1,4 +1,4 @@
-import { IOption } from '../../../../global/interfaces/inputs';
+import { IOption } from '@global/interfaces/inputs';
 interface RateInterface {
     min: number;
     max: number;

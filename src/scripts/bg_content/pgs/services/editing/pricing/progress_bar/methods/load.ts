@@ -11,7 +11,7 @@ import {
 } from '../../shared/data/dynamic'
 //	methods
 //	   global
-import { createElement, createTextElement } from '../../../../../../../global/methods/elements'
+import { createElement, createTextElement } from '@global/methods/elements'
 //	   local
 import { createCircleCont } from './create'
 

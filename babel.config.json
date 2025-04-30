@@ -11,5 +11,14 @@
         }
       }
     ]
+  ],
+  "plugins": [
+    [
+      "module-resolver", {
+        "alias": {
+          "@global": "./lib/es5/global"
+        }
+      }
+    ]
   ]
 }

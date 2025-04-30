@@ -4,7 +4,7 @@
 
 // Imports
 //    Methods
-import { createElement, createTextElement } from '../../../../../../global/methods/elements';
+import { createElement, createTextElement } from '@global/methods/elements';
 //    Interfaces
 import { IPerformance, IAboutPerformance, IDateTime } from '../interfaces';
 

@@ -1,7 +1,7 @@
 // Static data stored for the editing page
 
 // Imports
-import { ILabel } from '../../../../../../../global/interfaces/inputs'
+import { ILabel } from '@global/interfaces/inputs'
 
 const LABELS:ILabel[] = [
 	{

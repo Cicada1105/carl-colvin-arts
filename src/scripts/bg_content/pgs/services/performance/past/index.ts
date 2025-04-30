@@ -4,7 +4,7 @@
 
 // Imports
 import { loadRepertoire, loadCollaborators, loadAnecdotes, loadContactLink } from './methods/load';
-import { createTextElement } from '../../../../../global/methods/elements';
+import { createTextElement } from '@global/methods/elements';
 
 import { INTRO_DATA } from './data';
 

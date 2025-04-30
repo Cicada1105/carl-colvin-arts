@@ -4,7 +4,7 @@
 
 // Imports
 //	global
-import { getCurrentFile } from '../../../../global/methods/utilities'
+import { getCurrentFile } from '@global/methods/utilities'
 //	local
 import { loadLandingPage } from './landing_pg/index';
 import { loadPreviousPerformances } from './past/index';

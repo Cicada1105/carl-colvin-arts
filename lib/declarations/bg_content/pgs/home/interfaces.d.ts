@@ -1,4 +1,4 @@
-import { IImage, IBox } from '../../../global/interfaces/general';
+import { IImage, IBox } from '@global/interfaces/general';
 interface ICollage extends IImage {
     idName: string;
 }

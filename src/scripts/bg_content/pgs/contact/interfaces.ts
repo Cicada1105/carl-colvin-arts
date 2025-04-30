@@ -6,7 +6,7 @@
 import { 
 	ITextRow, ISelectRow, 
 	IAreaRow, IButton 
-} from '../../../global/interfaces/inputs'
+} from '@global/interfaces/inputs'
 
 interface IForm {
 	header:string;

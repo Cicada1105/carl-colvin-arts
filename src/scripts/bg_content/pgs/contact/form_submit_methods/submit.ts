@@ -3,13 +3,13 @@
 // Imports
 // 	Global
 // 	methods
-import { createImageElement } from '../../../../global/methods/elements'
-import { isValidEmail } from '../../../../global/methods/utilities'
+import { createImageElement } from '@global/methods/elements'
+import { isValidEmail } from '@global/methods/utilities'
 //	interfaces
-import { EmailReport, EmailError } from '../../../../global/interfaces/errors'
+import { EmailReport, EmailError } from '@global/interfaces/errors'
 import {
 	CustomEventProps, ClearCartInterface, CartAction
-} from '../../../../global/interfaces/cart';
+} from '@global/interfaces/cart';
 //  Local
 // 		interfaces
 import { EmailRequestInterface } from '../interfaces';

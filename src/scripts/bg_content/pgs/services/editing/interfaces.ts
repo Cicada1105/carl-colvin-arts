@@ -3,7 +3,7 @@
 	for the live editing data retrieved from
 	the server
 */
-import { IOption } from '../../../../global/interfaces/inputs'
+import { IOption } from '@global/interfaces/inputs'
 
 interface RateInterface {
 	min: number;

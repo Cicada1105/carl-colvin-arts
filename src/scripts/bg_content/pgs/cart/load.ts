@@ -1,10 +1,10 @@
 // Imports
 //  methods
 import { createCartRow } from './create'
-import { createTextElement, createContactLink } from '../../../global/methods/elements'
+import { createTextElement, createContactLink } from '@global/methods/elements'
 //  interfaces
-import { ReedStorageItem } from '../../../global/interfaces/cart'
-import { IContactLink } from '../../../global/interfaces/general'
+import { ReedStorageItem } from '@global/interfaces/cart'
+import { IContactLink } from '@global/interfaces/general'
 
 const loadHeader = () => {
   let hgroup:HTMLElement = document.createElement('hgroup');

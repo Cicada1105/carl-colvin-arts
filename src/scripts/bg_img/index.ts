@@ -1,7 +1,7 @@
 // Imports
 // 	 Global
-import { createImageElement } from '../global/methods/elements'
-import { getCurrentFile } from '../global/methods/utilities'
+import { createImageElement } from '@global/methods/elements'
+import { getCurrentFile } from '@global/methods/utilities'
 //	 Local
 import { data as bgImgs } from './data'
 

@@ -1,5 +1,5 @@
 import { RateInterface as IRate } from '../../interfaces';
-import { ILabelRow } from '../../../../../../global/interfaces/inputs';
+import { ILabelRow } from '@global/interfaces/inputs';
 interface LiteratureTypeInterface {
     literatureType: string;
     editingTypes: Array<EditingTypeInterface>;

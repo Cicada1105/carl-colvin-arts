@@ -1,6 +1,6 @@
 // Imports
 //	Global
-import { createLoadingText } from '../../../../global/methods/elements';
+import { createLoadingText } from '@global/methods/elements';
 //	Local
 import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './methods/load'
 

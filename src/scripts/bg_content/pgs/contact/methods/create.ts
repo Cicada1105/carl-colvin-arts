@@ -7,13 +7,13 @@
 import { 
 	IText, ISelect, ITextArea, IInputRow,
 	GenericInputInterface as IGenericInput
-} from "../../../../global/interfaces/inputs"
+} from "@global/interfaces/inputs"
 //	methods
 import { 
 	createElement, createTextElement, 
 	createImageElement, createSelectElement, 
 	createLabelElement 
-} from '../../../../global/methods/elements'
+} from '@global/methods/elements'
 
 // Input element types to create generic input container
 type InputType = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;

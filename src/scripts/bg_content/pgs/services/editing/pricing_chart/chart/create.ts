@@ -2,7 +2,7 @@
 
 // Imports
 //	methods
-import { createElement, createTextElement } from '../../../../../../global/methods/elements'
+import { createElement, createTextElement } from '@global/methods/elements'
 //	data
 import { chartSelectionsData } from '../shared/data'
 //	interfaces

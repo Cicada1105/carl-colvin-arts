@@ -7,8 +7,8 @@ import type { ReedInterface, FixedPricingInterface, VariablePricingInterface, Re
 import { createHeaderContent, creatDialogBox, createReedPriceBox } from './create';
 import { createReedTabButton } from './utilities';
 
-import { createElement, createTextElement, createImageElement, createContactLink } from '../../../../../global/methods/elements';
-import { IContactLink } from '../../../../../global/interfaces/general';
+import { createElement, createTextElement, createImageElement, createContactLink } from '@global/methods/elements';
+import { IContactLink } from '@global/interfaces/general';
 import requestData from '../../request';
 
 const loadIntroData = ():void => {

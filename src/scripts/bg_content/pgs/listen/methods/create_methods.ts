@@ -3,9 +3,9 @@
 // Imports
 //	interfaces
 import { AudioInterface, VideoInterface } from '../interfaces'
-import { IImage } from '../../../../global/interfaces/general'
+import { IImage } from '@global/interfaces/general'
 //	methods
-import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
+import { createElement, createTextElement, createImageElement } from '@global/methods/elements'
 import { createCustomControls, createMediaElement } from './media_elements'
 
 type Media = AudioInterface | VideoInterface;

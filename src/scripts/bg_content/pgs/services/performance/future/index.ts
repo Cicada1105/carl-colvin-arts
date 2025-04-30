@@ -3,7 +3,7 @@
 */
 
 // Imports
-import { createTextElement, createLoadingText } from '../../../../../global/methods/elements';
+import { createTextElement, createLoadingText } from '@global/methods/elements';
 import { loadPerformances, loadContactLink } from './methods/load';
 
 const loadFuturePerformances = ():void => {

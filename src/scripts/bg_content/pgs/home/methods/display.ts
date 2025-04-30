@@ -1,10 +1,10 @@
 // Imports
 //  interfaces
 //		global
-import { IBox } from '../../../../global/interfaces/general'
+import { IBox } from '@global/interfaces/general'
 //	methods
 //		global
-import { createElement } from '../../../../global/methods/elements'
+import { createElement } from '@global/methods/elements'
 //		local
 import { createPostCont } from './create'
 //	classes

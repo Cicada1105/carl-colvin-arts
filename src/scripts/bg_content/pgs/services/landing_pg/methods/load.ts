@@ -4,9 +4,9 @@
 
 // Imports
 //	interfaces
-import { IImage, IBoxLink } from '../../../../../global/interfaces/general'
+import { IImage, IBoxLink } from '@global/interfaces/general'
 //	methods
-import { createElement, createTextElement } from '../../../../../global/methods/elements'
+import { createElement, createTextElement } from '@global/methods/elements'
 import { createServiceCard } from './create'
 //	data
 import { INTRO_DATA, CARD_DATA } from '../data'

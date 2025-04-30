@@ -2,7 +2,7 @@
 
 // Imports
 //	methods
-import { createElement, createTextElement } from '../../../../../../../global/methods/elements'
+import { createElement, createTextElement } from '@global/methods/elements'
 //	classes
 import { Circle } from '../classes/Circle'
 import { Rectangle } from '../classes/Rectangle'

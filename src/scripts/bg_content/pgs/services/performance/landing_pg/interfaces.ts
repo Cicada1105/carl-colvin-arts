@@ -1,7 +1,7 @@
 // Interfaces specific to performance page
 
 // Import from global interface
-import { IImage, ILink } from '../../../../../global/interfaces/general'
+import { IImage, ILink } from '@global/interfaces/general'
 
 interface SVGGraphicsInterface {
 	fill?:string;

@@ -1,4 +1,4 @@
-import { IBox } from '../../../../global/interfaces/general';
+import { IBox } from '@global/interfaces/general';
 import { IPostData } from '../interfaces';
 declare class CollageData {
     private static curr_pos;

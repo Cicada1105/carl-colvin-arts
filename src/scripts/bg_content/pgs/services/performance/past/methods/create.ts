@@ -4,7 +4,7 @@
 */
 
 // Imports
-import { createElement, createTextElement } from '../../../../../../global/methods/elements';
+import { createElement, createTextElement } from '@global/methods/elements';
 import { createGenericCard } from './generic';
 import { IRepertoire, ICollaborator, IAnecdote } from '../interfaces';
 

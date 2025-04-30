@@ -10,7 +10,7 @@ import { LABELS } from '../../shared/data/static'
 //	interfaces
 import { 
 	IRange, IOption
-} from '../../../../../../../global/interfaces/inputs' 
+} from '@global/interfaces/inputs' 
 import { 
 	LiteratureTypeInterface as ILitType,
 	GenresInterface as IGenres,
@@ -25,7 +25,7 @@ import {
 	createSubmitDisclaimerCont
 } from './create'
 //	   global
-import { createElement } from '../../../../../../../global/methods/elements'
+import { createElement } from '@global/methods/elements'
 //	Event handler
 import { LiteratureTypeHandler, GenreHandler, EditingHandler, WordCountHandler, DeadlineHandler, EmailHandler, SubmitHandler } from './event_handlers'
 

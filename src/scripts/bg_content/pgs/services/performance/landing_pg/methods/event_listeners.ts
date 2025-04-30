@@ -1,7 +1,7 @@
 // File for handling events of the performance landing page
 
 // Imports
-import { IImage } from '../../../../../../global/interfaces/general';
+import { IImage } from '@global/interfaces/general';
 
 // Interface that allows for use of beginElement method on SVGAnimateElement's
 interface SVGAnimationTransform extends SVGAnimationElement {

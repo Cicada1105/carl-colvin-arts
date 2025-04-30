@@ -3,7 +3,7 @@
 
 // Imports
 //	methods
-import { createElement, createTextElement, createLabelElement } from '../../../../../../global/methods/elements'
+import { createElement, createTextElement, createLabelElement } from '@global/methods/elements'
 import { updateChartBody } from '../chart/create'
 //	data
 import { chartSelectionsData as data } from '../shared/data'

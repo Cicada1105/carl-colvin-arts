@@ -4,9 +4,9 @@
 
 // Imports
 // interfaces
-import { IImage, IBoxLink } from '../../../../../global/interfaces/general'
+import { IImage, IBoxLink } from '@global/interfaces/general'
 //	methods
-import { createElement, createTextElement, createImageElement } from '../../../../../global/methods/elements'
+import { createElement, createTextElement, createImageElement } from '@global/methods/elements'
 
 const createServiceCard = (cardData:IBoxLink<IImage>):HTMLDivElement => {
 	const cardCont:HTMLDivElement = createElement({

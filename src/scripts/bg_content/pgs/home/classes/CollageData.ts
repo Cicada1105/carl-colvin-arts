@@ -1,7 +1,7 @@
 // Imports
 //	interfaces
 //		Local
-import { IBox } from '../../../../global/interfaces/general'
+import { IBox } from '@global/interfaces/general'
 //	    Global
 import { IPostData } from '../interfaces'
 

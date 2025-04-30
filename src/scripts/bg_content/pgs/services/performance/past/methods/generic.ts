@@ -3,7 +3,7 @@
 */
 
 // Imports
-import { createElement, createTextElement, createImageElement } from '../../../../../../global/methods/elements';
+import { createElement, createTextElement, createImageElement } from '@global/methods/elements';
 import { IGenericCard, IHeader } from '../interfaces';
 
 const createPageSection:(cardTitle:string)=>HTMLElement = (title:string):HTMLElement => {

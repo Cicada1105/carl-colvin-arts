@@ -1,7 +1,7 @@
 // This file holds the interface typing for the past performances page
 
 // Imports
-import { IBox } from '../../../../../global/interfaces/general';
+import { IBox } from '@global/interfaces/general';
 
 interface PerformanceImageInterface {
 	src:string;

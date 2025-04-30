@@ -1,6 +1,6 @@
 // Imports
-import { IImage } from '../global/interfaces/general'
-import { getCurrentFile } from '../global/methods/utilities'
+import { IImage } from '@global/interfaces/general'
+import { getCurrentFile } from '@global/methods/utilities'
 
 // Use for development
 let currFile:string = getCurrentFile();

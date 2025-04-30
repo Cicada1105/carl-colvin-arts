@@ -1,12 +1,12 @@
 // Imports
 //  methods
-import { createElement, createInputRow } from '../../../global/methods/elements'
+import { createElement, createInputRow } from '@global/methods/elements'
 //  interfaces
 import { 
   CustomEventProps, CartAction,
   UpdateReedInterface, DeleteReedInterface,
   ReedStorageItem
-} from '../../../global/interfaces/cart'
+} from '@global/interfaces/cart'
 
 const createCartRow = (data:ReedStorageItem):void => {
   let name:string = data['name'];

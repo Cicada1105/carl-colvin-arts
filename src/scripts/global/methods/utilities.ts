@@ -15,7 +15,7 @@ import {
   InvalidTrailingCharacter,
   TLDError,
   SLDError
-} from '../interfaces/errors'
+} from '@global/interfaces/errors'
 
 const getCurrentFile = ():string => {
   // Get current path location

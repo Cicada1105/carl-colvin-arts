@@ -15,8 +15,8 @@ import { PerformanceDataInterface } from '../../interfaces';
 import { 
 	createElement, createTextElement, 
 	createLoadingText, createContactLink 
-} from '../../../../../../global/methods/elements';
-import { IContactLink } from '../../../../../../global/interfaces/general';
+} from '@global/methods/elements';
+import { IContactLink } from '@global/interfaces/general';
 import requestData from '../../../request';
 
 const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {

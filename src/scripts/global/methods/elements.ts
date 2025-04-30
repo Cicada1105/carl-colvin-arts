@@ -6,8 +6,8 @@
 import { 
   IOptionGroup, IOption, InputRowType,
   IText, ITextArea, ISelect, IRange
-} from '../interfaces/inputs'
-import { IContactLink } from '../interfaces/general';
+} from '@global/interfaces/inputs'
+import { IContactLink } from '@global/interfaces/general';
 
 function createElement({element="div",className="",idName=""}):any {
   try {

@@ -1,5 +1,5 @@
-import { InputRowType } from '../interfaces/inputs';
-import { IContactLink } from '../interfaces/general';
+import { InputRowType } from '@global/interfaces/inputs';
+import { IContactLink } from '@global/interfaces/general';
 declare function createElement({ element, className, idName }: {
     element?: string | undefined;
     className?: string | undefined;

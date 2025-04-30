@@ -3,7 +3,7 @@
 // Imports
 //  Global
 //    methods
-import { createTextElement, createLoadingText } from '../../../global/methods/elements'
+import { createTextElement, createLoadingText } from '@global/methods/elements'
 //  Local
 //    data
 import { audioData, videoData } from './data'

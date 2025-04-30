@@ -22,7 +22,7 @@ import {
 	ISector
 } from '../interfaces';
 //	 Global
-import { IImage } from '../../../../../../global/interfaces/general';
+import { IImage } from '@global/interfaces/general';
 
 const loadSVG = function():void {
 	// Get and store svg context

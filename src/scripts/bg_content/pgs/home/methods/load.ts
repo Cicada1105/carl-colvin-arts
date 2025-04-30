@@ -3,10 +3,10 @@
 */
 // Imports
 //	interfaces
-import { IBox } from '../../../../global/interfaces/general'
+import { IBox } from '@global/interfaces/general'
 import { ICollage } from '../interfaces'
 //	methods
-import { createElement, createImageElement } from '../../../../global/methods/elements'
+import { createElement, createImageElement } from '@global/methods/elements'
 import { displayImagePost } from './display'
 //	data
 import { collageImages } from '../data'

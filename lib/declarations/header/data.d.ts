@@ -1,3 +1,3 @@
-import { ILink } from '../global/interfaces/general';
+import { ILink } from '@global/interfaces/general';
 declare const links: Array<ILink>;
 export { links };

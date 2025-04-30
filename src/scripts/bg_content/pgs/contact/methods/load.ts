@@ -1,7 +1,7 @@
 // Imports
 //  Global
 //  methods
-import { createElement, createTextElement, createImageElement } from '../../../../global/methods/elements'
+import { createElement, createTextElement, createImageElement } from '@global/methods/elements'
 //	interfaces
 //import { IImageLink } from '../../../../global/interfaces/general';
 // 	Local

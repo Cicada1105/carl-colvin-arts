@@ -4,7 +4,7 @@
 //	data
 import { INTRO_DATA } from './data'
 //	methods
-import { createElement, createTextElement } from '../../../../../global/methods/elements';
+import { createElement, createTextElement } from '@global/methods/elements';
 		
 const loadIntro = ():void => {
 	let header:HTMLHeadingElement = createTextElement({
