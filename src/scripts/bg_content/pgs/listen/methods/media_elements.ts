@@ -93,18 +93,16 @@ const createCustomControls:(mediaEl:HTMLMediaElement) => HTMLDivElement = (media
 		progressBar.addEventListener("click",(event:any) => {
 			// Store location of where user clicked on progress bar
 			xClickedPos = event.offsetX;
-			console.log(`User clicked pos: ${xClickedPos}`);
+			const path = event.composedPath();
+
 			// Get width of progress bar for dividing up evenly based on length of media
-			barWidth = parseFloat(event.path[0].clientWidth);
-			console.log(`Progress bar width: ${barWidth}`);
+			barWidth = parseFloat(path[0].clientWidth);
 
 			// Divide length of bar into even segments based on length of media
 			segmentLength = barWidth / mediaLength;
-			console.log(`Each even segment is ${segmentLength} units long`);
 
 			// Locate nearest segment 
 			nearestBtmSegment = Math.floor(xClickedPos / segmentLength);
-			console.log(`User is closest to the ${nearestBtmSegment} segment`)
 
 			// Set media time to rounded down time segment the user selected
 			mediaEl.currentTime = nearestBtmSegment;
