@@ -8,7 +8,7 @@ import { createTextElement, createLoadingText } from '@global/methods/elements'
 //    data
 import { audioData, videoData } from './data'
 //    methods
-import { loadMediaRow, loadCanvasWave, loadContactLink } from './load_methods'
+import { loadMediaRow, loadContactLink } from './load_methods'
 //    interfaces
 import { RowInterface } from './interfaces'
 
@@ -33,10 +33,8 @@ import { RowInterface } from './interfaces'
 
    // Load sketches
    await loadMediaRow(audioData['sketches'] as RowInterface);
-   loadCanvasWave();
    // Load poem reading
    await loadMediaRow(videoData['poem-reading'] as RowInterface);
-   loadCanvasWave();
    // Load Ka Ra Zen performance
    await loadMediaRow(audioData['ka-ra-zen'] as RowInterface);
 

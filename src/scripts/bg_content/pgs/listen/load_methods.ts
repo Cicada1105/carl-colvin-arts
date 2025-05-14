@@ -30,49 +30,6 @@ const loadMediaRow = async (data:RowInterface):Promise<void> => {
 	document.body.appendChild(cont);
 }
 
-const loadCanvasWave = ():void => {
-	let cvs:HTMLCanvasElement = createElement({element:"canvas",className:"waveDivider"});
-	cvs.height = 115;
-	let ctx:CanvasRenderingContext2D = cvs.getContext('2d') as CanvasRenderingContext2D;
-
-	const y_axis:number = 60;
-	let startPoint = {
-		x:10,
-		y:y_axis
-	};
-	let endPoint = {
-		x:40,
-		y:y_axis
-	}
-	let ctrlPoint = {
-		x:25,
-		y:125
-	}
-
-	ctx.beginPath();
-	ctx.moveTo(startPoint.x,startPoint.y);
-	ctx.quadraticCurveTo(ctrlPoint.x,ctrlPoint.y,endPoint.x,endPoint.y);
-	let i:number = 1;
-	do {
-		ctrlPoint.y = y_axis + (i%2 === 0 ? 65 : -65);	
-
-		startPoint.x = endPoint.x;
-		endPoint.x += 30;
-
-		ctrlPoint.x += 30;
-
-		ctx.moveTo(startPoint.x,startPoint.y);
-		ctx.quadraticCurveTo(ctrlPoint.x,ctrlPoint.y,endPoint.x,endPoint.y);
-
-		i++;
-	} while(i < 9);
-
-	ctx.strokeStyle = "#f0edee";
-	ctx.stroke();
-
-	document.body.appendChild(cvs);
-}
-
 const loadContactLink = ():void => {
 	let linkData:IContactLink = {
 		text: "Request Song Info",
@@ -83,4 +40,4 @@ const loadContactLink = ():void => {
 	document.body.appendChild(contactLinkCont);
 }
 
-export { loadMediaRow, loadCanvasWave, loadContactLink }
+export { loadMediaRow, loadContactLink }
