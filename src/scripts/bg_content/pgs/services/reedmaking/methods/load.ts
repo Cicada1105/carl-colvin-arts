@@ -81,28 +81,7 @@ const loadTabs = ():void => {
 
 		/*  Event Listeners  */
 		tabButton.addEventListener('click', function(e) {
-			//const NODE_TARGET:EventTarget = e.target as EventTarget;
-			//const NODE:SVGPathElement = NODE_TARGET as SVGPathElement;
-			//const NODE_NAME = NODE.nodeName;
-			//const NODE_NAME:string = NODE.nodeName;
 			const IS_OPEN:boolean = tabBody.style.height !== "0rem";
-
-			/*
-				If svg button was clicked but the path element inside 
-				was not (event target = "svg") -> trigger mouse click on path child
-			*/
-			/*if (NODE_NAME === "svg") {
-				// Get path child
-				const path:SVGPathElement = <SVGPathElement>tabButton.firstElementChild;
-				// Create a pointer event
-				const e:PointerEvent = new PointerEvent("click");
-				// Dispatch click event on path element
-				path.dispatchEvent(e);
-			}*/
-
-			// Tab Button animation
-			//tabButton.style.animationPlayState = "running";
-			//tabButton.style.animationName = IS_OPEN ? "minusPlus" : "plusMinus";
 
 			if (IS_OPEN) { // "Close" tab
 				tabBody.style.height = "0rem";
@@ -129,9 +108,6 @@ const loadTabs = ():void => {
 					p.style.visibility = "visible";
 					p.style.padding = "1rem 5%";
 				});
-
-				tabBody.addEventListener("transitionend",() => 
-				tabBody.style.height = "max-content",{once:true});
 
 				tabBody.style.height = `${contHeight}px`;
 			}

@@ -41,13 +41,11 @@ const createReedTabButton = ():HTMLDivElement => {
 	// Add click listener to container to animate the plus/minus button
 	cont.addEventListener("click",() => {
 		if (isOpen) {
-			console.log("Minus to plus");
 			// Revert rotation back to normal
 			vertBar.style.transform = "translateX(-50%) rotateZ(0deg)";
 			horBar.style.transform = "translateY(-50%) rotateZ(0deg)";
 		}
 		else {
-			console.log("Plus to minus");
 			// Rotate the vertical bar 450deg
 			vertBar.style.transform = "translateX(-50%) rotateZ(450deg)";
 			// Rotate the horizontal bar 180deg	
@@ -55,6 +53,14 @@ const createReedTabButton = ():HTMLDivElement => {
 		}
 		isOpen = !isOpen;
 	});
+	vertBar.addEventListener('transitionstart',() => {
+		// Prevent the animation from happening multiple times
+		cont.style.pointerEvents = 'none';
+	})
+	vertBar.addEventListener('transitionend',() => {
+		// Allow the user to toggle dropdown
+		cont.style.pointerEvents = 'unset';
+	})
 
 	// Append vertical and horizontal bar to container
 	cont.appendChild(vertBar);
