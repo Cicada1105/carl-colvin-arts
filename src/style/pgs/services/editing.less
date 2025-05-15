@@ -14,6 +14,8 @@
 .loadingTextFrames();
 // Load styling associated with the loading text
 .loadingText();
+// Load styling associated with the contact link
+.contactLink();
 
 .formatting() {
 	.text(@width; @fontSize) {
@@ -409,32 +411,6 @@ form#inputRowsCont {
 	}
 }
 
-div#contactLink {
-	.format(relative,20rem);
-	transform:translate(-50%);
-	display:inline-block;
-	text-align: center;
-	margin:5rem auto;
-	left:50%;
-	z-index: 1;
-
-	// text "Request Performance"
-	& > h2 {
-		display:inline;
-		color:@textColor;
-	}
-	& > i {
-		position:absolute;
-		font-size:1.75rem;
-		color:@accentColor;
-		right:0;
-
-		&:hover {
-			cursor: pointer;
-		}
-	}
-}
-
 @media only screen and (min-width:530px) {
 	div#progressCont {
 		.format(relative, 30%);
@@ -606,12 +582,6 @@ div#contactLink {
 			div#disclaimerCont {
 				margin-right:0;
 			}
-		}
-		div#contactLink {
-			transform:unset;
-			display:block;
-			padding-bottom:5rem;
-			left:unset;
 		}
 	}
 	@media (min-width: 975px) {

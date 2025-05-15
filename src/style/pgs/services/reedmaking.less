@@ -13,6 +13,8 @@
 .loadingTextFrames();
 // Load styling associated with the loading text
 .loadingText();
+// Load styling associated with the contact link
+.contactLink();
 
 .staticCont {
 	position:absolute;
@@ -426,35 +428,6 @@ li.priceListing {
 	}
 	to {
 		opacity: 1;
-	}
-}
-
-div#contactLink {
-	.format(relative,20rem);
-	display:inline-block;
-	left:50%;
-	transform:translateX(-50%);
-	text-align: center;
-	margin:2rem auto 5rem auto;
-	z-index: 1;
-
-	// text "Request Performance"
-	& > h2 {
-		display:inline;
-		text-decoration: none;
-		text-align: center;
-		font-size:revert;
-		color:@textColor;
-	}
-	& > i {
-		position:absolute;
-		font-size:1.75rem;
-		color:@accentColor;
-		right:0;
-
-		&:hover {
-			cursor: pointer;
-		}
 	}
 }
 

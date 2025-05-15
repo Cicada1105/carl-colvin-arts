@@ -13,6 +13,8 @@
 .loadingTextFrames();
 // Load styling associated with the loading text
 .loadingText();
+// Load styling associated with the contact link
+.contactLink();
 
 h2#noPerformancesHeader {
 	position:relative;
@@ -102,33 +104,6 @@ h1#futurePerformancesTitle {
 		& > aside {
 			width:30%;
 			min-width:16rem;
-		}
-	}
-}
-
-div#contactLink {
-	.format(relative,20rem);
-	display:inline-block;
-	left:50%;
-	transform:translateX(-50%);
-	text-align: center;
-	margin:2rem auto 5rem auto;
-	z-index: 1;
-
-	// text "Request Performance"
-	& > h2 {
-		display:inline;
-		text-align: center;
-		color:@textColor;
-	}
-	& > i {
-		position:absolute;
-		font-size:1.75rem;
-		color:@accentColor;
-		right:0;
-
-		&:hover {
-			cursor: pointer;
 		}
 	}
 }
