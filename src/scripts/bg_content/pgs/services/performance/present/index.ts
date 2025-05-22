@@ -5,7 +5,7 @@
 // Imports
 //	Global
 import requestData from '../../request';
-import { createTextElement, createLoadingText } from '@global/methods/elements';
+import { createTextElement, createLoadingText, createFallbackText } from '@global/methods/elements';
 //	Local
 import { SongInterface } from './interfaces';
 import { PerformanceDataInterface } from '../interfaces';
@@ -39,14 +39,17 @@ const loadMusicStand = ():void => {
 	document.body.appendChild(loadingText);
 	// Retrieve songs for the music stand from server
   	requestData<PerformanceDataInterface<SongInterface>>("performances/present").then((data:PerformanceDataInterface<SongInterface>) => {
-  		// Remove loading text
-  		loadingText.remove();
-  		
 	  	// Create the sheet music for the song data
 	  	let sheetMusic:HTMLDivElement = createSheetMusic(data['performances']);
 	  	// Create the stand with the sheet music and add to the page
 	  	let musicStand:HTMLDivElement = createStand(sheetMusic);
 	  	document.body.appendChild(musicStand);	
+  	}).catch(e => {
+  		let fallbackText:HTMLDivElement = createFallbackText('No music at this time','Try again later');
+  		document.body.appendChild(fallbackText);
+  	}).finally(() => {
+  		// Remove loading text
+  		loadingText.remove();
   	})
 }
 

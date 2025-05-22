@@ -285,6 +285,34 @@ function createLoadingText():HTMLParagraphElement {
 
   return p;
 }
+/*   Fallback text when server is down   */
+function createFallbackText(displayText:string, subDisplayText?:string):HTMLDivElement {
+  // Container for holding fallback messages
+  const cont:HTMLDivElement = document.createElement('div');
+  cont.setAttribute('style','position:relative;color:#f0edee;text-align:center;margin:.83em auto;');
+
+  // First display text
+  const p:HTMLParagraphElement = document.createElement('p');
+  p.setAttribute('style','font-size:1.5rem;');
+  const fallbackText:Text = document.createTextNode(displayText);
+  // Append text node to paragraph element
+  p.appendChild(fallbackText);
+  // Append element to the container
+  cont.appendChild(p);
+
+  if ( subDisplayText ) {
+    const pSub:HTMLParagraphElement = document.createElement('p');
+    pSub.setAttribute('style','font-size:1.25rem;');
+    const fallbackSubText:Text = document.createTextNode(subDisplayText);
+    // Append text node to paragraph element
+    pSub.appendChild(fallbackSubText);
+
+    // Append paragraph element to container
+    cont.appendChild(pSub);
+  }
+
+  return cont;
+}
 // text, from 
 function createContactLink(data:IContactLink):HTMLDivElement {
   // Create container for contact link text and button
@@ -323,5 +351,6 @@ export {
   createElement, createTextElement, 
   createLabelElement, createImageElement, 
   createSelectElement, createInputRow,
-  createLoadingText, createContactLink
+  createLoadingText, createFallbackText,
+  createContactLink
 }

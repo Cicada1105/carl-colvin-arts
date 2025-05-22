@@ -3,7 +3,7 @@
 // Imports
 //  Global
 //    methods
-import { createTextElement, createLoadingText } from '@global/methods/elements'
+import { createTextElement, createLoadingText, createFallbackText } from '@global/methods/elements'
 //  Local
 //    data
 import { audioData, videoData } from './data'
@@ -31,18 +31,22 @@ import { RowInterface } from './interfaces'
    let loadingText:HTMLElement = createLoadingText();
    document.body.appendChild(loadingText);
 
-   // Load sketches
-   await loadMediaRow(audioData['sketches'] as RowInterface);
-   // Load poem reading
-   await loadMediaRow(videoData['poem-reading'] as RowInterface);
-   // Load Ka Ra Zen performance
-   await loadMediaRow(audioData['ka-ra-zen'] as RowInterface);
-
-   // Remove loading text after all audio and media is done loading
-   loadingText.remove();
-
-	// Load link to contact page, using current page as reference
-	loadContactLink();
+   await Promise.all([
+      // Load sketches
+      (await loadMediaRow(audioData['sketches'] as RowInterface)),
+      // Load poem reading
+      (await loadMediaRow(videoData['poem-reading'] as RowInterface)),
+      // Load Ka Ra Zen performance
+      (await loadMediaRow(audioData['ka-ra-zen'] as RowInterface)),
+   ]).catch(err => {
+      const fallbackText:HTMLDivElement = createFallbackText('No content at this time','Try again later');
+      document.body.appendChild(fallbackText);
+   }).finally(() => {
+      // Remove loading text after all audio and media is done loading
+      loadingText.remove();
+      // Load link to contact page, using current page as reference
+      loadContactLink(); 
+   });
  }
 
  export { loadListenPage }

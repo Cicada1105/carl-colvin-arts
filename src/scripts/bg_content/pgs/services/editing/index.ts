@@ -8,7 +8,7 @@ import { litEditingServerData } from './data'
 import { IServerData } from './interfaces'
 //	Global
 import { isValidEmail } from '@global/methods/utilities'
-import { createLoadingText, createContactLink } from '@global/methods/elements'
+import { createLoadingText, createContactLink, createFallbackText } from '@global/methods/elements'
 import { IContactLink } from '@global/interfaces/general'
 import requestData from '../request';
 
@@ -20,9 +20,6 @@ const loadEditingPage = ():void => {
 	document.body.appendChild(loadingText);
 	// Retrieve editing server data to be shared across secctions
 	requestData<IServerData[]>("editing").then((serverData:IServerData[]) => {
-		// Remove laodint text
-		loadingText.remove();
-
 		serverData.forEach((data:IServerData) => litEditingServerData.push(data));
 		// Load pricing chart info
 		loadPricingChart();
@@ -31,6 +28,12 @@ const loadEditingPage = ():void => {
 		// Load contact link 
 		loadContactLink();
 		//await isValidEmail("guitarlegen@gmail.com.uk") && alert("Valid Email");
+	}).catch(e => {
+		const fallbackText:HTMLDivElement = createFallbackText('Editing down at this time','Try again later');
+		document.body.appendChild(fallbackText);
+	}).finally(() => {
+		// Remove laodint text
+		loadingText.remove();
 	})
 }
 

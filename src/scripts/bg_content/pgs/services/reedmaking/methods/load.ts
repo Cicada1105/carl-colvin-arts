@@ -126,7 +126,7 @@ const loadPricings = async ():Promise<void> => {
 	// Load Dialog box to be updated based on current reed
 	creatDialogBox();
 	
-	let pricingHeader:HTMLHeadingElement = createTextElement({element:"h2",text:"Pricings"});
+	let pricingHeader:HTMLHeadingElement = createTextElement({element:"h2",text:"Pricings",idName:'pricingsHeader'});
 	document.body.appendChild(pricingHeader);
 
 	// Create container to be the flex box for reed pricings

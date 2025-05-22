@@ -1,6 +1,6 @@
 // Imports
 //	Global
-import { createLoadingText } from '@global/methods/elements';
+import { createLoadingText, createFallbackText } from '@global/methods/elements';
 //	Local
 import { loadIntroData, loadTabs, loadPricings, loadContactLink } from './methods/load'
 
@@ -13,7 +13,10 @@ const loadReedmakingPage = ():void => {
 	const loadText:HTMLParagraphElement = createLoadingText();
 	document.body.appendChild(loadText);
 	// Load the reed pricings
-	loadPricings().then(() => {
+	loadPricings().catch(e => {
+		const fallbackText:HTMLDivElement = createFallbackText('No pricings at this time','Try again later');
+		document.body.appendChild(fallbackText);
+	}).finally(() => {
 		loadText.remove()
 		// Load link to contact page, using current page as reference
 		loadContactLink();
