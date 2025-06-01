@@ -14,27 +14,17 @@
 // Load styling associated with the loading text
 .loadingText();
 
-h2#noMusicHeader {
-	position:relative;
-	color:@textColor;
-	text-align:center;
-}
 h1#myMusicStandTitle {
-	.format(relative,fit-content);
-	color:@textColor;
-	display:block;
 	margin:4rem auto 2rem auto;
+	width: fit-content;
 	z-index: 2;
 }
 p.introParagraph {
-	.format(relative, 90%);
-	color:@textColor;
+	.heading();
+	width: 90%;
 	line-height:1.25rem;
 	text-indent: 2rem;
-	display:block;
-	margin:auto;
-	margin-bottom:1rem;
-	font-size:1rem;
+	margin:auto auto 1rem;
 	z-index: 2;
 
 	&:last-of-type {
@@ -75,14 +65,17 @@ p.introParagraph {
 					border:3px solid #767676;
 					margin:2.75rem auto;
 
-					.songTitle {
-						text-align:center;
+					h2.songTitle {
+						font-size: var(--header-3);
 						padding-top:1rem;
 						margin-top:0px;
+						color: revert;
 					}
-					.songComposer {
+					h3.songComposer {
+						font-size: var(--header-5);
 						text-align:end;
 						padding-right:1.5rem;
+						color: revert;
 
 						&::before {
 							content:"By: ";

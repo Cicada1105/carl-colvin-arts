@@ -16,14 +16,6 @@
 // Load styling associated with the contact link
 .contactLink();
 
-.staticCont {
-	position:absolute;
-	width:100%;
-}
-.staticBlendCont {
-	&:extend(.staticCont);
-	border-radius:15px;
-}
 // Headers
 #reedmakingIntro {
 	.format(relative,90vw,fit-content);
@@ -45,8 +37,8 @@
 				text-align:center;
 
 				h2 {
+					font-size: var(--header-3);
 					display:inline-block;
-					text-align:center;
 					width:fit-content;
 				}
 
@@ -188,36 +180,10 @@
 		}
 	}
 }
-.tabCont:nth-last-of-type(2) + h2 {
-	position:relative;
-	text-align:center;
-	text-decoration: underline;
-	color:@textColor;
-	font-size:2rem;
-	margin-bottom:0px;
-}
-// The text headers of each container
-[class *= "Name"] {
-	.format(absolute, 100%);
-	mix-blend-mode:normal;
-	font-size:1.25rem;
-	text-align: center;
-	margin-top:10px;
-	color:@textColor;
-	top:0%;
-}
-.pricingCardStyling(@bgColor;@blendMode:screen;) {
-	background-color:@bgColor;
-	mix-blend-mode: @blendMode;
-	height:100%;
-	bottom:0%;
-}
 /*  Rest of the styling goes here */
 dialog {
-	font-size:1.25rem;
 	background-color: @secondaryColor;
 	animation: 0.25s fadeIn 0s linear;
-	text-align: center;
 	color: @textColor;
 	min-height: 200px;
 	min-width: 300px;
@@ -292,10 +258,8 @@ dialog {
 	}
 }
 h2#pricingsHeader {
-	position: relative;
-	font-size: 1.75rem;
-	text-align: center;
-	color: @textColor;
+	text-decoration: underline;
+	margin-bottom: 0rem;
 }
 ul#priceListings {
 	--template-cols: 1;
@@ -337,8 +301,10 @@ li.priceListing {
 				object-fit: contain;
 				margin-bottom: 0.5rem;
 			}
-			figcaption {
-				color: @textColor;
+			h3 {
+				font-size: var(--header-4);
+			}
+			p {
 				font-size: 1.25rem;
 				font-weight: bolder;
 			}
@@ -362,43 +328,6 @@ li.priceListing {
 			}
 		}
 	}
-	// .nameCont {
-	// 	&:extend(.staticCont);
-	// 	height:100%;
-	// 	bottom:0%;
-
-	// 	.nameBlend {
-	// 		&:extend(.staticBlendCont);
-	// 		.pricingCardStyling(@bgColor:@secondaryColor);
-
-	// 		.descriptionCont {
-	// 			&:extend(.staticCont);
-	// 			height:75%;
-	// 			bottom:0%;
-
-	// 			.descriptionBlend {
-	// 				&:extend(.staticBlendCont);
-	// 				.pricingCardStyling(@bgColor:#31668b);
-
-	// 				.pricingCont {
-	// 					&:extend(.staticCont);
-	// 					bottom:0%;	
-	// 					height:45%;
-
-	// 					.pricingName {
-	// 						position:relative;
-	// 						display:block;
-	// 					}
-
-	// 					.pricingBlend {
-	// 						&:extend(.staticBlendCont);
-	// 						.pricingCardStyling(@bgColor:@activeTextColor;@blendMode:soft-light);
-	// 					}
-	// 				}
-	// 			}
-	// 		}	
-	// 	}
-	// }
 }
 @media only screen and (min-width:365px) {
 	.tabCont {

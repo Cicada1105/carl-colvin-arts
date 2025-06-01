@@ -17,35 +17,16 @@
 // Load styling associated with the contact link
 .contactLink();
 
-.formatting() {
-	.text(@width; @fontSize) {
-		.format(relative,@width);
-		text-align: center;
-		font-size:@fontSize;
-		color: @textColor;
-	}
-	.label {
-		font-size:1.25rem;
-		font-weight:bold;
-		color:@textColor;
-		text-align: center;
-	}
-}
-.header(@fontSize) {
-	.formatting > .text(10rem,@fontSize);
-	margin:auto;
-}
 /*  Rest of the styling goes here */
 h1#pageHeader {
-	.header(2rem);
-	margin-top:5rem;
+	margin: 5rem auto auto;
 }
 p.editingIntro {
-	.formatting > .text(@width:90%,@fontSize:1rem);
+	.heading();
+	width:90%;
 	line-height:1.25rem;
 	text-indent: 2rem;
 	max-width:50rem;
-	display:block;
 	margin:auto;
 	z-index: 2;
 
@@ -58,7 +39,7 @@ p.editingIntro {
 	}
 }
 h2 {
-	.header(1.65rem);
+	margin:auto;
 
 	&#pricingChartHeader {
 		margin-top:3.5rem;
@@ -100,13 +81,12 @@ div#pricingChartCont {
 
 		& > div.selectionCont {
 
-			& > .selectionHeader {
-				.format(relative,100%);
-				text-align:center;
+			& > h3.selectionHeader {
 				text-decoration:underline;
 				text-indent:unset;
 				padding-bottom:1rem;
 				margin-bottom:2rem;
+				width: 100%;
 			}
 			& > div[class $= "Row"] {
 				.format(relative,55%);
@@ -138,11 +118,11 @@ div#pricingChartCont {
 				  	}
 				}
 				& > label {
-					.formatting > .label;
+					.heading(var(--header-5));
+					width: calc(100% - 29px);
+					font-weight:bold;
 
-					position:relative;
 					display: inline-block;
-					width:calc(100% - 29px);
 					margin-left:-2rem;
 					z-index:1;
 				
@@ -221,15 +201,14 @@ div#pricingChartCont {
 				width: inherit;
 			}
 			& th {
-				.formatting > .text(@width:33.33%,@fontSize:1.45rem);
+				.heading(var(--header-4));
+				width: 33.33%;
 				border-bottom:3px solid @accentColor;
 				padding-top:1rem;
 				padding-bottom:0.75rem;
 			}
 			& td {
-				color:@textColor;
-				text-align:center;
-				font-size:1.2rem;
+				.text(@fontSize: var(--header-5), @textAlign: center);
 				padding-top:1rem;
 				padding-bottom:0.75rem;
 			}
@@ -304,7 +283,8 @@ form#inputRowsCont {
 			display:none;
 		}
 		& > label {
-			.formatting > .label;
+			.text(@fontSize:var(--header-4),@textAlign: center);
+			font-weight:bold;
 			margin-bottom: 1rem;
 		}
 		& > div[class $= "Cont"]{
@@ -430,7 +410,8 @@ form#inputRowsCont {
 			}
 			& > p {
 				.format(absolute,max-content);
-				.formatting > .label;
+				.text(@fontSize:var(--header-5), @textAlign: center);
+				font-weight:bold;
 				padding-top:0.53125rem;
 				margin:0px;
 				margin-left:100%;

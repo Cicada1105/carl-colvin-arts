@@ -12,21 +12,14 @@
 	Rest of the code goes here
 */
 h1 {
-	position:relative;
-	color:@textColor;
-	text-align:center;
-	display:block;
-	margin:5rem auto;
+	margin:4rem auto 2rem;
 	z-index:2;
 
 	& + p {
-		.format(relative, 80%);
+        .heading();
+        width: 80%;
 		max-width: 50rem;
-		display:block;
-		margin:auto;
-		margin-bottom:4rem;
-		color:@textColor;
-		font-size:1rem;
+		margin:auto auto 4rem;
 		z-index: 2;
 	}
 }
@@ -46,8 +39,7 @@ div#flexCont {
  		z-index: 2;
 
         & > h2 {
-        	text-align:center;
-            color:white;
+            font-size: var(--header-3);
             padding-top:10px;
             padding-bottom:5px;
 

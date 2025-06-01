@@ -9,7 +9,6 @@ import {
 } from '@global/interfaces/inputs'
 
 interface IForm {
-	header:string;
 	form:{
 		textInput: Array<ITextRow>;
 		selectInput: ISelectRow;

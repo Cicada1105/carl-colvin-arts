@@ -28,11 +28,11 @@ const createPerformanceCard:(pastPerformanceData:IRepertoire)=>HTMLElement = (da
 		},
 		headers:[
 			{
-				tagname:"h2",
+				tagname:"h3",
 				text:data['name']	
 			},
 			{
-				tagname:"h3",
+				tagname:"h4",
 				text:data['location']
 			}
 		]
@@ -88,11 +88,11 @@ const createCollaboratorCard:(collaboratorCardData:ICollaborator)=>HTMLElement =
 		},
 		headers: [
 			{
-				tagname:"h2",
+				tagname:"h3",
 				text:data["name"]
 			},
 			{
-				tagname:"h3",
+				tagname:"h4",
 				text:data["title"]
 			}
 		]

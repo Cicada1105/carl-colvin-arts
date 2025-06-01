@@ -322,9 +322,10 @@ function createContactLink(data:IContactLink):HTMLDivElement {
 
   // Create header for contact link 
   let linkText:HTMLHeadingElement = createTextElement({
-    element:"h2",
+    element:"p",
     text: data["text"]
   });
+
   // Create arrow element to be used as "button" image
   let iBtn:HTMLElement = createElement({
     element:"i",

@@ -13,6 +13,15 @@
 	position: @pos;
 	width: @w;
 }
+.text(@fontSize: 1rem, @color: @textColor, @textAlign: initial) {
+	font-size:@fontSize;
+	text-align: @textAlign;
+	color: @color;
+}
+.heading(@fontSize: 1rem) {
+	.text(@fontSize: @fontSize, @textAlign: center);
+	position: relative;
+}
 .contactLink() {	
 	div#contactLink {
 		.format(relative,20rem);
@@ -24,10 +33,9 @@
 		z-index: 1;
 
 		// text "Request Performance"
-		& > h2 {
+		& > p {
+			.text(@fontSize: var(--header-4), @textAlign: center);
 			display:inline;
-			text-align: center;
-			color:@textColor;
 		}
 		& > i {
 			position:absolute;

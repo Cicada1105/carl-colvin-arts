@@ -9,7 +9,6 @@ import { IImageLink } from '@global/interfaces/general';
 import { IForm } from './interfaces'
 
 const formData:IForm = {
-	header: "Contact",
 	form: {
 		textInput: [
 			{

@@ -15,7 +15,7 @@ import { RowInterface } from './interfaces'
  const loadListenPage = async ():Promise<void> => {
  	// Create header
  	let header:HTMLHeadingElement = createTextElement({
- 		element:"h3",
+ 		element:"h1",
  		idName:"listenHeader",
  		text:"Listen"
  	});

@@ -115,12 +115,12 @@ function createMusicPage(song:SongInterface):HTMLElement {
 	})
 
 	let songTitle:HTMLHeadingElement = createTextElement({
-		element:"h1",
+		element:"h2",
 		text:song["name"],
 		className:"songTitle"
 	});
 	let songComposer:HTMLHeadingElement = createTextElement({
-		element:"h4",
+		element:"h3",
 		text:song["by"],
 		className:"songComposer"
 	})

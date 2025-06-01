@@ -21,24 +21,17 @@
 }
 /*  Rest of the styling goes here */
 h1#previousPerformancesTitle {
-	position:relative;
-	color:@textColor;
-	text-align:center;
-	display:block;
 	margin:4rem auto;
 	z-index: 2;
 
 	& + p {
-		.format(relative, 80%);
+		.heading();
+		width:80%;
 		max-width:50rem;
 		line-height:1.25rem;
 		text-indent:2rem;
-		text-align: center;
-		display:block;
-		margin:auto;
+		margin:auto;0
 		margin-bottom:4rem;
-		color:@textColor;
-		font-size:1rem;
 		z-index: 2;
 	}
 }
@@ -53,29 +46,23 @@ h1#previousPerformancesTitle {
 
 	// Card headers
 	& > h2 {
-		.format(relative,fit-content);
-		color:@textColor;
 		border-bottom:2px solid @accentColor;
 		padding:0px 13px 8px 13px;
-		display:block;
+		width: fit-content;
 		margin:0px;
 	}
 	// "Loading..." text
 	& > h3 {
-		.format(relative,40rem);
-		color:@textColor;
-		text-align:center;
-		display:block;
+		width: 40rem;
 		margin:3rem auto 1rem auto;
 	}
 	// "Error" heading
 	& > h3.errName {
-		font-size:1.25rem;
+		font-size:var(--header-4);
 		margin-bottom: 0rem;
 	}
 	& > h4.errMessage {
-		color: @textColor;
-		font-size:1.17rem;
+		font-size:var(--header-5);
 	}
 	// Past performance card
 	& > section.pastPerformanceCard {
@@ -94,6 +81,14 @@ h1#previousPerformancesTitle {
 		& img {
 			width: 16rem;
 			border-radius:10px;
+		}
+		h3 {
+			font-size: var(--header-4);
+			margin: 0rem;
+		}
+		h4 {
+			font-size: var(--header-5);
+			margin: 0.5rem auto auto;
 		}
 	}
 	// Styles shared by collaborator and anecdote cards
@@ -121,10 +116,12 @@ h1#previousPerformancesTitle {
 		& > hgroup {
 			margin:1rem 0px;
 
-			& > h2 {
-				margin-bottom:8px;
-			}
 			& > h3 {
+				font-size: var(--header-4);
+				margin:auto auto 8px;
+			}
+			& > h4 {
+				font-size: var(--header-5);
 				margin:0px;
 			}
 		}

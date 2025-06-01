@@ -14,6 +14,24 @@
 			height:100%;
 			margin:0;
 		}
+		/*
+			Difference between each size is incremented by 2 starting at 16px for h6
+			ie. 16 + 2 = 18; 18 + 4 = 22, etc.
+		*/
+		// @headings: 46, 36, 28, 22, 18, 16;
+		@headings: 46, 36, 28, 22, 18, 16;
+		each(@headings, {
+			@fontSize: calc((@value / 16) * 1em);
+			h@{index} {
+				.heading(@fontSize);
+			}
+		});
+		:root {
+			each(@headings, {
+				@fontSize: calc((@value / 16) * 1em);
+				--header-@{index}: @fontSize;
+			});
+		}
 	}
 	.navigation() {
 		header#pageHeader {

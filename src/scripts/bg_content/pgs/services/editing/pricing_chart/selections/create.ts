@@ -31,7 +31,7 @@ const createSelectionSection = (litType:ILit):HTMLDivElement => {
 
 	// Create header for section
 	let selectionHeader:HTMLHeadingElement = createTextElement({
-		element: "h2",
+		element: "h3",
 		text: litType.literatureType,
 		className: "selectionHeader"
 	});

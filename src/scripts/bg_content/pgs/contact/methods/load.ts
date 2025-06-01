@@ -1,12 +1,10 @@
 // Imports
 //  Global
 //  methods
-import { createElement, createTextElement, createImageElement } from '@global/methods/elements'
+import { createElement, createImageElement } from '@global/methods/elements'
 //	interfaces
 //import { IImageLink } from '../../../../global/interfaces/general';
 // 	Local
-//	data
-import { formData } from '../data'
 //  methods
 import { createRows } from './rows'
 import { submitForm } from '../form_submit_methods/submit'
@@ -24,11 +22,6 @@ const loadForm = () => {
 	// Prevent default form validation
 	formCont.setAttribute("novalidate","");
 	formCont.addEventListener("submit",submitForm);
-
-	// Create element for header
-	let headerCont:HTMLHeadingElement = createTextElement({element:"h1",text:formData.header});
-	// Append header to form container
-	formCont.appendChild(headerCont);
 
 	let formContent:HTMLDivElement = createRows();
 

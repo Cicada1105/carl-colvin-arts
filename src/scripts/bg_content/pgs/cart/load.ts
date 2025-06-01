@@ -51,7 +51,6 @@ const loadCartLayout = () => {
   else {
     let emptyCartMessage:string = 'Your cart is empty! \n Checkout the reedmaking page for items to purchase.';
     let emptyCartEl:HTMLHeadingElement = createTextElement({
-      element: 'h2',
       idName: 'emptyCart',
       text:emptyCartMessage
     });

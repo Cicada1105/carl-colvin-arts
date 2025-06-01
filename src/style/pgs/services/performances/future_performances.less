@@ -16,18 +16,13 @@
 // Load styling associated with the contact link
 .contactLink();
 
-h2#noPerformancesHeader {
-	position:relative;
-	color:@textColor;
-	text-align:center;
-}
-/*  Rest of the styling goes here */
 h1#futurePerformancesTitle {
-	position:relative;
-	color:@textColor;
-	text-align: center;
 	margin-top: 4rem;
 }
+h2#noPerformancesHeader {
+	font-size: var(--header-4);
+}
+/*  Rest of the styling goes here */
 .performanceSection {
 	.format(relative,90%);
 	//.format(relative,70rem);
@@ -43,20 +38,31 @@ h1#futurePerformancesTitle {
 
 		& > div.aboutPerformanceCont {
 			margin-bottom:2rem;
+
+			h2 {
+				font-size: var(--header-3);
+			}
+			h3 {
+				font-size: var(--header-4);
+			}
 		}
 		& > div.instrumentsCont {
-
-			& > h3 {
+			h3 {
+				font-size: var(--header-4);
 				border-bottom:1px solid @accentColor;
 				padding-bottom:8px;
-				width:10rem;
-				margin-left:auto;
-				margin-right:auto;
+				width:fit-content;
+				margin: auto;
 			}
-			& > p {
+			p {
 				width:80%;
 				margin:1rem auto;
 			}
+		}
+	}
+	& > aside {
+		h3 {
+			font-size: var(--header-5);
 		}
 	}
 }

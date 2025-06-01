@@ -14,19 +14,17 @@
 }
 .contactMixin(@isHomePage);
 
+h1 {
+	margin: 4rem auto 2rem;
+	z-index: 2;
+}
 form:first-of-type {
 	.format(relative, 54rem);
-	margin:4rem auto auto auto;
+	margin:auto;
 	z-index:2;
  
 	@media only screen and (max-width:900px) {
 		width:unset;
-	}
-	h1:first-child {
-		.format(relative, 100%);
-		//font-size:2.5rem;
-		color:@textColor;
-		text-align: center;
 	}
 	& > div[id = "inputRowsCont"] {
 		.format(relative, 100%);
@@ -45,11 +43,9 @@ form:first-of-type {
 
 			label {
 				.format(relative,30%);
+				.text(@fontSize: var(--header-4), @textAlign: right);
 				display:inline-block;
-				font-size:1.45rem;
-				text-align: right;
 				padding-right:20%;
-				color:@textColor;
 
 				@media only screen and (max-width:600px) {
 					display:block;
