@@ -110,14 +110,36 @@ const createDateTimeCont:(dateTimeData:IDateTime)=>HTMLElement = (dateTime:IDate
 	let aside:HTMLElement = document.createElement("aside");
 
 	// Create text elements for date and time
+	let date:Date = new Date(dateTime["date"]);
+	// Format date to be used on the <time> element
+	let dateStr:string = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 	let dateEl:HTMLHeadingElement = createTextElement({
-		element: "h3",
-		text: dateTime["date"]
+		element: 'time',
+		text: dateTime['date']
 	});
-	let timeEl:HTMLHeadingElement = createTextElement({
-		element: "h3",
-		text: `${dateTime.time['start']} - ${dateTime.time['end']}`
+	// Set datetime attribute
+	dateEl.setAttribute('datetime',dateStr);
+
+	// Container for holding the time ranges of the performance
+	let timeEl:HTMLParagraphElement = document.createElement('p');
+	// Create time elements for start and end times
+	let startTimeEl:HTMLTimeElement = createTextElement({
+		element: 'time',
+		text: dateTime.time['start']
 	});
+	startTimeEl.setAttribute('datetime',dateTime.time['start']);
+
+	let endTimeEl:HTMLTimeElement = createTextElement({
+		element: 'time',
+		text: dateTime.time['end']
+	})
+	endTimeEl.setAttribute('datetime',dateTime.time['end']);
+	// Create hyphen text node to go between times
+	let hyphenTxtNode:Text = document.createTextNode(' - ');
+	// Append time elements to time container
+	timeEl.appendChild(startTimeEl);
+	timeEl.appendChild(hyphenTxtNode);
+	timeEl.appendChild(endTimeEl);
 
 	// Append date and time to aside 
 	aside.appendChild(dateEl);
