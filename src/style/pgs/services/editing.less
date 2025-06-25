@@ -53,19 +53,6 @@ hr {
 	margin-top: 2.5rem;
 	border: 1px solid @accentColor;
 }
-/*.textFormatting(@color: @textColor; @align; @decoration; @indent; @weight; @size; @family) {
-	color:@color;
-	text-align:@align;
-	text-indent:@indent;
-	font:@weight @size @family;
-}*/
-.customRadioStyle {
-	display:inline-block;
-	border-radius:50%;
-	content:"";
-	left:-2px;
-	top:-2px;
-}
 /* Mobile first design */
 div#pricingChartCont {
 	.format(relative,90%);
@@ -101,19 +88,12 @@ div#pricingChartCont {
 				& > input[type="radio"] {
 				  visibility:hidden;
 
-				  	&:checked + label + div.customRadioBtnCont {
-
-				  		& > span.innerCircle {
-					  		background-color:white;	
+				  	&:checked + label + svg.customRadioBtn {
+				  		& > circle.whiteOutterCircle {
+				  			stroke-dasharray: 145;
 				  		}
-				  		& > span.rotatingWhitePiece {
-							animation-name: circle;
-				  		}
-				  		& > span.whitePieceMask {
-							transform:rotateZ(45deg);	
-				  		}
-				  		& > span.whiteFiller {
-							border: 2px solid white;
+				  		& > circle.whiteInnerCircle {
+				  			fill: white;
 				  		}
 				  	}
 				}
@@ -131,54 +111,17 @@ div#pricingChartCont {
 					}
 
 					/*	White inner small circle	*/
-					& + div.customRadioBtnCont {
-						.format(absolute,18px,18px);
+					& + svg.customRadioBtn {
+						.format(absolute,22px,22px);
 						display:inline-block;
-						border: 2px solid rgba(222, 87, 87, 1);
-						border-radius: 50%;
-					    left:0.75rem;
+					  left:0.75rem;
+					  transform: rotateZ(-90deg);
+					  transform-origin: center;
 
-						& > span.innerCircle {
-							.format(absolute,10px,10px);
-						    left:4px;
-						    top:4px;
-							display:inline-block;
-						    margin-right:20px;
-						    content:"";
-	    					border-radius: 50%;
-						}
-						& > span.rotatingWhitePiece {
-							&:extend(.customRadioStyle);
-							.format(absolute,18px,18px);
-
-						    visibility:visible;
-						    margin-right:20px;
-						    animation-duration: 1s;
-						    animation-iteration-count:1;
-						    animation-timing-function:linear;
-						    border: 2px solid rgba(222,87,87,0);
-						}
-				    	/*	Red slice acting as initial mask for white slice 	*/
-						& > span.whitePieceMask {
-							&:extend(.customRadioStyle);
-							.format(absolute,inherit,inherit);
-
-						    transform:rotateZ(-45deg);
-						    border: 2px solid rgba(255,255,255,0);
-						    border-top: 2px solid #de5757;
-						    transition:transform 0.25s linear 0.75s;
-						}
-				    	/*	White solid border that displays after white single border has rotated passed position: */
-				    	// Possibly changed whiteFiller from transition to animation to change fill mode
-						& > span.whiteFiller {	
-							&:extend(.customRadioStyle);
-							.format(absolute,inherit,inherit);
-
-						    margin-right:20px;
-						    transform: rotateZ(45deg);
-						    border: 2px solid rgba(222,87,87,0);
-						    transition:border-top 0s linear 0.25s, border-right 0s linear 0.5s, border-bottom 0s linear 0.75s, border-left 0s linear 1s;
-						}
+					  & > circle.whiteOutterCircle {
+					  	stroke-dasharray: 0 145;
+							transition: 0.75s stroke-dasharray 0s linear;
+					  }
 					}
 				}
 			}

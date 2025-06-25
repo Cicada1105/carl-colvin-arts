@@ -75,7 +75,7 @@ const createSelectionRow = (editData: IEdit):HTMLDivElement => {
 	});
 
 	// Create custom radio button
-	let customRadioBtn:HTMLDivElement = createRadioBtn();
+	let customRadioBtn:SVGElement = createRadioBtn();
 
 	// Append radio button and label to row container
 	editingTypeRow.appendChild(radioBtn);
@@ -84,65 +84,50 @@ const createSelectionRow = (editData: IEdit):HTMLDivElement => {
 
 	return editingTypeRow;
 }
-const createRadioBtn = ():HTMLDivElement => {
-	// Create a container to store the custom radio button components
-	let selectionBtnCont:HTMLDivElement = createElement({
-		className: "customRadioBtnCont"
-	});
+const createRadioBtn = ():SVGElement => {
+	let svg:SVGElement = <SVGElement>document.createElementNS("http://www.w3.org/2000/svg","svg");
 
-	// Create circle to be displayed inside of circle ring outside
-	let innerCircle:HTMLSpanElement = createElement({
-		element: "span",
-		className: "innerCircle"
-	})
-	// Create white slice to rotate around circle
-	let rotatingWhitePiece:HTMLSpanElement = createElement({
-		element: "span",
-		className: "rotatingWhitePiece"
-	});
-	// Create mask for hiding rotating white piece initially 
-	let whitePieceMask:HTMLSpanElement = createElement({
-		element: "span",
-		className: "whitePieceMask"
-	});
-	// Create filler to be displayed once rotating white piece has moved past a specific point
-	let whiteFiller:HTMLSpanElement = createElement({
-		element: "span",
-		className: "whiteFiller"
-	});
+	// Set viewbox
+	svg.setAttribute('viewBox','0 0 50 50');
+	svg.setAttribute('class','customRadioBtn');
 
-	// Add event listener to mask to clean up transition once it has finished
+	// Created red outter circle
+	let redCircle:SVGCircleElement = <SVGCircleElement>document.createElementNS('http://www.w3.org/2000/svg','circle');
+	// Add respective attriubtes
+	redCircle.setAttribute('cx','25');
+	redCircle.setAttribute('cy','25');
+	redCircle.setAttribute('r','23');
+	redCircle.setAttribute('fill','none');
+	redCircle.setAttribute('stroke','#de5757');
+	redCircle.setAttribute('stroke-width','4')
+	redCircle.setAttribute('stroke-dasharray','145');
 
-	whiteFiller.addEventListener("transitionrun", (transEvent) => {
-		// Check to see if input has been checked -> if not, make return transition clean
-		let selectLabel:HTMLLabelElement = <HTMLLabelElement>selectionBtnCont.previousElementSibling;
-		let radioInput:HTMLInputElement = <HTMLInputElement>selectLabel.previousElementSibling;
+	// Create white outter circle that will be the animated circle
+	let whiteOutterCircle:SVGCircleElement = <SVGCircleElement>document.createElementNS('http://www.w3.org/2000/svg','circle');
+	// Add respective attributes
+	whiteOutterCircle.setAttribute('class','whiteOutterCircle')
+	whiteOutterCircle.setAttribute('cx','25');
+	whiteOutterCircle.setAttribute('cy','25');
+	whiteOutterCircle.setAttribute('r','23');
+	whiteOutterCircle.setAttribute('fill','none');
+	whiteOutterCircle.setAttribute('stroke','white');
+	whiteOutterCircle.setAttribute('stroke-width','4')
+	whiteOutterCircle.setAttribute('stroke-dasharray','0 145');
 
-		if (!radioInput.checked) {
-			whiteFiller.style.visibility = "hidden";
-			whitePieceMask.style.border = "2px solid rgba(222, 87, 87, 1)";
-			setTimeout(function() {
-				whitePieceMask.style.border = "2px solid rgba(222, 87, 87, 0)";
-				whitePieceMask.style.borderTop = "2px solid #de5757"
-				whiteFiller.style.visibility = "visible";
-			}, 1000);
-		}
+	// Create white inner circle that will be the "filled in" part
+	let whiteInnerCircle:SVGCircleElement = <SVGCircleElement>document.createElementNS('http://www.w3.org/2000/svg','circle');
+	// Add respective attributes
+	whiteInnerCircle.setAttribute('class','whiteInnerCircle')
+	whiteInnerCircle.setAttribute('cx','25');
+	whiteInnerCircle.setAttribute('cy','25');
+	whiteInnerCircle.setAttribute('r','12');
+	whiteInnerCircle.setAttribute('fill','none');
 
-	})
-	/*whiteFiller.addEventListener("transitionend", (transEvent) => {
-		if (transEvent.propertyName.localeCompare("border-left-color") === 0) {
-			console.log("End of transition for White corner slices");
-			console.log(transEvent);
-		}
-	});*/
+	svg.appendChild(redCircle);
+	svg.appendChild(whiteOutterCircle);
+	svg.appendChild(whiteInnerCircle);
 
-	// Append inner circle, white piece, mask and filler to button container
-	selectionBtnCont.appendChild(innerCircle);
-	selectionBtnCont.appendChild(rotatingWhitePiece);
-	selectionBtnCont.appendChild(whitePieceMask);
-	selectionBtnCont.appendChild(whiteFiller);
-
-	return selectionBtnCont;
+	return svg;
 }
 
 export { createSelections }
