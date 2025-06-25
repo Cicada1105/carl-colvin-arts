@@ -3,7 +3,7 @@
 */
 
 // Imports
-import { createTextElement, createLoadingText } from '@global/methods/elements';
+import { createTextElement, createLoadingText, createFallbackText } from '@global/methods/elements';
 import { loadPerformances, loadContactLink } from './methods/load';
 
 const loadFuturePerformances = ():void => {
@@ -22,11 +22,8 @@ const loadFuturePerformances = ():void => {
 		// Load link to contact page
 		loadContactLink();
 	}).catch(() => {
-		document.body.appendChild(createTextElement({
-			element:"h2",
-			idName:"noPerformancesHeader",
-			text:"Sorry, no future performances today!"
-		}));
+		let fallbackText:HTMLDivElement = createFallbackText('No future performances at this time','Try again later')
+		document.body.appendChild(fallbackText);
 	}).finally(() => {
 		// Remove loading text
 		loadingText.remove();
