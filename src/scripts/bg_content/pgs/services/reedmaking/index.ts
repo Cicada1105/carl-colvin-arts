@@ -14,7 +14,7 @@ const loadReedmakingPage = ():void => {
 	document.body.appendChild(loadText);
 	// Load the reed pricings
 	loadPricings().catch(e => {
-		const fallbackText:HTMLDivElement = createFallbackText('No pricings at this time','Try again later');
+		const fallbackText:HTMLDivElement = createFallbackText('Pricing unavailable at this time','Try again later');
 		document.body.appendChild(fallbackText);
 	}).finally(() => {
 		loadText.remove()

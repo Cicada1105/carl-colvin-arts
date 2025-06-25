@@ -29,7 +29,7 @@ const loadEditingPage = ():void => {
 		loadContactLink();
 		//await isValidEmail("guitarlegen@gmail.com.uk") && alert("Valid Email");
 	}).catch(e => {
-		const fallbackText:HTMLDivElement = createFallbackText('Editing down at this time','Try again later');
+		const fallbackText:HTMLDivElement = createFallbackText('Editing unavailable at this time','Try again later');
 		document.body.appendChild(fallbackText);
 	}).finally(() => {
 		// Remove laodint text
