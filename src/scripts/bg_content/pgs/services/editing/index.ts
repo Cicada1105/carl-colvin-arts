@@ -25,8 +25,6 @@ const loadEditingPage = ():void => {
 		loadPricingChart();
 		// Load pricing info
 		loadPricing();
-		// Load contact link 
-		loadContactLink();
 		//await isValidEmail("guitarlegen@gmail.com.uk") && alert("Valid Email");
 	}).catch(e => {
 		const fallbackText:HTMLDivElement = createFallbackText('Editing unavailable at this time','Try again later');
@@ -34,6 +32,8 @@ const loadEditingPage = ():void => {
 	}).finally(() => {
 		// Remove laodint text
 		loadingText.remove();
+		// Load contact link regardless of success of retrieving editing data 
+		loadContactLink();
 	})
 }
 
