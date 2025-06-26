@@ -57,9 +57,10 @@ const createTextCont = (textData:IGenericInput<IText>):HTMLDivElement => {
 		idName: textData.id
 	});
 
-	// Set attribute for type and placeholder
+	// Set attribute for type, placeholder and autocomplete
 	txtInput.setAttribute("type", textData.data.type);
 	txtInput.setAttribute("placeholder", textData.data.placeholder);
+	txtInput.setAttribute('autocomplete','true');
 
 	let cont:HTMLDivElement = createInputCont(txtInput);
 
