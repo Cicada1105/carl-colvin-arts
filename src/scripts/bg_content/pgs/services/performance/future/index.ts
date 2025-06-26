@@ -18,15 +18,14 @@ const loadFuturePerformances = ():void => {
 	const loadingText:HTMLParagraphElement = createLoadingText();
 	document.body.appendChild(loadingText);
 	// Load future performancces
-	loadPerformances().then(() => {
-		// Load link to contact page
-		loadContactLink();
-	}).catch(() => {
+	loadPerformances().catch(() => {
 		let fallbackText:HTMLDivElement = createFallbackText('No future performances at this time','Try again later')
 		document.body.appendChild(fallbackText);
 	}).finally(() => {
 		// Remove loading text
 		loadingText.remove();
+		// Load link to contact page regardless of success retrieving data
+		loadContactLink();
 	});
 }
 

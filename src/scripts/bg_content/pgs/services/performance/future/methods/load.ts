@@ -7,7 +7,10 @@
 //    methods
 import requestData from '../../../request';
 import { createPerformanceRow } from './create';
-import { createElement, createTextElement, createContactLink } from '@global/methods/elements';
+import { 
+	createElement, createTextElement,
+	createContactLink, createFallbackText
+} from '@global/methods/elements';
 //    interfaces
 import { IPerformance } from '../interfaces';
 import { PerformanceDataInterface } from '../../interfaces';
@@ -23,29 +26,10 @@ const loadPerformances:()=>Promise<void> = async ():Promise<void> => {
 			// Append performance row to body
 			document.body.appendChild(performanceRow);
 		})
-		/*catch((err:Error) => {
-			document.body.appendChild(
-				createTextElement({
-					element: "h3",
-					text: err.name,
-					idName: "errName"
-				})
-			);
-			document.body.appendChild(
-				createTextElement({
-					element: "h6",
-					text: err.message,
-					idName: "errMessage"
-				})
-			);
-		})*/
 	}
 	else {
-		document.body.appendChild(createTextElement({
-			element:"h2",
-			idName:"noPerformancesHeader",
-			text:"Sorry, no future performances today!"
-		}));
+		let fallbackText:HTMLDivElement = createFallbackText('No future performances at the time','Try again later');
+		document.body.appendChild(fallbackText);
 	}
 }
 
