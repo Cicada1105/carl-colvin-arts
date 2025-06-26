@@ -69,8 +69,8 @@ const loadListenPreview = ():void => {
 
 	// Create source element
 	let audioSrc:HTMLSourceElement = document.createElement('source');
-	audioSrc.setAttribute('src',`${MEDIA_DIR}kenya-lifestream.wav`);
-	audioSrc.setAttribute('type','audio/wav');
+	audioSrc.setAttribute('src',`${MEDIA_DIR}kenya-lifestream.mp3`);
+	audioSrc.setAttribute('type','audio/mp3');
 
 	// Append audio source to audio element
 	audioEl.appendChild(audioSrc);
