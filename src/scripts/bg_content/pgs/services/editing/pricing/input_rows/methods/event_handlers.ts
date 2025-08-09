@@ -115,7 +115,7 @@ function WordCountHandler(event:Event | KeyboardEvent) {
 		let enteredValueStr:string = inputEl.value;
 		let enteredValueNum:number = parseInt(enteredValueStr);
 		let inputElMin:number = parseInt(inputEl.min);
-		let inputElMax:number = parseInt(inputEl.max);
+		let inputElMax:number = inputEl.max === 'Infinity' ? Infinity : parseInt(inputEl.max);
 
 		// Display next row if current selection is valid
 		if ((enteredValueNum >= inputElMin) && (enteredValueNum <= inputElMax) && !(enteredValueStr === "")) {
