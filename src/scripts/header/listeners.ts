@@ -32,8 +32,23 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
           category: addReedProps?.category
         })
       }
-      else { // Item exists, add quantity to existing quantity
-        cartItems[foundIndex]['quantity'] += addReedProps['quantity'];
+      else { // Item exists
+        let cartItem:ReedStorageItem = cartItems[foundIndex];
+
+        // If cost is the same, add quantity to existing quantity
+        if ( cartItem['cost'] === addReedProps['cost'] )
+          cartItems[foundIndex]['quantity'] += addReedProps['quantity'];
+        else { // Same reed type, different variable cost
+          let idString:string = Math.random().toString().slice(2);
+
+          cartItems.push({
+            id: parseInt(idString),
+            name: addReedProps['name'],
+            cost: addReedProps['cost'],
+            quantity: addReedProps['quantity'],
+            category: addReedProps?.category
+          })
+        }
       }
 
       sessionStorage.setItem(
