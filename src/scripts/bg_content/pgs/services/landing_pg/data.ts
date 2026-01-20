@@ -4,12 +4,16 @@
 import { IImage, IBoxLink } from '@global/interfaces/general'
 //import { AnimationOutlineInterface as IAnimation } from './interfaces'
 
-const INTRO_DATA:string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus " +
-						 "ut enim ligula. Vivamus purus risus, dictum sed congue eget, efficitur " +
-						 "non nunc. Suspendisse interdum aliquam lorem sed finibus. Maecenas congue " +
-						 "in elit vel condimentum. Nulla vulputate fringilla aliquet. Sed ut pulvinar " +
-						 "mi, at luctus metus. Sed sodales erat vitae nulla consequat, non interdum " +
-						 "lorem pharetra. In at convallis nisl, ut imperdiet ipsum. ";
+const INTRO_DATA:string = "In our digital world, art, more than ever, has become more and more " +
+													"of a collaborative pursuit. One part of being an artist that gives " +
+													"me so much life and joy is bringing out the best in others through " +
+													"collaboration, no matter if they are right in the room with me or " +
+													"across the country. Whether you are a publisher, music director, " +
+													"writer, oboist in need of reeds, or someone who needs an oboist for " +
+													"their musical projects, I would love to work with you to accomplish " +
+													"whatever you envision within your creative pursuits. Check out the " +
+													"different services I offer below and let me know via the " +
+													"<a href='./contact.html'>Contact</a> page how I can best assist you!";
 
 // Services path
 const SERVICES_DIR = "./services/";
@@ -22,7 +26,7 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 		content: {
 			path:`${SERVICES_IMGS}reedmaking_bg.jpeg`,
 			alt:"Reeds with sharpening tools and woodblock",
-			caption:"Tools used to sharpen and craft reeds"
+			caption:"Click below for your one-stop shop for processed cane and reeds!"
 		},
 		link:`${SERVICES_DIR}reedmaking.html`
 	},
@@ -31,7 +35,8 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 		content: {
 			path:`${SERVICES_IMGS}carl_red_pew.jpeg`,
 			alt:"Playing oboe in church pew",
-			caption:"Carl Colvin practicing in [-Insert Church Name Here-]'s pew"
+			caption:"Learn here what is currently on my music stand, where I'm performing " +
+							"next, and what I previously have worked on!"
 		},
 		link:`${SERVICES_DIR}performances.html`
 	},
@@ -40,7 +45,7 @@ const CARD_DATA:Array<IBoxLink<IImage>> = [
 		content: {
 			path:`${SERVICES_IMGS}book_edit.jpeg`,
 			alt:"Editing Excerpt",
-			caption:"Editing excerpt from literary work written by David Sula"
+			caption:"Check out here how I can assist you with your poetry or prose!"
 		},
 		link:`${SERVICES_DIR}editing.html`
 	}

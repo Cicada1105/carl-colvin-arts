@@ -21,9 +21,9 @@ const collageImages:Array<IPost> = [
 			idName:'leftTop'
 		},
 		postData: {
-			header: "Happy Holy Dayz annual Chicago Hiphop Festival",
+			header: "Performance",
 			content:"Carl Colvin performing with hip hop group Kao Ra Zen and the Ungovernables " +
-					"at Hippy Holy Dayz, an annual hip hop festival in Chicago."
+					"at Hippy Holy Dayz, an annual hip hop festival."
 		}
 	},
 	{
@@ -34,9 +34,8 @@ const collageImages:Array<IPost> = [
 			idName:'middleLeftTop'
 		},
 		postData: {
-			header: "Dank Hause Kenya Spoken Word",
-			content:"Carl Colvin performing with spoken word artist and art curator Kenya Fulton " +
-					"at the Dank Haus in Chicago."
+			header: "Performance",
+			content:"Carl Colvin performing with spoken word artist and art curator Kenya Fulton."
 		}
 	},
 	{
@@ -47,7 +46,7 @@ const collageImages:Array<IPost> = [
 			idName:'middleRightTop'
 		},
 		postData: {
-			header: "Random Reeds",
+			header: "Reedmaking",
 			content: "I create reeds tailored to your preferences!"
 		}
 	},
@@ -59,8 +58,8 @@ const collageImages:Array<IPost> = [
 			idName:'middleRightBottom'
 		},
 		postData: {
-			header:'English Horn Sheet Music',
-			content:'[English horn on sheet music full description]'
+			header:'Performance',
+			content:'Check out my <a href="./pgs/services/performances/past.html">past</a> and <a href="./pgs/services/performances/future.html">future</a> performances, and check out some of my <a href="./pgs/services/performances/present.html">playing</a>.'
 		}
 	},
 	{
@@ -72,7 +71,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Take My Hand",
-			content: "Poem written by Carl Colvin and published by Z Publishing's \"America's Emerging Poets\" anthology"
+			content: 'As a published author, I understand what a text needs to be published. Check out the information on my <a href="./pgs/services/editing.html">editing</a> services.'
 		}
 	},
 	{
@@ -84,7 +83,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header:'A Father\'s Touch',
-			content:"Poem written by Carl Colvin and published by Z Publishing's \"America's Best Emerging Poets\" anthology"
+			content:'As a published editor, I am excited to work with you to bring your words and art wherever you desire them to be! Check out the information on my <a href="./pgs/services/editing.html">editing</a> services.'
 		}
 	},
 	{
@@ -95,7 +94,7 @@ const collageImages:Array<IPost> = [
 			idName:'middleLeftBottom'
 		},
 		postData: {
-			header: "Types of Reed Scraping",
+			header: "Reedmaking",
 			content: "I make and sell reeds at all different stages of the reedmaking process to aid whatever your reed needs are."
 		}
 	},
@@ -107,9 +106,8 @@ const collageImages:Array<IPost> = [
 			idName:'rightBottom'
 		},
 		postData: {
-			header: "Dank Haus Ungovernables",
-			content:"Carl Colvin performing with hip hop group Kao Ra Zen and the Ungovernables" +
-					" at the Dank Haus in Chicago."
+			header: "Performance",
+			content:"Carl Colvin performing with hip hop group Kao Ra Zen and the Ungovernables."
 		}
 	}
 ];

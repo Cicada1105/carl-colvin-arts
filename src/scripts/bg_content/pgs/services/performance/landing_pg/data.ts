@@ -56,34 +56,28 @@ const sectorData:ISector[] = [
 		},
 		descriptions:[
 			{
-				text: "View a list of my previous",
+				text: "View my most recent",
 				className:"sector_content",
-				x:"25",
+				x:"40",
 				y:"95"
 			},
 			{
-				text: "performances, links to the",
+				text: "performances and whom",
 				className:"sector_content",
 				x:"20",
 				y:"105"
 			},
 			{
-				text: "organizations/people I",
+				text: "I have collaborated with",
 				className:"sector_content",
-				x:"20",
+				x:"15",
 				y:"115"
 			},
 			{
-				text: "have worked with and",
+				text: "in the past",
 				className:"sector_content",
-				x:"15",
+				x:"55",
 				y:"125"
-			},
-			{
-				text: "quotes by them",
-				className:"sector_content",
-				x:"30",
-				y:"135"
 			}
 		],
 		sectorPath: {
@@ -151,17 +145,11 @@ const sectorData:ISector[] = [
 				y:"250"
 			},
 			{
-				text: "playing? What am I listening to?",
+				text: "working on and with whom?",
 				className:"sector_content",
-				x:"100",
+				x:"105",
 				y:"260"
-			},
-			{
-				text: "And more...",
-				className:"sector_content",
-				x:"130",
-				y:"270"
-			},
+			}
 		],
 		sectorPath: {
 			idName:"presentSector",
@@ -222,41 +210,22 @@ const sectorData:ISector[] = [
 		},
 		descriptions:[
 			{
-				
-				text: "Check out what I'll be",
+				text: "Come see where you can",
 				className:"sector_content",
 				x:"185",
 				y:"95"
 			},
 			{
-				text: "performing in the future as",
+				text: "catch me performing next!",
 				className:"sector_content",
 				x:"195",
 				y:"105"
 			},
 			{
-				text: "well as times, venues",
+				text: "I would love to meet you!",
 				className:"sector_content",
 				x:"205",
 				y:"115"
-			},
-			{
-				text: "where performances will",
-				className:"sector_content",
-				x:"210",
-				y:"125"
-			},
-			{
-				text: "be held and information",
-				className:"sector_content",
-				x:"215",
-				y:"135"
-			},
-			{
-				text: "on how to work with me",
-				className:"sector_content",
-				x:"215",
-				y:"145"
 			}
 		],
 		sectorPath: {
@@ -333,7 +302,7 @@ const graphicsAttributes:DimensionsInterface = {
 			r:"146",
 			fill:"none",
 			stroke:"#003249",
-			strokeOpacity:"0.4",
+			strokeOpacity:"0.55",
 			strokeWidth:"4"
 		},
 		{
@@ -352,7 +321,7 @@ const graphicsAttributes:DimensionsInterface = {
 			y2:"6",
 			stroke:"#003249",
 			strokeWidth:"3",
-			strokeOpacity:"0.4"
+			strokeOpacity:"0.55"
 		},
 		{
 			x1:"98.03847578",
@@ -361,7 +330,7 @@ const graphicsAttributes:DimensionsInterface = {
 			y2:"222",
 			stroke:"#003249",
 			strokeWidth:"3",
-			strokeOpacity:"0.4"
+			strokeOpacity:"0.55"
 		},
 		{
 			x1:"201.9615243",
@@ -370,7 +339,7 @@ const graphicsAttributes:DimensionsInterface = {
 			y2:"222",
 			stroke:"#003249",
 			strokeWidth:"3",
-			strokeOpacity:"0.4"
+			strokeOpacity:"0.55"
 		}
 	]
 	/*imageFilters: [

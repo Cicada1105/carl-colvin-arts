@@ -12,7 +12,7 @@ const loadPreviousPerformances:()=>void = ():void => {
 	// Create page header and intro text
 	let title:HTMLHeadingElement = createTextElement({
 		element:"h1",
-		text:"Concerto Repertoire",
+		text:"What have I been up to?",
 		idName:"previousPerformancesTitle"
 	});
 	let intro:HTMLParagraphElement = createTextElement({

@@ -36,8 +36,12 @@ import { RowInterface } from './interfaces'
       (await loadMediaRow(audioData['sketches'] as RowInterface)),
       // Load poem reading
       (await loadMediaRow(videoData['poem-reading'] as RowInterface)),
+      // Load Diverimento performance
+      (await loadMediaRow(videoData['divertimento'] as RowInterface)),
       // Load Ka Ra Zen performance
       (await loadMediaRow(audioData['ka-ra-zen'] as RowInterface)),
+      // Load Arts in the Airport performance
+      (await loadMediaRow(videoData['arts-in-the-airport'] as RowInterface)),
    ]).catch(err => {
       const fallbackText:HTMLDivElement = createFallbackText('No content at this time','Try again later');
       document.body.appendChild(fallbackText);

@@ -55,6 +55,31 @@ const videoData:IRow = {
 				type:'video/mp4'
 			}
 		}
+	},
+	"divertimento": {
+		description:"Wind Trio performing 4th Movement of Malcolm Arnold's Divertimento " +
+		"at The Loon Wine Bar & Shop for Classical Revolution Cincinnati",
+		media: {
+			controls:false,
+			poster:`${IMG_PATH}/divertimento.jpg`,
+			source: {
+				src:`${MEDIA_PATH}/divertimento.mp4`,
+				type:'video/mp4'
+			}
+		}
+	},
+	"arts-in-the-airport": {
+		description:"An excerpt from Satoshi Yagisawa's Seasons Floral Scented, " +
+		"performed live at the Cincinnati/Northern Kentucky International Airport " +
+		"for ArtsWave's \"Arts in the Airport\" Series",
+		media: {
+			controls:false,
+			poster: `${IMG_PATH}/satoshi_yagisawa-seasons-floral-scented-[live].jpg`,
+			source: {
+				src:`${MEDIA_PATH}/satoshi_yagisawa-seasons-floral-scented-[live].mp4`,
+				type:'video/mp4'
+			}
+		}
 	}
 };
 

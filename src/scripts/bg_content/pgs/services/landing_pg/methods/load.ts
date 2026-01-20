@@ -17,9 +17,8 @@ const loadIntro = () => {
 		text: "Services"
 	});
 
-	let intro:HTMLParagraphElement = createTextElement({
-		text: INTRO_DATA
-	});
+	let intro:HTMLParagraphElement = document.createElement('p');
+	intro.innerHTML = INTRO_DATA;
 
 	document.body.appendChild(header);
 	document.body.appendChild(intro);

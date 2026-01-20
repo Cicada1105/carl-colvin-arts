@@ -109,10 +109,9 @@ const createPostCard = (postData:IBox<string>):HTMLDivElement => {
 		idName:"postCardHr"
 	});
 	// Create content container
-	let contentCont:HTMLParagraphElement = createTextElement({
-		text:content,
-		idName:"postCardContent"
-	});
+	let contentCont:HTMLParagraphElement = document.createElement('p');
+	contentCont.setAttribute('id','postCardContent');
+	contentCont.innerHTML = content;
 
 	// Append header, hr and content to postCard
 	cont.appendChild(headerCont);

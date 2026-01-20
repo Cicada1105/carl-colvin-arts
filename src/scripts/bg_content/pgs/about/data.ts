@@ -22,15 +22,13 @@ const Rows:IRow[] = [
 			"editor originally from Chicago, Illinois and now recently residing " + 
 			"in the Cincinnati, Ohio area. Carl holds a Bachelor of Arts with " +
 			"majors in creative writing, music, and humanities from Valparaiso " +
-			"University and a Master of Music in Oboe Performance from DePaul " +
-			"University. At Valparaiso University he was awarded the Anna Zink " +
-			"Springsteen award for his many contributions to the University’s " +
-			"literary culture."
+			"University and a Master of Music in Oboe Performance and Performance " +
+			" certificate from DePaul University."
 		},
 		imgData: {
 			path:`${SHARED_IMG_PATH}/carl_headshot.png`,
 			alt:"Carl Headshot",
-			caption:"Carl Headshot"
+			caption:"Welcome to my page!"
 		}
 	}, 
 	{
@@ -42,7 +40,7 @@ const Rows:IRow[] = [
 			"so every service performed must be different to accomplish a " +
 			"successful performance. I have easily applied my versatility " +
 			"not only to genre but also to the aesthetic of specific performances " +
-			"by taking my two decades of oboe playing experience and fitting " +
+			"by taking my decades of oboe playing experience and fitting " +
 			"them into whatever ensemble requires my services. Check out the " +
 			"Listen page to hear for yourself. "
 		},
@@ -50,14 +48,14 @@ const Rows:IRow[] = [
 			path:`${ABOUT_IMG_PATH}/oboe_performance.png`,
 			alt:"Carl Performing Oboe",
 			caption:"Performing with spoken word artist and art curator Kenya Fulton " +
-			"at the Dank Haus in Chicago."
+			"at the Dank Haus."
 		}
 	},
 	{
 		infoData: {
 			header:"Services",
 			link:`${ROOT_DIR}pgs/services.html`,
-			content:"As a teacher and editor, Carl’s mission is to provide " +
+			content:"As a teacher and editor, my mission is to provide " +
 			"new and emerging musicians and writers the opportunity to share " +
 			"and express their work while also developing the best versions " +
 			"of themselves as artists."

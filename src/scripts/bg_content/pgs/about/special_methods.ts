@@ -74,6 +74,7 @@ const imgCont = (currImg:IImage):HTMLElement => {
 	// On hovering over imgBorder, fade img itself
 	// Display data 
 	imgBorder.addEventListener('mouseover',() => {
+		imgBorder.style.cursor = 'default';
 		img.style.filter = 'opacity(50%)';
 		figCaption.style.display = 'block';
 		

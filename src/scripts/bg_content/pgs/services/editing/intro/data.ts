@@ -1,15 +1,20 @@
 // Data used in creating the intro
 
 const INTRO_DATA:string[] = [
-	"Carl served on the editorial staff of the Valparaiso Fiction Review for four " +
-	"years as an assistant editor, copy editor, and submissions manager at different " +
-	"intervals. Since then, he has freelanced by editing poetry for smaller literary " +
-	"magazines (which included starting and teaching in a workshop series at Moody " +
-	"Bible Church) and novels for individual authors.",
-	"Carl primarily edits poetry and short fiction and has experience with editing " +
-	"novels, résumés, and cover letters. He has poetry published in Tuck Magazine " +
-	"and Z Publishing’s Illinois’s Best Emerging Poets and America’s Best Emerging " +
-	"Poets; recently he also was published for his fiction in the Valparaiso Fiction Review."
+	"I have had the privilege of editing for many different people and organizations " +
+	"for more than a decade. I primarily work within the realms of poetry and fiction " +
+	"and have worked as an editor with literary journals, such as the Valparaiso Fiction " +
+	"Review and the Tiny Seed Literary Journal, and individual authors whose genres of " +
+	"choice range dramatically in scope.",
+	"I offer two types of editing: standard proofreading and developmental editing. No " +
+	"matter which one you chose, I look forward to working with you and your work! Standard " +
+	"proofreading deals more with helping out with grammar, syntax, line structure (in " + 
+	"the case of poetry), and anything else the work needs on a technical level. " +
+	"Developmental editing touches on the deeper and broader aspects of the text. This " +
+	"includes helping with story structure, character development, messaging, feel, etc. " +
+	"There are many times that technical and developmental editing can overlap, but I " +
+	"can address this as we work together. Follow the dropdowns and Request More Info " +
+	"link to reach out and start the conversation!"
 ]
 
 export { INTRO_DATA }

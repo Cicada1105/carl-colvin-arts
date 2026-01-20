@@ -13,14 +13,12 @@ import { createSheetMusic } from './methods/music_sheets';
 import { createStand } from './methods/create';
 
 const INTRO_DATA:string[] = [
-	"In 2015, Chicago-based hip hop artist Kao Ra Zen approached me in need of a " + 
-	"woodwind player for some of his projects. Once I accepted, I knew that my " +
-	"performance career was to take a strange and wonderful turn. ",
-	"After many successful live hip hop shows and recordings as Chicago's sole " +
-	"hip hop oboist, I saw the benefits of being versatile and realized that " +
-	"versatility is one of the most important aspects of a performer's career. " +
-	"I took this to heart and applied it to every performance opportunity, " +
-	"whether in the genres ranging from classical to hip hop."
+	"In my decades of performance experience, the oboe has taken me through some " +
+	"delightfully unexpected musical experiences. When entering music school, I " +
+	"never expected to be working on experimental background music for music videos " +
+	"and documentaries, contemporary sextet music, or even music for musical theatre. " +
+	"Here is where you can stay updated on where this journey has brought me at this " +
+	"moment by seeing what is currently on my music stand."
 ];
 
 const loadMusicStand = ():void => {

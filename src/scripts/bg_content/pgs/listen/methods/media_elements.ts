@@ -29,8 +29,8 @@ const createMediaElement:(mediaElement:Media)=>Promise<HTMLMediaElement> = (medi
 		// Append Source to child
 		el.appendChild(source);
 
-		//if ((mediaEl as VideoInterface).poster) 
-		//	el.setAttribute("poster",(<VideoInterface>mediaEl).poster);
+		if ((mediaEl as VideoInterface).poster) 
+			el.setAttribute("poster",(<VideoInterface>mediaEl).poster);
 
 		// If controls set to true, return default, built-in controls
 		if (mediaEl.controls) 
