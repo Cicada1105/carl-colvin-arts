@@ -17,7 +17,7 @@ const audioData:IRow = {
 		media: {
 			controls:false,
 			image: {
-				path:`${IMG_PATH}/hungarian-sketches.png`,
+				path:`${IMG_PATH}/hungarian-sketches.jpg`,
 				alt:"Hungarian Sketches"
 			},
 			source: {
