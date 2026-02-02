@@ -32,40 +32,35 @@ const loadCollage = ():void => {
 		idName:"collage"
 	});
 
-	// Only store data if D=CollageData is empty
-	if (CollageData.isEmpty()) {
-		collageImages.forEach((img) => {
-			let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
+	const IS_EMPTY:boolean = CollageData.isEmpty();
+	collageImages.forEach((img,index) => {
+		let imgElement:HTMLImageElement = loadImage(<ICollage>img.imageData);
 
-			let postData:IBox<string> = <IBox<string>>img.postData;
-
+		let imgNode:HTMLImageElement;
+		let postData:IBox<string>;
+		// Only store data if Collage is empty
+		if ( IS_EMPTY ) {
 			// Clone node to be displayed in pop up when user clicks on image
-			let imgClone:HTMLImageElement = <HTMLImageElement>imgNode.cloneNode(true);
+			imgNode = <HTMLImageElement>imgElement.cloneNode(true);
+
+			postData = <IBox<string>>img.postData;
 
 			// Store current image clone and post data to be used to cycle through posts
 			//	-only want to store once and not each time image is clicked
-			CollageData.storeImage(imgClone, postData);
-
-			imgNode.addEventListener("click", () => {
-				displayImagePost(imgClone, postData);
-			});
-			// Append image to the collage container
-			collageCont.appendChild(imgNode);
-		});
-	}
-	else {
-		collageImages.forEach((img,index) => {
-			let imgNode:HTMLImageElement = loadImage(<ICollage>img.imageData);
-
+			CollageData.storeImage(imgNode, postData);
+		}
+		else {
 			CollageData.goToIndex(index);
+			imgNode = CollageData.getImage();
+			postData = CollageData.getData();
+		}
 
-			imgNode.addEventListener("click", () => {
-				displayImagePost(CollageData.getImage(), CollageData.getData());
-			});
-			// Append image to the collage container
-			collageCont.appendChild(imgNode);
+		imgElement.addEventListener("click", () => {
+			displayImagePost(imgNode, postData);
 		});
-	}
+		// Append image to the collage container
+		collageCont.appendChild(imgElement);
+	});
 	let rows:HTMLCollection = document.getElementsByClassName("row");
 	let row:HTMLDivElement = <HTMLDivElement>rows[0];
 	document.body.insertBefore(collageCont,row);
