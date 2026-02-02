@@ -108,15 +108,22 @@ const createPostCard = (postData:IBox<string>):HTMLDivElement => {
 		element:"hr",
 		idName:"postCardHr"
 	});
+	// Create flex wrapper for the content container to vertically align paragraph with links
+	let contentContWrapper:HTMLDivElement = createElement({
+		className: 'postCardContentWrapper'
+	});
 	// Create content container
 	let contentCont:HTMLParagraphElement = document.createElement('p');
 	contentCont.setAttribute('id','postCardContent');
 	contentCont.innerHTML = content;
 
+	// Append post card content container to the wrapper
+	contentContWrapper.appendChild(contentCont);
+
 	// Append header, hr and content to postCard
 	cont.appendChild(headerCont);
 	cont.appendChild(hr);
-	cont.appendChild(contentCont);
+	cont.appendChild(contentContWrapper);
 
 	return cont;
 }
