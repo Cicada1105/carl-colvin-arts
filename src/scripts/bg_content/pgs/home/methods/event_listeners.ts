@@ -10,7 +10,7 @@ import { HomeComponentPositioning } from '../classes/ComponentPositioning'
 
 function ArrowClickListener(event:MouseEvent | KeyboardEvent) {
 	// Store current target
-	let arrowDiv:HTMLDivElement = event.target as HTMLDivElement;
+	let arrowDiv:HTMLDivElement = event.currentTarget as HTMLDivElement;
 	let arrow:HTMLElement = arrowDiv.firstChild as HTMLElement;
 
 	// Increment or Decrement to next post based on target pressed

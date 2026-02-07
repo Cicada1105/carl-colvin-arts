@@ -45,26 +45,32 @@ const createPostDialog = ():void => {
 	// Creat container for post content
 	const postCont:HTMLDivElement = createPostCont();
 
-	// Create exit button
-	let exitButton:HTMLElement = createElement({element:"i",className:"fas fa-times"});
+	// Create exit button div container to receive focus
+	let exitButtonDiv:HTMLDivElement = createElement({
+		element: 'div',
+		idName: 'exitBtnDiv'
+	});
 	// Allow exit buttn to be the last keyboard focusable element
-	exitButton.setAttribute('tabindex','0');
-	// Add lazy loading attribute to exit button for faster processing
-	exitButton.setAttribute("loading","lazy");
-	exitButton.addEventListener('click',() => {
+	exitButtonDiv.setAttribute('tabindex','0');
+	exitButtonDiv.addEventListener('click',() => {
 		dialog.close();
 	})
-
-	exitButton.addEventListener('keyup',(e) => {
+	exitButtonDiv.addEventListener('keyup',(e) => {
 		if ( enterKeyPressed(e) ) {
 			dialog.close();
 		}
 	});
+	// Create exit button
+	let exitButton:HTMLElement = createElement({element:"i",className:"fas fa-times"});
+	// Add lazy loading attribute to exit button for faster processing
+	exitButton.setAttribute("loading","lazy");
+	// Append exit button to div element
+	exitButtonDiv.appendChild(exitButton);
 
 	// Append image and post containers to the dialog
 	dialog.appendChild(imgCont);
 	dialog.appendChild(postCont);
-	dialog.appendChild(exitButton)
+	dialog.appendChild(exitButtonDiv)
 
 	document.body.appendChild(dialog);
 }
@@ -93,13 +99,13 @@ const createPostCont = ():HTMLDivElement => {
 	});
 
 	// Create left arrow div container to receive focus
-	let leftArrowSpan:HTMLDivElement = document.createElement('div');
+	let leftArrowDiv:HTMLDivElement = document.createElement('div');
 	// Make left arrow be the first keyboard focusable element
-	leftArrowSpan.setAttribute('tabindex','1')
+	leftArrowDiv.setAttribute('tabindex','1')
 	// Add event listener for cycling through posts going to the left
-	leftArrowSpan.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
+	leftArrowDiv.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
 	// Add keyboard event for cycling through posts going left
-	leftArrowSpan.addEventListener('keyup',(e) => {
+	leftArrowDiv.addEventListener('keyup',(e) => {
 		if ( enterKeyPressed(e) ) {
 			ArrowClickListener(e);
 		}
@@ -107,9 +113,9 @@ const createPostCont = ():HTMLDivElement => {
 	// Create left arrow
 	let leftArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-left"});
 	// Append left arrow to the div element
-	leftArrowSpan.appendChild(leftArrow);
+	leftArrowDiv.appendChild(leftArrow);
 	// Append left arrow div element to positioning container
-	leftArrowCont.appendChild(leftArrowSpan);
+	leftArrowCont.appendChild(leftArrowDiv);
 
 	// Create container for post 
 	let postCardCont:HTMLDivElement = createPostContent();
@@ -120,13 +126,13 @@ const createPostCont = ():HTMLDivElement => {
 		idName:"rightArrowCont"
 	});
 	// Create right arrow div element to receive focus
-	let rightArrowSpan:HTMLDivElement = document.createElement('div');
+	let rightArrowDiv:HTMLDivElement = document.createElement('div');
 	// Make right arrow the second keybaord focusable element
-	rightArrowSpan.setAttribute('tabindex','2');
+	rightArrowDiv.setAttribute('tabindex','2');
 	// Add event listener for cycling through posts going to the right
-	rightArrowSpan.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
+	rightArrowDiv.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
 	// Add keyboard event for cycling through posts going right
-	rightArrowSpan.addEventListener('keyup',(e) => {
+	rightArrowDiv.addEventListener('keyup',(e) => {
 		if ( enterKeyPressed(e) ) {
 			ArrowClickListener(e);
 		}
@@ -134,9 +140,9 @@ const createPostCont = ():HTMLDivElement => {
 	// Create right arrow 
 	let rightArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-right"});
 	// Append right arrow to the div element
-	rightArrowSpan.appendChild(rightArrow);
+	rightArrowDiv.appendChild(rightArrow);
 	// Append right arrow to positioning container
-	rightArrowCont.appendChild(rightArrowSpan);
+	rightArrowCont.appendChild(rightArrowDiv);
 
 	// Append left arrow container, postCardCont and right arrow container to postCont
 	postCont.appendChild(leftArrowCont);
