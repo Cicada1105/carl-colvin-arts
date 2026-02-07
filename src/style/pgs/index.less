@@ -71,21 +71,14 @@ img {
 		}
 	}
 }
-#postBackdrop {
-	.format(fixed, 100%, 100%);
-	background-color:@secondaryBackgroundColor;
-	filter:opacity(0.75);
-	top:0;
-	z-index:2;
-}
-#imgPostCont {
-	position:fixed;
-	left:50%;
-	top:50%;
-	transform: translate(-50%,-50%);
-	z-index:2;
+dialog#imgPostCont {
+	padding: 0;
 
-	& > .imgCont {
+	&::backdrop {
+		background-color:@secondaryBackgroundColor;
+		filter:opacity(0.75);
+	}
+	& > #imgCont {
 		.format(relative, 50%, 100%);
 		background-color: rgb(196,196,196);
 		float:left;
@@ -98,7 +91,7 @@ img {
 			object-fit:contain;
 		}
 	}
-	& > .postCont {
+	& > #postCont {
 		.format(relative,50%, 100%);
 		background-color:@activeTextColor;
 		float:right;
@@ -107,7 +100,7 @@ img {
 			display:inline-block;
 		}
 
-		& > .postDataCont {
+		& > #postDataCont {
 			.format(relative,70%,100%);
 			text-align:center;
 			margin:auto;
@@ -119,7 +112,7 @@ img {
 			& > hr {
 				border: 2px solid @secondaryColor;
 			}
-			.postCardContentWrapper {
+			#postCardContentWrapper {
 				.format(absolute,auto,100%);
 				display: flex;
 				align-items: center;
@@ -133,10 +126,11 @@ img {
 			.format(relative,15%,100%);
 			text-align:center;
 
-			& > i {
-				position:relative;
+			& > div {
+				.format(@pos: relative,@w: fit-content);
 				color:@secondaryColor;
 				font-size:2em;
+				margin: auto;
 				top:50%;
 				transform:translateY(-50%);
 
@@ -185,7 +179,7 @@ img {
 	#imgPostCont {
 		position:relative;
 
-		& > .imgCont, & >.postCont {
+		& > #imgCont, & >#postCont {
 			transition: transform 0.5s;
 			transform: scale(1.0) translateX(initial);
 		}
@@ -199,24 +193,24 @@ img {
 }
 @media only screen and (min-width:600px) and (max-width: 900px) {
 	#imgPostCont {
-		& > .imgCont, & > .postCont {
+		& > #imgCont, & > #postCont {
 			width:50%;
 		}
 	}
 }
 @media only screen and (max-width: 675px) {
 	#imgPostCont {
-		& > .imgCont {
+		& > #imgCont {
 			transform: scale(0.8) translateX(12.5%);
 		}
-		& > .postCont {
+		& > #postCont {
 			transform: scale(0.8) translateX(-12.5%);
 		}
 	}
 }
 @media only screen and (max-width: 600px) {
 	#imgPostCont {
-		& > .imgCont, & > .postCont {
+		& > #imgCont, & > #postCont {
 			width:auto;
 			float:none;
 			margin:auto;
@@ -229,10 +223,10 @@ img {
 				max-height: 100%;
 			}
 		}
-		& > .imgCont {
+		& > #imgCont {
 			height:60%;
 		}
-		& > .postCont {
+		& > #postCont {
 			height:40%;
 		}
 	}

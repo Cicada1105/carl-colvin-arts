@@ -7,7 +7,7 @@
 */
 // Interface for defining SingletonObject type
 interface ISingletonConstructor<T extends ComponentPositioning> {
-	new (componentCont:HTMLDivElement):T
+	new (componentCont:HTMLDialogElement):T
 }
 interface ISingleton extends ComponentPositioning {
 	update():void;
@@ -44,11 +44,11 @@ abstract class ComponentPositioning {
 	};
 
 	// Methods accessible through static "instance" of class
-	public static create<T extends ComponentPositioning>(this:ISingletonConstructor<T>, componentCont:HTMLDivElement):void {
+	public static create<T extends ComponentPositioning>(this:ISingletonConstructor<T>, componentCont:HTMLDialogElement):void {
 		ComponentPositioning.SingletonObject = <T>new this(componentCont);
 	}
 	// Abstract methods
-	//abstract create(componentCont?:HTMLDivElement):void;
+	//abstract create(componentCont?:HTMLDialogElement):void;
 	/*
 		abstract update():void
 
@@ -62,12 +62,12 @@ abstract class ComponentPositioning {
 }
 class HomeComponentPositioning extends ComponentPositioning implements ISingleton {
 	// Defined private members to be accessed through current instance of HomeComponentPositioning class
-	private imgPostCont:HTMLDivElement;
+	private imgPostCont:HTMLDialogElement;
 
 	//private static SingletonObject:HomeComponentPositioning;
 
 	// Private constructor only to be instantiated from inside class
-	constructor(componentCont:HTMLDivElement) {
+	constructor(componentCont:HTMLDialogElement) {
 		super();
 		this.imgPostCont = componentCont;
 	}

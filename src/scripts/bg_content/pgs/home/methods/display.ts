@@ -7,15 +7,14 @@ import { IBox } from '@global/interfaces/general'
 import { createElement } from '@global/methods/elements'
 //		local
 import { createPostCont } from './create'
+//	data
+import CollageData from '../classes/CollageData'
 //	classes
 import { HomeComponentPositioning } from '../classes/ComponentPositioning'
 
 /*
 	@params
-	img:HTMLImageElement
-		-Image to be appended to the pop up window that the user clicked on
-	postData:IBox
-		-Data associated with/describing img
+	void
 
 	This function will create "pop up" window/post that will hold image on left
 		and container holding the data describing the image, arrow keys and exit
@@ -24,58 +23,46 @@ import { HomeComponentPositioning } from '../classes/ComponentPositioning'
 	@return
 	void
 */
-const displayImagePost = (img:HTMLImageElement, postData:IBox<string>):void => {
-	let imgPostBackdrop:HTMLDivElement = createElement({
-		idName:"postBackdrop"
-	});
+const displayImagePost = ():void => {
+	// Retrieve dialog
+	const dialog:HTMLDialogElement = document.getElementsByTagName('dialog')[0];
 
-	// Get element to insert "post" cont before
-	let rows:HTMLCollectionOf<HTMLElement> = document.getElementsByClassName("row") as HTMLCollectionOf<HTMLElement>;
+	// Update post content
+	updateDisplayPost();
 
-	// Create container for image and post details
-	let imgPostCont:HTMLDivElement = createElement({
-		idName:"imgPostCont"
-	});
+	// Show modal
+	dialog.showModal();
+}
 
-	// Create container for image
-	let imgCont:HTMLDivElement = createElement({
-		className:"imgCont"
-	});
+const updateDisplayPost = () => {
+	const img:HTMLImageElement = CollageData.getImage();
+	const postData:IBox<string> = CollageData.getData();
+	const header:string = postData.header;
+	const content:string = postData.content;
+
+	// Retrieve dialog
+	const dialog:HTMLDialogElement = document.getElementsByTagName('dialog')[0];
+
+	// Retrieve image container from dialog
+	let imgCont:HTMLDivElement = dialog.querySelector('#imgCont') as HTMLDivElement;
+	// Remove children from parent
+	imgCont.childNodes && imgCont.childNodes.forEach(child => child.remove());
 	// Append image to container
 	imgCont.appendChild(img);
 
-	// Create container that holds post details, functionality and exit
-	let postCont:HTMLDivElement = createPostCont(postData);
-
-	// Create exit button
-	let exitButton:HTMLElement = createElement({element:"i",className:"fas fa-times"});
-	// Add lazy loading attribute to exit button for faster processing
-	exitButton.setAttribute("loading","lazy");
-
-	// Add event listener to exit button to remove backdrop and image post container
-	exitButton.addEventListener("click",() => {
-		imgPostBackdrop.remove();
-		imgPostCont.remove();
-	});
-
-
-	// Append image container, post container, and exit button to "pop up" container
-	imgPostCont.appendChild(imgCont);
-	imgPostCont.appendChild(postCont);
-	imgPostCont.appendChild(exitButton);
+	// Retrieve and update header and paragraph content
+	const dataCont:HTMLDivElement = dialog.querySelector('#postDataCont') as HTMLDivElement;
+	const headerEl:HTMLHeadingElement = dataCont.querySelector('h3#postCardHeader') as HTMLHeadingElement;
+	const contentEl:HTMLParagraphElement = dataCont.querySelector('p#postCardContent') as HTMLParagraphElement;
+	headerEl.textContent = header;
+	contentEl.innerHTML = content;
 
 	// Create "instance" of singleton class, passing in necessary data
-	HomeComponentPositioning.create(imgPostCont);
-	// Store imgPostCont in Singleton Pattern class to handle position updates
+	HomeComponentPositioning.create(dialog);
+	// Store dialog in Singleton Pattern class to handle position updates
 	const homeCompPos:HomeComponentPositioning = HomeComponentPositioning.getInstance();
 	// Update home component
 	homeCompPos.update();
-
-	
-	// Insert backdrop to the page, before the individual rows, to be displayed
-	document.body.insertBefore(imgPostBackdrop, rows[0]);
-	// Insert "pop up" container to the page, before the individual rows, to prevent inheriting properties from backdrop
-	document.body.insertBefore(imgPostCont, rows[0]);
 }
 
 export { displayImagePost }

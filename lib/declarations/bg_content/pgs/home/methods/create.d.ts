@@ -1,3 +1,3 @@
-import { IBox } from '@global/interfaces/general';
-declare const createPostCont: (postData: IBox<string>) => HTMLDivElement;
-export { createPostCont };
+declare const createPostDialog: () => void;
+declare const createPostCont: () => HTMLDivElement;
+export { createPostDialog, createPostCont };

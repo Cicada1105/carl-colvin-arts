@@ -8,6 +8,7 @@ import { ICollage } from '../interfaces'
 //	methods
 import { createElement, createImageElement } from '@global/methods/elements'
 import { displayImagePost } from './display'
+import { createPostDialog } from './create'
 //	data
 import { collageImages } from '../data'
 import CollageData from '../classes/CollageData'
@@ -24,7 +25,7 @@ const loadMobileDisplay = ():void => {
 	}
 	
 	CollageData.current_index === 0 && CollageData.getImage().addEventListener("load", () => {
-		displayImagePost(CollageData.getImage(), CollageData.getData());	
+		displayImagePost();	
 	}, {once: true});
 }
 const loadCollage = ():void => {
@@ -56,7 +57,8 @@ const loadCollage = ():void => {
 		}
 
 		imgElement.addEventListener("click", () => {
-			displayImagePost(imgNode, postData);
+			CollageData.goToIndex(index);
+			displayImagePost();
 		});
 		// Append image to the collage container
 		collageCont.appendChild(imgElement);
@@ -64,6 +66,9 @@ const loadCollage = ():void => {
 	let rows:HTMLCollection = document.getElementsByClassName("row");
 	let row:HTMLDivElement = <HTMLDivElement>rows[0];
 	document.body.insertBefore(collageCont,row);
+
+	// Create dialog box for image card content
+	createPostDialog();
 }
 
 const loadImage = (imgData:ICollage):HTMLImageElement => {

@@ -16,6 +16,58 @@ import { ArrowClickListener } from './event_listeners'
 //  data 
 import CollageData from '../classes/CollageData'
 
+function enterKeyPressed(event:KeyboardEvent):boolean {
+	const ENTER_STRING:string = 'Enter';
+	const LINE_FEED_CODE:number = 10;
+	const CARRIAGE_RETURN_CODE:number = 13;
+
+	let key:string = event.key;
+	let keyCode:number = event.keyCode;
+
+	return (
+		key.localeCompare(ENTER_STRING) === 0 || 
+		keyCode === LINE_FEED_CODE || 
+		keyCode === CARRIAGE_RETURN_CODE
+	);
+}
+
+const createPostDialog = ():void => {
+	const dialog:HTMLDialogElement = createElement({
+		element: 'dialog',
+		idName: 'imgPostCont'
+	});
+
+	// Create container for image
+	let imgCont:HTMLDivElement = createElement({
+		idName:"imgCont"
+	});
+
+	// Creat container for post content
+	const postCont:HTMLDivElement = createPostCont();
+
+	// Create exit button
+	let exitButton:HTMLElement = createElement({element:"i",className:"fas fa-times"});
+	// Allow exit buttn to be the last keyboard focusable element
+	exitButton.setAttribute('tabindex','0');
+	// Add lazy loading attribute to exit button for faster processing
+	exitButton.setAttribute("loading","lazy");
+	exitButton.addEventListener('click',() => {
+		dialog.close();
+	})
+
+	exitButton.addEventListener('keyup',(e) => {
+		if ( enterKeyPressed(e) ) {
+			dialog.close();
+		}
+	});
+
+	// Append image and post containers to the dialog
+	dialog.appendChild(imgCont);
+	dialog.appendChild(postCont);
+	dialog.appendChild(exitButton)
+
+	document.body.appendChild(dialog);
+}
 /*
 	@params
 	postData:IBox
@@ -27,16 +79,11 @@ import CollageData from '../classes/CollageData'
 	postCont:any
 		-Container holding left and right arrows and post data
 */
-const createPostCont = (postData:IBox<string>):HTMLDivElement => {
-	// Store current location of postData 
-	let currentPostIndex:number = CollageData.findIndex(postData);
-	// Go to location of current post
-	CollageData.goToIndex(currentPostIndex);
-
+const createPostCont = ():HTMLDivElement => {
 	// Post container will hold the two "panels" one that holds image on left 
 	//  and one that holds caption on right
 	let postCont:HTMLDivElement = createElement({
-		className:"postCont"
+		idName:"postCont"
 	});
 
 	// Create container for left arrow for positioning
@@ -45,30 +92,51 @@ const createPostCont = (postData:IBox<string>):HTMLDivElement => {
 		idName:"leftArrowCont"
 	});
 
+	// Create left arrow div container to receive focus
+	let leftArrowSpan:HTMLDivElement = document.createElement('div');
+	// Make left arrow be the first keyboard focusable element
+	leftArrowSpan.setAttribute('tabindex','1')
+	// Add event listener for cycling through posts going to the left
+	leftArrowSpan.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
+	// Add keyboard event for cycling through posts going left
+	leftArrowSpan.addEventListener('keyup',(e) => {
+		if ( enterKeyPressed(e) ) {
+			ArrowClickListener(e);
+		}
+	});
 	// Create left arrow
 	let leftArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-left"});
-	// Add event listener for cycling through posts going to the left
-	leftArrow.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
-
-	// Append left arrow to positioning container
-	leftArrowCont.appendChild(leftArrow);
+	// Append left arrow to the div element
+	leftArrowSpan.appendChild(leftArrow);
+	// Append left arrow div element to positioning container
+	leftArrowCont.appendChild(leftArrowSpan);
 
 	// Create container for post 
-	let postCardCont:HTMLDivElement = createPostCard(postData);
+	let postCardCont:HTMLDivElement = createPostContent();
 
 	// Create container for right arrow for positioning
 	let rightArrowCont:HTMLDivElement = createElement({
 		className:"arrowCont",
 		idName:"rightArrowCont"
 	});
-
+	// Create right arrow div element to receive focus
+	let rightArrowSpan:HTMLDivElement = document.createElement('div');
+	// Make right arrow the second keybaord focusable element
+	rightArrowSpan.setAttribute('tabindex','2');
+	// Add event listener for cycling through posts going to the right
+	rightArrowSpan.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
+	// Add keyboard event for cycling through posts going right
+	rightArrowSpan.addEventListener('keyup',(e) => {
+		if ( enterKeyPressed(e) ) {
+			ArrowClickListener(e);
+		}
+	});
 	// Create right arrow 
 	let rightArrow:HTMLElement = createElement({element:"i",className:"fas fa-chevron-right"});
-	// Add event listener for cycling through posts going to the right
-	rightArrow.addEventListener("click", ArrowClickListener);	// Note: Out of bounds checking handled by CollageData class
-
+	// Append right arrow to the div element
+	rightArrowSpan.appendChild(rightArrow);
 	// Append right arrow to positioning container
-	rightArrowCont.appendChild(rightArrow);
+	rightArrowCont.appendChild(rightArrowSpan);
 
 	// Append left arrow container, postCardCont and right arrow container to postCont
 	postCont.appendChild(leftArrowCont);
@@ -89,34 +157,32 @@ const createPostCont = (postData:IBox<string>):HTMLDivElement => {
 	cont:any
 		-Container holding the header, hr divider and content of the image
 */
-const createPostCard = (postData:IBox<string>):HTMLDivElement => {
+const createPostContent = ():HTMLDivElement => {
 	let cont:HTMLDivElement = createElement({
-		className:"postDataCont"
+		idName:"postDataCont"
 	});
-
-	let header:string = postData.header;
-	let content:string = postData.content;
 
 	// Create header container
-	let headerCont:HTMLHeadingElement = createTextElement({
+	let headerCont:HTMLHeadingElement = createElement({
 		element:"h3",
-		text:header,
 		idName:"postCardHeader"
 	});
+
 	// Create hr to section header from content
 	let hr:HTMLHRElement = createElement({
 		element:"hr",
 		idName:"postCardHr"
 	});
+
 	// Create flex wrapper for the content container to vertically align paragraph with links
 	let contentContWrapper:HTMLDivElement = createElement({
-		className: 'postCardContentWrapper'
+		idName: 'postCardContentWrapper'
 	});
 	// Create content container
-	let contentCont:HTMLParagraphElement = document.createElement('p');
-	contentCont.setAttribute('id','postCardContent');
-	contentCont.innerHTML = content;
-
+	let contentCont:HTMLParagraphElement = createElement({
+		element: 'p',
+		idName: 'postCardContent'
+	});
 	// Append post card content container to the wrapper
 	contentContWrapper.appendChild(contentCont);
 
@@ -128,4 +194,4 @@ const createPostCard = (postData:IBox<string>):HTMLDivElement => {
 	return cont;
 }
 
-export { createPostCont }
+export { createPostDialog, createPostCont }
