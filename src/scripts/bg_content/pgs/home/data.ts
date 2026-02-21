@@ -10,6 +10,9 @@ const RESOURCES:string = "./resources";
 const IMG_PATH:string = `${RESOURCES}/pg_imgs/home_collage`;
 const SHARED_IMG_PATH:string = `${RESOURCES}/global_imgs/shared`;
 
+const PAGES_PATH:string = './pgs';
+const SERVICES_PATH:string = `${PAGES_PATH}/services`;
+
 // collageImages will hold data for each image and 
 //	"post" data to be displayed when user clicks on image
 const collageImages:Array<IPost> = [
@@ -22,6 +25,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Performance",
+			path:`${SERVICES_PATH}/performances.html`,
 			content:"Carl Colvin performing with hip hop group Kao Ra Zen and the Ungovernables " +
 					"at Hippy Holy Dayz, an annual hip hop festival."
 		}
@@ -35,6 +39,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Performance",
+			path:`${SERVICES_PATH}/performances.html`,
 			content:"Carl Colvin performing with spoken word artist and art curator Kenya Fulton."
 		}
 	},
@@ -47,6 +52,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Reedmaking",
+			path:`${SERVICES_PATH}/reedmaking.html`,
 			content: "I create reeds tailored to your preferences!"
 		}
 	},
@@ -59,6 +65,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header:'Performance',
+			path:`${SERVICES_PATH}/performances.html`,
 			content:'Check out my <a href="./pgs/services/performances/past.html">past</a> and <a href="./pgs/services/performances/future.html">future</a> performances, and check out some of my <a href="./pgs/services/performances/present.html">playing</a>.'
 		}
 	},
@@ -71,6 +78,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Take My Hand",
+			path:`${SERVICES_PATH}/editing.html`,
 			content: 'As a published author, I understand what a text needs to be published. Check out the information on my <a href="./pgs/services/editing.html">editing</a> services.'
 		}
 	},
@@ -83,6 +91,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header:'A Father\'s Touch',
+			path:`${SERVICES_PATH}/editing.html`,
 			content:'As a published editor, I am excited to work with you to bring your words and art wherever you desire them to be! Check out the information on my <a href="./pgs/services/editing.html">editing</a> services.'
 		}
 	},
@@ -95,6 +104,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Reedmaking",
+			path:`${SERVICES_PATH}/reedmaking.html`,
 			content: "I make and sell reeds at all different stages of the reedmaking process to aid whatever your reed needs are."
 		}
 	},
@@ -107,6 +117,7 @@ const collageImages:Array<IPost> = [
 		},
 		postData: {
 			header: "Performance",
+			path:`${SERVICES_PATH}/performances.html`,
 			content:"Carl Colvin performing with hip hop group Kao Ra Zen and the Ungovernables."
 		}
 	}

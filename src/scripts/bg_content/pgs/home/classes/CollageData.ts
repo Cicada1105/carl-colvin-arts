@@ -3,13 +3,13 @@
 //		Local
 import { IBox } from '@global/interfaces/general'
 //	    Global
-import { IPostData } from '../interfaces'
+import { IPostData, ICollageBox } from '../interfaces'
 
 class CollageData {
 	private static curr_pos:number = -1;
 	private static img_post_array:IPostData[] = [];
 
-	static storeImage(image:HTMLImageElement, data:IBox<string>) {
+	static storeImage(image:HTMLImageElement, data:ICollageBox) {
 		CollageData.img_post_array.push({
 			img: image,
 			postData: data
@@ -24,10 +24,10 @@ class CollageData {
 	static getImage():HTMLImageElement {
 		return CollageData.img_post_array[CollageData.curr_pos].img;
 	}
-	static getData():IBox<string> {
+	static getData():ICollageBox {
 		return CollageData.img_post_array[CollageData.curr_pos].postData;
 	}
-	static findIndex(data:IBox<string>):number {
+	static findIndex(data:ICollageBox):number {
 		return CollageData.img_post_array.findIndex((currPost:IPostData) => currPost.postData.header === data.header);
 	}
 	static isEmpty():boolean {

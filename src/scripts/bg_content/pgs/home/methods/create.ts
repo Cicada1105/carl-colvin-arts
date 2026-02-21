@@ -168,11 +168,18 @@ const createPostContent = ():HTMLDivElement => {
 		idName:"postDataCont"
 	});
 
-	// Create header container
-	let headerCont:HTMLHeadingElement = createElement({
+	// Create header and header link
+	let header:HTMLHeadingElement = createElement({
 		element:"h3",
 		idName:"postCardHeader"
 	});
+	let headerLink:HTMLAnchorElement = createElement({
+		element: 'a',
+		idName: 'postCardHeaderLink'
+	});
+	headerLink.setAttribute('tabindex','3')
+	// Append header to header link
+	headerLink.appendChild(header);
 
 	// Create hr to section header from content
 	let hr:HTMLHRElement = createElement({
@@ -192,8 +199,8 @@ const createPostContent = ():HTMLDivElement => {
 	// Append post card content container to the wrapper
 	contentContWrapper.appendChild(contentCont);
 
-	// Append header, hr and content to postCard
-	cont.appendChild(headerCont);
+	// Append header link, hr and content to postCard
+	cont.appendChild(headerLink);
 	cont.appendChild(hr);
 	cont.appendChild(contentContWrapper);
 

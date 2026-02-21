@@ -2,6 +2,8 @@
 //  interfaces
 //		global
 import { IBox } from '@global/interfaces/general'
+//		local
+import { ICollageBox } from '../interfaces'
 //	methods
 //		global
 import { createElement } from '@global/methods/elements'
@@ -36,8 +38,9 @@ const displayImagePost = ():void => {
 
 const updateDisplayPost = () => {
 	const img:HTMLImageElement = CollageData.getImage();
-	const postData:IBox<string> = CollageData.getData();
+	const postData:ICollageBox = CollageData.getData();
 	const header:string = postData.header;
+	const headerPath:string = postData.path;
 	const content:string = postData.content;
 
 	// Retrieve dialog
@@ -50,10 +53,13 @@ const updateDisplayPost = () => {
 	// Append image to container
 	imgCont.appendChild(img);
 
-	// Retrieve and update header and paragraph content
+	// Retrieve header, header link and paragraph elements
 	const dataCont:HTMLDivElement = dialog.querySelector('#postDataCont') as HTMLDivElement;
+	const headerLinkEl:HTMLAnchorElement = dialog.querySelector('#postCardHeaderLink') as HTMLAnchorElement;
 	const headerEl:HTMLHeadingElement = dataCont.querySelector('h3#postCardHeader') as HTMLHeadingElement;
 	const contentEl:HTMLParagraphElement = dataCont.querySelector('p#postCardContent') as HTMLParagraphElement;
+	// Update content
+	headerLinkEl.setAttribute('href',headerPath);
 	headerEl.textContent = header;
 	contentEl.innerHTML = content;
 

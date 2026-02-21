@@ -1,13 +1,16 @@
 import { IImage, IBox } from '@global/interfaces/general';
-interface ICollage extends IImage {
+interface ICollageImage extends IImage {
     idName: string;
 }
+interface ICollageBox extends IBox<string> {
+    path: string;
+}
 interface IPost {
-    imageData: ICollage;
-    postData: IBox<string>;
+    imageData: ICollageImage;
+    postData: ICollageBox;
 }
 interface IPostData {
     img: HTMLImageElement;
-    postData: IBox<string>;
+    postData: ICollageBox;
 }
-export { ICollage, IPost, IPostData };
+export { ICollageImage, IPost, IPostData, ICollageBox };
