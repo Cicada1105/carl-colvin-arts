@@ -72,7 +72,9 @@ img {
 	}
 }
 dialog#imgPostCont {
+	background-color: transparent;
 	padding: 0;
+	z-index: 1;
 
 	&::backdrop {
 		background-color:@secondaryBackgroundColor;
@@ -182,14 +184,10 @@ dialog#imgPostCont {
 	#collage {
 		display:none;
 	}
-	#imgPostCont {
+	dialog#imgPostCont {
 		position:relative;
 
-		& > #imgCont, & >#postCont {
-			transition: transform 0.5s;
-			transform: scale(1.0) translateX(initial);
-		}
-		& > i {
+		& > div#exitBtnDiv {
 			display:none;	
 		}
 	}
@@ -198,31 +196,18 @@ dialog#imgPostCont {
 	}
 }
 @media only screen and (min-width:600px) and (max-width: 900px) {
-	#imgPostCont {
+	dialog#imgPostCont {
 		& > #imgCont, & > #postCont {
 			width:50%;
 		}
 	}
 }
-@media only screen and (max-width: 675px) {
-	#imgPostCont {
-		& > #imgCont {
-			transform: scale(0.8) translateX(12.5%);
-		}
-		& > #postCont {
-			transform: scale(0.8) translateX(-12.5%);
-		}
-	}
-}
 @media only screen and (max-width: 600px) {
-	#imgPostCont {
+	dialog#imgPostCont {
 		& > #imgCont, & > #postCont {
 			width:auto;
 			float:none;
 			margin:auto;
-			transform: scale(1) translateX(0%);
-			transition: unset;
-			transform: unset;
 
 			& > img {
 				max-width: 100%;

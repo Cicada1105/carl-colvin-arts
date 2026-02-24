@@ -103,7 +103,7 @@ class HomeComponentPositioning extends ComponentPositioning implements ISingleto
 			let postContHeight:number;
 
 			// windowWidth > 600	-	post img and descr side by side
-			if (windowWidth > 600) {
+			if (windowWidth > 675) {
 				const withinHeightMax:boolean = img.naturalHeight < visibleViewPort;
 				const withinWidthMax:boolean = img.naturalWidth < (windowWidth / 2);
 
@@ -139,13 +139,14 @@ class HomeComponentPositioning extends ComponentPositioning implements ISingleto
 			// Use number as a basis for height and margin with units of viewport-height
 			let marginStyle:string = marginPercent + "vh";
 			this.imgPostCont.style.marginBottom = `${marginStyle}`;
+			this.imgPostCont.style.marginTop = `${marginStyle}`;
 
 			// Rows needs to be offset by previously calculated margin
-			let rows:HTMLCollectionOf<HTMLElement> = document.getElementsByClassName("row") as HTMLCollectionOf<HTMLElement>;
+			// let rows:HTMLCollectionOf<HTMLElement> = document.getElementsByClassName("row") as HTMLCollectionOf<HTMLElement>;
 
-			for (let row of rows) {
+			/*for (let row of rows) {
 				row.style.top = marginStyle;
-			}
+			}*/
 
 			// Contact container also needs to be offset by previously calculated margin
 			//let contactForm:HTMLFormElement = document.forms[0];

@@ -32,10 +32,21 @@ const displayImagePost = ():void => {
 	// Update post content
 	updateDisplayPost();
 
-	// Show modal
+	// Close the current dialog and show dialog as a modal
+	dialog.close();
 	dialog.showModal();
 }
+const displayMobileImagePost = ():void => {
+	// Retrieve dialog
+	const dialog:HTMLDialogElement = document.getElementsByTagName('dialog')[0];
 
+	// Update post content
+	updateDisplayPost();
+
+	// Close current dialog and show dialog as a non-modal
+	dialog.close();
+	dialog.show();
+}
 const updateDisplayPost = () => {
 	const img:HTMLImageElement = CollageData.getImage();
 	const postData:ICollageBox = CollageData.getData();
@@ -71,4 +82,4 @@ const updateDisplayPost = () => {
 	homeCompPos.update();
 }
 
-export { displayImagePost }
+export { displayImagePost, displayMobileImagePost }

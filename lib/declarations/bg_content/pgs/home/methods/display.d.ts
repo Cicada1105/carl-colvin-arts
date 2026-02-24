@@ -1,2 +1,3 @@
 declare const displayImagePost: () => void;
-export { displayImagePost };
+declare const displayMobileImagePost: () => void;
+export { displayImagePost, displayMobileImagePost };

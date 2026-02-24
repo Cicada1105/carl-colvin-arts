@@ -2,7 +2,7 @@
 // Imports
 //	methods
 //		local
-import { displayImagePost } from './display'
+import { displayImagePost, displayMobileImagePost } from './display'
 //	data
 import CollageData from '../classes/CollageData'
 //	classes
@@ -16,13 +16,13 @@ function ArrowClickListener(event:MouseEvent | KeyboardEvent) {
 	// Increment or Decrement to next post based on target pressed
 	arrow.className.includes("left") ? CollageData.previousImage() : CollageData.nextImage();
 	// Display current post data
-	displayImagePost();
+	window.innerWidth <= 900 ? displayMobileImagePost() : displayImagePost();
 }
 
 function MobileListener():void {
 	if (window.innerWidth <= 900) {
 		if (!(document.getElementById("postBackdrop"))) 
-			displayImagePost();
+			displayMobileImagePost();
 
 		window.removeEventListener("resize",MobileListener);
 		window.addEventListener("resize",DesktopListener);

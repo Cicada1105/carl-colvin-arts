@@ -7,7 +7,7 @@ import { IBox } from '@global/interfaces/general'
 import { ICollageImage, ICollageBox } from '../interfaces'
 //	methods
 import { createElement, createImageElement } from '@global/methods/elements'
-import { displayImagePost } from './display'
+import { displayImagePost, displayMobileImagePost } from './display'
 import { createPostDialog } from './create'
 //	data
 import { collageImages } from '../data'
@@ -25,7 +25,7 @@ const loadMobileDisplay = ():void => {
 	}
 	
 	CollageData.current_index === 0 && CollageData.getImage().addEventListener("load", () => {
-		displayImagePost();	
+		displayMobileImagePost();	
 	}, {once: true});
 }
 const loadCollage = ():void => {
