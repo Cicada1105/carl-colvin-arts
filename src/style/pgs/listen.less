@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../global/colors.less";
+@import '../global/fonts.less';
 @import (reference) '../global/keyframes.less';
 @import (reference) '../global/methods.less';
 @import (reference) '../global/namespace.less';
@@ -17,10 +18,12 @@
 .contactLink();
 
 h1#listenHeader {
+	.titleFont();
 	margin:4rem auto 2rem;
 	z-index:2;
 
 	& + p {
+		.bodyFontRegular();
 		.heading();
 		width:80%;
 		margin:auto auto 3.5rem;
@@ -58,6 +61,7 @@ h1#listenHeader {
 	}
 
 	& > p {
+		.bodyFontRegular();
 		.format(relative, 65%);
 		margin:auto;
 		text-align:center;

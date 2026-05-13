@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../global/colors.less";
+@import '../global/fonts.less';
 @import (reference) '../global/namespace.less';
 @import (reference) '../global/methods.less';
 
@@ -12,11 +13,13 @@
 	Rest of the code goes here
 */
 h1 {
+    .titleFont();
 	margin:4rem auto 2rem;
 	z-index:2;
 
 	& + p {
         .heading();
+        .bodyFontRegular();
         width: 80%;
 		max-width: 50rem;
 		margin:auto auto 4rem;
@@ -43,6 +46,7 @@ div#flexCont {
  		z-index: 2;
 
         & > h2 {
+            .bodyFontMedium();
             font-size: var(--header-3);
             padding-top:10px;
             padding-bottom:5px;
@@ -76,6 +80,7 @@ div#flexCont {
 	            padding-bottom:15px;
             }
             & > figcaption {
+                .bodyFontRegular();
             	position:absolute;
             	bottom:2rem;
             	word-break: break-word;
@@ -84,10 +89,10 @@ div#flexCont {
             }
         }
         & > div.serviceBtn {
+            .titleFont();
         	.format(relative,50px,20px);
             color:white;
             text-align:center;
-            transition:color 0.15s linear 0s;
         	margin:auto;
             margin-top:25px;
             padding:10px 15px;
@@ -95,7 +100,6 @@ div#flexCont {
             border-radius:10px;
 
             &:hover {
-	        	color:white;
 	        	cursor:pointer;
 
 	        	& > div#circle {

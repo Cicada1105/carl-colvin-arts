@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import '../../global/fonts.less';
 @import (reference) '../../global/keyframes.less';
 @import (reference) '../../global/namespace.less';
 @import (reference) '../../global/methods.less';
@@ -35,11 +36,13 @@ section {
 			fill:white;
 
 			&.header {
+				.titleFont();
 				font-size:0.85rem;
 			}
 			&.sector_hover {
+				.titleFont();
 				pointer-events:fill;
-				font-size:0.75rem;
+				font-size:0.7rem;
 				display:none;
 				z-index: 2;
 
@@ -48,6 +51,7 @@ section {
 				}
 			}
 			&.sector_content {
+				.bodyFontRegular();
 				font-size:0.5rem;
 			}
 		}

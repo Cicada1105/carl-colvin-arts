@@ -1,6 +1,7 @@
 /// Import fixed colors to used throughout the pages
 @import "./about.less";
 @import "./contact.less";
+@import '../global/fonts.less';
 @import (reference) '../global/namespace.less';
 @import (reference) '../global/methods.less';
 @import (reference) '../global/colors.less';
@@ -114,6 +115,7 @@ dialog#imgPostCont {
 				z-index: 1;
 			}
 			h3 {
+				.bodyFontMedium();
 				color: revert;
 				font-size: var(--header-5);
 			}
@@ -126,8 +128,12 @@ dialog#imgPostCont {
 				align-items: center;
 				top: 0;
 			}
-			p#postCardContent > a {
-				color: @accentColor;
+			p#postCardContent {
+				.bodyFontRegular();
+				
+				& > a {
+					color: @accentColor;	
+				}
 			}
 		}
 		& > .arrowCont {
@@ -168,7 +174,6 @@ dialog#imgPostCont {
 }
 #formCont {
 	margin:auto;
-	margin-top:12rem;
 	padding-bottom:10.75rem;
 
 	@media only screen and (max-height:640px) {

@@ -1,7 +1,9 @@
 // Imports
 @import (reference) './static.less';
 @import (reference) './methods.less';
+@import (reference) './fonts.less';
 
+@mobileScreenSize: 768px;
 // global namespace
 #globalNS() {
 	.html() {
@@ -32,6 +34,13 @@
 				--header-@{index}: @fontSize;
 			});
 		}
+		.fallbackText {
+			.bodyFontRegular();
+			position:relative;
+			color:#f0edee;
+			text-align:center;
+			margin:.83em auto;
+		}
 	}
 	.navigation() {
 		header#pageHeader {
@@ -39,11 +48,12 @@
 	    top:0%;
 	    z-index: 3;
 
-			@media only screen and (max-width: 664px) {
+			@media only screen and (max-width: @mobileScreenSize) {
 				filter:opacity(100%);
 			}
 	    ul[id = "navigation"] {
 	    	&:extend(.staticUL);
+	    	.bodyFontRegular();
 	    	.dimensions(inherit,100%);
 	    	display:flex;
 	    	align-items:center;
@@ -51,7 +61,7 @@
 				& > #linksCont {
 					display: inline-block;
 
-					@media only screen and (max-width: 664px) {
+					@media only screen and (max-width: @mobileScreenSize) {
 						.format(absolute,100%);
 						background-color: @secondaryBackgroundColor;
 						display:none;
@@ -85,7 +95,7 @@
 							margin:0.65rem;
 						}
 
-						@media only screen and (max-width: 664px) {
+						@media only screen and (max-width: @mobileScreenSize) {
 							width:100%;
 							height:initial;
 							z-index: 1;
@@ -137,7 +147,7 @@
 					color:@textColor;
 					padding:0.625rem 1rem;
 					
-					@media only screen and (max-width: 664px) {
+					@media only screen and (max-width: @mobileScreenSize) {
 						display:block;
 					}
 					&:hover {

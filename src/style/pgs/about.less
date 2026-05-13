@@ -1,10 +1,9 @@
-// Import fixed colors to used throughout the pages
-@import "../global/colors.less";
-@import (reference) '../global/namespace.less';
-
 // Load global styling only on about page and not home
 @isHomePage:false;
 .aboutMixin(@isHome) when not (@isHome = true) {
+  @import "../global/colors.less";
+  @import '../global/fonts.less';
+  @import (reference) '../global/namespace.less';
   #globalNS > .html();
   #globalNS > .navigation();
   #globalNS > .bg_canvas();
@@ -58,6 +57,7 @@
     }
 
     h3 {
+      .titleFont();
       padding-top:1rem;
 
       &:hover {
@@ -66,6 +66,7 @@
       }
     }
     p {
+      .bodyFontRegular();
       text-indent:25px;
       margin:0rem 2rem;
       padding-bottom:1.5rem;
@@ -109,14 +110,13 @@
     .figcaption {
       .format(relative, 210px, 210px);
       display:none;
-      font-size:1.2rem;
       margin:auto;
-      color:@textColor;
       z-index:2;
 
       p {
+        .bodyFontRegular();
         .format(absolute,100%);
-        text-align: center;
+        .text(@color:@textColor,@textAlign:center);
         margin-top:4rem;
       }
     }

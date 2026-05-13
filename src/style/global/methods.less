@@ -1,5 +1,6 @@
 // This file will host the methods regarding LESS styling
 // These methods will be used throughout the entire website
+@import (reference) './fonts.less';
 
 .dimensions(@w; @h) {
 	width: @w;
@@ -22,8 +23,9 @@
 	.text(@fontSize: @fontSize, @textAlign: center);
 	position: relative;
 }
-.contactLink() {	
+.contactLink() {
 	div#contactLink {
+		.bodyFontRegular();
 		.format(relative,20rem);
 		display:inline-block;
 		left:50%;
@@ -51,6 +53,7 @@
 }
 .loadingText() {
 	.loading-text {
+		.bodyFontRegular();
 		// 1.5rem and 0.83em are h2 default styles
 		position: relative;
 		font-size: 1.75rem;

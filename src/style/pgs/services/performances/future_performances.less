@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../../global/colors.less";
+@import '../../../global/fonts.less';
 @import (reference) '../../../global/keyframes.less';
 @import (reference) "../../../global/methods.less";
 @import (reference) '../../../global/namespace.less';
@@ -37,21 +38,32 @@ h1#futurePerformancesTitle {
 			margin-bottom:2rem;
 
 			h2 {
+				.bodyFontBold();
 				font-size: var(--header-3);
 			}
 			h3 {
-				font-size: var(--header-4);
-			}
-		}
-		& > div.instrumentsCont {
-			h3 {
+				.bodyFontMedium();
 				font-size: var(--header-4);
 				border-bottom:1px solid @accentColor;
-				padding-bottom:8px;
+				padding-bottom:6px;
 				width:fit-content;
 				margin: auto;
 			}
 			p {
+				.bodyFontRegular();
+			}
+		}
+		& > div.instrumentsCont {
+			h3 {
+				.bodyFontMedium();
+				font-size: var(--header-4);
+				border-bottom:1px solid @accentColor;
+				padding-bottom:6px;
+				width:fit-content;
+				margin: auto;
+			}
+			p {
+				.bodyFontRegular();
 				width:80%;
 				margin:1rem auto;
 			}
@@ -59,9 +71,9 @@ h1#futurePerformancesTitle {
 	}
 	& > aside {
 		& > time, & > p {
+			.bodyFontBold();
 			font-size: var(--header-5);
 			display: block;
-			font-weight: bold;
 			margin:1em auto;
 		}
 	}

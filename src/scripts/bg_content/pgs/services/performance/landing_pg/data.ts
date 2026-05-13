@@ -43,13 +43,13 @@ const sectorData:ISector[] = [
 		sectorHeader:{
 			text: "Past",
 			className: "header",
-			x:"66.5",
-			y:"70"
+			x:"61.66483516483516",
+			y:"75"
 		},
 		underline: {
-			x1:"50",
+			x1:"52.77472527472527",
 			y1:"80",
-			x2:"103",
+			x2:"98.33516483516483",
 			y2:"80",
 			stroke:"#de5757",
 			strokeWidth:"1"
@@ -58,26 +58,32 @@ const sectorData:ISector[] = [
 			{
 				text: "View my most recent",
 				className:"sector_content",
-				x:"40",
+				x:"35",
 				y:"95"
 			},
 			{
-				text: "performances and whom",
+				text: "performances and",
 				className:"sector_content",
-				x:"20",
+				x:"30",
 				y:"105"
 			},
 			{
-				text: "I have collaborated with",
+				text: "whom I have",
 				className:"sector_content",
-				x:"15",
+				x:"45",
 				y:"115"
 			},
 			{
-				text: "in the past",
+				text: "collaborated with",
 				className:"sector_content",
-				x:"55",
+				x:"20",
 				y:"125"
+			},
+			{
+				text: "in the past",
+				className: "sector_content",
+				x: "45",
+				y: "135"
 			}
 		],
 		sectorPath: {
@@ -107,13 +113,13 @@ const sectorData:ISector[] = [
 				text:"Previous",
 				className:"sector_hover",
 				x:"55",
-				y:"90"
+				y:"85"
 			},
 			{
 				text:"Performances",
 				className:"sector_hover",
 				x:"42.5",
-				y:"105"
+				y:"100"
 			}
 		],
 		link:`${PERFORMANCES_SUB_PATH}/past.html`,
@@ -126,13 +132,13 @@ const sectorData:ISector[] = [
 		sectorHeader:{
 			text: "Present",
 			className: "header",
-			x:"129.5",
-			y:"225"
+			x:"126.45918367346937",
+			y:"230"
 		},
 		underline: {
-			x1:"115",
+			x1:"116.45918367346937",
 			y1:"235",
-			x2:"182.5",
+			x2:"183.5408163265306",
 			y2:"235",
 			stroke:"#de5757",
 			strokeWidth:"1"
@@ -141,13 +147,13 @@ const sectorData:ISector[] = [
 			{
 				text: "What am I up to? What am I currently",
 				className:"sector_content",
-				x:"90",
+				x:"79.89795918367348",
 				y:"250"
 			},
 			{
 				text: "working on and with whom?",
 				className:"sector_content",
-				x:"105",
+				x:"96.97723704866563",
 				y:"260"
 			}
 		],
@@ -197,13 +203,13 @@ const sectorData:ISector[] = [
 		sectorHeader:{
 			text: "Future",
 			className: "header",
-			x:"200",
-			y:"70"
+			x:"205.06436420722136",
+			y:"75"
 		},
 		underline: {
-			x1:"185.5",
+			x1:"195.06436420722136",
 			y1:"80",
-			x2:"254",
+			x2:"254.93563579277867",
 			y2:"80",
 			stroke:"#de5757",
 			strokeWidth:"1"
@@ -216,16 +222,22 @@ const sectorData:ISector[] = [
 				y:"95"
 			},
 			{
-				text: "catch me performing next!",
+				text: "catch me performing",
 				className:"sector_content",
 				x:"195",
 				y:"105"
 			},
 			{
-				text: "I would love to meet you!",
+				text: "next! I would love to",
 				className:"sector_content",
 				x:"205",
 				y:"115"
+			},
+			{
+				text: "meet you!",
+				className: "sector_content",
+				x:"210",
+				y:"125"
 			}
 		],
 		sectorPath: {
@@ -255,13 +267,13 @@ const sectorData:ISector[] = [
 				text: "Future",
 				className:"sector_hover",
 				x:"212",
-				y:"90"
+				y:"85"
 			},
 			{
 				text: "Performances",
 				className:"sector_hover",
 				x:"198",
-				y:"105"
+				y:"100"
 			}
 		],
 		link:`${PERFORMANCES_SUB_PATH}/future.html`,

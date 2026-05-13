@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../../global/colors.less";
+@import '../../../global/fonts.less';
 @import (reference) '../../../global/keyframes.less';
 @import (reference) "../../../global/methods.less";
 @import (reference) '../../../global/namespace.less';
@@ -15,11 +16,13 @@
 .loadingText();
 
 h1#myMusicStandTitle {
+	.titleFont();
 	margin:4rem auto 2rem auto;
 	width: fit-content;
 	z-index: 2;
 }
 p.introParagraph {
+	.bodyFontRegular();
 	.heading();
 	width: 90%;
 	line-height:1.25rem;
@@ -66,12 +69,14 @@ p.introParagraph {
 					margin:2.75rem auto;
 
 					h2.songTitle {
+						.bodyFontMedium();
 						font-size: var(--header-3);
 						padding-top:1rem;
 						margin-top:0px;
 						color: revert;
 					}
 					h3.songComposer {
+						.bodyFontBold();
 						font-size: var(--header-5);
 						text-align:end;
 						padding-right:1.5rem;
@@ -93,6 +98,7 @@ p.introParagraph {
 							top:50%;
 						}
 						p {
+							.bodyFontRegular();
 							text-align:justify;
 							// margin-left === treb-clef.png width + 0.4rem padding. 0.5rem padding on right
 							margin-left:2.4rem;

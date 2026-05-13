@@ -32,7 +32,7 @@ function DesktopListener():void {
 	if (window.innerWidth > 900) {
 		let click:Event = new Event("click");
 		// Remove image post if displayed by dispatching exit event
-		document.getElementsByClassName("fas fa-times")[0].dispatchEvent(click) || console.log("Not displayed");
+		document.getElementById("exitBtnDiv")?.dispatchEvent(click) || console.log("Not displayed");
 
 		window.removeEventListener("resize", DesktopListener);
 		window.addEventListener("resize",MobileListener);

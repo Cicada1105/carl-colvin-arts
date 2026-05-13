@@ -14,7 +14,8 @@ import { PerformanceDataInterface } from '../../interfaces';
 //	Global
 import { 
 	createElement, createTextElement, 
-	createLoadingText, createContactLink 
+	createLoadingText, createContactLink,
+	createFallbackText
 } from '@global/methods/elements';
 import { IContactLink } from '@global/interfaces/general';
 import requestData from '../../../request';
@@ -51,20 +52,11 @@ const loadRepertoire:()=>Promise<void> = async ():Promise<void> => {
 		});
 	}
 	else {
-		repertoireCont.appendChild(
-			createTextElement({
-				element: "h3",
-				text: "No Performances At This Time",
-				className: "errName"
-			})
+		let fallbackText:HTMLDivElement = createFallbackText(
+			'No Performances At This Time',
+			'Check back later'
 		);
-		repertoireCont.appendChild(
-			createTextElement({
-				element: "h4",
-				text: "Check back at another time",
-				className: "errMessage"
-			})
-		);
+		repertoireCont.appendChild(fallbackText);
 	}
 }
 const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
@@ -90,20 +82,11 @@ const loadCollaborators:()=>Promise<void> = async ():Promise<void> => {
 
 	// Check if there are any collaborators
 	if (collaborators.length === 0) {
-		collaboratorsCont.appendChild(
-			createTextElement({
-				element: "h3",
-				text: "No Collaborators At This Time",
-				className: "errName"
-			})
+		let fallbackText:HTMLDivElement = createFallbackText(
+			"No Collaborators At This Time",
+			"Check back later"
 		);
-		collaboratorsCont.appendChild(
-			createTextElement({
-				element: "h4",
-				text: "Check back at another time",
-				className: "errMessage"
-			})
-		);
+		collaboratorsCont.appendChild(fallbackText);
 	}
 	else {
 		let flexCont:HTMLDivElement = createElement({
@@ -142,20 +125,11 @@ const loadAnecdotes:()=>Promise<void> = async ():Promise<void> => {
 	
 	// Check if there are any anecdotes
 	if (anecdotes.length === 0) {
-		anecdotesCont.appendChild(
-			createTextElement({
-				element: "h3",
-				text: "No Anecdotes At This Time",
-				className: "errName"
-			})
+		let fallbackText:HTMLDivElement = createFallbackText(
+			"No Anecdotes At This Time",
+			"Check back later"
 		);
-		anecdotesCont.appendChild(
-			createTextElement({
-				element: "h4",
-				text: "Check back at another time",
-				className: "errMessage"
-			})
-		);
+		anecdotesCont.appendChild(fallbackText);
 	}
 	else {
 		let flexCont:HTMLDivElement = createElement({

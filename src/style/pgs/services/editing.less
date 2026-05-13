@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import '../../global/fonts.less';
 @import (reference) "../../global/keyframes.less";
 @import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
@@ -19,9 +20,11 @@
 
 /*  Rest of the styling goes here */
 h1#pageHeader {
-	margin: 5rem auto auto;
+	.titleFont();
+	margin: 4rem auto 2rem;
 }
 p.editingIntro {
+	.bodyFontRegular();
 	.heading();
 	width:90%;
 	line-height:1.25rem;
@@ -39,6 +42,7 @@ p.editingIntro {
 	}
 }
 h2 {
+	.bodyFontBold();
 	margin:auto;
 
 	&#pricingChartHeader {
@@ -69,6 +73,7 @@ div#pricingChartCont {
 		& > div.selectionCont {
 
 			& > h3.selectionHeader {
+				.bodyFontMedium();
 				text-decoration:underline;
 				text-indent:unset;
 				padding-bottom:1rem;
@@ -98,9 +103,9 @@ div#pricingChartCont {
 				  	}
 				}
 				& > label {
+					.bodyFontMedium();
 					.heading(var(--header-5));
 					width: calc(100% - 29px);
-					font-weight:bold;
 
 					display: inline-block;
 					margin-left:-2rem;
@@ -144,6 +149,7 @@ div#pricingChartCont {
 				width: inherit;
 			}
 			& th {
+				.bodyFontBold();
 				.heading(var(--header-4));
 				width: 33.33%;
 				border-bottom:3px solid @accentColor;
@@ -151,6 +157,7 @@ div#pricingChartCont {
 				padding-bottom:0.75rem;
 			}
 			& td {
+				.bodyFontRegular();
 				.text(@fontSize: var(--header-5), @textAlign: center);
 				padding-top:1rem;
 				padding-bottom:0.75rem;
@@ -352,6 +359,7 @@ form#inputRowsCont {
 				margin-bottom:0rem;
 			}
 			& > p {
+				.bodyFontMedium();
 				.format(absolute,max-content);
 				.text(@fontSize:var(--header-5), @textAlign: center);
 				font-weight:bold;
@@ -418,7 +426,7 @@ form#inputRowsCont {
 
 				& > p {
 					font-weight:initial;
-					font-size: 1rem;
+					font-size: 1.15rem;
 					margin-left:0px;
 					width:100%;
 				}

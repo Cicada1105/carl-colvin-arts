@@ -1,5 +1,6 @@
 // Import fixed colors to used throughout the pages
 @import "../../global/colors.less";
+@import '../../global/fonts.less';
 @import (reference) '../../global/keyframes.less';
 @import (reference) "../../global/methods.less";
 @import (reference) '../../global/namespace.less';
@@ -37,7 +38,9 @@
 				text-align:center;
 
 				h2 {
+					.titleFont();
 					font-size: var(--header-3);
+					margin: 1rem 0rem;
 					display:inline-block;
 					width:fit-content;
 				}
@@ -67,8 +70,8 @@
 				}
 			}
 			& > p {
+				.bodyFontRegular();
 				border:2px solid #003249;
-				font-size:1.15rem;
 				text-indent:20px;
 				text-align:justify;
 				padding:8px 14px 10px 14px;
@@ -125,6 +128,7 @@
 		top:0%;
 
 		.tabHeader {
+			.titleFont();
 			.format(inherit, fit-content);
 			margin:auto;
 			padding:0.75rem;
@@ -162,6 +166,7 @@
 		}
 	}
 	.tabBody {
+		.bodyFontRegular();
 		.format(inherit, 100%);
 		transition:height 1s;
 		background-color:@secondaryColor;
@@ -215,9 +220,12 @@ dialog {
 		}
 	}
 	h4 {
+		.bodyFontMedium();
 		margin: 0rem;
+		padding: 0rem 1rem;
 	}
 	.content {
+		.bodyFontRegular();
 		display: flex;
 		flex-flow: column nowrap;
 		flex:1 1 0;
@@ -258,6 +266,7 @@ dialog {
 	}
 }
 h2#pricingsHeader {
+	.titleFont();
 	text-decoration: underline;
 	margin-bottom: 0rem;
 }
@@ -302,11 +311,12 @@ li.priceListing {
 				margin-bottom: 0.5rem;
 			}
 			h3 {
+				.bodyFontBold();
 				font-size: var(--header-4);
 			}
 			p {
+				.bodyFontMedium();
 				font-size: 1.25rem;
-				font-weight: bolder;
 			}
 		}
 		button.reedBtn {

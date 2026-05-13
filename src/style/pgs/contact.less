@@ -1,11 +1,13 @@
 // Import fixed colors to used throughout the pages
-@import "../global/colors.less";
-@import (reference) '../global/namespace.less';
-@import (reference) '../global/methods.less';
 
 // Only load if on contact page and not on home page
 @isHomePage: false;
 .contactMixin(@isHome) when not (@isHome = true) {
+	@import (reference) '../global/namespace.less';
+	@import (reference) '../global/methods.less';
+	@import (reference) '../global/colors.less';
+	@import '../global/fonts.less';
+	
 	#globalNS > .html();
 	#globalNS > .navigation();
 	#globalNS > .bg_canvas();
@@ -15,6 +17,7 @@
 .contactMixin(@isHomePage);
 
 h1 {
+	.titleFont();
 	margin: 4rem auto 2rem;
 	z-index: 2;
 }
@@ -42,6 +45,7 @@ form:first-of-type {
 			}
 
 			label {
+				.bodyFontRegular();
 				.format(relative,30%);
 				.text(@fontSize: var(--header-4), @textAlign: right);
 				display:inline-block;
@@ -67,6 +71,7 @@ form:first-of-type {
 				}
 
 				input, select, textarea {
+					.bodyFontRegular();
 					.format(relative,10rem,1.25rem);
 					display:inline-block;
 					font-size:1rem;
@@ -142,6 +147,7 @@ form:first-of-type {
 				margin:auto;
 			}
 			[id = "submitBtn"] {
+				.titleFont();
 				background-color:@accentColor;
 				font-size:1rem;
 				border:none;

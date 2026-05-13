@@ -288,8 +288,9 @@ function createLoadingText():HTMLParagraphElement {
 /*   Fallback text when server is down   */
 function createFallbackText(displayText:string, subDisplayText?:string):HTMLDivElement {
   // Container for holding fallback messages
-  const cont:HTMLDivElement = document.createElement('div');
-  cont.setAttribute('style','position:relative;color:#f0edee;text-align:center;margin:.83em auto;');
+  const cont:HTMLDivElement = createElement({
+    className: 'fallbackText'
+  });
 
   // First display text
   const p:HTMLParagraphElement = document.createElement('p');

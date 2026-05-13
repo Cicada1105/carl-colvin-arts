@@ -17,7 +17,8 @@ import { updateCartListener, viewCartPage } from './listeners'
 // Current page user is on
 const CURRENT_PATH:string = getCurrentFile();
 // Mobile width
-const MOBILE_DEVICE_MAX_WIDTH:number = 664;
+// const MOBILE_DEVICE_MAX_WIDTH:number = 664;
+const MOBILE_DEVICE_MAX_WIDTH:number = 768;
 // Session storage name
 const CART_NAME:string = 'cca-reed-cart';
 

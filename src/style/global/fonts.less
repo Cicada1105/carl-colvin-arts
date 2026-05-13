@@ -1,0 +1,144 @@
+// This file is for holding methods that render fonts
+
+@FONT_LOCATION: "../resources/fonts";
+/*******************************/
+/*   IBM Plex Sans - Regular   */
+/*******************************/
+@font-face {
+  font-family: "IBM Plex Sans Regular";
+  src:
+    url("@{FONT_LOCATION}/IBMPlexSans-Regular.ttf");
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-display: swap;
+  font-stretch: normal;
+}
+/********************************/
+/*   IBM Plex Sans - Fallback   */
+/********************************/
+@font-face {
+  font-family: "IBM Plex Sans fallback";
+  src: local("Noto Sans");
+  size-adjust: 95.1477%;
+  ascent-override: 107.7273%;
+  descent-override: 28.9024%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBM Plex Sans fallback";
+  src: local("Arial");
+  size-adjust: 101.1663%;
+  ascent-override: 101.3184%;
+  descent-override: 27.183%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBM Plex Sans fallback";
+  src: local("Helvetica Neue");
+  size-adjust: 100.2222%;
+  ascent-override: 102.2727%;
+  descent-override: 27.439%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBM Plex Sans fallback";
+  src: local("Segoe UI");
+  size-adjust: 101.7233%;
+  ascent-override: 100.7635%;
+  descent-override: 27.0341%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBM Plex Sans fallback";
+  src: local("BlinkMacSystemFont");
+  size-adjust: 108.2823%;
+  ascent-override: 94.66%;
+  descent-override: 25.3966%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+/********************************/
+/*   IBM Plex Serif - Regular   */
+/********************************/
+@font-face {
+  font-family: "IBM Plex Serif Regular";
+  src:
+    url("@{FONT_LOCATION}/IBMPlexSerif-Regular.ttf");
+  font-style: normal;
+  font-display: swap;
+  font-stretch: normal;
+}
+/*********************************/
+/*   IBM Plex Serif - SemiBold   */
+/*********************************/
+@font-face {
+  font-family: "IBM Plex Serif SemiBold";
+  src:
+    url("@{FONT_LOCATION}/IBMPlexSerif-SemiBold.ttf");
+  font-style: normal;
+  font-display: swap;
+  font-stretch: normal;
+}
+/*****************************/
+/*   IBMPlexSerif - Bold   */
+/*****************************/
+@font-face {
+  font-family: "IBM Plex Serif Bold";
+  src:
+    url("@{FONT_LOCATION}/IBMPlexSerif-Bold.ttf");
+  font-style: normal;
+  font-display: swap;
+  font-stretch: normal;
+}
+/*********************************/
+/*   IBMPlexSerif - Fallback   */
+/*********************************/
+@font-face {
+  font-family: "IBM Plex Serif fallback";
+  src: local("Noto Serif");
+  size-adjust: 98.3368%;
+  ascent-override: 104.2336%;
+  descent-override: 27.9651%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBM Plex Serif fallback";
+  src: local("Georgia");
+  size-adjust: 106.1012%;
+  ascent-override: 96.6059%;
+  descent-override: 25.9187%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+@font-face {
+  font-family: "IBM Plex Serif fallback";
+  src: local("Times New Roman");
+  size-adjust: 116.4308%;
+  ascent-override: 88.0351%;
+  descent-override: 23.6192%;
+  line-gap-override: 0%;
+  font-style: normal;
+}
+
+@IBM_PLEX_SANS: "IBM Plex Sans Regular", "IBM Plex Sans fallback";
+@IBM_PLEX_SERIF_REGULAR: "IBM Plex Serif Regular", "IBM Plex Serif fallback";
+@IBM_PLEX_SERIF_SEMIBOLD: "IBM Plex Serif SemiBold", "IBM Plex Serif fallback";
+@IBM_PLEX_SERIF_BOLD: "IBM Plex Serif Bold", "IBM Plex Serif fallback";
+
+.titleFont() {
+  font-family: @IBM_PLEX_SANS;
+}
+.bodyFontRegular() {
+  font-family: @IBM_PLEX_SERIF_REGULAR;
+}
+.bodyFontMedium() {
+  font-family: @IBM_PLEX_SERIF_SEMIBOLD;
+}
+.bodyFontBold{
+  font-family: @IBM_PLEX_SERIF_BOLD;
+}
