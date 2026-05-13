@@ -19,7 +19,7 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
       let addReedProps:AddReedInterface = <AddReedInterface>cartPayload;
       
       // Check if item exists
-      let foundIndex:number = cartItems.findIndex((reed:ReedStorageItem) => reed['name'] === addReedProps['name']);
+      let foundIndex:number = cartItems.findIndex((reed:ReedStorageItem) => addReedProps['name'] === reed['name'] && (addReedProps['category'] ? addReedProps['category'] === reed['category'] : true));
 
       if ( foundIndex === -1 ) { // Item not in cart, add new item to cart
         let idString:string = Math.random().toString().slice(2);

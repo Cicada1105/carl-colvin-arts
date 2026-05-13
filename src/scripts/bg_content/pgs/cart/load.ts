@@ -36,7 +36,8 @@ const loadCartLayout = () => {
     cart.forEach((item:ReedStorageItem) => {
       createCartRow(item);
       // Format message
-      formattedMsg += `${item['quantity']}x ${item['name']}\n\n`;
+      formattedMsg += `${item['quantity']}x ${item['name']}`;
+      formattedMsg += item['category'] ? ` (${item['category']})\n\n` : '\n\n';
     });
     
     let linkData:IContactLink = {
