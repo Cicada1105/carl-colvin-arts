@@ -34,12 +34,24 @@ const loadCartLayout = () => {
 
     let formattedMsg:string = '';
     cart.forEach((item:ReedStorageItem) => {
+      let options:string[] = [];
+
       createCartRow(item);
+
       // Format message
       formattedMsg += `${item['quantity']}x ${item['name']}`;
-      formattedMsg += item['category'] ? ` (${item['category']})\n\n` : '\n\n';
+      item['category'] && options.push(item['category']);
+      item['variableCostName'] && options.push(item['variableCostName']);
+
+      if ( options.length ) {
+        formattedMsg += ` (${options.join(', ')})`;
+      }
+
+      formattedMsg += '\n\n';
     });
-    
+    // Remove the very last \n\n
+    formattedMsg = formattedMsg.trimEnd();
+
     let linkData:IContactLink = {
       text: "Checkout",
       from: "cart",

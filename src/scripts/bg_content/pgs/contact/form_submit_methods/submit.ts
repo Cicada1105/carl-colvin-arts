@@ -150,7 +150,7 @@ const isValidName = (name:string):Promise<boolean> => {
 	return new Promise((resolve) => {
 		let isValid:boolean = true;
 
-		let nameMatch:string[] = name.match(/[^\'\"\x20A-Za-z/.?!-]/) ?? [];
+		let nameMatch:string[] = name.match(/[^\x20A-Za-z/-]/) ?? [];
 		isValid = (nameMatch).length === 0;
 
 		resolve(isValid);
@@ -160,7 +160,7 @@ const isValidMessage = (msg:string):Promise<boolean> => {
 	return new Promise((resolve) => {
 		let isValid:boolean = true;
 
-		let msgMatch:string[] = msg.match(/[^\'\"\n\x20A-Za-z0-9/.?!-]/) ?? [];
+		let msgMatch:string[] = msg.match(/[^()'"\n\x20A-Za-z0-9/.,?!-]/) ?? [];
 		isValid = (msgMatch).length === 0;
 
 		resolve(isValid);

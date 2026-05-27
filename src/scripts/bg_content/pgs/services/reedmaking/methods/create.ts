@@ -295,6 +295,16 @@ const creatDialogBox = ():void => {
 			const categoryInput:HTMLSelectElement = <HTMLSelectElement>form.querySelector('[name="category"]');
 			data['detail']['category'] = categoryInput.value;
 		}
+		// If the cost input is a select, then the cost has variable pricess
+		if ( costInput.tagName === 'SELECT' ) {
+			const selectEl:HTMLSelectElement = <HTMLSelectElement>form.querySelector('[name="cost"]');
+			const OPTIONS:HTMLOptionsCollection = selectEl.options;
+			const selectedIndex:number = selectEl.selectedIndex;
+			const selectedOptionEl:HTMLOptionElement = OPTIONS[selectedIndex];
+			const variableCostName:string = selectedOptionEl.innerText;
+
+			data['detail']['variableCostName'] = variableCostName;
+		}
 		
 		let updateCartEvent:CustomEvent<AddReedInterface> = new CustomEvent('OnUpdateCart',data);
 		document.dispatchEvent(updateCartEvent);

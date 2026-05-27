@@ -19,7 +19,15 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
       let addReedProps:AddReedInterface = <AddReedInterface>cartPayload;
       
       // Check if item exists
-      let foundIndex:number = cartItems.findIndex((reed:ReedStorageItem) => addReedProps['name'] === reed['name'] && (addReedProps['category'] ? addReedProps['category'] === reed['category'] : true));
+      let foundIndex:number = cartItems.findIndex((reed:ReedStorageItem) =>
+        addReedProps['name'] === reed['name'] && 
+        (addReedProps['category'] ? 
+           addReedProps['category'] === reed['category'] : 
+           true) &&
+        (addReedProps['variableCostName'] ? 
+          addReedProps['variableCostName'] === reed['variableCostName'] : 
+          true)
+      );
 
       if ( foundIndex === -1 ) { // Item not in cart, add new item to cart
         let idString:string = Math.random().toString().slice(2);
@@ -29,26 +37,14 @@ function updateCartListener<T extends UpdateCartPayload>(e: CustomEvent<T>){
           name: addReedProps['name'],
           cost: addReedProps['cost'],
           quantity: addReedProps['quantity'],
-          category: addReedProps?.category
+          category: addReedProps?.category,
+          variableCostName: addReedProps?.variableCostName
         })
       }
       else { // Item exists
         let cartItem:ReedStorageItem = cartItems[foundIndex];
 
-        // If cost is the same, add quantity to existing quantity
-        if ( cartItem['cost'] === addReedProps['cost'] )
-          cartItems[foundIndex]['quantity'] += addReedProps['quantity'];
-        else { // Same reed type, different variable cost
-          let idString:string = Math.random().toString().slice(2);
-
-          cartItems.push({
-            id: parseInt(idString),
-            name: addReedProps['name'],
-            cost: addReedProps['cost'],
-            quantity: addReedProps['quantity'],
-            category: addReedProps?.category
-          })
-        }
+        cartItems[foundIndex]['quantity'] += addReedProps['quantity'];
       }
 
       sessionStorage.setItem(

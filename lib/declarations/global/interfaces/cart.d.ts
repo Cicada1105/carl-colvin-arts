@@ -14,6 +14,7 @@ interface UpdateCartActionloadInterface {
 interface AddReedInterface extends UpdateCartActionloadInterface {
     name: string;
     cost: number;
+    variableCostName?: string;
     quantity: number;
     category?: string;
 }
@@ -31,6 +32,7 @@ interface ReedStorageItem {
     id: number;
     name: string;
     cost: number;
+    variableCostName?: string;
     quantity: number;
     category?: string;
 }

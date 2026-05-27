@@ -13,10 +13,19 @@ const createCartRow = (data:ReedStorageItem):void => {
   let cost:number = data['cost'];
   let id:string = name.toLowerCase().split(' ').join('-');
   let displayText:string = `${name} - $${cost}`;
+  let options:string[] = [];
+
+  data['category'] && options.push(data['category']);
+  data['variableCostName'] && options.push(data['variableCostName']);
+
+  if ( options.length ) {
+    displayText += ` (${options.join(', ')})`
+  }
+
   let el:HTMLDivElement = createInputRow({
     id,
     label: {
-      text: displayText.concat(data['category'] ? ` (${data['category']})` : ''),
+      text: displayText,
       forIn: id
     },
     data:{
