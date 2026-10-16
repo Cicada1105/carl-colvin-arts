@@ -53,13 +53,19 @@ interface PathInterface extends SVGGraphicsInterface, CoreAttributesInterface {
 interface TextInterface extends PrimitiveAttributesInterface, CoreAttributesInterface {
     text: string;
 }
+interface ArrowInterface extends PathInterface {
+    rotate: number;
+    x: number;
+    y: number;
+}
 interface ISector {
     sectorHeader: TextInterface;
     underline: LineInterface;
     descriptions: TextInterface[];
     sectorPath: PathInterface;
     hoverHeader: TextInterface[];
+    arrow: ArrowInterface;
     link: string;
     image: IImage;
 }
-export { CircleInterface, LineInterface, PathInterface, TextInterface, AnimateInterface, SetInterface, SVGImageInterface, ISector, AnimationAttributesInterface, AnimationElements, SVGGraphicsInterface, TimingAttributesInterface, PrimitiveAttributesInterface, CoreAttributesInterface };
+export { CircleInterface, LineInterface, PathInterface, TextInterface, AnimateInterface, SetInterface, SVGImageInterface, ISector, ArrowInterface, AnimationAttributesInterface, AnimationElements, SVGGraphicsInterface, TimingAttributesInterface, PrimitiveAttributesInterface, CoreAttributesInterface };

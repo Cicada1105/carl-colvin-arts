@@ -122,6 +122,18 @@ const sectorData:ISector[] = [
 				y:"100"
 			}
 		],
+		arrow: {
+			rotate: -51,
+			x:25,
+			y:80,
+			d: "M297.4 169.4C309.9 156.9 330.2 156.9 342.7 " +
+			"169.4L534.7 361.4C547.2 373.9 547.2 394.2 534.7 " +
+			"406.7C522.2 419.2 501.9 419.2 489.4 406.7L320 " +
+			"237.3L150.6 406.6C138.1 419.1 117.8 419.1 105.3 " +
+			"406.6C92.8 394.1 92.8 373.8 105.3 361.3L297.3 169.3z",
+			fill:"#de5757",
+			fillOpacity:"0"
+		},
 		link:`${PERFORMANCES_SUB_PATH}/past.html`,
 		image: {
 			path:`${SHARED_IMG_PATH}/happy_holy_dayz.png`,
@@ -193,6 +205,18 @@ const sectorData:ISector[] = [
 				y:"265"
 			}
 		],
+		arrow: {
+			rotate: 180,
+			x:162,
+			y:292,
+			d: "M297.4 169.4C309.9 156.9 330.2 156.9 342.7 " +
+				"169.4L534.7 361.4C547.2 373.9 547.2 394.2 534.7 " +
+				"406.7C522.2 419.2 501.9 419.2 489.4 406.7L320 " +
+				"237.3L150.6 406.6C138.1 419.1 117.8 419.1 105.3 " +
+				"406.6C92.8 394.1 92.8 373.8 105.3 361.3L297.3 169.3z",
+			fill:"#de5757",
+			fillOpacity:"0",
+		},
 		link:`${PERFORMANCES_SUB_PATH}/present.html`,
 		image: {
 			path:`${SHARED_IMG_PATH}/oboe_sheet_music.jpeg`,
@@ -276,6 +300,18 @@ const sectorData:ISector[] = [
 				y:"100"
 			}
 		],
+		arrow: {
+			rotate: 51,
+			x:260,
+			y:60,
+			d: "M297.4 169.4C309.9 156.9 330.2 156.9 342.7 " +
+				"169.4L534.7 361.4C547.2 373.9 547.2 394.2 534.7 " +
+				"406.7C522.2 419.2 501.9 419.2 489.4 406.7L320 " +
+				"237.3L150.6 406.6C138.1 419.1 117.8 419.1 105.3 " +
+				"406.6C92.8 394.1 92.8 373.8 105.3 361.3L297.3 169.3z",
+			fill:"#de5757",
+			fillOpacity:"0"
+		},
 		link:`${PERFORMANCES_SUB_PATH}/future.html`,
 		image: {
 			path:`${IMG_PATH}/future.jpeg`,
@@ -354,21 +390,5 @@ const graphicsAttributes:DimensionsInterface = {
 			strokeOpacity:"0.55"
 		}
 	]
-	/*imageFilters: [
-		{
-			idName:"blur",
-			filter: {
-				stdDeviation:"5",
-				children: commonFilterChildren
-			}
-		},
-		{
-			idName: "noBlur",
-			filter: {
-				stdDeviation:"0",
-				children: commonFilterChildren
-			}
-		}
-	]*/
 }
 export { centerImagesData, sectorData, graphicsAttributes }

@@ -17,25 +17,8 @@ const loadLandingPage = ():void => {
 	// Add svg namespace
 	svg.setAttribute("xmlns","http://www.w3.org/2000/svg");
 
-	// Create 3 arrows
-	let arrow1:HTMLElement = createElement({
-		element:"i",
-		className:"arrow fas fa-chevron-up"
-	});
-	let arrow2:HTMLElement = createElement({
-		element:"i",
-		className:"arrow fas fa-chevron-up"
-	});
-	let arrow3:HTMLElement = createElement({
-		element:"i",
-		className:"arrow fas fa-chevron-up"
-	});
-
 	// Append SVG and arrows to section
 	section.appendChild(svg);
-	section.appendChild(arrow1);
-	section.appendChild(arrow2);
-	section.appendChild(arrow3);
 
 	// Load section element to DOM
 	document.body.appendChild(section);

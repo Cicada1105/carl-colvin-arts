@@ -5,7 +5,7 @@
 // 	Methods
 import { 
 	createSVGText, createSVGLine, createSVGCircle, 
-	createSVGPath, createSVGImage
+	createSVGPath, createSVGArrow, createSVGImage
 } from './create_methods';
 //	Event Handlers
 import { init } from './event_listeners';
@@ -39,12 +39,10 @@ const loadSVG = function():void {
 	// 	Create center image
 	centerImagesData.forEach((imageData:ISVGImage) => svg.appendChild(createSVGImage(imageData)));
 	// 	Create each sector
-	sectorData.forEach((sector:ISector, sectorNum:number) => {
+	sectorData.forEach((sector:ISector) => {
 		loadSector.bind({
 			svgElement: svg,
-			sectorData:sector,
-			arrowNum:sectorNum,
-			imageSrc:sector.image
+			sectorData:sector
 		})();
 	});
 }
@@ -56,71 +54,47 @@ const loadSector = function():void {
 	//	SVG Element needs to be passed down through components
 	const svg:SVGSVGElement = <SVGSVGElement>that.svgElement;
 	const data:ISector = <ISector>that.sectorData;
-	const arrow:number = <number>that.arrowNum;
-	const image:IImage = <IImage>that.imageSrc;
+	const sectorPageLink:string = data.link;
+	const imageSrc:IImage = <IImage>data.image;
+
+	// Group contents of this sector into a group
+	const sectorGroup:SVGGElement = document.createElementNS("http://www.w3.org/2000/svg","g");
 
 	// Create header for the sector and append it
 	let header:SVGTextElement = createSVGText(data.sectorHeader);
-	svg.appendChild(header);
+	sectorGroup.appendChild(header);
 	// Create underline for the sector header and append it to the sector
 	let underline:SVGLineElement = createSVGLine(data.underline);
-	svg.appendChild(underline);
+	sectorGroup.appendChild(underline);
 	// Loop through and create the descriptions of current sector, appending each one
 	data.descriptions.forEach((description:IText) => {
 		let descr:SVGTextElement = createSVGText(description);
-		svg.appendChild(descr);
+		sectorGroup.appendChild(descr);
 	});
 
-	// Create path for current sector
-	loadPath.bind({
-		svgElement: svg,
-		data:data.sectorPath,
-		arrow: {
-			num: arrow,
-			link: data.link
-		},
-		imageSrc:image
-	})();
+	// Create svg path
+	let path:SVGPathElement = createSVGPath(data.sectorPath);
+	// Bind 'this' of init to svg parent	; Binding function does not call function so must bbe invoked with "()"
+	const EventHandlers:any = init.bind(svg)();
+	path.addEventListener("mouseover",EventHandlers.MouseoverHandler.bind({
+		sector:sectorGroup,
+		sectorPageLink,
+		imageSrc
+	}));
+	path.addEventListener("mouseout",EventHandlers.MouseoutHandler.bind({
+		sector:sectorGroup,
+		sectorPageLink
+	}));
+	sectorGroup.appendChild(path);
 
 	// Loop through and create the descriptions to be displayed when the user hovers over sector
 	//	append each description to sector
-	data.hoverHeader.forEach((header:IText) => svg.appendChild(createSVGText(header)));
-}
+	data.hoverHeader.forEach((header:IText) => sectorGroup.appendChild(createSVGText(header)));
+	// Create arrow SVG path and append to sector
+	sectorGroup.appendChild(createSVGArrow(data.arrow));
 
-const loadPath = function():void {
-	// Store value of this
-	const that:any = this;
-	// Store 'this' data to be passed onnto evet handlers
-	//	SVG Element needs to be passed down through components
-	const svg:SVGSVGElement = <SVGSVGElement>that.svgElement;
-	const data:IPath = <IPath>that.data;
-	const arrowNum:number = <number>(that.arrow["num"]);
-	const arrowLink:string = <string>(that.arrow["link"]);
-	const image:IImage = <IImage>that.imageSrc;
-
-	// Create svg path
-	let path:SVGPathElement = createSVGPath(data);
-
-	// Bind 'this' of init to svg parent	; Binding function does not call function so must bbe invoked with "()"
-	const EventHandlers:any = init.bind(svg)();
-
-	path.addEventListener("mouseover",EventHandlers.MouseoverHandler.bind({
-		sector:path,
-		arrow: {
-			num: arrowNum,
-			link: arrowLink
-		},
-		imageSrc: image
-	}));
-	path.addEventListener("mouseout",EventHandlers.MouseoutHandler.bind({
-		sector:path,
-		arrow: {
-			num: arrowNum,
-			link: arrowLink
-		}
-	}));
-
-	svg.appendChild(path);
+	// Append the current sector group to the svg
+	svg.appendChild(sectorGroup);
 }
 
 export { loadSVG }

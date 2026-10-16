@@ -11,6 +11,7 @@ import {
 	LineInterface as ILine,
 	TextInterface as IText,
 	PathInterface as IPath,
+	ArrowInterface as IArrow,
 	SetInterface as ISet,
 	AnimateInterface as IAnimate,
 	SVGImageInterface as ISVGImage
@@ -81,6 +82,24 @@ const createSVGPath = (data:IPath):SVGPathElement => {
 
 	return path;
 }
+const createSVGArrow = (data:IArrow):SVGElement => {
+	let { rotate, x, y, ...svgPathData } = data;
+
+	let svg:SVGElement = document.createElementNS("http://www.w3.org/2000/svg","svg");
+	svg.setAttribute('viewBox','0 0 7750 7750');
+	svg.setAttribute("class","arrow");
+	// Set rotate and x/y attributes
+	svg.setAttribute("transform",`
+		translate(${x},${y})
+		rotate(${rotate})
+	`);
+
+	let path:SVGPathElement = createSVGPath(<IPath>svgPathData);
+
+	svg.appendChild(path);
+
+	return svg;
+}
 const createSVGImage = (data:ISVGImage):SVGImageElement => {
 	let img:SVGImageElement = document.createElementNS("http://www.w3.org/2000/svg","image");
 
@@ -100,5 +119,5 @@ const createSVGImage = (data:ISVGImage):SVGImageElement => {
 export { 
 	createSVGCircle, createSVGLine, 
 	createSVGText, createSVGPath,
-	createSVGImage 
+	createSVGArrow, createSVGImage 
 }
