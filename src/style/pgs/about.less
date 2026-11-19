@@ -15,6 +15,10 @@
 
 .row {
   .format(relative, 100%, unset);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3.5rem;
   margin:100px auto 150px auto;
   z-index:1;
 
@@ -22,16 +26,14 @@
   &:last-child {
     padding-bottom:100px;
   }
-  #left, #right {
-    float:none;
-  }
   section {
     .format(inherit, 80%, fit-content);
+    position: inherit;
+    height: fit-content;
     background-color:@secondaryBackgroundColor;
     box-shadow:15px 15px 5px @accentColor;
     min-height:15rem;
     margin:auto;
-    margin-bottom:3.5rem;
     color:@textColor;
     top:0%;
 
@@ -58,7 +60,6 @@
 
     h3 {
       .titleFont();
-      padding-top:1rem;
 
       &:hover {
         cursor:pointer;
@@ -72,17 +73,13 @@
       padding-bottom:1.5rem;
     }
   }
-  .figure {
-    .format(inherit, unset, 300px);
-    margin:auto;
+  figure {
+    .format(inherit, unset);
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
 
     img {
-      position:absolute;
-      transform: translateX(-50%);
-      margin:auto;
-      left:50%;
-      z-index:1;
-
       // Carl headshot
       &[alt *= "Headshot"] {
         width:291px;
@@ -97,8 +94,8 @@
       }
     }
     .imgBorder {
+      position:absolute;
       transform: translateX(-50%);
-      margin:auto;
       width:300px;
       left: 50%;
       z-index:3;
@@ -108,9 +105,11 @@
       }
     }
     .figcaption {
-      .format(relative, 210px, 210px);
+      .format(absolute, 210px, 210px);
+      transform: translateX(-50%);
       display:none;
-      margin:auto;
+      left: 50%;
+      top: 0%;
       z-index:2;
 
       p {
@@ -122,13 +121,7 @@
     }
   }
 }
-@media only screen and (min-width: 500px) {
-  .row {
-    .figure {
-      width: 500px;
-    }
-  }
-}
+
 @media only screen and (min-width: 590px) {
   .row {
     min-width:575px;
@@ -136,26 +129,18 @@
 }
 @media only screen and (min-width: 1128px) {
   .row {
+    flex-direction: row;
     width:90%;
-    height:300px;
 
-    #left {
-      float:left;
+    &.left {
+      figure {
+        order:-1;
+      }
     }
-    #right {
-      float:right;
-    }
+
     section {
-      width: 500px;
+      width: 50%;
       height: 100%;
-
-      p {
-      }
-    }
-    .figure {
-      .figcaption {
-
-      }
     }
   }
 }

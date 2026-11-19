@@ -24,17 +24,10 @@ const loadRows = ():void => {
 		currImg = imgCont(row.imgData);
 
 		// createElement's default element is div
-		let dataRow:HTMLDivElement = createElement({className:'row'});
+		let dataRow:HTMLDivElement = createElement({
+			className:'row'.concat(i % 2 === 0 ? ' right' : ' left')
+		});
 
-		// Alternate info boxes and images
-		if (i % 2 == 0) {
-			currBox.setAttribute('id','left');
-			currImg.setAttribute('id','right');
-		}
-		else {
-			currImg.setAttribute('id','left');
-			currBox.setAttribute('id','right');
-		}
 		dataRow.appendChild(currBox);
 		dataRow.appendChild(currImg);
 

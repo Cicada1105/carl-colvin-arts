@@ -36,10 +36,7 @@ const infoBox = (e:IBoxLink<string>):HTMLElement => {
 const imgCont = (currImg:IImage):HTMLElement => {
 	// Create container to store the figure/image, border and data
 	// createElement's default element is 'div'
-	let fig:HTMLElement = createElement({
-		element: 'figure',
-		className:'figure'
-	});
+	let fig:HTMLElement = document.createElement('figure');
 
 	// Image to display
 	let img:HTMLImageElement = createImageElement({src:currImg.path,alt:currImg.alt,className:'homeImg'});
